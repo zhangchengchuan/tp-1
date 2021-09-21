@@ -24,7 +24,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 <img src="images/johndoe.png" width="200px">
 
 [[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[portfolio](team/chowruiyan.md)]
 
 * Role: Team Lead
 * Responsibilities: UI
@@ -33,7 +33,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 <img src="images/johndoe.png" width="200px">
 
-[[github](http://github.com/johndoe)] [[portfolio](team/johndoe.md)]
+[[github](http://github.com/johndoe)] [[portfolio](team/chowruiyan.md)]
 
 * Role: Developer
 * Responsibilities: Data
@@ -48,12 +48,11 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 * Role: Developer
 * Responsibilities: Dev Ops + Threading
 
-### James Doe
+### Chow Rui Yan
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/chowruiyan.png" width="200px">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github](https://github.com/chowRuiYan)]
+[[portfolio](team/chowruiyan.md)]
 
-* Role: Developer
-* Responsibilities: UI
+* Role: Testing
