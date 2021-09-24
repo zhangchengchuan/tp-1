@@ -17,36 +17,27 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 [[portfolio](team/markus.md)]
 
 * Role: Team Lead
-* Responsibilities: TBC
+* Responsibilities: Host meeting 
 
-### Jane Doe
+### Zhu Tianqi
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/Tianqi-Zhu.png" width="200px">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/chowruiyan.md)]
-
-* Role: Team Lead
-* Responsibilities: UI
-
-### Johnny Doe
-
-<img src="images/johndoe.png" width="200px">
-
-[[github](http://github.com/johndoe)] [[portfolio](team/chowruiyan.md)]
+[[github](http://github.com/Tianqi-Zhu)]
+[[portfolio](team/Tianqi-Zhu.md)]
 
 * Role: Developer
-* Responsibilities: Data
+* Responsibilities: Deliverable and deadlines, Scheduling and tracking, Github master
 
-### Jean Doe
+### Zhao Jinxin
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/jinxinzhao315.png" width="200px">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github](http://github.com/JinxinZhao315)]
+[[portfolio](team/jinxinzhao.md)]
 
 * Role: Developer
-* Responsibilities: Dev Ops + Threading
+* Responsibilities: Documentation
 
 ### Chow Rui Yan
 
