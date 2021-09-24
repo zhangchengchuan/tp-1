@@ -9,44 +9,25 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ## Project team
 
-### John Doe
+### Markus Lim
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/markuslim24.png" width="200px">
 
-[[homepage](http://www.comp.nus.edu.sg/~damithch)]
-[[github](https://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
-
-* Role: Project Advisor
-
-### Jane Doe
-
-<img src="images/johndoe.png" width="200px">
-
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github](https://github.com/markuslim24)]
+[[portfolio](team/markus.md)]
 
 * Role: Team Lead
-* Responsibilities: UI
+* Responsibilities: Host meeting 
 
-### Johnny Doe
+### Zhu Tianqi
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/Tianqi-Zhu.png" width="200px">
 
-[[github](http://github.com/johndoe)] [[portfolio](team/johndoe.md)]
-
-* Role: Developer
-* Responsibilities: Data
-
-### Jean Doe
-
-<img src="images/johndoe.png" width="200px">
-
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github](http://github.com/Tianqi-Zhu)]
+[[portfolio](team/Tianqi-Zhu.md)]
 
 * Role: Developer
-* Responsibilities: Dev Ops + Threading
+* Responsibilities: Deliverable and deadlines, Scheduling and tracking, Github master
 
 ### Zhao Jinxin
 
@@ -57,3 +38,22 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 * Role: Developer
 * Responsibilities: Documentation
+
+### Chow Rui Yan
+
+<img src="images/chowruiyan.png" width="200px">
+
+[[github](https://github.com/chowRuiYan)]
+[[portfolio](team/chowruiyan.md)]
+
+* Role: Testing
+
+### Zhang Cheng Chuan
+
+<img src="images/chengchuan.png" width="200px">
+
+[[github](http://github.com/zhangchengchuan)]
+[[portfolio](team/chengchuan.md)]
+
+* Role: Developer
+* Responsibilities: In charge of integration
