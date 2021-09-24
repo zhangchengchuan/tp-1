@@ -1,6 +1,55 @@
-###**Task:**
+---
+layout: page
+title: User Guide
+---
 
-####Adding a task: `todo`, `deadline`, `event`
+ManageMe is a **desktop app for time management and resource organisation, optimized for use via a Command Line Interface (CLI)** while still having the benefits of a Graphical User Interface (GUI). If you can type fast, ManageMe can get your tasks done faster than traditional GUI apps.
+
+# Table of Contents
+1. Features
+    1. Tasks
+        1. Add a Task: `todo`, `event`, `deadline`
+        2. Read a Task: `readTask`
+        3. Update a Task's Details: `updateTask`
+        4. Delete a Task: `deleteTask`
+    2. Modules
+        1. Add a Module: `addMod`
+        2. Read a Module: `readMod`
+        3. Update a Module's Details: `updateMod`
+        4. Delete a Module: `deleteMod`
+    3. Calendar
+    4. Others
+        1. Get help: `help`
+        2. Exit program: `exit`
+2. Command Summary
+
+--------------------------------------------------------------------------------------------------------------------
+
+## UI Mockup:
+
+![Ui](images/Ui1.png)
+
+![Ui](images/Ui2.png)
+
+--------------------------------------------------------------------------------------------------------------------
+
+## Features
+
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Notes about the command format:**<br>
+
+* Words in `UPPER_CASE` are the parameters to be supplied by the user. E.g. `todo DESCRIPTION`
+  , here `DESCRIPTION` is the parameter.<br>
+
+* Items in square brackets are optional. E.g. `todo DESCRIPTION [/mod CS2103]`<br>
+
+</div>
+
+--------------------------------------------------------------------------------------------------------------------
+### **Task:**
+
+#### Adding a task: `todo`, `deadline`, `event`
 
 Adds a task to the address book. The task must be one of the three categories:
 
@@ -16,7 +65,7 @@ Format:
     deadline DESCRIPTION /by DATE TIME [/mod MODULE]
     event DESCRIPTION /at DATE START_TIME END_TIME [/mod MODULE]
 
-####Read details of a task: `readTask`
+#### Read details of a task: `readTask`
 View a task in detail.
 
 Format: `readTask INDEX`
@@ -29,7 +78,7 @@ Format: `readTask INDEX`
 
 Example: `readTask 3`
 
-####Update a task: updateTask
+#### Update a task: updateTask
 Update an existing task in the task list.
 
 Format: `updateTask INDEX CATEGORY CONTENT`
@@ -46,7 +95,7 @@ Format: `updateTask INDEX CATEGORY CONTENT`
 
 Example: `updateTask 3 description buy milk`
 
-####Deleting a task: `deleteTask`
+#### Deleting a task: `deleteTask`
 Deletes the specified task from the task list.
 
 Format: `deleteTask INDEX`
