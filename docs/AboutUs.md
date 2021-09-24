@@ -21,9 +21,9 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ### Zhu Tianqi
 
-<img src="images/Tianqi-Zhu.png" width="200px">
+<img src="images/Tianqi-Zhu.jpg" width="200px">
 
-[[github](http://github.com/Tianqi-Zhu.jpg)]
+[[github](http://github.com/Tianqi-Zhu)]
 [[portfolio](team/Tianqi-Zhu.md)]
 
 * Role: Developer
