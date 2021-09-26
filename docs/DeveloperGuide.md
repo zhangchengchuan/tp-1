@@ -3,7 +3,7 @@ layout: page
 title: Developer Guide
 ---
 * Table of Contents
-{:toc}
+  {:toc}
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -224,13 +224,13 @@ The following activity diagram summarizes what happens when a user executes a ne
 **Aspect: How undo & redo executes:**
 
 * **Alternative 1 (current choice):** Saves the entire address book.
-  * Pros: Easy to implement.
-  * Cons: May have performance issues in terms of memory usage.
+    * Pros: Easy to implement.
+    * Cons: May have performance issues in terms of memory usage.
 
 * **Alternative 2:** Individual command knows how to undo/redo by
   itself.
-  * Pros: Will use less memory (e.g. for `delete`, just save the person being deleted).
-  * Cons: We must ensure that the implementation of each individual command are correct.
+    * Pros: Will use less memory (e.g. for `delete`, just save the person being deleted).
+    * Cons: We must ensure that the implementation of each individual command are correct.
 
 _{more aspects and alternatives to be added}_
 
@@ -257,13 +257,21 @@ _{Explain here how the data archiving feature will be implemented}_
 
 **Target user profile**:
 
-* has a need to manage a significant number of contacts
-* prefer desktop apps over other types
-* can type fast
-* prefers typing to mouse interactions
-* is reasonably comfortable using CLI apps
+A Digital-Age student who...
+* Needs to organize multiple tasks (events, tasks and deadlines), some of them involve computer files stored locally.
+* Needs to organize multiple modules with many links to relevant online resources.
+* Prefers visualizing all tasks and modules on a calendar for clear and quick presentation.
+* Prefers desktop application over mobile application
+* Prefers typing over the use of mouse
+* Comfortable with the use of Command Line Interface (CLI).
 
-**Value proposition**: manage contacts faster than a typical mouse/GUI driven app
+**Value proposition**:
+* Manage modules and tasks faster than a typical mouse/GUI driven app.
+* Manage multiple web links and file paths associated with modules and tasks.
+* Summarises crucial information clearly such as:
+    1) Tasks due Today and
+    2) Upcoming Events on the Calendar
+
 
 
 ### User stories
@@ -271,57 +279,170 @@ _{Explain here how the data archiving feature will be implemented}_
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
 | Priority | As a …​                                    | I want to …​                     | So that I can…​                                                        |
-| -------- | ------------------------------------------ | ------------------------------ | ---------------------------------------------------------------------- |
-| `* * *`  | new user                                   | see usage instructions         | refer to instructions when I forget how to use the App                 |
-| `* * *`  | user                                       | add a new person               |                                                                        |
-| `* * *`  | user                                       | delete a person                | remove entries that I no longer need                                   |
-| `* * *`  | user                                       | find a person by name          | locate details of persons without having to go through the entire list |
-| `* *`    | user                                       | hide private contact details   | minimize chance of someone else seeing them by accident                |
-| `*`      | user with many persons in the address book | sort persons by name           | locate a person easily                                                 |
+| -------- | ------------------------------------------ | --------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| `* * *`  | Forgetful User                             | Add tasks                                                             |                                                                                                           |
+| `* * *`  | Forgetful User                             | View all my tasks                                                     | I can keep track of what I have done, and need to do                                                      |
+| `* * *`  | Forgetful User                             | Update my tasks                                                       | I can make changes to the status of the tasks or change task information.                                 |
+| `* * *`  | Forgetful User                             | Delete my tasks                                                       | I can get rid of my tasks.                                                                                |
+| `* * *`  | Forgetful User                             | Add recurring tasks                                                   | I do not have to add the same task multiple times.                                                        |
+| `* * *`  | Student                                    | Add modules                                                           | I can store all relevant information and links related to a module together.                              |
+| `* * *`  | Student                                    | View all my modules                                                   | I can keep track of the different modules that I am taking this semester.                                 |
+| `* * *`  | Student                                    | Update my modules                                                     | I can make changes to information related to a module.                                                    |
+| `* * *`  | Student                                    | Delete my modules                                                     | I can get rid of modules that I am no longer taking                                                       |
+| `* * *`  | Student                                    | View all tasks in a single day in the calendar                        | I can know what happens on any particular date                                                            |
+| `* * *`  | Busy Student                               | View all upcoming tasks in a calendar                                 | I do not have to look through my entire tasklist to find upcoming tasks.                                  |
+| `* * *`  | Busy Student                               | Let the calendar load my tasks in the task list automatically         | I can view the tasks in chronological order.                                                              |
+| `* * *`  | Digital-Age Student                        | Add filepaths in my local directory to task                           | I can access assignment files related to a task directly from the application.                            |
+| `* *`    | Digital Age Student                        | Add filepaths in my local directory to a module                       | I can access notes/tutorials related to a module directly from the application.                           |
+| `* * *`  | Easily Distracted Student                  | Receive reminders for tasks that have upcoming deadlines              | I have sufficient time to complete my 'due-soon' tasks should I get distracted by other tasks.            |
+| `* * *`  | User                                       | Search for a task using keywords                                      | I do not have to waste time browsing through my entire tasklist to find a task.                           |
+| `*`      | New User                                   | Open the command summary to help me navigate the application          | I know how to use the application to perform the functions that I want.                                   |
+| `* *`    | Experienced User                           | Close the command summary                                             | t does not take up unnecessary screen space after I am familiar with the commands.                        |
+| `* *`    | User who likes to customize                | Personalise the appearance of the application                         | I can change the appearance of the application to my liking.                                              |
 
-*{More to be added}*
 
 ### Use cases
 
-(For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
+(For all use cases below, the **System** is `ManageMe` and the **Actor** is the `user`, unless specified otherwise)
 
-**Use case: Delete a person**
+**Use case: Add Task**
 
 **MSS**
 
-1.  User requests to list persons
-2.  AddressBook shows a list of persons
-3.  User requests to delete a specific person in the list
-4.  AddressBook deletes the person
+1. User requests to add a task.
+2. System requests for information about the task.
+3. User enters the information.
+4. System adds the new task and displays it.
+5. Use case ends.
 
-    Use case ends.
+**Extensions:**
+* 3a. System detects an error in the entered data.
+    * 3a1. System requests for the correct data.
+    * 3a2. User enters new data.
+    * Steps 3a1 - 3a2 are repeated until the data entered is correct.
+    * Use case resumes from step 4.
+* Use case ends.
+
+
+
+**Use case: Update Task**
+
+**MSS:**
+
+1. User requests to update a specified task
+2. System shows the specific task information
+3. User requests to update a specified section of the task
+4. System asks user for the new section content
+5. User enters the new content
+6. System updates new content and displays the edited task.
+7. Use case ends.
+
+**Extensions:**
+
+* 3a. User enters an invalid task number
+    * 3a1. System requests for a valid task number.
+    * 3a2. User enters the task number.
+    * Steps 3a1 - 3a2 are repeated until the task number entered is correct.
+    * Use case resumes from step 4.
+* 5a. System detects an error in the entered data.
+    * 5a1. System requests for the correct data.
+    * 5a2. User enters new data.
+    * Steps 5a1 - 5a2 are repeated until the data entered is correct.
+* Use case resumes from step 6.
+
+
+**Use case: Delete Task**
+
+**MSS:**
+
+1. User requests to delete a specified task.
+2. System asks the user to confirm the delete.
+3. User confirms.
+4. System removes the specified task from the task list.
+5. System updates the GUI to show the new task list.
+6. Use case ends.
+
+**Extension:**
+
+* 3a. User does not confirm the delete
+    * System prompts user that delete action has been cancelled.
+
+
+
+**Use case: Add Module**
+
+**MSS:**
+
+1. User requests to add a module.
+2. System shows a list of required parameters
+3. User provides the following information:
+    1. Module Code
+    2. Class Schedule
+    3. Links (Zoom, Luminus etc)
+    4. Examination Date
+4. System creates the module.
+5. Use case ends.
 
 **Extensions**
 
-* 2a. The list is empty.
+* 3a. The parameters entered are invalid, such as Invalid Module Code.
+    * System shows error to user.
+    * Use case returns to step 3
+* 3b. Number of Parameters entered does not match the required number of fields
+    * System shows error to user.
+    * Use case returns to step 3
 
-  Use case ends.
 
-* 3a. The given index is invalid.
 
-    * 3a1. AddressBook shows an error message.
+**Use case: Update Module**
 
-      Use case resumes at step 2.
+**MSS:**
 
-*{More to be added}*
+1. User requests to edit a specified module
+2. System shows the specific module information
+3. User requests to edit a specified section of the module
+4. System asks user for the new section content
+5. User enters the new content
+6. System updates new content and displays the edited module.
+
+
+
+**Use case: Delete Module**
+
+**MSS:**
+
+1. User request to delete modules.
+2. System shows list of modules.
+3. User enters Index of specified module.
+4. System pops up a reminder to ask if user wants to remove all the data permanently
+5. System removes all module related data.
+6. Use case ends.
+
+**Extensions**
+
+* 3a. The index entered is invalid (Index greater than size of list or less than zero)
+    * System shows an error to user.
+    * Use case returns to step 3
+* 3b. Number of Parameters does not match number of fields (more than 1 or less than 0)
+    * System shows error to user.
+    * Use case returns to step 3
+
 
 ### Non-Functional Requirements
 
-1.  Should work on any _mainstream OS_ as long as it has Java `11` or above installed.
-2.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
-3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
-
-*{More to be added}*
+1. Should work on any _mainstream OS_ as long as it has Java `11` or above installed.
+2. Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
+3. A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+4. The system will not be responsible for checking the validity of external links entered into the system, such as Zoom links or Luminus links. They must be checked beforehand by the user.
 
 ### Glossary
 
 * **Mainstream OS**: Windows, Linux, Unix, OS-X
-* **Private contact detail**: A contact detail that is not meant to be shared with others
+* **Digital-age:** A post-pandemic world where many schools have switched to online teaching and learning.
+* **Module:** A course taken by a student, typically in a university.
+* **Online resources:** Websites used by many schools in the post-pandemic world for teaching, file submission and assessment. For example, Zoom, Luminus, Exemplify etc.
+* **Command Line Interface (CLI):** An interface where the user primarily gives command to the computer by typing text lines, instead of clicking and dragging graphic components.
+* **Mainstream OS:** Windows, Linux OS-X
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -338,15 +459,15 @@ testers are expected to do more *exploratory* testing.
 
 1. Initial launch
 
-   1. Download the jar file and copy into an empty folder
+    1. Download the jar file and copy into an empty folder
 
-   1. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
+    1. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
 
 1. Saving window preferences
 
-   1. Resize the window to an optimum size. Move the window to a different location. Close the window.
+    1. Resize the window to an optimum size. Move the window to a different location. Close the window.
 
-   1. Re-launch the app by double-clicking the jar file.<br>
+    1. Re-launch the app by double-clicking the jar file.<br>
        Expected: The most recent window size and location is retained.
 
 1. _{ more test cases …​ }_
@@ -355,16 +476,16 @@ testers are expected to do more *exploratory* testing.
 
 1. Deleting a person while all persons are being shown
 
-   1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
+    1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
 
-   1. Test case: `delete 1`<br>
-      Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
+    1. Test case: `delete 1`<br>
+       Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
 
-   1. Test case: `delete 0`<br>
-      Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
+    1. Test case: `delete 0`<br>
+       Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
 
-   1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
-      Expected: Similar to previous.
+    1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
+       Expected: Similar to previous.
 
 1. _{ more test cases …​ }_
 
@@ -372,6 +493,6 @@ testers are expected to do more *exploratory* testing.
 
 1. Dealing with missing/corrupted data files
 
-   1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
+    1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
 
 1. _{ more test cases …​ }_
