@@ -9,8 +9,13 @@ public class Event extends Task {
     private final LocalDateTime startDateTime;
     private final LocalDateTime endDateTime;
 
+    /**
+     * Constructor for an Event object without start and end DateTime.
+     */
     public Event (Name name, Description description, Index index) {
         super(name, description, index);
+        startDateTime = null;
+        endDateTime = null;
     }
 
     /**
