@@ -33,33 +33,37 @@
                         <MenuItem fx:id="helpMenuItem" mnemonicParsing="false" onAction="#handleHelp" text="Help" />
                     </Menu>
                 </MenuBar>
-            <HBox fx:id="contentPlaceholder" VBox.vgrow="ALWAYS">
-               <children>
-      
+
+                <HBox fx:id="contentPlaceholder" VBox.vgrow="ALWAYS">
+                   <children>
                       <VBox fx:id="moduleList" styleClass="pane-with-border" HBox.hgrow="ALWAYS">
                           <padding>
                               <Insets bottom="10" left="10" right="10" top="10" />
                           </padding>
-                          <StackPane fx:id="moduleListPanelPlaceholder" VBox.vgrow="ALWAYS" />
+                          <children>
+                              <StackPane fx:id="moduleListPanelPlaceholder" VBox.vgrow="ALWAYS" />
+                          </children>
                       </VBox>
-                  <VBox fx:id="taskList" layoutX="10.0" layoutY="10.0" styleClass="pane-with-border" HBox.hgrow="ALWAYS">
-                     <padding>
-                        <Insets bottom="10" left="10" right="10" top="10" />
-                     </padding>
-                     <children>
-                        <StackPane fx:id="taskListPanelPlaceholder" VBox.vgrow="ALWAYS" />
-                     </children>
-                  </VBox>
-                  <VBox fx:id="calendarList" layoutX="350.0" layoutY="10.0" styleClass="pane-with-border" HBox.hgrow="ALWAYS">
-                     <padding>
-                        <Insets bottom="10" left="10" right="10" top="10" />
-                     </padding>
-                     <children>
-                        <StackPane fx:id="calendarListPanelPlaceholder" VBox.vgrow="ALWAYS" />
-                     </children>
-                  </VBox>
-               </children>
-            </HBox>
+
+                      <VBox fx:id="taskList" layoutX="10.0" layoutY="10.0" styleClass="pane-with-border" HBox.hgrow="ALWAYS">
+                         <padding>
+                            <Insets bottom="10" left="10" right="10" top="10" />
+                         </padding>
+                         <children>
+                            <StackPane fx:id="taskListPanelPlaceholder" VBox.vgrow="ALWAYS" />
+                         </children>
+                      </VBox>
+
+                      <VBox fx:id="calendarList" layoutX="350.0" layoutY="10.0" styleClass="pane-with-border" HBox.hgrow="ALWAYS">
+                         <padding>
+                            <Insets bottom="10" left="10" right="10" top="10" />
+                         </padding>
+                         <children>
+                            <StackPane fx:id="calendarListPanelPlaceholder" VBox.vgrow="ALWAYS" />
+                         </children>
+                      </VBox>
+                   </children>
+                </HBox>
 
                 <StackPane fx:id="resultDisplayPlaceholder" maxHeight="100" minHeight="100" prefHeight="100" styleClass="pane-with-border" VBox.vgrow="NEVER">
                     <padding>
