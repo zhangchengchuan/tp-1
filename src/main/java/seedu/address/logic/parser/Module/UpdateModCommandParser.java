@@ -1,6 +1,6 @@
 package seedu.address.logic.parser.Module;
 
-import seedu.address.logic.commands.Module.UpdateModCommand;
+import seedu.address.logic.commands.module.UpdateModCommand;
 import seedu.address.logic.parser.Parser;
 import seedu.address.logic.parser.exceptions.ParseException;
 

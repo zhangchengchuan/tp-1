@@ -1,9 +1,10 @@
 package seedu.address.model.module;
 
+import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
+
 import java.util.Objects;
 
 import seedu.address.model.link.Link;
-import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 /**
  * Represents a Module in the app.
@@ -17,6 +18,9 @@ public class Module {
     // Data fields
     private final Link link;
 
+    /**
+     * Every field must be present and not null.
+     */
     public Module(ModName modName, Link link) {
         requireAllNonNull(modName, link);
         this.modName = modName;
