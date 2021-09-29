@@ -1,4 +1,4 @@
-package seedu.address.logic.parser.Module;
+package seedu.address.logic.parser.module;
 
 import seedu.address.logic.commands.module.DeleteModCommand;
 import seedu.address.logic.parser.Parser;

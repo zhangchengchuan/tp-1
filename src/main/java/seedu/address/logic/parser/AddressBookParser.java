@@ -19,11 +19,11 @@ import seedu.address.logic.commands.module.AddModCommand;
 import seedu.address.logic.commands.module.DeleteModCommand;
 import seedu.address.logic.commands.module.ReadModCommand;
 import seedu.address.logic.commands.module.UpdateModCommand;
-import seedu.address.logic.parser.Module.AddModCommandParser;
-import seedu.address.logic.parser.Module.DeleteModCommandParser;
-import seedu.address.logic.parser.Module.ReadModCommandParser;
-import seedu.address.logic.parser.Module.UpdateModCommandParser;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.logic.parser.module.AddModCommandParser;
+import seedu.address.logic.parser.module.DeleteModCommandParser;
+import seedu.address.logic.parser.module.ReadModCommandParser;
+import seedu.address.logic.parser.module.UpdateModCommandParser;
 
 /**
  * Parses user input.
