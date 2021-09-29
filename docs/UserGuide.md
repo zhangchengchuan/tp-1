@@ -47,7 +47,7 @@ ManageMe is a **desktop app for time management and resource organisation, optim
 </div>
 
 --------------------------------------------------------------------------------------------------------------------
-### **Task:**
+### TASK:
 
 #### Adding a task: `todo`, `deadline`, `event`
 
@@ -105,6 +105,50 @@ Format: `deleteTask INDEX`
 
 Example: `deleteTask 2`
 
+### MODULE:
+#### Adding a module: `addMod`
+Adds a module into the module list. A module contains its name and zoom links. It can also be associated with any
+number of Todo, Deadline, Event tasks (like exams, assignments). These Tasks are added in the Task tab with a `/mod
+MODULE`.
+
+Format: `addMod NAME [/link LINK_NAME LINK]` <br/>
+Examples: `addMod CS2103 /link tutorial https://...`
+
+#### Read details of a module: `readMod`
+View module in detail. Creates a pop-up window to show the course name, link, and all tasks associated with the course.
+
+Format: `readMod INDEX`<br/>
+* The index refers to the index number shown in the displayed module list
+* The index **must be a positive integer** 1, 2, 3, ...
+
+Examples: `readMod 2`
+
+#### Update a module: `updateMod`
+Update an existing module in the address app.
+
+Format: `updateMod INDEX CATEGORY CONTENT`
+* Deletes the mod by the specified `INDEX`.<br/>
+* The index refers to the index number shown in the displayed module list
+* The index **must be a positive integer** 1, 2, 3, ...
+* `CATEGORY` must be one of the following:
+    * `name`
+    * `link`
+* The format of the `CONTENT` must match the `CATEGORY`. E.g., if `CATEGORY` is `name`, the `CONTENT` `must be a valid name like
+  CS2103
+* Existing values will be updated to the input values.
+
+Example: `updateMod 2 link https://...`
+
+#### Deleting a module: `deleteMod`
+Deletes the specified mod from the mod list.
+
+Format: `deleteMod INDEX`
+* Deletes the mod by the specified `INDEX`.
+* The index refers to the index number shown in the displayed module list
+* The index **must be a positive integer** 1, 2, 3, ...
+
+Examples: `deleteMod 2` deletes module No.2 from the list.
+
 ### CALENDAR:
 
 More commands to come in further versions.
@@ -138,8 +182,8 @@ Action | Format, Examples
 **UpdateTask** | `updateTask INDEX CATEGORY CONTENT`<br>e.g., `update 3 description buy milk`
 **DeleteTask** | `deleteTask INDEX`<br>e.g., `deleteTask 3`
 **AddModule** | `addMod NAME [/link LINK_NAME LINK]​`<br>e.g.,`addMod CS2103 /link tutorial https://...`
-**ReadModule** | `readMod NAME`<br>e.g., `readMod CS2103`
-**UpdateModule** | `updateMod NAME CATEGORY CONTENT`<br>e.g., `updateMod CS2103 link https://...`
-**DeleteModule** | `deleteMod NAME`<br>e.g., `deleteMod CS2103`
+**ReadModule** | `readMod INDEX`<br>e.g., `readMod 2`
+**UpdateModule** | `updateMod INDEX CATEGORY CONTENT`<br>e.g., `updateMod 2 link https://...`
+**DeleteModule** | `deleteMod INDEX`<br>e.g., `deleteMod 2`
 **Help** | `help`
 **Exit** | `exit`
