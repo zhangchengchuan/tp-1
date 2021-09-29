@@ -261,8 +261,8 @@ A Digital-Age student who...
 * Needs to organize multiple tasks (events, tasks and deadlines), some of them involve computer files stored locally.
 * Needs to organize multiple modules with many links to relevant online resources.
 * Prefers visualizing all tasks and modules on a calendar for clear and quick presentation.
-* Prefers desktop application over mobile application
-* Prefers typing over the use of mouse
+* Prefers desktop application over mobile application.
+* Prefers typing over the use of mouse.
 * Comfortable with the use of Command Line Interface (CLI).
 
 **Value proposition**:
@@ -284,7 +284,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | Forgetful User                             | View all my tasks                                                     | I can keep track of what I have done, and need to do                                                      |
 | `* * *`  | Forgetful User                             | Update my tasks                                                       | I can make changes to the status of the tasks or change task information.                                 |
 | `* * *`  | Forgetful User                             | Delete my tasks                                                       | I can get rid of my tasks.                                                                                |
-| `* * *`  | Forgetful User                             | Add recurring tasks                                                   | I do not have to add the same task multiple times.                                                        |
+| `* *`    | Forgetful User                             | Add recurring tasks                                                   | I do not have to add the same task multiple times.                                                        |
 | `* * *`  | Student                                    | Add modules                                                           | I can store all relevant information and links related to a module together.                              |
 | `* * *`  | Student                                    | View all my modules                                                   | I can keep track of the different modules that I am taking this semester.                                 |
 | `* * *`  | Student                                    | Update my modules                                                     | I can make changes to information related to a module.                                                    |
@@ -292,63 +292,52 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | Student                                    | View all tasks in a single day in the calendar                        | I can know what happens on any particular date                                                            |
 | `* * *`  | Busy Student                               | View all upcoming tasks in a calendar                                 | I do not have to look through my entire tasklist to find upcoming tasks.                                  |
 | `* * *`  | Busy Student                               | Let the calendar load my tasks in the task list automatically         | I can view the tasks in chronological order.                                                              |
-| `* * *`  | Digital-Age Student                        | Add filepaths in my local directory to task                           | I can access assignment files related to a task directly from the application.                            |
+| `* *`    | Digital-Age Student                        | Add filepaths in my local directory to task                           | I can access assignment files related to a task directly from the application.                            |
 | `* *`    | Digital Age Student                        | Add filepaths in my local directory to a module                       | I can access notes/tutorials related to a module directly from the application.                           |
-| `* * *`  | Easily Distracted Student                  | Receive reminders for tasks that have upcoming deadlines              | I have sufficient time to complete my 'due-soon' tasks should I get distracted by other tasks.            |
+| `* *`    | Easily Distracted Student                  | Receive reminders for tasks that have upcoming deadlines              | I have sufficient time to complete my 'due-soon' tasks should I get distracted by other tasks.            |
 | `* * *`  | User                                       | Search for a task using keywords                                      | I do not have to waste time browsing through my entire tasklist to find a task.                           |
-| `*`      | New User                                   | Open the command summary to help me navigate the application          | I know how to use the application to perform the functions that I want.                                   |
+| `* *`    | New User                                   | Open the command summary to help me navigate the application          | I know how to use the application to perform the functions that I want.                                   |
 | `* *`    | Experienced User                           | Close the command summary                                             | t does not take up unnecessary screen space after I am familiar with the commands.                        |
-| `* *`    | User who likes to customize                | Personalise the appearance of the application                         | I can change the appearance of the application to my liking.                                              |
+| `*`      | User who likes to customize                | Personalise the appearance of the application                         | I can change the appearance of the application to my liking.                                              |
 
 
 ### Use cases
 
-(For all use cases below, the **System** is `ManageMe` and the **Actor** is the `user`, unless specified otherwise)
+(For all use cases below, the **System** is `ManageMe` and the **Actor** is the `User`, unless specified otherwise)
 
 **Use case: Add Task**
 
-**MSS**
-
-1. User requests to add a task.
-2. System requests for information about the task.
-3. User enters the information.
-4. System adds the new task and displays it.
-5. Use case ends.
+**MSS:** 
+1. User requests to add a task together with its details.
+2. System adds the new task and displays it. <br>
+Use case ends.
 
 **Extensions:**
-* 3a. System detects an error in the entered data.
-    * 3a1. System requests for the correct data.
-    * 3a2. User enters new data.
-    * Steps 3a1 - 3a2 are repeated until the data entered is correct.
-    * Use case resumes from step 4.
-* Use case ends.
-
+* 1a. System detects an error in the entered data.
+  * 1a1. System requests for the correct data.
+  * 1a2. User enters new data.
+  * Steps 1a1 - 1a2 are repeated until the data entered is correct. <br> 
+  Use case resumes from step 2.
 
 
 **Use case: Update Task**
 
 **MSS:**
-
-1. User requests to update a specified task
-2. System shows the specific task information
-3. User requests to update a specified section of the task
-4. System asks user for the new section content
-5. User enters the new content
-6. System updates new content and displays the edited task.
-7. Use case ends.
+1. User requests to update a specified task and enters the new details.
+2. System updates the details and displays the edited task. <br>
+  Use case ends.
 
 **Extensions:**
-
-* 3a. User enters an invalid task number
-    * 3a1. System requests for a valid task number.
-    * 3a2. User enters the task number.
-    * Steps 3a1 - 3a2 are repeated until the task number entered is correct.
-    * Use case resumes from step 4.
-* 5a. System detects an error in the entered data.
-    * 5a1. System requests for the correct data.
-    * 5a2. User enters new data.
-    * Steps 5a1 - 5a2 are repeated until the data entered is correct.
-* Use case resumes from step 6.
+* 1a. User enters an invalid task index<br>
+    * 1a1. System requests for a valid task index.
+    * 1a2. User enters the task index.
+    * Steps 1a1 - 1a2 are repeated until the task index entered is correct.<br>
+    Use case resumes from step 2.
+* 1b. System detects an error in the entered data.
+    * 1b1. System requests for the correct data.
+    * 1b2. User enters new data.
+    * Steps 1b1 - 1b2 are repeated until the data entered is correct. <br>
+    Use case resumes from step 2. <br><br>
 
 
 **Use case: Delete Task**
@@ -356,76 +345,72 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **MSS:**
 
 1. User requests to delete a specified task.
-2. System asks the user to confirm the delete.
-3. User confirms.
-4. System removes the specified task from the task list.
-5. System updates the GUI to show the new task list.
-6. Use case ends.
+2. System removes the specified task from the task list.
+3. System updates the GUI to show the new task list. <br>
+   Use case ends.
 
 **Extension:**
 
-* 3a. User does not confirm the delete
-    * System prompts user that delete action has been cancelled.
+* 1a. User enters an invalid task index
+    * 1a1. System requests for a valid task index.
+    * 1a2. User enters the task index.
+    * Steps 1a1 - 1a2 are repeated until the task index entered is correct. <br>
+      Use case resumes from step 2.
 
-
-
+    
 **Use case: Add Module**
 
 **MSS:**
 
-1. User requests to add a module.
-2. System shows a list of required parameters
-3. User provides the following information:
-    1. Module Code
-    2. Class Schedule
-    3. Links (Zoom, Luminus etc)
-    4. Examination Date
-4. System creates the module.
-5. Use case ends.
+1. User requests to add a module together with its details.
+2. System adds the new module and displays it.
+3. Use case ends.
 
 **Extensions**
+* 1a. The parameters entered are invalid, such as Invalid Module Code, mismatch of parameters.
+    * 1a1. System requests for a valid parameters.
+    * 1a2. User enters the parameters.
+    * Steps 1a1 - 1a2 are repeated until the parameters entered are correct. <br>
+      Use case resumes from step 2.
 
-* 3a. The parameters entered are invalid, such as Invalid Module Code.
-    * System shows error to user.
-    * Use case returns to step 3
-* 3b. Number of Parameters entered does not match the required number of fields
-    * System shows error to user.
-    * Use case returns to step 3
-
-
-
+    
 **Use case: Update Module**
 
 **MSS:**
 
-1. User requests to edit a specified module
-2. System shows the specific module information
-3. User requests to edit a specified section of the module
-4. System asks user for the new section content
-5. User enters the new content
-6. System updates new content and displays the edited module.
+1. User requests to update a specified module and enters the new details.
+2. System updates the details and displays the edited module. <br>
+   Use case ends.
 
+**Extensions:**
+* 1a. User enters an invalid module index<br>
+    * 1a1. System requests for a valid module index.
+    * 1a2. User enters the module index.
+    * Steps 1a1 - 1a2 are repeated until the module index entered is correct. <br>
+      Use case resumes from step 2.
+* 1b. System detects an error in the entered data.
+    * 1b1. System requests for the correct data.
+    * 1b2. User enters new data. 
+    * Steps 1b1 - 1b2 are repeated until the data entered is correct. <br>
+      Use case resumes from step 2. <br><br>
 
 
 **Use case: Delete Module**
 
 **MSS:**
 
-1. User request to delete modules.
-2. System shows list of modules.
-3. User enters Index of specified module.
-4. System pops up a reminder to ask if user wants to remove all the data permanently
-5. System removes all module related data.
-6. Use case ends.
+1. User requests to delete a specified module.
+2. System removes the specified module from the module list.
+3. System updates the GUI to show the new module list. <br>
+   Use case ends.
 
-**Extensions**
+**Extension:**
 
-* 3a. The index entered is invalid (Index greater than size of list or less than zero)
-    * System shows an error to user.
-    * Use case returns to step 3
-* 3b. Number of Parameters does not match number of fields (more than 1 or less than 0)
-    * System shows error to user.
-    * Use case returns to step 3
+* 1a. User enters an invalid module index<br>
+    * 1a1. System requests for a valid module index. 
+    * 1a2. User enters the module index.
+    * Steps 1a1 - 1a2 are repeated until the module index entered is correct. <br>
+      Use case resumes from step 2.
 
 
 ### Non-Functional Requirements
