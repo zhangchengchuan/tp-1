@@ -15,6 +15,14 @@ import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
+import seedu.address.logic.commands.Module.AddModCommand;
+import seedu.address.logic.commands.Module.DeleteModCommand;
+import seedu.address.logic.commands.Module.ReadModCommand;
+import seedu.address.logic.commands.Module.UpdateModCommand;
+import seedu.address.logic.parser.Module.AddModCommandParser;
+import seedu.address.logic.parser.Module.DeleteModCommandParser;
+import seedu.address.logic.parser.Module.ReadModCommandParser;
+import seedu.address.logic.parser.Module.UpdateModCommandParser;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
@@ -67,6 +75,18 @@ public class AddressBookParser {
 
         case HelpCommand.COMMAND_WORD:
             return new HelpCommand();
+
+        case AddModCommand.COMMAND_WORD:
+            return new AddModCommandParser().parse(arguments);
+
+        case DeleteModCommand.COMMAND_WORD:
+            return new DeleteModCommandParser().parse(arguments);
+
+        case ReadModCommand.COMMAND_WORD:
+            return new ReadModCommandParser().parse(arguments);
+
+        case UpdateModCommand.COMMAND_WORD:
+            return new UpdateModCommandParser().parse(arguments);
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
