@@ -117,14 +117,19 @@ Examples: `addMod CS2103 /link tutorial https://...`
 #### Read details of a module: `readMod`
 View module in detail. Creates a pop-up window to show the course name, link, and all tasks associated with the course.
 
-Format: `readMod NAME`<br/>
-Examples: `readMod CS2103`
+Format: `readMod INDEX`<br/>
+* The index refers to the index number shown in the displayed module list
+* The index **must be a positive integer** 1, 2, 3, ...
+
+Examples: `readMod 2`
 
 #### Update a module: `updateMod`
 Update an existing module in the address app.
 
-Format: `updateMod NAME CATEGORY CONTENT`
-* Deletes the mod by the specified `NAME`.<br/>
+Format: `updateMod INDEX CATEGORY CONTENT`
+* Deletes the mod by the specified `INDEX`.<br/>
+* The index refers to the index number shown in the displayed module list
+* The index **must be a positive integer** 1, 2, 3, ...
 * `CATEGORY` must be one of the following:
     * `name`
     * `link`
@@ -132,15 +137,17 @@ Format: `updateMod NAME CATEGORY CONTENT`
   CS2103
 * Existing values will be updated to the input values.
 
-Example: `updateMod CS2103 link https://...`
+Example: `updateMod 2 link https://...`
 
 #### Deleting a module: `deleteMod`
 Deletes the specified mod from the mod list.
 
-Format: `deleteMod NAME`
-* Deletes the mod by the specified `NAME`.
+Format: `deleteMod INDEX`
+* Deletes the mod by the specified `INDEX`.
+* The index refers to the index number shown in the displayed module list
+* The index **must be a positive integer** 1, 2, 3, ...
 
-Examples: `deleteMod CS2103` deletes CS2103 from the list.
+Examples: `deleteMod 2` deletes module No.2 from the list.
 
 ### CALENDAR:
 
