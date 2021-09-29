@@ -182,8 +182,8 @@ Action | Format, Examples
 **UpdateTask** | `updateTask INDEX CATEGORY CONTENT`<br>e.g., `update 3 description buy milk`
 **DeleteTask** | `deleteTask INDEX`<br>e.g., `deleteTask 3`
 **AddModule** | `addMod NAME [/link LINK_NAME LINK]​`<br>e.g.,`addMod CS2103 /link tutorial https://...`
-**ReadModule** | `readMod NAME`<br>e.g., `readMod CS2103`
-**UpdateModule** | `updateMod NAME CATEGORY CONTENT`<br>e.g., `updateMod CS2103 link https://...`
-**DeleteModule** | `deleteMod NAME`<br>e.g., `deleteMod CS2103`
+**ReadModule** | `readMod INDEX`<br>e.g., `readMod 2`
+**UpdateModule** | `updateMod INDEX CATEGORY CONTENT`<br>e.g., `updateMod 2 link https://...`
+**DeleteModule** | `deleteMod INDEX`<br>e.g., `deleteMod 2`
 **Help** | `help`
 **Exit** | `exit`
