@@ -40,7 +40,7 @@ public class Module {
      * This defines a weaker notion of equality between two mods.
      * @param otherMod
      */
-    public boolean isSameMod(Module otherMod) {
+    public boolean isSameModule(Module otherMod) {
         if (otherMod == this) {
             return true;
         }

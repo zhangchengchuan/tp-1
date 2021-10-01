@@ -1,5 +1,7 @@
 package seedu.address.model.task;
 
+import java.util.Objects;
+
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 /**
@@ -31,5 +33,55 @@ public class Task {
 
     public Index getIndex() {
         return index;
+    }
+
+    /**
+     * Returns true if both tasks have the same name.
+     * This defines a weaker notion of equality between two tasks.
+     */
+    public boolean isSameTask(Task otherTask) {
+        if (otherTask == this) {
+            return true;
+        }
+
+        return otherTask != null
+                && otherTask.getName().equals(getName());
+    }
+
+    /**
+     * Returns true if both tasks have the same identity and data fields.
+     * This defines a stronger notion of equality between two tasks.
+     */
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        }
+
+        if (!(other instanceof Task)) {
+            return false;
+        }
+
+        Task otherTask = (Task) other;
+        return otherTask.getName().equals(getName())
+                && otherTask.getDescription().equals(getDescription())
+                && otherTask.getIndex().equals(getIndex());
+    }
+
+    @Override
+    public int hashCode() {
+        // use this method for custom fields hashing instead of implementing your own
+        return Objects.hash(name, description, index);
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder builder = new StringBuilder();
+        builder.append(getName())
+                .append("; Description: ")
+                .append(getDescription())
+                .append("; Index: ")
+                .append(getIndex());
+        return builder.toString();
     }
 }
