@@ -13,7 +13,7 @@ import seedu.address.model.link.Link;
 public class Module {
 
     // Identity fields
-    private final ModName modName;
+    private final ModuleName moduleName;
 
     // Data fields
     private final Link link;
@@ -21,14 +21,14 @@ public class Module {
     /**
      * Every field must be present and not null.
      */
-    public Module(ModName modName, Link link) {
-        requireAllNonNull(modName, link);
-        this.modName = modName;
+    public Module(ModuleName moduleName, Link link) {
+        requireAllNonNull(moduleName, link);
+        this.moduleName = moduleName;
         this.link = link;
     }
 
-    public ModName getModName() {
-        return modName;
+    public ModuleName getModName() {
+        return moduleName;
     }
 
     public Link getLink() {
@@ -71,7 +71,7 @@ public class Module {
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(modName, link);
+        return Objects.hash(moduleName, link);
     }
 
     @Override

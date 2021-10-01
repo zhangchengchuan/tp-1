@@ -17,13 +17,14 @@ import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.module.AddModuleCommand;
 import seedu.address.logic.commands.module.DeleteModuleCommand;
-import seedu.address.logic.commands.module.ReadModuleCommand;
 import seedu.address.logic.commands.module.EditModuleCommand;
+import seedu.address.logic.commands.module.ListModuleCommand;
+import seedu.address.logic.commands.module.ReadModuleCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.logic.parser.module.AddModCommandParser;
-import seedu.address.logic.parser.module.DeleteModCommandParser;
-import seedu.address.logic.parser.module.ReadModCommandParser;
-import seedu.address.logic.parser.module.UpdateModCommandParser;
+import seedu.address.logic.parser.module.AddModuleCommandParser;
+import seedu.address.logic.parser.module.DeleteModuleCommandParser;
+import seedu.address.logic.parser.module.EditModuleCommandParser;
+import seedu.address.logic.parser.module.ReadModuleCommandParser;
 
 /**
  * Parses user input.
@@ -77,16 +78,19 @@ public class AddressBookParser {
             return new HelpCommand();
 
         case AddModuleCommand.COMMAND_WORD:
-            return new AddModCommandParser().parse(arguments);
+            return new AddModuleCommandParser().parse(arguments);
 
         case DeleteModuleCommand.COMMAND_WORD:
-            return new DeleteModCommandParser().parse(arguments);
+            return new DeleteModuleCommandParser().parse(arguments);
 
         case ReadModuleCommand.COMMAND_WORD:
-            return new ReadModCommandParser().parse(arguments);
+            return new ReadModuleCommandParser().parse(arguments);
 
         case EditModuleCommand.COMMAND_WORD:
-            return new UpdateModCommandParser().parse(arguments);
+            return new EditModuleCommandParser().parse(arguments);
+
+        case ListModuleCommand.COMMAND_WORD:
+            return new ListModuleCommand();
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
