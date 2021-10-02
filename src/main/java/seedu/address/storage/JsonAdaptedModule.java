@@ -6,8 +6,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.link.Link;
-import seedu.address.model.module.ModName;
 import seedu.address.model.module.Module;
+import seedu.address.model.module.ModuleName;
 
 /**
  * Jackson-friendly version of {@link Module}.
@@ -45,10 +45,10 @@ public class JsonAdaptedModule {
         if (modName == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, "modName"));
         }
-        if (!ModName.isValidName(modName)) {
-            throw new IllegalValueException(ModName.MESSAGE_CONSTRAINTS);
+        if (!ModuleName.isValidName(modName)) {
+            throw new IllegalValueException(ModuleName.MESSAGE_CONSTRAINTS);
         }
-        final ModName modelName = new ModName(modName);
+        final ModuleName modelName = new ModuleName(modName);
 
         if (link == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, "link"));
