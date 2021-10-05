@@ -121,10 +121,10 @@ public class MmMainWindow extends UiPart<Stage> {
      * Fills up all the placeholders of this window.
      */
     void fillInnerParts() {
-        moduleListPanel = new ModuleListPanel(logic.getFilteredPersonList());
+        moduleListPanel = new ModuleListPanel(logic.getFilteredModuleList());
         moduleListPanelPlaceholder.getChildren().add(moduleListPanel.getRoot());
 
-        taskListPanel = new TaskListPanel(logic.getFilteredPersonList());
+        taskListPanel = new TaskListPanel(logic.getFilteredTaskList());
         taskListPanelPlaceholder.getChildren().add(taskListPanel.getRoot());
 
         calendarListPanel = new CalendarListPanel(logic.getFilteredPersonList());
@@ -187,7 +187,6 @@ public class MmMainWindow extends UiPart<Stage> {
             logic.execute("listMod");
         } catch (CommandException | ParseException e) {
             // this should never be executed
-            ;
         }
     }
 
