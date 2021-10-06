@@ -4,6 +4,8 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.Objects;
 
+import seedu.address.model.module.Module;
+
 /**
  * Represents a Task in the Task List.
  * Guarantees: details are present and not null, field values are validated, immutable.
@@ -11,16 +13,26 @@ import java.util.Objects;
 public class Task {
     private final Name name;
     private final Description description;
-    private final Index index;
+    private final Module module;
 
     /**
      * Every field must be present and not null.
      */
-    public Task(Name name, Description description, Index index) {
-        requireAllNonNull(name, description, index);
+    public Task(Name name, Description description, Module module) {
+        requireAllNonNull(name, description, module);
         this.name = name;
         this.description = description;
-        this.index = index;
+        this.module = module;
+    }
+
+    /**
+     * Module is not present and initialized to null.
+     */
+    public Task(Name name, Description description) {
+        requireAllNonNull(name, description);
+        this.name = name;
+        this.description = description;
+        this.module = null;
     }
 
     public Name getName() {
@@ -31,8 +43,8 @@ public class Task {
         return description;
     }
 
-    public Index getIndex() {
-        return index;
+    public Module getModule() {
+        return module;
     }
 
     /**
@@ -65,13 +77,13 @@ public class Task {
         Task otherTask = (Task) other;
         return otherTask.getName().equals(getName())
                 && otherTask.getDescription().equals(getDescription())
-                && otherTask.getIndex().equals(getIndex());
+                && otherTask.getModule().equals(getModule());
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, description, index);
+        return Objects.hash(name, description, module);
     }
 
     @Override
@@ -80,8 +92,8 @@ public class Task {
         builder.append(getName())
                 .append("; Description: ")
                 .append(getDescription())
-                .append("; Index: ")
-                .append(getIndex());
+                .append("; Module: ")
+                .append(getModule());
         return builder.toString();
     }
 }
