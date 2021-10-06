@@ -12,8 +12,8 @@ public class Event extends Task {
     /**
      * Constructor for an Event object without start and end DateTime.
      */
-    public Event (Name name, Description description, Index index) {
-        super(name, description, index);
+    public Event (Name name, Description description) {
+        super(name, description);
         startDateTime = null;
         endDateTime = null;
     }
@@ -21,9 +21,9 @@ public class Event extends Task {
     /**
      * Constructor for an Event object with start and end DateTime.
      */
-    public Event (Name name, Description description, Index index, LocalDateTime startDateTime,
+    public Event (Name name, Description description, LocalDateTime startDateTime,
                   LocalDateTime endDateTime) {
-        super(name, description, index);
+        super(name, description);
         requireAllNonNull(startDateTime, endDateTime);
         this.startDateTime = startDateTime;
         this.endDateTime = endDateTime;
