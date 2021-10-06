@@ -12,7 +12,7 @@ public class Event extends Task {
     private final LocalDateTime endDateTime;
 
     /**
-     * Constructor for an Event object with module.
+     * Constructor for an Event with module.
      */
     public Event (TaskName name, TaskDescription description, Module module, LocalDateTime startDateTime,
                   LocalDateTime endDateTime) {
@@ -23,7 +23,7 @@ public class Event extends Task {
     }
 
     /**
-     * Constructor for an Event object without module.
+     * Constructor for an Event without module.
      */
     public Event (TaskName name, TaskDescription description, LocalDateTime startDateTime,
                   LocalDateTime endDateTime) {
