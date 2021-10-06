@@ -13,6 +13,8 @@ import seedu.address.model.module.Module;
 public class Task {
     private final TaskName name;
     private final TaskDescription description;
+
+    //Optional: Module that the task may be linked to. Can only be linked to max 1 module.
     private final Module module;
 
     /**
