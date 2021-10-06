@@ -12,7 +12,7 @@ public class Event extends Task {
     /**
      * Constructor for an Event object without start and end DateTime.
      */
-    public Event (Name name, Description description) {
+    public Event (TaskName name, TaskDescription description) {
         super(name, description);
         startDateTime = null;
         endDateTime = null;
@@ -21,7 +21,7 @@ public class Event extends Task {
     /**
      * Constructor for an Event object with start and end DateTime.
      */
-    public Event (Name name, Description description, LocalDateTime startDateTime,
+    public Event (TaskName name, TaskDescription description, LocalDateTime startDateTime,
                   LocalDateTime endDateTime) {
         super(name, description);
         requireAllNonNull(startDateTime, endDateTime);

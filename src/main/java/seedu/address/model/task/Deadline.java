@@ -2,7 +2,7 @@ package seedu.address.model.task;
 
 
 public class Deadline extends Task {
-    public Deadline (Name name, Description description) {
+    public Deadline (TaskName name, TaskDescription description) {
         super(name, description);
     }
 }

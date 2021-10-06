@@ -1,7 +1,7 @@
 package seedu.address.model.task;
 
 public class Todo extends Task {
-    public Todo (Name name, Description description) {
+    public Todo (TaskName name, TaskDescription description) {
         super(name, description);
     }
 }

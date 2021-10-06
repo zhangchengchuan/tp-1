@@ -11,14 +11,14 @@ import seedu.address.model.module.Module;
  * Guarantees: details are present and not null, field values are validated, immutable.
  */
 public class Task {
-    private final Name name;
-    private final Description description;
+    private final TaskName name;
+    private final TaskDescription description;
     private final Module module;
 
     /**
      * Every field must be present and not null.
      */
-    public Task(Name name, Description description, Module module) {
+    public Task(TaskName name, TaskDescription description, Module module) {
         requireAllNonNull(name, description, module);
         this.name = name;
         this.description = description;
@@ -28,18 +28,18 @@ public class Task {
     /**
      * Module is not present and initialized to null.
      */
-    public Task(Name name, Description description) {
+    public Task(TaskName name, TaskDescription description) {
         requireAllNonNull(name, description);
         this.name = name;
         this.description = description;
         this.module = null;
     }
 
-    public Name getName() {
+    public TaskName getName() {
         return name;
     }
 
-    public Description getDescription() {
+    public TaskDescription getDescription() {
         return description;
     }
 
