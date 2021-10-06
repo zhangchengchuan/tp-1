@@ -14,7 +14,7 @@ public class TaskName {
      */
     public static final String VALIDATION_REGEX = "[\\p{Alnum}][\\p{Alnum} ]*";
 
-    public final String taskName;
+    public final String value;
 
     /**
      * Constructs a {@code TaskName}.
@@ -24,7 +24,7 @@ public class TaskName {
     public TaskName(String taskName) {
         requireNonNull(taskName);
         checkArgument(isValidName(taskName), MESSAGE_CONSTRAINTS);
-        this.taskName = taskName;
+        this.value = taskName;
     }
 
     /**
@@ -38,19 +38,19 @@ public class TaskName {
 
     @Override
     public String toString() {
-        return taskName;
+        return value;
     }
 
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof TaskName // instanceof handles nulls
-                && taskName.equals(((TaskName) other).taskName)); // state check
+                && value.equals(((TaskName) other).value)); // state check
     }
 
     @Override
     public int hashCode() {
-        return taskName.hashCode();
+        return value.hashCode();
     }
 
 }
