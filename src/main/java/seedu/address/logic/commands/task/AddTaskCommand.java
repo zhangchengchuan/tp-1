@@ -26,6 +26,9 @@ public class AddTaskCommand extends Command {
             + PREFIX_DESCRIPTION + "Complete CS2103T quiz on testing. "
             + PREFIX_STARTDATETIME + "2021-10-05T11:50:55 "
             + PREFIX_ENDDATETIME + "2021-10-07T11:50:55";
+
+    public static final String MESSAGE_SUCCESS = "New task added: %1$s";
+    public static final String MESSAGE_DUPLICATE_TASK = "This task already exists in the task list";
     private final Task toAdd;
     /**
      * Creates an AddTaskCommand to add the specified {@code Task}
@@ -36,6 +39,19 @@ public class AddTaskCommand extends Command {
     }
     @Override
     public CommandResult execute(Model model) throws CommandException {
-        return null;
+        requireNonNull(model);
+
+        if (model.hasTask(toAdd)) {
+            throw new CommandException(MESSAGE_DUPLICATE_TASK);
+        }
+
+        model.addTask(toAdd);
+        return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
+    }
+    @Override
+    public boolean equals(Object other) {
+        return other == this // short circuit if same object
+                || (other instanceof AddTaskCommand // instanceof handles nulls
+                && toAdd.equals(((AddTaskCommand) other).toAdd));
     }
 }
