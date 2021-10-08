@@ -1,17 +1,20 @@
 package seedu.address.ui;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.Clipboard;
+import javafx.scene.input.ClipboardContent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
-import seedu.address.model.module.Module;
+import seedu.address.model.link.Link;
 
 /**
  * An UI component that displays information of a {@code Module}.
  */
-public class ModuleCard extends UiPart<Region> {
+public class LinkCard extends UiPart<Region> {
 
-    private static final String FXML = "ModuleListCard.fxml";
+    private static final String FXML = "LinkListCard.fxml";
 
     /**
      * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.
@@ -21,7 +24,7 @@ public class ModuleCard extends UiPart<Region> {
      * @see <a href="https://github.com/se-edu/addressbook-level4/issues/336">The issue on AddressBook level 4</a>
      */
 
-    public final Module module;
+    public final Link link;
 
     @FXML
     private HBox cardPane;
@@ -29,15 +32,20 @@ public class ModuleCard extends UiPart<Region> {
     private Label name;
     @FXML
     private Label id;
+    @FXML
+    private Label url;
+    @FXML
+    private Button copyButton;
 
     /**
-     * Creates a {@code moduleCode} with the given {@code module} and index to display.
+     * Creates a {@code linkCode} with the given {@code link} and index to display.
      */
-    public ModuleCard(Module module, int displayedIndex) {
+    public LinkCard(Link link, int displayedIndex) {
         super(FXML);
-        this.module = module;
+        this.link = link;
         id.setText(displayedIndex + ". ");
-        name.setText(module.getModName().modName);
+        //name.setText(link.getName().name + ": ");
+        //url.setText(link.getUrl().url);
     }
 
     @Override
@@ -48,13 +56,24 @@ public class ModuleCard extends UiPart<Region> {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof ModuleCard)) {
+        if (!(other instanceof LinkCard)) {
             return false;
         }
 
         // state check
-        ModuleCard card = (ModuleCard) other;
+        LinkCard card = (LinkCard) other;
         return id.getText().equals(card.id.getText())
-                && module.equals(card.module);
+                && link.equals(card.link);
+    }
+
+    /**
+     * Copies the URL to the user guide to the clipboard.
+     */
+    @FXML
+    private void copyUrl() {
+        final Clipboard clipboard = Clipboard.getSystemClipboard();
+        final ClipboardContent url = new ClipboardContent();
+        //url.putString(link.getUrl().url);
+        clipboard.setContent(url);
     }
 }

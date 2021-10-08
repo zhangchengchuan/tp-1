@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Scene?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.stage.Stage?>
+
+<fx:root minHeight="200.0" minWidth="100.0" title="Module Name" type="javafx.stage.Stage" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+    <icons>
+        <Image url="@/images/address_book_32.png" />
+    </icons>
+    <scene>
+        <Scene>
+            <stylesheets>
+                <URL value="@Fonts.css" />
+                <URL value="@DarkTheme.css" />
+                <URL value="@Extensions.css" />
+            </stylesheets>
+
+            <VBox>
+            <Label fx:id="name" text="\$name">
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding></Label>
+                  <VBox fx:id="linkList" styleClass="pane-with-border">
+                      <padding>
+                          <Insets bottom="10" left="10" right="10" top="10" />
+                      </padding>
+                  </VBox>
+
+                  <VBox fx:id="taskList" styleClass="pane-with-border">
+                      <padding>
+                          <Insets bottom="10" left="10" right="10" top="10" />
+                      </padding>
+                  </VBox>
+            </VBox>
+        </Scene>
+    </scene>
+</fx:root>
