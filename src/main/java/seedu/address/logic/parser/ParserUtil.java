@@ -9,6 +9,8 @@ import java.util.Set;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.link.Link;
+import seedu.address.model.module.ModuleName;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
@@ -48,6 +50,36 @@ public class ParserUtil {
             throw new ParseException(Name.MESSAGE_CONSTRAINTS);
         }
         return new Name(trimmedName);
+    }
+
+    /**
+     * Parses a {@code String name} into a {@code ModuleName}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code ModuleName} is invalid.
+     */
+    public static ModuleName parseModuleName(String name) throws ParseException {
+        requireNonNull(name);
+        String trimmedName = name.trim();
+        if (!ModuleName.isValidModuleName(trimmedName)) {
+            throw new ParseException(ModuleName.MESSAGE_CONSTRAINTS);
+        }
+        return new ModuleName(trimmedName);
+    }
+
+    /**
+     * Parses a {@code String name} into a {@code Link}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code Link} is invalid.
+     */
+    public static Link parseLink(String link) throws ParseException {
+        requireNonNull(link);
+        String trimmedLink = link.trim();
+        if (!Link.isValidLink(trimmedLink)) {
+            throw new ParseException(Link.MESSAGE_CONSTRAINTS);
+        }
+        return new Link(trimmedLink);
     }
 
     /**
