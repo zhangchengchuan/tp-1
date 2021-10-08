@@ -5,7 +5,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
  * Represents a module's link in the app.
- * Guarantees: immutable; is valid as declared in {@link #isValidName(String)}
+ * Guarantees: immutable; is valid as declared in {@link #isValidModuleName(String)}
  */
 public class ModuleName {
 
@@ -13,7 +13,7 @@ public class ModuleName {
             "Names should only contain alphanumeric characters and spaces, and it should not be blank";
 
     /*
-     * The first character of the address must not be a whitespace,
+     * The first character of the module name must not be a whitespace,
      * otherwise " " (a blank string) becomes a valid input.
      */
     public static final String VALIDATION_REGEX = "[\\p{Alnum}][\\p{Alnum} ]*";
@@ -21,20 +21,20 @@ public class ModuleName {
     public final String modName;
 
     /**
-     * Constructs a {@code Name}.
+     * Constructs a {@code ModuleName}.
      *
      * @param modName A valid mod name.
      */
     public ModuleName(String modName) {
         requireNonNull(modName);
-        checkArgument(isValidName(modName), MESSAGE_CONSTRAINTS);
+        checkArgument(isValidModuleName(modName), MESSAGE_CONSTRAINTS);
         this.modName = modName;
     }
 
     /**
-     * Returns true if a given string is a valid link.
+     * Returns true if a given string is a valid module name.
      */
-    public static boolean isValidName(String test) {
+    public static boolean isValidModuleName(String test) {
         return test.matches(VALIDATION_REGEX);
     }
 
