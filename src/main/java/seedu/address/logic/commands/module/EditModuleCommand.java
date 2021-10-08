@@ -1,5 +1,13 @@
 package seedu.address.logic.commands.module;
 
+import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_LINK;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.model.Model.PREDICATE_SHOW_ALL_MODULES;
+
+import java.util.List;
+import java.util.Optional;
+
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.CollectionUtil;
@@ -11,12 +19,9 @@ import seedu.address.model.link.Link;
 import seedu.address.model.module.Module;
 import seedu.address.model.module.ModuleName;
 
-import java.util.*;
-
-import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.CliSyntax.*;
-import static seedu.address.model.Model.PREDICATE_SHOW_ALL_MODULES;
-
+/**
+ * Edits the details of an existing module in the app.
+ */
 public class EditModuleCommand extends Command {
     public static final String COMMAND_WORD = "editMod";
 
@@ -71,7 +76,8 @@ public class EditModuleCommand extends Command {
      * Creates and returns a {@code Module} with the details of {@code ModuleToEdit}
      * edited with {@code editModuleDescriptor}.
      */
-    private static Module createEditedModule(Module moduleToEdit, EditModuleCommand.EditModuleDescriptor editModuleDescriptor) {
+    private static Module createEditedModule(Module moduleToEdit,
+                                             EditModuleCommand.EditModuleDescriptor editModuleDescriptor) {
         assert moduleToEdit != null;
 
         ModuleName updatedName = editModuleDescriptor.getModuleName().orElse(moduleToEdit.getModuleName());
