@@ -18,7 +18,7 @@ import static seedu.address.logic.parser.CliSyntax.*;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_MODULES;
 
 public class EditModuleCommand extends Command {
-    public static final String COMMAND_WORD = "updateMod";
+    public static final String COMMAND_WORD = "editMod";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the module identified "
             + "by the index number used in the displayed module list. "
