@@ -21,7 +21,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ### Zhu Tianqi
 
-<img src="images/Tianqi-Zhu.jpg" width="200px">
+<img src="images/tianqi-zhu.png" width="200px">
 
 [[github](http://github.com/Tianqi-Zhu)]
 [[portfolio](team/Tianqi-Zhu.md)]
@@ -50,7 +50,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ### Zhang Cheng Chuan
 
-<img src="images/chengchuan.png" width="200px">
+<img src="images/zhangchengchuan.png" width="200px">
 
 [[github](http://github.com/zhangchengchuan)]
 [[portfolio](team/chengchuan.md)]

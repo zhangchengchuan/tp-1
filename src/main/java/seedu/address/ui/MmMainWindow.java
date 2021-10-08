@@ -37,6 +37,7 @@ public class MmMainWindow extends UiPart<Stage> {
     private CalendarListPanel calendarListPanel;
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
+    private ModuleWindow moduleWindow;
 
     @FXML
     private StackPane commandBoxPlaceholder;
@@ -75,6 +76,7 @@ public class MmMainWindow extends UiPart<Stage> {
         setAccelerators();
 
         helpWindow = new HelpWindow();
+        moduleWindow = new ModuleWindow();
     }
 
     public Stage getPrimaryStage() {
@@ -119,10 +121,10 @@ public class MmMainWindow extends UiPart<Stage> {
      * Fills up all the placeholders of this window.
      */
     void fillInnerParts() {
-        moduleListPanel = new ModuleListPanel(logic.getFilteredPersonList());
+        moduleListPanel = new ModuleListPanel(logic.getFilteredModuleList());
         moduleListPanelPlaceholder.getChildren().add(moduleListPanel.getRoot());
 
-        taskListPanel = new TaskListPanel(logic.getFilteredPersonList());
+        taskListPanel = new TaskListPanel(logic.getFilteredTaskList());
         taskListPanelPlaceholder.getChildren().add(taskListPanel.getRoot());
 
         calendarListPanel = new CalendarListPanel(logic.getFilteredPersonList());
@@ -175,6 +177,19 @@ public class MmMainWindow extends UiPart<Stage> {
         primaryStage.hide();
     }
 
+    /**
+     * Opens the module window.
+     */
+    @FXML
+    private void handleModule() {
+        moduleWindow.display(logic.getFilteredModuleList());
+        try {
+            logic.execute("listMod");
+        } catch (CommandException | ParseException e) {
+            // this should never be executed
+        }
+    }
+
 
     /**
      * Executes the command and returns the result.
@@ -193,6 +208,10 @@ public class MmMainWindow extends UiPart<Stage> {
 
             if (commandResult.isExit()) {
                 handleExit();
+            }
+
+            if (commandResult.isReadModule()) {
+                handleModule();
             }
 
             return commandResult;

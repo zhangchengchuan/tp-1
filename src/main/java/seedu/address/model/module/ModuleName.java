@@ -7,7 +7,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  * Represents a module's link in the app.
  * Guarantees: immutable; is valid as declared in {@link #isValidName(String)}
  */
-public class ModName {
+public class ModuleName {
 
     public static final String MESSAGE_CONSTRAINTS =
             "Names should only contain alphanumeric characters and spaces, and it should not be blank";
@@ -25,7 +25,7 @@ public class ModName {
      *
      * @param modName A valid mod name.
      */
-    public ModName(String modName) {
+    public ModuleName(String modName) {
         requireNonNull(modName);
         checkArgument(isValidName(modName), MESSAGE_CONSTRAINTS);
         this.modName = modName;
@@ -47,8 +47,8 @@ public class ModName {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof ModName // instanceof handles nulls
-                && modName.equals(((ModName) other).modName)); // state check
+                || (other instanceof ModuleName // instanceof handles nulls
+                && modName.equals(((ModuleName) other).modName)); // state check
     }
 
     @Override
