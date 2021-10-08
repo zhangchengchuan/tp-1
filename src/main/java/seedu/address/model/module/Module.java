@@ -27,7 +27,7 @@ public class Module {
         this.link = link;
     }
 
-    public ModuleName getModName() {
+    public ModuleName getModuleName() {
         return moduleName;
     }
 
@@ -46,7 +46,7 @@ public class Module {
         }
 
         return otherMod != null
-                && otherMod.getModName().equals(getModName());
+                && otherMod.getModuleName().equals(getModuleName());
     }
 
     /**
@@ -64,7 +64,7 @@ public class Module {
         }
 
         Module otherMod = (Module) other;
-        return otherMod.getModName().equals(getModName())
+        return otherMod.getModuleName().equals(getModuleName())
                 && otherMod.getLink().equals(getLink());
     }
 
@@ -77,7 +77,7 @@ public class Module {
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
-        builder.append(getModName())
+        builder.append(getModuleName())
                 .append("; Link: ")
                 .append(getLink());
 
