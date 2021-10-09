@@ -307,7 +307,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Use case: Add Task**
 
-**MSS:** 
+**MSS:**
 1. User requests to add a task together with its details.
 2. System adds the new task and displays it. <br>
 Use case ends.
@@ -316,7 +316,7 @@ Use case ends.
 * 1a. System detects an error in the entered data.
   * 1a1. System requests for the correct data.
   * 1a2. User enters new data.
-  * Steps 1a1 - 1a2 are repeated until the data entered is correct. <br> 
+  * Steps 1a1 - 1a2 are repeated until the data entered is correct. <br>
   Use case resumes from step 2.
 
 
@@ -357,7 +357,7 @@ Use case ends.
     * Steps 1a1 - 1a2 are repeated until the task index entered is correct. <br>
       Use case resumes from step 2.
 
-    
+
 **Use case: Add Module**
 
 **MSS:**
@@ -373,7 +373,6 @@ Use case ends.
     * Steps 1a1 - 1a2 are repeated until the parameters entered are correct. <br>
       Use case resumes from step 2.
 
-    
 **Use case: Update Module**
 
 **MSS:**
@@ -390,7 +389,7 @@ Use case ends.
       Use case resumes from step 2.
 * 1b. System detects an error in the entered data.
     * 1b1. System requests for the correct data.
-    * 1b2. User enters new data. 
+    * 1b2. User enters new data.
     * Steps 1b1 - 1b2 are repeated until the data entered is correct. <br>
       Use case resumes from step 2. <br><br>
 
@@ -407,7 +406,7 @@ Use case ends.
 **Extension:**
 
 * 1a. User enters an invalid module index<br>
-    * 1a1. System requests for a valid module index. 
+    * 1a1. System requests for a valid module index.
     * 1a2. User enters the module index.
     * Steps 1a1 - 1a2 are repeated until the module index entered is correct. <br>
       Use case resumes from step 2.
