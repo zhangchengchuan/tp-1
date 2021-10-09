@@ -33,11 +33,21 @@ public class Link {
         this.link = link;
     }
 
+    /**
+     * Add a namd to link
+     *
+     * @param name name of the link
+     */
     public void addName(String name) {
         requireNonNull(name);
         this.name = name;
     }
 
+    /**
+     * Change the name of link to the new name
+     *
+     * @param name the new name
+     */
     public void updateName(String name) {
         requireNonNull(name);
         this.name = name;

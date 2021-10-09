@@ -1,2 +1,4 @@
-package seedu.address.model.link;public class UniqueLinkList {
+package seedu.address.model.link;
+
+public class UniqueLinkList {
 }

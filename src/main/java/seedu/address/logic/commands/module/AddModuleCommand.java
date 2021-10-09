@@ -1,18 +1,19 @@
 package seedu.address.logic.commands.module;
 
+import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_LINK;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.module.Module;
 
-import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.CliSyntax.*;
-
 public class AddModuleCommand extends Command {
     public static final String COMMAND_WORD = "addMod";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD +  ": Adds a module to ManageMe. "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a module to ManageMe. "
             + "Parameters: "
             + PREFIX_NAME + "NAME "
             + PREFIX_LINK + "LINK "
@@ -25,6 +26,9 @@ public class AddModuleCommand extends Command {
 
     private final Module toAdd;
 
+    /**
+     * Creates an AddModuleCommand to add the specified {@code Module}
+     */
     public AddModuleCommand(Module module) {
         requireNonNull(module);
         toAdd = module;
