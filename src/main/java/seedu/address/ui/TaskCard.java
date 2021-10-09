@@ -46,6 +46,7 @@ public class TaskCard extends UiPart<Region> {
         name.setText(task.getName().toString());
         description.setText(task.getDescription().toString());
         module.setText(task.getTaskModule().value);
+
         //time.setText(task.getTime().value);
     }
 
