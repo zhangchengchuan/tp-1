@@ -2,12 +2,11 @@ package seedu.address.logic.parser.task;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_ENDDATETIME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_END;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MODULE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_STARTDATETIME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_START;
 
-import java.time.LocalDateTime;
 import java.util.stream.Stream;
 
 import seedu.address.logic.commands.task.AddTaskCommand;
@@ -18,7 +17,9 @@ import seedu.address.logic.parser.Prefix;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.task.Task;
 import seedu.address.model.task.TaskDescription;
+import seedu.address.model.task.TaskModule;
 import seedu.address.model.task.TaskName;
+import seedu.address.model.task.TaskTime;
 
 public class AddTaskCommandParser implements Parser<AddTaskCommand> {
     /**
@@ -29,11 +30,11 @@ public class AddTaskCommandParser implements Parser<AddTaskCommand> {
     public AddTaskCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_DESCRIPTION, PREFIX_MODULE,
-                        PREFIX_STARTDATETIME,
-                        PREFIX_ENDDATETIME);
+                        PREFIX_START,
+                        PREFIX_END);
         if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_DESCRIPTION)
-                || (arePrefixesPresent(argMultimap, PREFIX_STARTDATETIME)
-                    && !arePrefixesPresent(argMultimap, PREFIX_ENDDATETIME))
+                || (arePrefixesPresent(argMultimap, PREFIX_START)
+                    && !arePrefixesPresent(argMultimap, PREFIX_END))
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                     AddTaskCommand.MESSAGE_USAGE));
@@ -41,11 +42,13 @@ public class AddTaskCommandParser implements Parser<AddTaskCommand> {
         TaskName name = TaskParserUtil.parseTaskName(argMultimap.getValue(PREFIX_NAME).get());
         TaskDescription description =
                 TaskParserUtil.parseTaskDescription(argMultimap.getValue(PREFIX_DESCRIPTION).get());
-        LocalDateTime start =
-                TaskParserUtil.parseDateTime(argMultimap.getValue(PREFIX_STARTDATETIME).get());
-        LocalDateTime end =
-                TaskParserUtil.parseDateTime(argMultimap.getValue(PREFIX_ENDDATETIME).get());
-        Task task = new Task(name, description, start, end);
+        TaskModule module =
+                TaskParserUtil.parseTaskModule(argMultimap.getValue(PREFIX_MODULE).orElse(""));
+        TaskTime start =
+                TaskParserUtil.parseDateTime(argMultimap.getValue(PREFIX_START).orElse(""));
+        TaskTime end =
+                TaskParserUtil.parseDateTime(argMultimap.getValue(PREFIX_END).orElse(""));
+        Task task = new Task(name, description, module, start, end);
         return new AddTaskCommand(task);
     }
 

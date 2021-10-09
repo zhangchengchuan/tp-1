@@ -2,12 +2,11 @@ package seedu.address.logic.parser.task;
 
 import static java.util.Objects.requireNonNull;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeParseException;
-
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.task.TaskDescription;
+import seedu.address.model.task.TaskModule;
 import seedu.address.model.task.TaskName;
+import seedu.address.model.task.TaskTime;
 
 public class TaskParserUtil {
     /**
@@ -38,20 +37,26 @@ public class TaskParserUtil {
     }
 
     /**
-     * Parses a {@code String date/time} into a {@code LocalDateTime} with the built-in LocalDateTime.parse()
-     * function.
+     * Parses a {@code String task module} into a {@code TaskModule}.
      * Leading and trailing whitespaces will be trimmed.
      *
-     * @throws ParseException if the given {@code LocalDateTime} is invalid.
+     * @throws ParseException if the given {@code TaskModule} is invalid.
      */
-    public static LocalDateTime parseDateTime(String dateTime) throws ParseException {
-        requireNonNull(dateTime);
-        String trimmedDateTime = dateTime.trim();
-        try {
-            return LocalDateTime.parse(trimmedDateTime);
-        } catch (DateTimeParseException e) {
-            throw new ParseException(e.getMessage());
-        }
+    public static TaskModule parseTaskModule(String taskModule) {
+        requireNonNull(taskModule);
+        String trimmedD = taskModule.trim();
+        return new TaskModule(trimmedD);
     }
 
+    /**
+     * Parses a {@code String date/time} into a {@code TaskTime}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code TaskTime} is invalid.
+     */
+    public static TaskTime parseDateTime(String dateTime) {
+        requireNonNull(dateTime);
+        String trimmedDateTime = dateTime.trim();
+        return trimmedDateTime.equals("") ? new TaskTime() : new TaskTime(trimmedDateTime);
+    }
 }
