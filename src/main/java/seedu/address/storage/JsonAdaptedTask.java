@@ -83,11 +83,11 @@ public class JsonAdaptedTask {
         }
         final TaskDescription modelDescription = new TaskDescription(taskDescription);
 
-        final TaskModule modelModule = module != null ? new TaskModule(module) : null;
+        final TaskModule modelModule = module != "" ? new TaskModule(module) : null;
 
-        final TaskTime modelStart = start != null ? new TaskTime(start) : null;
+        final TaskTime modelStart = start != "" ? new TaskTime(start) : null;
 
-        final TaskTime modelEnd = end != null ? new TaskTime(end) : null;
+        final TaskTime modelEnd = end != "" ? new TaskTime(end) : null;
 
         // final Set<Tag> modelTags = new HashSet<>(taskTags);
 

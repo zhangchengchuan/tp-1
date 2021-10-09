@@ -3,6 +3,7 @@ package seedu.address.model.task;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
+import static seedu.address.testutil.TypicalTasks.TASK_A;
 
 import org.junit.jupiter.api.Test;
 
@@ -36,5 +37,12 @@ public class TaskNameTest {
         assertTrue(TaskName.isValidName("sleep by 12pm")); // alphanumeric characters
         assertTrue(TaskName.isValidName("Work on CS2103T")); // with capital letters
         assertTrue(TaskName.isValidName("Plan out next week timetable by this Friday")); // long names
+    }
+
+    @Test
+    public void equals() {
+        // same name, returns true
+        assertTrue(TASK_A.getName().equals(TASK_A.getName()));
+
     }
 }

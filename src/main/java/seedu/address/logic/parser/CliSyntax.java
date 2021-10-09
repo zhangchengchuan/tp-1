@@ -7,6 +7,7 @@ public class CliSyntax {
 
     /* Prefix definitions */
     public static final Prefix PREFIX_NAME = new Prefix("n/");
+    public static final Prefix PREFIX_DESCRIPTION = new Prefix("d/");
     public static final Prefix PREFIX_PHONE = new Prefix("p/");
     public static final Prefix PREFIX_EMAIL = new Prefix("e/");
     public static final Prefix PREFIX_ADDRESS = new Prefix("a/");
@@ -15,8 +16,7 @@ public class CliSyntax {
     public static final Prefix PREFIX_LINK_NAME = new Prefix("ln/");
 
     /* Task Prefix definitions */
-    public static final Prefix PREFIX_DESCRIPTION = new Prefix("d/");
     public static final Prefix PREFIX_MODULE = new Prefix("mod/");
-    public static final Prefix PREFIX_START = new Prefix("t/");
-    public static final Prefix PREFIX_END = new Prefix("et/");
+    public static final Prefix PREFIX_START = new Prefix("s/");
+    public static final Prefix PREFIX_END = new Prefix("e/");
 }
