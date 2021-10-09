@@ -13,10 +13,11 @@ public class Link {
             "Link must be a valid website address";
 
     /*
-     * The first character of the address must not be a whitespace,
+     * The first character of the link must not be a whitespace,
      * otherwise " " (a blank string) becomes a valid input.
      */
-    public static final String VALIDATION_REGEX = "[\\p{Alnum}][\\p{Alnum} ]*";
+    // TODO: Link input validation
+    public static final String VALIDATION_REGEX = "[^\\s].*";
 
     public final String link;
 

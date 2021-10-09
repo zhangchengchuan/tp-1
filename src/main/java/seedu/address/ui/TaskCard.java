@@ -45,11 +45,11 @@ public class TaskCard extends UiPart<Region> {
         super(FXML);
         this.task = task;
         id.setText(displayedIndex + ". ");
-        name.setText(task.getName().toString());
-        description.setText(task.getDescription().toString());
-        module.setText(task.getModule().getModName().modName);
-        startTime.setText(task.getStart().equals(null) ? "" : "Start Time: " + task.getStart().toString());
-        endTime.setText(task.getEnd().equals(null) ? "" : "End Time: " + task.getEnd().toString());
+        name.setText(task.getName().value);
+        description.setText(task.getDescription().value);
+        module.setText(task.getTaskModule().value);
+        startTime.setText(task.getStart().isEmpty() ? "" : "Start Time: " + task.getStart().value);
+        endTime.setText(task.getEnd().isEmpty() ? "" : "End Time: " + task.getEnd().value);
     }
 
     @Override

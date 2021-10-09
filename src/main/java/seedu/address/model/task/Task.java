@@ -3,98 +3,95 @@ package seedu.address.model.task;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.stream.Stream;
 
-import seedu.address.model.module.Module;
-
 /**
  * Represents a Task in the Task List.
- * Guarantees: details are present and not null, field values are validated, immutable.
+ * Guarantees: details are present and not TaskTime.empty(), field values are validated, immutable.
  */
 public class Task {
     private final TaskName name;
     private final TaskDescription description;
 
-    //Optional: Module that the task may be linked to. Can only be linked to max 1 module.
-    private final Module module;
+    //Optional: TaskModule that the task may be linked to. Can only be linked to max 1 module.
+    private final TaskModule module;
 
     //Optional: Task may have an end DateTime(Deadline) or both a start and end DateTime(Event).
-    private final LocalDateTime start;
-    private final LocalDateTime end;
+    private final TaskTime start;
+    private final TaskTime end;
 
     /**
-     * Basic Task with only name and description, other attributes are initialized to null.
-     * Every field must be present and not null.
+     * Basic Task with only name and description, other attributes are initialized to TaskTime.empty().
+     * Every field must be present and not TaskTime.empty().
      */
     public Task(TaskName name, TaskDescription description) {
         requireAllNonNull(name, description);
         this.name = name;
         this.description = description;
-        this.module = null;
-        this.start = null;
-        this.end = null;
+        this.module = TaskModule.empty();
+        this.start = TaskTime.empty();
+        this.end = TaskTime.empty();
     }
 
     /**
      * Basic Task with an associated module.
-     * Every field must be present and not null.
+     * Every field must be present and not TaskTime.empty().
      */
-    public Task(TaskName name, TaskDescription description, Module module) {
+    public Task(TaskName name, TaskDescription description, TaskModule module) {
         requireAllNonNull(name, description, module);
         this.name = name;
         this.description = description;
         this.module = module;
-        this.start = null;
-        this.end = null;
+        this.start = TaskTime.empty();
+        this.end = TaskTime.empty();
     }
 
     /**
      * Task with an end date(Deadline). No modules.
-     * Every field must be present and not null.
+     * Every field must be present and not TaskTime.empty().
      */
-    public Task(TaskName name, TaskDescription description, LocalDateTime end) {
+    public Task(TaskName name, TaskDescription description, TaskTime end) {
         requireAllNonNull(name, description, end);
         this.name = name;
         this.description = description;
-        this.module = null;
-        this.start = null;
+        this.module = TaskModule.empty();
+        this.start = TaskTime.empty();
         this.end = end;
     }
 
     /**
      * Task with an end date(Deadline). Includes module.
-     * Every field must be present and not null.
+     * Every field must be present and not TaskTime.empty().
      */
-    public Task(TaskName name, TaskDescription description, Module module, LocalDateTime end) {
+    public Task(TaskName name, TaskDescription description, TaskModule module, TaskTime end) {
         requireAllNonNull(name, description, module, end);
         this.name = name;
         this.description = description;
         this.module = module;
-        this.start = null;
+        this.start = TaskTime.empty();
         this.end = end;
     }
 
     /**
      * Task with a start and end date(Event). No module.
-     * Every field must be present and not null.
+     * Every field must be present and not TaskTime.empty().
      */
-    public Task(TaskName name, TaskDescription description, LocalDateTime start, LocalDateTime end) {
+    public Task(TaskName name, TaskDescription description, TaskTime start, TaskTime end) {
         requireAllNonNull(name, description, start, end);
         this.name = name;
         this.description = description;
-        this.module = null;
+        this.module = TaskModule.empty();
         this.start = start;
         this.end = end;
     }
 
     /**
      * Task with a start and end date(Event). Includes module.
-     * Every field must be present and not null.
+     * Every field must be present and not TaskTime.empty().
      */
-    public Task(TaskName name, TaskDescription description, Module module, LocalDateTime start,
-                LocalDateTime end) {
+    public Task(TaskName name, TaskDescription description, TaskModule module, TaskTime start,
+                TaskTime end) {
         requireAllNonNull(name, description, module, start, end);
         this.name = name;
         this.description = description;
@@ -111,15 +108,15 @@ public class Task {
         return description;
     }
 
-    public Module getModule() {
+    public TaskModule getTaskModule() {
         return module;
     }
 
-    public LocalDateTime getStart() {
+    public TaskTime getStart() {
         return start;
     }
 
-    public LocalDateTime getEnd() {
+    public TaskTime getEnd() {
         return end;
     }
 
@@ -129,10 +126,10 @@ public class Task {
      * @return The sequential ordered stream of dates.
      */
     public Stream<LocalDate> getSpan() {
-        if (end != null && start != null) {
-            return start.toLocalDate().datesUntil(end.plusDays(1).toLocalDate());
-        } else if (start == null && end != null) {
-            return end.toLocalDate().datesUntil(end.plusDays(1).toLocalDate());
+        if (!end.isEmpty()  && !start.isEmpty()) {
+            return start.getTime().toLocalDate().datesUntil(end.time.get().plusDays(1).toLocalDate());
+        } else if (start.isEmpty() && !end.isEmpty()) {
+            return end.getTime().toLocalDate().datesUntil(end.getTime().plusDays(1).toLocalDate());
         } else {
             return null;
         }
@@ -168,7 +165,7 @@ public class Task {
         Task otherTask = (Task) other;
         return otherTask.getName().equals(getName())
                 && otherTask.getDescription().equals(getDescription())
-                && otherTask.getModule().equals(getModule())
+                && otherTask.getTaskModule().equals(getTaskModule())
                 && otherTask.getStart().equals(getStart())
                 && otherTask.getEnd().equals(getEnd());
     }
@@ -185,12 +182,12 @@ public class Task {
         builder.append(getName())
                 .append("; Description: ")
                 .append(getDescription())
-                .append("; Module: ")
-                .append(getModule())
+                .append("; TaskModule: ")
+                .append(getTaskModule())
                 .append("; Start Date/Time: ")
-                .append(getModule())
+                .append(getTaskModule())
                 .append("; End Date/Time: ")
-                .append(getModule());
+                .append(getTaskModule());
         return builder.toString();
     }
 }
