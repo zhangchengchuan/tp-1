@@ -25,6 +25,7 @@ public class ModelManager implements Model {
     private final UserPrefs userPrefs;
     private final FilteredList<Person> filteredPersons;
     private final FilteredList<Module> filteredModules;
+    private final FilteredList<Module> readModules;
     private final FilteredList<Task> filteredTasks;
 
     /**
@@ -40,6 +41,7 @@ public class ModelManager implements Model {
         this.userPrefs = new UserPrefs(userPrefs);
         filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
         filteredModules = new FilteredList<>(this.addressBook.getModuleList());
+        readModules = new FilteredList<>(this.addressBook.getModuleList());
         filteredTasks = new FilteredList<>(this.addressBook.getTaskList());
     }
 
@@ -192,6 +194,17 @@ public class ModelManager implements Model {
     public void updateFilteredModuleList(Predicate<Module> predicate) {
         requireNonNull(predicate);
         filteredModules.setPredicate(predicate);
+    }
+
+    @Override
+    public ObservableList<Module> getReadModuleList() {
+        return readModules;
+    }
+
+    @Override
+    public void updateReadModuleList(Predicate<Module> predicate) {
+        requireNonNull(predicate);
+        readModules.setPredicate(predicate);
     }
 
     @Override
