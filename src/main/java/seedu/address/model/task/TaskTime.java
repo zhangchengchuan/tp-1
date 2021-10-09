@@ -19,8 +19,9 @@ public class TaskTime {
      */
     public TaskTime(String taskTime) {
         requireNonNull(taskTime);
-        this.value = taskTime;
-        this.time = Optional.of(LocalDateTime.parse(taskTime));
+        String trimmedT = taskTime.trim();
+        this.value = trimmedT;
+        this.time = Optional.of(LocalDateTime.parse(trimmedT));
     }
 
     /**

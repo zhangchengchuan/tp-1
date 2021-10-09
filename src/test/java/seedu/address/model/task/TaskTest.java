@@ -42,38 +42,36 @@ public class TaskTest {
     }
     @Test
     public void equals() {
+        // same values -> returns true
         Task copyA = new TaskBuilder(TASK_A).build();
-        assertTrue(copyA.getModule().equals(TASK_A.getModule()));
-//        // same values -> returns true
-//        Task copyA = new TaskBuilder(TASK_A).build();
-//        assertTrue(TASK_A.equals(copyA));
-//
-//        // same object -> returns true
-//        assertTrue(TASK_A.equals(TASK_A));
-//
-//        // null -> returns false
-//        assertFalse(TASK_A.equals(null));
-//
-//        // different type -> returns false
-//        assertFalse(TASK_A.equals(5));
-//
-//        // different person -> returns false
-//        assertFalse(TASK_A.equals(TASK_B));
-//
-//        // different name -> returns false
-//        Task editedA = new TaskBuilder(TASK_A).withName(VALID_NAME_B).build();
-//        assertFalse(TASK_A.equals(editedA));
-//
-//        // different description -> returns false
-//        editedA = new TaskBuilder(TASK_A).withDescription(VALID_DESCRIPTION_B).build();
-//        assertFalse(TASK_A.equals(editedA));
-//
-//        // different start date/time -> returns false
-//        editedA = new TaskBuilder(TASK_A).withStartDateTime(VALID_START_B).build();
-//        assertFalse(TASK_A.equals(editedA));
-//
-//        // different end date/time -> returns false
-//        editedA = new TaskBuilder(TASK_A).withEndDateTime(VALID_END_B).build();
-//        assertFalse(TASK_A.equals(editedA));
+        assertTrue(TASK_A.equals(copyA));
+
+        // same object -> returns true
+        assertTrue(TASK_A.equals(TASK_A));
+
+        // null -> returns false
+        assertFalse(TASK_A.equals(null));
+
+        // different type -> returns false
+        assertFalse(TASK_A.equals(5));
+
+        // different person -> returns false
+        assertFalse(TASK_A.equals(TASK_B));
+
+        // different name -> returns false
+        Task editedA = new TaskBuilder(TASK_A).withName(VALID_NAME_B).build();
+        assertFalse(TASK_A.equals(editedA));
+
+        // different description -> returns false
+        editedA = new TaskBuilder(TASK_A).withDescription(VALID_DESCRIPTION_B).build();
+        assertFalse(TASK_A.equals(editedA));
+
+        // different start date/time -> returns false
+        editedA = new TaskBuilder(TASK_A).withStartDateTime(VALID_START_B).build();
+        assertFalse(TASK_A.equals(editedA));
+
+        // different end date/time -> returns false
+        editedA = new TaskBuilder(TASK_A).withEndDateTime(VALID_END_B).build();
+        assertFalse(TASK_A.equals(editedA));
     }
 }
