@@ -13,7 +13,7 @@ import seedu.address.model.AddressBook;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.module.Module;
 import seedu.address.model.person.Person;
-//import seedu.address.model.task.Task;
+import seedu.address.model.task.Task;
 
 /**
  * An Immutable AddressBook that is serializable to JSON format.
@@ -27,17 +27,18 @@ class JsonSerializableAddressBook {
 
     private final List<JsonAdaptedModule> modules = new ArrayList<>();
 
-    //private final List<JsonAdaptedTask> tasks = new ArrayList<>();
+    private final List<JsonAdaptedTask> tasks = new ArrayList<>();
 
     /**
      * Constructs a {@code JsonSerializableAddressBook} with the given persons.
      */
     @JsonCreator
     public JsonSerializableAddressBook(@JsonProperty("persons") List<JsonAdaptedPerson> persons,
-                                       @JsonProperty("modules") List<JsonAdaptedModule> modules) {
+                                       @JsonProperty("modules") List<JsonAdaptedModule> modules,
+                                       @JsonProperty("tasks") List<JsonAdaptedTask> tasks) {
         this.persons.addAll(persons);
         this.modules.addAll(modules);
-        //this.tasks.addAll(tasks);
+        this.tasks.addAll(tasks);
     }
 
     /**
@@ -48,6 +49,7 @@ class JsonSerializableAddressBook {
     public JsonSerializableAddressBook(ReadOnlyAddressBook source) {
         persons.addAll(source.getPersonList().stream().map(JsonAdaptedPerson::new).collect(Collectors.toList()));
         modules.addAll(source.getModuleList().stream().map(JsonAdaptedModule::new).collect(Collectors.toList()));
+        tasks.addAll(source.getTaskList().stream().map(JsonAdaptedTask::new).collect(Collectors.toList()));
     }
 
     /**
@@ -73,7 +75,6 @@ class JsonSerializableAddressBook {
             addressBook.addModule(module);
         }
 
-        /*
         for (JsonAdaptedTask jsonAdaptedTask: tasks) {
             Task task = jsonAdaptedTask.toModelType();
             if (addressBook.hasTask(task)) {
@@ -81,7 +82,6 @@ class JsonSerializableAddressBook {
             }
             addressBook.addTask(task);
         }
-        */
         return addressBook;
     }
 

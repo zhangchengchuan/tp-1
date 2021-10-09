@@ -7,7 +7,7 @@ import static seedu.address.testutil.Assert.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
-public class IndexTest {
+public class TaskIndexTest {
 
     @Test
     public void createOneBasedIndex() {
