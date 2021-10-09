@@ -15,8 +15,6 @@ import seedu.address.model.module.Module;
 import seedu.address.model.person.Person;
 import seedu.address.model.task.Task;
 
-import static java.util.Objects.isNull;
-
 /**
  * An Immutable AddressBook that is serializable to JSON format.
  */
