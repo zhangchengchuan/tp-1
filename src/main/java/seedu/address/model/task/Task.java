@@ -2,8 +2,10 @@ package seedu.address.model.task;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Objects;
+import java.util.stream.Stream;
 
 import seedu.address.model.module.Module;
 
@@ -119,6 +121,21 @@ public class Task {
 
     public LocalDateTime getEnd() {
         return end;
+    }
+
+    /**
+     * Returns the dates that this {@code Task} object spans over.
+     *
+     * @return The sequential ordered stream of dates.
+     */
+    public Stream<LocalDate> getSpan() {
+        if (end != null && start != null) {
+            return start.toLocalDate().datesUntil(end.plusDays(1).toLocalDate());
+        } else if (start == null && end != null) {
+            return end.toLocalDate().datesUntil(end.plusDays(1).toLocalDate());
+        } else {
+            return null;
+        }
     }
 
     /**

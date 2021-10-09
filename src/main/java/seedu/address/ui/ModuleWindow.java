@@ -52,7 +52,7 @@ public class ModuleWindow extends UiPart<Stage> {
         moduleWindow.setTitle(module.getModName().modName);
         name.setText(module.getModName().modName);
         //fillLinkList(module.getLink());
-        //fillLinkList(module.getTask());
+        //fillTaskList(module.getTask());
         moduleWindow.showAndWait();
     }
 

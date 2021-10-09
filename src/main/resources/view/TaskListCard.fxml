@@ -29,7 +29,8 @@
             </HBox>
             <Label fx:id="description" styleClass="cell_small_label" text="\$description" />
             <Label fx:id="module" />
-            <Label fx:id="time" styleClass="cell_small_label" text="\$time" />
+            <Label fx:id="startTime" styleClass="cell_small_label" />
+            <Label fx:id="endTime" layoutX="25.0" layoutY="80.0" styleClass="cell_small_label" />
         </VBox>
       <rowConstraints>
          <RowConstraints />
