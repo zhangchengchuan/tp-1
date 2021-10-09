@@ -15,7 +15,7 @@ ManageMe is a **desktop app for time management and resource organisation, optim
     2. Modules
         1. Add a Module: `addMod`
         2. Read a Module: `readMod`
-        3. Update a Module's Details: `updateMod`
+        3. Update a Module's Details: `editMod`
         4. Delete a Module: `deleteMod`
     3. Calendar
     4. Others
@@ -123,21 +123,17 @@ Format: `readMod INDEX`<br/>
 
 Examples: `readMod 2`
 
-#### Update a module: `updateMod`
+#### Update a module: `editMod`
 Update an existing module in the address app.
 
-Format: `updateMod INDEX CATEGORY CONTENT`
+Format: `editMod INDEX [n/NAME] [l/LINK]`
 * Deletes the mod by the specified `INDEX`.<br/>
 * The index refers to the index number shown in the displayed module list
 * The index **must be a positive integer** 1, 2, 3, ...
-* `CATEGORY` must be one of the following:
-    * `name`
-    * `link`
-* The format of the `CONTENT` must match the `CATEGORY`. E.g., if `CATEGORY` is `name`, the `CONTENT` `must be a valid name like
-  CS2103
+* At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
 
-Example: `updateMod 2 link https://...`
+Example: `editMod 2 n/CS2103T l/https://...`
 
 #### Deleting a module: `deleteMod`
 Deletes the specified mod from the mod list.
