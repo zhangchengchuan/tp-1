@@ -1,10 +1,11 @@
 package seedu.address.model.task;
 
+import static java.util.Objects.requireNonNull;
+
 import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.Optional;
 
-import static java.util.Objects.requireNonNull;
 
 public class TaskTime {
 
@@ -22,6 +23,9 @@ public class TaskTime {
         this.time = Optional.of(LocalDateTime.parse(taskTime));
     }
 
+    /**
+     * Constructs an empty {@code TaskTime}.
+     */
     public TaskTime() {
         this.value = "";
         this.time = Optional.empty();

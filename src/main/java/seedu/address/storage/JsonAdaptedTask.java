@@ -2,14 +2,13 @@ package seedu.address.storage;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.model.tag.Tag;
-import seedu.address.model.module.Module;
-import seedu.address.model.task.*;
 
-import java.time.LocalDateTime;
-import java.util.*;
-import java.util.stream.Collectors;
+import seedu.address.commons.exceptions.IllegalValueException;
+import seedu.address.model.task.Task;
+import seedu.address.model.task.TaskDescription;
+import seedu.address.model.task.TaskModule;
+import seedu.address.model.task.TaskName;
+import seedu.address.model.task.TaskTime;
 
 /**
  * Jackson-friendly version of {@link Task}.
@@ -24,7 +23,7 @@ public class JsonAdaptedTask {
     private final String module;
     private final String start;
     private final String end;
-//    private final List<JsonAdaptedTag> tagged = new ArrayList<>(); // Link to Module
+    // private final List<JsonAdaptedTag> tagged = new ArrayList<>(); // Link to Module
 
 
     /**
@@ -34,15 +33,15 @@ public class JsonAdaptedTask {
     public JsonAdaptedTask(@JsonProperty("name") String taskName, @JsonProperty("description") String description,
                            @JsonProperty("module") String module, @JsonProperty("start") String start,
                            @JsonProperty("end") String end) {
-//                           @JsonProperty("tagged") List<JsonAdaptedTag> tagged) {
+        //                   @JsonProperty("tagged") List<JsonAdaptedTag> tagged) {
         this.taskName = taskName;
         this.taskDescription = description;
         this.module = module;
         this.start = start;
         this.end = end;
-//        if (tagged != null) {
-//            this.tagged.addAll(tagged);
-//        }
+        //if (tagged != null) {
+        //    this.tagged.addAll(tagged);
+        //  }
     }
 
     /**
@@ -51,9 +50,9 @@ public class JsonAdaptedTask {
     public JsonAdaptedTask(Task source) {
         this.taskName = source.getName().value;
         this.taskDescription = source.getDescription().value;
-//        tagged.addAll(source.getTag().stream()
-//                .map(JsonAdaptedTag::new)
-//                .collect(Collectors.toList());
+        //tagged.addAll(source.getTag().stream()
+        //        .map(JsonAdaptedTag::new)
+        //        .collect(Collectors.toList());
         this.module = source.getTaskModule().value;
         this.start = source.getStart().value;
         this.end = source.getEnd().value;
@@ -66,10 +65,10 @@ public class JsonAdaptedTask {
      * @throws IllegalValueException if there were any data constraints violated in the adapted task.
      */
     public Task toModelType() throws IllegalValueException {
-//        final List<Tag> taskTags = new ArrayList<>();
-//        for (JsonAdaptedTag tag : tagged) {
-//            taskTags.add(tag.toModelType());
-//        }
+        //final List<Tag> taskTags = new ArrayList<>();
+        //for (JsonAdaptedTag tag : tagged) {
+        //    taskTags.add(tag.toModelType());
+        //}
 
         if (taskName == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, "Task Name"));
@@ -90,7 +89,7 @@ public class JsonAdaptedTask {
 
         final TaskTime modelEnd = end != null ? new TaskTime(end) : null;
 
-//        final Set<Tag> modelTags = new HashSet<>(taskTags);
+        // final Set<Tag> modelTags = new HashSet<>(taskTags);
 
         if (modelModule == null && modelStart == null && modelEnd == null) {
             return new Task(modelName, modelDescription);

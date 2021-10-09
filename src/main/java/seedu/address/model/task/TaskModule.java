@@ -1,8 +1,9 @@
 package seedu.address.model.task;
 
+import static java.util.Objects.requireNonNull;
+
 import java.util.Optional;
 
-import static java.util.Objects.requireNonNull;
 
 public class TaskModule {
 
@@ -17,9 +18,12 @@ public class TaskModule {
     public TaskModule(String taskModule) {
         requireNonNull(taskModule);
         this.value = taskModule;
-        this.moduleName= Optional.of(taskModule);
+        this.moduleName = Optional.of(taskModule);
     }
 
+    /**
+     * Constructs an empty {@code TaskModule}.
+     */
     public TaskModule() {
         this.value = "";
         this.moduleName = Optional.empty();

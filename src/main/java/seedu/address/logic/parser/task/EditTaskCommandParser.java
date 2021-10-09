@@ -40,7 +40,8 @@
 //        try {
 //            index = ParserUtil.parseIndex(argMultimap.getPreamble());
 //        } catch (ParseException pe) {
-//            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditTaskCommand.MESSAGE_USAGE), pe);
+//            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+//                    EditTaskCommand.MESSAGE_USAGE), pe);
 //        }
 //
 //        EditTaskDescriptor editTaskDescriptor = new EditTaskDescriptor();
@@ -48,7 +49,8 @@
 //            editTaskDescriptor.setName(TaskParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get()));
 //        }
 //        if (argMultimap.getValue(PREFIX_DESCRIPTION).isPresent()) {
-//            editTaskDescriptor.setDescription(TaskParserUtil.parseDescription(argMultimap.getValue(PREFIX_DESCRIPTION).get()));
+//            editTaskDescriptor.setDescription(TaskParserUtil.
+//                    parseDescription(argMultimap.getValue(PREFIX_DESCRIPTION).get()));
 //        }
 //        if (argMultimap.getValue(PREFIX_MODULE).isPresent()) {
 //            editTaskDescriptor.setModule(TaskParserUtil.parseModule(argMultimap.getValue(PREFIX_MODULE).get()));

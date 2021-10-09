@@ -1,5 +1,11 @@
 package seedu.address.logic.commands.task;
 
+import static java.util.Objects.requireNonNull;
+import static seedu.address.model.Model.PREDICATE_SHOW_ALL_TASKS;
+
+import java.util.List;
+import java.util.Optional;
+
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.CollectionUtil;
@@ -8,15 +14,13 @@ import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
-import seedu.address.model.task.*;
-import seedu.address.model.tag.Tag;
 import seedu.address.model.task.Task;
+import seedu.address.model.task.TaskDescription;
+import seedu.address.model.task.TaskModule;
+import seedu.address.model.task.TaskName;
+import seedu.address.model.task.TaskTime;
 
-import javax.management.Descriptor;
-import java.util.*;
 
-import static java.util.Objects.requireNonNull;
-import static seedu.address.model.Model.PREDICATE_SHOW_ALL_TASKS;
 
 /**
  * Updates a task identified using it's displayed index from ManageMe.
@@ -79,8 +83,9 @@ public class EditTaskCommand extends Command {
         assert taskToEdit != null;
 
         TaskName updatedName = editTaskDescriptor.getTaskName().orElse(taskToEdit.getName());
-        TaskDescription updatedDescription = editTaskDescriptor.getTaskDescription().orElse(taskToEdit.getDescription());
-//        Set<Tag> updatedTags = editTaskDescriptor.getTags().orElse(taskToEdit.getTags());
+        TaskDescription updatedDescription = editTaskDescriptor.getTaskDescription()
+                .orElse(taskToEdit.getDescription());
+        // Set<Tag> updatedTags = editTaskDescriptor.getTags().orElse(taskToEdit.getTags());
 
         return new Task(updatedName, updatedDescription);
     }
@@ -113,7 +118,7 @@ public class EditTaskCommand extends Command {
         private TaskModule module;
         private TaskTime start;
         private TaskTime end;
-//        private Set<Tag> tags;
+        // private Set<Tag> tags;
 
         public EditTaskDescriptor() {
         }
@@ -128,7 +133,7 @@ public class EditTaskCommand extends Command {
             setModule(toCopy.module);
             setStart(toCopy.start);
             setEnd(toCopy.end);
-//            setTags(toCopy.tags);
+            // setTags(toCopy.tags);
         }
 
         /**
@@ -178,22 +183,22 @@ public class EditTaskCommand extends Command {
             return Optional.ofNullable(end);
         }
 
-//        /**
-//         * Sets {@code tags} to this object's {@code tags}.
-//         * A defensive copy of {@code tags} is used internally.
-//         */
-//        public void setTags(Set<Tag> tags) {
-//            this.tags = (tags != null) ? new HashSet<>(tags) : null;
-//        }
+        ///**
+        // * Sets {@code tags} to this object's {@code tags}.
+        // * A defensive copy of {@code tags} is used internally.
+        // */
+        //public void setTags(Set<Tag> tags) {
+        //    this.tags = (tags != null) ? new HashSet<>(tags) : null;
+        //}
 
-//        /**
-//         * Returns an unmodifiable tag set, which throws {@code UnsupportedOperationException}
-//         * if modification is attempted.
-//         * Returns {@code Optional#empty()} if {@code tags} is null.
-//         */
-//        public Optional<Set<Tag>> getTags() {
-//            return (tags != null) ? Optional.of(Collections.unmodifiableSet(tags)) : Optional.empty();
-//        }
+        ///**
+        // * Returns an unmodifiable tag set, which throws {@code UnsupportedOperationException}
+        // * if modification is attempted.
+        // * Returns {@code Optional#empty()} if {@code tags} is null.
+        // */
+        //public Optional<Set<Tag>> getTags() {
+        //    return (tags != null) ? Optional.of(Collections.unmodifiableSet(tags)) : Optional.empty();
+        //}
 
         @Override
         public boolean equals(Object other) {
@@ -215,7 +220,7 @@ public class EditTaskCommand extends Command {
                     && getModule().equals(e.getModule())
                     && getStart().equals(e.getStart())
                     && getEnd().equals(e.getEnd());
-//                    && getTags().equals(e.getTags());
+            //        && getTags().equals(e.getTags());
         }
     }
 }

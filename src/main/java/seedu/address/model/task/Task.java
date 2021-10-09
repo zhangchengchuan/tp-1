@@ -3,7 +3,6 @@ package seedu.address.model.task;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.Objects;
-import java.util.Optional;
 
 /**
  * Represents a Task in the Task List.
