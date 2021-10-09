@@ -20,11 +20,17 @@ import seedu.address.logic.commands.module.DeleteModuleCommand;
 import seedu.address.logic.commands.module.EditModuleCommand;
 import seedu.address.logic.commands.module.ListModuleCommand;
 import seedu.address.logic.commands.module.ReadModuleCommand;
+import seedu.address.logic.commands.task.AddTaskCommand;
+import seedu.address.logic.commands.task.DeleteTaskCommand;
+import seedu.address.logic.commands.task.EditTaskCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.logic.parser.module.AddModuleCommandParser;
 import seedu.address.logic.parser.module.DeleteModuleCommandParser;
 import seedu.address.logic.parser.module.EditModuleCommandParser;
 import seedu.address.logic.parser.module.ReadModuleCommandParser;
+import seedu.address.logic.parser.task.AddTaskCommandParser;
+import seedu.address.logic.parser.task.DeleteTaskCommandParser;
+//import seedu.address.logic.parser.task.EditTaskCommandParser;
 
 /**
  * Parses user input.
@@ -53,47 +59,56 @@ public class AddressBookParser {
         final String arguments = matcher.group("arguments");
         switch (commandWord) {
 
-        case AddCommand.COMMAND_WORD:
-            return new AddCommandParser().parse(arguments);
+            case AddCommand.COMMAND_WORD:
+                return new AddCommandParser().parse(arguments);
 
-        case EditCommand.COMMAND_WORD:
-            return new EditCommandParser().parse(arguments);
+            case EditCommand.COMMAND_WORD:
+                return new EditCommandParser().parse(arguments);
 
-        case DeleteCommand.COMMAND_WORD:
-            return new DeleteCommandParser().parse(arguments);
+            case DeleteCommand.COMMAND_WORD:
+                return new DeleteCommandParser().parse(arguments);
 
-        case ClearCommand.COMMAND_WORD:
-            return new ClearCommand();
+            case ClearCommand.COMMAND_WORD:
+                return new ClearCommand();
 
-        case FindCommand.COMMAND_WORD:
-            return new FindCommandParser().parse(arguments);
+            case FindCommand.COMMAND_WORD:
+                return new FindCommandParser().parse(arguments);
 
-        case ListCommand.COMMAND_WORD:
-            return new ListCommand();
+            case ListCommand.COMMAND_WORD:
+                return new ListCommand();
 
-        case ExitCommand.COMMAND_WORD:
-            return new ExitCommand();
+            case ExitCommand.COMMAND_WORD:
+                return new ExitCommand();
 
-        case HelpCommand.COMMAND_WORD:
-            return new HelpCommand();
+            case HelpCommand.COMMAND_WORD:
+                return new HelpCommand();
 
-        case AddModuleCommand.COMMAND_WORD:
-            return new AddModuleCommandParser().parse(arguments);
+//            case AddTaskCommand.COMMAND_WORD:
+//                return new AddTaskCommandParser().parse(arguments);
 
-        case DeleteModuleCommand.COMMAND_WORD:
-            return new DeleteModuleCommandParser().parse(arguments);
+//            case EditTaskCommand.COMMAND_WORD:
+//                return new EditTaskCommandParser().parse(arguments);
 
-        case ReadModuleCommand.COMMAND_WORD:
-            return new ReadModuleCommandParser().parse(arguments);
+            case DeleteTaskCommand.COMMAND_WORD:
+                return new DeleteTaskCommandParser().parse(arguments);
 
-        case EditModuleCommand.COMMAND_WORD:
-            return new EditModuleCommandParser().parse(arguments);
+            case AddModuleCommand.COMMAND_WORD:
+                return new AddModuleCommandParser().parse(arguments);
 
-        case ListModuleCommand.COMMAND_WORD:
-            return new ListModuleCommand();
+            case DeleteModuleCommand.COMMAND_WORD:
+                return new DeleteModuleCommandParser().parse(arguments);
 
-        default:
-            throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
+            case ReadModuleCommand.COMMAND_WORD:
+                return new ReadModuleCommandParser().parse(arguments);
+
+            case EditModuleCommand.COMMAND_WORD:
+                return new EditModuleCommandParser().parse(arguments);
+
+            case ListModuleCommand.COMMAND_WORD:
+                return new ListModuleCommand();
+
+            default:
+                throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
         }
     }
 
