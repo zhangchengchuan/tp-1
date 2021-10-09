@@ -13,4 +13,10 @@ public class CliSyntax {
     public static final Prefix PREFIX_TAG = new Prefix("t/");
     public static final Prefix PREFIX_LINK = new Prefix("l/");
     public static final Prefix PREFIX_LINK_NAME = new Prefix("ln/");
+
+    /* Task Prefix definitions */
+    public static final Prefix PREFIX_DESCRIPTION = new Prefix("d/");
+    public static final Prefix PREFIX_MODULE = new Prefix("mod/");
+    public static final Prefix PREFIX_START = new Prefix("t/");
+    public static final Prefix PREFIX_END = new Prefix("et/");
 }
