@@ -126,7 +126,7 @@ public class Task {
      * @return The sequential ordered stream of dates.
      */
     public Stream<LocalDate> getSpan() {
-        if (!end.isEmpty()  && !start.isEmpty()) {
+        if (!end.isEmpty() && !start.isEmpty()) {
             return start.getTime().toLocalDate().datesUntil(end.time.get().plusDays(1).toLocalDate());
         } else if (start.isEmpty() && !end.isEmpty()) {
             return end.getTime().toLocalDate().datesUntil(end.getTime().plusDays(1).toLocalDate());
