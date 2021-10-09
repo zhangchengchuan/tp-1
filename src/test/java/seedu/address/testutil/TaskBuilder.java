@@ -1,5 +1,7 @@
 package seedu.address.testutil;
 
+import java.time.LocalDateTime;
+
 import seedu.address.model.module.Module;
 import seedu.address.model.task.Task;
 import seedu.address.model.task.TaskDescription;
@@ -13,10 +15,14 @@ public class TaskBuilder {
     public static final String DEFAULT_DESCRIPTION = "This is a default template text to test "
             + "TaskDescription";
     public static final Module DEFAULT_MODULE = null;
+    public static final LocalDateTime DEFAULT_STARTDATETIME = LocalDateTime.of(2021, 10, 6, 12, 30);
+    public static final LocalDateTime DEFAULT_ENDDATETIME = LocalDateTime.of(2021, 10, 12, 23, 59);
 
     private TaskName name;
     private TaskDescription description;
     private Module module;
+    private LocalDateTime start;
+    private LocalDateTime end;
 
     /**
      * Creates a {@code TaskBuilder} with the default details.
@@ -25,6 +31,8 @@ public class TaskBuilder {
         name = new TaskName(DEFAULT_NAME);
         description = new TaskDescription(DEFAULT_DESCRIPTION);
         module = DEFAULT_MODULE;
+        start = DEFAULT_STARTDATETIME;
+        end = DEFAULT_ENDDATETIME;
     }
 
     /**
@@ -34,6 +42,8 @@ public class TaskBuilder {
         name = taskToCopy.getName();
         description = taskToCopy.getDescription();
         module = taskToCopy.getModule();
+        start = taskToCopy.getStart();
+        end = taskToCopy.getEnd();
     }
 
     /**
@@ -51,9 +61,26 @@ public class TaskBuilder {
         this.description = new TaskDescription(description);
         return this;
     }
+    /**
+     * Parses the {@code start} into a {@code LocalDateTime} and set it to the {@code Task} that we are
+     * building.
+     */
+    public TaskBuilder withStartDateTime(String start) {
+        this.start = LocalDateTime.parse(start);
+        return this;
+    }
+
+    /**
+     * Parses the {@code end} into a {@code LocalDateTime} and set it to the {@code Task} that we are
+     * building.
+     */
+    public TaskBuilder withEndDateTime(String end) {
+        this.end = LocalDateTime.parse(end);
+        return this;
+    }
 
     public Task build() {
-        return new Task(name, description, module);
+        return new Task(name, description, start, end);
     }
 
 }
