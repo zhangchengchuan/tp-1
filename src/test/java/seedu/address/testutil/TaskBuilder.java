@@ -7,15 +7,15 @@ import seedu.address.model.task.TaskName;
 import seedu.address.model.task.TaskTime;
 
 /**
- * A utility class to help with building Task objects. (INCOMPLETE: DEFAULT MODULE IS NULL)
+ * A utility class to help with building Task objects.
  */
 public class TaskBuilder {
-    public static final String DEFAULT_NAME = "Finish CS2103T";
+    public static final String DEFAULT_NAME = "Finish CS2103T TP";
     public static final String DEFAULT_DESCRIPTION = "This is a default template text to test "
             + "TaskDescription";
-    public static final TaskModule DEFAULT_MODULE = null;
-    public static final TaskTime DEFAULT_STARTDATETIME = new TaskTime("2021-10-05T11:00");
-    public static final TaskTime DEFAULT_ENDDATETIME = new TaskTime("2021-10-12T23:59");
+    public static final String DEFAULT_MODULE = "CS2103T";
+    public static final String DEFAULT_STARTDATETIME = "2021-10-05T11:00";
+    public static final String DEFAULT_ENDDATETIME = "2021-10-12T23:59";
 
     private TaskName name;
     private TaskDescription description;
@@ -29,9 +29,9 @@ public class TaskBuilder {
     public TaskBuilder() {
         name = new TaskName(DEFAULT_NAME);
         description = new TaskDescription(DEFAULT_DESCRIPTION);
-        module = DEFAULT_MODULE;
-        start = DEFAULT_STARTDATETIME;
-        end = DEFAULT_ENDDATETIME;
+        module = new TaskModule(DEFAULT_MODULE);
+        start = new TaskTime(DEFAULT_STARTDATETIME);
+        end = new TaskTime(DEFAULT_ENDDATETIME);
     }
 
     /**
@@ -69,8 +69,7 @@ public class TaskBuilder {
         return this;
     }
     /**
-     * Parses the {@code start} into a {@code LocalDateTime} and set it to the {@code Task} that we are
-     * building.
+     * Sets the {@code start} of the {@code Task} that we are building.
      */
     public TaskBuilder withStartDateTime(String start) {
         this.start = new TaskTime(start);
@@ -78,8 +77,7 @@ public class TaskBuilder {
     }
 
     /**
-     * Parses the {@code end} into a {@code LocalDateTime} and set it to the {@code Task} that we are
-     * building.
+     * Sets the {@code end} of the {@code Task} that we are building.
      */
     public TaskBuilder withEndDateTime(String end) {
         this.end = new TaskTime(end);
@@ -87,7 +85,7 @@ public class TaskBuilder {
     }
 
     public Task build() {
-        return new Task(name, description, start, end);
+        return new Task(name, description, module, start, end);
     }
 
 }
