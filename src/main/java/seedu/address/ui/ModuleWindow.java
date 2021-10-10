@@ -49,11 +49,20 @@ public class ModuleWindow extends UiPart<Stage> {
      */
     public void display(List<Module> onlyModuleInList) {
         this.module = onlyModuleInList.get(0);
-        moduleWindow.setTitle(module.getModuleName().modName);
-        name.setText(module.getModuleName().modName);
-        //fillLinkList(module.getLink());
+        resetWindow();
+        moduleWindow.setTitle(module.getModuleName().value);
+        name.setText(module.getModuleName().value);
+        fillLinkList(module.getLink());
         //fillTaskList(module.getTask());
         moduleWindow.showAndWait();
+    }
+
+    /**
+     * Resets Module Window.
+     */
+    private void resetWindow() {
+        linkList.getChildren().clear();
+        taskList.getChildren().clear();
     }
 
     /**
@@ -76,6 +85,15 @@ public class ModuleWindow extends UiPart<Stage> {
         for (int i = 0; i < links.size(); i++) {
             linkList.getChildren().add(new LinkCard(links.get(i), i).getRoot());
         }
+    }
+
+    /**
+     * Fills up the link list.
+     *
+     * @param link the Link object.
+     */
+    public void fillLinkList(Link link) {
+        linkList.getChildren().add(new LinkCard(link, 1).getRoot());
     }
 
     /**

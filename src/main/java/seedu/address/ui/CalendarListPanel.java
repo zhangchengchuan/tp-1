@@ -4,6 +4,7 @@ import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.logging.Logger;
 
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -36,6 +37,17 @@ public class CalendarListPanel extends UiPart<Region> {
         this.taskList = taskList;
         currentDate = LocalDate.now();
         fillCalendar();
+        taskList.addListener((ListChangeListener<? super Task>) change -> {
+            clearCalendar();
+            fillCalendar();
+        } );
+    }
+
+    /**
+     * Clears the calendar.
+     */
+    private void clearCalendar() {
+        calendarPlaceholder.getChildren().clear();
     }
 
     /**
