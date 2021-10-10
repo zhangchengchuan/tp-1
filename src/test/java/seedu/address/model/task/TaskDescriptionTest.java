@@ -13,11 +13,11 @@ public class TaskDescriptionTest {
         assertThrows(NullPointerException.class, () -> new TaskDescription(null));
     }
 
-    @Test
-    public void constructor_invalidTaskDescription_throwsIllegalArgumentException() {
-        String invalidDescription = "";
-        assertThrows(IllegalArgumentException.class, () -> new TaskDescription(invalidDescription));
-    }
+    //    @Test
+    //    public void constructor_invalidTaskDescription_throwsIllegalArgumentException() {
+    //        String invalidDescription = "";
+    //        assertThrows(IllegalArgumentException.class, () -> new TaskDescription(invalidDescription));
+    //    }
 
     @Test
     public void equals() {

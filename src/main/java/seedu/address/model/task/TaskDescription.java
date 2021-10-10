@@ -1,7 +1,6 @@
 package seedu.address.model.task;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.commons.util.AppUtil.checkArgument;
 
 public class TaskDescription {
     public static final String MESSAGE_CONSTRAINTS = "Description can take any values, and it should not be"
