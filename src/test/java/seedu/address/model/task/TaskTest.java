@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.task.TaskCommandTestUtil.VALID_DESCRIPTION_B;
 import static seedu.address.logic.commands.task.TaskCommandTestUtil.VALID_END_B;
+import static seedu.address.logic.commands.task.TaskCommandTestUtil.VALID_MODULE_B;
 import static seedu.address.logic.commands.task.TaskCommandTestUtil.VALID_NAME_B;
 import static seedu.address.logic.commands.task.TaskCommandTestUtil.VALID_START_B;
 import static seedu.address.testutil.TypicalTasks.TASK_A;
@@ -23,7 +24,7 @@ public class TaskTest {
         assertFalse(TASK_A.isSameTask(null));
 
         // same name, all other attributes different -> returns true
-        Task editedA = new TaskBuilder(TASK_A).withDescription(VALID_DESCRIPTION_B)
+        Task editedA = new TaskBuilder(TASK_A).withDescription(VALID_DESCRIPTION_B).withModule(VALID_MODULE_B)
                 .withStartDateTime(VALID_START_B).withEndDateTime(VALID_END_B).build();
         assertTrue(TASK_A.isSameTask(editedA));
 
@@ -64,6 +65,10 @@ public class TaskTest {
 
         // different description -> returns false
         editedA = new TaskBuilder(TASK_A).withDescription(VALID_DESCRIPTION_B).build();
+        assertFalse(TASK_A.equals(editedA));
+
+        // different module -> returns false
+        editedA = new TaskBuilder(TASK_A).withModule(VALID_MODULE_B).build();
         assertFalse(TASK_A.equals(editedA));
 
         // different start date/time -> returns false
