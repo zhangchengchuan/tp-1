@@ -49,6 +49,17 @@ public class TaskTime {
         return new TaskTime();
     }
 
+    public boolean isEmpty() {
+        return time.isEmpty();
+    }
+
+    public LocalDateTime getTime() {
+        if (time.isEmpty()) {
+            return null;
+        }
+        return time.get();
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(value, time);

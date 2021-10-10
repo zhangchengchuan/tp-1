@@ -38,7 +38,7 @@ public class ReadModuleCommand extends Command {
         }
 
         Module moduleToDisplay = lastShownList.get(targetIndex.getZeroBased());
-        model.updateFilteredModuleList(module -> module.equals(moduleToDisplay));
+        model.updateReadModuleList(module -> module.equals(moduleToDisplay));
         return new CommandResult(MESSAGE_SUCCESS, false, false, true);
     }
 }

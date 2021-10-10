@@ -34,7 +34,7 @@ public class Link {
     }
 
     /**
-     * Add a namd to link
+     * Add a name to link
      *
      * @param name name of the link
      */
@@ -51,6 +51,14 @@ public class Link {
     public void updateName(String name) {
         requireNonNull(name);
         this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getLink() {
+        return link;
     }
 
     /**

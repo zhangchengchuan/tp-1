@@ -127,6 +127,17 @@ public interface Model {
     void updateFilteredModuleList(Predicate<Module> predicate);
 
     /**
+     * Returns an unmodifiable view of the read module list
+     */
+    ObservableList<Module> getReadModuleList();
+
+    /**
+     * Updates the filter of the read module list to filter by the given {@code predicate}.
+     * @throws NullPointerException if {@code predicate} is null.
+     */
+    void updateReadModuleList(Predicate<Module> predicate);
+
+    /**
      * Returns true if a task with the same identity as {@code task} exists in the address book.
      */
     boolean hasTask(Task task);

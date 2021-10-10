@@ -2,7 +2,9 @@ package seedu.address.model.task;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.time.LocalDate;
 import java.util.Objects;
+import java.util.stream.Stream;
 
 /**
  * Represents a Task in the Task List.
@@ -116,6 +118,21 @@ public class Task {
 
     public TaskTime getEnd() {
         return end;
+    }
+
+    /**
+     * Returns the dates that this {@code Task} object spans over.
+     *
+     * @return The sequential ordered stream of dates.
+     */
+    public Stream<LocalDate> getSpan() {
+        if (!end.isEmpty() && !start.isEmpty()) {
+            return start.getTime().toLocalDate().datesUntil(end.time.get().plusDays(1).toLocalDate());
+        } else if (start.isEmpty() && !end.isEmpty()) {
+            return end.getTime().toLocalDate().datesUntil(end.getTime().plusDays(1).toLocalDate());
+        } else {
+            return null;
+        }
     }
 
     /**

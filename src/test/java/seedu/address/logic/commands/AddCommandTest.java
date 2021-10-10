@@ -181,6 +181,16 @@ public class AddCommandTest {
         }
 
         @Override
+        public ObservableList<Module> getReadModuleList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void updateReadModuleList(Predicate<Module> predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public boolean hasTask(Task task) {
             throw new AssertionError("This method should not be called.");
         }

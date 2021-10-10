@@ -44,8 +44,8 @@ public class LinkCard extends UiPart<Region> {
         super(FXML);
         this.link = link;
         id.setText(displayedIndex + ". ");
-        //name.setText(link.getName().name + ": ");
-        //url.setText(link.getUrl().url);
+        name.setText(link.getName() + ": ");
+        url.setText(link.getLink());
     }
 
     @Override
@@ -73,7 +73,7 @@ public class LinkCard extends UiPart<Region> {
     private void copyUrl() {
         final Clipboard clipboard = Clipboard.getSystemClipboard();
         final ClipboardContent url = new ClipboardContent();
-        //url.putString(link.getUrl().url);
+        url.putString(link.getLink());
         clipboard.setContent(url);
     }
 }

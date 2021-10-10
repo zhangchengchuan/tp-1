@@ -34,7 +34,9 @@ public class TaskCard extends UiPart<Region> {
     @FXML
     private Label module;
     @FXML
-    private Label time;
+    private Label startTime;
+    @FXML
+    private Label endTime;
 
     /**
      * Creates a {@code taskCode} with the given {@code task} and index to display.
@@ -43,11 +45,11 @@ public class TaskCard extends UiPart<Region> {
         super(FXML);
         this.task = task;
         id.setText(displayedIndex + ". ");
-        name.setText(task.getName().toString());
-        description.setText(task.getDescription().toString());
+        name.setText(task.getName().value);
+        description.setText(task.getDescription().value);
         module.setText(task.getTaskModule().value);
-
-        //time.setText(task.getTime().value);
+        startTime.setText(task.getStart().isEmpty() ? "" : "Start Time: " + task.getStart().value);
+        endTime.setText(task.getEnd().isEmpty() ? "" : "End Time: " + task.getEnd().value);
     }
 
     @Override

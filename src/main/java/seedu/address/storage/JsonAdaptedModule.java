@@ -31,7 +31,7 @@ public class JsonAdaptedModule {
      * Converts a given {@code Module} into this class for Jackson use.
      */
     public JsonAdaptedModule(Module source) {
-        modName = source.getModuleName().modName;
+        modName = source.getModuleName().value;
         link = source.getLink().link;
     }
 
