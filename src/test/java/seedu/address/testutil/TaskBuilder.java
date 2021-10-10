@@ -29,7 +29,7 @@ public class TaskBuilder {
     public TaskBuilder() {
         name = new TaskName(DEFAULT_NAME);
         description = new TaskDescription(DEFAULT_DESCRIPTION);
-        module = new TaskModule(DEFAULT_MODULE);
+        module = new TaskModule();
         start = new TaskTime(DEFAULT_STARTDATETIME);
         end = new TaskTime(DEFAULT_ENDDATETIME);
     }
@@ -65,7 +65,7 @@ public class TaskBuilder {
      * Sets the {@code module} of the {@code Task} that we are building.
      */
     public TaskBuilder withModule(String taskModule) {
-        this.module = new TaskModule(taskModule);
+        this.module = taskModule.equals("") ? TaskModule.empty() : new TaskModule(taskModule);
         return this;
     }
     /**

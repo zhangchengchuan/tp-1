@@ -25,7 +25,7 @@ public class TaskModule {
      */
     public TaskModule(String taskModule) {
         requireNonNull(taskModule);
-        checkArgument(isValidModule(taskModule), MESSAGE_CONSTRAINTS);
+        // checkArgument(isValidModule(taskModule), MESSAGE_CONSTRAINTS);
         this.value = taskModule;
         this.moduleName = Optional.of(taskModule);
     }

@@ -12,7 +12,7 @@ public class TaskCommandTestUtil {
     public static final String VALID_DESCRIPTION_A = "Early lesson tomorrow";
     public static final String VALID_DESCRIPTION_B = "Finish before Friday 2pm";
     public static final String VALID_MODULE_A = "CS1231";
-    public static final String VALID_MODULE_B = "CS1101S";
+    public static final String VALID_MODULE_B = "MA1521";
     public static final String VALID_START_A = "2021-10-07T22:00";
     public static final String VALID_START_B = "2021-10-09T14:00";
     public static final String VALID_END_A = "2021-10-07T23:59";
@@ -30,7 +30,7 @@ public class TaskCommandTestUtil {
     public static final String END_DESC_B = " " + PREFIX_END + VALID_END_B;
 
 
-    public static final String INVALID_NAME_DESC = " " + PREFIX_NAME + "James&"; // '&' not allowed in names
+    public static final String INVALID_NAME_DESC = " " + PREFIX_NAME + "Do Work&"; // '&' not allowed in names
     public static final String INVALID_DESCRIPTION_DESC = " " + PREFIX_DESCRIPTION; //empty string not
     // allowed for description
     public static final String INVALID_MODULE_DESC = " " + PREFIX_MODULE; // empty string not allowed for

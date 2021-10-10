@@ -33,6 +33,9 @@ public class TaskParserUtil {
     public static TaskDescription parseTaskDescription(String taskDescription) {
         requireNonNull(taskDescription);
         String trimmedD = taskDescription.trim();
+        //  if (!TaskDescription.isValidDescription(trimmedD)) {
+        //       throw new ParseException(TaskDescription.MESSAGE_CONSTRAINTS);
+        // }
         return new TaskDescription(trimmedD);
     }
 
@@ -44,8 +47,11 @@ public class TaskParserUtil {
      */
     public static TaskModule parseTaskModule(String taskModule) {
         requireNonNull(taskModule);
-        String trimmedD = taskModule.trim();
-        return new TaskModule(trimmedD);
+        String trimmedM = taskModule.trim();
+        //        if (!TaskModule.isValidModule(trimmedM)) {
+        //            throw new ParseException(TaskModule.MESSAGE_CONSTRAINTS);
+        //        }
+        return new TaskModule(trimmedM);
     }
 
     /**

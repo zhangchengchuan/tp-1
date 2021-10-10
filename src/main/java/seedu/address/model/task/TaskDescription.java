@@ -21,7 +21,7 @@ public class TaskDescription {
      */
     public TaskDescription(String taskDescription) {
         requireNonNull(taskDescription);
-        checkArgument(isValidDescription(taskDescription), MESSAGE_CONSTRAINTS);
+        //checkArgument(isValidDescription(taskDescription), MESSAGE_CONSTRAINTS);
         this.value = taskDescription;
     }
 
