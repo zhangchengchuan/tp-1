@@ -20,6 +20,7 @@ public class Link {
     public static final String VALIDATION_REGEX = "[^\\s].*";
 
     public final String link;
+    private String name;
 
     /**
      * Constructs a {@code Link}.
@@ -33,6 +34,26 @@ public class Link {
     }
 
     /**
+     * Add a namd to link
+     *
+     * @param name name of the link
+     */
+    public void addName(String name) {
+        requireNonNull(name);
+        this.name = name;
+    }
+
+    /**
+     * Change the name of link to the new name
+     *
+     * @param name the new name
+     */
+    public void updateName(String name) {
+        requireNonNull(name);
+        this.name = name;
+    }
+
+    /**
      * Returns true if a given string is a valid link.
      */
     public static boolean isValidLink(String test) {
@@ -42,7 +63,11 @@ public class Link {
 
     @Override
     public String toString() {
-        return link;
+        if (name != null) {
+            return name + ": " + link;
+        } else {
+            return link;
+        }
     }
 
     @Override

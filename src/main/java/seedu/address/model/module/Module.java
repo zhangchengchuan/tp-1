@@ -16,7 +16,7 @@ public class Module {
     private final ModuleName moduleName;
 
     // Data fields
-    private final Link link;
+    private Link link;
 
     /**
      * Every field must be present and not null.
@@ -25,6 +25,14 @@ public class Module {
         requireAllNonNull(moduleName, link);
         this.moduleName = moduleName;
         this.link = link;
+    }
+
+    /**
+     * Link optional
+     */
+    public Module(ModuleName moduleName) {
+        requireAllNonNull(moduleName);
+        this.moduleName = moduleName;
     }
 
     public ModuleName getModuleName() {

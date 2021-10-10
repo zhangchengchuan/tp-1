@@ -185,9 +185,9 @@ public class Task {
                 .append("; TaskModule: ")
                 .append(getTaskModule())
                 .append("; Start Date/Time: ")
-                .append(getTaskModule())
+                .append(getStart())
                 .append("; End Date/Time: ")
-                .append(getTaskModule());
+                .append(getEnd());
         return builder.toString();
     }
 }

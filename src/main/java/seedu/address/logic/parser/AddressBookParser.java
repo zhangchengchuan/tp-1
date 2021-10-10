@@ -20,14 +20,17 @@ import seedu.address.logic.commands.module.DeleteModuleCommand;
 import seedu.address.logic.commands.module.EditModuleCommand;
 import seedu.address.logic.commands.module.ListModuleCommand;
 import seedu.address.logic.commands.module.ReadModuleCommand;
+import seedu.address.logic.commands.task.AddTaskCommand;
 import seedu.address.logic.commands.task.DeleteTaskCommand;
+import seedu.address.logic.commands.task.EditTaskCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.logic.parser.module.AddModuleCommandParser;
 import seedu.address.logic.parser.module.DeleteModuleCommandParser;
 import seedu.address.logic.parser.module.EditModuleCommandParser;
 import seedu.address.logic.parser.module.ReadModuleCommandParser;
+import seedu.address.logic.parser.task.AddTaskCommandParser;
 import seedu.address.logic.parser.task.DeleteTaskCommandParser;
-//import seedu.address.logic.parser.task.EditTaskCommandParser;
+import seedu.address.logic.parser.task.EditTaskCommandParser;
 
 /**
  * Parses user input.
@@ -80,11 +83,11 @@ public class AddressBookParser {
         case HelpCommand.COMMAND_WORD:
             return new HelpCommand();
 
-        // case AddTaskCommand.COMMAND_WORD:
-        //    return new AddTaskCommandParser().parse(arguments);
+        case AddTaskCommand.COMMAND_WORD:
+            return new AddTaskCommandParser().parse(arguments);
 
-        // case EditTaskCommand.COMMAND_WORD:
-        //    return new EditTaskCommandParser().parse(arguments);
+        case EditTaskCommand.COMMAND_WORD:
+            return new EditTaskCommandParser().parse(arguments);
 
         case DeleteTaskCommand.COMMAND_WORD:
             return new DeleteTaskCommandParser().parse(arguments);

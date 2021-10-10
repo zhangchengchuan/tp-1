@@ -86,8 +86,13 @@ public class EditTaskCommand extends Command {
         TaskDescription updatedDescription = editTaskDescriptor.getTaskDescription()
                 .orElse(taskToEdit.getDescription());
         // Set<Tag> updatedTags = editTaskDescriptor.getTags().orElse(taskToEdit.getTags());
-
-        return new Task(updatedName, updatedDescription);
+        TaskModule updatedModule = editTaskDescriptor.getModule()
+                .orElse(taskToEdit.getTaskModule());
+        TaskTime updatedStartTime = editTaskDescriptor.getStart()
+                .orElse(taskToEdit.getStart());
+        TaskTime updatedEndTime = editTaskDescriptor.getEnd()
+                .orElse(taskToEdit.getEnd());
+        return new Task(updatedName, updatedDescription, updatedModule, updatedStartTime, updatedEndTime);
     }
 
     @Override

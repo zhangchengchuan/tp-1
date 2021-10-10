@@ -8,7 +8,7 @@ import java.util.Optional;
 
 
 public class TaskTime {
-
+    private static final String NO_TIME = "";
     public final String value;
     public final Optional<LocalDateTime> time;
 
@@ -19,15 +19,16 @@ public class TaskTime {
      */
     public TaskTime(String taskTime) {
         requireNonNull(taskTime);
-        this.value = taskTime;
-        this.time = Optional.of(LocalDateTime.parse(taskTime));
+        String trimmedT = taskTime.trim();
+        this.value = trimmedT;
+        this.time = Optional.of(LocalDateTime.parse(trimmedT));
     }
 
     /**
      * Constructs an empty {@code TaskTime}.
      */
     public TaskTime() {
-        this.value = "";
+        this.value = NO_TIME;
         this.time = Optional.empty();
     }
 
