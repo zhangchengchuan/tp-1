@@ -1,8 +1,8 @@
 package seedu.address.testutil;
 
 import seedu.address.model.link.Link;
-import seedu.address.model.module.ModuleName;
 import seedu.address.model.module.Module;
+import seedu.address.model.module.ModuleName;
 
 public class ModuleBuilder {
     public static final String DEFAULT_NAME = "CS2103T";

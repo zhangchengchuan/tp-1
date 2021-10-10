@@ -34,7 +34,8 @@ public class AddModuleCommandTest {
 
     @Test
     public void execute_moduleAcceptedByModel_addSuccessful() throws Exception {
-        AddModuleCommandTest.ModelStubAcceptingModuleAdded modelStub = new AddModuleCommandTest.ModelStubAcceptingModuleAdded();
+        AddModuleCommandTest.ModelStubAcceptingModuleAdded modelStub = new AddModuleCommandTest
+                .ModelStubAcceptingModuleAdded();
         Module validModule = new ModuleBuilder().build();
 
         CommandResult commandResult = new AddModuleCommand(validModule).execute(modelStub);
@@ -49,7 +50,8 @@ public class AddModuleCommandTest {
         AddModuleCommand addCommand = new AddModuleCommand(validModule);
         AddModuleCommandTest.ModelStub modelStub = new AddModuleCommandTest.ModelStubWithModule(validModule);
 
-        assertThrows(CommandException.class, AddModuleCommand.MESSAGE_DUPLICATE_MODULE, () -> addCommand.execute(modelStub));
+        assertThrows(CommandException.class, AddModuleCommand.MESSAGE_DUPLICATE_MODULE,
+                () -> addCommand.execute(modelStub));
     }
 
     @Test

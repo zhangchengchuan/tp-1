@@ -1,11 +1,11 @@
 package seedu.address.testutil;
 
+import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_LINK;
+
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.module.EditModuleCommand;
 import seedu.address.model.module.Module;
-
-import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_LINK;
 
 public class ModuleUtil {
 
