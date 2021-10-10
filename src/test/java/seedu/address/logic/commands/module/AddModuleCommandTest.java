@@ -50,8 +50,8 @@ public class AddModuleCommandTest {
         AddModuleCommand addCommand = new AddModuleCommand(validModule);
         AddModuleCommandTest.ModelStub modelStub = new AddModuleCommandTest.ModelStubWithModule(validModule);
 
-        assertThrows(CommandException.class, AddModuleCommand.MESSAGE_DUPLICATE_MODULE,
-                () -> addCommand.execute(modelStub));
+        assertThrows(CommandException.class, AddModuleCommand.MESSAGE_DUPLICATE_MODULE, () ->
+                addCommand.execute(modelStub));
     }
 
     @Test
