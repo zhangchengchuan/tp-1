@@ -1,11 +1,19 @@
 package seedu.address.model.task;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.util.AppUtil.checkArgument;
 
 import java.util.Optional;
 
 
 public class TaskModule {
+    public static final String MESSAGE_CONSTRAINTS = "Module can take any values, and it should not be"
+            + " blank";
+    /*
+     * The first character of the address must not be a whitespace,
+     * otherwise " " (a blank string) becomes a valid input.
+     */
+    public static final String VALIDATION_REGEX = "[^\\s].*";
 
     public final String value;
     public final Optional<String> moduleName;
@@ -17,6 +25,7 @@ public class TaskModule {
      */
     public TaskModule(String taskModule) {
         requireNonNull(taskModule);
+        checkArgument(isValidModule(taskModule), MESSAGE_CONSTRAINTS);
         this.value = taskModule;
         this.moduleName = Optional.of(taskModule);
     }
@@ -27,6 +36,13 @@ public class TaskModule {
     public TaskModule() {
         this.value = "";
         this.moduleName = Optional.empty();
+    }
+
+    /**
+     * Returns true if a given string is a valid Module.
+     */
+    public static boolean isValidModule(String test) {
+        return test.matches(VALIDATION_REGEX);
     }
 
     @Override

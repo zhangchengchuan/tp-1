@@ -12,6 +12,11 @@ public class TaskModuleTest {
         assertThrows(NullPointerException.class, () -> new TaskModule(null));
     }
     @Test
+    public void constructor_invalidTaskModule_throwsIllegalArgumentException() {
+        String invalidModule = "";
+        assertThrows(IllegalArgumentException.class, () -> new TaskModule(invalidModule));
+    }
+    @Test
     public void equals() {
         // same module, returns true
         assertTrue(TASK_A.getTaskModule().equals(TASK_A.getTaskModule()));

@@ -14,6 +14,12 @@ public class TaskDescriptionTest {
     }
 
     @Test
+    public void constructor_invalidTaskDescription_throwsIllegalArgumentException() {
+        String invalidDescription = "";
+        assertThrows(IllegalArgumentException.class, () -> new TaskDescription(invalidDescription));
+    }
+
+    @Test
     public void equals() {
         // same description, returns true
         assertTrue(TASK_A.getDescription().equals(TASK_A.getDescription()));
