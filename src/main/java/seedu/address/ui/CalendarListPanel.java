@@ -40,7 +40,7 @@ public class CalendarListPanel extends UiPart<Region> {
         taskList.addListener((ListChangeListener<? super Task>) change -> {
             clearCalendar();
             fillCalendar();
-        } );
+        });
     }
 
     /**
