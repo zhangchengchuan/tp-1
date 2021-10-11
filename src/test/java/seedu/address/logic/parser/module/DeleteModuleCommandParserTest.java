@@ -8,7 +8,6 @@ import static seedu.address.testutil.TypicalMmIndexes.INDEX_FIRST;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.module.DeleteModuleCommand;
-import seedu.address.logic.parser.module.DeleteModuleCommandParser;
 
 public class DeleteModuleCommandParserTest {
     private DeleteModuleCommandParser parser = new DeleteModuleCommandParser();
@@ -20,6 +19,7 @@ public class DeleteModuleCommandParserTest {
 
     @Test
     public void parse_invalidArgs_throwsParseException() {
-        assertParseFailure(parser, "a", String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteModuleCommand.MESSAGE_USAGE));
+        assertParseFailure(parser, "a", String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                DeleteModuleCommand.MESSAGE_USAGE));
     }
 }

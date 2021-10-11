@@ -27,6 +27,4 @@ public class TypicalModules {
     public static List<Module> getTypicalModules() {
         return new ArrayList<>(Arrays.asList(MODULE_A, MODULE_B));
     }
-
-    private TypicalModules() {} // prevents instantiation
 }

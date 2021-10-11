@@ -3,12 +3,12 @@ package seedu.address.logic.parser.module;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.commands.CommandTestUtil.PREAMBLE_NON_EMPTY;
 import static seedu.address.logic.commands.CommandTestUtil.PREAMBLE_WHITESPACE;
-import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
-import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
 import static seedu.address.logic.commands.module.ModuleCommandTestUtil.LINK_DESC_MODULE_B;
 import static seedu.address.logic.commands.module.ModuleCommandTestUtil.NAME_DESC_MODULE_B;
 import static seedu.address.logic.commands.module.ModuleCommandTestUtil.VALID_LINK_MODULE_B;
 import static seedu.address.logic.commands.module.ModuleCommandTestUtil.VALID_NAME_MODULE_B;
+import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
+import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
 import static seedu.address.testutil.TypicalModules.MODULE_B;
 
 import org.junit.jupiter.api.Test;
@@ -38,7 +38,7 @@ public class AddModuleCommandParserTest {
         assertParseFailure(parser, VALID_NAME_MODULE_B + LINK_DESC_MODULE_B, expectedMessage);
 
         // missing link prefix
-        assertParseFailure(parser, NAME_DESC_MODULE_B + VALID_LINK_MODULE_B ,expectedMessage);
+        assertParseFailure(parser, NAME_DESC_MODULE_B + VALID_LINK_MODULE_B , expectedMessage);
 
         // all prefixes missing
         assertParseFailure(parser, VALID_NAME_MODULE_B + VALID_LINK_MODULE_B, expectedMessage);
