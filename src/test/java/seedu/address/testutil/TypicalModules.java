@@ -8,9 +8,9 @@ import seedu.address.model.AddressBook;
 import seedu.address.model.module.Module;
 
 public class TypicalModules {
-    public static final Module MODULE_CS111 = new ModuleBuilder().withName("CS111")
+    public static final Module MODULE_A = new ModuleBuilder().withName("CS111")
             .withLink("https://www.facebook.com").build();
-    public static final Module MODULE_CS2100 = new ModuleBuilder().withName("CS2100")
+    public static final Module MODULE_B = new ModuleBuilder().withName("CS2100")
             .withLink("https://www.github.com").build();
 
     private TypicalModules() {} // prevents instantiation
