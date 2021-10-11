@@ -19,6 +19,10 @@ import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
 import seedu.address.model.tag.Tag;
+import seedu.address.model.task.TaskDescription;
+import seedu.address.model.task.TaskModule;
+import seedu.address.model.task.TaskName;
+import seedu.address.model.task.TaskTime;
 
 public class ParserUtilTest {
     private static final String INVALID_NAME = "R@chel";
@@ -35,6 +39,13 @@ public class ParserUtilTest {
     private static final String VALID_TAG_2 = "neighbour";
 
     private static final String WHITESPACE = " \t\r\n";
+
+    private static final String INVALID_TASKNAME = "e@t";
+
+    private static final String VALID_TASKNAME = "Do work";
+    private static final String VALID_TASKDESCRIPTION = "immediately";
+    private static final String VALID_TASKMODULE = "CS2103T";
+    private static final String VALID_TASKTIME = "2021-10-05T11:40";
 
     @Test
     public void parseIndex_invalidInput_throwsParseException() {
@@ -192,5 +203,79 @@ public class ParserUtilTest {
         Set<Tag> expectedTagSet = new HashSet<Tag>(Arrays.asList(new Tag(VALID_TAG_1), new Tag(VALID_TAG_2)));
 
         assertEquals(expectedTagSet, actualTagSet);
+    }
+
+    @Test
+    public void parseTaskName_null_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> ParserUtil.parseTaskName((String) null));
+    }
+
+    @Test
+    public void parseTaskName_invalidValue_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parseTaskName(INVALID_NAME));
+    }
+
+    @Test
+    public void parseTaskName_validValueWithoutWhitespace_returnsTaskName() throws Exception {
+        TaskName expectedTaskName = new TaskName(VALID_TASKNAME);
+        assertEquals(expectedTaskName, ParserUtil.parseTaskName(VALID_TASKNAME));
+    }
+
+    @Test
+    public void parseTaskName_validValueWithWhitespace_returnsTrimmedTaskName() throws Exception {
+        String taskNameWithWhitespace = WHITESPACE + VALID_TASKNAME + WHITESPACE;
+        TaskName expectedTaskName = new TaskName(VALID_TASKNAME);
+        assertEquals(expectedTaskName, ParserUtil.parseTaskName(taskNameWithWhitespace));
+    }
+
+    @Test
+    public void parseTaskDescription_null_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> ParserUtil.parseTaskDescription((String) null));
+    }
+    @Test
+    public void parseTaskDescription_validValueWithoutWhitespace_returnsTaskDescription() throws Exception {
+        TaskDescription expectedTaskDescription = new TaskDescription(VALID_TASKDESCRIPTION);
+        assertEquals(expectedTaskDescription, ParserUtil.parseTaskDescription(VALID_TASKDESCRIPTION));
+    }
+
+    @Test
+    public void parseTaskDescription_validValueWithWhitespace_returnsTrimmedTaskDescription() throws Exception {
+        String taskDescriptionWithWhitespace = WHITESPACE + VALID_TASKDESCRIPTION + WHITESPACE;
+        TaskDescription expectedTaskDescription = new TaskDescription(VALID_TASKDESCRIPTION);
+        assertEquals(expectedTaskDescription, ParserUtil.parseTaskDescription(taskDescriptionWithWhitespace));
+    }
+
+    @Test
+    public void parseTaskModule_null_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> ParserUtil.parseTaskModule((String) null));
+    }
+    @Test
+    public void parseTaskModule_validValueWithoutWhitespace_returnsTaskModule() throws Exception {
+        TaskModule expectedTaskModule = new TaskModule(VALID_TASKMODULE);
+        assertEquals(expectedTaskModule, ParserUtil.parseTaskModule(VALID_TASKMODULE));
+    }
+
+    @Test
+    public void parseTaskModule_validValueWithWhitespace_returnsTrimmedTaskModule() throws Exception {
+        String taskModuleWithWhitespace = WHITESPACE + VALID_TASKMODULE + WHITESPACE;
+        TaskModule expectedTaskModule = new TaskModule(VALID_TASKMODULE);
+        assertEquals(expectedTaskModule, ParserUtil.parseTaskModule(taskModuleWithWhitespace));
+    }
+
+    @Test
+    public void parseTaskTime_null_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> ParserUtil.parseDateTime((String) null));
+    }
+    @Test
+    public void parseTaskTime_validValueWithoutWhitespace_returnsTaskTime() throws Exception {
+        TaskTime expectedTaskTime = new TaskTime(VALID_TASKTIME);
+        assertEquals(expectedTaskTime, ParserUtil.parseDateTime(VALID_TASKTIME));
+    }
+
+    @Test
+    public void parseTaskTime_validValueWithWhitespace_returnsTrimmedTaskTime() throws Exception {
+        String taskTimeWithWhitespace = WHITESPACE + VALID_TASKTIME + WHITESPACE;
+        TaskTime expectedTaskTime = new TaskTime(VALID_TASKTIME);
+        assertEquals(expectedTaskTime, ParserUtil.parseDateTime(taskTimeWithWhitespace));
     }
 }

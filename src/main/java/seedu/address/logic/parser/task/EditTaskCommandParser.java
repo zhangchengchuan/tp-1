@@ -50,20 +50,20 @@ public class EditTaskCommandParser implements Parser<EditTaskCommand> {
 
         EditTaskDescriptor editTaskDescriptor = new EditTaskDescriptor();
         if (argMultimap.getValue(PREFIX_NAME).isPresent()) {
-            editTaskDescriptor.setName(TaskParserUtil.parseTaskName(argMultimap.getValue(PREFIX_NAME).get()));
+            editTaskDescriptor.setName(ParserUtil.parseTaskName(argMultimap.getValue(PREFIX_NAME).get()));
         }
         if (argMultimap.getValue(PREFIX_DESCRIPTION).isPresent()) {
-            editTaskDescriptor.setDescription(TaskParserUtil
+            editTaskDescriptor.setDescription(ParserUtil
                     .parseTaskDescription(argMultimap.getValue(PREFIX_DESCRIPTION).get()));
         }
         if (argMultimap.getValue(PREFIX_MODULE).isPresent()) {
-            editTaskDescriptor.setModule(TaskParserUtil.parseTaskModule(argMultimap.getValue(PREFIX_MODULE).get()));
+            editTaskDescriptor.setModule(ParserUtil.parseTaskModule(argMultimap.getValue(PREFIX_MODULE).get()));
         }
         if (argMultimap.getValue(PREFIX_START).isPresent()) {
-            editTaskDescriptor.setStart(TaskParserUtil.parseDateTime(argMultimap.getValue(PREFIX_START).get()));
+            editTaskDescriptor.setStart(ParserUtil.parseDateTime(argMultimap.getValue(PREFIX_START).get()));
         }
         if (argMultimap.getValue(PREFIX_END).isPresent()) {
-            editTaskDescriptor.setEnd(TaskParserUtil.parseDateTime(argMultimap.getValue(PREFIX_END).get()));
+            editTaskDescriptor.setEnd(ParserUtil.parseDateTime(argMultimap.getValue(PREFIX_END).get()));
         }
         //parseTagsForEdit(argMultimap.getAllValues(PREFIX_TAG)).ifPresent(editTaskDescriptor::setTags);
 
