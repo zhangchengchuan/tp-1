@@ -13,6 +13,7 @@ import seedu.address.logic.commands.task.AddTaskCommand;
 import seedu.address.logic.parser.ArgumentMultimap;
 import seedu.address.logic.parser.ArgumentTokenizer;
 import seedu.address.logic.parser.Parser;
+import seedu.address.logic.parser.ParserUtil;
 import seedu.address.logic.parser.Prefix;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.task.Task;
@@ -39,15 +40,15 @@ public class AddTaskCommandParser implements Parser<AddTaskCommand> {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                     AddTaskCommand.MESSAGE_USAGE));
         }
-        TaskName name = TaskParserUtil.parseTaskName(argMultimap.getValue(PREFIX_NAME).get());
+        TaskName name = ParserUtil.parseTaskName(argMultimap.getValue(PREFIX_NAME).get());
         TaskDescription description =
-                TaskParserUtil.parseTaskDescription(argMultimap.getValue(PREFIX_DESCRIPTION).get());
+                ParserUtil.parseTaskDescription(argMultimap.getValue(PREFIX_DESCRIPTION).get());
         TaskModule module =
-                TaskParserUtil.parseTaskModule(argMultimap.getValue(PREFIX_MODULE).orElse(""));
+                ParserUtil.parseTaskModule(argMultimap.getValue(PREFIX_MODULE).orElse(""));
         TaskTime start =
-                TaskParserUtil.parseDateTime(argMultimap.getValue(PREFIX_START).orElse(""));
+                ParserUtil.parseDateTime(argMultimap.getValue(PREFIX_START).orElse(""));
         TaskTime end =
-                TaskParserUtil.parseDateTime(argMultimap.getValue(PREFIX_END).orElse(""));
+                ParserUtil.parseDateTime(argMultimap.getValue(PREFIX_END).orElse(""));
         Task task = new Task(name, description, module, start, end);
         return new AddTaskCommand(task);
     }
