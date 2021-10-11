@@ -183,11 +183,6 @@ public class MmMainWindow extends UiPart<Stage> {
     @FXML
     private void handleModule() {
         moduleWindow.display(logic.getReadModuleList());
-        try {
-            logic.execute("listMod");
-        } catch (CommandException | ParseException e) {
-            // this should never be executed
-        }
     }
 
 

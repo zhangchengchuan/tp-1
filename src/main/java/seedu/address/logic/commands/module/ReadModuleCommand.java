@@ -37,8 +37,15 @@ public class ReadModuleCommand extends Command {
             throw new CommandException(Messages.MESSAGE_INVALID_MODULE_DISPLAYED_INDEX);
         }
 
-        Module moduleToDisplay = lastShownList.get(targetIndex.getZeroBased());
-        model.updateReadModuleList(module -> module.equals(moduleToDisplay));
+        Module moduleToRead = lastShownList.get(targetIndex.getZeroBased());
+        model.updateReadModuleList(module -> module.equals(moduleToRead));
         return new CommandResult(MESSAGE_SUCCESS, false, false, true);
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        return other == this // short circuit if same object
+                || (other instanceof ReadModuleCommand // instanceof handles nulls
+                && targetIndex.equals(((ReadModuleCommand) other).targetIndex)); // state check
     }
 }

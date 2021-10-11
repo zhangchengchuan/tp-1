@@ -22,6 +22,8 @@ import seedu.address.model.task.Task;
 class JsonSerializableAddressBook {
 
     public static final String MESSAGE_DUPLICATE_PERSON = "Persons list contains duplicate person(s).";
+    public static final String MESSAGE_DUPLICATE_MODULE = "Modules list contains duplicate module(s).";
+    public static final String MESSAGE_DUPLICATE_TASK = "Tasks list contains duplicate task(s).";
 
     private final List<JsonAdaptedPerson> persons = new ArrayList<>();
 
@@ -70,7 +72,7 @@ class JsonSerializableAddressBook {
         for (JsonAdaptedModule jsonAdaptedModule: modules) {
             Module module = jsonAdaptedModule.toModelType();
             if (addressBook.hasModule(module)) {
-                throw new IllegalValueException(MESSAGE_DUPLICATE_PERSON);
+                throw new IllegalValueException(MESSAGE_DUPLICATE_MODULE);
             }
             addressBook.addModule(module);
         }
@@ -78,7 +80,7 @@ class JsonSerializableAddressBook {
         for (JsonAdaptedTask jsonAdaptedTask: tasks) {
             Task task = jsonAdaptedTask.toModelType();
             if (addressBook.hasTask(task)) {
-                throw new IllegalValueException(MESSAGE_DUPLICATE_PERSON);
+                throw new IllegalValueException(MESSAGE_DUPLICATE_TASK);
             }
             addressBook.addTask(task);
         }

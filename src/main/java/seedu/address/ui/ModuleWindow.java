@@ -95,33 +95,4 @@ public class ModuleWindow extends UiPart<Stage> {
     public void fillLinkList(Link link) {
         linkList.getChildren().add(new LinkCard(link, 1).getRoot());
     }
-
-    /**
-     * Show Module Window.
-     */
-    public void show() {
-        getRoot().show();
-        getRoot().centerOnScreen();
-    }
-
-    /**
-     * Returns true if the help window is currently being shown.
-     */
-    public boolean isShowing() {
-        return getRoot().isShowing();
-    }
-
-    /**
-     * Hides the help window.
-     */
-    public void hide() {
-        getRoot().hide();
-    }
-
-    /**
-     * Focuses on the help window.
-     */
-    public void focus() {
-        getRoot().requestFocus();
-    }
 }
