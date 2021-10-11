@@ -2,6 +2,10 @@ package seedu.address.testutil;
 
 import seedu.address.model.task.Task;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class TypicalTasks {
     public static final Task TASK_A = new TaskBuilder().withName("Eat with friends")
             .withDescription("At NUS UTown")
@@ -13,4 +17,8 @@ public class TypicalTasks {
             .withEndDateTime("2021-10-14T23:59").build();
 
     private TypicalTasks() {} // prevents instantiation
+
+    public static List<Task> getTypicalTasks() {
+        return new ArrayList<>(Arrays.asList(TASK_A, TASK_B));
+    }
 }

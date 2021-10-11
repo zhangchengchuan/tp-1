@@ -5,6 +5,8 @@ public class TaskCommandTestUtil {
     public static final String VALID_NAME_B = "Do work";
     public static final String VALID_DESCRIPTION_A = "Early lesson tomorrow";
     public static final String VALID_DESCRIPTION_B = "Finish before Friday 2pm";
+    public static final String VALID_MODULE_A = "CS1111";
+    public static final String VALID_MODULE_B = "CS2222";
     public static final String VALID_START_A = "2021-10-07T22:00";
     public static final String VALID_START_B = "2021-10-09T14:00";
     public static final String VALID_END_A = "2021-10-07T23:59";
