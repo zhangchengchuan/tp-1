@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_MODULE_LINK_A;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_LINK_ZOOM;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.address.logic.commands.task.TaskCommandTestUtil.VALID_DESCRIPTION_A;
 import static seedu.address.logic.commands.task.TaskCommandTestUtil.VALID_MODULE_A;
@@ -68,7 +68,7 @@ public class AddressBookTest {
     @Test
     public void resetData_withDuplicateModules_throwsDuplicateModuleException() {
         // Two modules with the same identity fields
-        Module editedModuleA = new ModuleBuilder(MODULE_A).withLink(VALID_MODULE_LINK_A)
+        Module editedModuleA = new ModuleBuilder(MODULE_A).withLink(VALID_LINK_ZOOM)
                 .build();
         List<Module> newModules = Arrays.asList(MODULE_A, editedModuleA);
         AddressBookModuleStub newData = new AddressBookModuleStub(newModules);
@@ -135,7 +135,7 @@ public class AddressBookTest {
     @Test
     public void hasModule_moduleWithSameIdentityFieldsInAddressBook_returnsTrue() {
         addressBook.addModule(MODULE_A);
-        Module editedModule = new ModuleBuilder(MODULE_A).withLink(VALID_MODULE_LINK_A).build();
+        Module editedModule = new ModuleBuilder(MODULE_A).withLink(VALID_LINK_ZOOM).build();
         assertTrue(addressBook.hasModule(editedModule));
     }
 
