@@ -117,8 +117,8 @@ public class Link {
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof Link // instanceof handles nulls
-                && link.equals(((Link) other).link)) // state check
-                && name.equals(((Link) other).name);
+                && link.equals(((Link) other).link)); // state check
+                // TODO: Compare link names in equal when proper link class is done
     }
 
     @Override

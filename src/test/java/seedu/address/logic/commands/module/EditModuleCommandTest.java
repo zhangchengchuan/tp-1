@@ -6,6 +6,7 @@ import static seedu.address.logic.commands.CommandTestUtil.DESC_CS2100;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_CS2103;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_LINK_ZOOM;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_MODNAME_CS2100;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_MODNAME_CS2103;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.CommandTestUtil.showModuleAtIndex;
@@ -85,9 +86,9 @@ public class EditModuleCommandTest {
         showModuleAtIndex(model, INDEX_FIRST);
 
         Module moduleInFilteredList = model.getFilteredModuleList().get(INDEX_FIRST.getZeroBased());
-        Module editedModule = new ModuleBuilder(moduleInFilteredList).withName(VALID_MODNAME_CS2100).build();
+        Module editedModule = new ModuleBuilder(moduleInFilteredList).withName(VALID_MODNAME_CS2103).build();
         EditModuleCommand editModuleCommand = new EditModuleCommand(INDEX_FIRST,
-                new EditModuleDescriptorBuilder().withName(VALID_MODNAME_CS2100).build());
+                new EditModuleDescriptorBuilder().withName(VALID_MODNAME_CS2103).build());
 
         String expectedMessage = String.format(EditModuleCommand.MESSAGE_EDIT_MODULE_SUCCESS, editedModule);
 
