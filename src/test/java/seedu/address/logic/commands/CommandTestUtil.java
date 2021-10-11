@@ -36,6 +36,7 @@ public class CommandTestUtil {
     public static final String VALID_ADDRESS_BOB = "Block 123, Bobby Street 3";
     public static final String VALID_TAG_HUSBAND = "husband";
     public static final String VALID_TAG_FRIEND = "friend";
+    public static final String VALID_LINK_GOOGLE = "https://www.google.com/";
 
     public static final String VALID_MODULE_NAME_A = "CS1111";
     public static final String VALID_MODULE_NAME_B = "CS2222";
@@ -129,5 +130,4 @@ public class CommandTestUtil {
 
         assertEquals(1, model.getFilteredPersonList().size());
     }
-
 }
