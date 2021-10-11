@@ -27,7 +27,7 @@ public class TypicalTasks {
             .withModule("CS2100")
             .withStartDateTime("2021-10-07T23:59")
             .withEndDateTime("2021-10-14T23:59").build();
-  
+
     // Manually added - Task's details found in {@code TaskCommandTestUtil}
     public static final Task TASK_A_MANUAL =
             new TaskBuilder().withName(VALID_NAME_A).withDescription(VALID_DESCRIPTION_A)
@@ -35,7 +35,7 @@ public class TypicalTasks {
     public static final Task TASK_B_MANUAL =
             new TaskBuilder().withName(VALID_NAME_B).withDescription(VALID_DESCRIPTION_B)
             .withModule(VALID_MODULE_B).withStartDateTime(VALID_START_B).withEndDateTime(VALID_END_B).build();
-  
+
     private TypicalTasks() {} // prevents instantiation
 
     public static List<Task> getTypicalTasks() {
