@@ -1,10 +1,21 @@
 package seedu.address.logic.commands.task;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_END;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MODULE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_START;
+
+import java.util.Arrays;
+
+import seedu.address.commons.core.index.Index;
+import seedu.address.model.Model;
+import seedu.address.model.task.Task;
+import seedu.address.model.task.TaskNameContainsKeywordsPredicate;
+
+
 
 public class TaskCommandTestUtil {
     public static final String VALID_NAME_A = "sleep early";
@@ -39,4 +50,20 @@ public class TaskCommandTestUtil {
     // string into a datetime
     public static final String INVALID_END_DESC = " " + PREFIX_END + "124012240"; // unable to parse such a
     // string into a datetime
+
+    /**
+     * Updates {@code model}'s filtered list to show only the task at the given {@code targetIndex} in the
+     * {@code model}'s address book.
+     */
+    public static void showTaskAtIndex(Model model, Index targetIndex) {
+        assertTrue(targetIndex.getZeroBased() < model.getFilteredTaskList().size());
+
+        Task task = model.getFilteredTaskList().get(targetIndex.getZeroBased());
+        //final String[] splitName = task.getName().value.split("\\s+");
+        final String[] splitName = task.getName().value.split("\\s+");
+        model.updateFilteredTaskList(new TaskNameContainsKeywordsPredicate(Arrays.asList(splitName[0])));
+
+        assertEquals(1, model.getFilteredTaskList().size());
+    }
 }
+

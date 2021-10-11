@@ -71,7 +71,7 @@ public class JsonAdaptedTask {
         //}
 
         if (taskName == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, "Task Name"));
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, "TaskName"));
         }
         if (!TaskName.isValidName(taskName)) {
             throw new IllegalValueException(TaskName.MESSAGE_CONSTRAINTS);

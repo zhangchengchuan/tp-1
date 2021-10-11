@@ -12,15 +12,39 @@ import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.commons.util.JsonUtil;
 import seedu.address.model.AddressBook;
 import seedu.address.testutil.TypicalAddressBook;
+import seedu.address.testutil.TypicalTasks;
 
 public class JsonSerializableAddressBookTest {
 
-    private static final Path TEST_DATA_FOLDER = Paths.get("src", "test", "data", "JsonSerializableAddressBookTest");
+    private static final Path TEST_DATA_FOLDER =
+            Paths.get("src", "test", "data", "JsonSerializableAddressBookTest");
     private static final Path TYPICAL_ADDRESS_BOOK_FILE = TEST_DATA_FOLDER.resolve("typicalAddressBook.json");
+    private static final Path TEST_TASK_DATA_FOLDER =
+            Paths.get("src", "test", "data", "JsonSerializableAddressBookTest", "Task");
+    private static final Path TYPICAL_TASKS_FILE = TEST_TASK_DATA_FOLDER.resolve("typicalTasksAddressBook.json");
+    private static final Path INVALID_TASK_FILE = TEST_TASK_DATA_FOLDER.resolve("invalidTaskAddressBook.json");
+    private static final Path DUPLICATE_TASK_FILE = TEST_TASK_DATA_FOLDER.resolve("duplicateTaskAddressBook.json");
+    private static final Path TYPICAL_PERSONS_FILE = TEST_DATA_FOLDER.resolve("typicalPersonsAddressBook.json");
     private static final Path INVALID_PERSON_FILE = TEST_DATA_FOLDER.resolve("invalidPersonAddressBook.json");
     private static final Path DUPLICATE_PERSON_FILE = TEST_DATA_FOLDER.resolve("duplicatePersonAddressBook.json");
     private static final Path DUPLICATE_MODULE_FILE = TEST_DATA_FOLDER.resolve("duplicateModuleManageMe.json");
-    private static final Path DUPLICATE_TASK_FILE = TEST_DATA_FOLDER.resolve("duplicateTaskManageMe.json");
+    //private static final Path DUPLICATE_TASK_FILE = TEST_DATA_FOLDER.resolve("duplicateTaskManageMe.json");
+
+    @Test
+    public void toModelType_typicalTasksFile_success() throws Exception {
+        JsonSerializableAddressBook dataFromFile = JsonUtil.readJsonFile(TYPICAL_TASKS_FILE,
+                JsonSerializableAddressBook.class).get();
+        AddressBook addressBookFromFile = dataFromFile.toModelType();
+        AddressBook typicalTasksAddressBook = TypicalTasks.getTypicalAddressBook();
+        assertEquals(addressBookFromFile, typicalTasksAddressBook);
+    }
+
+    @Test
+    public void toModelType_invalidTasksFile_throwsIllegalValueException() throws Exception {
+        JsonSerializableAddressBook dataFromFile = JsonUtil.readJsonFile(INVALID_TASK_FILE,
+                JsonSerializableAddressBook.class).orElse(null);
+        assertThrows(IllegalValueException.class, dataFromFile::toModelType);
+    }
 
     @Test
     public void toModelType_typicalAddressBookFile_success() throws Exception {
