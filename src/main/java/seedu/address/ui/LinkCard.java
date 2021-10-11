@@ -44,7 +44,7 @@ public class LinkCard extends UiPart<Region> {
         super(FXML);
         this.link = link;
         id.setText(displayedIndex + ". ");
-        name.setText(link.getName() + ": ");
+        //name.setText(link.getName() + ": ");
         url.setText(link.getLink());
     }
 

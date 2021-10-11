@@ -1,5 +1,5 @@
 {
-  "_comment": "AddressBook save file which contains the same Person values as in TypicalPersons#getTypicalAddressBook()",
+  "_comment": "AddressBook save file which contains the same values as in TypicalAddressBook#getTypicalAddressBook()",
   "persons" : [ {
     "name" : "Alice Pauline",
     "phone" : "94351253",
@@ -43,6 +43,24 @@
     "address" : "4th street",
     "tagged" : [ ]
   } ],
-  "modules": [ ],
-  "tasks": [ ]
+  "modules": [ {
+    "modName" : "CS111",
+    "link" : "https://www.google.com"
+  } , {
+    "modName" : "CS222",
+    "link" : "https://www.github.com"
+  } ],
+  "tasks": [ {
+    "module" : "",
+    "start" : "2021-10-05T11:50",
+    "end" : "2021-10-05T14:00",
+    "taskName" : "Eat with friends",
+    "taskDescription" : "At NUS UTown"
+  }, {
+    "module" : "CS2100",
+    "start" : "2021-10-07T23:59",
+    "end" : "2021-10-14T23:59",
+    "taskName" : "Work on CS2100 Assignment 2",
+    "taskDescription" : "Refer to lectures 7-13"
+  } ]
 }

@@ -38,6 +38,11 @@ public class CommandTestUtil {
     public static final String VALID_TAG_FRIEND = "friend";
     public static final String VALID_LINK_GOOGLE = "https://www.google.com/";
 
+    public static final String VALID_MODULE_NAME_A = "CS1111";
+    public static final String VALID_MODULE_NAME_B = "CS2222";
+    public static final String VALID_MODULE_LINK_A = "https://www.youtube.com";
+    public static final String VALID_MODULE_LINK_B = "https://www.luminus.com";
+
     public static final String NAME_DESC_AMY = " " + PREFIX_NAME + VALID_NAME_AMY;
     public static final String NAME_DESC_BOB = " " + PREFIX_NAME + VALID_NAME_BOB;
     public static final String PHONE_DESC_AMY = " " + PREFIX_PHONE + VALID_PHONE_AMY;

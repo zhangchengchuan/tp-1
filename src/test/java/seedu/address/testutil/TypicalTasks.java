@@ -11,6 +11,10 @@ import static seedu.address.logic.commands.task.TaskCommandTestUtil.VALID_NAME_B
 import static seedu.address.logic.commands.task.TaskCommandTestUtil.VALID_START_A;
 import static seedu.address.logic.commands.task.TaskCommandTestUtil.VALID_START_B;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import seedu.address.model.task.Task;
 
 public class TypicalTasks {
@@ -31,4 +35,10 @@ public class TypicalTasks {
     public static final Task TASK_B_MANUAL =
             new TaskBuilder().withName(VALID_NAME_B).withDescription(VALID_DESCRIPTION_B)
             .withModule(VALID_MODULE_B).withStartDateTime(VALID_START_B).withEndDateTime(VALID_END_B).build();
+
+    private TypicalTasks() {} // prevents instantiation
+
+    public static List<Task> getTypicalTasks() {
+        return new ArrayList<>(Arrays.asList(TASK_A, TASK_B));
+    }
 }
