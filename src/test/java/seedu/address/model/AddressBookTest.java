@@ -9,9 +9,9 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.address.logic.commands.task.TaskCommandTestUtil.VALID_DESCRIPTION_A;
 import static seedu.address.logic.commands.task.TaskCommandTestUtil.VALID_MODULE_A;
 import static seedu.address.testutil.Assert.assertThrows;
+import static seedu.address.testutil.TypicalAddressBook.getTypicalAddressBook;
 import static seedu.address.testutil.TypicalModules.MODULE_A;
 import static seedu.address.testutil.TypicalPersons.ALICE;
-import static seedu.address.testutil.TypicalAddressBook.getTypicalAddressBook;
 import static seedu.address.testutil.TypicalTasks.TASK_A;
 
 import java.util.Arrays;

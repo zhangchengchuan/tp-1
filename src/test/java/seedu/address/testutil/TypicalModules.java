@@ -1,10 +1,10 @@
 package seedu.address.testutil;
 
-import seedu.address.model.module.Module;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import seedu.address.model.module.Module;
 
 public class TypicalModules {
     public static final Module MODULE_A = new ModuleBuilder().withName("CS111")
