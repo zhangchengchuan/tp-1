@@ -8,9 +8,9 @@ ManageMe is a **desktop app for time management and resource organisation, optim
 # Table of Contents
 1. Features
     1. Tasks
-        1. Add a Task: `todo`, `event`, `deadline`
+        1. Add a Task: `addTask`
         2. Read a Task: `readTask`
-        3. Update a Task's Details: `updateTask`
+        3. Edit a Task's Details: `editTask`
         4. Delete a Task: `deleteTask`
     2. Modules
         1. Add a Module: `addMod`
@@ -39,61 +39,51 @@ ManageMe is a **desktop app for time management and resource organisation, optim
 
 **:information_source: Notes about the command format:**<br>
 
-* Words in `UPPER_CASE` are the parameters to be supplied by the user. E.g. `todo DESCRIPTION`
+* Words in `UPPER_CASE` are the parameters to be supplied by the user. E.g. `addTask n/TASK_NAME`
   , here `DESCRIPTION` is the parameter.<br>
 
-* Items in square brackets are optional. E.g. `todo DESCRIPTION [/mod CS2103]`<br>
+* Items in square brackets are optional. E.g. `addTask n/TASK_NAME [mod/CS2103]`<br>
 
 </div>
 
 --------------------------------------------------------------------------------------------------------------------
 ### TASK:
 
-#### Adding a task: `todo`, `deadline`, `event`
+#### Adding a task: `addTask`
 
-Adds a task to the address book. The task must be one of the three categories:
-
-1. `todo`: A task not associated with a date or time
-2. `deadline`: A task that must be done before a deadline
-3. `event`: A task that takes place over a time window
-
-Optionally, a task can be linked to a module.
+Adds a task to the address book.
+A name and description for the task is compulsory.
+It is optional to include an associated Module name, a start datetime and an end datetime.
+**:information_source: A start datetime cannot be included without an end datetime:**
 
 Format:
 
-    todo DESCRIPTION [/mod MODULE]
-    deadline DESCRIPTION /by DATE TIME [/mod MODULE]
-    event DESCRIPTION /at DATE START_TIME END_TIME [/mod MODULE]
+    addTask n/NAME d/DESCRIPTION [mod/MODULE_NAME] [s/START_DATETIME] [e/END_DATETIME]
 
 #### Read details of a task: `readTask`
 View a task in detail.
 
 Format: `readTask INDEX`
-- Read task details at the specified `INDEX`. The index refers to the index number shown in the displayed task list. The index **must be a positive integer** 1, 2, 3, ...
-- Tasks will be displayed in this format: [type][status] description (date time)
-    - Type: T for `todo`, D for `deadline`, E for `event`
+- Read task details at the specified `INDEX`. The index refers to the index number shown in the displayed task list. 
+- The index **must be a positive integer** 1, 2, 3, ...
+- Tasks will be displayed in this format: [Status] description (Module)(Date Time)
     - Status: X for done, blank for not done
+    - Module is the name of the associated module
     - Date is in the format: Month Day Year
     - Time is in 24-hour format
 
 Example: `readTask 3`
 
-#### Update a task: updateTask
-Update an existing task in the task list.
+#### Edit a task: editTask
+Edit an existing task in the task list.
 
-Format: `updateTask INDEX CATEGORY CONTENT`
-- Edits the person at the specified `INDEX`. The index refers to the index number shown in the displayed task list. The index **must be a positive integer** 1, 2, 3, ...
-- `CATEGORY` must be one of the following:
-    - `description`
-    - `date`
-    - `time`
-    - `start_time`
-    - `end_time`
-    - `mod`
-- The format of the `CONTENT` must match the `CATEGORY`. E.g. if `CATEGORY` is the `date`, the `CONTENT` must be a valid date like 2021-09-08
-- Existing values will be updated to the input values
+Format: `editTask INDEX [n/NAME] [d/DESCRIPTION] [mod/MODULE_NAME] [s/START_DATETIME] [e/END_DATETIME]`
+* The index refers to the index number shown in the displayed module list
+* The index **must be a positive integer** 1, 2, 3, ...
+* At least one of the optional fields must be provided.
+* Existing values will be updated to the input values.
 
-Example: `updateTask 3 description buy milk`
+Example: `editTask 3 d/buy milk`
 
 #### Deleting a task: `deleteTask`
 Deletes the specified task from the task list.
@@ -124,7 +114,7 @@ Format: `readMod INDEX`<br/>
 Examples: `readMod 2`
 
 #### Update a module: `editMod`
-Update an existing module in the address app.
+Update an existing module in the mod list.
 
 Format: `editMod INDEX [n/NAME] [l/LINK]`
 * Deletes the mod by the specified `INDEX`.<br/>
@@ -173,9 +163,9 @@ Data is saved in the hard disk automatically after any command that changes the 
 
 Action | Format, Examples
 --------|------------------
-**AddTask** | `todo DESCRIPTION [/mod MODULE]`<br>`deadline DESCRIPTION /by DATE TIME [/mod MODULE]`<br>`event DESCRIPTION /at DATE START_TIME END_TIME [/mod MODULE]` <br>e.g., `todo borrow a book /mod CS2103`<br>`deadline submit report /by 2021-08-09 14:00 /mod CS2103`<br>`event tutorial /at 2021-08-09 14:00 16:00`
+**AddTask** | `addTask n/NAME d/DESCRIPTION [mod/MODULE_NAME] [s/START_DATETIME] [e/END_DATETIME]` e.g., `addTask n/Do Assignment d/Refer to Lectures 7-9 /mod CS2100 s/2021-10-05T12:00 e/2021-10-07T23:59`
 **ReadTask** | `readTask INDEX`<br>e.g., `readTask 3`
-**UpdateTask** | `updateTask INDEX CATEGORY CONTENT`<br>e.g., `update 3 description buy milk`
+**EditTask** | `editTask INDEX [n/NAME] [d/DESCRIPTION] [mod/MODULE_NAME] [s/START_DATETIME] [e/END_DATETIME]`<br>e.g., `editTask 3 d/buy milk`
 **DeleteTask** | `deleteTask INDEX`<br>e.g., `deleteTask 3`
 **AddModule** | `addMod NAME /l LINK_NAME LINK`<br>e.g.,`addMod CS2103 /l tutorial https://...`
 **ReadModule** | `readMod INDEX`<br>e.g., `readMod 2`
