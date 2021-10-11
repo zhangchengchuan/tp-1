@@ -42,6 +42,11 @@ public class CommandTestUtil {
     public static final String VALID_TAG_HUSBAND = "husband";
     public static final String VALID_TAG_FRIEND = "friend";
 
+    public static final String VALID_MODULE_NAME_A = "CS1111";
+    public static final String VALID_MODULE_NAME_B = "CS2222";
+    public static final String VALID_MODULE_LINK_A = "https://www.youtube.com";
+    public static final String VALID_MODULE_LINK_B = "https://www.luminus.com";
+
     public static final String VALID_MODNAME_CS2100 = "CS2100";
     public static final String VALID_MODNAME_CS2103 = "CS2103";
     public static final String VALID_LINK_ZOOM = "www.zoom.com";
@@ -160,5 +165,4 @@ public class CommandTestUtil {
 
         assertEquals(1, model.getFilteredModuleList().size());
     }
-
 }
