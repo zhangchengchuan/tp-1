@@ -310,14 +310,12 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **MSS:**
 1. User requests to add a task together with its details.
 2. System adds the new task and displays it. <br>
-Use case ends.
+   Use case ends.
 
 **Extensions:**
 * 1a. System detects an error in the entered data.
-  * 1a1. System requests for the correct data.
-  * 1a2. User enters new data.
-  * Steps 1a1 - 1a2 are repeated until the data entered is correct. <br>
-  Use case resumes from step 2.
+    * 1a1. System shows error in parsing data.
+      Use case resumes from step 1.
 
 
 **Use case: Update Task**
@@ -325,19 +323,15 @@ Use case ends.
 **MSS:**
 1. User requests to update a specified task and enters the new details.
 2. System updates the details and displays the edited task. <br>
-  Use case ends.
+   Use case ends.
 
 **Extensions:**
 * 1a. User enters an invalid task index<br>
-    * 1a1. System requests for a valid task index.
-    * 1a2. User enters the task index.
-    * Steps 1a1 - 1a2 are repeated until the task index entered is correct.<br>
-    Use case resumes from step 2.
+    * 1a1. System shows error in reading index.
+      Use case resumes from step 1.
 * 1b. System detects an error in the entered data.
-    * 1b1. System requests for the correct data.
-    * 1b2. User enters new data.
-    * Steps 1b1 - 1b2 are repeated until the data entered is correct. <br>
-    Use case resumes from step 2. <br><br>
+    * 1a1. System shows error in parsing data.
+      Use case resumes from step 1. <br><br>
 
 
 **Use case: Delete Task**
@@ -352,10 +346,8 @@ Use case ends.
 **Extension:**
 
 * 1a. User enters an invalid task index
-    * 1a1. System requests for a valid task index.
-    * 1a2. User enters the task index.
-    * Steps 1a1 - 1a2 are repeated until the task index entered is correct. <br>
-      Use case resumes from step 2.
+    * 1a1. System shows error in reading index.
+      Use case resumes from step 1.
 
 
 **Use case: Add Module**

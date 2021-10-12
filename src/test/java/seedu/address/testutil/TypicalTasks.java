@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import seedu.address.model.AddressBook;
 import seedu.address.model.task.Task;
 
 public class TypicalTasks {
@@ -31,12 +32,23 @@ public class TypicalTasks {
     // Manually added - Task's details found in {@code TaskCommandTestUtil}
     public static final Task TASK_A_MANUAL =
             new TaskBuilder().withName(VALID_NAME_A).withDescription(VALID_DESCRIPTION_A)
-            .withModule(VALID_MODULE_A).withStartDateTime(VALID_START_A).withEndDateTime(VALID_END_A).build();
+                    .withModule(VALID_MODULE_A).withStartDateTime(VALID_START_A).withEndDateTime(VALID_END_A).build();
     public static final Task TASK_B_MANUAL =
             new TaskBuilder().withName(VALID_NAME_B).withDescription(VALID_DESCRIPTION_B)
-            .withModule(VALID_MODULE_B).withStartDateTime(VALID_START_B).withEndDateTime(VALID_END_B).build();
+                    .withModule(VALID_MODULE_B).withStartDateTime(VALID_START_B).withEndDateTime(VALID_END_B).build();
 
     private TypicalTasks() {} // prevents instantiation
+
+    /**
+     * Returns an {@code AddressBook} with all the typical tasks.
+     */
+    public static AddressBook getTypicalAddressBook() {
+        AddressBook ab = new AddressBook();
+        for (Task task : getTypicalTasks()) {
+            ab.addTask(task);
+        }
+        return ab;
+    }
 
     public static List<Task> getTypicalTasks() {
         return new ArrayList<>(Arrays.asList(TASK_A, TASK_B));

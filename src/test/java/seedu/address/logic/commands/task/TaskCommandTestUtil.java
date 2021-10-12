@@ -24,6 +24,8 @@ import seedu.address.model.task.Task;
 import seedu.address.model.task.TaskNameContainsKeywordsPredicate;
 import seedu.address.testutil.EditTaskDescriptorBuilder;
 
+
+
 public class TaskCommandTestUtil {
     public static final String VALID_NAME_A = "sleep early";
     public static final String VALID_NAME_B = "Do work";
@@ -113,6 +115,7 @@ public class TaskCommandTestUtil {
         assertEquals(expectedAddressBook, actualModel.getAddressBook());
         assertEquals(expectedFilteredList, actualModel.getFilteredPersonList());
     }
+
     /**
      * Updates {@code model}'s filtered list to show only the task at the given {@code targetIndex} in the
      * {@code model}'s address book.
@@ -121,9 +124,12 @@ public class TaskCommandTestUtil {
         assertTrue(targetIndex.getZeroBased() < model.getFilteredTaskList().size());
 
         Task task = model.getFilteredTaskList().get(targetIndex.getZeroBased());
-        final String[] splitName = task.getName().toString().split("\\s+");
-        model.updateFilteredTaskList(new TaskNameContainsKeywordsPredicate(Arrays.asList(splitName)));
+
+        //final String[] splitName = task.getName().value.split("\\s+");
+        final String[] splitName = task.getName().value.split("\\s+");
+        model.updateFilteredTaskList(new TaskNameContainsKeywordsPredicate(Arrays.asList(splitName[0])));
 
         assertEquals(1, model.getFilteredTaskList().size());
     }
 }
+
