@@ -24,13 +24,6 @@ import seedu.address.model.task.Task;
 import seedu.address.model.task.TaskNameContainsKeywordsPredicate;
 import seedu.address.testutil.EditTaskDescriptorBuilder;
 
-import java.util.Arrays;
-
-import seedu.address.commons.core.index.Index;
-import seedu.address.model.Model;
-import seedu.address.model.task.Task;
-import seedu.address.model.task.TaskNameContainsKeywordsPredicate;
-
 
 
 public class TaskCommandTestUtil {
