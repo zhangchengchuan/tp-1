@@ -44,7 +44,7 @@ public class Module {
     }
 
     /**
-     * Returns true if both mods have the same link.
+     * Returns true if both mods have the same name.
      * This defines a weaker notion of equality between two mods.
      * @param otherMod
      */

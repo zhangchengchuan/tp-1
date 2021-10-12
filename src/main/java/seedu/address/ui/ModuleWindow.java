@@ -50,8 +50,8 @@ public class ModuleWindow extends UiPart<Stage> {
     public void display(List<Module> onlyModuleInList) {
         this.module = onlyModuleInList.get(0);
         resetWindow();
-        moduleWindow.setTitle(module.getModuleName().value);
-        name.setText(module.getModuleName().value);
+        moduleWindow.setTitle(module.getModuleName().name);
+        name.setText(module.getModuleName().name);
         fillLinkList(module.getLink());
         //fillTaskList(module.getTask());
         moduleWindow.showAndWait();
