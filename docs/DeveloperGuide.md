@@ -311,7 +311,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `*`      | User who likes to customize                | Personalise the appearance of the application                         | I can change the appearance of the application to my liking.                                              |
 | `* *`    | Long-term user                             | Clear all tasks and modules                                           | I can easily reset the app when a new semester starts.                                                    |
 | `*`      | Long-term user                             | Archive all the data                                                  | I can find my old tasks and module when I need to.                                                        |
-  
+| `*`      | Long-term user                             | Load previous data                                                    | I can read my old tasks and module when I need to.                                                        |  
+
+
 ### Use cases
 
 (For all use cases below, the **System** is `ManageMe` and the **Actor** is the `User`, unless specified otherwise)
@@ -379,10 +381,8 @@ Use case ends.
 
 **Extensions**
 * 1a. The parameters entered are invalid, such as Invalid Module Code, mismatch of parameters.
-    * 1a1. System requests for a valid parameters.
-    * 1a2. User enters the parameters.
-    * Steps 1a1 - 1a2 are repeated until the parameters entered are correct. <br>
-      Use case resumes from step 2.
+    * 1a1. System shows error in reading index.
+      Use case resumes from step 1.
 
 **Use case: Update Module**
 
@@ -394,15 +394,11 @@ Use case ends.
 
 **Extensions:**
 * 1a. User enters an invalid module index<br>
-    * 1a1. System requests for a valid module index.
-    * 1a2. User enters the module index.
-    * Steps 1a1 - 1a2 are repeated until the module index entered is correct. <br>
-      Use case resumes from step 2.
+    * 1a1. System shows error in reading index.
+      Use case resumes from step 1.
 * 1b. System detects an error in the entered data.
-    * 1b1. System requests for the correct data.
-    * 1b2. User enters new data.
-    * Steps 1b1 - 1b2 are repeated until the data entered is correct. <br>
-      Use case resumes from step 2. <br><br>
+    * 1a1. System shows error in reading index.
+      Use case resumes from step 1. <br><br>
 
 
 **Use case: Delete Module**
@@ -417,10 +413,8 @@ Use case ends.
 **Extension:**
 
 * 1a. User enters an invalid module index<br>
-    * 1a1. System requests for a valid module index.
-    * 1a2. User enters the module index.
-    * Steps 1a1 - 1a2 are repeated until the module index entered is correct. <br>
-      Use case resumes from step 2.
+    * 1a1. System shows error in reading index.
+      Use case resumes from step 1.
 
 
 ### Non-Functional Requirements
