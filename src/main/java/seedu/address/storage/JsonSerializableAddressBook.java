@@ -11,7 +11,9 @@ import com.fasterxml.jackson.annotation.JsonRootName;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.AddressBook;
 import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.module.Module;
 import seedu.address.model.person.Person;
+import seedu.address.model.task.Task;
 
 /**
  * An Immutable AddressBook that is serializable to JSON format.
@@ -20,15 +22,25 @@ import seedu.address.model.person.Person;
 class JsonSerializableAddressBook {
 
     public static final String MESSAGE_DUPLICATE_PERSON = "Persons list contains duplicate person(s).";
+    public static final String MESSAGE_DUPLICATE_MODULE = "Modules list contains duplicate module(s).";
+    public static final String MESSAGE_DUPLICATE_TASK = "Tasks list contains duplicate task(s).";
 
     private final List<JsonAdaptedPerson> persons = new ArrayList<>();
+
+    private final List<JsonAdaptedModule> modules = new ArrayList<>();
+
+    private final List<JsonAdaptedTask> tasks = new ArrayList<>();
 
     /**
      * Constructs a {@code JsonSerializableAddressBook} with the given persons.
      */
     @JsonCreator
-    public JsonSerializableAddressBook(@JsonProperty("persons") List<JsonAdaptedPerson> persons) {
+    public JsonSerializableAddressBook(@JsonProperty("persons") List<JsonAdaptedPerson> persons,
+                                       @JsonProperty("modules") List<JsonAdaptedModule> modules,
+                                       @JsonProperty("tasks") List<JsonAdaptedTask> tasks) {
         this.persons.addAll(persons);
+        this.modules.addAll(modules);
+        this.tasks.addAll(tasks);
     }
 
     /**
@@ -38,6 +50,8 @@ class JsonSerializableAddressBook {
      */
     public JsonSerializableAddressBook(ReadOnlyAddressBook source) {
         persons.addAll(source.getPersonList().stream().map(JsonAdaptedPerson::new).collect(Collectors.toList()));
+        modules.addAll(source.getModuleList().stream().map(JsonAdaptedModule::new).collect(Collectors.toList()));
+        tasks.addAll(source.getTaskList().stream().map(JsonAdaptedTask::new).collect(Collectors.toList()));
     }
 
     /**
@@ -53,6 +67,22 @@ class JsonSerializableAddressBook {
                 throw new IllegalValueException(MESSAGE_DUPLICATE_PERSON);
             }
             addressBook.addPerson(person);
+        }
+
+        for (JsonAdaptedModule jsonAdaptedModule: modules) {
+            Module module = jsonAdaptedModule.toModelType();
+            if (addressBook.hasModule(module)) {
+                throw new IllegalValueException(MESSAGE_DUPLICATE_MODULE);
+            }
+            addressBook.addModule(module);
+        }
+
+        for (JsonAdaptedTask jsonAdaptedTask: tasks) {
+            Task task = jsonAdaptedTask.toModelType();
+            if (addressBook.hasTask(task)) {
+                throw new IllegalValueException(MESSAGE_DUPLICATE_TASK);
+            }
+            addressBook.addTask(task);
         }
         return addressBook;
     }
