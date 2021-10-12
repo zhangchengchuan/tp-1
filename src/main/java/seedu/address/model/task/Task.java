@@ -131,7 +131,7 @@ public class Task {
         } else if (start.isEmpty() && !end.isEmpty()) {
             return end.getTime().toLocalDate().datesUntil(end.getTime().plusDays(1).toLocalDate());
         } else {
-            return null;
+            return Stream.empty();
         }
     }
 
