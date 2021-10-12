@@ -131,7 +131,7 @@ public class Task {
         } else if (start.isEmpty() && !end.isEmpty()) {
             return end.getTime().toLocalDate().datesUntil(end.getTime().plusDays(1).toLocalDate());
         } else {
-            return null;
+            return Stream.empty();
         }
     }
 
@@ -184,9 +184,9 @@ public class Task {
                 .append(getDescription())
                 .append("; TaskModule: ")
                 .append(getTaskModule())
-                .append("; Start Date/Time: ")
+                .append("; Start: ")
                 .append(getStart())
-                .append("; End Date/Time: ")
+                .append("; End: ")
                 .append(getEnd());
         return builder.toString();
     }
