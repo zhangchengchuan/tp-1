@@ -236,7 +236,7 @@ _{more aspects and alternatives to be added}_
 
 ### \[Proposed\] Data archiving
 
-_{Explain here how the data archiving feature will be implemented}_
+_{Explain here how the data archiv/ing feature will be implemented}_
 
 
 --------------------------------------------------------------------------------------------------------------------
@@ -285,13 +285,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | Forgetful User                             | Mark a task as done                                                   |                                                                                                           |
 | `* * *`  | Forgetful User                             | View all my tasks                                                     |                                                                                                           |
 | `* *`    | Forgetful User                             | Add optional tags to tasks                                            | I can organize tasks by their types.                                                                      |
-| `* * *`  | Forgetful User                             | Update my tasks                                                       | I can make changes to the status of the tasks or change task information.                                 |
+| `* * *`  | Forgetful User                             | Edit my tasks                                                         | I can make changes to the status of the tasks or change task information.                                 |
 | `* * *`  | Forgetful User                             | Delete my tasks                                                       | I can get rid of unwanted tasks.                                                                          |
 | `* *`    | Forgetful User                             | Add recurring tasks                                                   | I do not have to add the same task multiple times.                                                        |
 | `* *`    | Easily-distracted User                     | Filter tasks by tags                                                  | I can choose to see only the most important tasks.                                                        |
 | `* * *`  | Student                                    | Add modules                                                           | I can store all relevant information and links related to a module together.                              |
 | `* * *`  | Student                                    | View all my modules                                                   | I can keep track of the different modules that I am taking this semester.                                 |
-| `* * *`  | Student                                    | Update my modules                                                     | I can make changes to information related to a module.                                                    |
+| `* * *`  | Student                                    | Edit my modules                                                       | I can make changes to information related to a module.                                                    |
 | `* * *`  | Student                                    | Delete my modules                                                     | I can get rid of modules that I am no longer taking.                                                      |
 | `* * *`  | Busy user                                  | View calendar                                                         | I can check the dates easily.                                                                             |
 | `* * *`  | Busy Student                               | See all tasks for today when I open the app                           | I can know what happens today conveniently.                                                               |
@@ -332,10 +332,10 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
       Use case resumes from step 1.
 
 
-**Use case: Update Task**
+**Use case: Edit Task**
 
 **MSS:**
-1. User requests to update a specified task and enters the new details.
+1. User requests to edit a specified task and enters the new details.
 2. System updates the details and displays the edited task. <br>
    Use case ends.
 
@@ -377,11 +377,11 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 1a1. System shows error in reading index.
       Use case resumes from step 1.
 
-**Use case: Update Module**
+**Use case: Edit Module**
 
 **MSS:**
 
-1. User requests to update a specified module and enters the new details.
+1. User requests to edit a specified module and enters the new details.
 2. System updates the details and displays the edited module. <br>
    Use case ends.
 
