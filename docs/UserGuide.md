@@ -113,7 +113,7 @@ Format: `readMod INDEX`<br/>
 
 Examples: `readMod 2`
 
-#### Update a module: `editMod`
+#### Edit a module: `editMod`
 Update an existing module in the mod list.
 
 Format: `editMod INDEX [n/NAME] [l/LINK]`
@@ -169,7 +169,7 @@ Action | Format, Examples
 **DeleteTask** | `deleteTask INDEX`<br>e.g., `deleteTask 3`
 **AddModule** | `addMod NAME /l LINK_NAME LINK`<br>e.g.,`addMod CS2103 /l tutorial https://...`
 **ReadModule** | `readMod INDEX`<br>e.g., `readMod 2`
-**UpdateModule** | `updateMod INDEX CATEGORY CONTENT`<br>e.g., `updateMod 2 link https://...`
+**EditModule** | `editMod INDEX [n/NAME] [l/LINK]`<br>e.g., `editMod 2 n/CS2103T l/https://...`
 **DeleteModule** | `deleteMod INDEX`<br>e.g., `deleteMod 2`
 **Help** | `help`
 **Exit** | `exit`
