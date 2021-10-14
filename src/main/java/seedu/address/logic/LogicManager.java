@@ -55,7 +55,6 @@ public class LogicManager implements Logic {
 
         return commandResult;
     }
-
     @Override
     public ReadOnlyAddressBook getAddressBook() {
         return model.getAddressBook();
@@ -69,6 +68,11 @@ public class LogicManager implements Logic {
     @Override
     public ObservableList<Module> getFilteredModuleList() {
         return model.getFilteredModuleList();
+    }
+
+    @Override
+    public ObservableList<Module> getReadModuleList() {
+        return model.getReadModuleList();
     }
 
     @Override

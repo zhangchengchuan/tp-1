@@ -49,11 +49,20 @@ public class ModuleWindow extends UiPart<Stage> {
      */
     public void display(List<Module> onlyModuleInList) {
         this.module = onlyModuleInList.get(0);
-        moduleWindow.setTitle(module.getModName().modName);
-        name.setText(module.getModName().modName);
-        //fillLinkList(module.getLink());
-        //fillLinkList(module.getTask());
+        resetWindow();
+        moduleWindow.setTitle(module.getModuleName().name);
+        name.setText(module.getModuleName().name);
+        fillLinkList(module.getLink());
+        //fillTaskList(module.getTask());
         moduleWindow.showAndWait();
+    }
+
+    /**
+     * Resets Module Window.
+     */
+    private void resetWindow() {
+        linkList.getChildren().clear();
+        taskList.getChildren().clear();
     }
 
     /**
@@ -79,31 +88,11 @@ public class ModuleWindow extends UiPart<Stage> {
     }
 
     /**
-     * Show Module Window.
+     * Fills up the link list.
+     *
+     * @param link the Link object.
      */
-    public void show() {
-        getRoot().show();
-        getRoot().centerOnScreen();
-    }
-
-    /**
-     * Returns true if the help window is currently being shown.
-     */
-    public boolean isShowing() {
-        return getRoot().isShowing();
-    }
-
-    /**
-     * Hides the help window.
-     */
-    public void hide() {
-        getRoot().hide();
-    }
-
-    /**
-     * Focuses on the help window.
-     */
-    public void focus() {
-        getRoot().requestFocus();
+    public void fillLinkList(Link link) {
+        linkList.getChildren().add(new LinkCard(link, 1).getRoot());
     }
 }

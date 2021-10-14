@@ -5,7 +5,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
  * Represents a module's link in the app.
- * Guarantees: immutable; is valid as declared in {@link #isValidName(String)}
+ * Guarantees: immutable; is valid as declared in {@link #isValidModuleName(String)}
  */
 public class ModuleName {
 
@@ -13,46 +13,46 @@ public class ModuleName {
             "Names should only contain alphanumeric characters and spaces, and it should not be blank";
 
     /*
-     * The first character of the address must not be a whitespace,
+     * The first character of the module name must not be a whitespace,
      * otherwise " " (a blank string) becomes a valid input.
      */
     public static final String VALIDATION_REGEX = "[\\p{Alnum}][\\p{Alnum} ]*";
 
-    public final String modName;
+    public final String name;
 
     /**
-     * Constructs a {@code Name}.
+     * Constructs a {@code ModuleName}.
      *
-     * @param modName A valid mod name.
+     * @param moduleName A valid mod name.
      */
-    public ModuleName(String modName) {
-        requireNonNull(modName);
-        checkArgument(isValidName(modName), MESSAGE_CONSTRAINTS);
-        this.modName = modName;
+    public ModuleName(String moduleName) {
+        requireNonNull(moduleName);
+        checkArgument(isValidModuleName(moduleName), MESSAGE_CONSTRAINTS);
+        this.name = moduleName;
     }
 
     /**
-     * Returns true if a given string is a valid link.
+     * Returns true if a given string is a valid module name.
      */
-    public static boolean isValidName(String test) {
+    public static boolean isValidModuleName(String test) {
         return test.matches(VALIDATION_REGEX);
     }
 
 
     @Override
     public String toString() {
-        return modName;
+        return name;
     }
 
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof ModuleName // instanceof handles nulls
-                && modName.equals(((ModuleName) other).modName)); // state check
+                && name.equals(((ModuleName) other).name)); // state check
     }
 
     @Override
     public int hashCode() {
-        return modName.hashCode();
+        return name.hashCode();
     }
 }

@@ -278,27 +278,41 @@ A Digital-Age student who...
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​                                    | I want to …​                     | So that I can…​                                                        |
+| Priority | As a …​                                 | I want to …​                                                       | So that I can…​                                                                                        |
 | -------- | ------------------------------------------ | --------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
-| `* * *`  | Forgetful User                             | Add tasks                                                             |                                                                                                           |
-| `* * *`  | Forgetful User                             | View all my tasks                                                     | I can keep track of what I have done, and need to do                                                      |
-| `* * *`  | Forgetful User                             | Update my tasks                                                       | I can make changes to the status of the tasks or change task information.                                 |
-| `* * *`  | Forgetful User                             | Delete my tasks                                                       | I can get rid of my tasks.                                                                                |
+| `* * *`  | Forgetful User                             | Add tasks                                                             | I can keep track of what I have done, and need to do.                                                     |
+| `* * *`  | Forgetful User                             | Add optional begin and end times to tasks                             |                                                                                                           |
+| `* * *`  | Forgetful User                             | Mark a task as done                                                   |                                                                                                           |
+| `* * *`  | Forgetful User                             | View all my tasks                                                     |                                                                                                           |
+| `* *`    | Forgetful User                             | Add optional tags to tasks                                            | I can organize tasks by their types.                                                                      |
+| `* * *`  | Forgetful User                             | Edit my tasks                                                         | I can make changes to the status of the tasks or change task information.                                 |
+| `* * *`  | Forgetful User                             | Delete my tasks                                                       | I can get rid of unwanted tasks.                                                                          |
 | `* *`    | Forgetful User                             | Add recurring tasks                                                   | I do not have to add the same task multiple times.                                                        |
+| `* *`    | Easily-distracted User                     | Filter tasks by tags                                                  | I can choose to see only the most important tasks.                                                        |
 | `* * *`  | Student                                    | Add modules                                                           | I can store all relevant information and links related to a module together.                              |
 | `* * *`  | Student                                    | View all my modules                                                   | I can keep track of the different modules that I am taking this semester.                                 |
-| `* * *`  | Student                                    | Update my modules                                                     | I can make changes to information related to a module.                                                    |
-| `* * *`  | Student                                    | Delete my modules                                                     | I can get rid of modules that I am no longer taking                                                       |
-| `* * *`  | Student                                    | View all tasks in a single day in the calendar                        | I can know what happens on any particular date                                                            |
-| `* * *`  | Busy Student                               | View all upcoming tasks in a calendar                                 | I do not have to look through my entire tasklist to find upcoming tasks.                                  |
-| `* * *`  | Busy Student                               | Let the calendar load my tasks in the task list automatically         | I can view the tasks in chronological order.                                                              |
-| `* *`    | Digital-Age Student                        | Add filepaths in my local directory to task                           | I can access assignment files related to a task directly from the application.                            |
-| `* *`    | Digital Age Student                        | Add filepaths in my local directory to a module                       | I can access notes/tutorials related to a module directly from the application.                           |
+| `* * *`  | Student                                    | Edit my modules                                                       | I can make changes to information related to a module.                                                    |
+| `* * *`  | Student                                    | Delete my modules                                                     | I can get rid of modules that I am no longer taking.                                                      |
+| `* * *`  | Busy user                                  | View calendar                                                         | I can check the dates easily.                                                                             |
+| `* * *`  | Busy Student                               | See all tasks for today when I open the app                           | I can know what happens today conveniently.                                                               |
+| `* * *`  | Busy Student                               | View all tasks in a single day in the calendar according to its date  | I can know what happens on any particular date.                                                           |
+| `* * *`  | Busy Student                               | View all upcoming tasks in a calendar                                 | I do not have to look through my entire task list to find upcoming tasks.                                 |
+| `* * *`  | Busy Student                               | See tasks in a calendar                                               | I can view the tasks in chronological order.                                                              |
+| `* * *`  | Busy Student                               | See classes in a calendar                                             | I can view my classes conveniently.                                                                       |
+| `* *`    | Digital-Age Student                        | Add filepaths in my local directory to tasks                          | I can access assignment files related to a task directly from the application.                            |
+| `* *`    | Digital Age Student                        | Add web links to tasks                                                | I can access related links conveniently.                                                                  |
+| `* *`    | Digital-Age Student                        | Add filepaths in my local directory to modules                        | I can access module related files directly from the application.                                          |
+| `* *`    | Digital Age Student                        | Add web links to modules                                              | I can access related links conveniently.                                                                  |
 | `* *`    | Easily Distracted Student                  | Receive reminders for tasks that have upcoming deadlines              | I have sufficient time to complete my 'due-soon' tasks should I get distracted by other tasks.            |
-| `* * *`  | User                                       | Search for a task using keywords                                      | I do not have to waste time browsing through my entire tasklist to find a task.                           |
+| `* * *`  | User                                       | Search for a task using keywords                                      | I do not have to waste time browsing through my entire task list to find a task.                          |
+| `* `     | User                                       | Search for a link using keywords                                      | I do not have to waste time opening module or task tab to find a link.                                    |
+| `*`      | User                                       | Search everywhere in the app                                          | I can search anything I want with minimum commands.                                                       |
 | `* *`    | New User                                   | Open the command summary to help me navigate the application          | I know how to use the application to perform the functions that I want.                                   |
-| `* *`    | Experienced User                           | Close the command summary                                             | t does not take up unnecessary screen space after I am familiar with the commands.                        |
+| `* *`    | Experienced User                           | Close the command summary                                             | It does not take up unnecessary screen space after I am familiar with the commands.                        |
 | `*`      | User who likes to customize                | Personalise the appearance of the application                         | I can change the appearance of the application to my liking.                                              |
+| `* *`    | Long-term user                             | Clear all tasks and modules                                           | I can easily reset the app when a new semester starts.                                                    |
+| `*`      | Long-term user                             | Archive all the data                                                  | I can find my old tasks and module when I need to.                                                        |
+| `*`      | Long-term user                             | Load previous data                                                    | I can read my old tasks and module when I need to.                                                        |  
 
 
 ### Use cases
@@ -307,37 +321,31 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Use case: Add Task**
 
-**MSS:** 
+**MSS:**
 1. User requests to add a task together with its details.
 2. System adds the new task and displays it. <br>
-Use case ends.
+   Use case ends.
 
 **Extensions:**
 * 1a. System detects an error in the entered data.
-  * 1a1. System requests for the correct data.
-  * 1a2. User enters new data.
-  * Steps 1a1 - 1a2 are repeated until the data entered is correct. <br> 
-  Use case resumes from step 2.
+    * 1a1. System shows error in parsing data.
+      Use case resumes from step 1.
 
 
-**Use case: Update Task**
+**Use case: Edit Task**
 
 **MSS:**
-1. User requests to update a specified task and enters the new details.
+1. User requests to edit a specified task and enters the new details.
 2. System updates the details and displays the edited task. <br>
-  Use case ends.
+   Use case ends.
 
 **Extensions:**
 * 1a. User enters an invalid task index<br>
-    * 1a1. System requests for a valid task index.
-    * 1a2. User enters the task index.
-    * Steps 1a1 - 1a2 are repeated until the task index entered is correct.<br>
-    Use case resumes from step 2.
+    * 1a1. System shows error in reading index.
+      Use case resumes from step 1.
 * 1b. System detects an error in the entered data.
-    * 1b1. System requests for the correct data.
-    * 1b2. User enters new data.
-    * Steps 1b1 - 1b2 are repeated until the data entered is correct. <br>
-    Use case resumes from step 2. <br><br>
+    * 1a1. System shows error in parsing data.
+      Use case resumes from step 1. <br><br>
 
 
 **Use case: Delete Task**
@@ -352,12 +360,10 @@ Use case ends.
 **Extension:**
 
 * 1a. User enters an invalid task index
-    * 1a1. System requests for a valid task index.
-    * 1a2. User enters the task index.
-    * Steps 1a1 - 1a2 are repeated until the task index entered is correct. <br>
-      Use case resumes from step 2.
+    * 1a1. System shows error in reading index.
+      Use case resumes from step 1.
 
-    
+
 **Use case: Add Module**
 
 **MSS:**
@@ -368,31 +374,24 @@ Use case ends.
 
 **Extensions**
 * 1a. The parameters entered are invalid, such as Invalid Module Code, mismatch of parameters.
-    * 1a1. System requests for a valid parameters.
-    * 1a2. User enters the parameters.
-    * Steps 1a1 - 1a2 are repeated until the parameters entered are correct. <br>
-      Use case resumes from step 2.
+    * 1a1. System shows error in reading index.
+      Use case resumes from step 1.
 
-    
-**Use case: Update Module**
+**Use case: Edit Module**
 
 **MSS:**
 
-1. User requests to update a specified module and enters the new details.
+1. User requests to edit a specified module and enters the new details.
 2. System updates the details and displays the edited module. <br>
    Use case ends.
 
 **Extensions:**
 * 1a. User enters an invalid module index<br>
-    * 1a1. System requests for a valid module index.
-    * 1a2. User enters the module index.
-    * Steps 1a1 - 1a2 are repeated until the module index entered is correct. <br>
-      Use case resumes from step 2.
+    * 1a1. System shows error in reading index.
+      Use case resumes from step 1.
 * 1b. System detects an error in the entered data.
-    * 1b1. System requests for the correct data.
-    * 1b2. User enters new data. 
-    * Steps 1b1 - 1b2 are repeated until the data entered is correct. <br>
-      Use case resumes from step 2. <br><br>
+    * 1a1. System shows error in reading index.
+      Use case resumes from step 1. <br><br>
 
 
 **Use case: Delete Module**
@@ -407,10 +406,8 @@ Use case ends.
 **Extension:**
 
 * 1a. User enters an invalid module index<br>
-    * 1a1. System requests for a valid module index. 
-    * 1a2. User enters the module index.
-    * Steps 1a1 - 1a2 are repeated until the module index entered is correct. <br>
-      Use case resumes from step 2.
+    * 1a1. System shows error in reading index.
+      Use case resumes from step 1.
 
 
 ### Non-Functional Requirements

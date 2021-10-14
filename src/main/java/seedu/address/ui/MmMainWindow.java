@@ -127,7 +127,7 @@ public class MmMainWindow extends UiPart<Stage> {
         taskListPanel = new TaskListPanel(logic.getFilteredTaskList());
         taskListPanelPlaceholder.getChildren().add(taskListPanel.getRoot());
 
-        calendarListPanel = new CalendarListPanel(logic.getFilteredPersonList());
+        calendarListPanel = new CalendarListPanel(logic.getFilteredTaskList());
         calendarListPanelPlaceholder.getChildren().add(calendarListPanel.getRoot());
 
         resultDisplay = new ResultDisplay();
@@ -182,12 +182,7 @@ public class MmMainWindow extends UiPart<Stage> {
      */
     @FXML
     private void handleModule() {
-        moduleWindow.display(logic.getFilteredModuleList());
-        try {
-            logic.execute("listMod");
-        } catch (CommandException | ParseException e) {
-            // this should never be executed
-        }
+        moduleWindow.display(logic.getReadModuleList());
     }
 
 

@@ -31,7 +31,7 @@ public class JsonAdaptedModule {
      * Converts a given {@code Module} into this class for Jackson use.
      */
     public JsonAdaptedModule(Module source) {
-        modName = source.getModName().modName;
+        modName = source.getModuleName().name;
         link = source.getLink().link;
     }
 
@@ -45,7 +45,7 @@ public class JsonAdaptedModule {
         if (modName == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, "modName"));
         }
-        if (!ModuleName.isValidName(modName)) {
+        if (!ModuleName.isValidModuleName(modName)) {
             throw new IllegalValueException(ModuleName.MESSAGE_CONSTRAINTS);
         }
         final ModuleName modelName = new ModuleName(modName);

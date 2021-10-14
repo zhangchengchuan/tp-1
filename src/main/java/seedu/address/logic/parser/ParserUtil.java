@@ -9,11 +9,17 @@ import java.util.Set;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.link.Link;
+import seedu.address.model.module.ModuleName;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
 import seedu.address.model.tag.Tag;
+import seedu.address.model.task.TaskDescription;
+import seedu.address.model.task.TaskModule;
+import seedu.address.model.task.TaskName;
+import seedu.address.model.task.TaskTime;
 
 /**
  * Contains utility methods used for parsing strings in the various *Parser classes.
@@ -48,6 +54,36 @@ public class ParserUtil {
             throw new ParseException(Name.MESSAGE_CONSTRAINTS);
         }
         return new Name(trimmedName);
+    }
+
+    /**
+     * Parses a {@code String name} into a {@code ModuleName}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code ModuleName} is invalid.
+     */
+    public static ModuleName parseModuleName(String name) throws ParseException {
+        requireNonNull(name);
+        String trimmedName = name.trim();
+        if (!ModuleName.isValidModuleName(trimmedName)) {
+            throw new ParseException(ModuleName.MESSAGE_CONSTRAINTS);
+        }
+        return new ModuleName(trimmedName);
+    }
+
+    /**
+     * Parses a {@code String name} into a {@code Link}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code Link} is invalid.
+     */
+    public static Link parseLink(String link) throws ParseException {
+        requireNonNull(link);
+        String trimmedLink = link.trim();
+        if (!Link.isValidLink(trimmedLink)) {
+            throw new ParseException(Link.MESSAGE_CONSTRAINTS);
+        }
+        return new Link(trimmedLink);
     }
 
     /**
@@ -120,5 +156,62 @@ public class ParserUtil {
             tagSet.add(parseTag(tagName));
         }
         return tagSet;
+    }
+
+    /**
+     * Parses a {@code String task name} into a {@code TaskName}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code TaskName} is invalid.
+     */
+    public static TaskName parseTaskName(String taskName) throws ParseException {
+        requireNonNull(taskName);
+        String trimmedName = taskName.trim();
+        if (!TaskName.isValidName(trimmedName)) {
+            throw new ParseException(TaskName.MESSAGE_CONSTRAINTS);
+        }
+        return new TaskName(trimmedName);
+    }
+
+    /**
+     * Parses a {@code String task description} into a {@code TaskDescription}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code TaskDescription} is invalid.
+     */
+    public static TaskDescription parseTaskDescription(String taskDescription) {
+        requireNonNull(taskDescription);
+        String trimmedD = taskDescription.trim();
+        //  if (!TaskDescription.isValidDescription(trimmedD)) {
+        //       throw new ParseException(TaskDescription.MESSAGE_CONSTRAINTS);
+        // }
+        return new TaskDescription(trimmedD);
+    }
+
+    /**
+     * Parses a {@code String task module} into a {@code TaskModule}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code TaskModule} is invalid.
+     */
+    public static TaskModule parseTaskModule(String taskModule) {
+        requireNonNull(taskModule);
+        String trimmedM = taskModule.trim();
+        //        if (!TaskModule.isValidModule(trimmedM)) {
+        //            throw new ParseException(TaskModule.MESSAGE_CONSTRAINTS);
+        //        }
+        return new TaskModule(trimmedM);
+    }
+
+    /**
+     * Parses a {@code String date/time} into a {@code TaskTime}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code TaskTime} is invalid.
+     */
+    public static TaskTime parseDateTime(String dateTime) {
+        requireNonNull(dateTime);
+        String trimmedDateTime = dateTime.trim();
+        return trimmedDateTime.equals("") ? new TaskTime() : new TaskTime(trimmedDateTime);
     }
 }

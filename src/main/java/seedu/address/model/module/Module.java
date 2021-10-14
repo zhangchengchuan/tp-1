@@ -16,7 +16,7 @@ public class Module {
     private final ModuleName moduleName;
 
     // Data fields
-    private final Link link;
+    private Link link;
 
     /**
      * Every field must be present and not null.
@@ -27,7 +27,15 @@ public class Module {
         this.link = link;
     }
 
-    public ModuleName getModName() {
+    /**
+     * Link optional
+     */
+    public Module(ModuleName moduleName) {
+        requireAllNonNull(moduleName);
+        this.moduleName = moduleName;
+    }
+
+    public ModuleName getModuleName() {
         return moduleName;
     }
 
@@ -36,7 +44,7 @@ public class Module {
     }
 
     /**
-     * Returns true if both mods have the same link.
+     * Returns true if both mods have the same name.
      * This defines a weaker notion of equality between two mods.
      * @param otherMod
      */
@@ -46,7 +54,7 @@ public class Module {
         }
 
         return otherMod != null
-                && otherMod.getModName().equals(getModName());
+                && otherMod.getModuleName().equals(getModuleName());
     }
 
     /**
@@ -64,7 +72,7 @@ public class Module {
         }
 
         Module otherMod = (Module) other;
-        return otherMod.getModName().equals(getModName())
+        return otherMod.getModuleName().equals(getModuleName())
                 && otherMod.getLink().equals(getLink());
     }
 
@@ -77,7 +85,7 @@ public class Module {
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
-        builder.append(getModName())
+        builder.append(getModuleName())
                 .append("; Link: ")
                 .append(getLink());
 

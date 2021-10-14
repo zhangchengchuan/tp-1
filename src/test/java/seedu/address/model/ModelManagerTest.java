@@ -5,8 +5,12 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 import static seedu.address.testutil.Assert.assertThrows;
+import static seedu.address.testutil.TypicalModules.MODULE_A;
+import static seedu.address.testutil.TypicalModules.MODULE_B;
 import static seedu.address.testutil.TypicalPersons.ALICE;
 import static seedu.address.testutil.TypicalPersons.BENSON;
+import static seedu.address.testutil.TypicalTasks.TASK_A;
+import static seedu.address.testutil.TypicalTasks.TASK_B;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -94,8 +98,51 @@ public class ModelManagerTest {
     }
 
     @Test
+    public void hasModule_nullModule_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> modelManager.hasModule(null));
+    }
+
+    @Test
+    public void hasModule_moduleNotInAddressBook_returnsFalse() {
+        assertFalse(modelManager.hasModule(MODULE_A));
+    }
+
+    @Test
+    public void hasModule_moduleInAddressBook_returnsTrue() {
+        modelManager.addModule(MODULE_A);
+        assertTrue(modelManager.hasModule(MODULE_A));
+    }
+
+    @Test
+    public void getFilteredModuleList_modifyList_throwsUnsupportedOperationException() {
+        assertThrows(UnsupportedOperationException.class, () -> modelManager.getFilteredModuleList().remove(0));
+    }
+
+    @Test
+    public void hasTask_nullTask_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> modelManager.hasTask(null));
+    }
+
+    @Test
+    public void hasTask_taskNotInAddressBook_returnsFalse() {
+        assertFalse(modelManager.hasTask(TASK_A));
+    }
+
+    @Test
+    public void hasTask_taskInAddressBook_returnsTrue() {
+        modelManager.addTask(TASK_A);
+        assertTrue(modelManager.hasTask(TASK_A));
+    }
+
+    @Test
+    public void getFilteredTaskList_modifyList_throwsUnsupportedOperationException() {
+        assertThrows(UnsupportedOperationException.class, () -> modelManager.getFilteredTaskList().remove(0));
+    }
+
+    @Test
     public void equals() {
-        AddressBook addressBook = new AddressBookBuilder().withPerson(ALICE).withPerson(BENSON).build();
+        AddressBook addressBook = new AddressBookBuilder().withModule(MODULE_A).withModule(MODULE_B)
+                .withPerson(ALICE).withPerson(BENSON).withTask(TASK_A).withTask(TASK_B).build();
         AddressBook differentAddressBook = new AddressBook();
         UserPrefs userPrefs = new UserPrefs();
 
