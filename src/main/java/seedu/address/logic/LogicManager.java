@@ -81,6 +81,11 @@ public class LogicManager implements Logic {
     }
 
     @Override
+    public ObservableList<Task> getUnfilteredTaskList() {
+        return model.getUnfilteredTaskList();
+    }
+
+    @Override
     public Path getManageMeFilePath() {
         return model.getManageMeFilePath();
     }

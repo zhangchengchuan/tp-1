@@ -2,6 +2,8 @@ package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 
+import java.time.DateTimeException;
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
@@ -213,5 +215,23 @@ public class ParserUtil {
         requireNonNull(dateTime);
         String trimmedDateTime = dateTime.trim();
         return trimmedDateTime.equals("") ? new TaskTime() : new TaskTime(trimmedDateTime);
+    }
+
+    /**
+     * Parses a {@code String date} into a {@code LocalDate}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code LocalDate} is invalid.
+     */
+    public static LocalDate parseDate(String date) throws ParseException {
+        requireNonNull(date);
+        String trimmedDate = date.trim();
+
+        try {
+            LocalDate parsedDate = LocalDate.parse(trimmedDate);
+            return parsedDate;
+        } catch (DateTimeException dte) {
+            throw new ParseException("The date entered is in the incorrect format");
+        }
     }
 }

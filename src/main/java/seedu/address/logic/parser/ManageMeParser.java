@@ -15,6 +15,9 @@ import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
+import seedu.address.logic.commands.calendar.NextMonthCommand;
+import seedu.address.logic.commands.calendar.PreviousMonthCommand;
+import seedu.address.logic.commands.calendar.ReadDayCommand;
 import seedu.address.logic.commands.module.AddModuleCommand;
 import seedu.address.logic.commands.module.DeleteModuleCommand;
 import seedu.address.logic.commands.module.EditModuleCommand;
@@ -22,6 +25,7 @@ import seedu.address.logic.commands.module.ReadModuleCommand;
 import seedu.address.logic.commands.task.AddTaskCommand;
 import seedu.address.logic.commands.task.DeleteTaskCommand;
 import seedu.address.logic.commands.task.EditTaskCommand;
+import seedu.address.logic.parser.calendar.ReadDayCommandParser;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.logic.parser.module.AddModuleCommandParser;
 import seedu.address.logic.parser.module.DeleteModuleCommandParser;
@@ -102,6 +106,15 @@ public class ManageMeParser {
 
         case EditModuleCommand.COMMAND_WORD:
             return new EditModuleCommandParser().parse(arguments);
+
+        case NextMonthCommand.COMMAND_WORD:
+            return new NextMonthCommand();
+
+        case PreviousMonthCommand.COMMAND_WORD:
+            return new PreviousMonthCommand();
+
+        case ReadDayCommand.COMMAND_WORD:
+            return new ReadDayCommandParser().parse(arguments);
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);

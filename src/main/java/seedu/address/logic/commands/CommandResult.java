@@ -9,6 +9,8 @@ import java.util.Objects;
  */
 public class CommandResult {
 
+    public static final String FEEDBACK_TO_SYSTEM = "CommandResult does not feedback to system!";
+
     private final String feedbackToUser;
 
     /** Help information should be shown to the user. */
@@ -42,6 +44,10 @@ public class CommandResult {
         return feedbackToUser;
     }
 
+    public String getFeedbackToSystem() {
+        return FEEDBACK_TO_SYSTEM;
+    }
+
     public boolean isShowHelp() {
         return showHelp;
     }
@@ -52,6 +58,10 @@ public class CommandResult {
 
     public boolean isReadModule() {
         return readModule;
+    }
+
+    public boolean isCalendarCommand() {
+        return false;
     }
 
     @Override

@@ -27,6 +27,7 @@ public class ModelManager implements Model {
     private final FilteredList<Module> filteredModules;
     private final FilteredList<Module> readModule;
     private final FilteredList<Task> filteredTasks;
+    private final FilteredList<Task> unfilteredTasks;
 
     /**
      * Initializes a ModelManager with the given manageMe and userPrefs.
@@ -43,6 +44,7 @@ public class ModelManager implements Model {
         filteredModules = new FilteredList<>(this.manageMe.getModuleList());
         readModule = new FilteredList<>(this.manageMe.getModuleList());
         filteredTasks = new FilteredList<>(this.manageMe.getTaskList());
+        unfilteredTasks = new FilteredList<>(this.manageMe.getTaskList());
     }
 
     public ModelManager() {
@@ -219,6 +221,11 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public ObservableList<Task> getUnfilteredTaskList() {
+        return unfilteredTasks;
+    }
+
+    @Override
     public boolean equals(Object obj) {
         // short circuit if same object
         if (obj == this) {
@@ -237,7 +244,8 @@ public class ModelManager implements Model {
                 && filteredPersons.equals(other.filteredPersons)
                 && filteredModules.equals(other.filteredModules)
                 && readModule.equals(other.readModule)
-                && filteredTasks.equals(other.filteredTasks);
+                && filteredTasks.equals(other.filteredTasks)
+                && unfilteredTasks.equals(other.unfilteredTasks);
     }
 
 }

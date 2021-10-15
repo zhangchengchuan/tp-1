@@ -131,7 +131,7 @@ public class MmMainWindow extends UiPart<Stage> {
         taskListPanel = new TaskListPanel(logic.getFilteredTaskList());
         taskListPanelPlaceholder.getChildren().add(taskListPanel.getRoot());
 
-        calendarListPanel = new CalendarListPanel(logic.getFilteredTaskList());
+        calendarListPanel = new CalendarListPanel(logic.getUnfilteredTaskList());
         calendarListPanelPlaceholder.getChildren().add(calendarListPanel.getRoot());
 
         resultDisplay = new ResultDisplay();
@@ -189,6 +189,10 @@ public class MmMainWindow extends UiPart<Stage> {
         moduleWindow.display(logic.getReadModuleList());
     }
 
+    private void handleCalendar(String feedbackToSystem) {
+        calendarListPanel.parseCommand(feedbackToSystem);
+    }
+
 
     /**
      * Executes the command and returns the result.
@@ -211,6 +215,10 @@ public class MmMainWindow extends UiPart<Stage> {
 
             if (commandResult.isReadModule()) {
                 handleModule();
+            }
+
+            if (commandResult.isCalendarCommand()) {
+                handleCalendar(commandResult.getFeedbackToSystem());
             }
 
             return commandResult;

@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.stage.Stage?>
 
-<fx:root minHeight="600" minWidth="450" onCloseRequest="#handleExit" title="Address App" type="javafx.stage.Stage" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root minHeight="600.0" minWidth="1000.0" onCloseRequest="#handleExit" title="Address App" type="javafx.stage.Stage" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
     <icons>
         <Image url="@/images/address_book_32.png" />
     </icons>
@@ -36,7 +36,7 @@
 
                 <HBox fx:id="contentPlaceholder" VBox.vgrow="ALWAYS">
                    <children>
-                      <VBox fx:id="moduleList" styleClass="pane-with-border" HBox.hgrow="ALWAYS">
+                      <VBox fx:id="moduleList" maxWidth="250.0" minWidth="-Infinity" prefWidth="150.0" styleClass="pane-with-border" HBox.hgrow="ALWAYS">
                           <padding>
                               <Insets bottom="10" left="10" right="10" top="10" />
                           </padding>
@@ -45,7 +45,7 @@
                           </children>
                       </VBox>
 
-                      <VBox fx:id="taskList" layoutX="10.0" layoutY="10.0" styleClass="pane-with-border" HBox.hgrow="ALWAYS">
+                      <VBox fx:id="taskList" layoutX="10.0" layoutY="10.0" maxWidth="250.0" minWidth="-Infinity" prefWidth="150.0" styleClass="pane-with-border" HBox.hgrow="ALWAYS">
                          <padding>
                             <Insets bottom="10" left="10" right="10" top="10" />
                          </padding>
@@ -54,7 +54,7 @@
                          </children>
                       </VBox>
 
-                      <VBox fx:id="calendarList" layoutX="350.0" layoutY="10.0" styleClass="pane-with-border" HBox.hgrow="ALWAYS">
+                      <VBox fx:id="calendarList" layoutX="350.0" layoutY="10.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="550.0" styleClass="pane-with-border" HBox.hgrow="ALWAYS">
                          <padding>
                             <Insets bottom="10" left="10" right="10" top="10" />
                          </padding>
@@ -71,7 +71,7 @@
                     </padding>
                 </StackPane>
 
-                <StackPane fx:id="commandBoxPlaceholder" styleClass="pane-with-border" VBox.vgrow="NEVER">
+                <StackPane fx:id="commandBoxPlaceholder" maxHeight="50.0" minHeight="50.0" prefHeight="50.0" styleClass="pane-with-border" VBox.vgrow="NEVER">
                     <padding>
                         <Insets bottom="5" left="10" right="10" top="5" />
                     </padding>

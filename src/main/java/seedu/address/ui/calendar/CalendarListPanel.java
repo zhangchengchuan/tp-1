@@ -10,9 +10,14 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
+import javafx.scene.layout.StackPane;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.logic.commands.calendar.NextMonthCommand;
+import seedu.address.logic.commands.calendar.PreviousMonthCommand;
+import seedu.address.logic.commands.calendar.ReadDayCommand;
 import seedu.address.model.task.Task;
 import seedu.address.ui.UiPart;
+import seedu.address.ui.task.TaskListPanel;
 
 /**
  * Panel containing the list of persons.
@@ -22,6 +27,7 @@ public class CalendarListPanel extends UiPart<Region> {
     private final Logger logger = LogsCenter.getLogger(CalendarListPanel.class);
 
     private LocalDate currentDate;
+    private LocalDate referenceDate;
     private ObservableList<Task> taskList;
 
     @FXML
@@ -30,6 +36,9 @@ public class CalendarListPanel extends UiPart<Region> {
     @FXML
     private GridPane calendarPlaceholder;
 
+    @FXML
+    private StackPane readDayPanelPlaceholder;
+
     /**
      * Creates a {@code CalendarListPanel} with the given {@code ObservableList}.
      */
@@ -37,7 +46,9 @@ public class CalendarListPanel extends UiPart<Region> {
         super(FXML);
         this.taskList = taskList;
         currentDate = LocalDate.now();
+        referenceDate = LocalDate.now();
         fillCalendar();
+        showDay(currentDate);
         taskList.addListener((ListChangeListener<? super Task>) change -> {
             clearCalendar();
             fillCalendar();
@@ -57,21 +68,15 @@ public class CalendarListPanel extends UiPart<Region> {
     private void fillCalendar() {
         date.setText(currentDate.toString());
         fillLayout();
-        ObservableList<Task> filteredTaskList = getTaskInCurrentMonth(taskList);
-        fillDay(filteredTaskList);
-    }
-
-    private ObservableList<Task> getTaskInCurrentMonth(ObservableList<Task> taskList) {
-        return taskList.filtered(task -> task.getSpan()
-                .anyMatch(date -> date.getMonth().equals(currentDate.getMonth())));
+        fillDay();
     }
 
     /**
      * Fills up the layout of a calendar.
      */
     private void fillLayout() {
-        calendarPlaceholder.add(new Label(String.format("%s",
-                currentDate.getMonth().toString())), 0, 0, 7, 1);
+        calendarPlaceholder.add(new Label(String.format("%s %s",
+                referenceDate.getMonth().toString(), referenceDate.getYear())), 0, 0, 7, 1);
         calendarPlaceholder.add(new Label("Su"), 0, 1, 1, 1);
         calendarPlaceholder.add(new Label("Mo"), 1, 1, 1, 1);
         calendarPlaceholder.add(new Label("Tu"), 2, 1, 1, 1);
@@ -82,13 +87,48 @@ public class CalendarListPanel extends UiPart<Region> {
     }
 
     /**
+     * Fills up the days in a month.
+     */
+    private void fillDay() {
+        int numOfDayInMonth = referenceDate.lengthOfMonth();
+        int currentDay = 1;
+        int row = 2;
+        int column = startColumn();
+
+        while (currentDay <= numOfDayInMonth) {
+            LocalDate date = LocalDate.of(referenceDate.getYear(), referenceDate.getMonth(), currentDay);
+
+            calendarPlaceholder.add(new DayCard(getTaskInCurrentDay(taskList, date), date).getRoot(),
+                    column, row, 1, 1);
+
+            column++;
+            if (column > 6) {
+                column %= 7;
+                row++;
+            }
+            currentDay++;
+        }
+    }
+
+    /**
+     * Returns the list of tasks happening on specified date from an original list of tasks.
+     *
+     * @param taskList the original list of tasks.
+     * @param currentDay the specified date.
+     * @return the filtered task list
+     */
+    private ObservableList<Task> getTaskInCurrentDay(ObservableList<Task> taskList, LocalDate currentDay) {
+        return taskList.filtered((task -> task.getSpan().anyMatch(dates -> dates.equals(currentDay))));
+    }
+
+    /**
      * Determines what is the column index of the first day of the month.
      *
-     * @return the column index.
+     * @return the column index
      */
     private int startColumn() {
         int column;
-        LocalDate firstDayOfMonth = currentDate.withDayOfMonth(1);
+        LocalDate firstDayOfMonth = referenceDate.withDayOfMonth(1);
         DayOfWeek dayOfWeek = firstDayOfMonth.getDayOfWeek();
         switch (dayOfWeek) {
         case SUNDAY:
@@ -120,25 +160,56 @@ public class CalendarListPanel extends UiPart<Region> {
     }
 
     /**
-     * Fills up the days in a month.
+     * Parses system input to perform calendar-specific execution.
      *
-     * @param filteredTaskList The list of tasks that will happen in the current month.
+     * @param feedbackToSystem system input
      */
-    private void fillDay(ObservableList<Task> filteredTaskList) {
-        int numOfDayInMonth = currentDate.getMonth().maxLength();
-        int currentDay = 1;
-        int row = 2;
-        int column = startColumn();
-        while (currentDay <= numOfDayInMonth) {
-            calendarPlaceholder.add(new DayCard(filteredTaskList,
-                    LocalDate.of(currentDate.getYear(), currentDate.getMonth(), currentDay)).getRoot(),
-                    column, row, 1, 1);
-            column++;
-            if (column > 6) {
-                column %= 7;
-                row++;
-            }
-            currentDay++;
+    public void parseCommand(String feedbackToSystem) {
+        String[] feedback = feedbackToSystem.split(" ");
+        switch (feedback[0]) {
+        case NextMonthCommand.COMMAND_WORD:
+            showNextMonth();
+            break;
+
+        case PreviousMonthCommand.COMMAND_WORD:
+            showPreviousMonth();
+            break;
+
+        case ReadDayCommand.COMMAND_WORD:
+            LocalDate date = LocalDate.parse(feedback[1]);
+            showDay(date);
+            break;
+
+        default:
+            return;
         }
+    }
+
+    /**
+     * Displays the next month of the calendar.
+     */
+    private void showNextMonth() {
+        referenceDate = referenceDate.plusMonths(1);
+        clearCalendar();
+        fillCalendar();
+    }
+
+    /**
+     * Displays the previous month of the calendar.
+     */
+    private void showPreviousMonth() {
+        referenceDate = referenceDate.minusMonths(1);
+        clearCalendar();
+        fillCalendar();
+    }
+
+    /**
+     * Displays the list of tasks on the specified date.
+     *
+     * @param date the specified date.
+     */
+    private void showDay(LocalDate date) {
+        TaskListPanel taskListPanel = new TaskListPanel(getTaskInCurrentDay(taskList, date));
+        readDayPanelPlaceholder.getChildren().add(taskListPanel.getRoot());
     }
 }

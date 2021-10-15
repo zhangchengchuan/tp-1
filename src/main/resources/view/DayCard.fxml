@@ -2,11 +2,14 @@
 
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-
-<VBox fx:id="cardPane" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1">
+<VBox fx:id="cardPane" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label fx:id="day" text="\$day" />
-      <VBox fx:id="list" />
+      <Label fx:id="numOfTask" alignment="CENTER" text="\$numOfTask" textAlignment="CENTER">
+         <font>
+            <Font size="6.0" />
+         </font></Label>
    </children>
 </VBox>
