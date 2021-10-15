@@ -1,4 +1,4 @@
-package seedu.address.ui;
+package seedu.address.ui.module;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -8,6 +8,7 @@ import javafx.scene.input.ClipboardContent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import seedu.address.model.link.Link;
+import seedu.address.ui.UiPart;
 
 /**
  * An UI component that displays information of a {@code Module}.

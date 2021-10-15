@@ -43,44 +43,44 @@ public interface Model {
     void setGuiSettings(GuiSettings guiSettings);
 
     /**
-     * Returns the user prefs' address book file path.
+     * Returns the user prefs' ManageMe file path.
      */
-    Path getAddressBookFilePath();
+    Path getManageMeFilePath();
 
     /**
-     * Sets the user prefs' address book file path.
+     * Sets the user prefs' ManageMe file path.
      */
-    void setAddressBookFilePath(Path addressBookFilePath);
+    void setManageMeFilePath(Path manageMeFilePath);
 
     /**
-     * Replaces address book data with the data in {@code addressBook}.
+     * Replaces ManageMe data with the data in {@code manageMe}.
      */
-    void setAddressBook(ReadOnlyAddressBook addressBook);
+    void setManageMe(ReadOnlyManageMe manageMe);
 
-    /** Returns the AddressBook */
-    ReadOnlyAddressBook getAddressBook();
+    /** Returns the ManageMe */
+    ReadOnlyManageMe getManageMe();
 
     /**
-     * Returns true if a person with the same identity as {@code person} exists in the address book.
+     * Returns true if a person with the same identity as {@code person} exists in the ManageMe.
      */
     boolean hasPerson(Person person);
 
     /**
      * Deletes the given person.
-     * The person must exist in the address book.
+     * The person must exist in the ManageMe.
      */
     void deletePerson(Person target);
 
     /**
      * Adds the given person.
-     * {@code person} must not already exist in the address book.
+     * {@code person} must not already exist in the ManageMe.
      */
     void addPerson(Person person);
 
     /**
      * Replaces the given person {@code target} with {@code editedPerson}.
-     * {@code target} must exist in the address book.
-     * The person identity of {@code editedPerson} must not be the same as another existing person in the address book.
+     * {@code target} must exist in the ManageMe.
+     * The person identity of {@code editedPerson} must not be the same as another existing person in the ManageMe.
      */
     void setPerson(Person target, Person editedPerson);
 
@@ -94,26 +94,26 @@ public interface Model {
     void updateFilteredPersonList(Predicate<Person> predicate);
 
     /**
-     * Returns true if a module with the same identity as {@code module} exists in the address book.
+     * Returns true if a module with the same identity as {@code module} exists in the ManageMe.
      */
     boolean hasModule(Module module);
 
     /**
      * Deletes the given module.
-     * The module must exist in the address book.
+     * The module must exist in the ManageMe.
      */
     void deleteModule(Module target);
 
     /**
      * Adds the given module.
-     * {@code module} must not already exist in the address book.
+     * {@code module} must not already exist in the ManageMe.
      */
     void addModule(Module module);
 
     /**
      * Replaces the given module {@code target} with {@code editedModule}.
-     * {@code target} must exist in the address book.
-     * The module identity of {@code editedModule} must not be the same as another existing module in the address book.
+     * {@code target} must exist in the ManageMe.
+     * The module identity of {@code editedModule} must not be the same as another existing module in the ManageMe.
      */
     void setModule(Module target, Module editedModule);
 
@@ -138,26 +138,26 @@ public interface Model {
     void updateReadModuleList(Predicate<Module> predicate);
 
     /**
-     * Returns true if a task with the same identity as {@code task} exists in the address book.
+     * Returns true if a task with the same identity as {@code task} exists in the ManageMe.
      */
     boolean hasTask(Task task);
 
     /**
      * Deletes the given task.
-     * The task must exist in the address book.
+     * The task must exist in the ManageMe.
      */
     void deleteTask(Task target);
 
     /**
      * Adds the given task.
-     * {@code task} must not already exist in the address book.
+     * {@code task} must not already exist in the ManageMe.
      */
     void addTask(Task task);
 
     /**
      * Replaces the given task {@code target} with {@code editedtask}.
-     * {@code target} must exist in the address book.
-     * The task identity of {@code editedtask} must not be the same as another existing task in the address book.
+     * {@code target} must exist in the ManageMe.
+     * The task identity of {@code editedtask} must not be the same as another existing task in the ManageMe.
      */
     void setTask(Task target, Task editedTask);
 

@@ -34,7 +34,7 @@ import seedu.address.logic.parser.task.EditTaskCommandParser;
 /**
  * Parses user input.
  */
-public class AddressBookParser {
+public class ManageMeParser {
 
     /**
      * Used for initial separation of command word and args.

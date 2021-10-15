@@ -10,22 +10,22 @@ import seedu.address.model.task.Task;
  * Example usage: <br>
  *     {@code AddressBook ab = new AddressBookBuilder().withPerson("John", "Doe").build();}
  */
-public class AddressBookBuilder {
+public class ManageMeBuilder {
 
     private ManageMe manageMe;
 
-    public AddressBookBuilder() {
+    public ManageMeBuilder() {
         manageMe = new ManageMe();
     }
 
-    public AddressBookBuilder(ManageMe manageMe) {
+    public ManageMeBuilder(ManageMe manageMe) {
         this.manageMe = manageMe;
     }
 
     /**
      * Adds a new {@code Person} to the {@code AddressBook} that we are building.
      */
-    public AddressBookBuilder withPerson(Person person) {
+    public ManageMeBuilder withPerson(Person person) {
         manageMe.addPerson(person);
         return this;
     }
@@ -33,7 +33,7 @@ public class AddressBookBuilder {
     /**
      * Adds a new {@code Person} to the {@code AddressBook} that we are building.
      */
-    public AddressBookBuilder withModule(Module module) {
+    public ManageMeBuilder withModule(Module module) {
         manageMe.addModule(module);
         return this;
     }
@@ -41,7 +41,7 @@ public class AddressBookBuilder {
     /**
      * Adds a new {@code Person} to the {@code AddressBook} that we are building.
      */
-    public AddressBookBuilder withTask(Task task) {
+    public ManageMeBuilder withTask(Task task) {
         manageMe.addTask(task);
         return this;
     }

@@ -9,11 +9,11 @@ import seedu.address.model.module.Module;
 import seedu.address.model.person.Person;
 import seedu.address.model.task.Task;
 
-public class TypicalAddressBook {
+public class TypicalManageMe {
     /**
-     * Returns an {@code AddressBook} with all the typical persons, modules and tasks.
+     * Returns an {@code ManageMe} with all the typical persons, modules and tasks.
      */
-    public static ManageMe getTypicalAddressBook() {
+    public static ManageMe getTypicalManageMe() {
         ManageMe ab = new ManageMe();
         for (Person person : getTypicalPersons()) {
             ab.addPerson(person);
