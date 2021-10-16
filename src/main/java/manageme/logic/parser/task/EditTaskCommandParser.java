@@ -15,11 +15,11 @@ import java.util.Set;
 import manageme.commons.core.Messages;
 import manageme.commons.core.index.Index;
 import manageme.logic.commands.task.EditTaskCommand;
+import manageme.logic.parser.exceptions.ParseException;
 import manageme.logic.parser.ArgumentMultimap;
 import manageme.logic.parser.ArgumentTokenizer;
 import manageme.logic.parser.Parser;
 import manageme.logic.parser.ParserUtil;
-import manageme.logic.parser.exceptions.ParseException;
 import manageme.model.tag.Tag;
 
 /**

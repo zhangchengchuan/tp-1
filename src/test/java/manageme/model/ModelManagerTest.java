@@ -1,11 +1,12 @@
 package manageme.model;
 
-import static manageme.model.Model.PREDICATE_SHOW_ALL_PERSONS;
-import static manageme.testutil.TypicalPersons.ALICE;
-import static manageme.testutil.TypicalPersons.BENSON;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static manageme.model.Model.PREDICATE_SHOW_ALL_PERSONS;
+import static manageme.testutil.Assert.assertThrows;
+import static manageme.testutil.TypicalPersons.ALICE;
+import static manageme.testutil.TypicalPersons.BENSON;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -13,12 +14,12 @@ import java.util.Arrays;
 
 import org.junit.jupiter.api.Test;
 
-import manageme.commons.core.GuiSettings;
-import manageme.model.person.NameContainsKeywordsPredicate;
 import manageme.testutil.Assert;
-import manageme.testutil.ManageMeBuilder;
 import manageme.testutil.TypicalModules;
 import manageme.testutil.TypicalTasks;
+import manageme.commons.core.GuiSettings;
+import manageme.model.person.NameContainsKeywordsPredicate;
+import manageme.testutil.ManageMeBuilder;
 
 public class ModelManagerTest {
 

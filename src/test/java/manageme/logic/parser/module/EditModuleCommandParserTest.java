@@ -15,11 +15,11 @@ import static manageme.logic.parser.CommandParserTestUtil.assertParseSuccess;
 
 import org.junit.jupiter.api.Test;
 
+import manageme.testutil.EditModuleDescriptorBuilder;
+import manageme.testutil.TypicalIndexes;
 import manageme.commons.core.index.Index;
 import manageme.logic.commands.module.EditModuleCommand;
 import manageme.model.module.ModuleName;
-import manageme.testutil.EditModuleDescriptorBuilder;
-import manageme.testutil.TypicalIndexes;
 
 public class EditModuleCommandParserTest {
 

@@ -1,5 +1,7 @@
 package manageme.logic.commands.module;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static manageme.logic.commands.CommandTestUtil.DESC_CS2100;
 import static manageme.logic.commands.CommandTestUtil.DESC_CS2103;
 import static manageme.logic.commands.CommandTestUtil.VALID_LINK_ZOOM;
@@ -8,11 +10,13 @@ import static manageme.logic.commands.CommandTestUtil.VALID_MODNAME_CS2103;
 import static manageme.logic.commands.CommandTestUtil.assertCommandFailure;
 import static manageme.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static manageme.logic.commands.CommandTestUtil.showModuleAtIndex;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
+import manageme.testutil.EditModuleDescriptorBuilder;
+import manageme.testutil.ModuleBuilder;
+import manageme.testutil.TypicalIndexes;
+import manageme.testutil.TypicalModules;
 import manageme.commons.core.Messages;
 import manageme.commons.core.index.Index;
 import manageme.logic.commands.ClearCommand;
@@ -21,10 +25,6 @@ import manageme.model.Model;
 import manageme.model.ModelManager;
 import manageme.model.UserPrefs;
 import manageme.model.module.Module;
-import manageme.testutil.EditModuleDescriptorBuilder;
-import manageme.testutil.ModuleBuilder;
-import manageme.testutil.TypicalIndexes;
-import manageme.testutil.TypicalModules;
 
 /**
  * Contains integration tests (interaction with the Model) and unit tests for EditModuleCommand.

@@ -6,8 +6,8 @@ import static manageme.logic.parser.CommandParserTestUtil.assertParseSuccess;
 
 import org.junit.jupiter.api.Test;
 
-import manageme.logic.commands.module.DeleteModuleCommand;
 import manageme.testutil.TypicalIndexes;
+import manageme.logic.commands.module.DeleteModuleCommand;
 
 public class DeleteModuleCommandParserTest {
     private DeleteModuleCommandParser parser = new DeleteModuleCommandParser();

@@ -8,11 +8,11 @@ import static manageme.logic.parser.CommandParserTestUtil.assertParseSuccess;
 
 import org.junit.jupiter.api.Test;
 
-import manageme.logic.commands.module.AddModuleCommand;
 import manageme.logic.commands.module.ModuleCommandTestUtil;
-import manageme.model.module.Module;
 import manageme.testutil.ModuleBuilder;
 import manageme.testutil.TypicalModules;
+import manageme.logic.commands.module.AddModuleCommand;
+import manageme.model.module.Module;
 
 public class AddModuleCommandParserTest {
 

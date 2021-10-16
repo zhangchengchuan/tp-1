@@ -5,9 +5,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Region;
 import manageme.logic.Logic;
-import manageme.logic.commands.CommandResult;
 import manageme.logic.commands.exceptions.CommandException;
 import manageme.logic.parser.exceptions.ParseException;
+import manageme.logic.commands.CommandResult;
 
 /**
  * The UI component that is responsible for receiving user command inputs.

@@ -5,8 +5,8 @@ import java.time.LocalDate;
 import org.junit.jupiter.api.Test;
 
 import manageme.commons.core.Messages;
-import manageme.logic.commands.calendar.ReadDayCommand;
 import manageme.logic.parser.CommandParserTestUtil;
+import manageme.logic.commands.calendar.ReadDayCommand;
 
 public class ReadDayCommandParserTest {
     private ReadDayCommandParser parser = new ReadDayCommandParser();

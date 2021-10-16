@@ -12,16 +12,16 @@ import manageme.commons.core.index.Index;
 import manageme.commons.util.StringUtil;
 import manageme.logic.parser.exceptions.ParseException;
 import manageme.model.link.Link;
-import manageme.model.module.ModuleName;
 import manageme.model.person.Address;
 import manageme.model.person.Email;
 import manageme.model.person.Name;
 import manageme.model.person.Phone;
-import manageme.model.tag.Tag;
 import manageme.model.task.TaskDescription;
 import manageme.model.task.TaskModule;
 import manageme.model.task.TaskName;
 import manageme.model.task.TaskTime;
+import manageme.model.module.ModuleName;
+import manageme.model.tag.Tag;
 
 /**
  * Contains utility methods used for parsing strings in the various *Parser classes.

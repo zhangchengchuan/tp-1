@@ -1,8 +1,8 @@
 package manageme.storage;
 
-import static manageme.testutil.TypicalManageMe.getTypicalManageMe;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static manageme.testutil.TypicalManageMe.getTypicalManageMe;
 
 import java.nio.file.Path;
 

@@ -1,7 +1,7 @@
 package manageme.logic.parser;
 
-import manageme.commons.core.Messages;
 import manageme.commons.core.index.Index;
+import manageme.commons.core.Messages;
 import manageme.logic.commands.DeleteCommand;
 import manageme.logic.parser.exceptions.ParseException;
 

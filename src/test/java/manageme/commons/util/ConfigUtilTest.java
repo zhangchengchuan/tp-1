@@ -2,6 +2,7 @@ package manageme.commons.util;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static manageme.testutil.Assert.assertThrows;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -12,9 +13,9 @@ import java.util.logging.Level;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
+import manageme.testutil.Assert;
 import manageme.commons.core.Config;
 import manageme.commons.exceptions.DataConversionException;
-import manageme.testutil.Assert;
 
 public class ConfigUtilTest {
 

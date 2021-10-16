@@ -1,6 +1,7 @@
 package manageme.model;
 
 import static java.util.Objects.requireNonNull;
+import static manageme.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.nio.file.Path;
 import java.util.function.Predicate;
@@ -11,9 +12,9 @@ import javafx.collections.transformation.FilteredList;
 import manageme.commons.core.GuiSettings;
 import manageme.commons.core.LogsCenter;
 import manageme.commons.util.CollectionUtil;
+import manageme.model.task.Task;
 import manageme.model.module.Module;
 import manageme.model.person.Person;
-import manageme.model.task.Task;
 
 /**
  * Represents the in-memory model of the ManageMe data.

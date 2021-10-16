@@ -9,8 +9,8 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.Region;
 import manageme.commons.core.LogsCenter;
-import manageme.model.module.Module;
 import manageme.ui.UiPart;
+import manageme.model.module.Module;
 
 /**
  * Panel containing the list of modules.

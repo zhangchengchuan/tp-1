@@ -1,9 +1,9 @@
 package manageme.model.link;
 
-import static manageme.logic.commands.CommandTestUtil.VALID_LINK_GOOGLE;
-import static manageme.logic.commands.CommandTestUtil.VALID_LINK_NAME_YOUTUBE;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static manageme.logic.commands.CommandTestUtil.VALID_LINK_GOOGLE;
+import static manageme.logic.commands.CommandTestUtil.VALID_LINK_NAME_YOUTUBE;
 
 import org.junit.jupiter.api.Test;
 

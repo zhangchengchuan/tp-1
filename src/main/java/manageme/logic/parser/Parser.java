@@ -1,7 +1,7 @@
 package manageme.logic.parser;
 
-import manageme.logic.commands.Command;
 import manageme.logic.parser.exceptions.ParseException;
+import manageme.logic.commands.Command;
 
 /**
  * Represents a Parser that is able to parse user input into a {@code Command} of type {@code T}.

@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static manageme.testutil.Assert.assertThrows;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -13,6 +14,8 @@ import java.util.function.Predicate;
 import org.junit.jupiter.api.Test;
 
 import javafx.collections.ObservableList;
+import manageme.testutil.Assert;
+import manageme.testutil.ModuleBuilder;
 import manageme.commons.core.GuiSettings;
 import manageme.logic.commands.CommandResult;
 import manageme.logic.commands.exceptions.CommandException;
@@ -23,8 +26,6 @@ import manageme.model.ReadOnlyUserPrefs;
 import manageme.model.module.Module;
 import manageme.model.person.Person;
 import manageme.model.task.Task;
-import manageme.testutil.Assert;
-import manageme.testutil.ModuleBuilder;
 
 public class AddModuleCommandTest {
     @Test

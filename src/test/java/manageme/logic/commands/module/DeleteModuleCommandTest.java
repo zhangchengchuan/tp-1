@@ -1,20 +1,20 @@
 package manageme.logic.commands.module;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static manageme.logic.commands.CommandTestUtil.assertCommandFailure;
 import static manageme.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static manageme.testutil.TypicalManageMe.getTypicalManageMe;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
+import manageme.testutil.TypicalIndexes;
 import manageme.commons.core.Messages;
 import manageme.commons.core.index.Index;
 import manageme.model.Model;
 import manageme.model.ModelManager;
 import manageme.model.UserPrefs;
 import manageme.model.module.Module;
-import manageme.testutil.TypicalIndexes;
 
 public class DeleteModuleCommandTest {
     private Model model = new ModelManager(getTypicalManageMe(), new UserPrefs());

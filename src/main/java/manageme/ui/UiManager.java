@@ -7,10 +7,10 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import manageme.MainApp;
 import manageme.commons.core.LogsCenter;
 import manageme.commons.util.StringUtil;
 import manageme.logic.Logic;
+import manageme.MainApp;
 
 /**
  * The manager of the UI component.

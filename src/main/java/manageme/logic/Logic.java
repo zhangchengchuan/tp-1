@@ -2,16 +2,16 @@ package manageme.logic;
 
 import java.nio.file.Path;
 
-import javafx.collections.ObservableList;
 import manageme.commons.core.GuiSettings;
-import manageme.logic.commands.CommandResult;
 import manageme.logic.commands.exceptions.CommandException;
 import manageme.logic.parser.exceptions.ParseException;
 import manageme.model.Model;
+import manageme.model.task.Task;
+import manageme.logic.commands.CommandResult;
 import manageme.model.ReadOnlyManageMe;
 import manageme.model.module.Module;
 import manageme.model.person.Person;
-import manageme.model.task.Task;
+import javafx.collections.ObservableList;
 
 /**
  * API of the Logic component

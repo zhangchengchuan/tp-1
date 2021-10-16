@@ -10,11 +10,11 @@ import java.util.Optional;
 import manageme.commons.core.Messages;
 import manageme.commons.core.index.Index;
 import manageme.commons.util.CollectionUtil;
+import manageme.logic.commands.exceptions.CommandException;
 import manageme.logic.commands.Command;
 import manageme.logic.commands.CommandResult;
-import manageme.logic.commands.exceptions.CommandException;
-import manageme.model.Model;
 import manageme.model.link.Link;
+import manageme.model.Model;
 import manageme.model.module.Module;
 import manageme.model.module.ModuleName;
 

@@ -2,6 +2,7 @@ package manageme.logic.parser;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static manageme.testutil.Assert.assertThrows;
 
 import java.time.LocalDate;
 import java.util.Arrays;
@@ -11,26 +12,26 @@ import java.util.stream.Collectors;
 import org.junit.jupiter.api.Test;
 
 import manageme.commons.core.Messages;
+import manageme.logic.commands.ExitCommand;
+import manageme.logic.commands.FindCommand;
+import manageme.logic.parser.exceptions.ParseException;
+import manageme.model.person.NameContainsKeywordsPredicate;
+import manageme.testutil.Assert;
+import manageme.testutil.EditPersonDescriptorBuilder;
+import manageme.testutil.PersonUtil;
+import manageme.testutil.TypicalIndexes;
 import manageme.logic.commands.AddCommand;
 import manageme.logic.commands.ClearCommand;
 import manageme.logic.commands.DeleteCommand;
 import manageme.logic.commands.EditCommand;
 import manageme.logic.commands.EditCommand.EditPersonDescriptor;
-import manageme.logic.commands.ExitCommand;
-import manageme.logic.commands.FindCommand;
 import manageme.logic.commands.HelpCommand;
 import manageme.logic.commands.ListCommand;
 import manageme.logic.commands.calendar.NextMonthCommand;
 import manageme.logic.commands.calendar.PreviousMonthCommand;
 import manageme.logic.commands.calendar.ReadDayCommand;
-import manageme.logic.parser.exceptions.ParseException;
-import manageme.model.person.NameContainsKeywordsPredicate;
 import manageme.model.person.Person;
-import manageme.testutil.Assert;
-import manageme.testutil.EditPersonDescriptorBuilder;
 import manageme.testutil.PersonBuilder;
-import manageme.testutil.PersonUtil;
-import manageme.testutil.TypicalIndexes;
 
 public class ManageMeParserTest {
 

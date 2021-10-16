@@ -8,12 +8,12 @@ import static manageme.logic.parser.CommandParserTestUtil.assertParseSuccess;
 
 import org.junit.jupiter.api.Test;
 
-import manageme.logic.commands.task.AddTaskCommand;
 import manageme.logic.commands.task.TaskCommandTestUtil;
-import manageme.model.task.Task;
-import manageme.model.task.TaskName;
 import manageme.testutil.TaskBuilder;
 import manageme.testutil.TypicalTasks;
+import manageme.logic.commands.task.AddTaskCommand;
+import manageme.model.task.Task;
+import manageme.model.task.TaskName;
 
 public class AddTaskCommandParserTest {
     private AddTaskCommandParser parser = new AddTaskCommandParser();

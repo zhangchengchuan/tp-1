@@ -2,6 +2,7 @@ package manageme.storage;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static manageme.testutil.Assert.assertThrows;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -11,10 +12,10 @@ import java.util.Optional;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
+import manageme.testutil.Assert;
 import manageme.commons.core.GuiSettings;
 import manageme.commons.exceptions.DataConversionException;
 import manageme.model.UserPrefs;
-import manageme.testutil.Assert;
 
 public class JsonUserPrefsStorageTest {
 

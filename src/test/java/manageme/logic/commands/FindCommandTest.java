@@ -1,14 +1,14 @@
 package manageme.logic.commands;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static manageme.commons.core.Messages.MESSAGE_PERSONS_LISTED_OVERVIEW;
 import static manageme.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static manageme.testutil.TypicalManageMe.getTypicalManageMe;
 import static manageme.testutil.TypicalPersons.CARL;
 import static manageme.testutil.TypicalPersons.ELLE;
 import static manageme.testutil.TypicalPersons.FIONA;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Arrays;
 import java.util.Collections;

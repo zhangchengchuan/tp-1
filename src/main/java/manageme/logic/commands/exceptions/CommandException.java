@@ -1,7 +1,5 @@
 package manageme.logic.commands.exceptions;
 
-import manageme.logic.commands.Command;
-
 /**
  * Represents an error which occurs during execution of a {@link Command}.
  */

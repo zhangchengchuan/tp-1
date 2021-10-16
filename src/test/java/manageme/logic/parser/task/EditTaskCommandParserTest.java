@@ -8,8 +8,8 @@ import manageme.logic.commands.task.EditTaskCommand;
 import manageme.logic.commands.task.TaskCommandTestUtil;
 import manageme.logic.parser.CommandParserTestUtil;
 import manageme.model.task.TaskName;
-import manageme.testutil.EditTaskDescriptorBuilder;
 import manageme.testutil.TypicalIndexes;
+import manageme.testutil.EditTaskDescriptorBuilder;
 
 
 public class EditTaskCommandParserTest {

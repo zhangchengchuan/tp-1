@@ -1,7 +1,8 @@
 package manageme.storage;
 
-import static manageme.storage.JsonAdaptedTask.MISSING_FIELD_MESSAGE_FORMAT;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static manageme.storage.JsonAdaptedTask.MISSING_FIELD_MESSAGE_FORMAT;
+import static manageme.testutil.Assert.assertThrows;
 
 import org.junit.jupiter.api.Test;
 

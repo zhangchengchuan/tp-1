@@ -9,11 +9,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonRootName;
 
 import manageme.commons.exceptions.IllegalValueException;
-import manageme.model.ManageMe;
 import manageme.model.ReadOnlyManageMe;
+import manageme.model.task.Task;
+import manageme.model.ManageMe;
 import manageme.model.module.Module;
 import manageme.model.person.Person;
-import manageme.model.task.Task;
 
 /**
  * An Immutable ManageMe that is serializable to JSON format.

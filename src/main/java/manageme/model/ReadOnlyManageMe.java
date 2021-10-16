@@ -1,9 +1,9 @@
 package manageme.model;
 
 import javafx.collections.ObservableList;
+import manageme.model.task.Task;
 import manageme.model.module.Module;
 import manageme.model.person.Person;
-import manageme.model.task.Task;
 
 /**
  * Unmodifiable view of a ManageMe

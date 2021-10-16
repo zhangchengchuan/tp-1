@@ -1,5 +1,7 @@
 package manageme.logic.commands;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static manageme.logic.commands.CommandTestUtil.DESC_AMY;
 import static manageme.logic.commands.CommandTestUtil.DESC_BOB;
 import static manageme.logic.commands.CommandTestUtil.VALID_NAME_BOB;
@@ -9,11 +11,11 @@ import static manageme.logic.commands.CommandTestUtil.assertCommandFailure;
 import static manageme.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static manageme.logic.commands.CommandTestUtil.showPersonAtIndex;
 import static manageme.testutil.TypicalManageMe.getTypicalManageMe;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
+import manageme.testutil.EditPersonDescriptorBuilder;
+import manageme.testutil.TypicalIndexes;
 import manageme.commons.core.Messages;
 import manageme.commons.core.index.Index;
 import manageme.logic.commands.EditCommand.EditPersonDescriptor;
@@ -22,9 +24,7 @@ import manageme.model.Model;
 import manageme.model.ModelManager;
 import manageme.model.UserPrefs;
 import manageme.model.person.Person;
-import manageme.testutil.EditPersonDescriptorBuilder;
 import manageme.testutil.PersonBuilder;
-import manageme.testutil.TypicalIndexes;
 
 /**
  * Contains integration tests (interaction with the Model) and unit tests for EditCommand.

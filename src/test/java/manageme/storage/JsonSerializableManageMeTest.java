@@ -1,6 +1,7 @@
 package manageme.storage;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static manageme.testutil.Assert.assertThrows;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -9,10 +10,10 @@ import org.junit.jupiter.api.Test;
 
 import manageme.commons.exceptions.IllegalValueException;
 import manageme.commons.util.JsonUtil;
-import manageme.model.ManageMe;
 import manageme.testutil.Assert;
 import manageme.testutil.TypicalManageMe;
 import manageme.testutil.TypicalTasks;
+import manageme.model.ManageMe;
 
 public class JsonSerializableManageMeTest {
 

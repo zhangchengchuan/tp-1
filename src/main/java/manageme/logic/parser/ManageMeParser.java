@@ -4,19 +4,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import manageme.commons.core.Messages;
-import manageme.logic.commands.AddCommand;
-import manageme.logic.commands.ClearCommand;
-import manageme.logic.commands.Command;
-import manageme.logic.commands.DeleteCommand;
-import manageme.logic.commands.EditCommand;
 import manageme.logic.commands.ExitCommand;
 import manageme.logic.commands.FindCommand;
-import manageme.logic.commands.HelpCommand;
-import manageme.logic.commands.ListCommand;
 import manageme.logic.commands.calendar.NextMonthCommand;
-import manageme.logic.commands.calendar.PreviousMonthCommand;
 import manageme.logic.commands.calendar.ReadDayCommand;
-import manageme.logic.commands.module.AddModuleCommand;
 import manageme.logic.commands.module.DeleteModuleCommand;
 import manageme.logic.commands.module.EditModuleCommand;
 import manageme.logic.commands.module.ReadModuleCommand;
@@ -32,6 +23,15 @@ import manageme.logic.parser.module.ReadModuleCommandParser;
 import manageme.logic.parser.task.AddTaskCommandParser;
 import manageme.logic.parser.task.DeleteTaskCommandParser;
 import manageme.logic.parser.task.EditTaskCommandParser;
+import manageme.logic.commands.AddCommand;
+import manageme.logic.commands.ClearCommand;
+import manageme.logic.commands.Command;
+import manageme.logic.commands.DeleteCommand;
+import manageme.logic.commands.EditCommand;
+import manageme.logic.commands.HelpCommand;
+import manageme.logic.commands.ListCommand;
+import manageme.logic.commands.calendar.PreviousMonthCommand;
+import manageme.logic.commands.module.AddModuleCommand;
 
 /**
  * Parses user input.

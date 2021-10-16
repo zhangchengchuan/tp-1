@@ -1,17 +1,19 @@
 package manageme.logic.commands.task;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static manageme.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
 import static manageme.logic.parser.CliSyntax.PREFIX_END;
 import static manageme.logic.parser.CliSyntax.PREFIX_MODULE;
 import static manageme.logic.parser.CliSyntax.PREFIX_NAME;
 import static manageme.logic.parser.CliSyntax.PREFIX_START;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static manageme.testutil.Assert.assertThrows;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import manageme.testutil.Assert;
 import manageme.commons.core.index.Index;
 import manageme.logic.commands.Command;
 import manageme.logic.commands.CommandResult;
@@ -21,7 +23,6 @@ import manageme.model.Model;
 import manageme.model.person.Person;
 import manageme.model.task.Task;
 import manageme.model.task.TaskNameContainsKeywordsPredicate;
-import manageme.testutil.Assert;
 import manageme.testutil.EditTaskDescriptorBuilder;
 
 

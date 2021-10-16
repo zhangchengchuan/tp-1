@@ -1,8 +1,9 @@
 package manageme.logic.parser;
 
-import static manageme.logic.parser.ParserUtil.MESSAGE_INVALID_INDEX;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static manageme.logic.parser.ParserUtil.MESSAGE_INVALID_INDEX;
+import static manageme.testutil.Assert.assertThrows;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -11,6 +12,8 @@ import java.util.Set;
 
 import org.junit.jupiter.api.Test;
 
+import manageme.testutil.Assert;
+import manageme.testutil.TypicalIndexes;
 import manageme.logic.parser.exceptions.ParseException;
 import manageme.model.person.Address;
 import manageme.model.person.Email;
@@ -21,8 +24,6 @@ import manageme.model.task.TaskDescription;
 import manageme.model.task.TaskModule;
 import manageme.model.task.TaskName;
 import manageme.model.task.TaskTime;
-import manageme.testutil.Assert;
-import manageme.testutil.TypicalIndexes;
 
 public class ParserUtilTest {
     private static final String INVALID_NAME = "R@chel";

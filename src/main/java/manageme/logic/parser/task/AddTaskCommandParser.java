@@ -10,17 +10,17 @@ import java.util.stream.Stream;
 
 import manageme.commons.core.Messages;
 import manageme.logic.commands.task.AddTaskCommand;
-import manageme.logic.parser.ArgumentMultimap;
-import manageme.logic.parser.ArgumentTokenizer;
-import manageme.logic.parser.Parser;
-import manageme.logic.parser.ParserUtil;
-import manageme.logic.parser.Prefix;
 import manageme.logic.parser.exceptions.ParseException;
 import manageme.model.task.Task;
 import manageme.model.task.TaskDescription;
 import manageme.model.task.TaskModule;
 import manageme.model.task.TaskName;
 import manageme.model.task.TaskTime;
+import manageme.logic.parser.ArgumentMultimap;
+import manageme.logic.parser.ArgumentTokenizer;
+import manageme.logic.parser.Parser;
+import manageme.logic.parser.ParserUtil;
+import manageme.logic.parser.Prefix;
 
 public class AddTaskCommandParser implements Parser<AddTaskCommand> {
     /**

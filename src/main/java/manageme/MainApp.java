@@ -5,8 +5,6 @@ import java.nio.file.Path;
 import java.util.Optional;
 import java.util.logging.Logger;
 
-import javafx.application.Application;
-import javafx.stage.Stage;
 import manageme.commons.core.Config;
 import manageme.commons.core.LogsCenter;
 import manageme.commons.core.Version;
@@ -15,21 +13,23 @@ import manageme.commons.util.ConfigUtil;
 import manageme.commons.util.StringUtil;
 import manageme.logic.Logic;
 import manageme.logic.LogicManager;
-import manageme.model.ManageMe;
 import manageme.model.Model;
 import manageme.model.ModelManager;
-import manageme.model.ReadOnlyManageMe;
 import manageme.model.ReadOnlyUserPrefs;
 import manageme.model.UserPrefs;
+import manageme.storage.JsonUserPrefsStorage;
+import manageme.ui.Ui;
+import manageme.ui.UiManager;
+import manageme.model.ManageMe;
+import manageme.model.ReadOnlyManageMe;
 import manageme.model.util.SampleDataUtil;
 import manageme.storage.JsonManageMeStorage;
-import manageme.storage.JsonUserPrefsStorage;
 import manageme.storage.ManageMeStorage;
 import manageme.storage.Storage;
 import manageme.storage.StorageManager;
 import manageme.storage.UserPrefsStorage;
-import manageme.ui.Ui;
-import manageme.ui.UiManager;
+import javafx.application.Application;
+import javafx.stage.Stage;
 
 /**
  * Runs the application.
