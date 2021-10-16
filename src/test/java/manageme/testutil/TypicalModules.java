@@ -13,7 +13,8 @@ public class TypicalModules {
     public static final Module MODULE_B = new ModuleBuilder().withName("CS222")
             .withLink("https://www.github.com").build();
 
-    private TypicalModules() {} // prevents instantiation
+    private TypicalModules() {
+    } // prevents instantiation
 
     /**
      * Returns an {@code AddressBook} with all the typical persons.

@@ -56,7 +56,7 @@ public class EditModuleCommandTest {
 
         EditModuleCommand.EditModuleDescriptor descriptor =
                 new EditModuleDescriptorBuilder().withName(VALID_MODNAME_CS2100)
-                .withLink(VALID_LINK_ZOOM).build();
+                        .withLink(VALID_LINK_ZOOM).build();
         EditModuleCommand editModuleCommand = new EditModuleCommand(indexLastModule, descriptor);
 
         String expectedMessage = String.format(EditModuleCommand.MESSAGE_EDIT_MODULE_SUCCESS, editedModule);

@@ -55,7 +55,7 @@ public class ParserUtilTest {
     @Test
     public void parseIndex_outOfRangeInput_throwsParseException() {
         Assert.assertThrows(ParseException.class, MESSAGE_INVALID_INDEX, ()
-            -> ParserUtil.parseIndex(Long.toString(Integer.MAX_VALUE + 1)));
+                -> ParserUtil.parseIndex(Long.toString(Integer.MAX_VALUE + 1)));
     }
 
     @Test
@@ -232,6 +232,7 @@ public class ParserUtilTest {
     public void parseTaskDescription_null_throwsNullPointerException() {
         Assert.assertThrows(NullPointerException.class, () -> ParserUtil.parseTaskDescription((String) null));
     }
+
     @Test
     public void parseTaskDescription_validValueWithoutWhitespace_returnsTaskDescription() throws Exception {
         TaskDescription expectedTaskDescription = new TaskDescription(VALID_TASKDESCRIPTION);
@@ -249,6 +250,7 @@ public class ParserUtilTest {
     public void parseTaskModule_null_throwsNullPointerException() {
         Assert.assertThrows(NullPointerException.class, () -> ParserUtil.parseTaskModule((String) null));
     }
+
     @Test
     public void parseTaskModule_validValueWithoutWhitespace_returnsTaskModule() throws Exception {
         TaskModule expectedTaskModule = new TaskModule(VALID_TASKMODULE);
@@ -266,6 +268,7 @@ public class ParserUtilTest {
     public void parseTaskTime_null_throwsNullPointerException() {
         Assert.assertThrows(NullPointerException.class, () -> ParserUtil.parseDateTime((String) null));
     }
+
     @Test
     public void parseTaskTime_validValueWithoutWhitespace_returnsTaskTime() throws Exception {
         TaskTime expectedTaskTime = new TaskTime(VALID_TASKTIME);

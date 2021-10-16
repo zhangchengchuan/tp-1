@@ -23,7 +23,9 @@ public class AddModuleCommandParserTest {
         Module expectedModule = new ModuleBuilder(TypicalModules.MODULE_B).build();
 
         // whitespace only preamble
-        assertParseSuccess(parser, PREAMBLE_WHITESPACE + ModuleCommandTestUtil.NAME_DESC_MODULE_B + ModuleCommandTestUtil.LINK_DESC_MODULE_B,
+        assertParseSuccess(parser,
+                PREAMBLE_WHITESPACE + ModuleCommandTestUtil.NAME_DESC_MODULE_B +
+                        ModuleCommandTestUtil.LINK_DESC_MODULE_B,
                 new AddModuleCommand(expectedModule));
     }
 
@@ -32,19 +34,27 @@ public class AddModuleCommandParserTest {
         String expectedMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddModuleCommand.MESSAGE_USAGE);
 
         // missing name prefix
-        assertParseFailure(parser, ModuleCommandTestUtil.VALID_NAME_MODULE_B + ModuleCommandTestUtil.LINK_DESC_MODULE_B, expectedMessage);
+        assertParseFailure(parser,
+                ModuleCommandTestUtil.VALID_NAME_MODULE_B + ModuleCommandTestUtil.LINK_DESC_MODULE_B,
+                expectedMessage);
 
         // missing link prefix
-        assertParseFailure(parser, ModuleCommandTestUtil.NAME_DESC_MODULE_B + ModuleCommandTestUtil.VALID_LINK_MODULE_B , expectedMessage);
+        assertParseFailure(parser,
+                ModuleCommandTestUtil.NAME_DESC_MODULE_B + ModuleCommandTestUtil.VALID_LINK_MODULE_B,
+                expectedMessage);
 
         // all prefixes missing
-        assertParseFailure(parser, ModuleCommandTestUtil.VALID_NAME_MODULE_B + ModuleCommandTestUtil.VALID_LINK_MODULE_B, expectedMessage);
+        assertParseFailure(parser,
+                ModuleCommandTestUtil.VALID_NAME_MODULE_B + ModuleCommandTestUtil.VALID_LINK_MODULE_B,
+                expectedMessage);
     }
 
     @Test
     public void parse_invalidValue_failure() {
         // non-empty preamble
-        assertParseFailure(parser, PREAMBLE_NON_EMPTY + ModuleCommandTestUtil.NAME_DESC_MODULE_B + ModuleCommandTestUtil.LINK_DESC_MODULE_B,
+        assertParseFailure(parser,
+                PREAMBLE_NON_EMPTY + ModuleCommandTestUtil.NAME_DESC_MODULE_B +
+                        ModuleCommandTestUtil.LINK_DESC_MODULE_B,
                 String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddModuleCommand.MESSAGE_USAGE));
     }
 }

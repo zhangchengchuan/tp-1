@@ -62,12 +62,14 @@ public class JsonManageMeStorageTest {
 
     @Test
     public void readAddressBook_invalidAndValidPersonAddressBook_throwDataConversionException() {
-        Assert.assertThrows(DataConversionException.class, () -> readAddressBook("invalidAndValidPersonAddressBook.json"));
+        Assert.assertThrows(DataConversionException.class,
+                () -> readAddressBook("invalidAndValidPersonAddressBook.json"));
     }
 
     @Test
     public void readAddressBook_invalidAndValidTaskAddressBook_throwDataConversionException() {
-        Assert.assertThrows(DataConversionException.class, () -> readAddressBook("Task/invalidAndValidTaskAddressBook.json"));
+        Assert.assertThrows(DataConversionException.class,
+                () -> readAddressBook("Task/invalidAndValidTaskAddressBook.json"));
     }
 
     @Test

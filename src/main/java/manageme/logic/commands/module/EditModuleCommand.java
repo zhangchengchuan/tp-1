@@ -111,7 +111,8 @@ public class EditModuleCommand extends Command {
         private ModuleName moduleName;
         private Link link;
 
-        public EditModuleDescriptor() {}
+        public EditModuleDescriptor() {
+        }
 
         /**
          * Copy constructor.

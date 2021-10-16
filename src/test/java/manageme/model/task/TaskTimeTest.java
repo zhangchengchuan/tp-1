@@ -13,12 +13,14 @@ public class TaskTimeTest {
     public void constructor_null_throwsNullPointerException() {
         Assert.assertThrows(NullPointerException.class, () -> new TaskTime(null));
     }
+
     @Test
     public void equals() {
         // same date/time, returns true
         assertTrue(TypicalTasks.TASK_A.getStart().equals(TypicalTasks.TASK_A.getStart()));
         assertTrue(TypicalTasks.TASK_A.getEnd().equals(TypicalTasks.TASK_A.getEnd()));
     }
+
     @Test
     public void empty() {
         // Empty TaskModule with value set as ""
@@ -27,6 +29,7 @@ public class TaskTimeTest {
         // Empty TaskModule with moduleName set as an empty Optional<String>
         assertTrue(TaskTime.empty().time.isEmpty());
     }
+
     @Test
     public void isEmpty() {
         // Empty TaskModule, returns true

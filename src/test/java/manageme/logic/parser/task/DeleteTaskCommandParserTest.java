@@ -25,6 +25,8 @@ public class DeleteTaskCommandParserTest {
 
     @Test
     public void parse_invalidArgs_throwsParseTaskException() {
-        CommandParserTestUtil.assertParseFailure(parser, "a", String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT, DeleteTaskCommand.MESSAGE_USAGE));
+        CommandParserTestUtil.assertParseFailure(parser,
+                "a",
+                String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT, DeleteTaskCommand.MESSAGE_USAGE));
     }
 }

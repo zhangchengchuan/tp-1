@@ -30,7 +30,8 @@ public class ModuleTest {
         assertFalse(TypicalModules.MODULE_A.isSameModule(editedCS111));
 
         // name differs in case, all other attributes same -> returns false
-        Module editedCS2100 = new ModuleBuilder(TypicalModules.MODULE_B).withName(VALID_MODNAME_CS2100.toLowerCase()).build();
+        Module editedCS2100 =
+                new ModuleBuilder(TypicalModules.MODULE_B).withName(VALID_MODNAME_CS2100.toLowerCase()).build();
         assertFalse(TypicalModules.MODULE_B.isSameModule(editedCS2100));
 
         // name has trailing spaces, all other attributes same -> returns false

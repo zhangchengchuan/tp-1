@@ -29,14 +29,14 @@ public class ManageMe implements ReadOnlyManageMe {
      *
      * Note that non-static init blocks are not recommended to use. There are other ways to avoid duplication
      *   among constructors.
-     */
-    {
+     */ {
         persons = new UniquePersonList();
         modules = new UniqueModuleList();
         tasks = new UniqueTaskList();
     }
 
-    public ManageMe() {}
+    public ManageMe() {
+    }
 
     /**
      * Creates an ManageMe using the Persons in the {@code toBeCopied}

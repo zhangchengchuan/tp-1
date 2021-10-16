@@ -37,7 +37,8 @@ public class TypicalTasks {
             new TaskBuilder().withName(VALID_NAME_B).withDescription(VALID_DESCRIPTION_B)
                     .withModule(VALID_MODULE_B).withStartDateTime(VALID_START_B).withEndDateTime(VALID_END_B).build();
 
-    private TypicalTasks() {} // prevents instantiation
+    private TypicalTasks() {
+    } // prevents instantiation
 
     /**
      * Returns an {@code AddressBook} with all the typical tasks.

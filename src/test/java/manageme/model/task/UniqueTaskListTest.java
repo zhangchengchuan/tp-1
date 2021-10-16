@@ -42,8 +42,9 @@ public class UniqueTaskListTest {
     public void contains_taskWithSameIdentityFieldsInList_returnsTrue() {
         uniqueTaskList.add(TypicalTasks.TASK_A);
         Task editedA =
-                new TaskBuilder(TypicalTasks.TASK_A).withDescription(VALID_DESCRIPTION_B).withStartDateTime(VALID_START_B)
-                .build();
+                new TaskBuilder(TypicalTasks.TASK_A).withDescription(VALID_DESCRIPTION_B)
+                        .withStartDateTime(VALID_START_B)
+                        .build();
         assertTrue(uniqueTaskList.contains(editedA));
     }
 
@@ -70,7 +71,8 @@ public class UniqueTaskListTest {
 
     @Test
     public void setTask_targetTaskNotInList_throwsTaskNotFoundException() {
-        Assert.assertThrows(TaskNotFoundException.class, () -> uniqueTaskList.setTask(TypicalTasks.TASK_A, TypicalTasks.TASK_A));
+        Assert.assertThrows(TaskNotFoundException.class,
+                () -> uniqueTaskList.setTask(TypicalTasks.TASK_A, TypicalTasks.TASK_A));
     }
 
     @Test
@@ -85,8 +87,9 @@ public class UniqueTaskListTest {
     @Test
     public void setTask_editedTaskHasSameIdentity_success() {
         uniqueTaskList.add(TypicalTasks.TASK_A);
-        Task editedA = new TaskBuilder(TypicalTasks.TASK_A).withDescription(VALID_DESCRIPTION_B).withEndDateTime(VALID_END_B)
-                .build();
+        Task editedA =
+                new TaskBuilder(TypicalTasks.TASK_A).withDescription(VALID_DESCRIPTION_B).withEndDateTime(VALID_END_B)
+                        .build();
         uniqueTaskList.setTask(TypicalTasks.TASK_A, editedA);
         UniqueTaskList expectedUniqueTaskList = new UniqueTaskList();
         expectedUniqueTaskList.add(editedA);
@@ -106,7 +109,8 @@ public class UniqueTaskListTest {
     public void setTask_editedTaskHasNonUniqueIdentity_throwsDuplicateTaskException() {
         uniqueTaskList.add(TypicalTasks.TASK_A);
         uniqueTaskList.add(TypicalTasks.TASK_B);
-        Assert.assertThrows(DuplicateTaskException.class, () -> uniqueTaskList.setTask(TypicalTasks.TASK_A, TypicalTasks.TASK_B));
+        Assert.assertThrows(DuplicateTaskException.class,
+                () -> uniqueTaskList.setTask(TypicalTasks.TASK_A, TypicalTasks.TASK_B));
     }
 
     @Test
@@ -165,6 +169,6 @@ public class UniqueTaskListTest {
     @Test
     public void asUnmodifiableObservableList_modifyList_throwsUnsupportedOperationException() {
         Assert.assertThrows(UnsupportedOperationException.class, ()
-            -> uniqueTaskList.asUnmodifiableObservableList().remove(0));
+                -> uniqueTaskList.asUnmodifiableObservableList().remove(0));
     }
 }

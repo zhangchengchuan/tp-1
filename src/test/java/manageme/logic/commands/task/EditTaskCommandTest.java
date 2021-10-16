@@ -47,12 +47,14 @@ public class EditTaskCommandTest {
         Task lastTask = model.getFilteredTaskList().get(indexLastTask.getZeroBased());
 
         TaskBuilder taskInList = new TaskBuilder(lastTask);
-        Task editedTask = taskInList.withName(TaskCommandTestUtil.VALID_NAME_B).withDescription(TaskCommandTestUtil.VALID_DESCRIPTION_B)
+        Task editedTask = taskInList.withName(TaskCommandTestUtil.VALID_NAME_B)
+                .withDescription(TaskCommandTestUtil.VALID_DESCRIPTION_B)
                 .withModule(TaskCommandTestUtil.VALID_MODULE_B).build();
 
         EditTaskCommand.EditTaskDescriptor descriptor =
                 new EditTaskDescriptorBuilder().withName(TaskCommandTestUtil.VALID_NAME_B)
-                .withDescription(TaskCommandTestUtil.VALID_DESCRIPTION_B).withModule(TaskCommandTestUtil.VALID_MODULE_B).build();
+                        .withDescription(TaskCommandTestUtil.VALID_DESCRIPTION_B)
+                        .withModule(TaskCommandTestUtil.VALID_MODULE_B).build();
         EditTaskCommand editCommand = new EditTaskCommand(indexLastTask, descriptor);
 
         String expectedMessage = String.format(EditTaskCommand.MESSAGE_EDIT_TASK_SUCCESS, editedTask);
@@ -133,10 +135,12 @@ public class EditTaskCommandTest {
 
     @Test
     public void equals() {
-        final EditTaskCommand standardCommand = new EditTaskCommand(TypicalIndexes.INDEX_FIRST, TaskCommandTestUtil.DESC_A);
+        final EditTaskCommand standardCommand =
+                new EditTaskCommand(TypicalIndexes.INDEX_FIRST, TaskCommandTestUtil.DESC_A);
 
         // same values -> returns true
-        EditTaskCommand.EditTaskDescriptor copyDescriptor = new EditTaskCommand.EditTaskDescriptor(TaskCommandTestUtil.DESC_A);
+        EditTaskCommand.EditTaskDescriptor copyDescriptor =
+                new EditTaskCommand.EditTaskDescriptor(TaskCommandTestUtil.DESC_A);
         EditTaskCommand commandWithSameValues = new EditTaskCommand(TypicalIndexes.INDEX_FIRST, copyDescriptor);
         assertTrue(standardCommand.equals(commandWithSameValues));
 
@@ -150,9 +154,11 @@ public class EditTaskCommandTest {
         assertFalse(standardCommand.equals(new ClearCommand()));
 
         // different index -> returns false
-        assertFalse(standardCommand.equals(new EditTaskCommand(TypicalIndexes.INDEX_SECOND, TaskCommandTestUtil.DESC_A)));
+        assertFalse(standardCommand.equals(new EditTaskCommand(TypicalIndexes.INDEX_SECOND,
+                TaskCommandTestUtil.DESC_A)));
 
         // different descriptor -> returns false
-        assertFalse(standardCommand.equals(new EditTaskCommand(TypicalIndexes.INDEX_FIRST, TaskCommandTestUtil.DESC_B)));
+        assertFalse(standardCommand.equals(new EditTaskCommand(TypicalIndexes.INDEX_FIRST,
+                TaskCommandTestUtil.DESC_B)));
     }
 }

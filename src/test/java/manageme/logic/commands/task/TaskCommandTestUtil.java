@@ -25,7 +25,6 @@ import manageme.testutil.Assert;
 import manageme.testutil.EditTaskDescriptorBuilder;
 
 
-
 public class TaskCommandTestUtil {
     public static final String VALID_NAME_A = "sleep early";
     public static final String VALID_NAME_B = "Do work";

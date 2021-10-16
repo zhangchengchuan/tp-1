@@ -68,6 +68,7 @@ public class TaskBuilder {
         this.module = taskModule.equals("") ? TaskModule.empty() : new TaskModule(taskModule);
         return this;
     }
+
     /**
      * Sets the {@code start} of the {@code Task} that we are building.
      */

@@ -55,6 +55,7 @@ public class LogicManager implements Logic {
 
         return commandResult;
     }
+
     @Override
     public ReadOnlyManageMe getManageMe() {
         return model.getManageMe();

@@ -69,7 +69,7 @@ class JsonSerializableManageMe {
             manageMe.addPerson(person);
         }
 
-        for (JsonAdaptedModule jsonAdaptedModule: modules) {
+        for (JsonAdaptedModule jsonAdaptedModule : modules) {
             Module module = jsonAdaptedModule.toModelType();
             if (manageMe.hasModule(module)) {
                 throw new IllegalValueException(MESSAGE_DUPLICATE_MODULE);
@@ -77,7 +77,7 @@ class JsonSerializableManageMe {
             manageMe.addModule(module);
         }
 
-        for (JsonAdaptedTask jsonAdaptedTask: tasks) {
+        for (JsonAdaptedTask jsonAdaptedTask : tasks) {
             Task task = jsonAdaptedTask.toModelType();
             if (manageMe.hasTask(task)) {
                 throw new IllegalValueException(MESSAGE_DUPLICATE_TASK);

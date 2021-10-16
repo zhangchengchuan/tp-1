@@ -52,7 +52,7 @@ public class AddTaskCommandTest {
         AddTaskCommandTest.ModelStub modelStub = new AddTaskCommandTest.ModelStubWithTask(validTask);
 
         Assert.assertThrows(CommandException.class, AddTaskCommand.MESSAGE_DUPLICATE_TASK, ()
-            -> addTaskCommand.execute(modelStub));
+                -> addTaskCommand.execute(modelStub));
     }
 
     @Test
@@ -78,6 +78,7 @@ public class AddTaskCommandTest {
         // different person -> returns false
         assertFalse(addACommand.equals(addBCommand));
     }
+
     /**
      * A default model stub that have all of the methods failing.
      */

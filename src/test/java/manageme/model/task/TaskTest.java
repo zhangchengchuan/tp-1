@@ -23,8 +23,9 @@ public class TaskTest {
         assertFalse(TypicalTasks.TASK_A.isSameTask(null));
 
         // same name, all other attributes different -> returns true
-        Task editedA = new TaskBuilder(TypicalTasks.TASK_A).withDescription(VALID_DESCRIPTION_B).withModule(VALID_MODULE_B)
-                .withStartDateTime(VALID_START_B).withEndDateTime(VALID_END_B).build();
+        Task editedA =
+                new TaskBuilder(TypicalTasks.TASK_A).withDescription(VALID_DESCRIPTION_B).withModule(VALID_MODULE_B)
+                        .withStartDateTime(VALID_START_B).withEndDateTime(VALID_END_B).build();
         assertTrue(TypicalTasks.TASK_A.isSameTask(editedA));
 
         // different name, all other attributes same -> returns false
@@ -40,6 +41,7 @@ public class TaskTest {
         editedB = new TaskBuilder(TypicalTasks.TASK_B).withName(nameWithTrailingSpaces).build();
         assertFalse(TypicalTasks.TASK_B.isSameTask(editedB));
     }
+
     @Test
     public void equals() {
         // same values -> returns true

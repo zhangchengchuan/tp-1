@@ -162,7 +162,8 @@ public class ManageMeTest {
     @Test
     public void hasTask_taskWithSameIdentityFieldsInAddressBook_returnsTrue() {
         manageMe.addTask(TypicalTasks.TASK_A);
-        Task editedTask = new TaskBuilder(TypicalTasks.TASK_A).withDescription(TaskCommandTestUtil.VALID_DESCRIPTION_A).withModule(TaskCommandTestUtil.VALID_MODULE_A)
+        Task editedTask = new TaskBuilder(TypicalTasks.TASK_A).withDescription(TaskCommandTestUtil.VALID_DESCRIPTION_A)
+                .withModule(TaskCommandTestUtil.VALID_MODULE_A)
                 .build();
         assertTrue(manageMe.hasTask(editedTask));
     }
@@ -241,6 +242,7 @@ public class ManageMeTest {
         private final ObservableList<Module> modules = FXCollections.observableArrayList();
 
         private final ObservableList<Task> tasks = FXCollections.observableArrayList();
+
         ManageMeTaskStub(Collection<Task> tasks) {
             this.tasks.setAll(tasks);
         }

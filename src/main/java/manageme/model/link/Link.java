@@ -39,6 +39,7 @@ public class Link {
 
 
     // TODO: Remove this constructor for v1.3 since name will be compulsory
+
     /**
      * Constructs a {@code Link}.
      *
@@ -119,7 +120,7 @@ public class Link {
         return other == this // short circuit if same object
                 || (other instanceof Link // instanceof handles nulls
                 && link.equals(((Link) other).link)); // state check
-                // TODO: Compare link names in equal when proper link class is done
+        // TODO: Compare link names in equal when proper link class is done
     }
 
     @Override

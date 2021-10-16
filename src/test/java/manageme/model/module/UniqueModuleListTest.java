@@ -56,17 +56,20 @@ public class UniqueModuleListTest {
 
     @Test
     public void setModule_nullTargetModule_throwsNullPointerException() {
-        Assert.assertThrows(NullPointerException.class, () -> uniqueModuleList.setModule(null, TypicalModules.MODULE_A));
+        Assert.assertThrows(NullPointerException.class,
+                () -> uniqueModuleList.setModule(null, TypicalModules.MODULE_A));
     }
 
     @Test
     public void setModule_nullEditedModule_throwsNullPointerException() {
-        Assert.assertThrows(NullPointerException.class, () -> uniqueModuleList.setModule(TypicalModules.MODULE_A, null));
+        Assert.assertThrows(NullPointerException.class,
+                () -> uniqueModuleList.setModule(TypicalModules.MODULE_A, null));
     }
 
     @Test
     public void setModule_targetModuleNotInList_throwsModuleNotFoundException() {
-        Assert.assertThrows(ModuleNotFoundException.class, () -> uniqueModuleList.setModule(TypicalModules.MODULE_A, TypicalModules.MODULE_A));
+        Assert.assertThrows(ModuleNotFoundException.class,
+                () -> uniqueModuleList.setModule(TypicalModules.MODULE_A, TypicalModules.MODULE_A));
     }
 
     @Test
@@ -101,7 +104,8 @@ public class UniqueModuleListTest {
     public void setModule_editedModuleHasNonUniqueIdentity_throwsDuplicateModuleException() {
         uniqueModuleList.add(TypicalModules.MODULE_A);
         uniqueModuleList.add(TypicalModules.MODULE_B);
-        Assert.assertThrows(DuplicateModuleException.class, () -> uniqueModuleList.setModule(TypicalModules.MODULE_A, TypicalModules.MODULE_B));
+        Assert.assertThrows(DuplicateModuleException.class,
+                () -> uniqueModuleList.setModule(TypicalModules.MODULE_A, TypicalModules.MODULE_B));
     }
 
     @Test
@@ -154,7 +158,8 @@ public class UniqueModuleListTest {
     @Test
     public void setModules_listWithDuplicateModules_throwsDuplicateModuleException() {
         List<Module> listWithDuplicateModules = Arrays.asList(TypicalModules.MODULE_A, TypicalModules.MODULE_A);
-        Assert.assertThrows(DuplicateModuleException.class, () -> uniqueModuleList.setModules(listWithDuplicateModules));
+        Assert.assertThrows(DuplicateModuleException.class,
+                () -> uniqueModuleList.setModules(listWithDuplicateModules));
     }
 
     @Test

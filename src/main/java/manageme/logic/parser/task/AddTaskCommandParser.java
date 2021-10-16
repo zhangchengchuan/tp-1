@@ -35,7 +35,7 @@ public class AddTaskCommandParser implements Parser<AddTaskCommand> {
                         PREFIX_END);
         if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_DESCRIPTION)
                 || (arePrefixesPresent(argMultimap, PREFIX_START)
-                    && !arePrefixesPresent(argMultimap, PREFIX_END))
+                && !arePrefixesPresent(argMultimap, PREFIX_END))
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT,
                     AddTaskCommand.MESSAGE_USAGE));
