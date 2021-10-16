@@ -9,9 +9,9 @@ import java.util.Set;
 
 import manageme.commons.core.Messages;
 import manageme.commons.core.index.Index;
-import manageme.logic.parser.exceptions.ParseException;
 import manageme.logic.commands.EditCommand;
 import manageme.logic.commands.EditCommand.EditPersonDescriptor;
+import manageme.logic.parser.exceptions.ParseException;
 import manageme.model.tag.Tag;
 
 /**

@@ -7,11 +7,11 @@ import static manageme.logic.parser.CliSyntax.PREFIX_MODULE;
 import static manageme.logic.parser.CliSyntax.PREFIX_NAME;
 import static manageme.logic.parser.CliSyntax.PREFIX_START;
 
+import manageme.logic.commands.Command;
+import manageme.logic.commands.CommandResult;
 import manageme.logic.commands.exceptions.CommandException;
 import manageme.model.Model;
 import manageme.model.task.Task;
-import manageme.logic.commands.Command;
-import manageme.logic.commands.CommandResult;
 
 public class AddTaskCommand extends Command {
     public static final String COMMAND_WORD = "addTask";

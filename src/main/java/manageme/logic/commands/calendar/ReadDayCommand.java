@@ -4,9 +4,9 @@ import static java.util.Objects.requireNonNull;
 
 import java.time.LocalDate;
 
-import manageme.model.Model;
 import manageme.logic.commands.Command;
 import manageme.logic.commands.CommandResult;
+import manageme.model.Model;
 
 public class ReadDayCommand extends Command {
     public static final String COMMAND_WORD = "readDay";

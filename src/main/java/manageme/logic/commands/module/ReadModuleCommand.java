@@ -6,10 +6,10 @@ import java.util.List;
 
 import manageme.commons.core.Messages;
 import manageme.commons.core.index.Index;
-import manageme.model.Model;
 import manageme.logic.commands.Command;
 import manageme.logic.commands.CommandResult;
 import manageme.logic.commands.exceptions.CommandException;
+import manageme.model.Model;
 import manageme.model.module.Module;
 
 public class ReadModuleCommand extends Command {

@@ -1,7 +1,6 @@
 package manageme.commons.util;
 
 import static java.util.Objects.requireNonNull;
-import static manageme.commons.util.AppUtil.checkArgument;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;

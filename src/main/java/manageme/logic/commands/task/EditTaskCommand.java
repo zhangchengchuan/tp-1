@@ -8,6 +8,8 @@ import java.util.Optional;
 import manageme.commons.core.Messages;
 import manageme.commons.core.index.Index;
 import manageme.commons.util.CollectionUtil;
+import manageme.logic.commands.Command;
+import manageme.logic.commands.CommandResult;
 import manageme.logic.commands.exceptions.CommandException;
 import manageme.model.Model;
 import manageme.model.task.Task;
@@ -15,9 +17,6 @@ import manageme.model.task.TaskDescription;
 import manageme.model.task.TaskModule;
 import manageme.model.task.TaskName;
 import manageme.model.task.TaskTime;
-import manageme.logic.commands.Command;
-import manageme.logic.commands.CommandResult;
-
 
 /**
  * Updates a task identified using it's displayed index from ManageMe.

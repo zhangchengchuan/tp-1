@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.util.logging.Logger;
 
-import javafx.collections.ObservableList;
 import manageme.commons.core.GuiSettings;
 import manageme.commons.core.LogsCenter;
 import manageme.logic.commands.exceptions.CommandException;
@@ -18,6 +17,7 @@ import manageme.model.ReadOnlyManageMe;
 import manageme.model.module.Module;
 import manageme.model.person.Person;
 import manageme.storage.Storage;
+import javafx.collections.ObservableList;
 
 /**
  * The main LogicManager of the app.

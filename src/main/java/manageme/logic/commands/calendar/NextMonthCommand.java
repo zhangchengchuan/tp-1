@@ -1,8 +1,8 @@
 package manageme.logic.commands.calendar;
 
-import manageme.model.Model;
 import manageme.logic.commands.Command;
 import manageme.logic.commands.CommandResult;
+import manageme.model.Model;
 
 public class NextMonthCommand extends Command {
     public static final String COMMAND_WORD = "nextMonth";

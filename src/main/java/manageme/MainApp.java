@@ -5,8 +5,6 @@ import java.nio.file.Path;
 import java.util.Optional;
 import java.util.logging.Logger;
 
-import javafx.application.Application;
-import javafx.stage.Stage;
 import manageme.commons.core.Config;
 import manageme.commons.core.LogsCenter;
 import manageme.commons.core.Version;
@@ -30,6 +28,8 @@ import manageme.storage.ManageMeStorage;
 import manageme.storage.Storage;
 import manageme.storage.StorageManager;
 import manageme.storage.UserPrefsStorage;
+import javafx.application.Application;
+import javafx.stage.Stage;
 
 /**
  * Runs the application.
