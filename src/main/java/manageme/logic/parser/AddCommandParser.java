@@ -9,9 +9,9 @@ import manageme.logic.parser.exceptions.ParseException;
 import manageme.model.person.Address;
 import manageme.model.person.Email;
 import manageme.model.person.Name;
+import manageme.model.person.Person;
 import manageme.model.person.Phone;
 import manageme.model.tag.Tag;
-import manageme.model.person.Person;
 
 /**
  * Parses input arguments and creates a new AddCommand object

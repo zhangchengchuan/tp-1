@@ -1,10 +1,9 @@
 package manageme.model.module;
 
+import static manageme.logic.commands.CommandTestUtil.VALID_LINK_GOOGLE;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static manageme.logic.commands.CommandTestUtil.VALID_LINK_GOOGLE;
-import static manageme.testutil.Assert.assertThrows;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -12,11 +11,11 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
+import manageme.model.module.exceptions.DuplicateModuleException;
+import manageme.model.module.exceptions.ModuleNotFoundException;
 import manageme.testutil.Assert;
 import manageme.testutil.ModuleBuilder;
 import manageme.testutil.TypicalModules;
-import manageme.model.module.exceptions.DuplicateModuleException;
-import manageme.model.module.exceptions.ModuleNotFoundException;
 
 public class UniqueModuleListTest {
     private final UniqueModuleList uniqueModuleList = new UniqueModuleList();

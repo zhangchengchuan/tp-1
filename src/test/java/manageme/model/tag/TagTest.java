@@ -1,7 +1,5 @@
 package manageme.model.tag;
 
-import static manageme.testutil.Assert.assertThrows;
-
 import org.junit.jupiter.api.Test;
 
 import manageme.testutil.Assert;

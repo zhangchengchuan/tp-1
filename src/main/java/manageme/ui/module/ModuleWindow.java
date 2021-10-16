@@ -7,10 +7,10 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import manageme.model.link.Link;
+import manageme.model.module.Module;
 import manageme.model.task.Task;
 import manageme.ui.UiPart;
 import manageme.ui.task.TaskCard;
-import manageme.model.module.Module;
 
 public class ModuleWindow extends UiPart<Stage> {
     private static final String FXML = "ModuleWindow.fxml";

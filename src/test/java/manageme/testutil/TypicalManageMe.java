@@ -2,10 +2,10 @@ package manageme.testutil;
 
 import static manageme.testutil.TypicalPersons.getTypicalPersons;
 
-import manageme.model.task.Task;
 import manageme.model.ManageMe;
 import manageme.model.module.Module;
 import manageme.model.person.Person;
+import manageme.model.task.Task;
 
 public class TypicalManageMe {
     /**

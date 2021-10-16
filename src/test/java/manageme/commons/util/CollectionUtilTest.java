@@ -1,9 +1,8 @@
 package manageme.commons.util;
 
+import static manageme.commons.util.CollectionUtil.requireAllNonNull;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static manageme.commons.util.CollectionUtil.requireAllNonNull;
-import static manageme.testutil.Assert.assertThrows;
 
 import java.util.Arrays;
 import java.util.Collection;

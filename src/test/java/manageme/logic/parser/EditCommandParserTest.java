@@ -30,8 +30,6 @@ import static manageme.logic.parser.CommandParserTestUtil.assertParseSuccess;
 
 import org.junit.jupiter.api.Test;
 
-import manageme.testutil.EditPersonDescriptorBuilder;
-import manageme.testutil.TypicalIndexes;
 import manageme.commons.core.index.Index;
 import manageme.logic.commands.EditCommand;
 import manageme.logic.commands.EditCommand.EditPersonDescriptor;
@@ -40,6 +38,8 @@ import manageme.model.person.Email;
 import manageme.model.person.Name;
 import manageme.model.person.Phone;
 import manageme.model.tag.Tag;
+import manageme.testutil.EditPersonDescriptorBuilder;
+import manageme.testutil.TypicalIndexes;
 
 public class EditCommandParserTest {
 

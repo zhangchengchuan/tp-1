@@ -1,12 +1,12 @@
 package manageme.model.task;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static manageme.logic.commands.task.TaskCommandTestUtil.VALID_DESCRIPTION_B;
 import static manageme.logic.commands.task.TaskCommandTestUtil.VALID_END_B;
 import static manageme.logic.commands.task.TaskCommandTestUtil.VALID_MODULE_B;
 import static manageme.logic.commands.task.TaskCommandTestUtil.VALID_NAME_B;
 import static manageme.logic.commands.task.TaskCommandTestUtil.VALID_START_B;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 

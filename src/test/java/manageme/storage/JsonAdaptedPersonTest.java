@@ -1,8 +1,7 @@
 package manageme.storage;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static manageme.testutil.Assert.assertThrows;
 import static manageme.testutil.TypicalPersons.BENSON;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
 import java.util.List;

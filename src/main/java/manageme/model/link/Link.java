@@ -1,7 +1,6 @@
 package manageme.model.link;
 
 import static java.util.Objects.requireNonNull;
-import static manageme.commons.util.AppUtil.checkArgument;
 
 import manageme.commons.util.AppUtil;
 

@@ -7,14 +7,14 @@ import static manageme.logic.parser.CliSyntax.PREFIX_NAME;
 import java.util.stream.Stream;
 
 import manageme.commons.core.Messages;
-import manageme.logic.parser.exceptions.ParseException;
-import manageme.model.link.Link;
 import manageme.logic.commands.module.AddModuleCommand;
 import manageme.logic.parser.ArgumentMultimap;
 import manageme.logic.parser.ArgumentTokenizer;
 import manageme.logic.parser.Parser;
 import manageme.logic.parser.ParserUtil;
 import manageme.logic.parser.Prefix;
+import manageme.logic.parser.exceptions.ParseException;
+import manageme.model.link.Link;
 import manageme.model.module.Module;
 import manageme.model.module.ModuleName;
 

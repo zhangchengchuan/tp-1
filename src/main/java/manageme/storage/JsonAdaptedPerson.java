@@ -8,14 +8,13 @@ import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import manageme.commons.exceptions.IllegalValueException;
 import manageme.model.person.Address;
 import manageme.model.person.Email;
 import manageme.model.person.Name;
+import manageme.model.person.Person;
 import manageme.model.person.Phone;
 import manageme.model.tag.Tag;
-import manageme.model.person.Person;
 
 /**
  * Jackson-friendly version of {@link Person}.

@@ -1,12 +1,11 @@
 package manageme.model.task;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static manageme.logic.commands.task.TaskCommandTestUtil.VALID_DESCRIPTION_B;
 import static manageme.logic.commands.task.TaskCommandTestUtil.VALID_END_B;
 import static manageme.logic.commands.task.TaskCommandTestUtil.VALID_START_B;
-import static manageme.testutil.Assert.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -14,11 +13,11 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
+import manageme.model.task.exceptions.DuplicateTaskException;
+import manageme.model.task.exceptions.TaskNotFoundException;
 import manageme.testutil.Assert;
 import manageme.testutil.TaskBuilder;
 import manageme.testutil.TypicalTasks;
-import manageme.model.task.exceptions.DuplicateTaskException;
-import manageme.model.task.exceptions.TaskNotFoundException;
 
 public class UniqueTaskListTest {
     private final UniqueTaskList uniqueTaskList = new UniqueTaskList();

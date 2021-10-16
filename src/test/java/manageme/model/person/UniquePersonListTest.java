@@ -1,13 +1,12 @@
 package manageme.model.person;
 
+import static manageme.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
+import static manageme.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
+import static manageme.testutil.TypicalPersons.ALICE;
+import static manageme.testutil.TypicalPersons.BOB;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static manageme.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
-import static manageme.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
-import static manageme.testutil.Assert.assertThrows;
-import static manageme.testutil.TypicalPersons.ALICE;
-import static manageme.testutil.TypicalPersons.BOB;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -15,9 +14,9 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-import manageme.testutil.Assert;
 import manageme.model.person.exceptions.DuplicatePersonException;
 import manageme.model.person.exceptions.PersonNotFoundException;
+import manageme.testutil.Assert;
 import manageme.testutil.PersonBuilder;
 
 public class UniquePersonListTest {

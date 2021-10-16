@@ -7,10 +7,10 @@ import static manageme.testutil.TypicalManageMe.getTypicalManageMe;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import manageme.testutil.TypicalIndexes;
 import manageme.model.Model;
 import manageme.model.ModelManager;
 import manageme.model.UserPrefs;
+import manageme.testutil.TypicalIndexes;
 
 /**
  * Contains integration tests (interaction with the Model) and unit tests for ListCommand.

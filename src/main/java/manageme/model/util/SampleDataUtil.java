@@ -9,9 +9,9 @@ import manageme.model.ReadOnlyManageMe;
 import manageme.model.person.Address;
 import manageme.model.person.Email;
 import manageme.model.person.Name;
+import manageme.model.person.Person;
 import manageme.model.person.Phone;
 import manageme.model.tag.Tag;
-import manageme.model.person.Person;
 
 /**
  * Contains utility methods for populating {@code ManageMe} with sample data.

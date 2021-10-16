@@ -6,12 +6,12 @@ import java.util.List;
 import java.util.Objects;
 
 import javafx.collections.ObservableList;
-import manageme.model.person.UniquePersonList;
-import manageme.model.task.Task;
-import manageme.model.task.UniqueTaskList;
 import manageme.model.module.Module;
 import manageme.model.module.UniqueModuleList;
 import manageme.model.person.Person;
+import manageme.model.person.UniquePersonList;
+import manageme.model.task.Task;
+import manageme.model.task.UniqueTaskList;
 
 /**
  * Wraps all data at the address-book level

@@ -2,7 +2,6 @@ package manageme.storage;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-
 import manageme.commons.exceptions.IllegalValueException;
 import manageme.model.tag.Tag;
 

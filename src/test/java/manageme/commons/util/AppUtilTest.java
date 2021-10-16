@@ -1,7 +1,6 @@
 package manageme.commons.util;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static manageme.testutil.Assert.assertThrows;
 
 import org.junit.jupiter.api.Test;
 

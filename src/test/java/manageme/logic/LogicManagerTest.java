@@ -1,14 +1,13 @@
 package manageme.logic;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static manageme.commons.core.Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX;
 import static manageme.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 import static manageme.logic.commands.CommandTestUtil.ADDRESS_DESC_AMY;
 import static manageme.logic.commands.CommandTestUtil.EMAIL_DESC_AMY;
 import static manageme.logic.commands.CommandTestUtil.NAME_DESC_AMY;
 import static manageme.logic.commands.CommandTestUtil.PHONE_DESC_AMY;
-import static manageme.testutil.Assert.assertThrows;
 import static manageme.testutil.TypicalPersons.AMY;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -17,7 +16,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
-import manageme.testutil.Assert;
 import manageme.logic.commands.AddCommand;
 import manageme.logic.commands.CommandResult;
 import manageme.logic.commands.ListCommand;
@@ -31,6 +29,7 @@ import manageme.model.person.Person;
 import manageme.storage.JsonManageMeStorage;
 import manageme.storage.JsonUserPrefsStorage;
 import manageme.storage.StorageManager;
+import manageme.testutil.Assert;
 import manageme.testutil.PersonBuilder;
 
 public class LogicManagerTest {

@@ -7,11 +7,11 @@ import static manageme.logic.parser.CliSyntax.PREFIX_NAME;
 import manageme.commons.core.Messages;
 import manageme.commons.core.index.Index;
 import manageme.logic.commands.module.EditModuleCommand;
-import manageme.logic.parser.exceptions.ParseException;
 import manageme.logic.parser.ArgumentMultimap;
 import manageme.logic.parser.ArgumentTokenizer;
 import manageme.logic.parser.Parser;
 import manageme.logic.parser.ParserUtil;
+import manageme.logic.parser.exceptions.ParseException;
 
 /**
  * Parses input arguments and creates a new EditModuleCommand object

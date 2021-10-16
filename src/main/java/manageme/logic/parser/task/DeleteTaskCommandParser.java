@@ -5,9 +5,9 @@ package manageme.logic.parser.task;
 import manageme.commons.core.Messages;
 import manageme.commons.core.index.Index;
 import manageme.logic.commands.task.DeleteTaskCommand;
-import manageme.logic.parser.exceptions.ParseException;
 import manageme.logic.parser.Parser;
 import manageme.logic.parser.ParserUtil;
+import manageme.logic.parser.exceptions.ParseException;
 
 
 public class DeleteTaskCommandParser implements Parser<DeleteTaskCommand> {

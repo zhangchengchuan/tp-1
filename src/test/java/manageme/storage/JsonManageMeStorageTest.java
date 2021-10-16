@@ -1,11 +1,10 @@
 package manageme.storage;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static manageme.testutil.Assert.assertThrows;
 import static manageme.testutil.TypicalPersons.ALICE;
 import static manageme.testutil.TypicalPersons.HOON;
 import static manageme.testutil.TypicalPersons.IDA;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -15,10 +14,10 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
 import manageme.commons.exceptions.DataConversionException;
-import manageme.testutil.Assert;
-import manageme.testutil.TypicalManageMe;
 import manageme.model.ManageMe;
 import manageme.model.ReadOnlyManageMe;
+import manageme.testutil.Assert;
+import manageme.testutil.TypicalManageMe;
 
 public class JsonManageMeStorageTest {
     private static final Path TEST_DATA_FOLDER = Paths.get("src", "test", "data", "JsonAddressBookStorageTest");

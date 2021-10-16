@@ -1,13 +1,12 @@
 package manageme.model;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static manageme.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
 import static manageme.logic.commands.CommandTestUtil.VALID_LINK_ZOOM;
 import static manageme.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
-import static manageme.testutil.Assert.assertThrows;
 import static manageme.testutil.TypicalPersons.ALICE;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -19,19 +18,19 @@ import org.junit.jupiter.api.Test;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import manageme.logic.commands.task.TaskCommandTestUtil;
+import manageme.model.module.Module;
 import manageme.model.module.exceptions.DuplicateModuleException;
+import manageme.model.person.Person;
 import manageme.model.person.exceptions.DuplicatePersonException;
 import manageme.model.task.Task;
 import manageme.model.task.exceptions.DuplicateTaskException;
 import manageme.testutil.Assert;
 import manageme.testutil.ModuleBuilder;
+import manageme.testutil.PersonBuilder;
 import manageme.testutil.TaskBuilder;
 import manageme.testutil.TypicalManageMe;
 import manageme.testutil.TypicalModules;
 import manageme.testutil.TypicalTasks;
-import manageme.model.module.Module;
-import manageme.model.person.Person;
-import manageme.testutil.PersonBuilder;
 
 public class ManageMeTest {
 
