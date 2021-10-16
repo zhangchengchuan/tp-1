@@ -27,7 +27,8 @@ public class AddModuleCommandParser implements Parser<AddModuleCommand> {
 
         if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_LINK)
                 || !argMultimap.getPreamble().isEmpty()) {
-            throw new ParseException(String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT, AddModuleCommand.MESSAGE_USAGE));
+            throw new ParseException(String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT,
+                    AddModuleCommand.MESSAGE_USAGE));
         }
 
         ModuleName name = ParserUtil.parseModuleName(argMultimap.getValue(PREFIX_NAME).get());
