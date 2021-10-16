@@ -54,9 +54,8 @@ public class ManageMeTest {
     @Test
     public void resetData_withDuplicatePersons_throwsDuplicatePersonException() {
         // Two persons with the same identity fields
-        Person editedAlice = new PersonBuilder(TypicalPersons.ALICE).withAddress(CommandTestUtil.VALID_ADDRESS_BOB).withTags(
-                        CommandTestUtil.VALID_TAG_HUSBAND)
-                .build();
+        Person editedAlice = new PersonBuilder(TypicalPersons.ALICE).withAddress(CommandTestUtil.VALID_ADDRESS_BOB)
+                .withTags(CommandTestUtil.VALID_TAG_HUSBAND).build();
         List<Person> newPersons = Arrays.asList(TypicalPersons.ALICE, editedAlice);
         ManageMePersonStub newData = new ManageMePersonStub(newPersons);
 
@@ -104,9 +103,8 @@ public class ManageMeTest {
     @Test
     public void hasPerson_personWithSameIdentityFieldsInAddressBook_returnsTrue() {
         manageMe.addPerson(TypicalPersons.ALICE);
-        Person editedAlice = new PersonBuilder(TypicalPersons.ALICE).withAddress(CommandTestUtil.VALID_ADDRESS_BOB).withTags(
-                        CommandTestUtil.VALID_TAG_HUSBAND)
-                .build();
+        Person editedAlice = new PersonBuilder(TypicalPersons.ALICE).withAddress(CommandTestUtil.VALID_ADDRESS_BOB)
+                .withTags(CommandTestUtil.VALID_TAG_HUSBAND).build();
         assertTrue(manageMe.hasPerson(editedAlice));
     }
 
@@ -134,7 +132,8 @@ public class ManageMeTest {
     @Test
     public void hasModule_moduleWithSameIdentityFieldsInAddressBook_returnsTrue() {
         manageMe.addModule(TypicalModules.MODULE_A);
-        Module editedModule = new ModuleBuilder(TypicalModules.MODULE_A).withLink(CommandTestUtil.VALID_LINK_ZOOM).build();
+        Module editedModule = new ModuleBuilder(TypicalModules.MODULE_A).withLink(CommandTestUtil.VALID_LINK_ZOOM)
+                .build();
         assertTrue(manageMe.hasModule(editedModule));
     }
 
@@ -162,9 +161,8 @@ public class ManageMeTest {
     @Test
     public void hasTask_taskWithSameIdentityFieldsInAddressBook_returnsTrue() {
         manageMe.addTask(TypicalTasks.TASK_A);
-        Task editedTask = new TaskBuilder(TypicalTasks.TASK_A).withDescription(TaskCommandTestUtil.VALID_DESCRIPTION_A).withModule(
-                        TaskCommandTestUtil.VALID_MODULE_A)
-                .build();
+        Task editedTask = new TaskBuilder(TypicalTasks.TASK_A).withDescription(TaskCommandTestUtil.VALID_DESCRIPTION_A)
+                .withModule(TaskCommandTestUtil.VALID_MODULE_A).build();
         assertTrue(manageMe.hasTask(editedTask));
     }
 

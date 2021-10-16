@@ -21,13 +21,17 @@ public class TypicalTasks {
 
     // Manually added - Task's details found in {@code TaskCommandTestUtil}
     public static final Task TASK_A_MANUAL =
-            new TaskBuilder().withName(TaskCommandTestUtil.VALID_NAME_A).withDescription(TaskCommandTestUtil.VALID_DESCRIPTION_A)
-                    .withModule(TaskCommandTestUtil.VALID_MODULE_A).withStartDateTime(TaskCommandTestUtil.VALID_START_A).withEndDateTime(
-                            TaskCommandTestUtil.VALID_END_A).build();
+            new TaskBuilder().withName(TaskCommandTestUtil.VALID_NAME_A)
+                    .withDescription(TaskCommandTestUtil.VALID_DESCRIPTION_A)
+                    .withModule(TaskCommandTestUtil.VALID_MODULE_A)
+                    .withStartDateTime(TaskCommandTestUtil.VALID_START_A)
+                    .withEndDateTime(TaskCommandTestUtil.VALID_END_A).build();
     public static final Task TASK_B_MANUAL =
-            new TaskBuilder().withName(TaskCommandTestUtil.VALID_NAME_B).withDescription(TaskCommandTestUtil.VALID_DESCRIPTION_B)
-                    .withModule(TaskCommandTestUtil.VALID_MODULE_B).withStartDateTime(TaskCommandTestUtil.VALID_START_B).withEndDateTime(
-                            TaskCommandTestUtil.VALID_END_B).build();
+            new TaskBuilder().withName(TaskCommandTestUtil.VALID_NAME_B)
+                    .withDescription(TaskCommandTestUtil.VALID_DESCRIPTION_B)
+                    .withModule(TaskCommandTestUtil.VALID_MODULE_B)
+                    .withStartDateTime(TaskCommandTestUtil.VALID_START_B)
+                    .withEndDateTime(TaskCommandTestUtil.VALID_END_B).build();
 
     private TypicalTasks() {} // prevents instantiation
 

@@ -51,14 +51,16 @@ public class EditTaskCommandParserTest {
 
     @Test
     public void parse_invalidValue_failure() {
-        assertParseFailure(parser, "1" + TaskCommandTestUtil.INVALID_NAME_DESC, TaskName.MESSAGE_CONSTRAINTS); // invalid name
+        assertParseFailure(parser, "1" + TaskCommandTestUtil.INVALID_NAME_DESC, TaskName.MESSAGE_CONSTRAINTS);
 
 
         // valid name followed by invalid name. The test case for invalid name followed by valid name
         // is tested at {@code parse_invalidValueFollowedByValidValue_success()}
-        assertParseFailure(parser, "1" + TaskCommandTestUtil.NAME_DESC_B + TaskCommandTestUtil.INVALID_NAME_DESC, TaskName.MESSAGE_CONSTRAINTS);
+        assertParseFailure(parser, "1" + TaskCommandTestUtil.NAME_DESC_B
+                + TaskCommandTestUtil.INVALID_NAME_DESC, TaskName.MESSAGE_CONSTRAINTS);
         // multiple invalid values, but only the first invalid value is captured
-        assertParseFailure(parser, "1" + TaskCommandTestUtil.INVALID_NAME_DESC + TaskCommandTestUtil.DESCRIPTION_DESC_A + TaskCommandTestUtil.MODULE_DESC_A,
+        assertParseFailure(parser, "1" + TaskCommandTestUtil.INVALID_NAME_DESC
+                + TaskCommandTestUtil.DESCRIPTION_DESC_A + TaskCommandTestUtil.MODULE_DESC_A,
                 TaskName.MESSAGE_CONSTRAINTS);
     }
 
@@ -66,12 +68,14 @@ public class EditTaskCommandParserTest {
     public void parse_allFieldsSpecified_success() {
         Index targetIndex = INDEX_SECOND;
         String userInput = targetIndex.getOneBased() + TaskCommandTestUtil.DESCRIPTION_DESC_A
-                + TaskCommandTestUtil.MODULE_DESC_A + TaskCommandTestUtil.NAME_DESC_B + TaskCommandTestUtil.START_DESC_A + TaskCommandTestUtil.END_DESC_A;
+                + TaskCommandTestUtil.MODULE_DESC_A + TaskCommandTestUtil.NAME_DESC_B
+                + TaskCommandTestUtil.START_DESC_A + TaskCommandTestUtil.END_DESC_A;
 
         EditTaskCommand.EditTaskDescriptor descriptor =
                 new EditTaskDescriptorBuilder().withName(TaskCommandTestUtil.VALID_NAME_B)
-                .withDescription(TaskCommandTestUtil.VALID_DESCRIPTION_A).withModule(TaskCommandTestUtil.VALID_MODULE_A).withStartDateTime(
-                                TaskCommandTestUtil.VALID_START_A)
+                .withDescription(TaskCommandTestUtil.VALID_DESCRIPTION_A)
+                .withModule(TaskCommandTestUtil.VALID_MODULE_A)
+                .withStartDateTime(TaskCommandTestUtil.VALID_START_A)
                 .withEndDateTime(TaskCommandTestUtil.VALID_END_A).build();
         EditTaskCommand expectedCommand = new EditTaskCommand(targetIndex, descriptor);
 
@@ -81,7 +85,8 @@ public class EditTaskCommandParserTest {
     @Test
     public void parse_someFieldsSpecified_success() {
         Index targetIndex = INDEX_FIRST;
-        String userInput = targetIndex.getOneBased() + TaskCommandTestUtil.DESCRIPTION_DESC_B + TaskCommandTestUtil.NAME_DESC_A;
+        String userInput = targetIndex.getOneBased() + TaskCommandTestUtil.DESCRIPTION_DESC_B
+                + TaskCommandTestUtil.NAME_DESC_A;
 
         EditTaskCommand.EditTaskDescriptor descriptor =
                 new EditTaskDescriptorBuilder().withDescription(TaskCommandTestUtil.VALID_DESCRIPTION_B)
@@ -129,13 +134,17 @@ public class EditTaskCommandParserTest {
     @Test
     public void parse_multipleRepeatedFields_acceptsLast() {
         Index targetIndex = INDEX_FIRST;
-        String userInput = targetIndex.getOneBased() + TaskCommandTestUtil.NAME_DESC_A + TaskCommandTestUtil.DESCRIPTION_DESC_A + TaskCommandTestUtil.MODULE_DESC_A
+        String userInput = targetIndex.getOneBased() + TaskCommandTestUtil.NAME_DESC_A
+                + TaskCommandTestUtil.DESCRIPTION_DESC_A + TaskCommandTestUtil.MODULE_DESC_A
                 + TaskCommandTestUtil.START_DESC_A + TaskCommandTestUtil.END_DESC_A
-                + TaskCommandTestUtil.DESCRIPTION_DESC_B + TaskCommandTestUtil.NAME_DESC_B + TaskCommandTestUtil.MODULE_DESC_B;
+                + TaskCommandTestUtil.DESCRIPTION_DESC_B + TaskCommandTestUtil.NAME_DESC_B
+                + TaskCommandTestUtil.MODULE_DESC_B;
 
-        EditTaskCommand.EditTaskDescriptor descriptor = new EditTaskDescriptorBuilder().withName(TaskCommandTestUtil.VALID_NAME_B)
+        EditTaskCommand.EditTaskDescriptor descriptor = new EditTaskDescriptorBuilder().withName(TaskCommandTestUtil
+                        .VALID_NAME_B)
                 .withDescription(TaskCommandTestUtil.VALID_DESCRIPTION_B).withModule(TaskCommandTestUtil.VALID_MODULE_B)
-                .withStartDateTime(TaskCommandTestUtil.VALID_START_A).withEndDateTime(TaskCommandTestUtil.VALID_END_A).build();
+                .withStartDateTime(TaskCommandTestUtil.VALID_START_A).withEndDateTime(TaskCommandTestUtil.VALID_END_A)
+                .build();
         EditTaskCommand expectedCommand = new EditTaskCommand(targetIndex, descriptor);
 
         assertParseSuccess(parser, userInput, expectedCommand);
@@ -145,14 +154,16 @@ public class EditTaskCommandParserTest {
     public void parse_invalidValueFollowedByValidValue_success() {
         // no other valid values specified
         Index targetIndex = INDEX_FIRST;
-        String userInput = targetIndex.getOneBased() + TaskCommandTestUtil.INVALID_NAME_DESC + TaskCommandTestUtil.NAME_DESC_B;
+        String userInput = targetIndex.getOneBased() + TaskCommandTestUtil.INVALID_NAME_DESC + TaskCommandTestUtil
+                .NAME_DESC_B;
         EditTaskCommand.EditTaskDescriptor descriptor =
                 new EditTaskDescriptorBuilder().withName(TaskCommandTestUtil.VALID_NAME_B).build();
         EditTaskCommand expectedCommand = new EditTaskCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
 
         // other valid values specified
-        userInput = targetIndex.getOneBased() + TaskCommandTestUtil.DESCRIPTION_DESC_B + TaskCommandTestUtil.INVALID_NAME_DESC + TaskCommandTestUtil.MODULE_DESC_B
+        userInput = targetIndex.getOneBased() + TaskCommandTestUtil.DESCRIPTION_DESC_B
+                + TaskCommandTestUtil.INVALID_NAME_DESC + TaskCommandTestUtil.MODULE_DESC_B
                 + TaskCommandTestUtil.NAME_DESC_B;
         descriptor =
                 new EditTaskDescriptorBuilder().withName(TaskCommandTestUtil.VALID_NAME_B).withDescription(

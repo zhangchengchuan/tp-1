@@ -138,9 +138,10 @@ public class ModelManagerTest {
 
     @Test
     public void equals() {
-        ManageMe manageMe = new ManageMeBuilder().withModule(TypicalModules.MODULE_A).withModule(TypicalModules.MODULE_B)
-                .withPerson(TypicalPersons.ALICE).withPerson(TypicalPersons.BENSON).withTask(TypicalTasks.TASK_A).withTask(
-                        TypicalTasks.TASK_B).build();
+        ManageMe manageMe = new ManageMeBuilder().withModule(TypicalModules.MODULE_A)
+                .withModule(TypicalModules.MODULE_B)
+                .withPerson(TypicalPersons.ALICE).withPerson(TypicalPersons.BENSON).withTask(TypicalTasks.TASK_A)
+                .withTask(TypicalTasks.TASK_B).build();
         ManageMe differentManageMe = new ManageMe();
         UserPrefs userPrefs = new UserPrefs();
 

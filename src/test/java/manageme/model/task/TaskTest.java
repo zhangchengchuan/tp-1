@@ -22,7 +22,8 @@ public class TaskTest {
         // same name, all other attributes different -> returns true
         Task editedA = new TaskBuilder(TASK_A).withDescription(TaskCommandTestUtil.VALID_DESCRIPTION_B).withModule(
                         TaskCommandTestUtil.VALID_MODULE_B)
-                .withStartDateTime(TaskCommandTestUtil.VALID_START_B).withEndDateTime(TaskCommandTestUtil.VALID_END_B).build();
+                .withStartDateTime(TaskCommandTestUtil.VALID_START_B).withEndDateTime(TaskCommandTestUtil.VALID_END_B)
+                .build();
         assertTrue(TASK_A.isSameTask(editedA));
 
         // different name, all other attributes same -> returns false
