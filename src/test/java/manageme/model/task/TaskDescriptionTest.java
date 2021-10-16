@@ -1,18 +1,16 @@
 package manageme.model.task;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static manageme.testutil.Assert.assertThrows;
+import static manageme.testutil.TypicalTasks.TASK_A;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
-
-import manageme.testutil.Assert;
-import manageme.testutil.TypicalTasks;
 
 
 public class TaskDescriptionTest {
     @Test
     public void constructor_null_throwsNullPointerException() {
-        Assert.assertThrows(NullPointerException.class, () -> new TaskDescription(null));
+        assertThrows(NullPointerException.class, () -> new TaskDescription(null));
     }
 
     //    @Test
@@ -24,7 +22,7 @@ public class TaskDescriptionTest {
     @Test
     public void equals() {
         // same description, returns true
-        assertTrue(TypicalTasks.TASK_A.getDescription().equals(TypicalTasks.TASK_A.getDescription()));
+        assertTrue(TASK_A.getDescription().equals(TASK_A.getDescription()));
 
     }
 }

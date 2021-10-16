@@ -2,10 +2,6 @@ package manageme.storage;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
-import static manageme.testutil.Assert.assertThrows;
-import static manageme.testutil.TypicalPersons.ALICE;
-import static manageme.testutil.TypicalPersons.HOON;
-import static manageme.testutil.TypicalPersons.IDA;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -15,10 +11,11 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
 import manageme.commons.exceptions.DataConversionException;
-import manageme.testutil.Assert;
-import manageme.testutil.TypicalManageMe;
 import manageme.model.ManageMe;
 import manageme.model.ReadOnlyManageMe;
+import manageme.testutil.Assert;
+import manageme.testutil.TypicalManageMe;
+import manageme.testutil.TypicalPersons;
 
 public class JsonManageMeStorageTest {
     private static final Path TEST_DATA_FOLDER = Paths.get("src", "test", "data", "JsonAddressBookStorageTest");
@@ -63,14 +60,12 @@ public class JsonManageMeStorageTest {
 
     @Test
     public void readAddressBook_invalidAndValidPersonAddressBook_throwDataConversionException() {
-        Assert.assertThrows(DataConversionException.class,
-                () -> readAddressBook("invalidAndValidPersonAddressBook.json"));
+        Assert.assertThrows(DataConversionException.class, () -> readAddressBook("invalidAndValidPersonAddressBook.json"));
     }
 
     @Test
     public void readAddressBook_invalidAndValidTaskAddressBook_throwDataConversionException() {
-        Assert.assertThrows(DataConversionException.class,
-                () -> readAddressBook("Task/invalidAndValidTaskAddressBook.json"));
+        Assert.assertThrows(DataConversionException.class, () -> readAddressBook("Task/invalidAndValidTaskAddressBook.json"));
     }
 
     @Test
@@ -85,14 +80,14 @@ public class JsonManageMeStorageTest {
         assertEquals(original, new ManageMe(readBack));
 
         // Modify data, overwrite exiting file, and read back
-        original.addPerson(HOON);
-        original.removePerson(ALICE);
+        original.addPerson(TypicalPersons.HOON);
+        original.removePerson(TypicalPersons.ALICE);
         jsonAddressBookStorage.saveManageMe(original, filePath);
         readBack = jsonAddressBookStorage.readManageMe(filePath).get();
         assertEquals(original, new ManageMe(readBack));
 
         // Save and read without specifying file path
-        original.addPerson(IDA);
+        original.addPerson(TypicalPersons.IDA);
         jsonAddressBookStorage.saveManageMe(original); // file path not specified
         readBack = jsonAddressBookStorage.readManageMe().get(); // file path not specified
         assertEquals(original, new ManageMe(readBack));

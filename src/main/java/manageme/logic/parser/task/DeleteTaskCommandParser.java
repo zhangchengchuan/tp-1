@@ -2,12 +2,13 @@ package manageme.logic.parser.task;
 
 //Maybe can extend from the DeleteCommand in .parser?
 
-import manageme.commons.core.Messages;
+import static manageme.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+
 import manageme.commons.core.index.Index;
 import manageme.logic.commands.task.DeleteTaskCommand;
-import manageme.logic.parser.exceptions.ParseException;
 import manageme.logic.parser.Parser;
 import manageme.logic.parser.ParserUtil;
+import manageme.logic.parser.exceptions.ParseException;
 
 
 public class DeleteTaskCommandParser implements Parser<DeleteTaskCommand> {
@@ -23,7 +24,7 @@ public class DeleteTaskCommandParser implements Parser<DeleteTaskCommand> {
             return new DeleteTaskCommand(index);
         } catch (ParseException pe) {
             throw new ParseException(
-                    String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT, DeleteTaskCommand.MESSAGE_USAGE), pe);
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteTaskCommand.MESSAGE_USAGE), pe);
         }
     }
 }

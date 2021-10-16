@@ -1,12 +1,9 @@
 package manageme.model;
 
+import static manageme.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static manageme.model.Model.PREDICATE_SHOW_ALL_PERSONS;
-import static manageme.testutil.Assert.assertThrows;
-import static manageme.testutil.TypicalPersons.ALICE;
-import static manageme.testutil.TypicalPersons.BENSON;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -14,12 +11,13 @@ import java.util.Arrays;
 
 import org.junit.jupiter.api.Test;
 
-import manageme.testutil.Assert;
-import manageme.testutil.TypicalModules;
-import manageme.testutil.TypicalTasks;
 import manageme.commons.core.GuiSettings;
 import manageme.model.person.NameContainsKeywordsPredicate;
+import manageme.testutil.Assert;
 import manageme.testutil.ManageMeBuilder;
+import manageme.testutil.TypicalModules;
+import manageme.testutil.TypicalPersons;
+import manageme.testutil.TypicalTasks;
 
 public class ModelManagerTest {
 
@@ -82,13 +80,13 @@ public class ModelManagerTest {
 
     @Test
     public void hasPerson_personNotInAddressBook_returnsFalse() {
-        assertFalse(modelManager.hasPerson(ALICE));
+        assertFalse(modelManager.hasPerson(TypicalPersons.ALICE));
     }
 
     @Test
     public void hasPerson_personInAddressBook_returnsTrue() {
-        modelManager.addPerson(ALICE);
-        assertTrue(modelManager.hasPerson(ALICE));
+        modelManager.addPerson(TypicalPersons.ALICE);
+        assertTrue(modelManager.hasPerson(TypicalPersons.ALICE));
     }
 
     @Test
@@ -140,10 +138,9 @@ public class ModelManagerTest {
 
     @Test
     public void equals() {
-        ManageMe manageMe =
-                new ManageMeBuilder().withModule(TypicalModules.MODULE_A).withModule(TypicalModules.MODULE_B)
-                        .withPerson(ALICE).withPerson(BENSON).withTask(TypicalTasks.TASK_A)
-                        .withTask(TypicalTasks.TASK_B).build();
+        ManageMe manageMe = new ManageMeBuilder().withModule(TypicalModules.MODULE_A).withModule(TypicalModules.MODULE_B)
+                .withPerson(TypicalPersons.ALICE).withPerson(TypicalPersons.BENSON).withTask(TypicalTasks.TASK_A).withTask(
+                        TypicalTasks.TASK_B).build();
         ManageMe differentManageMe = new ManageMe();
         UserPrefs userPrefs = new UserPrefs();
 
@@ -165,7 +162,7 @@ public class ModelManagerTest {
         assertFalse(modelManager.equals(new ModelManager(differentManageMe, userPrefs)));
 
         // different filteredList -> returns false
-        String[] keywords = ALICE.getName().fullName.split("\\s+");
+        String[] keywords = TypicalPersons.ALICE.getName().fullName.split("\\s+");
         modelManager.updateFilteredPersonList(new NameContainsKeywordsPredicate(Arrays.asList(keywords)));
         assertFalse(modelManager.equals(new ModelManager(manageMe, userPrefs)));
 

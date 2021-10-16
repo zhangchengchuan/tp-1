@@ -13,9 +13,9 @@ import manageme.commons.exceptions.IllegalValueException;
 import manageme.model.person.Address;
 import manageme.model.person.Email;
 import manageme.model.person.Name;
+import manageme.model.person.Person;
 import manageme.model.person.Phone;
 import manageme.model.tag.Tag;
-import manageme.model.person.Person;
 
 /**
  * Jackson-friendly version of {@link Person}.
@@ -35,8 +35,8 @@ class JsonAdaptedPerson {
      */
     @JsonCreator
     public JsonAdaptedPerson(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
-                             @JsonProperty("email") String email, @JsonProperty("address") String address,
-                             @JsonProperty("tagged") List<JsonAdaptedTag> tagged) {
+            @JsonProperty("email") String email, @JsonProperty("address") String address,
+            @JsonProperty("tagged") List<JsonAdaptedTag> tagged) {
         this.name = name;
         this.phone = phone;
         this.email = email;

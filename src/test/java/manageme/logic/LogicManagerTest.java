@@ -1,14 +1,8 @@
 package manageme.logic;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static manageme.commons.core.Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX;
 import static manageme.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
-import static manageme.logic.commands.CommandTestUtil.ADDRESS_DESC_AMY;
-import static manageme.logic.commands.CommandTestUtil.EMAIL_DESC_AMY;
-import static manageme.logic.commands.CommandTestUtil.NAME_DESC_AMY;
-import static manageme.logic.commands.CommandTestUtil.PHONE_DESC_AMY;
-import static manageme.testutil.Assert.assertThrows;
-import static manageme.testutil.TypicalPersons.AMY;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -17,9 +11,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
-import manageme.testutil.Assert;
 import manageme.logic.commands.AddCommand;
 import manageme.logic.commands.CommandResult;
+import manageme.logic.commands.CommandTestUtil;
 import manageme.logic.commands.ListCommand;
 import manageme.logic.commands.exceptions.CommandException;
 import manageme.logic.parser.exceptions.ParseException;
@@ -31,7 +25,9 @@ import manageme.model.person.Person;
 import manageme.storage.JsonManageMeStorage;
 import manageme.storage.JsonUserPrefsStorage;
 import manageme.storage.StorageManager;
+import manageme.testutil.Assert;
 import manageme.testutil.PersonBuilder;
+import manageme.testutil.TypicalPersons;
 
 public class LogicManagerTest {
     private static final IOException DUMMY_IO_EXCEPTION = new IOException("dummy exception");
@@ -80,9 +76,9 @@ public class LogicManagerTest {
         logic = new LogicManager(model, storage);
 
         // Execute add command
-        String addCommand = AddCommand.COMMAND_WORD + NAME_DESC_AMY + PHONE_DESC_AMY + EMAIL_DESC_AMY
-                + ADDRESS_DESC_AMY;
-        Person expectedPerson = new PersonBuilder(AMY).withTags().build();
+        String addCommand = AddCommand.COMMAND_WORD + CommandTestUtil.NAME_DESC_AMY + CommandTestUtil.PHONE_DESC_AMY + CommandTestUtil.EMAIL_DESC_AMY
+                + CommandTestUtil.ADDRESS_DESC_AMY;
+        Person expectedPerson = new PersonBuilder(TypicalPersons.AMY).withTags().build();
         ModelManager expectedModel = new ModelManager();
         expectedModel.addPerson(expectedPerson);
         String expectedMessage = LogicManager.FILE_OPS_ERROR_MESSAGE + DUMMY_IO_EXCEPTION;
@@ -122,7 +118,7 @@ public class LogicManagerTest {
      * @see #assertCommandFailure(String, Class, String, Model)
      */
     private void assertCommandSuccess(String inputCommand, String expectedMessage,
-                                      Model expectedModel) throws CommandException, ParseException {
+            Model expectedModel) throws CommandException, ParseException {
         CommandResult result = logic.execute(inputCommand);
         assertEquals(expectedMessage, result.getFeedbackToUser());
         assertEquals(expectedModel, model);
@@ -149,7 +145,7 @@ public class LogicManagerTest {
      * @see #assertCommandFailure(String, Class, String, Model)
      */
     private void assertCommandFailure(String inputCommand, Class<? extends Throwable> expectedException,
-                                      String expectedMessage) {
+            String expectedMessage) {
         Model expectedModel = new ModelManager(model.getManageMe(), new UserPrefs());
         assertCommandFailure(inputCommand, expectedException, expectedMessage, expectedModel);
     }
@@ -162,7 +158,7 @@ public class LogicManagerTest {
      * @see #assertCommandSuccess(String, String, Model)
      */
     private void assertCommandFailure(String inputCommand, Class<? extends Throwable> expectedException,
-                                      String expectedMessage, Model expectedModel) {
+            String expectedMessage, Model expectedModel) {
         Assert.assertThrows(expectedException, expectedMessage, () -> logic.execute(inputCommand));
         assertEquals(expectedModel, model);
     }

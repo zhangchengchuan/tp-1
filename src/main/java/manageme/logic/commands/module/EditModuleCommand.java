@@ -3,6 +3,7 @@ package manageme.logic.commands.module;
 import static java.util.Objects.requireNonNull;
 import static manageme.logic.parser.CliSyntax.PREFIX_LINK;
 import static manageme.logic.parser.CliSyntax.PREFIX_NAME;
+import static manageme.model.Model.PREDICATE_SHOW_ALL_MODULES;
 
 import java.util.List;
 import java.util.Optional;
@@ -10,11 +11,11 @@ import java.util.Optional;
 import manageme.commons.core.Messages;
 import manageme.commons.core.index.Index;
 import manageme.commons.util.CollectionUtil;
-import manageme.logic.commands.exceptions.CommandException;
 import manageme.logic.commands.Command;
 import manageme.logic.commands.CommandResult;
-import manageme.model.link.Link;
+import manageme.logic.commands.exceptions.CommandException;
 import manageme.model.Model;
+import manageme.model.link.Link;
 import manageme.model.module.Module;
 import manageme.model.module.ModuleName;
 
@@ -67,7 +68,7 @@ public class EditModuleCommand extends Command {
         }
 
         model.setModule(moduleToEdit, editedModule);
-        model.updateFilteredModuleList(Model.PREDICATE_SHOW_ALL_MODULES);
+        model.updateFilteredModuleList(PREDICATE_SHOW_ALL_MODULES);
         return new CommandResult(String.format(MESSAGE_EDIT_MODULE_SUCCESS, editedModule));
     }
 
@@ -111,8 +112,7 @@ public class EditModuleCommand extends Command {
         private ModuleName moduleName;
         private Link link;
 
-        public EditModuleDescriptor() {
-        }
+        public EditModuleDescriptor() {}
 
         /**
          * Copy constructor.

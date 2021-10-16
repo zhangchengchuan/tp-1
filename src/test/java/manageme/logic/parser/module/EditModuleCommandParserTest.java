@@ -12,14 +12,16 @@ import static manageme.logic.commands.CommandTestUtil.VALID_MODNAME_CS2100;
 import static manageme.logic.commands.CommandTestUtil.VALID_MODNAME_CS2103;
 import static manageme.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static manageme.logic.parser.CommandParserTestUtil.assertParseSuccess;
+import static manageme.testutil.TypicalIndexes.INDEX_FIRST;
+import static manageme.testutil.TypicalIndexes.INDEX_SECOND;
+import static manageme.testutil.TypicalIndexes.INDEX_THIRD;
 
 import org.junit.jupiter.api.Test;
 
-import manageme.testutil.EditModuleDescriptorBuilder;
-import manageme.testutil.TypicalIndexes;
 import manageme.commons.core.index.Index;
 import manageme.logic.commands.module.EditModuleCommand;
 import manageme.model.module.ModuleName;
+import manageme.testutil.EditModuleDescriptorBuilder;
 
 public class EditModuleCommandParserTest {
 
@@ -63,7 +65,7 @@ public class EditModuleCommandParserTest {
 
     @Test
     public void parse_allFieldsSpecified_success() {
-        Index targetIndex = TypicalIndexes.INDEX_SECOND;
+        Index targetIndex = INDEX_SECOND;
         String userInput = targetIndex.getOneBased() + MODNAME_DESC_CS2100 + LINK_DESC_ZOOM;
 
         EditModuleCommand.EditModuleDescriptor descriptor = new EditModuleDescriptorBuilder()
@@ -75,7 +77,7 @@ public class EditModuleCommandParserTest {
 
     @Test
     public void parse_linkSpecified_success() {
-        Index targetIndex = TypicalIndexes.INDEX_FIRST;
+        Index targetIndex = INDEX_FIRST;
         String userInput = targetIndex.getOneBased() + LINK_DESC_ZOOM;
 
         EditModuleCommand.EditModuleDescriptor descriptor = new EditModuleDescriptorBuilder()
@@ -88,7 +90,7 @@ public class EditModuleCommandParserTest {
     @Test
     public void parse_nameSpecified_success() {
         // name
-        Index targetIndex = TypicalIndexes.INDEX_THIRD;
+        Index targetIndex = INDEX_THIRD;
         String userInput = targetIndex.getOneBased() + MODNAME_DESC_CS2103;
         EditModuleCommand.EditModuleDescriptor descriptor = new EditModuleDescriptorBuilder()
                 .withName(VALID_MODNAME_CS2103).build();
@@ -99,7 +101,7 @@ public class EditModuleCommandParserTest {
 
     @Test
     public void parse_multipleRepeatedFields_acceptsLast() {
-        Index targetIndex = TypicalIndexes.INDEX_FIRST;
+        Index targetIndex = INDEX_FIRST;
         String userInput = targetIndex.getOneBased() + MODNAME_DESC_CS2100 + MODNAME_DESC_CS2103
                 + LINK_DESC_ZOOM + LINK_DESC_GOOGLE;
 
@@ -113,7 +115,7 @@ public class EditModuleCommandParserTest {
     @Test
     public void parse_invalidValueFollowedByValidValue_success() {
         // no other valid values specified
-        Index targetIndex = TypicalIndexes.INDEX_FIRST;
+        Index targetIndex = INDEX_FIRST;
         String userInput = targetIndex.getOneBased() + INVALID_NAME_DESC + MODNAME_DESC_CS2100;
         EditModuleCommand.EditModuleDescriptor descriptor =
                 new EditModuleDescriptorBuilder().withName(VALID_MODNAME_CS2100).build();

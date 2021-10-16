@@ -3,10 +3,10 @@ package manageme.logic.parser.module;
 import static manageme.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static manageme.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static manageme.logic.parser.CommandParserTestUtil.assertParseSuccess;
+import static manageme.testutil.TypicalIndexes.INDEX_FIRST;
 
 import org.junit.jupiter.api.Test;
 
-import manageme.testutil.TypicalIndexes;
 import manageme.logic.commands.module.DeleteModuleCommand;
 
 public class DeleteModuleCommandParserTest {
@@ -14,7 +14,7 @@ public class DeleteModuleCommandParserTest {
 
     @Test
     public void parse_validArgs_returnsDeleteModuleCommand() {
-        assertParseSuccess(parser, "1", new DeleteModuleCommand(TypicalIndexes.INDEX_FIRST));
+        assertParseSuccess(parser, "1", new DeleteModuleCommand(INDEX_FIRST));
     }
 
     @Test

@@ -1,20 +1,10 @@
 package manageme.testutil;
 
-import static manageme.logic.commands.task.TaskCommandTestUtil.VALID_DESCRIPTION_A;
-import static manageme.logic.commands.task.TaskCommandTestUtil.VALID_DESCRIPTION_B;
-import static manageme.logic.commands.task.TaskCommandTestUtil.VALID_END_A;
-import static manageme.logic.commands.task.TaskCommandTestUtil.VALID_END_B;
-import static manageme.logic.commands.task.TaskCommandTestUtil.VALID_MODULE_A;
-import static manageme.logic.commands.task.TaskCommandTestUtil.VALID_MODULE_B;
-import static manageme.logic.commands.task.TaskCommandTestUtil.VALID_NAME_A;
-import static manageme.logic.commands.task.TaskCommandTestUtil.VALID_NAME_B;
-import static manageme.logic.commands.task.TaskCommandTestUtil.VALID_START_A;
-import static manageme.logic.commands.task.TaskCommandTestUtil.VALID_START_B;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import manageme.logic.commands.task.TaskCommandTestUtil;
 import manageme.model.ManageMe;
 import manageme.model.task.Task;
 
@@ -31,14 +21,15 @@ public class TypicalTasks {
 
     // Manually added - Task's details found in {@code TaskCommandTestUtil}
     public static final Task TASK_A_MANUAL =
-            new TaskBuilder().withName(VALID_NAME_A).withDescription(VALID_DESCRIPTION_A)
-                    .withModule(VALID_MODULE_A).withStartDateTime(VALID_START_A).withEndDateTime(VALID_END_A).build();
+            new TaskBuilder().withName(TaskCommandTestUtil.VALID_NAME_A).withDescription(TaskCommandTestUtil.VALID_DESCRIPTION_A)
+                    .withModule(TaskCommandTestUtil.VALID_MODULE_A).withStartDateTime(TaskCommandTestUtil.VALID_START_A).withEndDateTime(
+                            TaskCommandTestUtil.VALID_END_A).build();
     public static final Task TASK_B_MANUAL =
-            new TaskBuilder().withName(VALID_NAME_B).withDescription(VALID_DESCRIPTION_B)
-                    .withModule(VALID_MODULE_B).withStartDateTime(VALID_START_B).withEndDateTime(VALID_END_B).build();
+            new TaskBuilder().withName(TaskCommandTestUtil.VALID_NAME_B).withDescription(TaskCommandTestUtil.VALID_DESCRIPTION_B)
+                    .withModule(TaskCommandTestUtil.VALID_MODULE_B).withStartDateTime(TaskCommandTestUtil.VALID_START_B).withEndDateTime(
+                            TaskCommandTestUtil.VALID_END_B).build();
 
-    private TypicalTasks() {
-    } // prevents instantiation
+    private TypicalTasks() {} // prevents instantiation
 
     /**
      * Returns an {@code AddressBook} with all the typical tasks.

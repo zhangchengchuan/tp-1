@@ -1,7 +1,5 @@
 package manageme.model.person;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static manageme.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
 import static manageme.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
 import static manageme.logic.commands.CommandTestUtil.VALID_NAME_BOB;
@@ -10,10 +8,11 @@ import static manageme.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static manageme.testutil.Assert.assertThrows;
 import static manageme.testutil.TypicalPersons.ALICE;
 import static manageme.testutil.TypicalPersons.BOB;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
-import manageme.testutil.Assert;
 import manageme.testutil.PersonBuilder;
 
 public class PersonTest {
@@ -21,7 +20,7 @@ public class PersonTest {
     @Test
     public void asObservableList_modifyList_throwsUnsupportedOperationException() {
         Person person = new PersonBuilder().build();
-        Assert.assertThrows(UnsupportedOperationException.class, () -> person.getTags().remove(0));
+        assertThrows(UnsupportedOperationException.class, () -> person.getTags().remove(0));
     }
 
     @Test

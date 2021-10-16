@@ -1,6 +1,7 @@
 package manageme.logic.commands.task;
 
 import static java.util.Objects.requireNonNull;
+import static manageme.model.Model.PREDICATE_SHOW_ALL_TASKS;
 
 import java.util.List;
 import java.util.Optional;
@@ -17,6 +18,8 @@ import manageme.model.task.TaskDescription;
 import manageme.model.task.TaskModule;
 import manageme.model.task.TaskName;
 import manageme.model.task.TaskTime;
+
+
 
 /**
  * Updates a task identified using it's displayed index from ManageMe.
@@ -67,7 +70,7 @@ public class EditTaskCommand extends Command {
         }
 
         model.setTask(taskToEdit, editedTask);
-        model.updateFilteredTaskList(Model.PREDICATE_SHOW_ALL_TASKS);
+        model.updateFilteredTaskList(PREDICATE_SHOW_ALL_TASKS);
         return new CommandResult(String.format(MESSAGE_EDIT_TASK_SUCCESS, editedTask));
     }
 

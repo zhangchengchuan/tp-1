@@ -13,9 +13,9 @@ import javafx.stage.Stage;
 import manageme.commons.core.GuiSettings;
 import manageme.commons.core.LogsCenter;
 import manageme.logic.Logic;
+import manageme.logic.commands.CommandResult;
 import manageme.logic.commands.exceptions.CommandException;
 import manageme.logic.parser.exceptions.ParseException;
-import manageme.logic.commands.CommandResult;
 
 /**
  * The Main Window. Provides the basic application layout containing

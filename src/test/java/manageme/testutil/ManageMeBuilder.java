@@ -1,9 +1,9 @@
 package manageme.testutil;
 
-import manageme.model.task.Task;
 import manageme.model.ManageMe;
 import manageme.model.module.Module;
 import manageme.model.person.Person;
+import manageme.model.task.Task;
 
 /**
  * A utility class to help with building Addressbook objects.

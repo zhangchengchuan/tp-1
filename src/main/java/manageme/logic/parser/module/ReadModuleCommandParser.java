@@ -1,6 +1,7 @@
 package manageme.logic.parser.module;
 
-import manageme.commons.core.Messages;
+import static manageme.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+
 import manageme.commons.core.index.Index;
 import manageme.logic.commands.module.ReadModuleCommand;
 import manageme.logic.parser.Parser;
@@ -20,7 +21,7 @@ public class ReadModuleCommandParser implements Parser<ReadModuleCommand> {
             return new ReadModuleCommand(index);
         } catch (ParseException pe) {
             throw new ParseException(
-                    String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT, ReadModuleCommand.MESSAGE_USAGE), pe);
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, ReadModuleCommand.MESSAGE_USAGE), pe);
         }
     }
 }

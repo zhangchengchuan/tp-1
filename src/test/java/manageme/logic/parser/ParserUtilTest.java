@@ -1,9 +1,10 @@
 package manageme.logic.parser;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static manageme.logic.parser.ParserUtil.MESSAGE_INVALID_INDEX;
 import static manageme.testutil.Assert.assertThrows;
+import static manageme.testutil.TypicalIndexes.INDEX_FIRST;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -12,8 +13,6 @@ import java.util.Set;
 
 import org.junit.jupiter.api.Test;
 
-import manageme.testutil.Assert;
-import manageme.testutil.TypicalIndexes;
 import manageme.logic.parser.exceptions.ParseException;
 import manageme.model.person.Address;
 import manageme.model.person.Email;
@@ -50,32 +49,32 @@ public class ParserUtilTest {
 
     @Test
     public void parseIndex_invalidInput_throwsParseException() {
-        Assert.assertThrows(ParseException.class, () -> ParserUtil.parseIndex("10 a"));
+        assertThrows(ParseException.class, () -> ParserUtil.parseIndex("10 a"));
     }
 
     @Test
     public void parseIndex_outOfRangeInput_throwsParseException() {
-        Assert.assertThrows(ParseException.class, MESSAGE_INVALID_INDEX, ()
-                -> ParserUtil.parseIndex(Long.toString(Integer.MAX_VALUE + 1)));
+        assertThrows(ParseException.class, MESSAGE_INVALID_INDEX, ()
+            -> ParserUtil.parseIndex(Long.toString(Integer.MAX_VALUE + 1)));
     }
 
     @Test
     public void parseIndex_validInput_success() throws Exception {
         // No whitespaces
-        assertEquals(TypicalIndexes.INDEX_FIRST, ParserUtil.parseIndex("1"));
+        assertEquals(INDEX_FIRST, ParserUtil.parseIndex("1"));
 
         // Leading and trailing whitespaces
-        assertEquals(TypicalIndexes.INDEX_FIRST, ParserUtil.parseIndex("  1  "));
+        assertEquals(INDEX_FIRST, ParserUtil.parseIndex("  1  "));
     }
 
     @Test
     public void parseName_null_throwsNullPointerException() {
-        Assert.assertThrows(NullPointerException.class, () -> ParserUtil.parseName((String) null));
+        assertThrows(NullPointerException.class, () -> ParserUtil.parseName((String) null));
     }
 
     @Test
     public void parseName_invalidValue_throwsParseException() {
-        Assert.assertThrows(ParseException.class, () -> ParserUtil.parseName(INVALID_NAME));
+        assertThrows(ParseException.class, () -> ParserUtil.parseName(INVALID_NAME));
     }
 
     @Test
@@ -93,12 +92,12 @@ public class ParserUtilTest {
 
     @Test
     public void parsePhone_null_throwsNullPointerException() {
-        Assert.assertThrows(NullPointerException.class, () -> ParserUtil.parsePhone((String) null));
+        assertThrows(NullPointerException.class, () -> ParserUtil.parsePhone((String) null));
     }
 
     @Test
     public void parsePhone_invalidValue_throwsParseException() {
-        Assert.assertThrows(ParseException.class, () -> ParserUtil.parsePhone(INVALID_PHONE));
+        assertThrows(ParseException.class, () -> ParserUtil.parsePhone(INVALID_PHONE));
     }
 
     @Test
@@ -116,12 +115,12 @@ public class ParserUtilTest {
 
     @Test
     public void parseAddress_null_throwsNullPointerException() {
-        Assert.assertThrows(NullPointerException.class, () -> ParserUtil.parseAddress((String) null));
+        assertThrows(NullPointerException.class, () -> ParserUtil.parseAddress((String) null));
     }
 
     @Test
     public void parseAddress_invalidValue_throwsParseException() {
-        Assert.assertThrows(ParseException.class, () -> ParserUtil.parseAddress(INVALID_ADDRESS));
+        assertThrows(ParseException.class, () -> ParserUtil.parseAddress(INVALID_ADDRESS));
     }
 
     @Test
@@ -139,12 +138,12 @@ public class ParserUtilTest {
 
     @Test
     public void parseEmail_null_throwsNullPointerException() {
-        Assert.assertThrows(NullPointerException.class, () -> ParserUtil.parseEmail((String) null));
+        assertThrows(NullPointerException.class, () -> ParserUtil.parseEmail((String) null));
     }
 
     @Test
     public void parseEmail_invalidValue_throwsParseException() {
-        Assert.assertThrows(ParseException.class, () -> ParserUtil.parseEmail(INVALID_EMAIL));
+        assertThrows(ParseException.class, () -> ParserUtil.parseEmail(INVALID_EMAIL));
     }
 
     @Test
@@ -162,12 +161,12 @@ public class ParserUtilTest {
 
     @Test
     public void parseTag_null_throwsNullPointerException() {
-        Assert.assertThrows(NullPointerException.class, () -> ParserUtil.parseTag(null));
+        assertThrows(NullPointerException.class, () -> ParserUtil.parseTag(null));
     }
 
     @Test
     public void parseTag_invalidValue_throwsParseException() {
-        Assert.assertThrows(ParseException.class, () -> ParserUtil.parseTag(INVALID_TAG));
+        assertThrows(ParseException.class, () -> ParserUtil.parseTag(INVALID_TAG));
     }
 
     @Test
@@ -185,12 +184,12 @@ public class ParserUtilTest {
 
     @Test
     public void parseTags_null_throwsNullPointerException() {
-        Assert.assertThrows(NullPointerException.class, () -> ParserUtil.parseTags(null));
+        assertThrows(NullPointerException.class, () -> ParserUtil.parseTags(null));
     }
 
     @Test
     public void parseTags_collectionWithInvalidTags_throwsParseException() {
-        Assert.assertThrows(ParseException.class, () -> ParserUtil.parseTags(Arrays.asList(VALID_TAG_1, INVALID_TAG)));
+        assertThrows(ParseException.class, () -> ParserUtil.parseTags(Arrays.asList(VALID_TAG_1, INVALID_TAG)));
     }
 
     @Test
@@ -208,12 +207,12 @@ public class ParserUtilTest {
 
     @Test
     public void parseTaskName_null_throwsNullPointerException() {
-        Assert.assertThrows(NullPointerException.class, () -> ParserUtil.parseTaskName((String) null));
+        assertThrows(NullPointerException.class, () -> ParserUtil.parseTaskName((String) null));
     }
 
     @Test
     public void parseTaskName_invalidValue_throwsParseException() {
-        Assert.assertThrows(ParseException.class, () -> ParserUtil.parseTaskName(INVALID_NAME));
+        assertThrows(ParseException.class, () -> ParserUtil.parseTaskName(INVALID_NAME));
     }
 
     @Test
@@ -231,9 +230,8 @@ public class ParserUtilTest {
 
     @Test
     public void parseTaskDescription_null_throwsNullPointerException() {
-        Assert.assertThrows(NullPointerException.class, () -> ParserUtil.parseTaskDescription((String) null));
+        assertThrows(NullPointerException.class, () -> ParserUtil.parseTaskDescription((String) null));
     }
-
     @Test
     public void parseTaskDescription_validValueWithoutWhitespace_returnsTaskDescription() throws Exception {
         TaskDescription expectedTaskDescription = new TaskDescription(VALID_TASKDESCRIPTION);
@@ -249,9 +247,8 @@ public class ParserUtilTest {
 
     @Test
     public void parseTaskModule_null_throwsNullPointerException() {
-        Assert.assertThrows(NullPointerException.class, () -> ParserUtil.parseTaskModule((String) null));
+        assertThrows(NullPointerException.class, () -> ParserUtil.parseTaskModule((String) null));
     }
-
     @Test
     public void parseTaskModule_validValueWithoutWhitespace_returnsTaskModule() throws Exception {
         TaskModule expectedTaskModule = new TaskModule(VALID_TASKMODULE);
@@ -267,9 +264,8 @@ public class ParserUtilTest {
 
     @Test
     public void parseTaskTime_null_throwsNullPointerException() {
-        Assert.assertThrows(NullPointerException.class, () -> ParserUtil.parseDateTime((String) null));
+        assertThrows(NullPointerException.class, () -> ParserUtil.parseDateTime((String) null));
     }
-
     @Test
     public void parseTaskTime_validValueWithoutWhitespace_returnsTaskTime() throws Exception {
         TaskTime expectedTaskTime = new TaskTime(VALID_TASKTIME);

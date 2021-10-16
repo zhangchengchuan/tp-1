@@ -2,12 +2,12 @@ package manageme.logic.commands;
 
 import static manageme.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static manageme.logic.commands.CommandTestUtil.showPersonAtIndex;
+import static manageme.testutil.TypicalIndexes.INDEX_FIRST;
 import static manageme.testutil.TypicalManageMe.getTypicalManageMe;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import manageme.testutil.TypicalIndexes;
 import manageme.model.Model;
 import manageme.model.ModelManager;
 import manageme.model.UserPrefs;
@@ -33,7 +33,7 @@ public class ListCommandTest {
 
     @Test
     public void execute_listIsFiltered_showsEverything() {
-        showPersonAtIndex(model, TypicalIndexes.INDEX_FIRST);
+        showPersonAtIndex(model, INDEX_FIRST);
         assertCommandSuccess(new ListCommand(), model, ListCommand.MESSAGE_SUCCESS, expectedModel);
     }
 }

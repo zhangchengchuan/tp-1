@@ -1,11 +1,13 @@
 package manageme.logic.parser.calendar;
 
+import static manageme.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static manageme.logic.parser.CommandParserTestUtil.assertParseFailure;
+import static manageme.logic.parser.CommandParserTestUtil.assertParseSuccess;
+
 import java.time.LocalDate;
 
 import org.junit.jupiter.api.Test;
 
-import manageme.commons.core.Messages;
-import manageme.logic.parser.CommandParserTestUtil;
 import manageme.logic.commands.calendar.ReadDayCommand;
 
 public class ReadDayCommandParserTest {
@@ -13,15 +15,11 @@ public class ReadDayCommandParserTest {
 
     @Test
     public void parse_validArgs_returnsReadDayCommand() {
-        CommandParserTestUtil.assertParseSuccess(parser,
-                LocalDate.now().toString(),
-                new ReadDayCommand(LocalDate.now()));
+        assertParseSuccess(parser, LocalDate.now().toString(), new ReadDayCommand(LocalDate.now()));
     }
 
     @Test
     public void parse_invalidArgs_throwsParseException() {
-        CommandParserTestUtil.assertParseFailure(parser,
-                "a",
-                String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT, ReadDayCommand.MESSAGE_USAGE));
+        assertParseFailure(parser, "a", String.format(MESSAGE_INVALID_COMMAND_FORMAT, ReadDayCommand.MESSAGE_USAGE));
     }
 }

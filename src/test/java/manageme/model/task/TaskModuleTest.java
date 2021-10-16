@@ -1,19 +1,16 @@
 package manageme.model.task;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static manageme.testutil.Assert.assertThrows;
+import static manageme.testutil.TypicalTasks.TASK_A;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
-
-import manageme.testutil.Assert;
-import manageme.testutil.TypicalTasks;
 
 public class TaskModuleTest {
     @Test
     public void constructor_null_throwsNullPointerException() {
-        Assert.assertThrows(NullPointerException.class, () -> new TaskModule(null));
+        assertThrows(NullPointerException.class, () -> new TaskModule(null));
     }
-
     //    @Test
     //    public void constructor_invalidTaskModule_throwsIllegalArgumentException() {
     //        String invalidModule = "";
@@ -22,9 +19,8 @@ public class TaskModuleTest {
     @Test
     public void equals() {
         // same module, returns true
-        assertTrue(TypicalTasks.TASK_A.getTaskModule().equals(TypicalTasks.TASK_A.getTaskModule()));
+        assertTrue(TASK_A.getTaskModule().equals(TASK_A.getTaskModule()));
     }
-
     @Test
     public void empty() {
         // Empty TaskModule with value set as ""

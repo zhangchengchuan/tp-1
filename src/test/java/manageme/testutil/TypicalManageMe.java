@@ -1,11 +1,11 @@
 package manageme.testutil;
 
-import static manageme.testutil.TypicalPersons.getTypicalPersons;
+import static manageme.testutil.TypicalTasks.getTypicalTasks;
 
-import manageme.model.task.Task;
 import manageme.model.ManageMe;
 import manageme.model.module.Module;
 import manageme.model.person.Person;
+import manageme.model.task.Task;
 
 public class TypicalManageMe {
     /**
@@ -13,7 +13,7 @@ public class TypicalManageMe {
      */
     public static ManageMe getTypicalManageMe() {
         ManageMe ab = new ManageMe();
-        for (Person person : getTypicalPersons()) {
+        for (Person person : TypicalPersons.getTypicalPersons()) {
             ab.addPerson(person);
         }
 
@@ -21,7 +21,7 @@ public class TypicalManageMe {
             ab.addModule(module);
         }
 
-        for (Task task : TypicalTasks.getTypicalTasks()) {
+        for (Task task : getTypicalTasks()) {
             ab.addTask(task);
         }
         return ab;

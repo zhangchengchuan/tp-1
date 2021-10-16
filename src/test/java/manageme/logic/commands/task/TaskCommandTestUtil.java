@@ -1,19 +1,18 @@
 package manageme.logic.commands.task;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static manageme.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
 import static manageme.logic.parser.CliSyntax.PREFIX_END;
 import static manageme.logic.parser.CliSyntax.PREFIX_MODULE;
 import static manageme.logic.parser.CliSyntax.PREFIX_NAME;
 import static manageme.logic.parser.CliSyntax.PREFIX_START;
 import static manageme.testutil.Assert.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import manageme.testutil.Assert;
 import manageme.commons.core.index.Index;
 import manageme.logic.commands.Command;
 import manageme.logic.commands.CommandResult;
@@ -24,6 +23,7 @@ import manageme.model.person.Person;
 import manageme.model.task.Task;
 import manageme.model.task.TaskNameContainsKeywordsPredicate;
 import manageme.testutil.EditTaskDescriptorBuilder;
+
 
 
 public class TaskCommandTestUtil {
@@ -111,7 +111,7 @@ public class TaskCommandTestUtil {
         ManageMe expectedManageMe = new ManageMe(actualModel.getManageMe());
         List<Person> expectedFilteredList = new ArrayList<>(actualModel.getFilteredPersonList());
 
-        Assert.assertThrows(CommandException.class, expectedMessage, () -> command.execute(actualModel));
+        assertThrows(CommandException.class, expectedMessage, () -> command.execute(actualModel));
         assertEquals(expectedManageMe, actualModel.getManageMe());
         assertEquals(expectedFilteredList, actualModel.getFilteredPersonList());
     }

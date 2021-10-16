@@ -33,7 +33,6 @@ public class AddTaskCommand extends Command {
     public static final String MESSAGE_SUCCESS = "New task added: %1$s";
     public static final String MESSAGE_DUPLICATE_TASK = "This task already exists in the task list";
     private final Task toAdd;
-
     /**
      * Creates an AddTaskCommand to add the specified {@code Task}
      */
@@ -41,7 +40,6 @@ public class AddTaskCommand extends Command {
         requireNonNull(task);
         toAdd = task;
     }
-
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
@@ -53,7 +51,6 @@ public class AddTaskCommand extends Command {
         model.addTask(toAdd);
         return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
     }
-
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object

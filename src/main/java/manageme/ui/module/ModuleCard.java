@@ -4,8 +4,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
-import manageme.ui.UiPart;
 import manageme.model.module.Module;
+import manageme.ui.UiPart;
 
 /**
  * An UI component that displays information of a {@code Module}.

@@ -3,11 +3,6 @@ package manageme.model;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static manageme.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
-import static manageme.logic.commands.CommandTestUtil.VALID_LINK_ZOOM;
-import static manageme.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
-import static manageme.testutil.Assert.assertThrows;
-import static manageme.testutil.TypicalPersons.ALICE;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -18,20 +13,22 @@ import org.junit.jupiter.api.Test;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import manageme.logic.commands.CommandTestUtil;
 import manageme.logic.commands.task.TaskCommandTestUtil;
+import manageme.model.module.Module;
 import manageme.model.module.exceptions.DuplicateModuleException;
+import manageme.model.person.Person;
 import manageme.model.person.exceptions.DuplicatePersonException;
 import manageme.model.task.Task;
 import manageme.model.task.exceptions.DuplicateTaskException;
 import manageme.testutil.Assert;
 import manageme.testutil.ModuleBuilder;
+import manageme.testutil.PersonBuilder;
 import manageme.testutil.TaskBuilder;
 import manageme.testutil.TypicalManageMe;
 import manageme.testutil.TypicalModules;
+import manageme.testutil.TypicalPersons;
 import manageme.testutil.TypicalTasks;
-import manageme.model.module.Module;
-import manageme.model.person.Person;
-import manageme.testutil.PersonBuilder;
 
 public class ManageMeTest {
 
@@ -57,9 +54,10 @@ public class ManageMeTest {
     @Test
     public void resetData_withDuplicatePersons_throwsDuplicatePersonException() {
         // Two persons with the same identity fields
-        Person editedAlice = new PersonBuilder(ALICE).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND)
+        Person editedAlice = new PersonBuilder(TypicalPersons.ALICE).withAddress(CommandTestUtil.VALID_ADDRESS_BOB).withTags(
+                        CommandTestUtil.VALID_TAG_HUSBAND)
                 .build();
-        List<Person> newPersons = Arrays.asList(ALICE, editedAlice);
+        List<Person> newPersons = Arrays.asList(TypicalPersons.ALICE, editedAlice);
         ManageMePersonStub newData = new ManageMePersonStub(newPersons);
 
         Assert.assertThrows(DuplicatePersonException.class, () -> manageMe.resetData(newData));
@@ -68,7 +66,7 @@ public class ManageMeTest {
     @Test
     public void resetData_withDuplicateModules_throwsDuplicateModuleException() {
         // Two modules with the same identity fields
-        Module editedModuleA = new ModuleBuilder(TypicalModules.MODULE_A).withLink(VALID_LINK_ZOOM)
+        Module editedModuleA = new ModuleBuilder(TypicalModules.MODULE_A).withLink(CommandTestUtil.VALID_LINK_ZOOM)
                 .build();
         List<Module> newModules = Arrays.asList(TypicalModules.MODULE_A, editedModuleA);
         ManageMeModuleStub newData = new ManageMeModuleStub(newModules);
@@ -94,19 +92,20 @@ public class ManageMeTest {
 
     @Test
     public void hasPerson_personNotInAddressBook_returnsFalse() {
-        assertFalse(manageMe.hasPerson(ALICE));
+        assertFalse(manageMe.hasPerson(TypicalPersons.ALICE));
     }
 
     @Test
     public void hasPerson_personInAddressBook_returnsTrue() {
-        manageMe.addPerson(ALICE);
-        assertTrue(manageMe.hasPerson(ALICE));
+        manageMe.addPerson(TypicalPersons.ALICE);
+        assertTrue(manageMe.hasPerson(TypicalPersons.ALICE));
     }
 
     @Test
     public void hasPerson_personWithSameIdentityFieldsInAddressBook_returnsTrue() {
-        manageMe.addPerson(ALICE);
-        Person editedAlice = new PersonBuilder(ALICE).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND)
+        manageMe.addPerson(TypicalPersons.ALICE);
+        Person editedAlice = new PersonBuilder(TypicalPersons.ALICE).withAddress(CommandTestUtil.VALID_ADDRESS_BOB).withTags(
+                        CommandTestUtil.VALID_TAG_HUSBAND)
                 .build();
         assertTrue(manageMe.hasPerson(editedAlice));
     }
@@ -135,7 +134,7 @@ public class ManageMeTest {
     @Test
     public void hasModule_moduleWithSameIdentityFieldsInAddressBook_returnsTrue() {
         manageMe.addModule(TypicalModules.MODULE_A);
-        Module editedModule = new ModuleBuilder(TypicalModules.MODULE_A).withLink(VALID_LINK_ZOOM).build();
+        Module editedModule = new ModuleBuilder(TypicalModules.MODULE_A).withLink(CommandTestUtil.VALID_LINK_ZOOM).build();
         assertTrue(manageMe.hasModule(editedModule));
     }
 
@@ -163,8 +162,8 @@ public class ManageMeTest {
     @Test
     public void hasTask_taskWithSameIdentityFieldsInAddressBook_returnsTrue() {
         manageMe.addTask(TypicalTasks.TASK_A);
-        Task editedTask = new TaskBuilder(TypicalTasks.TASK_A).withDescription(TaskCommandTestUtil.VALID_DESCRIPTION_A)
-                .withModule(TaskCommandTestUtil.VALID_MODULE_A)
+        Task editedTask = new TaskBuilder(TypicalTasks.TASK_A).withDescription(TaskCommandTestUtil.VALID_DESCRIPTION_A).withModule(
+                        TaskCommandTestUtil.VALID_MODULE_A)
                 .build();
         assertTrue(manageMe.hasTask(editedTask));
     }
@@ -243,7 +242,6 @@ public class ManageMeTest {
         private final ObservableList<Module> modules = FXCollections.observableArrayList();
 
         private final ObservableList<Task> tasks = FXCollections.observableArrayList();
-
         ManageMeTaskStub(Collection<Task> tasks) {
             this.tasks.setAll(tasks);
         }

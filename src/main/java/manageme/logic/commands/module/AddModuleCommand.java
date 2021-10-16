@@ -1,11 +1,12 @@
 package manageme.logic.commands.module;
 
 import static java.util.Objects.requireNonNull;
+import static manageme.logic.parser.CliSyntax.PREFIX_LINK;
+import static manageme.logic.parser.CliSyntax.PREFIX_NAME;
 
 import manageme.logic.commands.Command;
 import manageme.logic.commands.CommandResult;
 import manageme.logic.commands.exceptions.CommandException;
-import manageme.logic.parser.CliSyntax;
 import manageme.model.Model;
 import manageme.model.module.Module;
 
@@ -14,11 +15,11 @@ public class AddModuleCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a module to ManageMe. "
             + "Parameters: "
-            + CliSyntax.PREFIX_NAME + "NAME "
-            + CliSyntax.PREFIX_LINK + "LINK "
+            + PREFIX_NAME + "NAME "
+            + PREFIX_LINK + "LINK "
             + "Example: " + COMMAND_WORD + " "
-            + CliSyntax.PREFIX_NAME + "CS1100 "
-            + CliSyntax.PREFIX_LINK + "https://www.google.com";
+            + PREFIX_NAME + "CS1100 "
+            + PREFIX_LINK + "https://www.google.com";
 
     public static final String MESSAGE_SUCCESS = "New module added: %1$s";
     public static final String MESSAGE_DUPLICATE_MODULE = "This module already exists in the app.";

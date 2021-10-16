@@ -1,14 +1,15 @@
 package manageme.logic.commands.module;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static manageme.logic.commands.CommandTestUtil.assertCommandFailure;
 import static manageme.logic.commands.CommandTestUtil.assertCommandSuccess;
+import static manageme.testutil.TypicalIndexes.INDEX_FIRST;
+import static manageme.testutil.TypicalIndexes.INDEX_SECOND;
 import static manageme.testutil.TypicalManageMe.getTypicalManageMe;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
-import manageme.testutil.TypicalIndexes;
 import manageme.commons.core.Messages;
 import manageme.commons.core.index.Index;
 import manageme.logic.commands.CommandResult;
@@ -27,8 +28,8 @@ public class ReadModuleCommandTest {
 
     @Test
     public void execute_validIndexUnfilteredList_success() {
-        Module moduleToRead = model.getReadModuleList().get(TypicalIndexes.INDEX_FIRST.getZeroBased());
-        ReadModuleCommand readModuleCommand = new ReadModuleCommand(TypicalIndexes.INDEX_FIRST);
+        Module moduleToRead = model.getReadModuleList().get(INDEX_FIRST.getZeroBased());
+        ReadModuleCommand readModuleCommand = new ReadModuleCommand(INDEX_FIRST);
 
         CommandResult expectedCommandResult = new CommandResult(readModuleCommand.MESSAGE_SUCCESS, false, false, true);
 
@@ -48,14 +49,14 @@ public class ReadModuleCommandTest {
 
     @Test
     public void equals() {
-        ReadModuleCommand readModuleFirstCommand = new ReadModuleCommand(TypicalIndexes.INDEX_FIRST);
-        ReadModuleCommand readModuleSecondCommand = new ReadModuleCommand(TypicalIndexes.INDEX_SECOND);
+        ReadModuleCommand readModuleFirstCommand = new ReadModuleCommand(INDEX_FIRST);
+        ReadModuleCommand readModuleSecondCommand = new ReadModuleCommand(INDEX_SECOND);
 
         // same object -> returns true
         assertTrue(readModuleFirstCommand.equals(readModuleFirstCommand));
 
         // same values -> returns true
-        ReadModuleCommand deleteFirstCommandCopy = new ReadModuleCommand(TypicalIndexes.INDEX_FIRST);
+        ReadModuleCommand deleteFirstCommandCopy = new ReadModuleCommand(INDEX_FIRST);
         assertTrue(readModuleFirstCommand.equals(deleteFirstCommandCopy));
 
         // different types -> returns false

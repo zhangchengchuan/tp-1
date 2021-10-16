@@ -9,9 +9,9 @@ import manageme.logic.parser.exceptions.ParseException;
 import manageme.model.person.Address;
 import manageme.model.person.Email;
 import manageme.model.person.Name;
+import manageme.model.person.Person;
 import manageme.model.person.Phone;
 import manageme.model.tag.Tag;
-import manageme.model.person.Person;
 
 /**
  * Parses input arguments and creates a new AddCommand object
@@ -24,11 +24,11 @@ public class AddCommandParser implements Parser<AddCommand> {
      * @throws ParseException if the user input does not conform the expected format
      */
     public AddCommand parse(String args) throws ParseException {
-        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, CliSyntax.PREFIX_NAME, CliSyntax.PREFIX_PHONE,
-                CliSyntax.PREFIX_EMAIL, CliSyntax.PREFIX_ADDRESS, CliSyntax.PREFIX_TAG);
+        ArgumentMultimap argMultimap =
+                ArgumentTokenizer.tokenize(args, CliSyntax.PREFIX_NAME, CliSyntax.PREFIX_PHONE, CliSyntax.PREFIX_EMAIL, CliSyntax.PREFIX_ADDRESS, CliSyntax.PREFIX_TAG);
 
-        if (!arePrefixesPresent(argMultimap, CliSyntax.PREFIX_NAME, CliSyntax.PREFIX_ADDRESS, CliSyntax.PREFIX_PHONE,
-                CliSyntax.PREFIX_EMAIL) || !argMultimap.getPreamble().isEmpty()) {
+        if (!arePrefixesPresent(argMultimap, CliSyntax.PREFIX_NAME, CliSyntax.PREFIX_ADDRESS, CliSyntax.PREFIX_PHONE, CliSyntax.PREFIX_EMAIL)
+                || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
         }
 

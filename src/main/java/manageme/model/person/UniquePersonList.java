@@ -1,7 +1,6 @@
 package manageme.model.person;
 
 import static java.util.Objects.requireNonNull;
-import static manageme.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.Iterator;
 import java.util.List;
@@ -114,7 +113,7 @@ public class UniquePersonList implements Iterable<Person> {
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof UniquePersonList // instanceof handles nulls
-                && internalList.equals(((UniquePersonList) other).internalList));
+                        && internalList.equals(((UniquePersonList) other).internalList));
     }
 
     @Override

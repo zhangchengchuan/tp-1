@@ -1,7 +1,5 @@
 package manageme.model.module;
 
-import static manageme.commons.util.CollectionUtil.requireAllNonNull;
-
 import java.util.Objects;
 
 import manageme.commons.util.CollectionUtil;

@@ -2,7 +2,6 @@ package manageme.storage;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static manageme.testutil.TypicalManageMe.getTypicalManageMe;
 
 import java.nio.file.Path;
 
@@ -14,6 +13,7 @@ import manageme.commons.core.GuiSettings;
 import manageme.model.ManageMe;
 import manageme.model.ReadOnlyManageMe;
 import manageme.model.UserPrefs;
+import manageme.testutil.TypicalManageMe;
 
 public class StorageManagerTest {
 
@@ -54,7 +54,7 @@ public class StorageManagerTest {
          * {@link JsonAddressBookStorage} class.
          * More extensive testing of UserPref saving/reading is done in {@link JsonAddressBookStorageTest} class.
          */
-        ManageMe original = getTypicalManageMe();
+        ManageMe original = TypicalManageMe.getTypicalManageMe();
         storageManager.saveManageMe(original);
         ReadOnlyManageMe retrieved = storageManager.readManageMe().get();
         assertEquals(original, new ManageMe(retrieved));

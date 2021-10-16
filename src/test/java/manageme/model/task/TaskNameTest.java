@@ -1,31 +1,29 @@
 package manageme.model.task;
 
+import static manageme.testutil.Assert.assertThrows;
+import static manageme.testutil.TypicalTasks.TASK_A;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static manageme.testutil.Assert.assertThrows;
 
 import org.junit.jupiter.api.Test;
-
-import manageme.testutil.Assert;
-import manageme.testutil.TypicalTasks;
 
 public class TaskNameTest {
 
     @Test
     public void constructor_null_throwsNullPointerException() {
-        Assert.assertThrows(NullPointerException.class, () -> new TaskName(null));
+        assertThrows(NullPointerException.class, () -> new TaskName(null));
     }
 
     @Test
     public void constructor_invalidTaskName_throwsIllegalArgumentException() {
         String invalidName = "";
-        Assert.assertThrows(IllegalArgumentException.class, () -> new TaskName(invalidName));
+        assertThrows(IllegalArgumentException.class, () -> new TaskName(invalidName));
     }
 
     @Test
     public void isValidName() {
         // null name
-        Assert.assertThrows(NullPointerException.class, () -> TaskName.isValidName(null));
+        assertThrows(NullPointerException.class, () -> TaskName.isValidName(null));
 
         // invalid name
         assertFalse(TaskName.isValidName("")); // empty string
@@ -44,7 +42,7 @@ public class TaskNameTest {
     @Test
     public void equals() {
         // same name, returns true
-        assertTrue(TypicalTasks.TASK_A.getName().equals(TypicalTasks.TASK_A.getName()));
+        assertTrue(TASK_A.getName().equals(TASK_A.getName()));
 
     }
 }

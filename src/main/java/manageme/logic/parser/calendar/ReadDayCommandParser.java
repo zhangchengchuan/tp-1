@@ -1,8 +1,9 @@
 package manageme.logic.parser.calendar;
 
+import static manageme.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+
 import java.time.LocalDate;
 
-import manageme.commons.core.Messages;
 import manageme.logic.commands.calendar.ReadDayCommand;
 import manageme.logic.parser.Parser;
 import manageme.logic.parser.ParserUtil;
@@ -20,7 +21,7 @@ public class ReadDayCommandParser implements Parser<ReadDayCommand> {
             return new ReadDayCommand(date);
         } catch (ParseException pe) {
             throw new ParseException(
-                    String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT, ReadDayCommand.MESSAGE_USAGE), pe);
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, ReadDayCommand.MESSAGE_USAGE), pe);
         }
     }
 }

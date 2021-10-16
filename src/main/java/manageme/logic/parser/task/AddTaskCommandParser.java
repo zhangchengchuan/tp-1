@@ -1,5 +1,6 @@
 package manageme.logic.parser.task;
 
+import static manageme.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static manageme.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
 import static manageme.logic.parser.CliSyntax.PREFIX_END;
 import static manageme.logic.parser.CliSyntax.PREFIX_MODULE;
@@ -8,19 +9,18 @@ import static manageme.logic.parser.CliSyntax.PREFIX_START;
 
 import java.util.stream.Stream;
 
-import manageme.commons.core.Messages;
 import manageme.logic.commands.task.AddTaskCommand;
+import manageme.logic.parser.ArgumentMultimap;
+import manageme.logic.parser.ArgumentTokenizer;
+import manageme.logic.parser.Parser;
+import manageme.logic.parser.ParserUtil;
+import manageme.logic.parser.Prefix;
 import manageme.logic.parser.exceptions.ParseException;
 import manageme.model.task.Task;
 import manageme.model.task.TaskDescription;
 import manageme.model.task.TaskModule;
 import manageme.model.task.TaskName;
 import manageme.model.task.TaskTime;
-import manageme.logic.parser.ArgumentMultimap;
-import manageme.logic.parser.ArgumentTokenizer;
-import manageme.logic.parser.Parser;
-import manageme.logic.parser.ParserUtil;
-import manageme.logic.parser.Prefix;
 
 public class AddTaskCommandParser implements Parser<AddTaskCommand> {
     /**
@@ -35,9 +35,9 @@ public class AddTaskCommandParser implements Parser<AddTaskCommand> {
                         PREFIX_END);
         if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_DESCRIPTION)
                 || (arePrefixesPresent(argMultimap, PREFIX_START)
-                && !arePrefixesPresent(argMultimap, PREFIX_END))
+                    && !arePrefixesPresent(argMultimap, PREFIX_END))
                 || !argMultimap.getPreamble().isEmpty()) {
-            throw new ParseException(String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT,
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                     AddTaskCommand.MESSAGE_USAGE));
         }
         TaskName name = ParserUtil.parseTaskName(argMultimap.getValue(PREFIX_NAME).get());

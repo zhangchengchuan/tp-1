@@ -1,10 +1,10 @@
 package manageme.logic.commands;
 
 import static java.util.Objects.requireNonNull;
+import static manageme.testutil.Assert.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static manageme.testutil.Assert.assertThrows;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -14,7 +14,6 @@ import java.util.function.Predicate;
 import org.junit.jupiter.api.Test;
 
 import javafx.collections.ObservableList;
-import manageme.testutil.Assert;
 import manageme.commons.core.GuiSettings;
 import manageme.logic.commands.exceptions.CommandException;
 import manageme.model.ManageMe;
@@ -30,7 +29,7 @@ public class AddCommandTest {
 
     @Test
     public void constructor_nullPerson_throwsNullPointerException() {
-        Assert.assertThrows(NullPointerException.class, () -> new AddCommand(null));
+        assertThrows(NullPointerException.class, () -> new AddCommand(null));
     }
 
     @Test
@@ -50,9 +49,7 @@ public class AddCommandTest {
         AddCommand addCommand = new AddCommand(validPerson);
         ModelStub modelStub = new ModelStubWithPerson(validPerson);
 
-        Assert.assertThrows(CommandException.class,
-                AddCommand.MESSAGE_DUPLICATE_PERSON,
-                () -> addCommand.execute(modelStub));
+        assertThrows(CommandException.class, AddCommand.MESSAGE_DUPLICATE_PERSON, () -> addCommand.execute(modelStub));
     }
 
     @Test

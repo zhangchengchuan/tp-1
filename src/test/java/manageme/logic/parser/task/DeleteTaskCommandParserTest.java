@@ -1,11 +1,13 @@
 package manageme.logic.parser.task;
 
+import static manageme.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static manageme.logic.parser.CommandParserTestUtil.assertParseFailure;
+import static manageme.logic.parser.CommandParserTestUtil.assertParseSuccess;
+import static manageme.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
+
 import org.junit.jupiter.api.Test;
 
-import manageme.commons.core.Messages;
 import manageme.logic.commands.task.DeleteTaskCommand;
-import manageme.logic.parser.CommandParserTestUtil;
-import manageme.testutil.TypicalIndexes;
 
 /**
  * As we are only doing white-box testing, our test cases do not cover path variations
@@ -20,13 +22,11 @@ public class DeleteTaskCommandParserTest {
 
     @Test
     public void parse_validArgs_returnsDeleteTaskCommand() {
-        CommandParserTestUtil.assertParseSuccess(parser, "1", new DeleteTaskCommand(TypicalIndexes.INDEX_FIRST_PERSON));
+        assertParseSuccess(parser, "1", new DeleteTaskCommand(INDEX_FIRST_PERSON));
     }
 
     @Test
     public void parse_invalidArgs_throwsParseTaskException() {
-        CommandParserTestUtil.assertParseFailure(parser,
-                "a",
-                String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT, DeleteTaskCommand.MESSAGE_USAGE));
+        assertParseFailure(parser, "a", String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteTaskCommand.MESSAGE_USAGE));
     }
 }

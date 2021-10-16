@@ -1,17 +1,17 @@
 package manageme.logic.parser.module;
 
 import static java.util.Objects.requireNonNull;
+import static manageme.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static manageme.logic.parser.CliSyntax.PREFIX_LINK;
 import static manageme.logic.parser.CliSyntax.PREFIX_NAME;
 
-import manageme.commons.core.Messages;
 import manageme.commons.core.index.Index;
 import manageme.logic.commands.module.EditModuleCommand;
-import manageme.logic.parser.exceptions.ParseException;
 import manageme.logic.parser.ArgumentMultimap;
 import manageme.logic.parser.ArgumentTokenizer;
 import manageme.logic.parser.Parser;
 import manageme.logic.parser.ParserUtil;
+import manageme.logic.parser.exceptions.ParseException;
 
 /**
  * Parses input arguments and creates a new EditModuleCommand object
@@ -35,7 +35,7 @@ public class EditModuleCommandParser implements Parser<EditModuleCommand> {
             index = ParserUtil.parseIndex(argMultimap.getPreamble());
         } catch (ParseException pe) {
             throw new ParseException(
-                    String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT, EditModuleCommand.MESSAGE_USAGE), pe);
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditModuleCommand.MESSAGE_USAGE), pe);
         }
 
         EditModuleCommand.EditModuleDescriptor editModuleDescriptor = new EditModuleCommand.EditModuleDescriptor();

@@ -1,7 +1,6 @@
 package manageme.model.link;
 
 import static java.util.Objects.requireNonNull;
-import static manageme.commons.util.AppUtil.checkArgument;
 
 import manageme.commons.util.AppUtil;
 
@@ -40,7 +39,6 @@ public class Link {
 
 
     // TODO: Remove this constructor for v1.3 since name will be compulsory
-
     /**
      * Constructs a {@code Link}.
      *

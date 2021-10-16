@@ -1,10 +1,10 @@
 package manageme.logic.commands.calendar;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static manageme.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static manageme.logic.commands.calendar.ReadDayCommand.COMMAND_WORD;
 import static manageme.logic.commands.calendar.ReadDayCommand.SHOWING_TASKS_IN_DAY;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.time.LocalDate;
 

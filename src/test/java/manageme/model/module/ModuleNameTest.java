@@ -1,30 +1,28 @@
 package manageme.model.module;
 
+import static manageme.testutil.Assert.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static manageme.testutil.Assert.assertThrows;
 
 import org.junit.jupiter.api.Test;
-
-import manageme.testutil.Assert;
 
 public class ModuleNameTest {
 
     @Test
     public void constructor_null_throwsNullPointerException() {
-        Assert.assertThrows(NullPointerException.class, () -> new ModuleName(null));
+        assertThrows(NullPointerException.class, () -> new ModuleName(null));
     }
 
     @Test
     public void constructor_invalidModuleName_throwsIllegalArgumentException() {
         String invalidModuleName = "";
-        Assert.assertThrows(IllegalArgumentException.class, () -> new ModuleName(invalidModuleName));
+        assertThrows(IllegalArgumentException.class, () -> new ModuleName(invalidModuleName));
     }
 
     @Test
     public void isValidModuleName() {
         // null ModuleName
-        Assert.assertThrows(NullPointerException.class, () -> ModuleName.isValidModuleName(null));
+        assertThrows(NullPointerException.class, () -> ModuleName.isValidModuleName(null));
 
         // invalid ModuleName
         assertFalse(ModuleName.isValidModuleName("")); // empty string
