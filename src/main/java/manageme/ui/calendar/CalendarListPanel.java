@@ -131,30 +131,30 @@ public class CalendarListPanel extends UiPart<Region> {
         LocalDate firstDayOfMonth = referenceDate.withDayOfMonth(1);
         DayOfWeek dayOfWeek = firstDayOfMonth.getDayOfWeek();
         switch (dayOfWeek) {
-            case SUNDAY:
-                column = 0;
-                break;
-            case MONDAY:
-                column = 1;
-                break;
-            case TUESDAY:
-                column = 2;
-                break;
-            case WEDNESDAY:
-                column = 3;
-                break;
-            case THURSDAY:
-                column = 4;
-                break;
-            case FRIDAY:
-                column = 5;
-                break;
-            case SATURDAY:
-                column = 6;
-                break;
-            default:
-                column = -1;
-                break;
+        case SUNDAY:
+            column = 0;
+            break;
+        case MONDAY:
+            column = 1;
+            break;
+        case TUESDAY:
+            column = 2;
+            break;
+        case WEDNESDAY:
+            column = 3;
+            break;
+        case THURSDAY:
+            column = 4;
+            break;
+        case FRIDAY:
+            column = 5;
+            break;
+        case SATURDAY:
+            column = 6;
+            break;
+        default:
+            column = -1;
+            break;
         }
         return column;
     }
@@ -167,21 +167,21 @@ public class CalendarListPanel extends UiPart<Region> {
     public void parseCommand(String feedbackToSystem) {
         String[] feedback = feedbackToSystem.split(" ");
         switch (feedback[0]) {
-            case NextMonthCommand.COMMAND_WORD:
-                showNextMonth();
-                break;
+        case NextMonthCommand.COMMAND_WORD:
+            showNextMonth();
+            break;
 
-            case PreviousMonthCommand.COMMAND_WORD:
-                showPreviousMonth();
-                break;
+        case PreviousMonthCommand.COMMAND_WORD:
+            showPreviousMonth();
+            break;
 
-            case ReadDayCommand.COMMAND_WORD:
-                LocalDate date = LocalDate.parse(feedback[1]);
-                showDay(date);
-                break;
+        case ReadDayCommand.COMMAND_WORD:
+            LocalDate date = LocalDate.parse(feedback[1]);
+            showDay(date);
+            break;
 
-            default:
-                return;
+        default:
+            return;
         }
     }
 
