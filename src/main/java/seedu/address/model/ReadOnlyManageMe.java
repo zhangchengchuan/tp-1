@@ -6,9 +6,9 @@ import seedu.address.model.person.Person;
 import seedu.address.model.task.Task;
 
 /**
- * Unmodifiable view of an address book
+ * Unmodifiable view of a ManageMe
  */
-public interface ReadOnlyAddressBook {
+public interface ReadOnlyManageMe {
 
     /**
      * Returns an unmodifiable view of the persons list.

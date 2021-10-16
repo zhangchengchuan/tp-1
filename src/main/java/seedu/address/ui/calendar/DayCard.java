@@ -1,4 +1,4 @@
-package seedu.address.ui;
+package seedu.address.ui.calendar;
 
 import java.time.LocalDate;
 
@@ -8,6 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import seedu.address.model.task.Task;
+import seedu.address.ui.UiPart;
 
 /**
  * An UI component that displays information of a {@code Person}.
@@ -32,7 +33,7 @@ public class DayCard extends UiPart<Region> {
     @FXML
     private Label day;
     @FXML
-    private VBox list;
+    private Label numOfTask;
 
     /**
      * Creates a {@code PersonCode} with the given {@code Person} and index to display.
@@ -40,18 +41,17 @@ public class DayCard extends UiPart<Region> {
     public DayCard(ObservableList<Task> filteredTaskList, LocalDate date) {
         super(FXML);
         this.date = date;
-        this.taskList = filteredTaskList.filtered(task -> task.getSpan()
-                .anyMatch(localDate -> localDate.isEqual(date)));
-        day.setText(String.format("%d", date.getDayOfMonth()));
-        fillList();
+        this.taskList = filteredTaskList;
+        fillDay();
     }
 
     /**
      * Fills up the list of task for the day.
      */
-    private void fillList() {
-        for (Task task : taskList) {
-            list.getChildren().add(new Label(task.getName().value));
+    private void fillDay() {
+        day.setText(String.format("%d", date.getDayOfMonth()));
+        if (!taskList.isEmpty()) {
+            numOfTask.setText(taskList.size() == 1 ? "1 task" : String.format("%d tasks", taskList.size()));
         }
     }
 

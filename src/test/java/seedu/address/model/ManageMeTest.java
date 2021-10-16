@@ -9,7 +9,7 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.address.logic.commands.task.TaskCommandTestUtil.VALID_DESCRIPTION_A;
 import static seedu.address.logic.commands.task.TaskCommandTestUtil.VALID_MODULE_A;
 import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.TypicalAddressBook.getTypicalAddressBook;
+import static seedu.address.testutil.TypicalManageMe.getTypicalManageMe;
 import static seedu.address.testutil.TypicalModules.MODULE_A;
 import static seedu.address.testutil.TypicalPersons.ALICE;
 import static seedu.address.testutil.TypicalTasks.TASK_A;
@@ -33,25 +33,25 @@ import seedu.address.testutil.ModuleBuilder;
 import seedu.address.testutil.PersonBuilder;
 import seedu.address.testutil.TaskBuilder;
 
-public class AddressBookTest {
+public class ManageMeTest {
 
-    private final AddressBook addressBook = new AddressBook();
+    private final ManageMe manageMe = new ManageMe();
 
     @Test
     public void constructor() {
-        assertEquals(Collections.emptyList(), addressBook.getPersonList());
+        assertEquals(Collections.emptyList(), manageMe.getPersonList());
     }
 
     @Test
     public void resetData_null_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> addressBook.resetData(null));
+        assertThrows(NullPointerException.class, () -> manageMe.resetData(null));
     }
 
     @Test
     public void resetData_withValidReadOnlyAddressBook_replacesData() {
-        AddressBook newData = getTypicalAddressBook();
-        addressBook.resetData(newData);
-        assertEquals(newData, addressBook);
+        ManageMe newData = getTypicalManageMe();
+        manageMe.resetData(newData);
+        assertEquals(newData, manageMe);
     }
 
     @Test
@@ -60,9 +60,9 @@ public class AddressBookTest {
         Person editedAlice = new PersonBuilder(ALICE).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND)
                 .build();
         List<Person> newPersons = Arrays.asList(ALICE, editedAlice);
-        AddressBookPersonStub newData = new AddressBookPersonStub(newPersons);
+        ManageMePersonStub newData = new ManageMePersonStub(newPersons);
 
-        assertThrows(DuplicatePersonException.class, () -> addressBook.resetData(newData));
+        assertThrows(DuplicatePersonException.class, () -> manageMe.resetData(newData));
     }
 
     @Test
@@ -71,9 +71,9 @@ public class AddressBookTest {
         Module editedModuleA = new ModuleBuilder(MODULE_A).withLink(VALID_LINK_ZOOM)
                 .build();
         List<Module> newModules = Arrays.asList(MODULE_A, editedModuleA);
-        AddressBookModuleStub newData = new AddressBookModuleStub(newModules);
+        ManageMeModuleStub newData = new ManageMeModuleStub(newModules);
 
-        assertThrows(DuplicateModuleException.class, () -> addressBook.resetData(newData));
+        assertThrows(DuplicateModuleException.class, () -> manageMe.resetData(newData));
     }
 
     @Test
@@ -82,108 +82,108 @@ public class AddressBookTest {
         Task editedTaskA = new TaskBuilder(TASK_A).withDescription(VALID_DESCRIPTION_A)
                 .build();
         List<Task> newTasks = Arrays.asList(TASK_A, editedTaskA);
-        AddressBookTaskStub newData = new AddressBookTaskStub(newTasks);
+        ManageMeTaskStub newData = new ManageMeTaskStub(newTasks);
 
-        assertThrows(DuplicateTaskException.class, () -> addressBook.resetData(newData));
+        assertThrows(DuplicateTaskException.class, () -> manageMe.resetData(newData));
     }
 
     @Test
     public void hasPerson_nullPerson_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> addressBook.hasPerson(null));
+        assertThrows(NullPointerException.class, () -> manageMe.hasPerson(null));
     }
 
     @Test
     public void hasPerson_personNotInAddressBook_returnsFalse() {
-        assertFalse(addressBook.hasPerson(ALICE));
+        assertFalse(manageMe.hasPerson(ALICE));
     }
 
     @Test
     public void hasPerson_personInAddressBook_returnsTrue() {
-        addressBook.addPerson(ALICE);
-        assertTrue(addressBook.hasPerson(ALICE));
+        manageMe.addPerson(ALICE);
+        assertTrue(manageMe.hasPerson(ALICE));
     }
 
     @Test
     public void hasPerson_personWithSameIdentityFieldsInAddressBook_returnsTrue() {
-        addressBook.addPerson(ALICE);
+        manageMe.addPerson(ALICE);
         Person editedAlice = new PersonBuilder(ALICE).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND)
                 .build();
-        assertTrue(addressBook.hasPerson(editedAlice));
+        assertTrue(manageMe.hasPerson(editedAlice));
     }
 
     @Test
     public void getPersonList_modifyList_throwsUnsupportedOperationException() {
-        assertThrows(UnsupportedOperationException.class, () -> addressBook.getPersonList().remove(0));
+        assertThrows(UnsupportedOperationException.class, () -> manageMe.getPersonList().remove(0));
     }
 
     @Test
     public void hasModule_nullModule_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> addressBook.hasModule(null));
+        assertThrows(NullPointerException.class, () -> manageMe.hasModule(null));
     }
 
     @Test
     public void hasModule_moduleNotInAddressBook_returnsFalse() {
-        assertFalse(addressBook.hasModule(MODULE_A));
+        assertFalse(manageMe.hasModule(MODULE_A));
     }
 
     @Test
     public void hasModule_moduleInAddressBook_returnsTrue() {
-        addressBook.addModule(MODULE_A);
-        assertTrue(addressBook.hasModule(MODULE_A));
+        manageMe.addModule(MODULE_A);
+        assertTrue(manageMe.hasModule(MODULE_A));
     }
 
     @Test
     public void hasModule_moduleWithSameIdentityFieldsInAddressBook_returnsTrue() {
-        addressBook.addModule(MODULE_A);
+        manageMe.addModule(MODULE_A);
         Module editedModule = new ModuleBuilder(MODULE_A).withLink(VALID_LINK_ZOOM).build();
-        assertTrue(addressBook.hasModule(editedModule));
+        assertTrue(manageMe.hasModule(editedModule));
     }
 
     @Test
     public void getModuleList_modifyList_throwsUnsupportedOperationException() {
-        assertThrows(UnsupportedOperationException.class, () -> addressBook.getModuleList().remove(0));
+        assertThrows(UnsupportedOperationException.class, () -> manageMe.getModuleList().remove(0));
     }
 
     @Test
     public void hasTask_nullTask_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> addressBook.hasTask(null));
+        assertThrows(NullPointerException.class, () -> manageMe.hasTask(null));
     }
 
     @Test
     public void hasTask_taskNotInAddressBook_returnsFalse() {
-        assertFalse(addressBook.hasTask(TASK_A));
+        assertFalse(manageMe.hasTask(TASK_A));
     }
 
     @Test
     public void hasTask_taskInAddressBook_returnsTrue() {
-        addressBook.addTask(TASK_A);
-        assertTrue(addressBook.hasTask(TASK_A));
+        manageMe.addTask(TASK_A);
+        assertTrue(manageMe.hasTask(TASK_A));
     }
 
     @Test
     public void hasTask_taskWithSameIdentityFieldsInAddressBook_returnsTrue() {
-        addressBook.addTask(TASK_A);
+        manageMe.addTask(TASK_A);
         Task editedTask = new TaskBuilder(TASK_A).withDescription(VALID_DESCRIPTION_A).withModule(VALID_MODULE_A)
                 .build();
-        assertTrue(addressBook.hasTask(editedTask));
+        assertTrue(manageMe.hasTask(editedTask));
     }
 
     @Test
     public void getTaskList_modifyList_throwsUnsupportedOperationException() {
-        assertThrows(UnsupportedOperationException.class, () -> addressBook.getTaskList().remove(0));
+        assertThrows(UnsupportedOperationException.class, () -> manageMe.getTaskList().remove(0));
     }
 
     /**
      * A stub ReadOnlyAddressBook whose persons list can violate interface constraints.
      */
-    private static class AddressBookPersonStub implements ReadOnlyAddressBook {
+    private static class ManageMePersonStub implements ReadOnlyManageMe {
         private final ObservableList<Person> persons = FXCollections.observableArrayList();
 
         private final ObservableList<Module> modules = FXCollections.observableArrayList();
 
         private final ObservableList<Task> tasks = FXCollections.observableArrayList();
 
-        AddressBookPersonStub(Collection<Person> persons) {
+        ManageMePersonStub(Collection<Person> persons) {
             this.persons.setAll(persons);
         }
 
@@ -206,14 +206,14 @@ public class AddressBookTest {
     /**
      * A stub ReadOnlyAddressBook whose Modules list can violate interface constraints.
      */
-    private static class AddressBookModuleStub implements ReadOnlyAddressBook {
+    private static class ManageMeModuleStub implements ReadOnlyManageMe {
         private final ObservableList<Person> persons = FXCollections.observableArrayList();
 
         private final ObservableList<Module> modules = FXCollections.observableArrayList();
 
         private final ObservableList<Task> tasks = FXCollections.observableArrayList();
 
-        AddressBookModuleStub(Collection<Module> modules) {
+        ManageMeModuleStub(Collection<Module> modules) {
             this.modules.setAll(modules);
         }
 
@@ -236,13 +236,13 @@ public class AddressBookTest {
     /**
      * A stub ReadOnlyAddressBook whose Tasks list can violate interface constraints.
      */
-    private static class AddressBookTaskStub implements ReadOnlyAddressBook {
+    private static class ManageMeTaskStub implements ReadOnlyManageMe {
         private final ObservableList<Person> persons = FXCollections.observableArrayList();
 
         private final ObservableList<Module> modules = FXCollections.observableArrayList();
 
         private final ObservableList<Task> tasks = FXCollections.observableArrayList();
-        AddressBookTaskStub(Collection<Task> tasks) {
+        ManageMeTaskStub(Collection<Task> tasks) {
             this.tasks.setAll(tasks);
         }
 

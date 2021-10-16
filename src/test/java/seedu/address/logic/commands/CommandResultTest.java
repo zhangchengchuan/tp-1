@@ -9,6 +9,18 @@ import org.junit.jupiter.api.Test;
 
 public class CommandResultTest {
     @Test
+    public void getFeedbackToSystem_validCommandResult_success() {
+        CommandResult commandResult = new CommandResult("feedback");
+        assertEquals(CommandResult.FEEDBACK_TO_SYSTEM, commandResult.getFeedbackToSystem());
+    }
+
+    @Test
+    public void isCalendarCommand_validCommandResult_success() {
+        CommandResult commandResult = new CommandResult("feedback");
+        assertEquals(false, commandResult.isCalendarCommand());
+    }
+
+    @Test
     public void equals() {
         CommandResult commandResult = new CommandResult("feedback");
 

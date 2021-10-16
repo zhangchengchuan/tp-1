@@ -1,6 +1,6 @@
 package seedu.address.testutil;
 
-import seedu.address.model.AddressBook;
+import seedu.address.model.ManageMe;
 import seedu.address.model.module.Module;
 import seedu.address.model.person.Person;
 import seedu.address.model.task.Task;
@@ -10,43 +10,43 @@ import seedu.address.model.task.Task;
  * Example usage: <br>
  *     {@code AddressBook ab = new AddressBookBuilder().withPerson("John", "Doe").build();}
  */
-public class AddressBookBuilder {
+public class ManageMeBuilder {
 
-    private AddressBook addressBook;
+    private ManageMe manageMe;
 
-    public AddressBookBuilder() {
-        addressBook = new AddressBook();
+    public ManageMeBuilder() {
+        manageMe = new ManageMe();
     }
 
-    public AddressBookBuilder(AddressBook addressBook) {
-        this.addressBook = addressBook;
+    public ManageMeBuilder(ManageMe manageMe) {
+        this.manageMe = manageMe;
     }
 
     /**
      * Adds a new {@code Person} to the {@code AddressBook} that we are building.
      */
-    public AddressBookBuilder withPerson(Person person) {
-        addressBook.addPerson(person);
+    public ManageMeBuilder withPerson(Person person) {
+        manageMe.addPerson(person);
         return this;
     }
 
     /**
      * Adds a new {@code Person} to the {@code AddressBook} that we are building.
      */
-    public AddressBookBuilder withModule(Module module) {
-        addressBook.addModule(module);
+    public ManageMeBuilder withModule(Module module) {
+        manageMe.addModule(module);
         return this;
     }
 
     /**
      * Adds a new {@code Person} to the {@code AddressBook} that we are building.
      */
-    public AddressBookBuilder withTask(Task task) {
-        addressBook.addTask(task);
+    public ManageMeBuilder withTask(Task task) {
+        manageMe.addTask(task);
         return this;
     }
 
-    public AddressBook build() {
-        return addressBook;
+    public ManageMe build() {
+        return manageMe;
     }
 }

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import seedu.address.model.AddressBook;
+import seedu.address.model.ManageMe;
 import seedu.address.model.module.Module;
 
 public class TypicalModules {
@@ -18,8 +18,8 @@ public class TypicalModules {
     /**
      * Returns an {@code AddressBook} with all the typical persons.
      */
-    public static AddressBook getTypicalAddressBook() {
-        AddressBook ab = new AddressBook();
+    public static ManageMe getTypicalAddressBook() {
+        ManageMe ab = new ManageMe();
         for (Module module : getTypicalModules()) {
             ab.addModule(module);
         }

@@ -1,4 +1,4 @@
-package seedu.address.ui;
+package seedu.address.ui.module;
 
 import java.util.List;
 
@@ -9,6 +9,8 @@ import javafx.stage.Stage;
 import seedu.address.model.link.Link;
 import seedu.address.model.module.Module;
 import seedu.address.model.task.Task;
+import seedu.address.ui.UiPart;
+import seedu.address.ui.task.TaskCard;
 
 public class ModuleWindow extends UiPart<Stage> {
     private static final String FXML = "ModuleWindow.fxml";

@@ -17,6 +17,10 @@ import seedu.address.logic.Logic;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.ui.calendar.CalendarListPanel;
+import seedu.address.ui.module.ModuleListPanel;
+import seedu.address.ui.module.ModuleWindow;
+import seedu.address.ui.task.TaskListPanel;
 
 /**
  * The Main Window. Provides the basic application layout containing
@@ -127,7 +131,7 @@ public class MmMainWindow extends UiPart<Stage> {
         taskListPanel = new TaskListPanel(logic.getFilteredTaskList());
         taskListPanelPlaceholder.getChildren().add(taskListPanel.getRoot());
 
-        calendarListPanel = new CalendarListPanel(logic.getFilteredTaskList());
+        calendarListPanel = new CalendarListPanel(logic.getUnfilteredTaskList());
         calendarListPanelPlaceholder.getChildren().add(calendarListPanel.getRoot());
 
         resultDisplay = new ResultDisplay();
@@ -185,6 +189,10 @@ public class MmMainWindow extends UiPart<Stage> {
         moduleWindow.display(logic.getReadModuleList());
     }
 
+    private void handleCalendar(String feedbackToSystem) {
+        calendarListPanel.parseCommand(feedbackToSystem);
+    }
+
 
     /**
      * Executes the command and returns the result.
@@ -207,6 +215,10 @@ public class MmMainWindow extends UiPart<Stage> {
 
             if (commandResult.isReadModule()) {
                 handleModule();
+            }
+
+            if (commandResult.isCalendarCommand()) {
+                handleCalendar(commandResult.getFeedbackToSystem());
             }
 
             return commandResult;

@@ -17,7 +17,7 @@ import seedu.address.model.task.UniqueTaskList;
  * Wraps all data at the address-book level
  * Duplicates are not allowed (by .isSamePerson comparison)
  */
-public class AddressBook implements ReadOnlyAddressBook {
+public class ManageMe implements ReadOnlyManageMe {
 
     private final UniquePersonList persons;
     private final UniqueModuleList modules;
@@ -36,12 +36,12 @@ public class AddressBook implements ReadOnlyAddressBook {
         tasks = new UniqueTaskList();
     }
 
-    public AddressBook() {}
+    public ManageMe() {}
 
     /**
-     * Creates an AddressBook using the Persons in the {@code toBeCopied}
+     * Creates an ManageMe using the Persons in the {@code toBeCopied}
      */
-    public AddressBook(ReadOnlyAddressBook toBeCopied) {
+    public ManageMe(ReadOnlyManageMe toBeCopied) {
         this();
         resetData(toBeCopied);
     }
@@ -73,9 +73,9 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
-     * Resets the existing data of this {@code AddressBook} with {@code newData}.
+     * Resets the existing data of this {@code ManageMe} with {@code newData}.
      */
-    public void resetData(ReadOnlyAddressBook newData) {
+    public void resetData(ReadOnlyManageMe newData) {
         requireNonNull(newData);
 
         setPersons(newData.getPersonList());
@@ -86,7 +86,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     //// person-level operations
 
     /**
-     * Returns true if a person with the same identity as {@code person} exists in the address book.
+     * Returns true if a person with the same identity as {@code person} exists in the ManageMe.
      */
     public boolean hasPerson(Person person) {
         requireNonNull(person);
@@ -94,8 +94,8 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
-     * Adds a person to the address book.
-     * The person must not already exist in the address book.
+     * Adds a person to the ManageMe.
+     * The person must not already exist in the ManageMe.
      */
     public void addPerson(Person p) {
         persons.add(p);
@@ -103,8 +103,8 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     /**
      * Replaces the given person {@code target} in the list with {@code editedPerson}.
-     * {@code target} must exist in the address book.
-     * The person identity of {@code editedPerson} must not be the same as another existing person in the address book.
+     * {@code target} must exist in the ManageMe.
+     * The person identity of {@code editedPerson} must not be the same as another existing person in the ManageMe.
      */
     public void setPerson(Person target, Person editedPerson) {
         requireNonNull(editedPerson);
@@ -113,8 +113,8 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
-     * Removes {@code key} from this {@code AddressBook}.
-     * {@code key} must exist in the address book.
+     * Removes {@code key} from this {@code ManageMe}.
+     * {@code key} must exist in the ManageMe.
      */
     public void removePerson(Person key) {
         persons.remove(key);
@@ -123,7 +123,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     //// module-level operations
 
     /**
-     * Returns true if a module with the same identity as {@code module} exists in the address book.
+     * Returns true if a module with the same identity as {@code module} exists in the ManageMe.
      */
     public boolean hasModule(Module module) {
         requireNonNull(module);
@@ -131,8 +131,8 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
-     * Adds a module to the address book.
-     * The module must not already exist in the address book.
+     * Adds a module to the ManageMe.
+     * The module must not already exist in the ManageMe.
      */
     public void addModule(Module p) {
         modules.add(p);
@@ -140,8 +140,8 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     /**
      * Replaces the given module {@code target} in the list with {@code editedModule}.
-     * {@code target} must exist in the address book.
-     * The module identity of {@code editedModule} must not be the same as another existing module in the address book.
+     * {@code target} must exist in the ManageMe.
+     * The module identity of {@code editedModule} must not be the same as another existing module in the ManageMe.
      */
     public void setModule(Module target, Module editedModule) {
         requireNonNull(editedModule);
@@ -150,8 +150,8 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
-     * Removes {@code key} from this {@code AddressBook}.
-     * {@code key} must exist in the address book.
+     * Removes {@code key} from this {@code ManageMe}.
+     * {@code key} must exist in the ManageMe.
      */
     public void removeModule(Module key) {
         modules.remove(key);
@@ -160,7 +160,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     //// task-level operations
 
     /**
-     * Returns true if a task with the same identity as {@code task} exists in the address book.
+     * Returns true if a task with the same identity as {@code task} exists in the ManageMe.
      */
     public boolean hasTask(Task task) {
         requireNonNull(task);
@@ -168,8 +168,8 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
-     * Adds a task to the address book.
-     * The task must not already exist in the address book.
+     * Adds a task to the ManageMe.
+     * The task must not already exist in the ManageMe.
      */
     public void addTask(Task p) {
         tasks.add(p);
@@ -177,8 +177,8 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     /**
      * Replaces the given task {@code target} in the list with {@code editedTask}.
-     * {@code target} must exist in the address book.
-     * The task identity of {@code editedTask} must not be the same as another existing task in the address book.
+     * {@code target} must exist in the ManageMe.
+     * The task identity of {@code editedTask} must not be the same as another existing task in the ManageMe.
      */
     public void setTask(Task target, Task editedTask) {
         requireNonNull(editedTask);
@@ -187,8 +187,8 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
-     * Removes {@code key} from this {@code AddressBook}.
-     * {@code key} must exist in the address book.
+     * Removes {@code key} from this {@code ManageMe}.
+     * {@code key} must exist in the ManageMe.
      */
     public void removeTask(Task key) {
         tasks.remove(key);
@@ -221,10 +221,10 @@ public class AddressBook implements ReadOnlyAddressBook {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof AddressBook // instanceof handles nulls
-                && persons.equals(((AddressBook) other).persons)
-                && modules.equals(((AddressBook) other).modules)
-                && tasks.equals(((AddressBook) other).tasks));
+                || (other instanceof ManageMe // instanceof handles nulls
+                && persons.equals(((ManageMe) other).persons)
+                && modules.equals(((ManageMe) other).modules)
+                && tasks.equals(((ManageMe) other).tasks));
     }
 
     @Override
