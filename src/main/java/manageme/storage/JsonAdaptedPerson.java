@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 import manageme.commons.exceptions.IllegalValueException;
 import manageme.model.person.Address;
 import manageme.model.person.Email;
