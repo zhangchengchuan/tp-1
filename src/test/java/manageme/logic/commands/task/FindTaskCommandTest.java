@@ -1,6 +1,5 @@
 package manageme.logic.commands.task;
 
-import static manageme.commons.core.Messages.MESSAGE_PERSONS_LISTED_OVERVIEW;
 import static manageme.commons.core.Messages.MESSAGE_TASKS_LISTED_OVERVIEW;
 import static manageme.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static manageme.testutil.TypicalManageMe.getTypicalManageMe;
