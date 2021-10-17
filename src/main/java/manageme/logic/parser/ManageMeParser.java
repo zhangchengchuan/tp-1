@@ -23,6 +23,7 @@ import manageme.logic.commands.module.ReadModuleCommand;
 import manageme.logic.commands.task.AddTaskCommand;
 import manageme.logic.commands.task.DeleteTaskCommand;
 import manageme.logic.commands.task.EditTaskCommand;
+import manageme.logic.commands.task.FindTaskCommand;
 import manageme.logic.parser.calendar.ReadDayCommandParser;
 import manageme.logic.parser.exceptions.ParseException;
 import manageme.logic.parser.module.AddModuleCommandParser;
@@ -32,6 +33,7 @@ import manageme.logic.parser.module.ReadModuleCommandParser;
 import manageme.logic.parser.task.AddTaskCommandParser;
 import manageme.logic.parser.task.DeleteTaskCommandParser;
 import manageme.logic.parser.task.EditTaskCommandParser;
+import manageme.logic.parser.task.FindTaskCommandParser;
 
 /**
  * Parses user input.
@@ -92,6 +94,9 @@ public class ManageMeParser {
 
         case DeleteTaskCommand.COMMAND_WORD:
             return new DeleteTaskCommandParser().parse(arguments);
+
+        case FindTaskCommand.COMMAND_WORD:
+            return new FindTaskCommandParser().parse(arguments);
 
         case AddModuleCommand.COMMAND_WORD:
             return new AddModuleCommandParser().parse(arguments);
