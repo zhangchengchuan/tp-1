@@ -1,6 +1,7 @@
 package seedu.address.model.task;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.util.AppUtil.checkArgument;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -30,9 +31,10 @@ public class TaskTime {
      */
     public TaskTime(String taskTime) {
         requireNonNull(taskTime);
+        checkArgument(isValidTaskTime(taskTime), MESSAGE_CONSTRAINTS);
         String trimmedT = taskTime.trim();
+        this.value = trimmedT;
         this.time = Optional.of(LocalDateTime.parse(trimmedT));
-        this.value = dateTimeFormatter.format(time.get());
     }
 
     /**
@@ -53,6 +55,17 @@ public class TaskTime {
         return value;
     }
 
+    /**
+     * Returns a display-formatted string of TaskTime for the UI.
+     * @return display-formatted string
+     */
+    public String toDisplayString() {
+        if (time.isPresent()) {
+            return dateTimeFormatter.format(time.get());
+        } else {
+            return "";
+        }
+    }
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
