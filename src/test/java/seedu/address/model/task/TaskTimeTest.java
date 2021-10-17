@@ -40,10 +40,10 @@ public class TaskTimeTest {
     @Test
     public void toDisplayString() {
         // empty TaskTime, returns ""
-        assertEquals(TaskTime.empty().toDisplayString(), "");
+        assertTrue(TaskTime.empty().toDisplayString().equals(""));
 
         // TaskTime with actual Date, returns display-formatted date
-        assertEquals(TASK_A.getStart().toDisplayString(), "05/10/2021 11:50am");
+        assertTrue(TASK_A.getStart().toDisplayString().equals("05/10/2021 11:50am"));
     }
     @Test
     public void equals() {
