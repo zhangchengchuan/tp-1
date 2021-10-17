@@ -13,6 +13,7 @@ import manageme.commons.util.CollectionUtil;
 public class Task {
     private final TaskName name;
     private final TaskDescription description;
+    private boolean isDone;
 
     //Optional: TaskModule that the task may be linked to. Can only be linked to max 1 module.
     private final TaskModule module;
@@ -29,6 +30,7 @@ public class Task {
         CollectionUtil.requireAllNonNull(name, description);
         this.name = name;
         this.description = description;
+        this.isDone = false;
         this.module = TaskModule.empty();
         this.start = TaskTime.empty();
         this.end = TaskTime.empty();
@@ -42,6 +44,7 @@ public class Task {
         CollectionUtil.requireAllNonNull(name, description, module);
         this.name = name;
         this.description = description;
+        this.isDone = false;
         this.module = module;
         this.start = TaskTime.empty();
         this.end = TaskTime.empty();
@@ -55,6 +58,7 @@ public class Task {
         CollectionUtil.requireAllNonNull(name, description, end);
         this.name = name;
         this.description = description;
+        this.isDone = false;
         this.module = TaskModule.empty();
         this.start = TaskTime.empty();
         this.end = end;
@@ -68,6 +72,7 @@ public class Task {
         CollectionUtil.requireAllNonNull(name, description, module, end);
         this.name = name;
         this.description = description;
+        this.isDone = false;
         this.module = module;
         this.start = TaskTime.empty();
         this.end = end;
@@ -81,6 +86,7 @@ public class Task {
         CollectionUtil.requireAllNonNull(name, description, start, end);
         this.name = name;
         this.description = description;
+        this.isDone = false;
         this.module = TaskModule.empty();
         this.start = start;
         this.end = end;
@@ -95,6 +101,7 @@ public class Task {
         CollectionUtil.requireAllNonNull(name, description, module, start, end);
         this.name = name;
         this.description = description;
+        this.isDone = false;
         this.module = module;
         this.start = start;
         this.end = end;
@@ -120,6 +127,10 @@ public class Task {
         return end;
     }
 
+    public boolean isTaskDone() {
+        return isDone;
+    }
+
     /**
      * Returns the dates that this {@code Task} object spans over.
      *
@@ -133,6 +144,13 @@ public class Task {
         } else {
             return Stream.empty();
         }
+    }
+
+    /**
+     * Toggles the task between done and not done
+     */
+    public void toggleDone() {
+        this.isDone = !isDone;
     }
 
     /**
@@ -165,6 +183,7 @@ public class Task {
         Task otherTask = (Task) other;
         return otherTask.getName().equals(getName())
                 && otherTask.getDescription().equals(getDescription())
+                && otherTask.isTaskDone() == this.isTaskDone()
                 && otherTask.getTaskModule().equals(getTaskModule())
                 && otherTask.getStart().equals(getStart())
                 && otherTask.getEnd().equals(getEnd());
@@ -173,7 +192,7 @@ public class Task {
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, description, module, start, end);
+        return Objects.hash(name, description, isDone, module, start, end);
     }
 
     @Override
@@ -182,6 +201,8 @@ public class Task {
         builder.append(getName())
                 .append("; Description: ")
                 .append(getDescription())
+                .append("; Done:")
+                .append(isDone ? "yes" : "no")
                 .append("; TaskModule: ")
                 .append(getTaskModule())
                 .append("; Start: ")
