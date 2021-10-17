@@ -1,5 +1,6 @@
 package seedu.address.model.task;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
@@ -34,6 +35,15 @@ public class TaskTimeTest {
         assertTrue(TaskTime.isValidTaskTime("abcd12345")); // alphanumeric characters
         assertTrue(TaskTime.isValidTaskTime("LM456NOP")); // with capital letters
         assertTrue(TaskTime.isValidTaskTime("11/05/2021T11:49:57")); // long time
+    }
+
+    @Test
+    public void toDisplayString() {
+        // empty TaskTime, returns ""
+        assertEquals(TaskTime.empty().toDisplayString(), "");
+
+        // TaskTime with actual Date, returns display-formatted date
+        assertEquals(TASK_A.getStart().toDisplayString(), "05/10/2021 11:50am");
     }
     @Test
     public void equals() {
