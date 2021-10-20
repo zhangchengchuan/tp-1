@@ -1,14 +1,19 @@
 * {
-    -bg-color: royalblue;
-    -panel-color:lightblue;
+    -menuBar-color: salmon;
+    -bg-color: lightpink;
+    -panel-color:mistyrose;
     -calendar-color: floralwhite;
-    -cardPane-color: sandybrown;
-    -hasTask-color: green;
-    -readDay-color: darkseagreen;
+    -cardPane-color: navajowhite;
+    -hasTask-color: mediumspringgreen;
+    -readDay-color: cornsilk;
 }
 
 #menuBar {
-    -fx-background-color: grey;
+    -fx-background-color: -menuBar-color;
+}
+
+#menuBar .menu-item {
+    -fx-background-color: -menuBar-color;
 }
 
 #menuBar .label{
