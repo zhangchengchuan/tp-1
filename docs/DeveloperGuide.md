@@ -121,7 +121,9 @@ How the parsing works:
 
 The `Model` component,
 
-* stores the ManageMe data i.e., all `Module` and `Task` objects (which are contained in a `UniqueModuleList` object 
+* store the object data of ManageMe i.e., all `Module` and `Task` objects (which are contained in a 
+  `UniqueModuleList` 
+  object 
   and a `UniqueTaskList` respectively).
 * stores the currently 'selected' `Task` objects (e.g., results of a search query) as a separate _filtered_ list 
   which 
