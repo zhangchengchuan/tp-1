@@ -194,6 +194,14 @@ public class ManageMe implements ReadOnlyManageMe {
         tasks.remove(key);
     }
 
+    /**
+     * Marks/Unmarks {@code key} from this {@code ManageMe} as done.
+     * {@code key} must exist in the ManageMe.
+     */
+    public void markTask(Task key) {
+        tasks.remove(key);
+    }
+
     //// util methods
 
     @Override

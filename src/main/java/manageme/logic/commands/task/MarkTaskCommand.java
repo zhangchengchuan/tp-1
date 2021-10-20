@@ -4,13 +4,13 @@ import static java.util.Objects.requireNonNull;
 
 import java.util.List;
 
-//import manageme.commons.core.Messages;
-//import manageme.commons.core.index.Index;
-//import manageme.logic.commands.Command;
-//import manageme.logic.commands.CommandResult;
-//import manageme.logic.commands.exceptions.CommandException;
-//import manageme.model.Model;
-//import manageme.model.task.Task;
+import manageme.commons.core.Messages;
+import manageme.commons.core.index.Index;
+import manageme.logic.commands.Command;
+import manageme.logic.commands.CommandResult;
+import manageme.logic.commands.exceptions.CommandException;
+import manageme.model.Model;
+import manageme.model.task.Task;
 
 public class MarkTaskCommand extends Command {
     public static final String COMMAND_WORD = "markTask";
@@ -20,7 +20,7 @@ public class MarkTaskCommand extends Command {
             + "Parameters: INDEX (must be a positive integer)\n"
             + "Example: " + COMMAND_WORD + " 1";
 
-    public static final String MESSAGE_DELETE_TASK_SUCCESS = "Marked/Unmarked Task: %1$s";
+    public static final String MESSAGE_MARKED_TASK_SUCCESS = "Marked/Unmarked Task: %1$s";
 
     private final Index targetIndex;
 
@@ -38,8 +38,7 @@ public class MarkTaskCommand extends Command {
         }
 
         Task taskToMark = lastShownList.get(targetIndex.getZeroBased());
-        model.deleteTask(taskToMark);
-        return new CommandResult(String.format(MESSAGE_DELETE_TASK_SUCCESS, taskToDelete));
+        taskToMark.markTask();
+        return new CommandResult(String.format(MESSAGE_MARKED_TASK_SUCCESS, taskToMark));
     }
-
 }

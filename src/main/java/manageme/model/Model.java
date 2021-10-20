@@ -161,6 +161,11 @@ public interface Model {
      */
     void setTask(Task target, Task editedTask);
 
+    /**
+     * Marks/Unmarks the given task as done.
+     * The task must exist in the ManageMe.
+     */
+    void markTask(Task target);
 
     /** Returns an unmodifiable view of the filtered task list */
     ObservableList<Task> getFilteredTaskList();

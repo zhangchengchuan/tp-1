@@ -69,6 +69,7 @@ public class UniqueTaskList implements Iterable<Task> {
         internalList.set(index, editedTask);
     }
 
+
     /**
      * Removes the equivalent task from the list.
      * The task must exist in the list.

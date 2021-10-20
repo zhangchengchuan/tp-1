@@ -131,6 +131,10 @@ public class Task {
         return isDone;
     }
 
+    public void markTask() {
+        this.isDone = !isDone;
+    }
+
     /**
      * Returns the dates that this {@code Task} object spans over.
      *
@@ -198,7 +202,8 @@ public class Task {
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
-        builder.append(getName())
+        builder.append("Name: ")
+                .append(getName())
                 .append("; Description: ")
                 .append(getDescription())
                 .append("; Done:")
