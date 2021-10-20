@@ -157,8 +157,23 @@ of modules after searching for specific modules.
 Format: `listMod`
 
 ### CALENDAR:
+#### Change calendar to next month: `nextMonth`
+Display the calendar for the next month. This command will update the entire calendar panel to display the calendar and the related task information for the following month.
 
-More commands to come in further versions.
+Format: `nextMonth`
+
+#### Change calendar to previous month: `prevMonth`
+Similar to `nextMonth`. However, this command display the calendar for the previous month instead.
+
+Format: `prevMonth`
+
+#### Read details happening on a day: `readDay`
+View a day in detail. Tasks happening on the specified day will be displayed.
+
+Format: `readDay DATE`
+* `DATE` given must be a valid date
+
+Example: `readDay 2021-10-19`
 
 ### OTHERS:
 
@@ -194,5 +209,8 @@ Action | Format, Examples
 **DeleteModule** | `deleteMod INDEX`<br>e.g., `deleteMod 2`
 **FindModule** | `findMod KEYWORD [MORE_KEYWORDS]`<br>e.g., `findMod computer`
 **ListModule** | `listMod`
+**NextMonth** | `nextMonth`
+**PreviousMonth** | `prevMonth`
+**ReadDay** | `readDay DATE`<br>e.g., `readDay 2021-10-19`
 **Help** | `help`
 **Exit** | `exit`
