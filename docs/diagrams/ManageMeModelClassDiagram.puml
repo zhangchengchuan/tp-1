@@ -51,6 +51,7 @@ Task *--> TaskName
 Task *--> TaskDescription
 Task *--> TaskModule
 Task *--> "2" TaskTime
+Task --> UniqueLinkList
 
 TaskName -[hidden]right-> TaskDescription
 TaskDescription -[hidden]right-> TaskModule
@@ -60,7 +61,8 @@ ModelManager -->"~* filtered" Task
 ManageMe *--> "1" UniqueModuleList
 UniqueModuleList --> "~* all" Module
 Module *--> ModuleName
-Module *--> Link
+Module --> UniqueLinkList
+UniqueLinkList -->"*" Link
 Link *--> LinkName
 Link *--> LinkAddress
 
