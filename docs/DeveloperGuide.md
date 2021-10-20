@@ -141,16 +141,27 @@ The `Model` component,
 
 **API** : [`Storage.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/storage/Storage.java)
 
-<img src="images/StorageClassDiagram.png" width="550" />
+<img src="images/MMStorageClassDiagram.png" width="550" />
 
 The `Storage` component,
-* can save both address book data and user preference data in json format, and read them back into corresponding objects.
-* inherits from both `AddressBookStorage` and `UserPrefStorage`, which means it can be treated as either one (if only the functionality of only one is needed).
+* can save both ManageMe data and user preference data in json format, and read them back into corresponding objects.
+* inherits from both `ManageMeStorage` and `UserPrefStorage`, which means it can be treated as either one (if only the functionality of only one is needed).
 * depends on some classes in the `Model` component (because the `Storage` component's job is to save/retrieve objects that belong to the `Model`)
 
 ### Common classes
 
+
 Classes used by multiple components are in the `manageme.commons` package.
+
+### Time component
+
+[comment]: <> (**API** : [`Storage.java`]&#40;https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/storage/Storage.java&#41;)
+
+<img src="images/MMTimeClassDiagram.png" width="550" />
+
+The `Time` component,
+* is used as a standalone component to facilitate the tracking of time.
+* enables notifications by comparing tasks' start and end time with system time.
 
 --------------------------------------------------------------------------------------------------------------------
 
