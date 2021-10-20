@@ -20,6 +20,7 @@ public class JsonAdaptedTask {
     // 3 Optional - time/end-time/modules
     private final String taskName;
     private final String taskDescription;
+    private final String isDone;
     private final String module;
     private final String start;
     private final String end;
@@ -27,15 +28,17 @@ public class JsonAdaptedTask {
 
 
     /**
-     * Constructs a {@code JsonAdaptedTask} with the given person details.
+     * Constructs a {@code JsonAdaptedTask} with the given task details.
      */
     @JsonCreator
     public JsonAdaptedTask(@JsonProperty("name") String taskName, @JsonProperty("description") String description,
-                           @JsonProperty("module") String module, @JsonProperty("start") String start,
+                           @JsonProperty("isDone") String isDone, @JsonProperty("module") String module,
+                           @JsonProperty("start") String start,
                            @JsonProperty("end") String end) {
         //                   @JsonProperty("tagged") List<JsonAdaptedTag> tagged) {
         this.taskName = taskName;
         this.taskDescription = description;
+        this.isDone = isDone;
         this.module = module;
         this.start = start;
         this.end = end;
@@ -50,6 +53,7 @@ public class JsonAdaptedTask {
     public JsonAdaptedTask(Task source) {
         this.taskName = source.getName().value;
         this.taskDescription = source.getDescription().value;
+        this.isDone = source.isTaskDone() ? "yes" : "no";
         //tagged.addAll(source.getTag().stream()
         //        .map(JsonAdaptedTag::new)
         //        .collect(Collectors.toList());
@@ -83,26 +87,27 @@ public class JsonAdaptedTask {
         }
         final TaskDescription modelDescription = new TaskDescription(taskDescription);
 
-        final TaskModule modelModule = module != "" ? new TaskModule(module) : null;
+        if (isDone == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, "Task isDone"));
+        }
 
-        final TaskTime modelStart = start != "" ? new TaskTime(start) : null;
+        if (!isDone.equals("yes") && !isDone.equals("no")) {
+            throw new IllegalValueException("isDone should either be a yes or no");
+        }
 
-        final TaskTime modelEnd = end != "" ? new TaskTime(end) : null;
+        final boolean modelIsDone = isDone.equals("yes");
+
+        final TaskModule modelModule = module != "" ? new TaskModule(module) : TaskModule.empty();
+
+        final TaskTime modelStart = start != "" ? new TaskTime(start) : TaskTime.empty();
+
+        final TaskTime modelEnd = end != "" ? new TaskTime(end) : TaskTime.empty();
 
         // final Set<Tag> modelTags = new HashSet<>(taskTags);
-
-        if (modelModule == null && modelStart == null && modelEnd == null) {
-            return new Task(modelName, modelDescription);
-        } else if (modelModule != null && modelStart == null && modelEnd == null) {
-            return new Task(modelName, modelDescription, modelModule);
-        } else if (modelModule == null && modelStart == null) {
-            return new Task(modelName, modelDescription, modelEnd);
-        } else if (modelModule != null && modelStart == null) {
-            return new Task(modelName, modelDescription, modelModule, modelEnd);
-        } else if (modelModule == null && end != null) {
-            return new Task(modelName, modelDescription, modelStart, modelEnd);
-        } else {
-            return new Task(modelName, modelDescription, modelModule, modelStart, modelEnd);
+        Task createdTask = new Task(modelName, modelDescription, modelModule, modelStart, modelEnd);
+        if (modelIsDone) {
+            createdTask.markTask();
         }
+        return createdTask;
     }
 }
