@@ -25,6 +25,7 @@
                     </minWidth>
                 </Label>
                 <Label fx:id="name" styleClass="cell_big_label" text="\$first" />
+                <Label fx:id="isDone" styleClass="cell_big_label" text="\$isDone" />
             </HBox>
             <Label fx:id="description" styleClass="cell_small_label" text="\$description" />
             <Label fx:id="module" />

@@ -33,6 +33,8 @@ public class TaskCard extends UiPart<Region> {
     @FXML
     private Label description;
     @FXML
+    private Label isDone;
+    @FXML
     private Label module;
     @FXML
     private Label startTime;
@@ -48,6 +50,7 @@ public class TaskCard extends UiPart<Region> {
         id.setText(displayedIndex + ". ");
         name.setText(task.getName().value);
         description.setText(task.getDescription().value);
+        isDone.setText("[" + (task.isTaskDone() ? "x" : " ") + "]");
         module.setText(task.getTaskModule().value);
         startTime.setText(task.getStart().isEmpty() ? "" : "Start Time: " + task.getStart().value);
         endTime.setText(task.getEnd().isEmpty() ? "" : "End Time: " + task.getEnd().value);

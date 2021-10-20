@@ -23,76 +23,6 @@ public class Task {
     private final TaskTime end;
 
     /**
-     * Basic Task with only name and description, other attributes are initialized to TaskTime.empty().
-     * Every field must be present and not TaskTime.empty().
-     */
-    public Task(TaskName name, TaskDescription description) {
-        CollectionUtil.requireAllNonNull(name, description);
-        this.name = name;
-        this.description = description;
-        this.isDone = false;
-        this.module = TaskModule.empty();
-        this.start = TaskTime.empty();
-        this.end = TaskTime.empty();
-    }
-
-    /**
-     * Basic Task with an associated module.
-     * Every field must be present and not TaskTime.empty().
-     */
-    public Task(TaskName name, TaskDescription description, TaskModule module) {
-        CollectionUtil.requireAllNonNull(name, description, module);
-        this.name = name;
-        this.description = description;
-        this.isDone = false;
-        this.module = module;
-        this.start = TaskTime.empty();
-        this.end = TaskTime.empty();
-    }
-
-    /**
-     * Task with an end date(Deadline). No modules.
-     * Every field must be present and not TaskTime.empty().
-     */
-    public Task(TaskName name, TaskDescription description, TaskTime end) {
-        CollectionUtil.requireAllNonNull(name, description, end);
-        this.name = name;
-        this.description = description;
-        this.isDone = false;
-        this.module = TaskModule.empty();
-        this.start = TaskTime.empty();
-        this.end = end;
-    }
-
-    /**
-     * Task with an end date(Deadline). Includes module.
-     * Every field must be present and not TaskTime.empty().
-     */
-    public Task(TaskName name, TaskDescription description, TaskModule module, TaskTime end) {
-        CollectionUtil.requireAllNonNull(name, description, module, end);
-        this.name = name;
-        this.description = description;
-        this.isDone = false;
-        this.module = module;
-        this.start = TaskTime.empty();
-        this.end = end;
-    }
-
-    /**
-     * Task with a start and end date(Event). No module.
-     * Every field must be present and not TaskTime.empty().
-     */
-    public Task(TaskName name, TaskDescription description, TaskTime start, TaskTime end) {
-        CollectionUtil.requireAllNonNull(name, description, start, end);
-        this.name = name;
-        this.description = description;
-        this.isDone = false;
-        this.module = TaskModule.empty();
-        this.start = start;
-        this.end = end;
-    }
-
-    /**
      * Task with a start and end date(Event). Includes module.
      * Every field must be present and not TaskTime.empty().
      */
@@ -102,6 +32,21 @@ public class Task {
         this.name = name;
         this.description = description;
         this.isDone = false;
+        this.module = module;
+        this.start = start;
+        this.end = end;
+    }
+
+    /**
+     * Task with a start and end date(Event). Includes module.
+     * Every field must be present and not TaskTime.empty().
+     */
+    public Task(TaskName name, TaskDescription description, boolean isDone, TaskModule module, TaskTime start,
+                TaskTime end) {
+        CollectionUtil.requireAllNonNull(name, description, module, start, end);
+        this.name = name;
+        this.description = description;
+        this.isDone = isDone;
         this.module = module;
         this.start = start;
         this.end = end;

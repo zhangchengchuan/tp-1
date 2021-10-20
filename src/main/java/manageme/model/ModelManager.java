@@ -170,10 +170,7 @@ public class ModelManager implements Model {
         manageMe.setTask(target, editedTask);
     }
 
-    @Override
-    public void markTask(Task target) {
-        manageMe.markTask(target);
-    }
+
 
     //=========== Filtered Person List Accessors =============================================================
 

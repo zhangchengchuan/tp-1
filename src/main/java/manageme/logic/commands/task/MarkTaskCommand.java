@@ -39,6 +39,8 @@ public class MarkTaskCommand extends Command {
 
         Task taskToMark = lastShownList.get(targetIndex.getZeroBased());
         taskToMark.markTask();
+        model.setTask(taskToMark, taskToMark);
+
         return new CommandResult(String.format(MESSAGE_MARKED_TASK_SUCCESS, taskToMark));
     }
 }
