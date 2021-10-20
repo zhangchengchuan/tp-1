@@ -69,20 +69,20 @@ The sections below give more details of each component.
 
 ### UI component
 
-The **API** of this component is specified in [`Ui.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/Ui.java)
+The **API** of this component is specified in [`Ui.java`](https://github.com/AY2122S1-CS2103T-W11-3/tp/blob/master/src/main/java/seedu/address/ui/Ui.java)
 
 ![Structure of the UI Component](images/UiClassDiagram.png)
 
-The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `PersonListPanel`, `StatusBarFooter` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class which captures the commonalities between classes that represent parts of the visible GUI.
+The UI consists of a `MmMainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `ModuleListPanel`, `TaskListPanel` etc. All these, including the `MmMainWindow`, inherit from the abstract `UiPart` class which captures the commonalities between classes that represent parts of the visible GUI.
 
-The `UI` component uses the JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/resources/view/MainWindow.fxml)
+The `UI` component uses the JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MmMainWindow`](https://github.com/AY2122S1-CS2103T-W11-3/tp/blob/master/src/main/java/seedu/address/ui/MmMainWindow.java) is specified in [`MmMainWindow.fxml`](https://github.com/AY2122S1-CS2103T-W11-3/tp/blob/master/src/main/resources/view/MmMainWindow.fxml)
 
 The `UI` component,
 
 * executes user commands using the `Logic` component.
 * listens for changes to `Model` data so that the UI can be updated with the modified data.
 * keeps a reference to the `Logic` component, because the `UI` relies on the `Logic` to execute commands.
-* depends on some classes in the `Model` component, as it displays `Person` object residing in the `Model`.
+* depends on some classes in the `Model` component, as it displays `Module` and `Task` objects residing in the `Model`.
 
 ### Logic component
 
@@ -310,8 +310,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * 1a. User enters an invalid module index<br>
     * 1a1. System shows error in reading index.
       Use case resumes from step 1.
-* 1b. System detects an error in the entered data.
-    * 1a1. System shows error in reading index.
+* 1b. System detects format errors in the entered data.
+    * 1a1. System shows error in format.
       Use case resumes from step 1. <br><br>
 
 
@@ -329,6 +329,29 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * 1a. User enters an invalid module index<br>
     * 1a1. System shows error in reading index.
       Use case resumes from step 1.
+
+
+**Use case: Find Module**
+
+**MSS:**
+
+1. User requests to search for specific modules by keyword.
+3. System updates the GUI to show a list of all modules whose name contains the keyword. <br>
+   Use case ends.
+
+**Extension:**
+
+* 1a. User does not enter a keyword. <br>
+    * 1a1. System shows invalid format error.
+      Use case resumes from step 1.
+
+**Use case: List all Modules**
+
+**MSS:**
+
+1. User requests to list all modules.
+3. System updates the GUI to show the full list of keywords. <br>
+   Use case ends.
 
 
 ### Non-Functional Requirements
