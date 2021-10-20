@@ -101,7 +101,7 @@ public class JsonAdaptedTask {
             return new Task(modelName, modelDescription, modelEnd);
         } else if (modelModule != null && modelStart == null) {
             return new Task(modelName, modelDescription, modelModule, modelEnd);
-        } else if (modelModule == null && end != null) {
+        } else if (modelModule == null) {
             return new Task(modelName, modelDescription, modelStart, modelEnd);
         } else {
             return new Task(modelName, modelDescription, modelModule, modelStart, modelEnd);

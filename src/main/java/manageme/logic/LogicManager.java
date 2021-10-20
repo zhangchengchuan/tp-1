@@ -18,6 +18,7 @@ import manageme.model.module.Module;
 import manageme.model.person.Person;
 import manageme.model.task.Task;
 import manageme.storage.Storage;
+import manageme.time.Time;
 
 /**
  * The main LogicManager of the app.
@@ -28,14 +29,16 @@ public class LogicManager implements Logic {
 
     private final Model model;
     private final Storage storage;
+    private final Time time;
     private final ManageMeParser manageMeParser;
 
     /**
      * Constructs a {@code LogicManager} with the given {@code Model} and {@code Storage}.
      */
-    public LogicManager(Model model, Storage storage) {
+    public LogicManager(Model model, Storage storage, Time time) {
         this.model = model;
         this.storage = storage;
+        this.time = time;
         manageMeParser = new ManageMeParser();
     }
 
@@ -48,7 +51,9 @@ public class LogicManager implements Logic {
         commandResult = command.execute(model);
 
         try {
+            time.updateTasks(model.getManageMe());
             storage.saveManageMe(model.getManageMe());
+
         } catch (IOException ioe) {
             throw new CommandException(FILE_OPS_ERROR_MESSAGE + ioe, ioe);
         }
