@@ -2,6 +2,7 @@ package manageme.model;
 
 import static java.util.Objects.requireNonNull;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -216,6 +217,11 @@ public class ManageMe implements ReadOnlyManageMe {
     @Override
     public ObservableList<Task> getTaskList() {
         return tasks.asUnmodifiableObservableList();
+    }
+
+    @Override
+    public ArrayList<Task> getModifiableTaskList() {
+        return tasks.asModifiableObservableList();
     }
 
     @Override

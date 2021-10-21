@@ -1,6 +1,7 @@
 package manageme.model.task;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.stream.Stream;
 
@@ -132,6 +133,18 @@ public class Task {
             return end.getTime().toLocalDate().datesUntil(end.getTime().plusDays(1).toLocalDate());
         } else {
             return Stream.empty();
+        }
+    }
+
+    public LocalDateTime getFirstOccurrence() {
+        if (start.isEmpty() && end.isEmpty()) {
+            // Should not happen
+            System.out.println("getFirstOccurrence");
+            return null;
+        } else if (start.isEmpty()) {
+            return end.getTime();
+        } else {
+            return start.getTime();
         }
     }
 
