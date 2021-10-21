@@ -2,8 +2,8 @@ package manageme.ui.task;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
+import javafx.scene.layout.VBox;
 import manageme.model.task.Task;
 import manageme.ui.UiPart;
 
@@ -25,17 +25,17 @@ public class TaskCard extends UiPart<Region> {
     public final Task task;
 
     @FXML
-    private HBox cardPane;
+    private VBox cardPane;
     @FXML
-    private Label name;
+    private Label taskName;
     @FXML
-    private Label id;
+    private Label taskId;
     @FXML
-    private Label description;
+    private Label taskDescription;
     @FXML
     private Label isDone;
     @FXML
-    private Label module;
+    private Label taskModule;
     @FXML
     private Label startTime;
     @FXML
@@ -47,11 +47,11 @@ public class TaskCard extends UiPart<Region> {
     public TaskCard(Task task, int displayedIndex) {
         super(FXML);
         this.task = task;
-        id.setText(displayedIndex + ". ");
-        name.setText(task.getName().value);
-        description.setText(task.getDescription().value);
+        taskId.setText(displayedIndex + ". ");
+        taskName.setText(task.getName().value);
+        taskDescription.setText(task.getDescription().value);
         isDone.setText("[" + (task.isTaskDone() ? "x" : " ") + "]");
-        module.setText(task.getTaskModule().value);
+        taskModule.setText(task.getTaskModule().value);
         startTime.setText(task.getStart().isEmpty() ? "" : "Start Time: " + task.getStart().value);
         endTime.setText(task.getEnd().isEmpty() ? "" : "End Time: " + task.getEnd().value);
     }
@@ -70,7 +70,7 @@ public class TaskCard extends UiPart<Region> {
 
         // state check
         TaskCard card = (TaskCard) other;
-        return id.getText().equals(card.id.getText())
+        return taskId.getText().equals(card.taskId.getText())
                 && task.equals(card.task);
     }
 }

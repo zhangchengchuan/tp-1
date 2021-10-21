@@ -19,6 +19,8 @@ import manageme.logic.commands.calendar.ReadDayCommand;
 import manageme.logic.commands.module.AddModuleCommand;
 import manageme.logic.commands.module.DeleteModuleCommand;
 import manageme.logic.commands.module.EditModuleCommand;
+import manageme.logic.commands.module.FindModuleCommand;
+import manageme.logic.commands.module.ListModuleCommand;
 import manageme.logic.commands.module.ReadModuleCommand;
 import manageme.logic.commands.task.AddTaskCommand;
 import manageme.logic.commands.task.DeleteTaskCommand;
@@ -30,6 +32,7 @@ import manageme.logic.parser.exceptions.ParseException;
 import manageme.logic.parser.module.AddModuleCommandParser;
 import manageme.logic.parser.module.DeleteModuleCommandParser;
 import manageme.logic.parser.module.EditModuleCommandParser;
+import manageme.logic.parser.module.FindModuleCommandParser;
 import manageme.logic.parser.module.ReadModuleCommandParser;
 import manageme.logic.parser.task.AddTaskCommandParser;
 import manageme.logic.parser.task.DeleteTaskCommandParser;
@@ -114,6 +117,12 @@ public class ManageMeParser {
 
         case EditModuleCommand.COMMAND_WORD:
             return new EditModuleCommandParser().parse(arguments);
+
+        case FindModuleCommand.COMMAND_WORD:
+            return new FindModuleCommandParser().parse(arguments);
+
+        case ListModuleCommand.COMMAND_WORD:
+            return new ListModuleCommand();
 
         case NextMonthCommand.COMMAND_WORD:
             return new NextMonthCommand();

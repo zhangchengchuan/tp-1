@@ -85,6 +85,9 @@ public class JsonAdaptedTask {
         if (taskDescription == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, "Task Description"));
         }
+        if (!TaskDescription.isValidDescription(taskDescription)) {
+            throw new IllegalValueException(TaskDescription.MESSAGE_CONSTRAINTS);
+        }
         final TaskDescription modelDescription = new TaskDescription(taskDescription);
 
         if (isDone == null) {
@@ -97,11 +100,11 @@ public class JsonAdaptedTask {
 
         final boolean modelIsDone = isDone.equals("yes");
 
-        final TaskModule modelModule = module != "" ? new TaskModule(module) : TaskModule.empty();
+        final TaskModule modelModule = !module.equals("") ? new TaskModule(module) : TaskModule.empty();
 
-        final TaskTime modelStart = start != "" ? new TaskTime(start) : TaskTime.empty();
+        final TaskTime modelStart = !start.equals("") ? new TaskTime(start) : TaskTime.empty();
 
-        final TaskTime modelEnd = end != "" ? new TaskTime(end) : TaskTime.empty();
+        final TaskTime modelEnd = !end.equals("") ? new TaskTime(end) : TaskTime.empty();
 
         // final Set<Tag> modelTags = new HashSet<>(taskTags);
         Task createdTask = new Task(modelName, modelDescription, modelModule, modelStart, modelEnd);

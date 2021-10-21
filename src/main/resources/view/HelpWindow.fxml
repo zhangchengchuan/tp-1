@@ -21,6 +21,7 @@
       <stylesheets>
         <URL value="@Fonts.css" />
         <URL value="@HelpWindow.css" />
+        <URL value="@DarkTheme.css" />
       </stylesheets>
 
       <HBox alignment="CENTER">
