@@ -1,5 +1,7 @@
 package manageme.model.task;
 
+import static manageme.commons.util.AppUtil.checkArgument;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Objects;
@@ -12,6 +14,9 @@ import manageme.commons.util.CollectionUtil;
  * Guarantees: details are present and not TaskTime.empty(), field values are validated, immutable.
  */
 public class Task {
+    public static final String MESSAGE_START_WITHOUT_END =
+            "A task with a start datetime MUST also have an end datetime";
+
     private final TaskName name;
     private final TaskDescription description;
     private TaskIsDone isDone;
@@ -30,6 +35,7 @@ public class Task {
     public Task(TaskName name, TaskDescription description, TaskModule module, TaskTime start,
                 TaskTime end) {
         CollectionUtil.requireAllNonNull(name, description, module, start, end);
+        //checkArgument(checkStartHasEnd(start, end), MESSAGE_START_WITHOUT_END);
         this.name = name;
         this.description = description;
         this.isDone = new TaskIsDone(false);
@@ -45,6 +51,7 @@ public class Task {
     public Task(TaskName name, TaskDescription description, TaskIsDone isDone, TaskModule module, TaskTime start,
                 TaskTime end) {
         CollectionUtil.requireAllNonNull(name, description, module, start, end);
+        //checkArgument(checkStartHasEnd(start, end), MESSAGE_START_WITHOUT_END);
         this.name = name;
         this.description = description;
         this.isDone = isDone;
@@ -75,6 +82,17 @@ public class Task {
 
     public TaskIsDone isDone() {
         return isDone;
+    }
+
+    /**
+     * Checks that if a start TaskTime is present, then an end TaskTime is also present.
+     * @param start TaskTime
+     * @param end TaskTime
+     * @return true if start/end is fine, false otherwise
+     */
+    public boolean checkStartHasEnd(TaskTime start, TaskTime end) {
+        return !(!start.isEmpty() && end.isEmpty());
+
     }
 
     /**
@@ -153,7 +171,7 @@ public class Task {
                 .append(getName())
                 .append("; Description: ")
                 .append(getDescription())
-                .append("; Done:")
+                .append("; Done: ")
                 .append(isDone())
                 .append("; TaskModule: ")
                 .append(getTaskModule())

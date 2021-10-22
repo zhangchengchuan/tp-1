@@ -19,7 +19,7 @@ public class JsonAdaptedTaskTest {
 
     private static final String VALID_NAME = TypicalTasks.TASK_A.getName().toString();
     private static final String VALID_DESCRIPTION = TypicalTasks.TASK_A.getDescription().toString();
-    private static final String VALID_ISDONE = TypicalTasks.TASK_A.isTaskDone() ? "yes" : "no";
+    private static final String VALID_ISDONE = TypicalTasks.TASK_A.isDone().toString();
     private static final String VALID_MODULE = TypicalTasks.TASK_A.getTaskModule().toString();
     private static final String VALID_START = TypicalTasks.TASK_A.getStart().toString();
     private static final String VALID_END = TypicalTasks.TASK_A.getEnd().toString();

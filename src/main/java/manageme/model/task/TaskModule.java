@@ -42,7 +42,7 @@ public class TaskModule {
      * Returns true if a given string is a valid Module.
      */
     public static boolean isValidModule(String test) {
-        return test.matches(VALIDATION_REGEX);
+        return test.matches(VALIDATION_REGEX) || test.equals("");
     }
 
     @Override

@@ -35,7 +35,10 @@ public class EditTaskCommand extends Command {
 
     public static final String MESSAGE_EDIT_TASK_SUCCESS = "Edited Task: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
-    public static final String MESSAGE_DUPLICATE_TASK = "This task already exists in the address book.";
+    public static final String MESSAGE_DUPLICATE_TASK = "This task already exists in the task list.";
+    public static final String MESSAGE_START_WITHOUT_END = "A task with a start datetime MUST also have an "
+            + "end datetime";
+
 
     private final Index index;
     private final EditTaskDescriptor editTaskDescriptor;
@@ -64,6 +67,16 @@ public class EditTaskCommand extends Command {
 
         Task taskToEdit = lastShownList.get(index.getZeroBased());
         Task editedTask = createEditedTask(taskToEdit, editTaskDescriptor);
+
+        if (!editedTask.getStart().isEmpty() && taskToEdit.getEnd().isEmpty() && editedTask.getEnd().isEmpty()
+        ) {
+            throw new CommandException(MESSAGE_START_WITHOUT_END);
+        }
+
+        if (editedTask.getEnd().isEmpty() && !taskToEdit.getStart().isEmpty() && !editedTask.getStart().isEmpty()
+        ) {
+            throw new CommandException(MESSAGE_START_WITHOUT_END);
+        }
 
         if (!taskToEdit.isSameTask(editedTask) && model.hasTask(editedTask)) {
             throw new CommandException(MESSAGE_DUPLICATE_TASK);

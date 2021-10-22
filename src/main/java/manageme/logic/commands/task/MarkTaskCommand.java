@@ -45,6 +45,6 @@ public class MarkTaskCommand extends Command {
                 taskToMark.getTaskModule(), taskToMark.getStart(), taskToMark.getEnd());
         model.setTask(taskToMark, markedTask);
         model.updateFilteredTaskList(PREDICATE_SHOW_ALL_TASKS);
-        return new CommandResult(String.format(MESSAGE_MARKED_TASK_SUCCESS, taskToMark));
+        return new CommandResult(String.format(MESSAGE_MARKED_TASK_SUCCESS, markedTask));
     }
 }
