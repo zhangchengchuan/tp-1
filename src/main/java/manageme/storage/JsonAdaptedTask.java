@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import manageme.commons.exceptions.IllegalValueException;
 import manageme.model.task.Task;
 import manageme.model.task.TaskDescription;
+import manageme.model.task.TaskIsDone;
 import manageme.model.task.TaskModule;
 import manageme.model.task.TaskName;
 import manageme.model.task.TaskTime;
@@ -53,7 +54,7 @@ public class JsonAdaptedTask {
     public JsonAdaptedTask(Task source) {
         this.taskName = source.getName().value;
         this.taskDescription = source.getDescription().value;
-        this.isDone = source.isTaskDone() ? "yes" : "no";
+        this.isDone = source.isDone().toString();
         //tagged.addAll(source.getTag().stream()
         //        .map(JsonAdaptedTag::new)
         //        .collect(Collectors.toList());
@@ -83,7 +84,7 @@ public class JsonAdaptedTask {
         final TaskName modelName = new TaskName(taskName);
 
         if (taskDescription == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, "Task Description"));
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, "TaskDescription"));
         }
         if (!TaskDescription.isValidDescription(taskDescription)) {
             throw new IllegalValueException(TaskDescription.MESSAGE_CONSTRAINTS);
@@ -91,14 +92,14 @@ public class JsonAdaptedTask {
         final TaskDescription modelDescription = new TaskDescription(taskDescription);
 
         if (isDone == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, "Task isDone"));
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, "TaskIsDone"));
         }
 
         if (!isDone.equals("yes") && !isDone.equals("no")) {
-            throw new IllegalValueException("isDone should either be a yes or no");
+            throw new IllegalValueException(TaskIsDone.MESSAGE_CONSTRAINTS);
         }
 
-        final boolean modelIsDone = isDone.equals("yes");
+        final TaskIsDone modelIsDone = new TaskIsDone(isDone.equals("yes"));
 
         final TaskModule modelModule = !module.equals("") ? new TaskModule(module) : TaskModule.empty();
 
@@ -107,10 +108,9 @@ public class JsonAdaptedTask {
         final TaskTime modelEnd = !end.equals("") ? new TaskTime(end) : TaskTime.empty();
 
         // final Set<Tag> modelTags = new HashSet<>(taskTags);
-        Task createdTask = new Task(modelName, modelDescription, modelModule, modelStart, modelEnd);
-        if (modelIsDone) {
-            createdTask.markTask();
-        }
+        Task createdTask = new Task(modelName, modelDescription, modelIsDone, modelModule, modelStart,
+                modelEnd);
+
         return createdTask;
     }
 }

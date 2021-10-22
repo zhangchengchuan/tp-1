@@ -50,7 +50,7 @@ public class TaskCard extends UiPart<Region> {
         taskId.setText(displayedIndex + ". ");
         taskName.setText(task.getName().value);
         taskDescription.setText(task.getDescription().value);
-        isDone.setText("[" + (task.isTaskDone() ? "x" : " ") + "]");
+        isDone.setText("[" + (task.isDone()) + "]");
         taskModule.setText(task.getTaskModule().value);
         startTime.setText(task.getStart().isEmpty() ? "" : "Start Time: " + task.getStart().value);
         endTime.setText(task.getEnd().isEmpty() ? "" : "End Time: " + task.getEnd().value);
