@@ -15,7 +15,7 @@ public class LinkName {
      */
     public static final String VALIDATION_REGEX = "[\\p{Alnum}][\\p{Alnum} ]*";
 
-    public final String name;
+    public final String value;
 
     /**
      * Constructs a {@code LinkName}.
@@ -25,7 +25,7 @@ public class LinkName {
     public LinkName(String moduleName) {
         requireNonNull(moduleName);
         AppUtil.checkArgument(isValidLinkName(moduleName), MESSAGE_CONSTRAINTS);
-        this.name = moduleName;
+        this.value = moduleName;
     }
 
     /**
@@ -37,18 +37,18 @@ public class LinkName {
 
     @Override
     public String toString() {
-        return name;
+        return value;
     }
 
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof LinkName // instanceof handles nulls
-                && name.equals(((LinkName) other).name)); // state check
+                && value.equals(((LinkName) other).value)); // state check
     }
 
     @Override
     public int hashCode() {
-        return name.hashCode();
+        return value.hashCode();
     }
 }

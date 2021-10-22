@@ -1,11 +1,8 @@
 package manageme.model.link;
 
-import static manageme.logic.commands.CommandTestUtil.VALID_LINK_GOOGLE;
-import static manageme.logic.commands.CommandTestUtil.VALID_LINK_NAME_YOUTUBE;
 import static manageme.testutil.TypicalLinks.LINK_LUMINUS;
 import static manageme.testutil.TypicalLinks.LINK_YOUTUBE;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
@@ -25,11 +22,11 @@ public class LinkTest {
         assertFalse(LINK_LUMINUS.isSameLink(null));
 
         // same link, different name -> returns true
-        Link editedLuminus = new LinkBuilder(LINK_LUMINUS).withName(VALID_LINK_NAME_YOUTUBE).build();
+        Link editedLuminus = new LinkBuilder(LINK_LUMINUS).withName("Lecture").build();
         assertTrue(LINK_LUMINUS.isSameLink(editedLuminus));
 
         // different link, same name -> returns false
-        editedLuminus = new LinkBuilder(LINK_LUMINUS).withLink(VALID_LINK_GOOGLE).build();
+        editedLuminus = new LinkBuilder(LINK_LUMINUS).withAddress("www.youtube.com").build();
         assertFalse(LINK_LUMINUS.isSameLink(editedLuminus));
     }
 
@@ -54,13 +51,16 @@ public class LinkTest {
         // different Link object -> returns false
         assertFalse(LINK_LUMINUS.equals(LINK_YOUTUBE));
 
-        // TODO: This test only works if the equal method in Link class compares names
         // different name -> returns false
-        // Link editedLuminus = new LinkBuilder(LINK_LUMINUS).withName(VALID_LINK_NAME_YOUTUBE).build();
-        // assertFalse(LINK_LUMINUS.equals(editedLuminus));
+         Link differentName = new LinkBuilder(LINK_LUMINUS).withName("differentName").build();
+         assertFalse(LINK_LUMINUS.equals(differentName));
 
-        // different link content -> returns false
-        Link editedLuminus = new LinkBuilder(LINK_LUMINUS).withLink(VALID_LINK_GOOGLE).build();
-        assertFalse(LINK_LUMINUS.equals(editedLuminus));
+        // different link address -> returns false
+        Link differentAddress = new LinkBuilder(LINK_LUMINUS).withAddress("www.differentaddress.com").build();
+        assertFalse(LINK_LUMINUS.equals(differentAddress));
+
+        // different link module -> return false
+        Link differentModule = new LinkBuilder(LINK_LUMINUS).withModule("differentModule").build();
+        assertFalse(LINK_LUMINUS.equals(differentModule));
     }
 }

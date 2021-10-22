@@ -11,7 +11,7 @@ import manageme.logic.parser.exceptions.ParseException;
 import manageme.model.Model;
 import manageme.model.ReadOnlyManageMe;
 import manageme.model.module.Module;
-import manageme.model.person.Person;
+import manageme.model.link.Link;
 import manageme.model.task.Task;
 
 /**
@@ -34,8 +34,8 @@ public interface Logic {
      */
     ReadOnlyManageMe getManageMe();
 
-    /** Returns an unmodifiable view of the filtered list of persons */
-    ObservableList<Person> getFilteredPersonList();
+    /** Returns an unmodifiable view of the filtered list of links */
+    ObservableList<Link> getFilteredLinkList();
 
     /** Returns an unmodifiable view of the filtered list of modules */
     ObservableList<Module> getFilteredModuleList();

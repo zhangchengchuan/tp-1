@@ -16,7 +16,7 @@ import manageme.logic.parser.exceptions.ParseException;
 import manageme.model.Model;
 import manageme.model.ReadOnlyManageMe;
 import manageme.model.module.Module;
-import manageme.model.person.Person;
+import manageme.model.link.Link;
 import manageme.model.task.Task;
 import manageme.storage.Storage;
 import manageme.time.Time;
@@ -67,8 +67,8 @@ public class LogicManager implements Logic {
     }
 
     @Override
-    public ObservableList<Person> getFilteredPersonList() {
-        return model.getFilteredPersonList();
+    public ObservableList<Link> getFilteredLinkList() {
+        return model.getFilteredLinkList();
     }
 
     @Override

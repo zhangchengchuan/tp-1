@@ -1,6 +1,6 @@
 package manageme.model;
 
-import static manageme.model.Model.PREDICATE_SHOW_ALL_PERSONS;
+import static manageme.model.Model.PREDICATE_SHOW_ALL_LINKS;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -168,7 +168,7 @@ public class ModelManagerTest {
         assertFalse(modelManager.equals(new ModelManager(manageMe, userPrefs)));
 
         // resets modelManager to initial state for upcoming tests
-        modelManager.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+        modelManager.updateFilteredPersonList(PREDICATE_SHOW_ALL_LINKS);
 
         // different userPrefs -> returns false
         UserPrefs differentUserPrefs = new UserPrefs();

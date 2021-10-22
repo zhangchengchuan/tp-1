@@ -7,7 +7,7 @@ import java.util.function.Predicate;
 import javafx.collections.ObservableList;
 import manageme.commons.core.GuiSettings;
 import manageme.model.module.Module;
-import manageme.model.person.Person;
+import manageme.model.link.Link;
 import manageme.model.task.Task;
 
 /**
@@ -15,7 +15,7 @@ import manageme.model.task.Task;
  */
 public interface Model {
     /** {@code Predicate} that always evaluate to true */
-    Predicate<Person> PREDICATE_SHOW_ALL_PERSONS = unused -> true;
+    Predicate<Link> PREDICATE_SHOW_ALL_LINKS = unused -> true;
 
     /** {@code Predicate} that always evaluate to true */
     Predicate<Module> PREDICATE_SHOW_ALL_MODULES = unused -> true;
@@ -62,37 +62,37 @@ public interface Model {
     ReadOnlyManageMe getManageMe();
 
     /**
-     * Returns true if a person with the same identity as {@code person} exists in the ManageMe.
+     * Returns true if a link with the same identity as {@code link} exists in the ManageMe.
      */
-    boolean hasPerson(Person person);
+    boolean hasLink(Link link);
 
     /**
-     * Deletes the given person.
-     * The person must exist in the ManageMe.
+     * Deletes the given link.
+     * The link must exist in the ManageMe.
      */
-    void deletePerson(Person target);
+    void deleteLink(Link target);
 
     /**
-     * Adds the given person.
-     * {@code person} must not already exist in the ManageMe.
+     * Adds the given link.
+     * {@code link} must not already exist in the ManageMe.
      */
-    void addPerson(Person person);
+    void addLink(Link link);
 
     /**
-     * Replaces the given person {@code target} with {@code editedPerson}.
+     * Replaces the given link {@code target} with {@code editedLink}.
      * {@code target} must exist in the ManageMe.
-     * The person identity of {@code editedPerson} must not be the same as another existing person in the ManageMe.
+     * The link identity of {@code editedLink} must not be the same as another existing link in the ManageMe.
      */
-    void setPerson(Person target, Person editedPerson);
+    void setLink(Link target, Link editedLink);
 
-    /** Returns an unmodifiable view of the filtered person list */
-    ObservableList<Person> getFilteredPersonList();
+    /** Returns an unmodifiable view of the filtered link list */
+    ObservableList<Link> getFilteredLinkList();
 
     /**
-     * Updates the filter of the filtered person list to filter by the given {@code predicate}.
+     * Updates the filter of the filtered link list to filter by the given {@code predicate}.
      * @throws NullPointerException if {@code predicate} is null.
      */
-    void updateFilteredPersonList(Predicate<Person> predicate);
+    void updateFilteredLinkList(Predicate<Link> predicate);
 
     /**
      * Returns true if a module with the same identity as {@code module} exists in the ManageMe.

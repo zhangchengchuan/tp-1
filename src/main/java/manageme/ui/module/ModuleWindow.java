@@ -11,6 +11,7 @@ import manageme.model.link.Link;
 import manageme.model.module.Module;
 import manageme.model.task.Task;
 import manageme.ui.UiPart;
+import manageme.ui.link.LinkCard;
 import manageme.ui.task.TaskCard;
 
 public class ModuleWindow extends UiPart<Stage> {
