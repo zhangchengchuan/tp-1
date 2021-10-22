@@ -12,13 +12,16 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Stream;
 
 import manageme.commons.core.index.Index;
+import manageme.logic.commands.task.AddTaskCommand;
 import manageme.logic.commands.task.EditTaskCommand;
 import manageme.logic.parser.ArgumentMultimap;
 import manageme.logic.parser.ArgumentTokenizer;
 import manageme.logic.parser.Parser;
 import manageme.logic.parser.ParserUtil;
+import manageme.logic.parser.Prefix;
 import manageme.logic.parser.exceptions.ParseException;
 import manageme.model.tag.Tag;
 
@@ -45,6 +48,11 @@ public class EditTaskCommandParser implements Parser<EditTaskCommand> {
         } catch (ParseException pe) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                     EditTaskCommand.MESSAGE_USAGE), pe);
+        }
+
+        if (arePrefixesPresent(argMultimap, PREFIX_START) && !arePrefixesPresent(argMultimap, PREFIX_END)) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                    EditTaskCommand.MESSAGE_USAGE));
         }
 
         EditTaskCommand.EditTaskDescriptor editTaskDescriptor = new EditTaskCommand.EditTaskDescriptor();
@@ -86,5 +94,13 @@ public class EditTaskCommandParser implements Parser<EditTaskCommand> {
         }
         Collection<String> tagSet = tags.size() == 1 && tags.contains("") ? Collections.emptySet() : tags;
         return Optional.of(ParserUtil.parseTags(tagSet));
+    }
+
+    /**
+     * Returns true if none of the prefixes contains empty {@code Optional} values in the given
+     * {@code ArgumentMultimap}.
+     */
+    private static boolean arePrefixesPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {
+        return Stream.of(prefixes).allMatch(prefix -> argumentMultimap.getValue(prefix).isPresent());
     }
 }
