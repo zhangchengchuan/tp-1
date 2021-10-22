@@ -71,7 +71,11 @@ public class UniqueTaskList implements Iterable<Task> {
         }
 
         internalList.set(index, editedTask);
-        sortedList.set(index, editedTask);
+        if (!sortedList.contains(target)) {
+            sortedList.add(editedTask);
+        } else {
+            sortedList.set(index, editedTask);
+        }
     }
 
 
