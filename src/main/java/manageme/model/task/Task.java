@@ -14,7 +14,7 @@ import manageme.commons.util.CollectionUtil;
 public class Task {
     private final TaskName name;
     private final TaskDescription description;
-    private boolean isDone;
+    private TaskIsDone isDone;
 
     //Optional: TaskModule that the task may be linked to. Can only be linked to max 1 module.
     private final TaskModule module;
@@ -32,7 +32,7 @@ public class Task {
         CollectionUtil.requireAllNonNull(name, description, module, start, end);
         this.name = name;
         this.description = description;
-        this.isDone = false;
+        this.isDone = new TaskIsDone(false);
         this.module = module;
         this.start = start;
         this.end = end;
@@ -42,7 +42,7 @@ public class Task {
      * Task with a start and end date(Event). Includes module.
      * Every field must be present and not TaskTime.empty().
      */
-    public Task(TaskName name, TaskDescription description, boolean isDone, TaskModule module, TaskTime start,
+    public Task(TaskName name, TaskDescription description, TaskIsDone isDone, TaskModule module, TaskTime start,
                 TaskTime end) {
         CollectionUtil.requireAllNonNull(name, description, module, start, end);
         this.name = name;
@@ -73,12 +73,8 @@ public class Task {
         return end;
     }
 
-    public boolean isTaskDone() {
+    public TaskIsDone isDone() {
         return isDone;
-    }
-
-    public void markTask() {
-        this.isDone = !isDone;
     }
 
     /**
@@ -106,13 +102,6 @@ public class Task {
         } else {
             return start.getTime();
         }
-    }
-
-    /**
-     * Toggles the task between done and not done
-     */
-    public void toggleDone() {
-        this.isDone = !isDone;
     }
 
     /**
@@ -145,7 +134,7 @@ public class Task {
         Task otherTask = (Task) other;
         return otherTask.getName().equals(getName())
                 && otherTask.getDescription().equals(getDescription())
-                && otherTask.isTaskDone() == this.isTaskDone()
+                && otherTask.isDone().equals(isDone())
                 && otherTask.getTaskModule().equals(getTaskModule())
                 && otherTask.getStart().equals(getStart())
                 && otherTask.getEnd().equals(getEnd());
@@ -165,7 +154,7 @@ public class Task {
                 .append("; Description: ")
                 .append(getDescription())
                 .append("; Done:")
-                .append(isDone ? "yes" : "no")
+                .append(isDone())
                 .append("; TaskModule: ")
                 .append(getTaskModule())
                 .append("; Start: ")

@@ -1,6 +1,7 @@
 package manageme.logic.commands.task;
 
 import static java.util.Objects.requireNonNull;
+import static manageme.model.Model.PREDICATE_SHOW_ALL_TASKS;
 
 import java.util.List;
 
@@ -11,6 +12,7 @@ import manageme.logic.commands.CommandResult;
 import manageme.logic.commands.exceptions.CommandException;
 import manageme.model.Model;
 import manageme.model.task.Task;
+import manageme.model.task.TaskIsDone;
 
 public class MarkTaskCommand extends Command {
     public static final String COMMAND_WORD = "markTask";
@@ -38,9 +40,11 @@ public class MarkTaskCommand extends Command {
         }
 
         Task taskToMark = lastShownList.get(targetIndex.getZeroBased());
-        taskToMark.markTask();
-        model.setTask(taskToMark, taskToMark);
-
+        TaskIsDone newIsDone = new TaskIsDone(!taskToMark.isDone().value);
+        Task markedTask = new Task(taskToMark.getName(), taskToMark.getDescription(), newIsDone,
+                taskToMark.getTaskModule(), taskToMark.getStart(), taskToMark.getEnd());
+        model.setTask(taskToMark, markedTask);
+        model.updateFilteredTaskList(PREDICATE_SHOW_ALL_TASKS);
         return new CommandResult(String.format(MESSAGE_MARKED_TASK_SUCCESS, taskToMark));
     }
 }
