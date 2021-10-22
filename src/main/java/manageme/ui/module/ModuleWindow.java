@@ -1,6 +1,7 @@
 package manageme.ui.module;
 
 import java.util.List;
+import java.util.Optional;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -10,6 +11,7 @@ import manageme.model.link.Link;
 import manageme.model.module.Module;
 import manageme.model.task.Task;
 import manageme.ui.UiPart;
+import manageme.ui.link.LinkCard;
 import manageme.ui.task.TaskCard;
 
 public class ModuleWindow extends UiPart<Stage> {
@@ -47,15 +49,15 @@ public class ModuleWindow extends UiPart<Stage> {
     /**
      * Displays module details to the user.
      *
-     * @param onlyModuleInList The filterModuleList that only contains the specific module that user requested to read.
+     * @param optionalModule the Optional that contains the specific module user requested to read.
      */
-    public void display(List<Module> onlyModuleInList) {
-        this.module = onlyModuleInList.get(0);
+    public void display(Optional<Module> optionalModule) {
+        this.module = optionalModule.get();
         resetWindow();
-        moduleWindow.setTitle(module.getModuleName().name);
-        name.setText(module.getModuleName().name);
+        moduleWindow.setTitle(module.getModuleName().value);
+        name.setText(module.getModuleName().value);
         fillLinkList(module.getLink());
-        //fillTaskList(module.getTask());
+        fillTaskList(module.getTasks());
         moduleWindow.showAndWait();
     }
 

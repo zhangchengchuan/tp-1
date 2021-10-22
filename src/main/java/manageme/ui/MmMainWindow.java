@@ -19,6 +19,7 @@ import manageme.logic.commands.CommandResult;
 import manageme.logic.commands.exceptions.CommandException;
 import manageme.logic.parser.exceptions.ParseException;
 import manageme.ui.calendar.CalendarPanel;
+import manageme.ui.link.LinkListPanel;
 import manageme.ui.module.ModuleListPanel;
 import manageme.ui.module.ModuleWindow;
 import manageme.ui.task.TaskListPanel;
@@ -39,6 +40,7 @@ public class MmMainWindow extends UiPart<Stage> {
     // Independent Ui parts residing in this Ui container
     private ModuleListPanel moduleListPanel;
     private TaskListPanel taskListPanel;
+    private LinkListPanel linkListPanel;
     private CalendarPanel calendarPanel;
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
@@ -58,6 +60,9 @@ public class MmMainWindow extends UiPart<Stage> {
 
     @FXML
     private StackPane taskListPanelPlaceholder;
+
+    @FXML
+    private StackPane linkListPanelPlaceholder;
 
     @FXML
     private StackPane calendarPanelPlaceholder;
@@ -138,6 +143,9 @@ public class MmMainWindow extends UiPart<Stage> {
         taskListPanel = new TaskListPanel(logic.getFilteredTaskList());
         taskListPanelPlaceholder.getChildren().add(taskListPanel.getRoot());
 
+        linkListPanel = new LinkListPanel(logic.getFilteredLinkList());
+        linkListPanelPlaceholder.getChildren().add(linkListPanel.getRoot());
+
         calendarPanel = new CalendarPanel(logic.getUnfilteredTaskList());
         calendarPanelPlaceholder.getChildren().add(calendarPanel.getRoot());
 
@@ -193,7 +201,7 @@ public class MmMainWindow extends UiPart<Stage> {
      */
     @FXML
     private void handleModule() {
-        moduleWindow.display(logic.getReadModuleList());
+        moduleWindow.display(logic.getReadModule());
     }
 
     /**

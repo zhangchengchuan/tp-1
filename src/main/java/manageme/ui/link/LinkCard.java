@@ -1,17 +1,17 @@
-package manageme.ui.module;
+package manageme.ui.link;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
+import javafx.scene.layout.VBox;
 import manageme.model.link.Link;
 import manageme.ui.UiPart;
 
 /**
- * An UI component that displays information of a {@code Module}.
+ * An UI component that displays information of a {@code Link}.
  */
 public class LinkCard extends UiPart<Region> {
 
@@ -28,13 +28,15 @@ public class LinkCard extends UiPart<Region> {
     public final Link link;
 
     @FXML
-    private HBox cardPane;
+    private VBox cardPane;
     @FXML
-    private Label name;
+    private Label linkName;
     @FXML
-    private Label id;
+    private Label linkId;
     @FXML
-    private Label url;
+    private Label linkAddress;
+    @FXML
+    private Label linkModule;
     @FXML
     private Button copyButton;
 
@@ -44,9 +46,10 @@ public class LinkCard extends UiPart<Region> {
     public LinkCard(Link link, int displayedIndex) {
         super(FXML);
         this.link = link;
-        id.setText(displayedIndex + ". ");
-        //name.setText(link.getName() + ": ");
-        url.setText(link.getLink());
+        linkId.setText(displayedIndex + ". ");
+        linkName.setText(link.getName().value);
+        linkAddress.setText(link.getAddress().value);
+        linkModule.setText(link.getLinkModule().value);
     }
 
     @Override
@@ -63,7 +66,7 @@ public class LinkCard extends UiPart<Region> {
 
         // state check
         LinkCard card = (LinkCard) other;
-        return id.getText().equals(card.id.getText())
+        return linkId.getText().equals(card.linkId.getText())
                 && link.equals(card.link);
     }
 
@@ -74,7 +77,7 @@ public class LinkCard extends UiPart<Region> {
     private void copyUrl() {
         final Clipboard clipboard = Clipboard.getSystemClipboard();
         final ClipboardContent url = new ClipboardContent();
-        url.putString(link.getLink());
+        url.putString(link.getAddress().value);
         clipboard.setContent(url);
     }
 }

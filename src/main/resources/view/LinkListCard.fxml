@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.HBox?>
 <HBox id="cardPane" fx:id="cardPane" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label fx:id="id" text="\$id">
+      <Label fx:id="linkId" text="\$id">
          <HBox.margin>
             <Insets />
          </HBox.margin>
@@ -14,12 +14,17 @@
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </padding>
       </Label>
-      <Label fx:id="name">
+      <Label fx:id="linkName">
          <padding>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </padding>
       </Label>
-      <Label fx:id="url" text="\$url">
+      <Label fx:id="linkAddress" text="\$url">
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </Label>
+      <Label fx:id="linkModule">
          <padding>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </padding>

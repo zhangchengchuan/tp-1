@@ -22,7 +22,7 @@ public class ModuleTest {
         assertFalse(MODULE_A.isSameModule(null));
 
         // same name, all other attributes different -> returns true
-        Module editedCS111 = new ModuleBuilder(MODULE_A).withLink(VALID_LINK_GOOGLE).build();
+        Module editedCS111 = new ModuleBuilder(MODULE_A).build();
         assertTrue(MODULE_A.isSameModule(editedCS111));
 
         // different name, all other attributes same -> returns false

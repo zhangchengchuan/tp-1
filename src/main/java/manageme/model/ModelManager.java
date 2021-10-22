@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
@@ -13,7 +14,7 @@ import manageme.commons.core.GuiSettings;
 import manageme.commons.core.LogsCenter;
 import manageme.commons.util.CollectionUtil;
 import manageme.model.module.Module;
-import manageme.model.person.Person;
+import manageme.model.link.Link;
 import manageme.model.task.Task;
 
 /**
@@ -24,12 +25,12 @@ public class ModelManager implements Model {
 
     private final ManageMe manageMe;
     private final UserPrefs userPrefs;
-    private final FilteredList<Person> filteredPersons;
+    private final FilteredList<Link> filteredLinks;
     private final FilteredList<Module> filteredModules;
-    private final FilteredList<Module> readModule;
     private final FilteredList<Task> filteredTasks;
     private final FilteredList<Task> unfilteredTasks;
     private final ArrayList<Task> modifiableUnfilteredTasks;
+    private Optional<Module> readModule;
 
     /**
      * Initializes a ModelManager with the given manageMe and userPrefs.
@@ -42,11 +43,11 @@ public class ModelManager implements Model {
 
         this.manageMe = new ManageMe(manageMe);
         this.userPrefs = new UserPrefs(userPrefs);
-        filteredPersons = new FilteredList<>(this.manageMe.getPersonList());
+        filteredLinks = new FilteredList<>(this.manageMe.getLinkList());
         filteredModules = new FilteredList<>(this.manageMe.getModuleList());
-        readModule = new FilteredList<>(this.manageMe.getModuleList());
         filteredTasks = new FilteredList<>(this.manageMe.getTaskList());
         unfilteredTasks = new FilteredList<>(this.manageMe.getTaskList());
+        readModule = Optional.ofNullable(null);
 
         // Time Manager use
         modifiableUnfilteredTasks = new ArrayList<Task>(this.manageMe.getModifiableTaskList());
@@ -104,27 +105,27 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public boolean hasPerson(Person person) {
-        requireNonNull(person);
-        return manageMe.hasPerson(person);
+    public boolean hasLink(Link link) {
+        requireNonNull(link);
+        return manageMe.hasLink(link);
     }
 
     @Override
-    public void deletePerson(Person target) {
-        manageMe.removePerson(target);
+    public void deleteLink(Link target) {
+        manageMe.removeLink(target);
     }
 
     @Override
-    public void addPerson(Person person) {
-        manageMe.addPerson(person);
-        updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+    public void addLink(Link link) {
+        manageMe.addLink(link);
+        updateFilteredLinkList(PREDICATE_SHOW_ALL_LINKS);
     }
 
     @Override
-    public void setPerson(Person target, Person editedPerson) {
-        CollectionUtil.requireAllNonNull(target, editedPerson);
+    public void setLink(Link target, Link editedLink) {
+        CollectionUtil.requireAllNonNull(target, editedLink);
 
-        manageMe.setPerson(target, editedPerson);
+        manageMe.setLink(target, editedLink);
     }
 
     @Override
@@ -175,21 +176,21 @@ public class ModelManager implements Model {
         manageMe.setTask(target, editedTask);
     }
 
-    //=========== Filtered Person List Accessors =============================================================
+    //=========== Filtered Link List Accessors =============================================================
 
     /**
-     * Returns an unmodifiable view of the list of {@code Person} backed by the internal list of
+     * Returns an unmodifiable view of the list of {@code Link} backed by the internal list of
      * {@code versionedManageMe}
      */
     @Override
-    public ObservableList<Person> getFilteredPersonList() {
-        return filteredPersons;
+    public ObservableList<Link> getFilteredLinkList() {
+        return filteredLinks;
     }
 
     @Override
-    public void updateFilteredPersonList(Predicate<Person> predicate) {
+    public void updateFilteredLinkList(Predicate<Link> predicate) {
         requireNonNull(predicate);
-        filteredPersons.setPredicate(predicate);
+        filteredLinks.setPredicate(predicate);
     }
 
     @Override
@@ -204,14 +205,14 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public ObservableList<Module> getReadModuleList() {
+    public Optional<Module> getReadModule() {
         return readModule;
     }
 
     @Override
-    public void updateReadModuleList(Predicate<Module> predicate) {
-        requireNonNull(predicate);
-        readModule.setPredicate(predicate);
+    public void setReadModule(Module module) {
+        requireNonNull(module);
+        readModule = Optional.of(module);
     }
 
     @Override
@@ -246,7 +247,7 @@ public class ModelManager implements Model {
         ModelManager other = (ModelManager) obj;
         return manageMe.equals(other.manageMe)
                 && userPrefs.equals(other.userPrefs)
-                && filteredPersons.equals(other.filteredPersons)
+                && filteredLinks.equals(other.filteredLinks)
                 && filteredModules.equals(other.filteredModules)
                 && readModule.equals(other.readModule)
                 && filteredTasks.equals(other.filteredTasks)

@@ -1,4 +1,4 @@
-package manageme.model.task;
+package manageme.model.link;
 
 import static java.util.Objects.requireNonNull;
 import static manageme.commons.util.AppUtil.checkArgument;
@@ -6,9 +6,9 @@ import static manageme.commons.util.AppUtil.checkArgument;
 import java.util.Optional;
 
 
-public class TaskModule {
+public class LinkModule {
     public static final String MESSAGE_CONSTRAINTS =
-            "Modules should only contain alphanumeric characters " + "and spaces, and it should not be blank";
+            "Modules should only contain alphanumeric characters " + "and spaces, and it should not be blank";;
     /*
      * The first character of the address must not be a whitespace,
      * otherwise " " (a blank string) becomes a valid input.
@@ -19,21 +19,21 @@ public class TaskModule {
     public final Optional<String> moduleName;
 
     /**
-     * Constructs a {@code TaskModule}.
+     * Constructs a {@code LinkModule}.
      *
-     * @param taskModule A Task Module.
+     * @param linkModule A Link Module.
      */
-    public TaskModule(String taskModule) {
-        requireNonNull(taskModule);
-        checkArgument(isValidModule(taskModule), MESSAGE_CONSTRAINTS);
-        this.value = taskModule;
-        this.moduleName = Optional.of(taskModule);
+    public LinkModule(String linkModule) {
+        requireNonNull(linkModule);
+        checkArgument(isValidModule(linkModule), MESSAGE_CONSTRAINTS);
+        this.value = linkModule;
+        this.moduleName = Optional.of(linkModule);
     }
 
     /**
      * Constructs an empty {@code TaskModule}.
      */
-    public TaskModule() {
+    public LinkModule() {
         this.value = "";
         this.moduleName = Optional.empty();
     }
@@ -53,12 +53,12 @@ public class TaskModule {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof TaskModule // instanceof handles nulls
-                && value.equals(((TaskModule) other).value)); // state check
+                || (other instanceof LinkModule // instanceof handles nulls
+                && value.equals(((LinkModule) other).value)); // state check
     }
 
-    public static TaskModule empty() {
-        return new TaskModule();
+    public static LinkModule empty() {
+        return new LinkModule();
     }
 
     @Override

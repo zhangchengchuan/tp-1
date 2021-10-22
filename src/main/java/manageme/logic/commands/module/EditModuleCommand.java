@@ -8,6 +8,7 @@ import static manageme.model.Model.PREDICATE_SHOW_ALL_MODULES;
 import java.util.List;
 import java.util.Optional;
 
+import javafx.collections.ObservableList;
 import manageme.commons.core.Messages;
 import manageme.commons.core.index.Index;
 import manageme.commons.util.CollectionUtil;
@@ -18,6 +19,7 @@ import manageme.model.Model;
 import manageme.model.link.Link;
 import manageme.model.module.Module;
 import manageme.model.module.ModuleName;
+import manageme.model.task.Task;
 
 /**
  * Edits the details of an existing module in the app.
@@ -55,13 +57,14 @@ public class EditModuleCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
         List<Module> lastShownList = model.getFilteredModuleList();
+        ObservableList<Task> unfilteredTasks = model.getUnfilteredTaskList();
 
         if (index.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_MODULE_DISPLAYED_INDEX);
         }
 
         Module moduleToEdit = lastShownList.get(index.getZeroBased());
-        Module editedModule = createEditedModule(moduleToEdit, editModuleDescriptor);
+        Module editedModule = createEditedModule(moduleToEdit, editModuleDescriptor, unfilteredTasks);
 
         if (!moduleToEdit.isSameModule(editedModule) && model.hasModule(editedModule)) {
             throw new CommandException(MESSAGE_DUPLICATE_MODULE);
@@ -77,13 +80,14 @@ public class EditModuleCommand extends Command {
      * edited with {@code editModuleDescriptor}.
      */
     private static Module createEditedModule(Module moduleToEdit,
-                                             EditModuleCommand.EditModuleDescriptor editModuleDescriptor) {
+                                             EditModuleCommand.EditModuleDescriptor editModuleDescriptor,
+                                             ObservableList<Task> unfilteredTasks) {
         assert moduleToEdit != null;
 
         ModuleName updatedName = editModuleDescriptor.getModuleName().orElse(moduleToEdit.getModuleName());
         Link updatedlink = editModuleDescriptor.getLink().orElse(moduleToEdit.getLink());
 
-        return new Module(updatedName, updatedlink);
+        return new Module(updatedName, updatedlink, unfilteredTasks);
     }
 
     @Override

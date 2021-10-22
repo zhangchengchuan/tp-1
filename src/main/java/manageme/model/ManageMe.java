@@ -9,18 +9,18 @@ import java.util.Objects;
 import javafx.collections.ObservableList;
 import manageme.model.module.Module;
 import manageme.model.module.UniqueModuleList;
-import manageme.model.person.Person;
-import manageme.model.person.UniquePersonList;
+import manageme.model.link.Link;
+import manageme.model.link.UniqueLinkList;
 import manageme.model.task.Task;
 import manageme.model.task.UniqueTaskList;
 
 /**
  * Wraps all data at the address-book level
- * Duplicates are not allowed (by .isSamePerson comparison)
+ * Duplicates are not allowed
  */
 public class ManageMe implements ReadOnlyManageMe {
 
-    private final UniquePersonList persons;
+    private final UniqueLinkList links;
     private final UniqueModuleList modules;
     private final UniqueTaskList tasks;
 
@@ -32,7 +32,7 @@ public class ManageMe implements ReadOnlyManageMe {
      *   among constructors.
      */
     {
-        persons = new UniquePersonList();
+        links = new UniqueLinkList();
         modules = new UniqueModuleList();
         tasks = new UniqueTaskList();
     }
@@ -40,7 +40,7 @@ public class ManageMe implements ReadOnlyManageMe {
     public ManageMe() {}
 
     /**
-     * Creates an ManageMe using the Persons in the {@code toBeCopied}
+     * Creates an ManageMe using the Links in the {@code toBeCopied}
      */
     public ManageMe(ReadOnlyManageMe toBeCopied) {
         this();
@@ -50,11 +50,11 @@ public class ManageMe implements ReadOnlyManageMe {
     //// list overwrite operations
 
     /**
-     * Replaces the contents of the person list with {@code persons}.
-     * {@code persons} must not contain duplicate persons.
+     * Replaces the contents of the link list with {@code links}.
+     * {@code links} must not contain duplicate links.
      */
-    public void setPersons(List<Person> persons) {
-        this.persons.setPersons(persons);
+    public void setLinks(List<Link> links) {
+        this.links.setLinks(links);
     }
 
     /**
@@ -79,46 +79,46 @@ public class ManageMe implements ReadOnlyManageMe {
     public void resetData(ReadOnlyManageMe newData) {
         requireNonNull(newData);
 
-        setPersons(newData.getPersonList());
+        setLinks(newData.getLinkList());
         setModules(newData.getModuleList());
         setTasks(newData.getTaskList());
     }
 
-    //// person-level operations
+    //// link-level operations
 
     /**
-     * Returns true if a person with the same identity as {@code person} exists in the ManageMe.
+     * Returns true if a link with the same identity as {@code link} exists in the ManageMe.
      */
-    public boolean hasPerson(Person person) {
-        requireNonNull(person);
-        return persons.contains(person);
+    public boolean hasLink(Link link) {
+        requireNonNull(link);
+        return links.contains(link);
     }
 
     /**
-     * Adds a person to the ManageMe.
-     * The person must not already exist in the ManageMe.
+     * Adds a link to the ManageMe.
+     * The link must not already exist in the ManageMe.
      */
-    public void addPerson(Person p) {
-        persons.add(p);
+    public void addLink(Link p) {
+        links.add(p);
     }
 
     /**
-     * Replaces the given person {@code target} in the list with {@code editedPerson}.
+     * Replaces the given link {@code target} in the list with {@code editedLink}.
      * {@code target} must exist in the ManageMe.
-     * The person identity of {@code editedPerson} must not be the same as another existing person in the ManageMe.
+     * The link identity of {@code editedLink} must not be the same as another existing link in the ManageMe.
      */
-    public void setPerson(Person target, Person editedPerson) {
-        requireNonNull(editedPerson);
+    public void setLink(Link target, Link editedLink) {
+        requireNonNull(editedLink);
 
-        persons.setPerson(target, editedPerson);
+        links.setLink(target, editedLink);
     }
 
     /**
      * Removes {@code key} from this {@code ManageMe}.
      * {@code key} must exist in the ManageMe.
      */
-    public void removePerson(Person key) {
-        persons.remove(key);
+    public void removeLink(Link key) {
+        links.remove(key);
     }
 
     //// module-level operations
@@ -199,14 +199,14 @@ public class ManageMe implements ReadOnlyManageMe {
 
     @Override
     public String toString() {
-        return persons.asUnmodifiableObservableList().size() + " persons\n"
+        return links.asUnmodifiableObservableList().size() + " links\n"
                 + modules.asUnmodifiableObservableList().size() + " modules\n"
                 + tasks.asUnmodifiableObservableList().size() + " tasks";
     }
 
     @Override
-    public ObservableList<Person> getPersonList() {
-        return persons.asUnmodifiableObservableList();
+    public ObservableList<Link> getLinkList() {
+        return links.asUnmodifiableObservableList();
     }
 
     @Override
@@ -228,7 +228,7 @@ public class ManageMe implements ReadOnlyManageMe {
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof ManageMe // instanceof handles nulls
-                && persons.equals(((ManageMe) other).persons)
+                && links.equals(((ManageMe) other).links)
                 && modules.equals(((ManageMe) other).modules)
                 && tasks.equals(((ManageMe) other).tasks));
     }
@@ -236,6 +236,6 @@ public class ManageMe implements ReadOnlyManageMe {
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(persons, modules, tasks);
+        return Objects.hash(links, modules, tasks);
     }
 }
