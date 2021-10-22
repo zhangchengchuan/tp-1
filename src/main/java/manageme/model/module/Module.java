@@ -20,7 +20,8 @@ public class Module {
     private final ModuleName moduleName;
 
     // Data fields
-    private Link link;
+    private ObservableList<Link> unfilteredLinks;
+    private FilteredList<Link> links;
     private ObservableList<Task> unfilteredTasks;
     private FilteredList<Task> tasks;
 
