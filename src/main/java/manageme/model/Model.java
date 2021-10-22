@@ -1,6 +1,7 @@
 package manageme.model;
 
 import java.nio.file.Path;
+import java.util.Optional;
 import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
@@ -127,15 +128,14 @@ public interface Model {
     void updateFilteredModuleList(Predicate<Module> predicate);
 
     /**
-     * Returns an unmodifiable view of the read module list
+     * Returns the module to be read.
      */
-    ObservableList<Module> getReadModuleList();
+    Optional<Module> getReadModule();
 
     /**
-     * Updates the filter of the read module list to filter by the given {@code predicate}.
-     * @throws NullPointerException if {@code predicate} is null.
+     * Updates the module to be read to {@code module}.
      */
-    void updateReadModuleList(Predicate<Module> predicate);
+    void setReadModule(Module module);
 
     /**
      * Returns true if a task with the same identity as {@code task} exists in the ManageMe.

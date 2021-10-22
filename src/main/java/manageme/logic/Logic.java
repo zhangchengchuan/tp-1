@@ -1,6 +1,7 @@
 package manageme.logic;
 
 import java.nio.file.Path;
+import java.util.Optional;
 
 import javafx.collections.ObservableList;
 import manageme.commons.core.GuiSettings;
@@ -39,8 +40,8 @@ public interface Logic {
     /** Returns an unmodifiable view of the filtered list of modules */
     ObservableList<Module> getFilteredModuleList();
 
-    /** Returns an unmodifiable view of the filtered list of modules to be read in detail */
-    ObservableList<Module> getReadModuleList();
+    /** Returns the module to be read in detail */
+    Optional<Module> getReadModule();
 
     /** Returns an unmodifiable view of the filtered list of tasks */
     ObservableList<Task> getFilteredTaskList();

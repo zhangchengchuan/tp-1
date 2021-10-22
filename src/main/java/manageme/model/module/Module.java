@@ -1,9 +1,14 @@
 package manageme.model.module;
 
 import java.util.Objects;
+import java.util.Optional;
 
+import javafx.collections.ListChangeListener;
+import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import manageme.commons.util.CollectionUtil;
 import manageme.model.link.Link;
+import manageme.model.task.Task;
 
 /**
  * Represents a Module in the app.
@@ -16,14 +21,22 @@ public class Module {
 
     // Data fields
     private Link link;
+    private ObservableList<Task> unfilteredTasks;
+    private FilteredList<Task> tasks;
 
     /**
      * Every field must be present and not null.
      */
-    public Module(ModuleName moduleName, Link link) {
+    public Module(ModuleName moduleName, Link link, ObservableList<Task> unfilteredTasks) {
         CollectionUtil.requireAllNonNull(moduleName, link);
         this.moduleName = moduleName;
         this.link = link;
+        this.unfilteredTasks = unfilteredTasks;
+        updateTasks();
+
+        unfilteredTasks.addListener((ListChangeListener<? super Task>) change -> {
+            updateTasks();
+        });
     }
 
     /**
@@ -34,12 +47,41 @@ public class Module {
         this.moduleName = moduleName;
     }
 
+    /**
+     * Updates the dependencies of module.
+     *
+     * @param newUnfilteredTasks the unfilteredTasks that module will listen to
+     */
+    public void updateDependencies(ObservableList<Task> newUnfilteredTasks) {
+        this.unfilteredTasks = newUnfilteredTasks;
+
+        unfilteredTasks.addListener((ListChangeListener<? super Task>) change -> {
+            updateTasks();
+        });
+    }
+
+    private void updateTasks() {
+        tasks = unfilteredTasks.filtered(task -> {
+            Optional<String> taskModule = task.getTaskModule().moduleName;
+
+            if (taskModule.isEmpty()) {
+                return false;
+            }
+
+            return moduleName.value.equals(taskModule.get());
+        });
+    }
+
     public ModuleName getModuleName() {
         return moduleName;
     }
 
     public Link getLink() {
         return link;
+    }
+
+    public FilteredList<Task> getTasks() {
+        return tasks;
     }
 
     /**
@@ -86,7 +128,9 @@ public class Module {
         final StringBuilder builder = new StringBuilder();
         builder.append(getModuleName())
                 .append("; Link: ")
-                .append(getLink());
+                .append(getLink())
+                .append("; Tasks: ")
+                .append(getTasks());
 
         return builder.toString();
     }

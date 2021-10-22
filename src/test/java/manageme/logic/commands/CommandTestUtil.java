@@ -155,7 +155,7 @@ public class CommandTestUtil {
         assertTrue(targetIndex.getZeroBased() < model.getFilteredModuleList().size());
 
         Module module = model.getFilteredModuleList().get(targetIndex.getZeroBased());
-        final String[] splitName = module.getModuleName().name.split("\\s+");
+        final String[] splitName = module.getModuleName().value.split("\\s+");
         model.updateFilteredModuleList(new ModNameContainsKeywordsPredicate(Arrays.asList(splitName[0])));
 
         assertEquals(1, model.getFilteredModuleList().size());

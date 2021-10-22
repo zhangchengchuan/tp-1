@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
@@ -26,10 +27,10 @@ public class ModelManager implements Model {
     private final UserPrefs userPrefs;
     private final FilteredList<Person> filteredPersons;
     private final FilteredList<Module> filteredModules;
-    private final FilteredList<Module> readModule;
     private final FilteredList<Task> filteredTasks;
     private final FilteredList<Task> unfilteredTasks;
     private final ArrayList<Task> modifiableUnfilteredTasks;
+    private Optional<Module> readModule;
 
     /**
      * Initializes a ModelManager with the given manageMe and userPrefs.
@@ -44,9 +45,9 @@ public class ModelManager implements Model {
         this.userPrefs = new UserPrefs(userPrefs);
         filteredPersons = new FilteredList<>(this.manageMe.getPersonList());
         filteredModules = new FilteredList<>(this.manageMe.getModuleList());
-        readModule = new FilteredList<>(this.manageMe.getModuleList());
         filteredTasks = new FilteredList<>(this.manageMe.getTaskList());
         unfilteredTasks = new FilteredList<>(this.manageMe.getTaskList());
+        readModule = Optional.ofNullable(null);
 
         // Time Manager use
         modifiableUnfilteredTasks = new ArrayList<Task>(this.manageMe.getModifiableTaskList());
@@ -204,14 +205,14 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public ObservableList<Module> getReadModuleList() {
+    public Optional<Module> getReadModule() {
         return readModule;
     }
 
     @Override
-    public void updateReadModuleList(Predicate<Module> predicate) {
-        requireNonNull(predicate);
-        readModule.setPredicate(predicate);
+    public void setReadModule(Module module) {
+        requireNonNull(module);
+        readModule = Optional.of(module);
     }
 
     @Override

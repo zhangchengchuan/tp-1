@@ -33,9 +33,7 @@ public class AddModuleCommandParser implements Parser<AddModuleCommand> {
         ModuleName name = ParserUtil.parseModuleName(argMultimap.getValue(PREFIX_NAME).get());
         Link link = ParserUtil.parseLink(argMultimap.getValue(PREFIX_LINK).get());
 
-        Module module = new Module(name, link);
-
-        return new AddModuleCommand(module);
+        return new AddModuleCommand(name, link);
     }
 
     /**
