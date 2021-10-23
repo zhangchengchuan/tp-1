@@ -3,8 +3,8 @@ package manageme.model;
 import java.util.ArrayList;
 
 import javafx.collections.ObservableList;
-import manageme.model.module.Module;
 import manageme.model.link.Link;
+import manageme.model.module.Module;
 import manageme.model.task.Task;
 
 

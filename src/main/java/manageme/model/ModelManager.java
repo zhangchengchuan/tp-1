@@ -13,8 +13,8 @@ import javafx.collections.transformation.FilteredList;
 import manageme.commons.core.GuiSettings;
 import manageme.commons.core.LogsCenter;
 import manageme.commons.util.CollectionUtil;
-import manageme.model.module.Module;
 import manageme.model.link.Link;
+import manageme.model.module.Module;
 import manageme.model.task.Task;
 
 /**
@@ -26,9 +26,10 @@ public class ModelManager implements Model {
     private final ManageMe manageMe;
     private final UserPrefs userPrefs;
     private final FilteredList<Link> filteredLinks;
-    private final FilteredList<Module> filteredModules;
+    private final FilteredList<Link> unfilteredLinks;
     private final FilteredList<Task> filteredTasks;
     private final FilteredList<Task> unfilteredTasks;
+    private final FilteredList<Module> filteredModules;
     private final ArrayList<Task> modifiableUnfilteredTasks;
     private Optional<Module> readModule;
 
@@ -44,9 +45,10 @@ public class ModelManager implements Model {
         this.manageMe = new ManageMe(manageMe);
         this.userPrefs = new UserPrefs(userPrefs);
         filteredLinks = new FilteredList<>(this.manageMe.getLinkList());
-        filteredModules = new FilteredList<>(this.manageMe.getModuleList());
+        unfilteredLinks = new FilteredList<>(this.manageMe.getLinkList());
         filteredTasks = new FilteredList<>(this.manageMe.getTaskList());
         unfilteredTasks = new FilteredList<>(this.manageMe.getTaskList());
+        filteredModules = new FilteredList<>(this.manageMe.getModuleList());
         readModule = Optional.ofNullable(null);
 
         // Time Manager use
@@ -229,6 +231,11 @@ public class ModelManager implements Model {
     @Override
     public ObservableList<Task> getUnfilteredTaskList() {
         return unfilteredTasks;
+    }
+
+    @Override
+    public ObservableList<Link> getUnfilteredLinkList() {
+        return unfilteredLinks;
     }
 
     @Override

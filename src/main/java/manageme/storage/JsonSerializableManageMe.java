@@ -11,8 +11,8 @@ import com.fasterxml.jackson.annotation.JsonRootName;
 import manageme.commons.exceptions.IllegalValueException;
 import manageme.model.ManageMe;
 import manageme.model.ReadOnlyManageMe;
-import manageme.model.module.Module;
 import manageme.model.link.Link;
+import manageme.model.module.Module;
 import manageme.model.task.Task;
 
 /**

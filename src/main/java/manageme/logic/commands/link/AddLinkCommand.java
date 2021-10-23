@@ -16,7 +16,7 @@ import manageme.model.link.Link;
  */
 public class AddLinkCommand extends Command {
 
-    public static final String COMMAND_WORD = "add";
+    public static final String COMMAND_WORD = "addLink";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a link to the address book. "
             + "Parameters: "

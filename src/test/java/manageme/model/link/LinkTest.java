@@ -1,8 +1,9 @@
 package manageme.model.link;
 
-import static manageme.testutil.TypicalLinks.LINK_LUMINUS;
-import static manageme.testutil.TypicalLinks.LINK_YOUTUBE;
-import static org.junit.jupiter.api.Assertions.*;
+import static manageme.testutil.TypicalLinks.LINK_A;
+import static manageme.testutil.TypicalLinks.LINK_B;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
@@ -16,18 +17,18 @@ public class LinkTest {
     @Test
     public void isSameLink() {
         // same object -> returns true
-        assertTrue(LINK_LUMINUS.isSameLink(LINK_LUMINUS));
+        assertTrue(LINK_A.isSameLink(LINK_A));
 
         // null -> returns false
-        assertFalse(LINK_LUMINUS.isSameLink(null));
+        assertFalse(LINK_A.isSameLink(null));
 
         // same link, different name -> returns true
-        Link editedLuminus = new LinkBuilder(LINK_LUMINUS).withName("Lecture").build();
-        assertTrue(LINK_LUMINUS.isSameLink(editedLuminus));
+        Link editedLuminus = new LinkBuilder(LINK_A).withName("Lecture").build();
+        assertTrue(LINK_A.isSameLink(editedLuminus));
 
         // different link, same name -> returns false
-        editedLuminus = new LinkBuilder(LINK_LUMINUS).withAddress("www.youtube.com").build();
-        assertFalse(LINK_LUMINUS.isSameLink(editedLuminus));
+        editedLuminus = new LinkBuilder(LINK_A).withAddress("https://www.youtube.com").build();
+        assertFalse(LINK_A.isSameLink(editedLuminus));
     }
 
     /**
@@ -36,31 +37,31 @@ public class LinkTest {
     @Test
     public void equals() {
         // same values -> returns true
-        Link luminusCopy = new LinkBuilder(LINK_LUMINUS).build();
-        assertTrue(LINK_LUMINUS.equals(luminusCopy));
+        Link luminusCopy = new LinkBuilder(LINK_A).build();
+        assertTrue(LINK_A.equals(luminusCopy));
 
         // same object -> returns true
-        assertTrue(LINK_LUMINUS.equals(LINK_LUMINUS));
+        assertTrue(LINK_A.equals(LINK_A));
 
         // null -> returns false
-        assertFalse(LINK_LUMINUS.equals(null));
+        assertFalse(LINK_A.equals(null));
 
         // different type -> returns false
-        assertFalse(LINK_LUMINUS.equals(5));
+        assertFalse(LINK_A.equals(5));
 
         // different Link object -> returns false
-        assertFalse(LINK_LUMINUS.equals(LINK_YOUTUBE));
+        assertFalse(LINK_A.equals(LINK_B));
 
         // different name -> returns false
-         Link differentName = new LinkBuilder(LINK_LUMINUS).withName("differentName").build();
-         assertFalse(LINK_LUMINUS.equals(differentName));
+        Link differentName = new LinkBuilder(LINK_A).withName("differentName").build();
+        assertFalse(LINK_A.equals(differentName));
 
         // different link address -> returns false
-        Link differentAddress = new LinkBuilder(LINK_LUMINUS).withAddress("www.differentaddress.com").build();
-        assertFalse(LINK_LUMINUS.equals(differentAddress));
+        Link differentAddress = new LinkBuilder(LINK_A).withAddress("https://www.differentaddress.com").build();
+        assertFalse(LINK_A.equals(differentAddress));
 
         // different link module -> return false
-        Link differentModule = new LinkBuilder(LINK_LUMINUS).withModule("differentModule").build();
-        assertFalse(LINK_LUMINUS.equals(differentModule));
+        Link differentModule = new LinkBuilder(LINK_A).withModule("differentModule").build();
+        assertFalse(LINK_A.equals(differentModule));
     }
 }

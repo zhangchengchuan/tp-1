@@ -3,6 +3,7 @@ package manageme.model.module;
 import java.util.Objects;
 import java.util.Optional;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -12,9 +13,11 @@ import manageme.model.task.Task;
 
 /**
  * Represents a Module in the app.
- * Guarantees: details are present and not null, field values are validated, immutable.
+ * Guarantees: details are present and not null, field values are validated.
  */
 public class Module {
+    private static final ObservableList<Link> DEFAULT_LINK_LIST = FXCollections.emptyObservableList();
+    private static final ObservableList<Task> DEFAULT_TASK_LIST = FXCollections.emptyObservableList();
 
     // Identity fields
     private final ModuleName moduleName;
@@ -28,13 +31,17 @@ public class Module {
     /**
      * Every field must be present and not null.
      */
-    public Module(ModuleName moduleName, Link link, ObservableList<Task> unfilteredTasks) {
-        CollectionUtil.requireAllNonNull(moduleName, link);
+    public Module(ModuleName moduleName, ObservableList<Link> unfilteredLinks, ObservableList<Task> unfilteredTasks) {
+        CollectionUtil.requireAllNonNull(moduleName, unfilteredLinks, unfilteredTasks);
         this.moduleName = moduleName;
-        this.link = link;
+        this.unfilteredLinks = unfilteredLinks;
         this.unfilteredTasks = unfilteredTasks;
+        updateLinks();
         updateTasks();
 
+        unfilteredLinks.addListener((ListChangeListener<? super Link>) change -> {
+            updateLinks();
+        });
         unfilteredTasks.addListener((ListChangeListener<? super Task>) change -> {
             updateTasks();
         });
@@ -46,16 +53,28 @@ public class Module {
     public Module(ModuleName moduleName) {
         CollectionUtil.requireAllNonNull(moduleName);
         this.moduleName = moduleName;
+        this.unfilteredLinks = DEFAULT_LINK_LIST;
+        this.unfilteredTasks = DEFAULT_TASK_LIST;
+        updateLinks();
+        updateTasks();
+    }
+
+    public boolean hasDependencies() {
+        return !unfilteredLinks.isEmpty() && !unfilteredTasks.isEmpty();
     }
 
     /**
-     * Updates the dependencies of module.
-     *
-     * @param newUnfilteredTasks the unfilteredTasks that module will listen to
+     * Sets the dependencies of module.
      */
-    public void updateDependencies(ObservableList<Task> newUnfilteredTasks) {
-        this.unfilteredTasks = newUnfilteredTasks;
+    public void setDependencies(ObservableList<Link> unfilteredLinks, ObservableList<Task> unfilteredTasks) {
+        this.unfilteredLinks = unfilteredLinks;
+        this.unfilteredTasks = unfilteredTasks;
+        updateLinks();
+        updateTasks();
 
+        unfilteredLinks.addListener((ListChangeListener<? super Link>) change -> {
+            updateLinks();
+        });
         unfilteredTasks.addListener((ListChangeListener<? super Task>) change -> {
             updateTasks();
         });
@@ -73,12 +92,24 @@ public class Module {
         });
     }
 
+    private void updateLinks() {
+        links = unfilteredLinks.filtered(link -> {
+            Optional<String> linkModule = link.getLinkModule().moduleName;
+
+            if (linkModule.isEmpty()) {
+                return false;
+            }
+
+            return moduleName.value.equals(linkModule.get());
+        });
+    }
+
     public ModuleName getModuleName() {
         return moduleName;
     }
 
-    public Link getLink() {
-        return link;
+    public FilteredList<Link> getLinks() {
+        return links;
     }
 
     public FilteredList<Task> getTasks() {
@@ -115,21 +146,22 @@ public class Module {
 
         Module otherMod = (Module) other;
         return otherMod.getModuleName().equals(getModuleName())
-                && otherMod.getLink().equals(getLink());
+                && otherMod.unfilteredLinks.equals(unfilteredLinks)
+                && otherMod.unfilteredTasks.equals(unfilteredTasks);
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(moduleName, link);
+        return Objects.hash(moduleName, unfilteredLinks, unfilteredLinks);
     }
 
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
         builder.append(getModuleName())
-                .append("; Link: ")
-                .append(getLink())
+                .append("; Links: ")
+                .append(getLinks())
                 .append("; Tasks: ")
                 .append(getTasks());
 

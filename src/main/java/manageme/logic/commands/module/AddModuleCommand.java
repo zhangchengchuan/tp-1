@@ -1,8 +1,6 @@
 package manageme.logic.commands.module;
 
 import static java.util.Objects.requireNonNull;
-import static manageme.commons.util.CollectionUtil.requireAllNonNull;
-import static manageme.logic.parser.CliSyntax.PREFIX_LINK;
 import static manageme.logic.parser.CliSyntax.PREFIX_NAME;
 
 import javafx.collections.ObservableList;
@@ -21,32 +19,29 @@ public class AddModuleCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a module to ManageMe. "
             + "Parameters: "
             + PREFIX_NAME + "NAME "
-            + PREFIX_LINK + "LINK "
             + "Example: " + COMMAND_WORD + " "
-            + PREFIX_NAME + "CS1100 "
-            + PREFIX_LINK + "https://www.google.com";
+            + PREFIX_NAME + "CS1100 ";
 
     public static final String MESSAGE_SUCCESS = "New module added: %1$s";
     public static final String MESSAGE_DUPLICATE_MODULE = "This module already exists in the app.";
 
     private final ModuleName moduleName;
-    private final Link link;
 
     /**
      * Creates an AddModuleCommand to add the specified {@code Module}
      */
-    public AddModuleCommand(ModuleName moduleName, Link link) {
-        requireAllNonNull(moduleName, link);
+    public AddModuleCommand(ModuleName moduleName) {
+        requireNonNull(moduleName);
         this.moduleName = moduleName;
-        this.link = link;
     }
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
+        ObservableList<Link> unfilteredLinks = model.getUnfilteredLinkList();
         ObservableList<Task> unfilteredTasks = model.getUnfilteredTaskList();
 
-        Module toAdd = new Module(moduleName, link, unfilteredTasks);
+        Module toAdd = new Module(moduleName, unfilteredLinks, unfilteredTasks);
 
         if (model.hasModule(toAdd)) {
             throw new CommandException(MESSAGE_DUPLICATE_MODULE);
@@ -60,7 +55,6 @@ public class AddModuleCommand extends Command {
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof AddModuleCommand // instanceof handles nulls
-                && moduleName.equals(((AddModuleCommand) other).moduleName))
-                && link.equals(((AddModuleCommand) other).link);
+                && moduleName.equals(((AddModuleCommand) other).moduleName));
     }
 }

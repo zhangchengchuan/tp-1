@@ -14,8 +14,8 @@ import manageme.commons.exceptions.DataConversionException;
 import manageme.model.ManageMe;
 import manageme.model.ReadOnlyManageMe;
 import manageme.testutil.Assert;
+import manageme.testutil.TypicalLinks;
 import manageme.testutil.TypicalManageMe;
-import manageme.testutil.TypicalPersons;
 
 public class JsonManageMeStorageTest {
     private static final Path TEST_DATA_FOLDER = Paths.get("src", "test", "data", "JsonAddressBookStorageTest");
@@ -82,14 +82,13 @@ public class JsonManageMeStorageTest {
         assertEquals(original, new ManageMe(readBack));
 
         // Modify data, overwrite exiting file, and read back
-        original.addPerson(TypicalPersons.HOON);
-        original.removePerson(TypicalPersons.ALICE);
+        original.removeLink(TypicalLinks.LINK_B);
         jsonAddressBookStorage.saveManageMe(original, filePath);
         readBack = jsonAddressBookStorage.readManageMe(filePath).get();
         assertEquals(original, new ManageMe(readBack));
 
         // Save and read without specifying file path
-        original.addPerson(TypicalPersons.IDA);
+        original.addLink(TypicalLinks.LINK_B);
         jsonAddressBookStorage.saveManageMe(original); // file path not specified
         readBack = jsonAddressBookStorage.readManageMe().get(); // file path not specified
         assertEquals(original, new ManageMe(readBack));

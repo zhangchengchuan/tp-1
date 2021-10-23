@@ -7,7 +7,6 @@ import static manageme.logic.parser.CliSyntax.PREFIX_NAME;
 
 import manageme.commons.core.Messages;
 import manageme.commons.core.index.Index;
-import manageme.logic.commands.EditCommand;
 import manageme.logic.commands.link.EditLinkCommand;
 import manageme.logic.parser.ArgumentMultimap;
 import manageme.logic.parser.ArgumentTokenizer;
@@ -51,7 +50,7 @@ public class EditLinkCommandParser implements Parser<EditLinkCommand> {
         }
 
         if (!editLinkDescriptor.isAnyFieldEdited()) {
-            throw new ParseException(EditCommand.MESSAGE_NOT_EDITED);
+            throw new ParseException(EditLinkCommand.MESSAGE_NOT_EDITED);
         }
 
         return new EditLinkCommand(index, editLinkDescriptor);
