@@ -91,17 +91,6 @@ public class ModelManager implements Model {
         userPrefs.setManageMeFilePath(manageMeFilePath);
     }
 
-    @Override
-    public Path getArchiveFilePath() {
-        return userPrefs.getArchiveFilePath();
-    }
-
-    @Override
-    public void setArchiveFilePath(Path archiveFilePath) {
-        requireNonNull(archiveFilePath);
-        userPrefs.setArchiveFilePath(archiveFilePath);
-    }
-
     //=========== ManageMe ================================================================================
 
     @Override

@@ -56,16 +56,6 @@ public class UserPrefs implements ReadOnlyUserPrefs {
         this.manageMeFilePath = manageFilePath;
     }
 
-    public Path getArchiveFilePath() {
-        //return archiveFilePath;
-        return null;
-    }
-
-    public void setArchiveFilePath(Path archiveFilePath) {
-        requireNonNull(archiveFilePath);
-        //this.archiveFilePath = archiveFilePath;
-    }
-
     @Override
     public boolean equals(Object other) {
         if (other == this) {

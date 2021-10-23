@@ -53,16 +53,6 @@ public interface Model {
     void setManageMeFilePath(Path manageMeFilePath);
 
     /**
-     * Returns the user prefs' archive file path.
-     */
-    Path getArchiveFilePath();
-
-    /**
-     * Sets the user prefs' archive file path.
-     */
-    void setArchiveFilePath(Path archiveFilePath);
-
-    /**
      * Replaces ManageMe data with the data in {@code manageMe}.
      */
     void setManageMe(ReadOnlyManageMe manageMe);

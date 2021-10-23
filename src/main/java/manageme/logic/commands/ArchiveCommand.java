@@ -32,7 +32,6 @@ public class ArchiveCommand extends Command {
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
-        //Path archiveFilePath = model.getArchiveFilePath();
         LocalDateTime now = LocalDateTime.now();
         Path archiveFilePath = Paths.get("data" , dtf.format(now) + "archive.json");
         try {

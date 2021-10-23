@@ -12,6 +12,4 @@ public interface ReadOnlyUserPrefs {
     GuiSettings getGuiSettings();
 
     Path getManageMeFilePath();
-
-    Path getArchiveFilePath();
 }

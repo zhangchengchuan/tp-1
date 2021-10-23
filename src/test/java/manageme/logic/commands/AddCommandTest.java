@@ -111,16 +111,6 @@ public class AddCommandTest {
         }
 
         @Override
-        public Path getArchiveFilePath() {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public void setArchiveFilePath(Path archiveFilePath) {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
         public void addPerson(Person person) {
             throw new AssertionError("This method should not be called.");
         }
