@@ -12,6 +12,7 @@ import manageme.commons.util.CollectionUtil;
 import manageme.logic.commands.Command;
 import manageme.logic.commands.CommandResult;
 import manageme.logic.commands.exceptions.CommandException;
+import manageme.logic.parser.exceptions.ParseException;
 import manageme.model.Model;
 import manageme.model.task.Task;
 import manageme.model.task.TaskDescription;
@@ -35,10 +36,9 @@ public class EditTaskCommand extends Command {
 
     public static final String MESSAGE_EDIT_TASK_SUCCESS = "Edited Task: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
-    public static final String MESSAGE_DUPLICATE_TASK = "This task already exists in the task list.";
-    public static final String MESSAGE_START_WITHOUT_END = "A task with a start datetime MUST also have an "
-            + "end datetime";
-
+    public static final String MESSAGE_DUPLICATE_TASK = "This task already exists in the address book.";
+    public static final String MESSAGE_START_LATER_THAN_END = "The task cannot have start date later than the end date";
+    public static final String MESSAGE_START_WITHOUT_END = "There is no end date associated with this task.";
 
     private final Index index;
     private final EditTaskDescriptor editTaskDescriptor;
@@ -47,7 +47,7 @@ public class EditTaskCommand extends Command {
      * @param index              of the task in the filtered task list to edit
      * @param editTaskDescriptor details to edit the task with
      */
-    public EditTaskCommand(Index index, EditTaskDescriptor editTaskDescriptor) {
+    public EditTaskCommand(Index index, EditTaskDescriptor editTaskDescriptor) throws ParseException {
         requireNonNull(index);
         requireNonNull(editTaskDescriptor);
 
@@ -68,18 +68,17 @@ public class EditTaskCommand extends Command {
         Task taskToEdit = lastShownList.get(index.getZeroBased());
         Task editedTask = createEditedTask(taskToEdit, editTaskDescriptor);
 
-        if (!editedTask.getStart().isEmpty() && taskToEdit.getEnd().isEmpty() && editedTask.getEnd().isEmpty()
-        ) {
-            throw new CommandException(MESSAGE_START_WITHOUT_END);
-        }
-
-        if (editedTask.getEnd().isEmpty() && !taskToEdit.getStart().isEmpty() && !editedTask.getStart().isEmpty()
-        ) {
-            throw new CommandException(MESSAGE_START_WITHOUT_END);
-        }
-
         if (!taskToEdit.isSameTask(editedTask) && model.hasTask(editedTask)) {
             throw new CommandException(MESSAGE_DUPLICATE_TASK);
+        }
+
+        if (!editedTask.getStart().isEmpty() && editedTask.getEnd().isEmpty()) {
+            throw new CommandException(MESSAGE_START_WITHOUT_END);
+        }
+
+        if (!editedTask.getStart().isEmpty() && !editedTask.getEnd().isEmpty()
+                && editedTask.getStart().getTime().isAfter(editedTask.getEnd().getTime())) {
+            throw new CommandException(MESSAGE_START_LATER_THAN_END);
         }
 
         model.setTask(taskToEdit, editedTask);
@@ -144,7 +143,7 @@ public class EditTaskCommand extends Command {
          * Copy constructor.
          * A defensive copy of {@code tags} is used internally.
          */
-        public EditTaskDescriptor(EditTaskDescriptor toCopy) {
+        public EditTaskDescriptor(EditTaskDescriptor toCopy) throws ParseException {
             setName(toCopy.name);
             setDescription(toCopy.description);
             setModule(toCopy.module);
