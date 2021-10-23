@@ -18,7 +18,7 @@ public class UserPrefs implements ReadOnlyUserPrefs {
     private GuiSettings guiSettings = new GuiSettings();
     private Path manageMeFilePath = Paths.get("data" , "manageme.json");
     private Path archiveFilePath = Paths.get("data" ,
-            DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss ").format(LocalDateTime.now()) + "archive.json");
+            LocalDateTime.now() + "archive.json");
 
     /**
      * Creates a {@code UserPrefs} with default values.
