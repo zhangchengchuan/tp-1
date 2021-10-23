@@ -1,7 +1,5 @@
 package manageme.model.task;
 
-import static manageme.commons.util.AppUtil.checkArgument;
-
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Objects;

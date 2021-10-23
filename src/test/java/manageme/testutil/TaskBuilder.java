@@ -2,6 +2,7 @@ package manageme.testutil;
 
 import manageme.model.task.Task;
 import manageme.model.task.TaskDescription;
+import manageme.model.task.TaskIsDone;
 import manageme.model.task.TaskModule;
 import manageme.model.task.TaskName;
 import manageme.model.task.TaskTime;
@@ -20,7 +21,7 @@ public class TaskBuilder {
 
     private TaskName name;
     private TaskDescription description;
-    private boolean isDone;
+    private TaskIsDone isDone;
     private TaskModule module;
     private TaskTime start;
     private TaskTime end;
@@ -31,7 +32,7 @@ public class TaskBuilder {
     public TaskBuilder() {
         name = new TaskName(DEFAULT_NAME);
         description = new TaskDescription(DEFAULT_DESCRIPTION);
-        isDone = DEFAULT_ISDONE;
+        isDone = new TaskIsDone(DEFAULT_ISDONE);
         module = new TaskModule();
         start = new TaskTime(DEFAULT_STARTDATETIME);
         end = new TaskTime(DEFAULT_ENDDATETIME);
@@ -43,6 +44,7 @@ public class TaskBuilder {
     public TaskBuilder(Task taskToCopy) {
         name = taskToCopy.getName();
         description = taskToCopy.getDescription();
+        isDone = taskToCopy.isDone();
         module = taskToCopy.getTaskModule();
         start = taskToCopy.getStart();
         end = taskToCopy.getEnd();
@@ -75,7 +77,7 @@ public class TaskBuilder {
      * Sets the {@code isDone} of the {@code Task} that we are building.
      */
     public TaskBuilder withIsDone(boolean isDone) {
-        this.isDone = isDone;
+        this.isDone = new TaskIsDone(isDone);
         return this;
     }
     /**

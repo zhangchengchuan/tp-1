@@ -12,16 +12,13 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Stream;
 
 import manageme.commons.core.index.Index;
-import manageme.logic.commands.task.AddTaskCommand;
 import manageme.logic.commands.task.EditTaskCommand;
 import manageme.logic.parser.ArgumentMultimap;
 import manageme.logic.parser.ArgumentTokenizer;
 import manageme.logic.parser.Parser;
 import manageme.logic.parser.ParserUtil;
-import manageme.logic.parser.Prefix;
 import manageme.logic.parser.exceptions.ParseException;
 import manageme.model.tag.Tag;
 
