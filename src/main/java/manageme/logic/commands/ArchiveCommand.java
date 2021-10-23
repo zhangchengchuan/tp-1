@@ -2,7 +2,6 @@ package manageme.logic.commands;
 
 import java.io.IOException;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 
 import manageme.logic.commands.exceptions.CommandException;
 import manageme.model.ManageMe;
