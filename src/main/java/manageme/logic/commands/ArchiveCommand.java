@@ -3,6 +3,8 @@ package manageme.logic.commands;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import manageme.logic.commands.exceptions.CommandException;
 import manageme.model.ManageMe;
@@ -20,6 +22,8 @@ public class ArchiveCommand extends Command {
 
     public static final String MESSAGE_ARCHIVE_SUCCESS = "Data Archived into: %s";
 
+    private static final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss ");
+
     private static Storage storage;
 
     public void setStorage(Storage storage) {
@@ -29,7 +33,8 @@ public class ArchiveCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         //Path archiveFilePath = model.getArchiveFilePath();
-        Path archiveFilePath = Paths.get("data" , "archive.json");
+        LocalDateTime now = LocalDateTime.now();
+        Path archiveFilePath = Paths.get("data" , dtf.format(now) + "archive.json");
         try {
             storage.saveManageMe(model.getManageMe(), archiveFilePath);
 
@@ -37,6 +42,6 @@ public class ArchiveCommand extends Command {
             throw new CommandException(FILE_OPS_ERROR_MESSAGE + ioe, ioe);
         }
         model.setManageMe(new ManageMe());
-        return new CommandResult(String.format(MESSAGE_ARCHIVE_SUCCESS, archiveFilePath.toString()));
+        return new CommandResult(String.format(MESSAGE_ARCHIVE_SUCCESS, archiveFilePath));
     }
 }
