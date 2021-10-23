@@ -1,6 +1,8 @@
 package manageme.logic.commands.task;
 
 import static java.util.Objects.requireNonNull;
+import static manageme.logic.commands.task.AddTaskCommand.MESSAGE_START_LATER_THAN_END;
+import static manageme.logic.commands.task.AddTaskCommand.MESSAGE_START_WITHOUT_END;
 import static manageme.model.Model.PREDICATE_SHOW_ALL_TASKS;
 
 import java.util.List;
@@ -35,10 +37,7 @@ public class EditTaskCommand extends Command {
 
     public static final String MESSAGE_EDIT_TASK_SUCCESS = "Edited Task: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
-    public static final String MESSAGE_DUPLICATE_TASK = "This task already exists in the task list.";
-    public static final String MESSAGE_START_WITHOUT_END = "A task with a start datetime MUST also have an "
-            + "end datetime";
-
+    public static final String MESSAGE_DUPLICATE_TASK = "This task already exists in the address book.";
 
     private final Index index;
     private final EditTaskDescriptor editTaskDescriptor;
@@ -68,18 +67,17 @@ public class EditTaskCommand extends Command {
         Task taskToEdit = lastShownList.get(index.getZeroBased());
         Task editedTask = createEditedTask(taskToEdit, editTaskDescriptor);
 
-        if (!editedTask.getStart().isEmpty() && taskToEdit.getEnd().isEmpty() && editedTask.getEnd().isEmpty()
-        ) {
-            throw new CommandException(MESSAGE_START_WITHOUT_END);
-        }
-
-        if (editedTask.getEnd().isEmpty() && !taskToEdit.getStart().isEmpty() && !editedTask.getStart().isEmpty()
-        ) {
-            throw new CommandException(MESSAGE_START_WITHOUT_END);
-        }
-
         if (!taskToEdit.isSameTask(editedTask) && model.hasTask(editedTask)) {
             throw new CommandException(MESSAGE_DUPLICATE_TASK);
+        }
+
+        if (!editedTask.getStart().isEmpty() && editedTask.getEnd().isEmpty()) {
+            throw new CommandException(MESSAGE_START_WITHOUT_END);
+        }
+
+        if (!editedTask.getStart().isEmpty() && !editedTask.getEnd().isEmpty()
+                && editedTask.getStart().getTime().isAfter(editedTask.getEnd().getTime())) {
+            throw new CommandException(MESSAGE_START_LATER_THAN_END);
         }
 
         model.setTask(taskToEdit, editedTask);

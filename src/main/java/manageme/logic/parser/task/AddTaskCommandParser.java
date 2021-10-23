@@ -56,6 +56,10 @@ public class AddTaskCommandParser implements Parser<AddTaskCommand> {
         TaskTime end = argMultimap.getValue(PREFIX_END).isPresent()
                 ? ParserUtil.parseDateTime(argMultimap.getValue(PREFIX_END).get())
                 : TaskTime.empty();
+
+        if (!start.isEmpty() && !end.isEmpty() && start.getTime().isAfter(end.getTime())) {
+            throw new ParseException(AddTaskCommand.MESSAGE_START_LATER_THAN_END);
+        }
         Task task = new Task(name, description, module, start, end);
         return new AddTaskCommand(task);
     }
