@@ -2,6 +2,7 @@ package manageme.logic.commands;
 
 import java.io.IOException;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 
 import manageme.logic.commands.exceptions.CommandException;
 import manageme.model.ManageMe;
@@ -27,7 +28,8 @@ public class ArchiveCommand extends Command {
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
-        Path archiveFilePath = model.getArchiveFilePath();
+        //Path archiveFilePath = model.getArchiveFilePath();
+        Path archiveFilePath = Paths.get("data" , "archive.json");
         try {
             storage.saveManageMe(model.getManageMe(), archiveFilePath);
 

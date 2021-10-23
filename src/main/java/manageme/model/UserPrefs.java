@@ -4,7 +4,6 @@ import static java.util.Objects.requireNonNull;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.time.LocalDateTime;
 import java.util.Objects;
 
 import manageme.commons.core.GuiSettings;
@@ -16,8 +15,6 @@ public class UserPrefs implements ReadOnlyUserPrefs {
 
     private GuiSettings guiSettings = new GuiSettings();
     private Path manageMeFilePath = Paths.get("data" , "manageme.json");
-    private Path archiveFilePath = Paths.get("data" ,
-            "archive.json");
 
     /**
      * Creates a {@code UserPrefs} with default values.
@@ -60,12 +57,13 @@ public class UserPrefs implements ReadOnlyUserPrefs {
     }
 
     public Path getArchiveFilePath() {
-        return archiveFilePath;
+        //return archiveFilePath;
+        return null;
     }
 
     public void setArchiveFilePath(Path archiveFilePath) {
         requireNonNull(archiveFilePath);
-        this.archiveFilePath = archiveFilePath;
+        //this.archiveFilePath = archiveFilePath;
     }
 
     @Override
