@@ -4,6 +4,8 @@ import static java.util.Objects.requireNonNull;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 import manageme.commons.core.GuiSettings;
@@ -15,6 +17,10 @@ public class UserPrefs implements ReadOnlyUserPrefs {
 
     private GuiSettings guiSettings = new GuiSettings();
     private Path manageMeFilePath = Paths.get("data" , "manageme.json");
+
+    private DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss ");
+    private LocalDateTime now = LocalDateTime.now();
+    private Path archiveFilePath = Paths.get("data" , dtf.format(now) + "archive.json");
 
     /**
      * Creates a {@code UserPrefs} with default values.
@@ -51,9 +57,18 @@ public class UserPrefs implements ReadOnlyUserPrefs {
         return manageMeFilePath;
     }
 
-    public void setManageMeFilePath(Path addressBookFilePath) {
-        requireNonNull(addressBookFilePath);
-        this.manageMeFilePath = addressBookFilePath;
+    public void setManageMeFilePath(Path manageMeFilePath) {
+        requireNonNull(manageMeFilePath);
+        this.manageMeFilePath = manageMeFilePath;
+    }
+
+    public Path getArchiveFilePath() {
+        return archiveFilePath;
+    }
+
+    public void setArchiveFilePath(Path archiveFilePath) {
+        requireNonNull(archiveFilePath);
+        this.archiveFilePath = archiveFilePath;
     }
 
     @Override
