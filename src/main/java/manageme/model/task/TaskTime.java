@@ -13,11 +13,7 @@ import java.util.Optional;
 public class TaskTime {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Invalid date";
-    //        "TaskTime can take any value, and it should not be blank";
-
-    public static final String MESSAGE_DATE_NOT_PARSABLE =
-            "Date entered is invalid";
+            "TaskTime can take any value, and it should not be blank";
 
     public static final String VALIDATION_REGEX = "[^\\s].*";
 
@@ -39,7 +35,11 @@ public class TaskTime {
         checkArgument(isValidTaskTime(taskTime), MESSAGE_CONSTRAINTS);
         String trimmedT = taskTime.trim();
         this.value = trimmedT;
-        this.time = Optional.of(LocalDateTime.parse(trimmedT));
+        if (value.equals("")) {
+            this.time = Optional.empty();
+        } else {
+            this.time = Optional.of(LocalDateTime.parse(trimmedT));
+        }
     }
 
     /**

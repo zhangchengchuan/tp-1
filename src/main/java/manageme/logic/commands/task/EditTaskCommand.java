@@ -1,6 +1,8 @@
 package manageme.logic.commands.task;
 
 import static java.util.Objects.requireNonNull;
+import static manageme.logic.commands.task.AddTaskCommand.MESSAGE_START_LATER_THAN_END;
+import static manageme.logic.commands.task.AddTaskCommand.MESSAGE_START_WITHOUT_END;
 import static manageme.model.Model.PREDICATE_SHOW_ALL_TASKS;
 
 import java.util.List;
@@ -12,7 +14,6 @@ import manageme.commons.util.CollectionUtil;
 import manageme.logic.commands.Command;
 import manageme.logic.commands.CommandResult;
 import manageme.logic.commands.exceptions.CommandException;
-import manageme.logic.parser.exceptions.ParseException;
 import manageme.model.Model;
 import manageme.model.task.Task;
 import manageme.model.task.TaskDescription;
@@ -37,8 +38,6 @@ public class EditTaskCommand extends Command {
     public static final String MESSAGE_EDIT_TASK_SUCCESS = "Edited Task: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
     public static final String MESSAGE_DUPLICATE_TASK = "This task already exists in the address book.";
-    public static final String MESSAGE_START_LATER_THAN_END = "The task cannot have start date later than the end date";
-    public static final String MESSAGE_START_WITHOUT_END = "There is no end date associated with this task.";
 
     private final Index index;
     private final EditTaskDescriptor editTaskDescriptor;
@@ -47,7 +46,7 @@ public class EditTaskCommand extends Command {
      * @param index              of the task in the filtered task list to edit
      * @param editTaskDescriptor details to edit the task with
      */
-    public EditTaskCommand(Index index, EditTaskDescriptor editTaskDescriptor) throws ParseException {
+    public EditTaskCommand(Index index, EditTaskDescriptor editTaskDescriptor) {
         requireNonNull(index);
         requireNonNull(editTaskDescriptor);
 
@@ -143,7 +142,7 @@ public class EditTaskCommand extends Command {
          * Copy constructor.
          * A defensive copy of {@code tags} is used internally.
          */
-        public EditTaskDescriptor(EditTaskDescriptor toCopy) throws ParseException {
+        public EditTaskDescriptor(EditTaskDescriptor toCopy) {
             setName(toCopy.name);
             setDescription(toCopy.description);
             setModule(toCopy.module);

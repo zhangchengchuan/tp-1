@@ -1,7 +1,6 @@
 package manageme.testutil;
 
 import manageme.logic.commands.task.EditTaskCommand;
-import manageme.logic.parser.exceptions.ParseException;
 import manageme.model.task.Task;
 import manageme.model.task.TaskDescription;
 import manageme.model.task.TaskModule;
@@ -23,11 +22,7 @@ public class EditTaskDescriptorBuilder {
      * @param descriptor a descriptor passed into the function.
      */
     public EditTaskDescriptorBuilder(EditTaskCommand.EditTaskDescriptor descriptor) {
-        try {
-            this.descriptor = new EditTaskCommand.EditTaskDescriptor(descriptor);
-        } catch (ParseException e) {
-            System.out.println(e.getMessage());
-        }
+        this.descriptor = new EditTaskCommand.EditTaskDescriptor(descriptor);
     }
 
     /**

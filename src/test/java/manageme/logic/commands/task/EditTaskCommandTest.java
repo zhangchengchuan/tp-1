@@ -19,7 +19,6 @@ import org.junit.jupiter.api.Test;
 import manageme.commons.core.Messages;
 import manageme.commons.core.index.Index;
 import manageme.logic.commands.ClearCommand;
-import manageme.logic.parser.exceptions.ParseException;
 import manageme.model.ManageMe;
 import manageme.model.Model;
 import manageme.model.ModelManager;
@@ -40,11 +39,7 @@ public class EditTaskCommandTest {
         EditTaskCommand.EditTaskDescriptor descriptor =
                 new EditTaskDescriptorBuilder(editedTask).build();
         EditTaskCommand editTaskCommand = null;
-        try {
-            editTaskCommand = new EditTaskCommand(INDEX_FIRST, descriptor);
-        } catch (ParseException e) {
-            System.out.println(e.getMessage());
-        }
+        editTaskCommand = new EditTaskCommand(INDEX_FIRST, descriptor);
 
         String expectedMessage = String.format(EditTaskCommand.MESSAGE_EDIT_TASK_SUCCESS, editedTask);
 
@@ -67,11 +62,7 @@ public class EditTaskCommandTest {
                 new EditTaskDescriptorBuilder().withName(VALID_NAME_B)
                 .withDescription(VALID_DESCRIPTION_B).withModule(VALID_MODULE_B).build();
         EditTaskCommand editTaskCommand = null;
-        try {
-            editTaskCommand = new EditTaskCommand(indexLastTask, descriptor);
-        } catch (ParseException e) {
-            System.out.println(e.getMessage());
-        }
+        editTaskCommand = new EditTaskCommand(indexLastTask, descriptor);
 
         String expectedMessage = String.format(EditTaskCommand.MESSAGE_EDIT_TASK_SUCCESS, editedTask);
 
@@ -84,11 +75,7 @@ public class EditTaskCommandTest {
     @Test
     public void execute_noFieldSpecifiedUnfilteredList_success() {
         EditTaskCommand editTaskCommand = null;
-        try {
-            editTaskCommand = new EditTaskCommand(INDEX_FIRST, new EditTaskCommand.EditTaskDescriptor());
-        } catch (ParseException e) {
-            System.out.println(e.getMessage());
-        }
+        editTaskCommand = new EditTaskCommand(INDEX_FIRST, new EditTaskCommand.EditTaskDescriptor());
 
         Task editedTask = model.getFilteredTaskList().get(INDEX_FIRST.getZeroBased());
 
@@ -107,12 +94,8 @@ public class EditTaskCommandTest {
         Task taskInFilteredList = model.getFilteredTaskList().get(INDEX_FIRST.getZeroBased());
         Task editedTask = new TaskBuilder(taskInFilteredList).withName(VALID_NAME_B).build();
         EditTaskCommand editTaskCommand = null;
-        try {
-            editTaskCommand = new EditTaskCommand(INDEX_FIRST,
-                    new EditTaskDescriptorBuilder().withName(VALID_NAME_B).build());
-        } catch (ParseException e) {
-            System.out.println(e.getMessage());
-        }
+        editTaskCommand = new EditTaskCommand(INDEX_FIRST,
+                new EditTaskDescriptorBuilder().withName(VALID_NAME_B).build());
 
         String expectedMessage = String.format(EditTaskCommand.MESSAGE_EDIT_TASK_SUCCESS, editedTask);
 
@@ -128,11 +111,7 @@ public class EditTaskCommandTest {
         EditTaskCommand.EditTaskDescriptor descriptor =
                 new EditTaskDescriptorBuilder(firstTask).build();
         EditTaskCommand editTaskCommand = null;
-        try {
-            editTaskCommand = new EditTaskCommand(INDEX_SECOND, descriptor);
-        } catch (ParseException e) {
-            System.out.println(e.getMessage());
-        }
+        editTaskCommand = new EditTaskCommand(INDEX_SECOND, descriptor);
 
         assertCommandFailure(editTaskCommand, model, EditTaskCommand.MESSAGE_DUPLICATE_TASK);
     }
@@ -143,11 +122,7 @@ public class EditTaskCommandTest {
         EditTaskCommand.EditTaskDescriptor descriptor =
                 new EditTaskDescriptorBuilder().withName(VALID_NAME_B).build();
         EditTaskCommand editTaskCommand = null;
-        try {
-            editTaskCommand = new EditTaskCommand(outOfBoundIndex, descriptor);
-        } catch (ParseException e) {
-            System.out.println(e.getMessage());
-        }
+        editTaskCommand = new EditTaskCommand(outOfBoundIndex, descriptor);
 
         assertCommandFailure(editTaskCommand, model, Messages.MESSAGE_INVALID_TASK_DISPLAYED_INDEX);
     }
@@ -164,12 +139,8 @@ public class EditTaskCommandTest {
         assertTrue(outOfBoundIndex.getZeroBased() < model.getManageMe().getTaskList().size());
 
         EditTaskCommand editTaskCommand = null;
-        try {
-            editTaskCommand = new EditTaskCommand(outOfBoundIndex,
-                    new EditTaskDescriptorBuilder().withName(VALID_NAME_B).build());
-        } catch (ParseException e) {
-            System.out.println(e.getMessage());
-        }
+        editTaskCommand = new EditTaskCommand(outOfBoundIndex,
+                new EditTaskDescriptorBuilder().withName(VALID_NAME_B).build());
 
         assertCommandFailure(editTaskCommand, model, Messages.MESSAGE_INVALID_TASK_DISPLAYED_INDEX);
     }
@@ -177,34 +148,26 @@ public class EditTaskCommandTest {
     @Test
     public void equals() {
         EditTaskCommand standardCommand = null;
-        try {
-            standardCommand = new EditTaskCommand(INDEX_FIRST, DESC_A);
-        } catch (ParseException e) {
-            System.out.println(e.getMessage());
-        }
+        standardCommand = new EditTaskCommand(INDEX_FIRST, DESC_A);
 
         // same values -> returns true
-        try {
-            EditTaskCommand.EditTaskDescriptor copyDescriptor = new EditTaskCommand.EditTaskDescriptor(DESC_A);
-            EditTaskCommand commandWithSameValues = new EditTaskCommand(INDEX_FIRST, copyDescriptor);
-            assertTrue(standardCommand.equals(commandWithSameValues));
+        EditTaskCommand.EditTaskDescriptor copyDescriptor = new EditTaskCommand.EditTaskDescriptor(DESC_A);
+        EditTaskCommand commandWithSameValues = new EditTaskCommand(INDEX_FIRST, copyDescriptor);
+        assertTrue(standardCommand.equals(commandWithSameValues));
 
-            // same object -> returns true
-            assertTrue(standardCommand.equals(standardCommand));
+        // same object -> returns true
+        assertTrue(standardCommand.equals(standardCommand));
 
-            // null -> returns false
-            assertFalse(standardCommand.equals(null));
+        // null -> returns false
+        assertFalse(standardCommand.equals(null));
 
-            // different types -> returns false
-            assertFalse(standardCommand.equals(new ClearCommand()));
+        // different types -> returns false
+        assertFalse(standardCommand.equals(new ClearCommand()));
 
-            // different index -> returns false
-            assertFalse(standardCommand.equals(new EditTaskCommand(INDEX_SECOND, DESC_A)));
+        // different index -> returns false
+        assertFalse(standardCommand.equals(new EditTaskCommand(INDEX_SECOND, DESC_A)));
 
-            // different descriptor -> returns false
-            assertFalse(standardCommand.equals(new EditTaskCommand(INDEX_FIRST, DESC_B)));
-        } catch (ParseException e) {
-            System.out.println(e.getMessage());
-        }
+        // different descriptor -> returns false
+        assertFalse(standardCommand.equals(new EditTaskCommand(INDEX_FIRST, DESC_B)));
     }
 }
