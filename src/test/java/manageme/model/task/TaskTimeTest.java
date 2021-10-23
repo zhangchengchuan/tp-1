@@ -13,20 +13,11 @@ public class TaskTimeTest {
         assertThrows(NullPointerException.class, () -> new TaskTime(null));
     }
 
-    @Test
-    public void constructor_invalidTaskTime_throwsIllegalArgumentException() {
-        String invalidTime = "";
-        assertThrows(IllegalArgumentException.class, () -> new TaskTime(invalidTime));
-    }
 
     @Test
     public void isValidTime() {
         // null time
         assertThrows(NullPointerException.class, () -> TaskTime.isValidTaskTime(null));
-
-        // invalid time
-        assertFalse(TaskTime.isValidTaskTime("")); // empty string
-        assertFalse(TaskTime.isValidTaskTime(" ")); // spaces only
 
         // valid time
         assertTrue(TaskTime.isValidTaskTime("abcd")); // alphabets only
