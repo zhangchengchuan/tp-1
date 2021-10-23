@@ -32,6 +32,8 @@ public class AddTaskCommand extends Command {
 
     public static final String MESSAGE_SUCCESS = "New task added: %1$s";
     public static final String MESSAGE_DUPLICATE_TASK = "This task already exists in the task list";
+    public static final String MESSAGE_START_WITHOUT_END = "A task with a start datetime MUST also have an "
+            + "end datetime";
     private final Task toAdd;
     /**
      * Creates an AddTaskCommand to add the specified {@code Task}

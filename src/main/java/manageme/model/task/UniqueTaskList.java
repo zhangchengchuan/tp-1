@@ -78,6 +78,7 @@ public class UniqueTaskList implements Iterable<Task> {
         }
     }
 
+
     /**
      * Removes the equivalent task from the list.
      * The task must exist in the list.
