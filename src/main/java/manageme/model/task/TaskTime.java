@@ -56,6 +56,10 @@ public class TaskTime {
      * @return true or false if it is suitable.
      */
     public static boolean isValidTaskTime(String test) {
+        if (test.equals("")) {
+            return true;
+        }
+
         boolean parsable = true;
         try {
             LocalDateTime temp = LocalDateTime.parse(test);
