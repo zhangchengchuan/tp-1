@@ -5,6 +5,7 @@ import java.util.regex.Pattern;
 
 import manageme.commons.core.Messages;
 import manageme.logic.commands.AddCommand;
+import manageme.logic.commands.ArchiveCommand;
 import manageme.logic.commands.ClearCommand;
 import manageme.logic.commands.Command;
 import manageme.logic.commands.DeleteCommand;
@@ -140,6 +141,9 @@ public class ManageMeParser {
 
         case ReadDayCommand.COMMAND_WORD:
             return new ReadDayCommandParser().parse(arguments);
+
+        case ArchiveCommand.COMMAND_WORD:
+            return new ArchiveCommand();
 
         default:
             throw new ParseException(Messages.MESSAGE_UNKNOWN_COMMAND);
