@@ -91,7 +91,7 @@ e/2021-10-07T23:59`
 
 [comment]: <> (Example: `readTask 3`)
 
-#### Edit a task: editTask
+#### Edit a task: `editTask`
 Edit an existing task in the task list.
 
 Format: `editTask INDEX [n/NAME] [d/DESCRIPTION] [mod/MODULE_NAME] [s/START_DATETIME] [e/END_DATETIME]`
