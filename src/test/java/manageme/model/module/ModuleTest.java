@@ -36,21 +36,22 @@ public class ModuleTest {
 
     @Test
     public void equals() {
+        Module moduleA = new ModuleBuilder(MODULE_A).build();
         // same values -> returns true
         Module moduleCS2100Copy = new ModuleBuilder(MODULE_A).build();
-        assertTrue(MODULE_A.equals(moduleCS2100Copy));
+        assertTrue(moduleA.equals(moduleCS2100Copy));
 
         // same object -> returns true
-        assertTrue(MODULE_A.equals(MODULE_A));
+        assertTrue(moduleA.equals(moduleA));
 
         // null -> returns false
-        assertFalse(MODULE_A.equals(null));
+        assertFalse(moduleA.equals(null));
 
         // different type -> returns false
-        assertFalse(MODULE_A.equals(5));
+        assertFalse(moduleA.equals(5));
 
         // different Module object -> returns false
-        assertFalse(MODULE_A.equals(MODULE_B));
+        assertFalse(moduleA.equals(MODULE_B));
 
         // different name -> returns false
         Module editedCS2103 = new ModuleBuilder(MODULE_B).withName(VALID_MODNAME_A).build();

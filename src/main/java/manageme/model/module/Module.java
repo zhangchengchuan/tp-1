@@ -118,8 +118,6 @@ public class Module {
 
     /**
      * Returns true if both mods have the same name.
-     * This defines a weaker notion of equality between two mods.
-     * @param otherMod
      */
     public boolean isSameModule(Module otherMod) {
         if (otherMod == this) {
@@ -131,8 +129,9 @@ public class Module {
     }
 
     /**
-     * Returns true if both mods have the same identity and data fields.
-     * This defines a stronger notion of equality between two mods.
+     * Returns true if both mods have the same identity.
+     * This is the same as #isSameModule because of how Module is implemented,
+     * two Modules will be equals as long as they have the same ModuleName.
      */
     @Override
     public boolean equals(Object other) {
@@ -145,9 +144,7 @@ public class Module {
         }
 
         Module otherMod = (Module) other;
-        return otherMod.getModuleName().equals(getModuleName())
-                && otherMod.unfilteredLinks.equals(unfilteredLinks)
-                && otherMod.unfilteredTasks.equals(unfilteredTasks);
+        return otherMod.getModuleName().equals(getModuleName());
     }
 
     @Override

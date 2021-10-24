@@ -76,7 +76,7 @@ public class ModuleWindow extends UiPart<Stage> {
      */
     public void fillTaskList(List<Task> tasks) {
         for (int i = 0; i < tasks.size(); i++) {
-            taskList.getChildren().add(new TaskCard(tasks.get(i), i).getRoot());
+            taskList.getChildren().add(new TaskCard(tasks.get(i), i + 1).getRoot());
         }
     }
 
@@ -87,7 +87,7 @@ public class ModuleWindow extends UiPart<Stage> {
      */
     public void fillLinkList(List<Link> links) {
         for (int i = 0; i < links.size(); i++) {
-            linkList.getChildren().add(new LinkCard(links.get(i), i).getRoot());
+            linkList.getChildren().add(new LinkCard(links.get(i), i + 1).getRoot());
         }
     }
 
