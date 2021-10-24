@@ -167,6 +167,7 @@ public class UniqueTaskList implements Iterable<Task> {
     private void sortTasksByTime() {
         Comparator<Task> comparator = Comparator.comparing(Task::getFirstOccurrence);
         sortedList.removeIf(task -> task.getStart().value.equals("") && task.getEnd().value.equals(""));
+        sortedList.removeIf(task -> task.isDone().value);
         sortedList.sort(comparator);
     }
 }

@@ -52,7 +52,7 @@ public class TimeManager implements Time {
             while (true) {
                 try {
                     checkAlarm();
-                    Thread.sleep(60000);
+                    Thread.sleep(1000);
                 } catch (Exception e) {
                     System.out.println(e.getMessage());
                     System.out.println("Error with timer.");
