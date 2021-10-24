@@ -7,9 +7,7 @@ import manageme.commons.core.Messages;
 import manageme.logic.commands.ClearCommand;
 import manageme.logic.commands.Command;
 import manageme.logic.commands.ExitCommand;
-import manageme.logic.commands.FindCommand;
 import manageme.logic.commands.HelpCommand;
-import manageme.logic.commands.ListCommand;
 import manageme.logic.commands.calendar.NextMonthCommand;
 import manageme.logic.commands.calendar.PreviousMonthCommand;
 import manageme.logic.commands.calendar.ReadDayCommand;
@@ -79,12 +77,6 @@ public class ManageMeParser {
 
         case ClearCommand.COMMAND_WORD:
             return new ClearCommand();
-
-        case FindCommand.COMMAND_WORD:
-            return new FindCommandParser().parse(arguments);
-
-        case ListCommand.COMMAND_WORD:
-            return new ListCommand();
 
         case ExitCommand.COMMAND_WORD:
             return new ExitCommand();

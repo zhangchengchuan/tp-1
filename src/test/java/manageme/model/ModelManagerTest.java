@@ -16,7 +16,6 @@ import manageme.model.person.NameContainsKeywordsPredicate;
 import manageme.testutil.Assert;
 import manageme.testutil.ManageMeBuilder;
 import manageme.testutil.TypicalModules;
-import manageme.testutil.TypicalPersons;
 import manageme.testutil.TypicalTasks;
 
 public class ModelManagerTest {

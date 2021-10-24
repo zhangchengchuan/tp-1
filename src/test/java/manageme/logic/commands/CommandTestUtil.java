@@ -24,7 +24,6 @@ import manageme.model.link.Link;
 import manageme.model.task.Task;
 import manageme.model.task.TaskNameContainsKeywordsPredicate;
 import manageme.testutil.EditModuleDescriptorBuilder;
-import manageme.testutil.EditPersonDescriptorBuilder;
 
 /**
  * Contains helper methods for testing commands.

@@ -6,8 +6,8 @@ import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import manageme.commons.core.GuiSettings;
-import manageme.model.module.Module;
 import manageme.model.link.Link;
+import manageme.model.module.Module;
 import manageme.model.task.Task;
 
 /**

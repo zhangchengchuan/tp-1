@@ -13,8 +13,8 @@ import javafx.collections.transformation.FilteredList;
 import manageme.commons.core.GuiSettings;
 import manageme.commons.core.LogsCenter;
 import manageme.commons.util.CollectionUtil;
-import manageme.model.module.Module;
 import manageme.model.link.Link;
+import manageme.model.module.Module;
 import manageme.model.task.Task;
 
 /**

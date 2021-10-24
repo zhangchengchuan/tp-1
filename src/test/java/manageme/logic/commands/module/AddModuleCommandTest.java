@@ -9,6 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Optional;
 import java.util.function.Predicate;
 
 import org.junit.jupiter.api.Test;
@@ -21,8 +22,8 @@ import manageme.model.ManageMe;
 import manageme.model.Model;
 import manageme.model.ReadOnlyManageMe;
 import manageme.model.ReadOnlyUserPrefs;
+import manageme.model.link.Link;
 import manageme.model.module.Module;
-import manageme.model.person.Person;
 import manageme.model.task.Task;
 import manageme.testutil.ModuleBuilder;
 
@@ -38,7 +39,7 @@ public class AddModuleCommandTest {
                 .ModelStubAcceptingModuleAdded();
         Module validModule = new ModuleBuilder().build();
 
-        CommandResult commandResult = new AddModuleCommand(validModule).execute(modelStub);
+        CommandResult commandResult = new AddModuleCommand(validModule.getModuleName()).execute(modelStub);
 
         assertEquals(String.format(AddModuleCommand.MESSAGE_SUCCESS, validModule), commandResult.getFeedbackToUser());
         assertEquals(Arrays.asList(validModule), modelStub.modulesAdded);
@@ -47,7 +48,7 @@ public class AddModuleCommandTest {
     @Test
     public void execute_duplicateModule_throwsCommandException() {
         Module validModule = new ModuleBuilder().build();
-        AddModuleCommand addCommand = new AddModuleCommand(validModule);
+        AddModuleCommand addCommand = new AddModuleCommand(validModule.getModuleName());
         AddModuleCommandTest.ModelStub modelStub = new AddModuleCommandTest.ModelStubWithModule(validModule);
 
         assertThrows(CommandException.class, AddModuleCommand.MESSAGE_DUPLICATE_MODULE, () ->
@@ -58,14 +59,14 @@ public class AddModuleCommandTest {
     public void equals() {
         Module cs110 = new ModuleBuilder().withName("CS110").build();
         Module cs220 = new ModuleBuilder().withName("CS220").build();
-        AddModuleCommand addCs110Command = new AddModuleCommand(cs110);
-        AddModuleCommand addCs220Command = new AddModuleCommand(cs220);
+        AddModuleCommand addCs110Command = new AddModuleCommand(cs110.getModuleName());
+        AddModuleCommand addCs220Command = new AddModuleCommand(cs220.getModuleName());
 
         // same object -> returns true
         assertTrue(addCs110Command.equals(addCs110Command));
 
         // same values -> returns true
-        AddModuleCommand addCs110CommandCopy = new AddModuleCommand(cs110);
+        AddModuleCommand addCs110CommandCopy = new AddModuleCommand(cs110.getModuleName());
         assertTrue(addCs110Command.equals(addCs110CommandCopy));
 
         // different types -> returns false
@@ -113,42 +114,12 @@ public class AddModuleCommandTest {
         }
 
         @Override
-        public void addPerson(Person person) {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
         public void setManageMe(ReadOnlyManageMe newData) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
         public ReadOnlyManageMe getManageMe() {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public boolean hasPerson(Person person) {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public void deletePerson(Person target) {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public void setPerson(Person target, Person editedPerson) {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public ObservableList<Person> getFilteredPersonList() {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public void updateFilteredPersonList(Predicate<Person> predicate) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -173,6 +144,16 @@ public class AddModuleCommandTest {
         }
 
         @Override
+        public Optional<Module> getReadModule() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void setReadModule(Module module) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public ObservableList<Module> getFilteredModuleList() {
             throw new AssertionError("This method should not be called.");
         }
@@ -183,12 +164,27 @@ public class AddModuleCommandTest {
         }
 
         @Override
-        public ObservableList<Module> getReadModuleList() {
+        public boolean hasLink(Link link) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void updateReadModuleList(Predicate<Module> predicate) {
+        public void addLink(Link link) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void deleteLink(Link link) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void setLink(Link target, Link editedLink) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void openLink(Link link) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -209,6 +205,16 @@ public class AddModuleCommandTest {
 
         @Override
         public void setTask(Task target, Task editedTask) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ObservableList<Link> getFilteredLinkList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void updateFilteredLinkList(Predicate<Link> predicate) {
             throw new AssertionError("This method should not be called.");
         }
 

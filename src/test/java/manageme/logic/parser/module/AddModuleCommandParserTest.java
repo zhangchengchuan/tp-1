@@ -24,7 +24,7 @@ public class AddModuleCommandParserTest {
 
         // whitespace only preamble
         assertParseSuccess(parser, PREAMBLE_WHITESPACE + ModuleCommandTestUtil.NAME_DESC_MODULE_B
-                + ModuleCommandTestUtil.LINK_DESC_MODULE_B, new AddModuleCommand(expectedModule));
+                + ModuleCommandTestUtil.LINK_DESC_MODULE_B, new AddModuleCommand(expectedModule.getModuleName()));
     }
 
     @Test

@@ -10,8 +10,8 @@ import manageme.logic.commands.exceptions.CommandException;
 import manageme.logic.parser.exceptions.ParseException;
 import manageme.model.Model;
 import manageme.model.ReadOnlyManageMe;
-import manageme.model.module.Module;
 import manageme.model.link.Link;
+import manageme.model.module.Module;
 import manageme.model.task.Task;
 
 /**

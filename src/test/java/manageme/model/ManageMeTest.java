@@ -24,11 +24,9 @@ import manageme.model.task.Task;
 import manageme.model.task.exceptions.DuplicateTaskException;
 import manageme.testutil.Assert;
 import manageme.testutil.ModuleBuilder;
-import manageme.testutil.PersonBuilder;
 import manageme.testutil.TaskBuilder;
 import manageme.testutil.TypicalManageMe;
 import manageme.testutil.TypicalModules;
-import manageme.testutil.TypicalPersons;
 import manageme.testutil.TypicalTasks;
 
 public class ManageMeTest {

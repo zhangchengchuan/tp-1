@@ -1,7 +1,6 @@
 package manageme.logic.commands.module;
 
 import static java.util.Objects.requireNonNull;
-import static manageme.logic.parser.CliSyntax.PREFIX_LINK;
 import static manageme.logic.parser.CliSyntax.PREFIX_NAME;
 import static manageme.model.Model.PREDICATE_SHOW_ALL_MODULES;
 
@@ -31,8 +30,7 @@ public class EditModuleCommand extends Command {
             + "by the index number used in the displayed module list. "
             + "Existing values will be overwritten by the input values.\n"
             + "Parameters: INDEX (must be a positive integer) "
-            + "[" + PREFIX_NAME + "NAME] "
-            + "[" + PREFIX_LINK + "LINK] ";
+            + "[" + PREFIX_NAME + "NAME] ";
 
     public static final String MESSAGE_EDIT_MODULE_SUCCESS = "Edited module: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
@@ -85,9 +83,8 @@ public class EditModuleCommand extends Command {
         assert moduleToEdit != null;
 
         ModuleName updatedName = editModuleDescriptor.getModuleName().orElse(moduleToEdit.getModuleName());
-        Link updatedlink = editModuleDescriptor.getLink().orElse(moduleToEdit.getLink());
 
-        return new Module(updatedName, updatedlink, unfilteredTasks);
+        return new Module(updatedName, unfilteredTasks);
     }
 
     @Override

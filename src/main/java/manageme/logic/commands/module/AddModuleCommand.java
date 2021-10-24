@@ -2,7 +2,6 @@ package manageme.logic.commands.module;
 
 import static java.util.Objects.requireNonNull;
 import static manageme.commons.util.CollectionUtil.requireAllNonNull;
-import static manageme.logic.parser.CliSyntax.PREFIX_LINK;
 import static manageme.logic.parser.CliSyntax.PREFIX_NAME;
 
 import javafx.collections.ObservableList;
@@ -20,10 +19,8 @@ public class AddModuleCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a module to ManageMe. "
             + "Parameters: "
             + PREFIX_NAME + "NAME "
-            + PREFIX_LINK + "LINK "
             + "Example: " + COMMAND_WORD + " "
-            + PREFIX_NAME + "CS1100 "
-            + PREFIX_LINK + "https://www.google.com";
+            + PREFIX_NAME + "CS1100 ";
 
     public static final String MESSAGE_SUCCESS = "New module added: %1$s";
     public static final String MESSAGE_DUPLICATE_MODULE = "This module already exists in the app.";

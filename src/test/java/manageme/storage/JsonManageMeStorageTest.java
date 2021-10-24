@@ -15,7 +15,6 @@ import manageme.model.ManageMe;
 import manageme.model.ReadOnlyManageMe;
 import manageme.testutil.Assert;
 import manageme.testutil.TypicalManageMe;
-import manageme.testutil.TypicalPersons;
 
 public class JsonManageMeStorageTest {
     private static final Path TEST_DATA_FOLDER = Paths.get("src", "test", "data", "JsonAddressBookStorageTest");
