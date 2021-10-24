@@ -28,10 +28,9 @@ public class Module {
     /**
      * Every field must be present and not null.
      */
-    public Module(ModuleName moduleName, Link link, ObservableList<Task> unfilteredTasks) {
-        CollectionUtil.requireAllNonNull(moduleName, link);
+    public Module(ModuleName moduleName, ObservableList<Task> unfilteredTasks) {
+        CollectionUtil.requireAllNonNull(moduleName);
         this.moduleName = moduleName;
-        this.link = link;
         this.unfilteredTasks = unfilteredTasks;
         updateTasks();
 
@@ -77,8 +76,8 @@ public class Module {
         return moduleName;
     }
 
-    public Link getLink() {
-        return link;
+    public FilteredList<Link> getLink() {
+        return links;
     }
 
     public FilteredList<Task> getTasks() {
@@ -121,7 +120,7 @@ public class Module {
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(moduleName, link);
+        return Objects.hash(moduleName);
     }
 
     @Override

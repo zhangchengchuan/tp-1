@@ -73,6 +73,12 @@ public interface Model {
     void deleteLink(Link target);
 
     /**
+     * Opens the given link.
+     * The link must exist in the ManageMe.
+     */
+    void openLink(Link target);
+
+    /**
      * Adds the given link.
      * {@code link} must not already exist in the ManageMe.
      */

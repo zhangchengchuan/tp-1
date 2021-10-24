@@ -79,6 +79,15 @@ public class UniqueLinkList implements Iterable<Link> {
         }
     }
 
+    /**
+     * Removes the equivalent link from the list.
+     * The link must exist in the list.
+     */
+    public void open(Link toOpen) {
+        requireNonNull(toOpen);
+        toOpen.open();
+    }
+
     public void setLinks(UniqueLinkList replacement) {
         requireNonNull(replacement);
         internalList.setAll(replacement.internalList);

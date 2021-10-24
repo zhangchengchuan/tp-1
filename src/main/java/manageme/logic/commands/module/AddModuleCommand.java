@@ -10,7 +10,6 @@ import manageme.logic.commands.Command;
 import manageme.logic.commands.CommandResult;
 import manageme.logic.commands.exceptions.CommandException;
 import manageme.model.Model;
-import manageme.model.link.Link;
 import manageme.model.module.Module;
 import manageme.model.module.ModuleName;
 import manageme.model.task.Task;
@@ -30,15 +29,13 @@ public class AddModuleCommand extends Command {
     public static final String MESSAGE_DUPLICATE_MODULE = "This module already exists in the app.";
 
     private final ModuleName moduleName;
-    private final Link link;
 
     /**
      * Creates an AddModuleCommand to add the specified {@code Module}
      */
-    public AddModuleCommand(ModuleName moduleName, Link link) {
-        requireAllNonNull(moduleName, link);
+    public AddModuleCommand(ModuleName moduleName) {
+        requireAllNonNull(moduleName);
         this.moduleName = moduleName;
-        this.link = link;
     }
 
     @Override
@@ -46,7 +43,7 @@ public class AddModuleCommand extends Command {
         requireNonNull(model);
         ObservableList<Task> unfilteredTasks = model.getUnfilteredTaskList();
 
-        Module toAdd = new Module(moduleName, link, unfilteredTasks);
+        Module toAdd = new Module(moduleName, unfilteredTasks);
 
         if (model.hasModule(toAdd)) {
             throw new CommandException(MESSAGE_DUPLICATE_MODULE);
@@ -60,7 +57,6 @@ public class AddModuleCommand extends Command {
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof AddModuleCommand // instanceof handles nulls
-                && moduleName.equals(((AddModuleCommand) other).moduleName))
-                && link.equals(((AddModuleCommand) other).link);
+                && moduleName.equals(((AddModuleCommand) other).moduleName));
     }
 }

@@ -116,6 +116,12 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public void openLink(Link target) {
+        requireNonNull(target);
+        manageMe.openLink(target);
+    }
+
+    @Override
     public void addLink(Link link) {
         manageMe.addLink(link);
         updateFilteredLinkList(PREDICATE_SHOW_ALL_LINKS);

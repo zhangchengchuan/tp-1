@@ -1,5 +1,9 @@
 package manageme.model.link;
 
+import java.awt.Desktop;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.Objects;
 
 import manageme.commons.util.CollectionUtil;
@@ -55,6 +59,30 @@ public class Link {
 
         return otherLink != null
                 && otherLink.getAddress().equals(getAddress());
+    }
+
+    /**
+     * Oen link in web browser.
+     */
+    public void open() {
+
+        if(Desktop.isDesktopSupported()){
+            Desktop desktop = Desktop.getDesktop();
+            try {
+                desktop.browse(new URI(address.linkAddress.toString()));
+            } catch (IOException | URISyntaxException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }else{
+            Runtime runtime = Runtime.getRuntime();
+            try {
+                runtime.exec("xdg-open " + address.linkAddress);
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
     }
 
     /**

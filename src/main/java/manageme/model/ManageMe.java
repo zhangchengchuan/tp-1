@@ -121,6 +121,10 @@ public class ManageMe implements ReadOnlyManageMe {
         links.remove(key);
     }
 
+    public void openLink(Link key) {
+        links.open(key);
+    }
+
     //// module-level operations
 
     /**

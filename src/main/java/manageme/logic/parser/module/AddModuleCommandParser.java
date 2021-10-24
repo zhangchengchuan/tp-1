@@ -14,8 +14,6 @@ import manageme.logic.parser.Parser;
 import manageme.logic.parser.ParserUtil;
 import manageme.logic.parser.Prefix;
 import manageme.logic.parser.exceptions.ParseException;
-import manageme.model.link.Link;
-import manageme.model.module.Module;
 import manageme.model.module.ModuleName;
 
 public class AddModuleCommandParser implements Parser<AddModuleCommand> {
@@ -31,9 +29,8 @@ public class AddModuleCommandParser implements Parser<AddModuleCommand> {
         }
 
         ModuleName name = ParserUtil.parseModuleName(argMultimap.getValue(PREFIX_NAME).get());
-        Link link = ParserUtil.parseLink(argMultimap.getValue(PREFIX_LINK).get());
 
-        return new AddModuleCommand(name, link);
+        return new AddModuleCommand(name);
     }
 
     /**
