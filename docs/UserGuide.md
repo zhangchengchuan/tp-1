@@ -20,6 +20,9 @@ ManageMe is a **desktop app for time management and resource organisation, optim
         5. Find a Module by keyword: `findMod`
         6. List all Modules: `listMod`
     3. Calendar
+        1. View next month: `nextMonth`
+        2. View previous month: `prevMonth`
+        3. Read a day in calendar: `readDay`
     4. Others
         1. Get help: `help`
         2. Exit program: `exit`
