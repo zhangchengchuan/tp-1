@@ -71,8 +71,13 @@ public class UniqueTaskList implements Iterable<Task> {
         }
 
         internalList.set(index, editedTask);
-        sortedList.set(index, editedTask);
+        if (!sortedList.contains(target)) {
+            sortedList.add(editedTask);
+        } else {
+            sortedList.set(index, editedTask);
+        }
     }
+
 
     /**
      * Removes the equivalent task from the list.
@@ -162,6 +167,7 @@ public class UniqueTaskList implements Iterable<Task> {
     private void sortTasksByTime() {
         Comparator<Task> comparator = Comparator.comparing(Task::getFirstOccurrence);
         sortedList.removeIf(task -> task.getStart().value.equals("") && task.getEnd().value.equals(""));
+        sortedList.removeIf(task -> task.isDone().value);
         sortedList.sort(comparator);
     }
 }

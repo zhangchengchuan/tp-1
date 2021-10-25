@@ -8,6 +8,7 @@ import java.util.logging.Logger;
 import javafx.collections.ObservableList;
 import manageme.commons.core.GuiSettings;
 import manageme.commons.core.LogsCenter;
+import manageme.logic.commands.ArchiveCommand;
 import manageme.logic.commands.Command;
 import manageme.logic.commands.CommandResult;
 import manageme.logic.commands.exceptions.CommandException;
@@ -49,6 +50,10 @@ public class LogicManager implements Logic {
 
         CommandResult commandResult;
         Command command = manageMeParser.parseCommand(commandText);
+        if (command instanceof ArchiveCommand) {
+            ArchiveCommand archiveCommand = (ArchiveCommand) command;
+            archiveCommand.setStorage(storage);
+        }
         commandResult = command.execute(model);
 
         try {

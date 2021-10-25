@@ -178,8 +178,6 @@ public class ModelManager implements Model {
         manageMe.setTask(target, editedTask);
     }
 
-    //=========== Filtered Link List Accessors =============================================================
-
     /**
      * Returns an unmodifiable view of the list of {@code Link} backed by the internal list of
      * {@code versionedManageMe}

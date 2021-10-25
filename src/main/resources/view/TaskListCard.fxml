@@ -19,6 +19,7 @@
                </minWidth>
             </Label>
             <Label fx:id="taskName" styleClass="cell_big_label" text="\$first" />
+             <Label fx:id="isDone" styleClass="cell_big_label" text="\$isDone" />
          </children>
       </HBox>
       <Label fx:id="taskDescription" styleClass="cell_small_label" text="\$description" VBox.vgrow="NEVER" />

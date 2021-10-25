@@ -40,7 +40,7 @@ public class ManageMe implements ReadOnlyManageMe {
     public ManageMe() {}
 
     /**
-     * Creates an ManageMe using the Links in the {@code toBeCopied}
+     * Creates an ManageMe using the links, tasks, and modules in the {@code toBeCopied}
      */
     public ManageMe(ReadOnlyManageMe toBeCopied) {
         this();
