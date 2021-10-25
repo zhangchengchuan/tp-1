@@ -159,6 +159,7 @@ public class ManageMe implements ReadOnlyManageMe {
      * {@code key} must exist in the ManageMe.
      */
     public void removeModule(Module key) {
+        links.removeMod(key);
         modules.remove(key);
     }
 
