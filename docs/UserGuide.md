@@ -148,12 +148,10 @@ Format: `deleteDoneTask`
 
 ### Modules:
 #### Adding a module: `addMod`
-Adds a module into the module list. A module contains its name and zoom links. It can also be associated with any
-number of Todo, Deadline, Event tasks (like exams, assignments). These Tasks are added in the Task tab with a `/mod
-MODULE`.
+Adds a module into the module list. A module contains its name and a website link for online learning.
 
-Format: `addMod NAME /l LINK_NAME LINK` <br/>
-Examples: `addMod CS2103 /l tutorial https://...`
+Format: `addMod n/NAME l/LINK` <br/>
+Examples: `addMod n/CS2103 l/https://...`
 
 #### Read details of a module: `readMod`
 View module in detail. Creates a pop-up window to show the course name, link, and all tasks associated with the course.
@@ -259,7 +257,7 @@ Action | Format, Examples
 **ListTask** | `listTask`
 **MarkTask** | `markTask INDEX`<br>e.g., `markTask 1`
 **DeleteDoneTask** | `deleteDoneTask`
-**AddModule** | `addMod NAME /l LINK_NAME LINK`<br>e.g.,`addMod CS2103 /l tutorial https://...`
+**AddModule** | `addMod n/NAME l/LINK`<br>e.g.,`addMod n/CS2103 l/https://...`
 **ReadModule** | `readMod INDEX`<br>e.g., `readMod 2`
 **EditModule** | `editMod INDEX [n/NAME] [l/LINK]`<br>e.g., `editMod 2 n/CS2103T l/https://...`
 **DeleteModule** | `deleteMod INDEX`<br>e.g., `deleteMod 2`
