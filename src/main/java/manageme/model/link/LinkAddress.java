@@ -19,6 +19,7 @@ public class LinkAddress {
             + "[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]";
 
     public final URL linkAddress;
+    public final String value;
 
     /**
      * Constructs a {@code LinkAddress}.
@@ -27,8 +28,9 @@ public class LinkAddress {
      */
     public LinkAddress(String linkAddress) {
         requireNonNull(linkAddress);
-        AppUtil.checkArgument(isValidLinkName(linkAddress), MESSAGE_CONSTRAINTS);
+        AppUtil.checkArgument(isValidLinkAddress(linkAddress), MESSAGE_CONSTRAINTS);
         try {
+            this.value = linkAddress;
             this.linkAddress = new URL(linkAddress);
         } catch (MalformedURLException e) {
             throw new IllegalArgumentException(MESSAGE_CONSTRAINTS);
@@ -36,9 +38,9 @@ public class LinkAddress {
     }
 
     /**
-     * Returns true if a given string is a valid module name.
+     * Returns true if a given string is a valid link address.
      */
-    public static boolean isValidLinkName(String test) {
+    public static boolean isValidLinkAddress(String test) {
         return test.matches(VALIDATION_REGEX);
     }
 

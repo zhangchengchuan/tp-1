@@ -1,7 +1,8 @@
 package manageme.logic;
 
-import static manageme.commons.core.Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX;
+import static manageme.commons.core.Messages.MESSAGE_INVALID_MODULE_DISPLAYED_INDEX;
 import static manageme.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
+import static manageme.logic.commands.module.ModuleCommandTestUtil.MODNAME_DESC_A;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.IOException;
@@ -11,23 +12,22 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
-import manageme.logic.commands.AddCommand;
 import manageme.logic.commands.CommandResult;
-import manageme.logic.commands.CommandTestUtil;
-import manageme.logic.commands.ListCommand;
 import manageme.logic.commands.exceptions.CommandException;
+import manageme.logic.commands.module.AddModuleCommand;
+import manageme.logic.commands.module.ListModuleCommand;
 import manageme.logic.parser.exceptions.ParseException;
 import manageme.model.Model;
 import manageme.model.ModelManager;
 import manageme.model.ReadOnlyManageMe;
 import manageme.model.UserPrefs;
-import manageme.model.person.Person;
+import manageme.model.module.Module;
 import manageme.storage.JsonManageMeStorage;
 import manageme.storage.JsonUserPrefsStorage;
 import manageme.storage.StorageManager;
 import manageme.testutil.Assert;
-import manageme.testutil.PersonBuilder;
-import manageme.testutil.TypicalPersons;
+import manageme.testutil.ModuleBuilder;
+import manageme.testutil.TypicalModules;
 import manageme.time.TimeManager;
 
 public class LogicManagerTest {
@@ -57,40 +57,39 @@ public class LogicManagerTest {
 
     @Test
     public void execute_commandExecutionError_throwsCommandException() {
-        String deleteCommand = "delete 9";
-        assertCommandException(deleteCommand, MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+        String deleteModCommand = "deleteMod 9";
+        assertCommandException(deleteModCommand, MESSAGE_INVALID_MODULE_DISPLAYED_INDEX);
     }
 
     @Test
     public void execute_validCommand_success() throws Exception {
-        String listCommand = ListCommand.COMMAND_WORD;
-        assertCommandSuccess(listCommand, ListCommand.MESSAGE_SUCCESS, model);
+        String listModCommand = ListModuleCommand.COMMAND_WORD;
+        assertCommandSuccess(listModCommand, ListModuleCommand.MESSAGE_SUCCESS, model);
     }
 
     @Test
     public void execute_storageThrowsIoException_throwsCommandException() {
         // Setup LogicManager with JsonAddressBookIoExceptionThrowingStub
-        JsonManageMeStorage addressBookStorage =
+        JsonManageMeStorage manageMeStorage =
                 new JsonManageMeIoExceptionThrowingStub(temporaryFolder.resolve("ioExceptionAddressBook.json"));
         JsonUserPrefsStorage userPrefsStorage =
                 new JsonUserPrefsStorage(temporaryFolder.resolve("ioExceptionUserPrefs.json"));
-        StorageManager storage = new StorageManager(addressBookStorage, userPrefsStorage);
+        StorageManager storage = new StorageManager(manageMeStorage, userPrefsStorage);
         TimeManager time = new TimeManager(model.getManageMe());
         logic = new LogicManager(model, storage, time);
 
         // Execute add command
-        String addCommand = AddCommand.COMMAND_WORD + CommandTestUtil.NAME_DESC_AMY + CommandTestUtil.PHONE_DESC_AMY
-                + CommandTestUtil.EMAIL_DESC_AMY + CommandTestUtil.ADDRESS_DESC_AMY;
-        Person expectedPerson = new PersonBuilder(TypicalPersons.AMY).withTags().build();
+        String addModuleCommand = AddModuleCommand.COMMAND_WORD + MODNAME_DESC_A;
+        Module expectedModule = new ModuleBuilder(TypicalModules.MODULE_A).build();
         ModelManager expectedModel = new ModelManager();
-        expectedModel.addPerson(expectedPerson);
+        expectedModel.addModule(expectedModule);
         String expectedMessage = LogicManager.FILE_OPS_ERROR_MESSAGE + DUMMY_IO_EXCEPTION;
-        assertCommandFailure(addCommand, CommandException.class, expectedMessage, expectedModel);
+        assertCommandFailure(addModuleCommand, CommandException.class, expectedMessage, expectedModel);
     }
 
     @Test
-    public void getFilteredPersonList_modifyList_throwsUnsupportedOperationException() {
-        Assert.assertThrows(UnsupportedOperationException.class, () -> logic.getFilteredPersonList().remove(0));
+    public void getFilteredLinkList_modifyList_throwsUnsupportedOperationException() {
+        Assert.assertThrows(UnsupportedOperationException.class, () -> logic.getFilteredLinkList().remove(0));
     }
 
     @Test
@@ -101,11 +100,6 @@ public class LogicManagerTest {
     @Test
     public void getFilteredTaskList_modifyList_throwsUnsupportedOperationException() {
         Assert.assertThrows(UnsupportedOperationException.class, () -> logic.getFilteredTaskList().remove(0));
-    }
-
-    @Test
-    public void getReadModuleList_modifyList_throwsUnsupportedOperationException() {
-        Assert.assertThrows(UnsupportedOperationException.class, () -> logic.getReadModuleList().remove(0));
     }
 
     @Test

@@ -41,11 +41,11 @@ public class SampleDataUtil {
     }
 
     public static ReadOnlyManageMe getSampleManageMe() {
-        ManageMe sampleAb = new ManageMe();
-        for (Person samplePerson : getSamplePersons()) {
-            sampleAb.addPerson(samplePerson);
-        }
-        return sampleAb;
+        ManageMe sampleMm = new ManageMe();
+        //for (Person samplePerson : getSamplePersons()) {
+        //    sampleMm.addPerson(samplePerson);
+        //}
+        return sampleMm;
     }
 
     /**

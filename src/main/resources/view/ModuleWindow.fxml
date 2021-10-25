@@ -34,7 +34,7 @@
                     </children>
                 </VBox>
 
-                <VBox fx:id="taskList" styleClass="pane-with-border" VBox.vgrow="ALWAYS">
+                <VBox fx:id="taskList" minHeight="-Infinity" minWidth="-Infinity" styleClass="pane-with-border" VBox.vgrow="ALWAYS">
                     <padding>
                         <Insets bottom="10" left="10" right="10" top="10" />
                     </padding>

@@ -1,6 +1,7 @@
 package manageme.ui.module;
 
 import java.util.List;
+import java.util.Optional;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -10,6 +11,7 @@ import manageme.model.link.Link;
 import manageme.model.module.Module;
 import manageme.model.task.Task;
 import manageme.ui.UiPart;
+import manageme.ui.link.LinkCard;
 import manageme.ui.task.TaskCard;
 
 public class ModuleWindow extends UiPart<Stage> {
@@ -47,15 +49,15 @@ public class ModuleWindow extends UiPart<Stage> {
     /**
      * Displays module details to the user.
      *
-     * @param onlyModuleInList The filterModuleList that only contains the specific module that user requested to read.
+     * @param optionalModule the Optional that contains the specific module user requested to read.
      */
-    public void display(List<Module> onlyModuleInList) {
-        this.module = onlyModuleInList.get(0);
+    public void display(Optional<Module> optionalModule) {
+        this.module = optionalModule.get();
         resetWindow();
-        moduleWindow.setTitle(module.getModuleName().name);
-        name.setText(module.getModuleName().name);
-        fillLinkList(module.getLink());
-        //fillTaskList(module.getTask());
+        moduleWindow.setTitle(module.getModuleName().value);
+        name.setText(module.getModuleName().value);
+        fillLinkList(module.getLinks());
+        fillTaskList(module.getTasks());
         moduleWindow.showAndWait();
     }
 
@@ -74,7 +76,7 @@ public class ModuleWindow extends UiPart<Stage> {
      */
     public void fillTaskList(List<Task> tasks) {
         for (int i = 0; i < tasks.size(); i++) {
-            taskList.getChildren().add(new TaskCard(tasks.get(i), i).getRoot());
+            taskList.getChildren().add(new TaskCard(tasks.get(i), i + 1).getRoot());
         }
     }
 
@@ -85,7 +87,7 @@ public class ModuleWindow extends UiPart<Stage> {
      */
     public void fillLinkList(List<Link> links) {
         for (int i = 0; i < links.size(); i++) {
-            linkList.getChildren().add(new LinkCard(links.get(i), i).getRoot());
+            linkList.getChildren().add(new LinkCard(links.get(i), i + 1).getRoot());
         }
     }
 

@@ -1,6 +1,7 @@
 package manageme.logic;
 
 import java.nio.file.Path;
+import java.util.Optional;
 
 import javafx.collections.ObservableList;
 import manageme.commons.core.GuiSettings;
@@ -9,8 +10,8 @@ import manageme.logic.commands.exceptions.CommandException;
 import manageme.logic.parser.exceptions.ParseException;
 import manageme.model.Model;
 import manageme.model.ReadOnlyManageMe;
+import manageme.model.link.Link;
 import manageme.model.module.Module;
-import manageme.model.person.Person;
 import manageme.model.task.Task;
 
 /**
@@ -33,14 +34,14 @@ public interface Logic {
      */
     ReadOnlyManageMe getManageMe();
 
-    /** Returns an unmodifiable view of the filtered list of persons */
-    ObservableList<Person> getFilteredPersonList();
+    /** Returns an unmodifiable view of the filtered list of links */
+    ObservableList<Link> getFilteredLinkList();
 
     /** Returns an unmodifiable view of the filtered list of modules */
     ObservableList<Module> getFilteredModuleList();
 
-    /** Returns an unmodifiable view of the filtered list of modules to be read in detail */
-    ObservableList<Module> getReadModuleList();
+    /** Returns the module to be read in detail */
+    Optional<Module> getReadModule();
 
     /** Returns an unmodifiable view of the filtered list of tasks */
     ObservableList<Task> getFilteredTaskList();

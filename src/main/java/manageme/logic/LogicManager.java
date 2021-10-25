@@ -2,6 +2,7 @@ package manageme.logic;
 
 import java.io.IOException;
 import java.nio.file.Path;
+import java.util.Optional;
 import java.util.logging.Logger;
 
 import javafx.collections.ObservableList;
@@ -15,8 +16,8 @@ import manageme.logic.parser.ManageMeParser;
 import manageme.logic.parser.exceptions.ParseException;
 import manageme.model.Model;
 import manageme.model.ReadOnlyManageMe;
+import manageme.model.link.Link;
 import manageme.model.module.Module;
-import manageme.model.person.Person;
 import manageme.model.task.Task;
 import manageme.storage.Storage;
 import manageme.time.Time;
@@ -71,8 +72,8 @@ public class LogicManager implements Logic {
     }
 
     @Override
-    public ObservableList<Person> getFilteredPersonList() {
-        return model.getFilteredPersonList();
+    public ObservableList<Link> getFilteredLinkList() {
+        return model.getFilteredLinkList();
     }
 
     @Override
@@ -81,8 +82,8 @@ public class LogicManager implements Logic {
     }
 
     @Override
-    public ObservableList<Module> getReadModuleList() {
-        return model.getReadModuleList();
+    public Optional<Module> getReadModule() {
+        return model.getReadModule();
     }
 
     @Override

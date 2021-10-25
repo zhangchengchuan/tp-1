@@ -11,8 +11,8 @@ import com.fasterxml.jackson.annotation.JsonRootName;
 import manageme.commons.exceptions.IllegalValueException;
 import manageme.model.ManageMe;
 import manageme.model.ReadOnlyManageMe;
+import manageme.model.link.Link;
 import manageme.model.module.Module;
-import manageme.model.person.Person;
 import manageme.model.task.Task;
 
 /**
@@ -21,24 +21,24 @@ import manageme.model.task.Task;
 @JsonRootName(value = "manageme")
 class JsonSerializableManageMe {
 
-    public static final String MESSAGE_DUPLICATE_PERSON = "Persons list contains duplicate person(s).";
+    public static final String MESSAGE_DUPLICATE_LINK = "Links list contains duplicate link(s).";
     public static final String MESSAGE_DUPLICATE_MODULE = "Modules list contains duplicate module(s).";
     public static final String MESSAGE_DUPLICATE_TASK = "Tasks list contains duplicate task(s).";
 
-    private final List<JsonAdaptedPerson> persons = new ArrayList<>();
+    private final List<JsonAdaptedLink> links = new ArrayList<>();
 
     private final List<JsonAdaptedModule> modules = new ArrayList<>();
 
     private final List<JsonAdaptedTask> tasks = new ArrayList<>();
 
     /**
-     * Constructs a {@code JsonSerializableManageMe} with the given persons.
+     * Constructs a {@code JsonSerializableManageMe} with the given links.
      */
     @JsonCreator
-    public JsonSerializableManageMe(@JsonProperty("persons") List<JsonAdaptedPerson> persons,
+    public JsonSerializableManageMe(@JsonProperty("links") List<JsonAdaptedLink> links,
                                     @JsonProperty("modules") List<JsonAdaptedModule> modules,
                                     @JsonProperty("tasks") List<JsonAdaptedTask> tasks) {
-        this.persons.addAll(persons);
+        this.links.addAll(links);
         this.modules.addAll(modules);
         this.tasks.addAll(tasks);
     }
@@ -49,7 +49,7 @@ class JsonSerializableManageMe {
      * @param source future changes to this will not affect the created {@code JsonSerializableManageMe}.
      */
     public JsonSerializableManageMe(ReadOnlyManageMe source) {
-        persons.addAll(source.getPersonList().stream().map(JsonAdaptedPerson::new).collect(Collectors.toList()));
+        links.addAll(source.getLinkList().stream().map(JsonAdaptedLink::new).collect(Collectors.toList()));
         modules.addAll(source.getModuleList().stream().map(JsonAdaptedModule::new).collect(Collectors.toList()));
         tasks.addAll(source.getTaskList().stream().map(JsonAdaptedTask::new).collect(Collectors.toList()));
     }
@@ -61,12 +61,12 @@ class JsonSerializableManageMe {
      */
     public ManageMe toModelType() throws IllegalValueException {
         ManageMe manageMe = new ManageMe();
-        for (JsonAdaptedPerson jsonAdaptedPerson : persons) {
-            Person person = jsonAdaptedPerson.toModelType();
-            if (manageMe.hasPerson(person)) {
-                throw new IllegalValueException(MESSAGE_DUPLICATE_PERSON);
+        for (JsonAdaptedLink jsonAdaptedLink : links) {
+            Link link = jsonAdaptedLink.toModelType();
+            if (manageMe.hasLink(link)) {
+                throw new IllegalValueException(MESSAGE_DUPLICATE_LINK);
             }
-            manageMe.addPerson(person);
+            manageMe.addLink(link);
         }
 
         for (JsonAdaptedModule jsonAdaptedModule: modules) {

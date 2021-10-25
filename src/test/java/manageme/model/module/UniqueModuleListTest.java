@@ -1,6 +1,5 @@
 package manageme.model.module;
 
-import static manageme.logic.commands.CommandTestUtil.VALID_LINK_GOOGLE;
 import static manageme.testutil.Assert.assertThrows;
 import static manageme.testutil.TypicalModules.MODULE_A;
 import static manageme.testutil.TypicalModules.MODULE_B;
@@ -40,7 +39,7 @@ public class UniqueModuleListTest {
     @Test
     public void contains_moduleWithSameIdentityFieldsInList_returnsTrue() {
         uniqueModuleList.add(MODULE_A);
-        Module editedAlice = new ModuleBuilder(MODULE_A).withLink(VALID_LINK_GOOGLE).build();
+        Module editedAlice = new ModuleBuilder(MODULE_A).build();
         assertTrue(uniqueModuleList.contains(editedAlice));
     }
 
@@ -82,10 +81,10 @@ public class UniqueModuleListTest {
     @Test
     public void setModule_editedModuleHasSameIdentity_success() {
         uniqueModuleList.add(MODULE_A);
-        Module editedAlice = new ModuleBuilder(MODULE_A).withLink(VALID_LINK_GOOGLE).build();
-        uniqueModuleList.setModule(MODULE_A, editedAlice);
+        Module editedModule = new ModuleBuilder(MODULE_A).withName("edited").build();
+        uniqueModuleList.setModule(MODULE_A, editedModule);
         UniqueModuleList expectedUniqueModuleList = new UniqueModuleList();
-        expectedUniqueModuleList.add(editedAlice);
+        expectedUniqueModuleList.add(editedModule);
         assertEquals(expectedUniqueModuleList, uniqueModuleList);
     }
 

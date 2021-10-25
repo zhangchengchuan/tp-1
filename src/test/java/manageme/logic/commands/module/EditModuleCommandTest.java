@@ -1,13 +1,11 @@
 package manageme.logic.commands.module;
 
-import static manageme.logic.commands.CommandTestUtil.DESC_CS2100;
-import static manageme.logic.commands.CommandTestUtil.DESC_CS2103;
-import static manageme.logic.commands.CommandTestUtil.VALID_LINK_ZOOM;
-import static manageme.logic.commands.CommandTestUtil.VALID_MODNAME_CS2100;
-import static manageme.logic.commands.CommandTestUtil.VALID_MODNAME_CS2103;
 import static manageme.logic.commands.CommandTestUtil.assertCommandFailure;
 import static manageme.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static manageme.logic.commands.CommandTestUtil.showModuleAtIndex;
+import static manageme.logic.commands.module.ModuleCommandTestUtil.DESC_MODULE_A;
+import static manageme.logic.commands.module.ModuleCommandTestUtil.DESC_MODULE_B;
+import static manageme.logic.commands.module.ModuleCommandTestUtil.VALID_MODNAME_A;
 import static manageme.testutil.TypicalIndexes.INDEX_FIRST;
 import static manageme.testutil.TypicalIndexes.INDEX_SECOND;
 import static manageme.testutil.TypicalModules.getTypicalManageMe;
@@ -53,11 +51,10 @@ public class EditModuleCommandTest {
         Module lastModule = model.getFilteredModuleList().get(indexLastModule.getZeroBased());
 
         ModuleBuilder moduleInList = new ModuleBuilder(lastModule);
-        Module editedModule = moduleInList.withName(VALID_MODNAME_CS2100).withLink(VALID_LINK_ZOOM).build();
+        Module editedModule = moduleInList.withName("CS2105").build();
 
         EditModuleCommand.EditModuleDescriptor descriptor =
-                new EditModuleDescriptorBuilder().withName(VALID_MODNAME_CS2100)
-                .withLink(VALID_LINK_ZOOM).build();
+                new EditModuleDescriptorBuilder().withName("CS2105").build();
         EditModuleCommand editModuleCommand = new EditModuleCommand(indexLastModule, descriptor);
 
         String expectedMessage = String.format(EditModuleCommand.MESSAGE_EDIT_MODULE_SUCCESS, editedModule);
@@ -68,27 +65,27 @@ public class EditModuleCommandTest {
         assertCommandSuccess(editModuleCommand, model, expectedMessage, expectedModel);
     }
 
-    @Test
-    public void execute_noFieldSpecifiedUnfilteredList_success() {
-        EditModuleCommand editModuleCommand = new EditModuleCommand(
-                INDEX_FIRST, new EditModuleCommand.EditModuleDescriptor());
-        Module editedModule = model.getFilteredModuleList().get(INDEX_FIRST.getZeroBased());
-
-        String expectedMessage = String.format(editModuleCommand.MESSAGE_EDIT_MODULE_SUCCESS, editedModule);
-
-        Model expectedModel = new ModelManager(new ManageMe(model.getManageMe()), new UserPrefs());
-
-        assertCommandSuccess(editModuleCommand, model, expectedMessage, expectedModel);
-    }
+    //    @Test
+    //    public void execute_noFieldSpecifiedUnfilteredList_success() {
+    //        EditModuleCommand editModuleCommand = new EditModuleCommand(
+    //                INDEX_FIRST, new EditModuleCommand.EditModuleDescriptor());
+    //        Module editedModule = model.getFilteredModuleList().get(INDEX_FIRST.getZeroBased());
+    //
+    //        String expectedMessage = String.format(editModuleCommand.MESSAGE_EDIT_MODULE_SUCCESS, editedModule);
+    //
+    //        Model expectedModel = new ModelManager(new ManageMe(model.getManageMe()), new UserPrefs());
+    //
+    //        assertCommandSuccess(editModuleCommand, model, expectedMessage, expectedModel);
+    //    }
 
     @Test
     public void execute_filteredList_success() {
         showModuleAtIndex(model, INDEX_FIRST);
 
         Module moduleInFilteredList = model.getFilteredModuleList().get(INDEX_FIRST.getZeroBased());
-        Module editedModule = new ModuleBuilder(moduleInFilteredList).withName(VALID_MODNAME_CS2103).build();
+        Module editedModule = new ModuleBuilder(moduleInFilteredList).withName("CS2105").build();
         EditModuleCommand editModuleCommand = new EditModuleCommand(INDEX_FIRST,
-                new EditModuleDescriptorBuilder().withName(VALID_MODNAME_CS2103).build());
+                new EditModuleDescriptorBuilder().withName("CS2105").build());
 
         String expectedMessage = String.format(EditModuleCommand.MESSAGE_EDIT_MODULE_SUCCESS, editedModule);
 
@@ -123,7 +120,7 @@ public class EditModuleCommandTest {
     public void execute_invalidModuleIndexUnfilteredList_failure() {
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredModuleList().size() + 1);
         EditModuleCommand.EditModuleDescriptor descriptor = new EditModuleDescriptorBuilder()
-                .withName(VALID_MODNAME_CS2100).build();
+                .withName(VALID_MODNAME_A).build();
         EditModuleCommand editModuleCommand = new EditModuleCommand(outOfBoundIndex, descriptor);
 
         assertCommandFailure(editModuleCommand, model, Messages.MESSAGE_INVALID_MODULE_DISPLAYED_INDEX);
@@ -141,18 +138,18 @@ public class EditModuleCommandTest {
         assertTrue(outOfBoundIndex.getZeroBased() < model.getManageMe().getModuleList().size());
 
         EditModuleCommand editModuleCommand = new EditModuleCommand(outOfBoundIndex,
-                new EditModuleDescriptorBuilder().withName(VALID_MODNAME_CS2100).build());
+                new EditModuleDescriptorBuilder().withName(VALID_MODNAME_A).build());
 
         assertCommandFailure(editModuleCommand, model, Messages.MESSAGE_INVALID_MODULE_DISPLAYED_INDEX);
     }
 
     @Test
     public void equals() {
-        final EditModuleCommand standardCommand = new EditModuleCommand(INDEX_FIRST, DESC_CS2100);
+        final EditModuleCommand standardCommand = new EditModuleCommand(INDEX_FIRST, DESC_MODULE_A);
 
         // same values -> returns true
         EditModuleCommand.EditModuleDescriptor copyDescriptor =
-                new EditModuleCommand.EditModuleDescriptor(DESC_CS2100);
+                new EditModuleCommand.EditModuleDescriptor(DESC_MODULE_A);
         EditModuleCommand commandWithSameValues = new EditModuleCommand(INDEX_FIRST, copyDescriptor);
         assertTrue(standardCommand.equals(commandWithSameValues));
 
@@ -166,10 +163,10 @@ public class EditModuleCommandTest {
         assertFalse(standardCommand.equals(new ClearCommand()));
 
         // different index -> returns false
-        assertFalse(standardCommand.equals(new EditModuleCommand(INDEX_SECOND, DESC_CS2100)));
+        assertFalse(standardCommand.equals(new EditModuleCommand(INDEX_SECOND, DESC_MODULE_A)));
 
         // different descriptor -> returns false
-        assertFalse(standardCommand.equals(new EditModuleCommand(INDEX_FIRST, DESC_CS2103)));
+        assertFalse(standardCommand.equals(new EditModuleCommand(INDEX_FIRST, DESC_MODULE_B)));
     }
 
 }

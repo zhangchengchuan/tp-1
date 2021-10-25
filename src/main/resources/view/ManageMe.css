@@ -21,6 +21,7 @@
 }
 
 #moduleListPanelPlaceholder,
+#linkListPanelPlaceholder,
 #taskListPanelPlaceholder,
 #calendarPanelPlaceholder,
 #resultDisplay .content {
@@ -30,6 +31,7 @@
 #resultDisplayPlaceholder,
 #commandBoxPlaceholder,
 #calendar,
+#linkList,
 #taskList,
 #moduleList {
     -fx-background-color: -bg-color;
@@ -46,6 +48,7 @@
 }
 
 #module,
+#link,
 #task {
     -fx-background-color: -panel-color;
     -fx-font-weight: bold;
@@ -54,6 +57,8 @@
 #moduleListView,
 #cardPane,
 #taskListView,
+#linkListView,
+#linkListView .list-cell:empty,
 #taskListView .list-cell:empty,
 #moduleListView .list-cell:empty,
 #calendarPanelPlaceholder .cell .label,
