@@ -1,4 +1,4 @@
-package manageme.logic.commands;
+package manageme.logic.commands.link;
 
 import static java.util.Objects.requireNonNull;
 import static manageme.testutil.Assert.assertThrows;
@@ -9,71 +9,74 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Optional;
 import java.util.function.Predicate;
 
 import org.junit.jupiter.api.Test;
 
 import javafx.collections.ObservableList;
 import manageme.commons.core.GuiSettings;
+import manageme.logic.commands.CommandResult;
 import manageme.logic.commands.exceptions.CommandException;
 import manageme.model.ManageMe;
 import manageme.model.Model;
 import manageme.model.ReadOnlyManageMe;
 import manageme.model.ReadOnlyUserPrefs;
+import manageme.model.link.Link;
 import manageme.model.module.Module;
-import manageme.model.person.Person;
 import manageme.model.task.Task;
-import manageme.testutil.PersonBuilder;
+import manageme.testutil.LinkBuilder;
 
-public class AddCommandTest {
+public class AddLinkCommandTest {
 
     @Test
-    public void constructor_nullPerson_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> new AddCommand(null));
+    public void constructor_nullLink_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> new AddLinkCommand(null));
     }
 
     @Test
-    public void execute_personAcceptedByModel_addSuccessful() throws Exception {
-        ModelStubAcceptingPersonAdded modelStub = new ModelStubAcceptingPersonAdded();
-        Person validPerson = new PersonBuilder().build();
+    public void execute_linkAcceptedByModel_addSuccessful() throws Exception {
+        ModelStubAcceptingLinkAdded modelStub = new ModelStubAcceptingLinkAdded();
+        Link validLink = new LinkBuilder().build();
 
-        CommandResult commandResult = new AddCommand(validPerson).execute(modelStub);
+        CommandResult commandResult = new AddLinkCommand(validLink).execute(modelStub);
 
-        assertEquals(String.format(AddCommand.MESSAGE_SUCCESS, validPerson), commandResult.getFeedbackToUser());
-        assertEquals(Arrays.asList(validPerson), modelStub.personsAdded);
+        assertEquals(String.format(AddLinkCommand.MESSAGE_SUCCESS, validLink), commandResult.getFeedbackToUser());
+        assertEquals(Arrays.asList(validLink), modelStub.linksAdded);
     }
 
     @Test
-    public void execute_duplicatePerson_throwsCommandException() {
-        Person validPerson = new PersonBuilder().build();
-        AddCommand addCommand = new AddCommand(validPerson);
-        ModelStub modelStub = new ModelStubWithPerson(validPerson);
+    public void execute_duplicateLink_throwsCommandException() {
+        Link validLink = new LinkBuilder().build();
+        AddLinkCommand addCommand = new AddLinkCommand(validLink);
+        ModelStub modelStub = new ModelStubWithLink(validLink);
 
-        assertThrows(CommandException.class, AddCommand.MESSAGE_DUPLICATE_PERSON, () -> addCommand.execute(modelStub));
+        assertThrows(CommandException.class,
+                AddLinkCommand.MESSAGE_DUPLICATE_LINK, () -> addCommand.execute(modelStub));
     }
 
     @Test
     public void equals() {
-        Person alice = new PersonBuilder().withName("Alice").build();
-        Person bob = new PersonBuilder().withName("Bob").build();
-        AddCommand addAliceCommand = new AddCommand(alice);
-        AddCommand addBobCommand = new AddCommand(bob);
+        Link cs2100 = new LinkBuilder().withName("CS2100").build();
+        Link cs2103 = new LinkBuilder().withName("CS2103").build();
+        AddLinkCommand addCs2100Command = new AddLinkCommand(cs2100);
+        AddLinkCommand addCs2103Command = new AddLinkCommand(cs2103);
 
         // same object -> returns true
-        assertTrue(addAliceCommand.equals(addAliceCommand));
+        assertTrue(addCs2100Command.equals(addCs2100Command));
 
         // same values -> returns true
-        AddCommand addAliceCommandCopy = new AddCommand(alice);
-        assertTrue(addAliceCommand.equals(addAliceCommandCopy));
+        AddLinkCommand addCs2100CommandCopy = new AddLinkCommand(cs2100);
+        assertTrue(addCs2100Command.equals(addCs2100CommandCopy));
 
         // different types -> returns false
-        assertFalse(addAliceCommand.equals(1));
+        assertFalse(addCs2100Command.equals(1));
 
         // null -> returns false
-        assertFalse(addAliceCommand.equals(null));
+        assertFalse(addCs2100Command.equals(null));
 
-        // different person -> returns false
-        assertFalse(addAliceCommand.equals(addBobCommand));
+        // different link -> returns false
+        assertFalse(addCs2100Command.equals(addCs2103Command));
     }
 
     /**
@@ -111,7 +114,7 @@ public class AddCommandTest {
         }
 
         @Override
-        public void addPerson(Person person) {
+        public void addLink(Link link) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -126,27 +129,27 @@ public class AddCommandTest {
         }
 
         @Override
-        public boolean hasPerson(Person person) {
+        public boolean hasLink(Link link) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void deletePerson(Person target) {
+        public void deleteLink(Link target) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void setPerson(Person target, Person editedPerson) {
+        public void setLink(Link target, Link editedLink) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public ObservableList<Person> getFilteredPersonList() {
+        public ObservableList<Link> getFilteredLinkList() {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void updateFilteredPersonList(Predicate<Person> predicate) {
+        public void updateFilteredLinkList(Predicate<Link> predicate) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -181,12 +184,12 @@ public class AddCommandTest {
         }
 
         @Override
-        public ObservableList<Module> getReadModuleList() {
+        public Optional<Module> getReadModule() {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void updateReadModuleList(Predicate<Module> predicate) {
+        public void setReadModule(Module module) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -221,45 +224,51 @@ public class AddCommandTest {
         }
 
         @Override
+        public ObservableList<Link> getUnfilteredLinkList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+
+        @Override
         public void updateFilteredTaskList(Predicate<Task> predicate) {
             throw new AssertionError("This method should not be called.");
         }
     }
 
     /**
-     * A Model stub that contains a single person.
+     * A Model stub that contains a single link.
      */
-    private class ModelStubWithPerson extends ModelStub {
-        private final Person person;
+    private class ModelStubWithLink extends ModelStub {
+        private final Link link;
 
-        ModelStubWithPerson(Person person) {
-            requireNonNull(person);
-            this.person = person;
+        ModelStubWithLink(Link link) {
+            requireNonNull(link);
+            this.link = link;
         }
 
         @Override
-        public boolean hasPerson(Person person) {
-            requireNonNull(person);
-            return this.person.isSamePerson(person);
+        public boolean hasLink(Link link) {
+            requireNonNull(link);
+            return this.link.isSameLink(link);
         }
     }
 
     /**
-     * A Model stub that always accept the person being added.
+     * A Model stub that always accept the link being added.
      */
-    private class ModelStubAcceptingPersonAdded extends ModelStub {
-        final ArrayList<Person> personsAdded = new ArrayList<>();
+    private class ModelStubAcceptingLinkAdded extends ModelStub {
+        final ArrayList<Link> linksAdded = new ArrayList<>();
 
         @Override
-        public boolean hasPerson(Person person) {
-            requireNonNull(person);
-            return personsAdded.stream().anyMatch(person::isSamePerson);
+        public boolean hasLink(Link link) {
+            requireNonNull(link);
+            return linksAdded.stream().anyMatch(link::isSameLink);
         }
 
         @Override
-        public void addPerson(Person person) {
-            requireNonNull(person);
-            personsAdded.add(person);
+        public void addLink(Link link) {
+            requireNonNull(link);
+            linksAdded.add(link);
         }
 
         @Override

@@ -1,4 +1,4 @@
-package manageme.logic.parser;
+package manageme.logic.parser.link;
 
 import static manageme.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static manageme.logic.parser.CommandParserTestUtil.assertParseFailure;
@@ -7,7 +7,7 @@ import static manageme.testutil.TypicalIndexes.INDEX_FIRST;
 
 import org.junit.jupiter.api.Test;
 
-import manageme.logic.commands.DeleteCommand;
+import manageme.logic.commands.link.DeleteLinkCommand;
 
 /**
  * As we are only doing white-box testing, our test cases do not cover path variations
@@ -16,17 +16,17 @@ import manageme.logic.commands.DeleteCommand;
  * The path variation for those two cases occur inside the ParserUtil, and
  * therefore should be covered by the ParserUtilTest.
  */
-public class DeleteCommandParserTest {
+public class DeleteLinkCommandParserTest {
 
-    private DeleteCommandParser parser = new DeleteCommandParser();
+    private DeleteLinkCommandParser parser = new DeleteLinkCommandParser();
 
     @Test
     public void parse_validArgs_returnsDeleteCommand() {
-        assertParseSuccess(parser, "1", new DeleteCommand(INDEX_FIRST));
+        assertParseSuccess(parser, "1", new DeleteLinkCommand(INDEX_FIRST));
     }
 
     @Test
     public void parse_invalidArgs_throwsParseException() {
-        assertParseFailure(parser, "a", String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteCommand.MESSAGE_USAGE));
+        assertParseFailure(parser, "a", String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteLinkCommand.MESSAGE_USAGE));
     }
 }

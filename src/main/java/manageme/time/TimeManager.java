@@ -25,8 +25,9 @@ public class TimeManager implements Time {
         for (Task task: allTasks) {
             // Addition function to set how much time before actual task that you want the reminder to pop out.
             LocalDateTime time = task.getFirstOccurrence();
+            LocalDateTime end = task.getEnd().getTime();
             LocalDateTime now = LocalDateTime.now();
-            if (now.isAfter(time)) {
+            if (now.isAfter(time) && !now.isAfter(end)) {
             //    System.out.println("POP OUT! " + task.getName().value);
             }
         }
@@ -51,7 +52,7 @@ public class TimeManager implements Time {
             while (true) {
                 try {
                     checkAlarm();
-                    Thread.sleep(60000);
+                    Thread.sleep(1000);
                 } catch (Exception e) {
                     System.out.println(e.getMessage());
                     System.out.println("Error with timer.");

@@ -7,7 +7,6 @@ import static manageme.logic.parser.CliSyntax.PREFIX_NAME;
 import java.util.stream.Stream;
 
 import manageme.commons.core.Messages;
-import manageme.logic.commands.AddCommand;
 import manageme.logic.commands.link.AddLinkCommand;
 import manageme.logic.parser.ArgumentMultimap;
 import manageme.logic.parser.ArgumentTokenizer;
@@ -35,7 +34,8 @@ public class AddLinkCommandParser implements Parser<AddLinkCommand> {
                 PREFIX_MODULE);
 
         if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_ADDRESS) || !argMultimap.getPreamble().isEmpty()) {
-            throw new ParseException(String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
+            throw new ParseException(String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT,
+                    AddLinkCommand.MESSAGE_USAGE));
         }
 
         LinkName name = ParserUtil.parseLinkName(argMultimap.getValue(PREFIX_NAME).get());

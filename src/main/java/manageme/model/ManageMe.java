@@ -7,10 +7,10 @@ import java.util.List;
 import java.util.Objects;
 
 import javafx.collections.ObservableList;
-import manageme.model.module.Module;
-import manageme.model.module.UniqueModuleList;
 import manageme.model.link.Link;
 import manageme.model.link.UniqueLinkList;
+import manageme.model.module.Module;
+import manageme.model.module.UniqueModuleList;
 import manageme.model.task.Task;
 import manageme.model.task.UniqueTaskList;
 
@@ -40,7 +40,7 @@ public class ManageMe implements ReadOnlyManageMe {
     public ManageMe() {}
 
     /**
-     * Creates an ManageMe using the Links in the {@code toBeCopied}
+     * Creates an ManageMe using the links, tasks, and modules in the {@code toBeCopied}
      */
     public ManageMe(ReadOnlyManageMe toBeCopied) {
         this();

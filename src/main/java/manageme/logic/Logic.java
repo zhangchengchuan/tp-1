@@ -10,8 +10,8 @@ import manageme.logic.commands.exceptions.CommandException;
 import manageme.logic.parser.exceptions.ParseException;
 import manageme.model.Model;
 import manageme.model.ReadOnlyManageMe;
-import manageme.model.module.Module;
 import manageme.model.link.Link;
+import manageme.model.module.Module;
 import manageme.model.task.Task;
 
 /**
@@ -48,6 +48,9 @@ public interface Logic {
 
     /** Returns an unmodifiable view of the unfiltered list of tasks */
     ObservableList<Task> getUnfilteredTaskList();
+
+    /** Returns an unmodifiable view of the unfiltered list of links */
+    ObservableList<Link> getUnfilteredLinkList();
 
     /**
      * Returns the user prefs' address book file path.

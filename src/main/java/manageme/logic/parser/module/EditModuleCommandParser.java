@@ -2,11 +2,11 @@ package manageme.logic.parser.module;
 
 import static java.util.Objects.requireNonNull;
 import static manageme.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static manageme.logic.parser.CliSyntax.PREFIX_LINK;
 import static manageme.logic.parser.CliSyntax.PREFIX_NAME;
 
 import manageme.commons.core.index.Index;
 import manageme.logic.commands.module.EditModuleCommand;
+import manageme.logic.commands.module.EditModuleCommand.EditModuleDescriptor;
 import manageme.logic.parser.ArgumentMultimap;
 import manageme.logic.parser.ArgumentTokenizer;
 import manageme.logic.parser.Parser;
@@ -27,7 +27,7 @@ public class EditModuleCommandParser implements Parser<EditModuleCommand> {
     public EditModuleCommand parse(String args) throws ParseException {
         requireNonNull(args);
         ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_LINK);
+                ArgumentTokenizer.tokenize(args, PREFIX_NAME);
 
         Index index;
 
@@ -38,12 +38,9 @@ public class EditModuleCommandParser implements Parser<EditModuleCommand> {
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditModuleCommand.MESSAGE_USAGE), pe);
         }
 
-        EditModuleCommand.EditModuleDescriptor editModuleDescriptor = new EditModuleCommand.EditModuleDescriptor();
+        EditModuleDescriptor editModuleDescriptor = new EditModuleDescriptor();
         if (argMultimap.getValue(PREFIX_NAME).isPresent()) {
             editModuleDescriptor.setModuleName(ParserUtil.parseModuleName(argMultimap.getValue(PREFIX_NAME).get()));
-        }
-        if (argMultimap.getValue(PREFIX_LINK).isPresent()) {
-            editModuleDescriptor.setLink(ParserUtil.parseLink(argMultimap.getValue(PREFIX_LINK).get()));
         }
 
         if (!editModuleDescriptor.isAnyFieldEdited()) {

@@ -41,7 +41,9 @@ public class Link {
         return address;
     }
 
-    public LinkModule getLinkModule() { return module; }
+    public LinkModule getLinkModule() {
+        return module;
+    }
 
     /**
      * Returns true if both links have the same link address.

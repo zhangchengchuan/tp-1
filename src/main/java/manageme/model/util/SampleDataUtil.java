@@ -42,9 +42,9 @@ public class SampleDataUtil {
 
     public static ReadOnlyManageMe getSampleManageMe() {
         ManageMe sampleMm = new ManageMe();
-        for (Person samplePerson : getSamplePersons()) {
-            sampleMm.addPerson(samplePerson);
-        }
+        //for (Person samplePerson : getSamplePersons()) {
+        //    sampleMm.addPerson(samplePerson);
+        //}
         return sampleMm;
     }
 

@@ -1,44 +1,15 @@
 package manageme.model.module;
 
-import java.util.Objects;
-import java.util.Optional;
-
-import javafx.collections.ListChangeListener;
-import javafx.collections.ObservableList;
-import javafx.collections.transformation.FilteredList;
 import manageme.commons.util.CollectionUtil;
-import manageme.model.link.Link;
-import manageme.model.task.Task;
 
 /**
  * Represents a Module in the app.
- * Guarantees: details are present and not null, field values are validated, immutable.
+ * Guarantees: details are present and not null, field values are validated.
  */
 public class Module {
 
     // Identity fields
     private final ModuleName moduleName;
-
-    // Data fields
-    private ObservableList<Link> unfilteredLinks;
-    private FilteredList<Link> links;
-    private ObservableList<Task> unfilteredTasks;
-    private FilteredList<Task> tasks;
-
-    /**
-     * Every field must be present and not null.
-     */
-    public Module(ModuleName moduleName, Link link, ObservableList<Task> unfilteredTasks) {
-        CollectionUtil.requireAllNonNull(moduleName, link);
-        this.moduleName = moduleName;
-        this.link = link;
-        this.unfilteredTasks = unfilteredTasks;
-        updateTasks();
-
-        unfilteredTasks.addListener((ListChangeListener<? super Task>) change -> {
-            updateTasks();
-        });
-    }
 
     /**
      * Link optional
@@ -48,47 +19,12 @@ public class Module {
         this.moduleName = moduleName;
     }
 
-    /**
-     * Updates the dependencies of module.
-     *
-     * @param newUnfilteredTasks the unfilteredTasks that module will listen to
-     */
-    public void updateDependencies(ObservableList<Task> newUnfilteredTasks) {
-        this.unfilteredTasks = newUnfilteredTasks;
-
-        unfilteredTasks.addListener((ListChangeListener<? super Task>) change -> {
-            updateTasks();
-        });
-    }
-
-    private void updateTasks() {
-        tasks = unfilteredTasks.filtered(task -> {
-            Optional<String> taskModule = task.getTaskModule().moduleName;
-
-            if (taskModule.isEmpty()) {
-                return false;
-            }
-
-            return moduleName.value.equals(taskModule.get());
-        });
-    }
-
     public ModuleName getModuleName() {
         return moduleName;
     }
 
-    public Link getLink() {
-        return link;
-    }
-
-    public FilteredList<Task> getTasks() {
-        return tasks;
-    }
-
     /**
      * Returns true if both mods have the same name.
-     * This defines a weaker notion of equality between two mods.
-     * @param otherMod
      */
     public boolean isSameModule(Module otherMod) {
         if (otherMod == this) {
@@ -100,8 +36,9 @@ public class Module {
     }
 
     /**
-     * Returns true if both mods have the same identity and data fields.
-     * This defines a stronger notion of equality between two mods.
+     * Returns true if both mods have the same identity.
+     * This is the same as #isSameModule because of how Module is implemented,
+     * two Modules will be equals as long as they have the same ModuleName.
      */
     @Override
     public boolean equals(Object other) {
@@ -114,24 +51,19 @@ public class Module {
         }
 
         Module otherMod = (Module) other;
-        return otherMod.getModuleName().equals(getModuleName())
-                && otherMod.getLink().equals(getLink());
+        return otherMod.getModuleName().equals(getModuleName());
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(moduleName, link);
+        return moduleName.hashCode();
     }
 
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
-        builder.append(getModuleName())
-                .append("; Link: ")
-                .append(getLink())
-                .append("; Tasks: ")
-                .append(getTasks());
+        builder.append(getModuleName());
 
         return builder.toString();
     }

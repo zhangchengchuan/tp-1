@@ -17,7 +17,7 @@ import manageme.model.link.Link;
  */
 public class DeleteLinkCommand extends Command {
 
-    public static final String COMMAND_WORD = "delete";
+    public static final String COMMAND_WORD = "deleteLink";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Deletes the link identified by the index number used in the displayed link list.\n"
