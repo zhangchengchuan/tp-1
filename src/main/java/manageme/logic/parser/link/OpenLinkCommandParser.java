@@ -3,10 +3,11 @@ package manageme.logic.parser.link;
 import manageme.commons.core.Messages;
 import manageme.commons.core.index.Index;
 import manageme.logic.commands.link.OpenLinkCommand;
+import manageme.logic.parser.Parser;
 import manageme.logic.parser.ParserUtil;
 import manageme.logic.parser.exceptions.ParseException;
 
-public class OpenLinkCommandParser {
+public class OpenLinkCommandParser implements Parser<OpenLinkCommand> {
     /**
      * Parses the given {@code String} of arguments in the context of the OpenLinkCommand
      * and returns a OpenLinkCommand object for execution.

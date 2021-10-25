@@ -4,10 +4,11 @@ import java.util.Arrays;
 
 import manageme.commons.core.Messages;
 import manageme.logic.commands.link.FindLinkCommand;
+import manageme.logic.parser.Parser;
 import manageme.logic.parser.exceptions.ParseException;
 import manageme.model.link.LinkNameContainsKeywordsPredicate;
 
-public class FindLinkCommandParser {
+public class FindLinkCommandParser implements Parser<FindLinkCommand> {
     /**
      * Parses the given {@code String} of arguments in the context of the FindLinkCommand
      * and returns a FindLinkCommand object for execution.

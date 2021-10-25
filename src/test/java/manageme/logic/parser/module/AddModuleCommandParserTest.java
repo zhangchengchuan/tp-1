@@ -24,12 +24,7 @@ public class AddModuleCommandParserTest {
         ModuleName expectedModule = new ModuleName(VALID_MODNAME_B);
 
         // whitespace only preamble
-<<<<<<< HEAD
-        assertParseSuccess(parser, PREAMBLE_WHITESPACE + ModuleCommandTestUtil.NAME_DESC_MODULE_B
-                + ModuleCommandTestUtil.LINK_DESC_MODULE_B, new AddModuleCommand(expectedModule.getModuleName()));
-=======
         assertParseSuccess(parser, PREAMBLE_WHITESPACE + MODNAME_DESC_B, new AddModuleCommand(expectedModule));
->>>>>>> 785e076494ea707cccfc66ae26761543be13828f
     }
 
     @Test

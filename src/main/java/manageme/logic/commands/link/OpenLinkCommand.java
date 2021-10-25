@@ -13,13 +13,14 @@ import manageme.model.Model;
 import manageme.model.link.Link;
 
 public class OpenLinkCommand extends Command {
-    public static final String COMMAND_WORD = "OpenLink";
+    public static final String COMMAND_WORD = "openLink";
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Open the link identified by the index number used in the displayed link list.\n"
             + "Parameters: INDEX (must be a positive integer)\n"
             + "Example: " + COMMAND_WORD + " 1";
 
-    public static final String MESSAGE_DELETE_MODULE_SUCCESS = "Opened Link: %1$s";
+    public static final String MESSAGE_OPEN_LINK_SUCCESS = "Opened Link: %1$s";
+    public static final String MESSAGE_OPEN_LINK_FAILURE = "Failed to open Link: %1$s.";
 
     private final Index targetIndex;
 
@@ -33,12 +34,17 @@ public class OpenLinkCommand extends Command {
         List<Link> lastShownList = model.getFilteredLinkList();
 
         if (targetIndex.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_MODULE_DISPLAYED_INDEX);
+            throw new CommandException(Messages.MESSAGE_INVALID_LINK_DISPLAYED_INDEX);
         }
 
         Link linkToOpen = lastShownList.get(targetIndex.getZeroBased());
-        model.openLink(linkToOpen);
-        return new CommandResult(String.format(MESSAGE_DELETE_MODULE_SUCCESS, linkToOpen));
+        try {
+            model.openLink(linkToOpen);
+        } catch (Exception e) {
+            String failureResult = MESSAGE_OPEN_LINK_FAILURE + e.getMessage();
+            return new CommandResult(failureResult);
+        }
+       return new CommandResult(String.format(MESSAGE_OPEN_LINK_SUCCESS, linkToOpen));
     }
 
     @Override
@@ -48,4 +54,3 @@ public class OpenLinkCommand extends Command {
                 && targetIndex.equals(((OpenLinkCommand) other).targetIndex)); // state check
     }
 }
-
