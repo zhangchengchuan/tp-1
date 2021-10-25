@@ -54,7 +54,7 @@ ManageMe is a **desktop app for time management and resource organisation, optim
 </div>
 
 --------------------------------------------------------------------------------------------------------------------
-### TASK:
+### Tasks:
 
 #### Adding a task: `addTask`
 
@@ -107,7 +107,7 @@ Deletes the specified task from the task list.
 
 Format: `deleteTask INDEX`
 - Deletes the task at the specified `INDEX`
-- The index refers to the index number shown in the displayed task list
+- The index refers to the index number shown in the displayed task list.
 - The index **must be a positive integer** 1, 2, 3, ...
 
 Example: `deleteTask 2`
@@ -117,10 +117,10 @@ Finds all tasks whose names contain any of the specified keywords.
 
 Format: `findTask KEYWORD [MORE_KEYWORDS]`
 
-* The search is case-insensitive. e.g hans will match Hans
-* The order of the keywords does not matter. e.g. Hans Bo will match Bo Hans
+* The search is case-insensitive. e.g hans will match Hans.
+* The order of the keywords does not matter. e.g. Hans Bo will match Bo Hans.
 * Only the name is searched.
-* Only full words will be matched e.g. Han will not match Hans
+* Only full words will be matched e.g. Han will not match Hans.
 * Tasks matching at least one keyword will be returned (i.e. OR search).
 
 Example: `findTask work` returns `Do CS2100 work` and `Work out next week's plan`.
@@ -136,7 +136,7 @@ Marks/Un-marks the specified task from the task list as done/undone.
 
 Format: `markTask INDEX`
 - Marks the task at the specified `INDEX`
-- The index refers to the index number shown in the displayed task list
+- The index refers to the index number shown in the displayed task list.
 - The index **must be a positive integer** 1, 2, 3, ...
 
 Example: `markTask 2`
@@ -146,7 +146,7 @@ Deletes all tasks that have been marked as done from the task list.
 
 Format: `deleteDoneTask`
 
-### MODULE:
+### Modules:
 #### Adding a module: `addMod`
 Adds a module into the module list. A module contains its name and zoom links. It can also be associated with any
 number of Todo, Deadline, Event tasks (like exams, assignments). These Tasks are added in the Task tab with a `/mod
@@ -165,10 +165,10 @@ Format: `readMod INDEX`<br/>
 Examples: `readMod 2`
 
 #### Edit a module: `editMod`
-Update an existing module in the mod list.
+Edits an existing module in the mod list.
 
 Format: `editMod INDEX [n/NAME] [l/LINK]`
-* Deletes the mod by the specified `INDEX`.<br/>
+* Edits the mod by the specified `INDEX`.<br/>
 * The index refers to the index number shown in the displayed module list
 * The index **must be a positive integer** 1, 2, 3, ...
 * At least one of the optional fields must be provided.
@@ -181,7 +181,7 @@ Deletes the specified mod from the mod list.
 
 Format: `deleteMod INDEX`
 * Deletes the mod by the specified `INDEX`.
-* The index refers to the index number shown in the displayed module list
+* The index refers to the index number shown in the displayed module list.
 * The index **must be a positive integer** 1, 2, 3, ...
 
 Example: `deleteMod 2` deletes module No.2 from the list.
@@ -191,10 +191,10 @@ Finds modules whose names contain any of the given keywords.
 
 Format: `findMod KEYWORD [MORE_KEYWORDS]`
 
-* The search is case-insensitive. e.g hans will match Hans
-* The order of the keywords does not matter. e.g. Hans Bo will match Bo Hans
+* The search is case-insensitive. e.g hans will match Hans.
+* The order of the keywords does not matter. e.g. Hans Bo will match Bo Hans.
 * Only the name is searched.
-* Only full words will be matched e.g. Han will not match Hans
+* Only full words will be matched e.g. Han will not match Hans.
 * Modules matching at least one keyword will be returned (i.e. OR search).
 
 Example: `findMod computer` returns `Computer Organization` and `Computer Architecture`.
@@ -205,7 +205,7 @@ of modules after searching for specific modules.
 
 Format: `listMod`
 
-### CALENDAR:
+### Calendar:
 #### Change calendar to next month: `nextMonth`
 Display the calendar for the next month. This command will update the entire calendar panel to display the calendar and the related task information for the following month.
 
@@ -220,7 +220,7 @@ Format: `prevMonth`
 View a day in detail. Tasks happening on the specified day will be displayed.
 
 Format: `readDay DATE`
-* `DATE` given must be a valid date
+* `DATE` given must be a valid date.
 
 Example: `readDay 2021-10-19`
 
