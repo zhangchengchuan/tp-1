@@ -15,6 +15,7 @@ public class SampleDataUtil {
 
     public static ReadOnlyManageMe getSampleManageMe() {
         ManageMe sampleMm = new ManageMe();
+
         return sampleMm;
     }
 

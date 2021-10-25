@@ -5,7 +5,12 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
+<<<<<<< HEAD
 <VBox fx:id="cardPane" prefWidth="100.0" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1">
+=======
+
+<VBox fx:id="cardPane" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1">
+>>>>>>> 785e076494ea707cccfc66ae26761543be13828f
    <padding>
       <Insets bottom="5" left="15" right="5" top="5" />
    </padding>
@@ -18,6 +23,7 @@
                </minWidth>
             </Label>
             <Label fx:id="taskName" styleClass="cell_big_label" text="\$first" />
+             <Label fx:id="isDone" styleClass="cell_big_label" text="\$isDone" />
          </children>
       </HBox>
       <Label fx:id="taskDescription" styleClass="cell_small_label" text="\$description" VBox.vgrow="NEVER" />

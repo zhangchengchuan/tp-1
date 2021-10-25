@@ -38,7 +38,6 @@ public class ReadModuleCommand extends Command {
         }
 
         Module moduleToRead = lastShownList.get(targetIndex.getZeroBased());
-        moduleToRead.updateDependencies(model.getUnfilteredTaskList());
         model.setReadModule(moduleToRead);
         return new CommandResult(MESSAGE_SUCCESS, false, false, true);
     }

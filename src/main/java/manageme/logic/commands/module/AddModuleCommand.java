@@ -1,17 +1,14 @@
 package manageme.logic.commands.module;
 
 import static java.util.Objects.requireNonNull;
-import static manageme.commons.util.CollectionUtil.requireAllNonNull;
 import static manageme.logic.parser.CliSyntax.PREFIX_NAME;
 
-import javafx.collections.ObservableList;
 import manageme.logic.commands.Command;
 import manageme.logic.commands.CommandResult;
 import manageme.logic.commands.exceptions.CommandException;
 import manageme.model.Model;
 import manageme.model.module.Module;
 import manageme.model.module.ModuleName;
-import manageme.model.task.Task;
 
 public class AddModuleCommand extends Command {
     public static final String COMMAND_WORD = "addMod";
@@ -31,16 +28,16 @@ public class AddModuleCommand extends Command {
      * Creates an AddModuleCommand to add the specified {@code Module}
      */
     public AddModuleCommand(ModuleName moduleName) {
-        requireAllNonNull(moduleName);
+        requireNonNull(moduleName);
         this.moduleName = moduleName;
     }
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        ObservableList<Task> unfilteredTasks = model.getUnfilteredTaskList();
 
-        Module toAdd = new Module(moduleName, unfilteredTasks);
+        Module toAdd = new Module(moduleName);
+
 
         if (model.hasModule(toAdd)) {
             throw new CommandException(MESSAGE_DUPLICATE_MODULE);

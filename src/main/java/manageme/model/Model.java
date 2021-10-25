@@ -178,4 +178,7 @@ public interface Model {
 
     /** Returns an unmodifiable view of the unfiltered task list */
     ObservableList<Task> getUnfilteredTaskList();
+
+    /** Returns an unmodifiable view of the unfiltered link list */
+    ObservableList<Link> getUnfilteredLinkList();
 }

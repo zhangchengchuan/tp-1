@@ -1,22 +1,29 @@
 package manageme.model;
 
 import static manageme.model.Model.PREDICATE_SHOW_ALL_LINKS;
+import static manageme.testutil.TypicalLinks.LINK_A;
+import static manageme.testutil.TypicalLinks.LINK_B;
+import static manageme.testutil.TypicalModules.MODULE_A;
+import static manageme.testutil.TypicalModules.MODULE_B;
+import static manageme.testutil.TypicalTasks.TASK_A;
+import static manageme.testutil.TypicalTasks.TASK_B;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Arrays;
 
 import org.junit.jupiter.api.Test;
 
 import manageme.commons.core.GuiSettings;
-import manageme.model.person.NameContainsKeywordsPredicate;
 import manageme.testutil.Assert;
 import manageme.testutil.ManageMeBuilder;
+<<<<<<< HEAD
 import manageme.testutil.TypicalModules;
 import manageme.testutil.TypicalTasks;
+=======
+>>>>>>> 785e076494ea707cccfc66ae26761543be13828f
 
 public class ModelManagerTest {
 
@@ -73,24 +80,24 @@ public class ModelManagerTest {
     }
 
     @Test
-    public void hasPerson_nullPerson_throwsNullPointerException() {
-        Assert.assertThrows(NullPointerException.class, () -> modelManager.hasPerson(null));
+    public void hasLink_nullLink_throwsNullPointerException() {
+        Assert.assertThrows(NullPointerException.class, () -> modelManager.hasLink(null));
     }
 
     @Test
-    public void hasPerson_personNotInAddressBook_returnsFalse() {
-        assertFalse(modelManager.hasPerson(TypicalPersons.ALICE));
+    public void hasLink_linkNotInAddressBook_returnsFalse() {
+        assertFalse(modelManager.hasLink(LINK_A));
     }
 
     @Test
-    public void hasPerson_personInAddressBook_returnsTrue() {
-        modelManager.addPerson(TypicalPersons.ALICE);
-        assertTrue(modelManager.hasPerson(TypicalPersons.ALICE));
+    public void hasLink_linkInAddressBook_returnsTrue() {
+        modelManager.addLink(LINK_A);
+        assertTrue(modelManager.hasLink(LINK_A));
     }
 
     @Test
-    public void getFilteredPersonList_modifyList_throwsUnsupportedOperationException() {
-        Assert.assertThrows(UnsupportedOperationException.class, () -> modelManager.getFilteredPersonList().remove(0));
+    public void getFilteredLinkList_modifyList_throwsUnsupportedOperationException() {
+        Assert.assertThrows(UnsupportedOperationException.class, () -> modelManager.getFilteredLinkList().remove(0));
     }
 
     @Test
@@ -100,13 +107,13 @@ public class ModelManagerTest {
 
     @Test
     public void hasModule_moduleNotInAddressBook_returnsFalse() {
-        assertFalse(modelManager.hasModule(TypicalModules.MODULE_A));
+        assertFalse(modelManager.hasModule(MODULE_A));
     }
 
     @Test
     public void hasModule_moduleInAddressBook_returnsTrue() {
-        modelManager.addModule(TypicalModules.MODULE_A);
-        assertTrue(modelManager.hasModule(TypicalModules.MODULE_A));
+        modelManager.addModule(MODULE_A);
+        assertTrue(modelManager.hasModule(MODULE_A));
     }
 
     @Test
@@ -121,13 +128,13 @@ public class ModelManagerTest {
 
     @Test
     public void hasTask_taskNotInAddressBook_returnsFalse() {
-        assertFalse(modelManager.hasTask(TypicalTasks.TASK_A));
+        assertFalse(modelManager.hasTask(TASK_A));
     }
 
     @Test
     public void hasTask_taskInAddressBook_returnsTrue() {
-        modelManager.addTask(TypicalTasks.TASK_A);
-        assertTrue(modelManager.hasTask(TypicalTasks.TASK_A));
+        modelManager.addTask(TASK_A);
+        assertTrue(modelManager.hasTask(TASK_A));
     }
 
     @Test
@@ -137,10 +144,10 @@ public class ModelManagerTest {
 
     @Test
     public void equals() {
-        ManageMe manageMe = new ManageMeBuilder().withModule(TypicalModules.MODULE_A)
-                .withModule(TypicalModules.MODULE_B)
-                .withPerson(TypicalPersons.ALICE).withPerson(TypicalPersons.BENSON).withTask(TypicalTasks.TASK_A)
-                .withTask(TypicalTasks.TASK_B).build();
+        ManageMe manageMe = new ManageMeBuilder().withModule(MODULE_A)
+                .withModule(MODULE_B)
+                .withLink(LINK_A).withLink(LINK_B).withTask(TASK_A)
+                .withTask(TASK_B).build();
         ManageMe differentManageMe = new ManageMe();
         UserPrefs userPrefs = new UserPrefs();
 
@@ -162,12 +169,12 @@ public class ModelManagerTest {
         assertFalse(modelManager.equals(new ModelManager(differentManageMe, userPrefs)));
 
         // different filteredList -> returns false
-        String[] keywords = TypicalPersons.ALICE.getName().fullName.split("\\s+");
-        modelManager.updateFilteredPersonList(new NameContainsKeywordsPredicate(Arrays.asList(keywords)));
-        assertFalse(modelManager.equals(new ModelManager(manageMe, userPrefs)));
+        //String[] keywords = TypicalLinks.ALICE.getName().fullName.split("\\s+");
+        //modelManager.updateFilteredLinkList(new NameContainsKeywordsPredicate(Arrays.asList(keywords)));
+        //assertFalse(modelManager.equals(new ModelManager(manageMe, userPrefs)));
 
         // resets modelManager to initial state for upcoming tests
-        modelManager.updateFilteredPersonList(PREDICATE_SHOW_ALL_LINKS);
+        modelManager.updateFilteredLinkList(PREDICATE_SHOW_ALL_LINKS);
 
         // different userPrefs -> returns false
         UserPrefs differentUserPrefs = new UserPrefs();

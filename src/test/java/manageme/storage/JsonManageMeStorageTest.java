@@ -14,6 +14,7 @@ import manageme.commons.exceptions.DataConversionException;
 import manageme.model.ManageMe;
 import manageme.model.ReadOnlyManageMe;
 import manageme.testutil.Assert;
+import manageme.testutil.TypicalLinks;
 import manageme.testutil.TypicalManageMe;
 
 public class JsonManageMeStorageTest {
@@ -49,7 +50,7 @@ public class JsonManageMeStorageTest {
 
     @Test
     public void readAddressBook_invalidPersonAddressBook_throwDataConversionException() {
-        Assert.assertThrows(DataConversionException.class, () -> readAddressBook("invalidPersonAddressBook.json"));
+        Assert.assertThrows(DataConversionException.class, () -> readAddressBook("invalidLinkManageMe.json"));
     }
 
     @Test
@@ -60,7 +61,7 @@ public class JsonManageMeStorageTest {
     @Test
     public void readAddressBook_invalidAndValidPersonAddressBook_throwDataConversionException() {
         Assert.assertThrows(DataConversionException.class, ()
-            -> readAddressBook("invalidAndValidPersonAddressBook.json"));
+            -> readAddressBook("invalidAndValidLinkManageMe.json"));
     }
 
     @Test
@@ -81,14 +82,13 @@ public class JsonManageMeStorageTest {
         assertEquals(original, new ManageMe(readBack));
 
         // Modify data, overwrite exiting file, and read back
-        original.addPerson(TypicalPersons.HOON);
-        original.removePerson(TypicalPersons.ALICE);
+        original.removeLink(TypicalLinks.LINK_B);
         jsonAddressBookStorage.saveManageMe(original, filePath);
         readBack = jsonAddressBookStorage.readManageMe(filePath).get();
         assertEquals(original, new ManageMe(readBack));
 
         // Save and read without specifying file path
-        original.addPerson(TypicalPersons.IDA);
+        original.addLink(TypicalLinks.LINK_B);
         jsonAddressBookStorage.saveManageMe(original); // file path not specified
         readBack = jsonAddressBookStorage.readManageMe().get(); // file path not specified
         assertEquals(original, new ManageMe(readBack));

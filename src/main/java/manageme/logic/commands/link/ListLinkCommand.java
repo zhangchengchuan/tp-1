@@ -19,3 +19,4 @@ public class ListLinkCommand extends Command {
         return new CommandResult(MESSAGE_SUCCESS);
     }
 }
+

@@ -25,7 +25,7 @@ import manageme.model.link.LinkName;
  */
 public class EditLinkCommand extends Command {
 
-    public static final String COMMAND_WORD = "edit";
+    public static final String COMMAND_WORD = "editLink";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the link identified "
             + "by the index number used in the displayed link list. "

@@ -15,15 +15,17 @@ import java.util.List;
 
 import manageme.commons.core.index.Index;
 import manageme.logic.commands.exceptions.CommandException;
-import manageme.logic.commands.module.EditModuleCommand;
 import manageme.model.ManageMe;
 import manageme.model.Model;
+import manageme.model.link.Link;
 import manageme.model.module.ModNameContainsKeywordsPredicate;
 import manageme.model.module.Module;
-import manageme.model.link.Link;
 import manageme.model.task.Task;
 import manageme.model.task.TaskNameContainsKeywordsPredicate;
+<<<<<<< HEAD
 import manageme.testutil.EditModuleDescriptorBuilder;
+=======
+>>>>>>> 785e076494ea707cccfc66ae26761543be13828f
 
 /**
  * Contains helper methods for testing commands.
@@ -41,9 +43,6 @@ public class CommandTestUtil {
     public static final String VALID_TAG_HUSBAND = "husband";
     public static final String VALID_TAG_FRIEND = "friend";
 
-    public static final String VALID_MODNAME_CS2100 = "CS2100";
-    public static final String VALID_MODNAME_CS2103 = "CS2103";
-
     public static final String NAME_DESC_AMY = " " + PREFIX_NAME + VALID_NAME_AMY;
     public static final String NAME_DESC_BOB = " " + PREFIX_NAME + VALID_NAME_BOB;
     public static final String PHONE_DESC_AMY = " " + PREFIX_PHONE + VALID_PHONE_AMY;
@@ -55,9 +54,6 @@ public class CommandTestUtil {
     public static final String TAG_DESC_FRIEND = " " + PREFIX_TAG + VALID_TAG_FRIEND;
     public static final String TAG_DESC_HUSBAND = " " + PREFIX_TAG + VALID_TAG_HUSBAND;
 
-    public static final String MODNAME_DESC_CS2100 = " " + PREFIX_NAME + VALID_MODNAME_CS2100;
-    public static final String MODNAME_DESC_CS2103 = " " + PREFIX_NAME + VALID_MODNAME_CS2103;
-
     public static final String INVALID_NAME_DESC = " " + PREFIX_NAME + "James&"; // '&' not allowed in names
     public static final String INVALID_PHONE_DESC = " " + PREFIX_PHONE + "911a"; // 'a' not allowed in phones
     public static final String INVALID_EMAIL_DESC = " " + PREFIX_EMAIL + "bob!yahoo"; // missing '@' symbol
@@ -66,22 +62,6 @@ public class CommandTestUtil {
 
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";
-
-    public static final EditCommand.EditPersonDescriptor DESC_AMY;
-    public static final EditCommand.EditPersonDescriptor DESC_BOB;
-    public static final EditModuleCommand.EditModuleDescriptor DESC_CS2100;
-    public static final EditModuleCommand.EditModuleDescriptor DESC_CS2103;
-
-    static {
-        DESC_AMY = new EditPersonDescriptorBuilder().withName(VALID_NAME_AMY)
-                .withPhone(VALID_PHONE_AMY).withEmail(VALID_EMAIL_AMY).withAddress(VALID_ADDRESS_AMY)
-                .withTags(VALID_TAG_FRIEND).build();
-        DESC_BOB = new EditPersonDescriptorBuilder().withName(VALID_NAME_BOB)
-                .withPhone(VALID_PHONE_BOB).withEmail(VALID_EMAIL_BOB).withAddress(VALID_ADDRESS_BOB)
-                .withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND).build();
-        DESC_CS2100 = new EditModuleDescriptorBuilder().withName(VALID_MODNAME_CS2100).build();
-        DESC_CS2103 = new EditModuleDescriptorBuilder().withName(VALID_MODNAME_CS2103).build();
-    }
 
     /**
      * Executes the given {@code command}, confirms that <br>
@@ -119,12 +99,31 @@ public class CommandTestUtil {
         // we are unable to defensively copy the model for comparison later, so we can
         // only do so by copying its components.
         ManageMe expectedManageMe = new ManageMe(actualModel.getManageMe());
-        List<Link> expectedFilteredList = new ArrayList<>(actualModel.getFilteredLinkList());
+        List<Link> expectedLinkFilteredList = new ArrayList<>(actualModel.getFilteredLinkList());
+        List<Task> expectedTaskFilteredList = new ArrayList<>(actualModel.getFilteredTaskList());
+        List<Module> expectedModuleFilteredList = new ArrayList<>(actualModel.getFilteredModuleList());
 
         assertThrows(CommandException.class, expectedMessage, () -> command.execute(actualModel));
         assertEquals(expectedManageMe, actualModel.getManageMe());
-        assertEquals(expectedFilteredList, actualModel.getFilteredLinkList());
+        assertEquals(expectedLinkFilteredList, actualModel.getFilteredLinkList());
+        assertEquals(expectedTaskFilteredList, actualModel.getFilteredTaskList());
+        assertEquals(expectedModuleFilteredList, actualModel.getFilteredModuleList());
     }
+
+    //    /**
+    //     * Updates {@code model}'s filtered list to show only the link at the given {@code targetIndex} in the
+    //     * {@code model}'s address book.
+    //     */
+    //    public static void showLinkAtIndex(Model model, Index targetIndex) {
+    //        assertTrue(targetIndex.getZeroBased() < model.getFilteredLinkList().size());
+    //
+    //        Link link = model.getFilteredLinkList().get(targetIndex.getZeroBased());
+    //        final String[] splitName = link.getName().value.split("\\s+");
+    //        model.updateFilteredLinkList(new LinkNameContainsKeywordsPredicate(Arrays.asList(splitName[0])));
+    //
+    //        assertEquals(1, model.getFilteredLinkList().size());
+    //    }
+
     /**
      * Updates {@code model}'s filtered list to show only the task at the given {@code targetIndex} in the
      * {@code model}'s address book.
@@ -133,6 +132,7 @@ public class CommandTestUtil {
         assertTrue(targetIndex.getZeroBased() < model.getFilteredTaskList().size());
 
         Task task = model.getFilteredTaskList().get(targetIndex.getZeroBased());
+
         final String[] splitName = task.getName().value.split("\\s+");
         model.updateFilteredTaskList(new TaskNameContainsKeywordsPredicate(Arrays.asList(splitName[0])));
 

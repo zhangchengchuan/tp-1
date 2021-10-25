@@ -6,8 +6,9 @@ import manageme.model.link.LinkModule;
 import manageme.model.link.LinkName;
 
 public class LinkBuilder {
-    public static final String DEFAULT_NAME = "Tutorial Link";
-    public static final String DEFAULT_LINK = "www.luminus.com";
+    public static final String DEFAULT_NAME = "Tutorial";
+    public static final String DEFAULT_LINK = "https://www.luminus.com";
+    public static final String DEFAULT_MODULE = "CS2100";
 
     private LinkName name;
     private LinkAddress address;
@@ -19,7 +20,7 @@ public class LinkBuilder {
     public LinkBuilder() {
         name = new LinkName(DEFAULT_NAME);
         address = new LinkAddress(DEFAULT_LINK);
-        module = new LinkModule();
+        module = new LinkModule(DEFAULT_MODULE);
     }
 
     /**
