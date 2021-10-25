@@ -201,7 +201,7 @@ public class MmMainWindow extends UiPart<Stage> {
      */
     @FXML
     private void handleModule() {
-        moduleWindow.display(logic.getReadModule());
+        moduleWindow.display(logic.getReadModule(), logic.getUnfilteredLinkList(), logic.getUnfilteredTaskList());
     }
 
     /**

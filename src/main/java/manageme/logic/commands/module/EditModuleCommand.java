@@ -7,7 +7,6 @@ import static manageme.model.Model.PREDICATE_SHOW_ALL_MODULES;
 import java.util.List;
 import java.util.Optional;
 
-import javafx.collections.ObservableList;
 import manageme.commons.core.Messages;
 import manageme.commons.core.index.Index;
 import manageme.commons.util.CollectionUtil;
@@ -15,10 +14,8 @@ import manageme.logic.commands.Command;
 import manageme.logic.commands.CommandResult;
 import manageme.logic.commands.exceptions.CommandException;
 import manageme.model.Model;
-import manageme.model.link.Link;
 import manageme.model.module.Module;
 import manageme.model.module.ModuleName;
-import manageme.model.task.Task;
 
 /**
  * Edits the details of an existing module in the app.
@@ -55,15 +52,13 @@ public class EditModuleCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
         List<Module> lastShownList = model.getFilteredModuleList();
-        ObservableList<Link> unfilteredLinks = model.getUnfilteredLinkList();
-        ObservableList<Task> unfilteredTasks = model.getUnfilteredTaskList();
 
         if (index.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_MODULE_DISPLAYED_INDEX);
         }
 
         Module moduleToEdit = lastShownList.get(index.getZeroBased());
-        Module editedModule = createEditedModule(moduleToEdit, editModuleDescriptor, unfilteredLinks, unfilteredTasks);
+        Module editedModule = createEditedModule(moduleToEdit, editModuleDescriptor);
 
         if (!moduleToEdit.isSameModule(editedModule) && model.hasModule(editedModule)) {
             throw new CommandException(MESSAGE_DUPLICATE_MODULE);
@@ -78,13 +73,11 @@ public class EditModuleCommand extends Command {
      * Creates and returns a {@code Module} with the details of {@code ModuleToEdit}
      * edited with {@code editModuleDescriptor}.
      */
-    private static Module createEditedModule(Module moduleToEdit, EditModuleDescriptor editModuleDescriptor,
-                                             ObservableList<Link> unfilteredLinks,
-                                             ObservableList<Task> unfilteredTasks) {
+    private static Module createEditedModule(Module moduleToEdit, EditModuleDescriptor editModuleDescriptor) {
 
         ModuleName updatedName = editModuleDescriptor.getModuleName().orElse(moduleToEdit.getModuleName());
 
-        return new Module(updatedName, unfilteredLinks, unfilteredTasks);
+        return new Module(updatedName);
     }
 
     @Override

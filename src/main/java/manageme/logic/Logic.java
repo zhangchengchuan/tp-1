@@ -49,6 +49,9 @@ public interface Logic {
     /** Returns an unmodifiable view of the unfiltered list of tasks */
     ObservableList<Task> getUnfilteredTaskList();
 
+    /** Returns an unmodifiable view of the unfiltered list of links */
+    ObservableList<Link> getUnfilteredLinkList();
+
     /**
      * Returns the user prefs' address book file path.
      */
