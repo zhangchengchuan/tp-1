@@ -108,13 +108,4 @@ public class ModuleWindow extends UiPart<Stage> {
             linkList.getChildren().add(new LinkCard(links.get(i), i + 1).getRoot());
         }
     }
-
-    /**
-     * Fills up the link list.
-     *
-     * @param link the Link object.
-     */
-    public void fillLinkList(Link link) {
-        linkList.getChildren().add(new LinkCard(link, 1).getRoot());
-    }
 }

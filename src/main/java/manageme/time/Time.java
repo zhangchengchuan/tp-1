@@ -1,5 +1,6 @@
 package manageme.time;
 
+import javafx.stage.Stage;
 import manageme.model.ReadOnlyManageMe;
 
 /**
@@ -11,4 +12,6 @@ public interface Time {
     void startTime();
 
     void updateTasks(ReadOnlyManageMe manageMe);
+
+    void stopTime();
 }
