@@ -89,7 +89,7 @@ public class LinkAddress {
     public static void openFile(URI uri) throws DesktopNotSupportException, FileNotOpenException {
         File toOpen = new File(uri.toString().substring(6));
         String os = System.getProperty("os.name").toLowerCase();
-        if (os.contains( "nix") || os.contains( "nux")) {
+        if (os.contains("nix") || os.contains("nux")) {
             Runtime runtime = Runtime.getRuntime();
             try {
                 runtime.exec("xdg-open " + toOpen);
