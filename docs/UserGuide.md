@@ -168,14 +168,14 @@ Examples: `readMod 2`
 #### Edit a module: `editMod`
 Edits an existing module in the mod list.
 
-Format: `editMod INDEX [n/NAME] [l/LINK]`
+Format: `editMod INDEX [n/NAME]`
 * Edits the mod by the specified `INDEX`.<br/>
 * The index refers to the index number shown in the displayed module list
 * The index **must be a positive integer** 1, 2, 3, ...
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
 
-Example: `editMod 2 n/CS2103T l/https://...`
+Example: `editMod 2 n/CS2103T`
 
 #### Delete a module: `deleteMod`
 Deletes the specified mod from the mod list.
@@ -225,6 +225,71 @@ Format: `readDay DATE`
 
 Example: `readDay 2021-10-19`
 
+### Links:
+#### Adding a link: `addLink`
+Adds a link into the link list. A link contains its name and a website link for online learning.
+
+Format: `addLink n/NAME a/LINK_ADDRESS [mod/MODULE_NAME]` <br/>
+* A link should be in a valid uri format, beginning with https://, ftp:// of file:/
+* Aftering tagging the module, the link will appear at in the readMod panel of the particular module
+
+Examples: `addlink n/google a/https://www.google.com mod/CS1101S`
+
+#### Edit a link: `editLink`
+Edits an existing link in the link list.
+
+Format: `editLink INDEX [n/NAME] [a/LINK_ADDRESS] [mod/MODULE_NAME]`
+* Edits the link by the specified `INDEX`.<br/>
+* The index refers to the index number shown in the displayed link list
+* The index **must be a positive integer** 1, 2, 3, ...
+* At least one of the optional fields must be provided.
+* Existing values will be updated to the input values.
+
+Example: `editLink 2 n/amazon`
+
+#### Delete a link: `deleteLink`
+Deletes the specified mod from the mod list.
+
+Format: `deleteLink INDEX`
+* Deletes the mod by the specified `INDEX`.
+* The index refers to the index number shown in the displayed link list.
+* The index **must be a positive integer** 1, 2, 3, ...
+
+Example: `deleteLink 2` deletes link No.2 from the list.
+
+#### Delete a link in module panel
+Format: `deleteModLink mod/MODULE_NAME i/INDEX`
+* Deletes the mod by the specified `INDEX` at the link list in the readMod panel for the particular module.
+* The index refers to the index number shown in the displayed link list in the readMod panel of the module.
+* The index **must be a positive integer** 1, 2, 3, ...
+
+Example: `deleteModLink mod/CS1101S i/1` deletes link No.1 from the link list of CS1101S.
+
+### Open a link
+Format: `openLink INDEX`
+* Opens the link identifies by the index in the link list. If it is a link for a webpage, it will open the link in a
+browser. It it is a path for a file, it will open the file using the default app.
+* The index refers to the index number shown in the displayed link list
+* The index **must be a positive integer** 1, 2, 3, ...
+
+Example: `openLink 1` open link No. 1 from the list of links.
+
+### Find a link by keyword
+Format: `findLink KEYWORD [MORE_KEYWORDS]`
+
+* The search is case-insensitive. e.g hans will match Hans.
+* The order of the keywords does not matter. e.g. Hans Bo will match Bo Hans.
+* Only the name is searched.
+* Only full words will be matched e.g. Han will not match Hans.
+* Links with a name matching at least one keyword will be returned (i.e. OR search).
+
+Example: `findLink computer` returns `Computer Organization https://....` and `Computer Architecture https://....`.
+
+#### List all links : `listLink`
+Display the full list of links. This command is used to return to the full list after findLink.
+
+Format: `listLink`
+
 ### OTHERS:
 
 #### Viewing help: `help`
@@ -260,12 +325,19 @@ Action | Format, Examples
 **ListTask** | `listTask`
 **MarkTask** | `markTask INDEX`<br>e.g., `markTask 1`
 **DeleteDoneTask** | `deleteDoneTask`
-**AddModule** | `addMod n/NAME l/LINK`<br>e.g.,`addMod n/CS2103 l/https://...`
+**AddModule** | `addMod n/NAME`<br>e.g.,`addMod n/CS2103`
 **ReadModule** | `readMod INDEX`<br>e.g., `readMod 2`
 **EditModule** | `editMod INDEX [n/NAME] [l/LINK]`<br>e.g., `editMod 2 n/CS2103T l/https://...`
 **DeleteModule** | `deleteMod INDEX`<br>e.g., `deleteMod 2`
 **FindModule** | `findMod KEYWORD [MORE_KEYWORDS]`<br>e.g., `findMod computer`
 **ListModule** | `listMod`
+**AddLink** | `addLink n/NAME l/LINK_ADDRESS [mod/MODULE_NAME]`<br>e.g., `addLink n/google a/https://www.google.com`
+**DeleteLink** | `deleteLink INDEX`<br>e.g., `deleteLink 2`
+**DeleteModLink** | `deleteModLink mod/MODULE_NAME i/INDEX`<br>e.g., `deleteModLink mod/CS1101S i/1`
+**EditLink** | `editLink INDEX [n/NAME] [a/LINK_ADDRESS] [mod/MODULE_NAME]`<br>e.g.,`editLink 2 n/amazon`
+**OpenLink** | `OpenLink INDEX` <br>e.g.,`openLink 1`
+**FindLink** | `findLink KEYWORD`<br>e.g.,`findLink google`
+**ListLink** | `ListLink`
 **NextMonth** | `nextMonth`
 **PreviousMonth** | `prevMonth`
 **ReadDay** | `readDay DATE`<br>e.g., `readDay 2021-10-19`
