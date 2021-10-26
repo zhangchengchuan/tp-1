@@ -22,7 +22,7 @@ public class ReminderWindow extends UiPart<Stage> {
     @FXML
     private Label title;
     @FXML
-    private VBox taskList;
+    private VBox reminderTaskList;
     @FXML
     private Button ackButton;
 
@@ -35,8 +35,8 @@ public class ReminderWindow extends UiPart<Stage> {
         super(FXML, root);
 
         this.reminderWindow = root;
-        reminderWindow.setTitle("Reminder!");
-        title.setText("Happening now!");
+        reminderWindow.setTitle("Reminder");
+        title.setText("Happening now !");
     }
 
     /**
@@ -62,9 +62,9 @@ public class ReminderWindow extends UiPart<Stage> {
      * Resets Reminder Window.
      */
     private void resetWindow() {
-        taskList.getChildren().clear();
+        reminderTaskList.getChildren().clear();
         for (int i = 0; i < displayedList.size(); i++) {
-            taskList.getChildren().add(new TaskCard(displayedList.get(i), i + 1).getRoot());
+            reminderTaskList.getChildren().add(new TaskCard(displayedList.get(i), i + 1, true).getRoot());
         }
     }
 

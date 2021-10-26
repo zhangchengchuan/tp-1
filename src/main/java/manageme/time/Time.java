@@ -1,6 +1,5 @@
 package manageme.time;
 
-import javafx.stage.Stage;
 import manageme.model.ReadOnlyManageMe;
 
 /**

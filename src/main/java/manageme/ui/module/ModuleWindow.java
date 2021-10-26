@@ -25,9 +25,9 @@ public class ModuleWindow extends UiPart<Stage> {
     @FXML
     private Label name;
     @FXML
-    private VBox linkList;
+    private VBox readLinkList;
     @FXML
-    private VBox taskList;
+    private VBox readTaskList;
 
     /**
      * Creates a new HelpWindow.
@@ -67,8 +67,8 @@ public class ModuleWindow extends UiPart<Stage> {
      * Resets Module Window.
      */
     private void resetWindow() {
-        linkList.getChildren().clear();
-        taskList.getChildren().clear();
+        readLinkList.getChildren().clear();
+        readTaskList.getChildren().clear();
     }
 
     /**
@@ -86,7 +86,7 @@ public class ModuleWindow extends UiPart<Stage> {
         });
 
         for (int i = 0; i < tasks.size(); i++) {
-            taskList.getChildren().add(new TaskCard(tasks.get(i), i + 1).getRoot());
+            readTaskList.getChildren().add(new TaskCard(tasks.get(i), i + 1).getRoot());
         }
     }
 
@@ -105,7 +105,7 @@ public class ModuleWindow extends UiPart<Stage> {
         });
 
         for (int i = 0; i < links.size(); i++) {
-            linkList.getChildren().add(new LinkCard(links.get(i), i + 1).getRoot());
+            readLinkList.getChildren().add(new LinkCard(links.get(i), i + 1).getRoot());
         }
     }
 }
