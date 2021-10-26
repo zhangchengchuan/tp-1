@@ -40,11 +40,14 @@ title: User Guide
         2. Archive current data: `archive`
         3. Exit program: `exit`
 5. Command Summary
+
 --------------------------------------------------------------------------------------------------------------------
-##Introduction:
+
+## Introduction:
 ManageMe is a **desktop app for time management and resource organisation, optimized for use via a Command Line 
 Interface (CLI)** while still having the benefits of a Graphical User Interface (GUI). If you can type fast, ManageMe 
 can get your tasks done faster than traditional GUI apps.
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## Setup:
@@ -71,6 +74,7 @@ Introduction to the basic layout of the application.
 
 ![Ui](images/UiHomepage.png)
 <br>*Homepage of Application*
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## Features
@@ -345,6 +349,7 @@ Feature in UI:
 ![Ui](images/UiOverDueTask.png)
 *A Task coloured red since it is overdue*
 
+--------------------------------------------------------------------------------------------------------------------
 
 ## Command summary
 This section serves as quick reference for all the available commands that can be used in the application.
