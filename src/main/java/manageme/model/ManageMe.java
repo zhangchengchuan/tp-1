@@ -121,6 +121,10 @@ public class ManageMe implements ReadOnlyManageMe {
         links.remove(key);
     }
 
+    public void openLink(Link key) {
+        links.open(key);
+    }
+
     //// module-level operations
 
     /**
@@ -155,6 +159,7 @@ public class ManageMe implements ReadOnlyManageMe {
      * {@code key} must exist in the ManageMe.
      */
     public void removeModule(Module key) {
+        links.removeMod(key);
         modules.remove(key);
     }
 

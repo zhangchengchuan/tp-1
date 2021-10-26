@@ -77,7 +77,7 @@ public class MmMainWindow extends UiPart<Stage> {
     private Label task;
 
     /**
-     * Creates a {@code MainWindow} with the given {@code Stage} and {@code Logic}.
+     * Creates a {@code MmMainWindow} with the given {@code Stage} and {@code Logic}.
      */
     public MmMainWindow(Stage primaryStage, Logic logic) {
         super(FXML, primaryStage);

@@ -34,6 +34,7 @@ public class AddLinkCommandParser implements Parser<AddLinkCommand> {
                 PREFIX_MODULE);
 
         if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_ADDRESS) || !argMultimap.getPreamble().isEmpty()) {
+
             throw new ParseException(String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT,
                     AddLinkCommand.MESSAGE_USAGE));
         }

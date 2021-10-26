@@ -251,6 +251,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* *`    | Long-term user                             | Clear all tasks and modules                                           | I can easily reset the app when a new semester starts.                                                    |
 | `*`      | Long-term user                             | Archive all the data                                                  | I can find my old tasks and module when I need to.                                                        |
 | `*`      | Long-term user                             | Load previous data                                                    | I can read my old tasks and module when I need to.                                                        |
+
+
 ### Use cases
 
 (For all use cases below, the **System** is `ManageMe` and the **Actor** is the `User`, unless specified otherwise)

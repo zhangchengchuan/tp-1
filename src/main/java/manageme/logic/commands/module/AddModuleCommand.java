@@ -38,6 +38,7 @@ public class AddModuleCommand extends Command {
 
         Module toAdd = new Module(moduleName);
 
+
         if (model.hasModule(toAdd)) {
             throw new CommandException(MESSAGE_DUPLICATE_MODULE);
         }

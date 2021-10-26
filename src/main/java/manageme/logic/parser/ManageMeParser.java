@@ -14,7 +14,11 @@ import manageme.logic.commands.calendar.PreviousMonthCommand;
 import manageme.logic.commands.calendar.ReadDayCommand;
 import manageme.logic.commands.link.AddLinkCommand;
 import manageme.logic.commands.link.DeleteLinkCommand;
+import manageme.logic.commands.link.DeleteModLinkCommand;
 import manageme.logic.commands.link.EditLinkCommand;
+import manageme.logic.commands.link.FindLinkCommand;
+import manageme.logic.commands.link.ListLinkCommand;
+import manageme.logic.commands.link.OpenLinkCommand;
 import manageme.logic.commands.module.AddModuleCommand;
 import manageme.logic.commands.module.DeleteModuleCommand;
 import manageme.logic.commands.module.EditModuleCommand;
@@ -32,7 +36,10 @@ import manageme.logic.parser.calendar.ReadDayCommandParser;
 import manageme.logic.parser.exceptions.ParseException;
 import manageme.logic.parser.link.AddLinkCommandParser;
 import manageme.logic.parser.link.DeleteLinkCommandParser;
+import manageme.logic.parser.link.DeleteModLinkCommandParser;
 import manageme.logic.parser.link.EditLinkCommandParser;
+import manageme.logic.parser.link.FindLinkCommandParser;
+import manageme.logic.parser.link.OpenLinkCommandParser;
 import manageme.logic.parser.module.AddModuleCommandParser;
 import manageme.logic.parser.module.DeleteModuleCommandParser;
 import manageme.logic.parser.module.EditModuleCommandParser;
@@ -80,14 +87,20 @@ public class ManageMeParser {
         case DeleteLinkCommand.COMMAND_WORD:
             return new DeleteLinkCommandParser().parse(arguments);
 
+        case DeleteModLinkCommand.COMMAND_WORD:
+            return new DeleteModLinkCommandParser().parse(arguments);
+
+        case FindLinkCommand.COMMAND_WORD:
+            return new FindLinkCommandParser().parse(arguments);
+
+        case ListLinkCommand.COMMAND_WORD:
+            return new ListLinkCommand();
+
+        case OpenLinkCommand.COMMAND_WORD:
+            return new OpenLinkCommandParser().parse(arguments);
+
         case ClearCommand.COMMAND_WORD:
             return new ClearCommand();
-
-        //case FindCommand.COMMAND_WORD:
-            //return new FindCommandParser().parse(arguments);
-
-        //case ListCommand.COMMAND_WORD:
-            //return new ListCommand();
 
         case ExitCommand.COMMAND_WORD:
             return new ExitCommand();

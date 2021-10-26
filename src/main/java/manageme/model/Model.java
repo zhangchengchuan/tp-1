@@ -6,7 +6,9 @@ import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import manageme.commons.core.GuiSettings;
+import manageme.commons.core.index.Index;
 import manageme.model.link.Link;
+import manageme.model.link.LinkModule;
 import manageme.model.module.Module;
 import manageme.model.task.Task;
 
@@ -71,6 +73,12 @@ public interface Model {
      * The link must exist in the ManageMe.
      */
     void deleteLink(Link target);
+
+    /**
+     * Opens the given link.
+     * The link must exist in the ManageMe.
+     */
+    void openLink(Link target);
 
     /**
      * Adds the given link.
@@ -175,4 +183,6 @@ public interface Model {
 
     /** Returns an unmodifiable view of the unfiltered link list */
     ObservableList<Link> getUnfilteredLinkList();
+
+    Link deleteModLink(LinkModule module, Index targetIndex);
 }
