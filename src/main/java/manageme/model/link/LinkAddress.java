@@ -29,6 +29,12 @@ public class LinkAddress {
     public final URI linkAddress;
     public final String value;
 
+    /**
+     * Opens url in available web broswer.
+     *
+     * @param url url to open
+     * @throws LinkNotOpenException exception thrown when failing to open the url
+     */
     public static void openUrl(URL url) throws LinkNotOpenException {
 
         String os = System.getProperty("os.name").toLowerCase();
@@ -50,13 +56,20 @@ public class LinkAddress {
                 for (int i = 0; i < browsers.length; i++) {
                     cmd.append((i == 0 ? "" : " || ") + browsers[i] + " \"" + url + "\" ");
                 }
-                rt.exec(new String[] { "sh", "-c", cmd.toString() });
+                rt.exec(new String[] {"sh", "-c", cmd.toString()});
             }
         } catch (Exception e) {
             throw new LinkNotOpenException();
         }
     }
 
+    /**
+     * Opens file path uri with system default application.
+     *
+     * @param uri the filepath in uri format
+     * @throws DesktopNotSupportException exception to throw when Java Desktop is not supported on the device
+     * @throws FileNotOpenException exception to throw when the file doesn't exist or cannot be opened
+     */
     public static void openFile(URI uri) throws DesktopNotSupportException, FileNotOpenException {
         File toOpen = new File(uri.toString().substring(6));
         String os = System.getProperty("os.name").toLowerCase();
@@ -67,7 +80,7 @@ public class LinkAddress {
             } catch (IOException e) {
                 throw new FileNotOpenException();
             }
-        } else if (! Desktop.isDesktopSupported()) {
+        } else if (!Desktop.isDesktopSupported()) {
             System.out.println("java desktop not supported");
             throw new DesktopNotSupportException();
         } else {
