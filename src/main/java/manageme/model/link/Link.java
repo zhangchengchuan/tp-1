@@ -60,6 +60,13 @@ public class Link {
     }
 
     /**
+     * Oen link in web browser.
+     */
+    public void open() {
+        address.open();
+    }
+
+    /**
      * Returns true if both mods have the same identity and data fields.
      * This defines a stronger notion of equality between two mods.
      * @param other

@@ -3,15 +3,12 @@ package manageme.logic.commands.module;
 import static java.util.Objects.requireNonNull;
 import static manageme.logic.parser.CliSyntax.PREFIX_NAME;
 
-import javafx.collections.ObservableList;
 import manageme.logic.commands.Command;
 import manageme.logic.commands.CommandResult;
 import manageme.logic.commands.exceptions.CommandException;
 import manageme.model.Model;
-import manageme.model.link.Link;
 import manageme.model.module.Module;
 import manageme.model.module.ModuleName;
-import manageme.model.task.Task;
 
 public class AddModuleCommand extends Command {
     public static final String COMMAND_WORD = "addMod";
@@ -38,10 +35,9 @@ public class AddModuleCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        ObservableList<Link> unfilteredLinks = model.getUnfilteredLinkList();
-        ObservableList<Task> unfilteredTasks = model.getUnfilteredTaskList();
 
-        Module toAdd = new Module(moduleName, unfilteredLinks, unfilteredTasks);
+        Module toAdd = new Module(moduleName);
+
 
         if (model.hasModule(toAdd)) {
             throw new CommandException(MESSAGE_DUPLICATE_MODULE);

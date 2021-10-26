@@ -97,6 +97,11 @@ public class LogicManager implements Logic {
     }
 
     @Override
+    public ObservableList<Link> getUnfilteredLinkList() {
+        return model.getUnfilteredLinkList();
+    }
+
+    @Override
     public Path getManageMeFilePath() {
         return model.getManageMeFilePath();
     }
