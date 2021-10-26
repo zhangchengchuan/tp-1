@@ -30,6 +30,22 @@ public class LinkAddress {
     public final String value;
 
     /**
+     * Constructs a {@code LinkAddress}.
+     *
+     * @param linkAddress A valid url for the link.
+     */
+    public LinkAddress(String linkAddress) {
+        requireNonNull(linkAddress);
+        AppUtil.checkArgument(isValidLinkAddress(linkAddress), MESSAGE_CONSTRAINTS);
+        try {
+            this.value = linkAddress;
+            this.linkAddress = new URI(linkAddress);
+        } catch (URISyntaxException e) {
+            throw new IllegalArgumentException(MESSAGE_CONSTRAINTS);
+        }
+    }
+
+    /**
      * Opens url in available web broswer.
      *
      * @param url url to open
@@ -50,7 +66,7 @@ public class LinkAddress {
                 // Do a best guess on unix until we get a platform independent way
                 // Build a list of browsers to try, in this order.
                 String[] browsers = {"epiphany", "firefox", "mozilla", "konqueror", "netscape", "opera",
-                        "links", "lynx"};
+                    "links", "lynx", "google-chrome", "chromium-browser"};
                 // Build a command string which looks like "browser1 "url" || browser2 "url" ||..."
                 StringBuffer cmd = new StringBuffer();
                 for (int i = 0; i < browsers.length; i++) {
@@ -94,22 +110,12 @@ public class LinkAddress {
     }
 
     /**
-     * Constructs a {@code LinkAddress}.
+     * Opens this address. Pop out browser if it is a web link and pop out the dafault application for the file to open
+     * if it is a file path.
      *
-     * @param linkAddress A valid url for the link.
+     * @throws RuntimeException
      */
-    public LinkAddress(String linkAddress) {
-        requireNonNull(linkAddress);
-        AppUtil.checkArgument(isValidLinkAddress(linkAddress), MESSAGE_CONSTRAINTS);
-        try {
-            this.value = linkAddress;
-            this.linkAddress = new URI(linkAddress);
-        } catch (URISyntaxException e) {
-            throw new IllegalArgumentException(MESSAGE_CONSTRAINTS);
-        }
-    }
-
-    public void open() throws RuntimeException{
+    public void open() throws RuntimeException {
         if (linkAddress.getScheme().equals("file")) {
             try {
                 openFile(linkAddress);
