@@ -2,32 +2,32 @@ package manageme.logic;
 
 import static manageme.commons.core.Messages.MESSAGE_INVALID_MODULE_DISPLAYED_INDEX;
 import static manageme.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
-import static manageme.logic.commands.module.ModuleCommandTestUtil.MODNAME_DESC_A;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.IOException;
 import java.nio.file.Path;
 
+import manageme.logic.commands.module.AddModuleCommand;
+import manageme.logic.commands.module.ListModuleCommand;
+import manageme.model.module.Module;
+import manageme.testutil.Assert;
+import manageme.testutil.ModuleBuilder;
+import manageme.testutil.TypicalModules;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
 import manageme.logic.commands.CommandResult;
+import manageme.logic.commands.CommandTestUtil;
 import manageme.logic.commands.exceptions.CommandException;
-import manageme.logic.commands.module.AddModuleCommand;
-import manageme.logic.commands.module.ListModuleCommand;
 import manageme.logic.parser.exceptions.ParseException;
 import manageme.model.Model;
 import manageme.model.ModelManager;
 import manageme.model.ReadOnlyManageMe;
 import manageme.model.UserPrefs;
-import manageme.model.module.Module;
 import manageme.storage.JsonManageMeStorage;
 import manageme.storage.JsonUserPrefsStorage;
 import manageme.storage.StorageManager;
-import manageme.testutil.Assert;
-import manageme.testutil.ModuleBuilder;
-import manageme.testutil.TypicalModules;
 import manageme.time.TimeManager;
 
 public class LogicManagerTest {
@@ -79,7 +79,7 @@ public class LogicManagerTest {
         logic = new LogicManager(model, storage, time);
 
         // Execute add command
-        String addModuleCommand = AddModuleCommand.COMMAND_WORD + MODNAME_DESC_A;
+        String addModuleCommand = AddModuleCommand.COMMAND_WORD + CommandTestUtil.MODNAME_DESC_CS2100;
         Module expectedModule = new ModuleBuilder(TypicalModules.MODULE_A).build();
         ModelManager expectedModel = new ModelManager();
         expectedModel.addModule(expectedModule);

@@ -28,21 +28,20 @@ public class ReadModuleCommandTest {
 
     @Test
     public void execute_validIndexUnfilteredList_success() {
-        Module moduleToRead = model.getFilteredModuleList().get(INDEX_FIRST.getZeroBased());
-
+        Module moduleToRead = model.getReadModuleList().get(INDEX_FIRST.getZeroBased());
         ReadModuleCommand readModuleCommand = new ReadModuleCommand(INDEX_FIRST);
 
         CommandResult expectedCommandResult = new CommandResult(readModuleCommand.MESSAGE_SUCCESS, false, false, true);
 
         ModelManager expectedModel = new ModelManager(model.getManageMe(), new UserPrefs());
-        expectedModel.setReadModule(moduleToRead);
+        expectedModel.updateReadModuleList(module -> module.equals(moduleToRead));
 
         assertCommandSuccess(readModuleCommand, model, expectedCommandResult, expectedModel);
     }
 
     @Test
     public void execute_invalidIndexUnfilteredList_throwsCommandException() {
-        Index outOfBoundIndex = Index.fromOneBased(model.getFilteredModuleList().size() + 1);
+        Index outOfBoundIndex = Index.fromOneBased(model.getFilteredPersonList().size() + 1);
         ReadModuleCommand readModuleCommand = new ReadModuleCommand(outOfBoundIndex);
 
         assertCommandFailure(readModuleCommand, model, Messages.MESSAGE_INVALID_MODULE_DISPLAYED_INDEX);

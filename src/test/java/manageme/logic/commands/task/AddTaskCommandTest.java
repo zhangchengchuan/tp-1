@@ -9,7 +9,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Optional;
 import java.util.function.Predicate;
 
 import org.junit.jupiter.api.Test;
@@ -22,8 +21,8 @@ import manageme.model.ManageMe;
 import manageme.model.Model;
 import manageme.model.ReadOnlyManageMe;
 import manageme.model.ReadOnlyUserPrefs;
-import manageme.model.link.Link;
 import manageme.model.module.Module;
+import manageme.model.person.Person;
 import manageme.model.task.Task;
 import manageme.testutil.TaskBuilder;
 
@@ -76,7 +75,7 @@ public class AddTaskCommandTest {
         // null -> returns false
         assertFalse(addACommand.equals(null));
 
-        // different link -> returns false
+        // different person -> returns false
         assertFalse(addACommand.equals(addBCommand));
     }
     /**
@@ -114,7 +113,7 @@ public class AddTaskCommandTest {
         }
 
         @Override
-        public void addLink(Link link) {
+        public void addPerson(Person person) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -129,27 +128,27 @@ public class AddTaskCommandTest {
         }
 
         @Override
-        public boolean hasLink(Link link) {
+        public boolean hasPerson(Person person) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void deleteLink(Link target) {
+        public void deletePerson(Person target) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void setLink(Link target, Link editedLink) {
+        public void setPerson(Person target, Person editedPerson) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public ObservableList<Link> getFilteredLinkList() {
+        public ObservableList<Person> getFilteredPersonList() {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void updateFilteredLinkList(Predicate<Link> predicate) {
+        public void updateFilteredPersonList(Predicate<Person> predicate) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -184,12 +183,12 @@ public class AddTaskCommandTest {
         }
 
         @Override
-        public Optional<Module> getReadModule() {
+        public ObservableList<Module> getReadModuleList() {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void setReadModule(Module module) {
+        public void updateReadModuleList(Predicate<Module> predicate) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -224,18 +223,13 @@ public class AddTaskCommandTest {
         }
 
         @Override
-        public ObservableList<Link> getUnfilteredLinkList() {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
         public void updateFilteredTaskList(Predicate<Task> predicate) {
             throw new AssertionError("This method should not be called.");
         }
     }
 
     /**
-     * A Model stub that contains a single link.
+     * A Model stub that contains a single person.
      */
     private class ModelStubWithTask extends AddTaskCommandTest.ModelStub {
         private final Task task;

@@ -2,7 +2,7 @@ package manageme.logic.commands.task;
 
 import static manageme.logic.commands.CommandTestUtil.assertCommandFailure;
 import static manageme.logic.commands.CommandTestUtil.assertCommandSuccess;
-import static manageme.logic.commands.CommandTestUtil.showTaskAtIndex;
+import static manageme.logic.commands.task.TaskCommandTestUtil.showTaskAtIndex;
 import static manageme.testutil.TypicalIndexes.INDEX_FIRST_TASK;
 import static manageme.testutil.TypicalIndexes.INDEX_SECOND_TASK;
 import static manageme.testutil.TypicalTasks.getTypicalAddressBook;

@@ -2,14 +2,19 @@ package manageme.logic.parser.module;
 
 import static manageme.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static manageme.logic.commands.CommandTestUtil.INVALID_NAME_DESC;
-import static manageme.logic.commands.module.ModuleCommandTestUtil.MODNAME_DESC_A;
-import static manageme.logic.commands.module.ModuleCommandTestUtil.MODNAME_DESC_B;
-import static manageme.logic.commands.module.ModuleCommandTestUtil.VALID_MODNAME_A;
-import static manageme.logic.commands.module.ModuleCommandTestUtil.VALID_MODNAME_B;
+import static manageme.logic.commands.CommandTestUtil.LINK_DESC_GOOGLE;
+import static manageme.logic.commands.CommandTestUtil.LINK_DESC_ZOOM;
+import static manageme.logic.commands.CommandTestUtil.MODNAME_DESC_CS2100;
+import static manageme.logic.commands.CommandTestUtil.MODNAME_DESC_CS2103;
+import static manageme.logic.commands.CommandTestUtil.VALID_LINK_GOOGLE;
+import static manageme.logic.commands.CommandTestUtil.VALID_LINK_ZOOM;
+import static manageme.logic.commands.CommandTestUtil.VALID_MODNAME_CS2100;
+import static manageme.logic.commands.CommandTestUtil.VALID_MODNAME_CS2103;
 import static manageme.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static manageme.logic.parser.CommandParserTestUtil.assertParseSuccess;
 import static manageme.testutil.TypicalIndexes.INDEX_FIRST;
 import static manageme.testutil.TypicalIndexes.INDEX_SECOND;
+import static manageme.testutil.TypicalIndexes.INDEX_THIRD;
 
 import org.junit.jupiter.api.Test;
 
@@ -28,7 +33,7 @@ public class EditModuleCommandParserTest {
     @Test
     public void parse_missingParts_failure() {
         // no index specified
-        assertParseFailure(parser, VALID_MODNAME_A, MESSAGE_INVALID_FORMAT);
+        assertParseFailure(parser, VALID_MODNAME_CS2103, MESSAGE_INVALID_FORMAT);
 
         // no field specified
         assertParseFailure(parser, "1", EditModuleCommand.MESSAGE_NOT_EDITED);
@@ -40,10 +45,10 @@ public class EditModuleCommandParserTest {
     @Test
     public void parse_invalidPreamble_failure() {
         // negative index
-        assertParseFailure(parser, "-5" + MODNAME_DESC_B, MESSAGE_INVALID_FORMAT);
+        assertParseFailure(parser, "-5" + MODNAME_DESC_CS2103, MESSAGE_INVALID_FORMAT);
 
         // zero index
-        assertParseFailure(parser, "0" + MODNAME_DESC_B, MESSAGE_INVALID_FORMAT);
+        assertParseFailure(parser, "0" + MODNAME_DESC_CS2103, MESSAGE_INVALID_FORMAT);
 
         // invalid arguments being parsed as preamble
         assertParseFailure(parser, "1 some random string", MESSAGE_INVALID_FORMAT);
@@ -61,22 +66,47 @@ public class EditModuleCommandParserTest {
     @Test
     public void parse_allFieldsSpecified_success() {
         Index targetIndex = INDEX_SECOND;
-        String userInput = targetIndex.getOneBased() + MODNAME_DESC_A;
+        String userInput = targetIndex.getOneBased() + MODNAME_DESC_CS2100 + LINK_DESC_ZOOM;
 
         EditModuleCommand.EditModuleDescriptor descriptor = new EditModuleDescriptorBuilder()
-                .withName(VALID_MODNAME_A).build();
+                .withName(VALID_MODNAME_CS2100).withLink(VALID_LINK_ZOOM).build();
         EditModuleCommand expectedCommand = new EditModuleCommand(targetIndex, descriptor);
 
         assertParseSuccess(parser, userInput, expectedCommand);
     }
 
     @Test
-    public void parse_multipleRepeatedFields_acceptsLast() {
+    public void parse_linkSpecified_success() {
         Index targetIndex = INDEX_FIRST;
-        String userInput = targetIndex.getOneBased() + MODNAME_DESC_A + MODNAME_DESC_B;
+        String userInput = targetIndex.getOneBased() + LINK_DESC_ZOOM;
 
         EditModuleCommand.EditModuleDescriptor descriptor = new EditModuleDescriptorBuilder()
-                .withName(VALID_MODNAME_B).build();
+                .withLink(VALID_LINK_ZOOM).build();
+        EditModuleCommand expectedCommand = new EditModuleCommand(targetIndex, descriptor);
+
+        assertParseSuccess(parser, userInput, expectedCommand);
+    }
+
+    @Test
+    public void parse_nameSpecified_success() {
+        // name
+        Index targetIndex = INDEX_THIRD;
+        String userInput = targetIndex.getOneBased() + MODNAME_DESC_CS2103;
+        EditModuleCommand.EditModuleDescriptor descriptor = new EditModuleDescriptorBuilder()
+                .withName(VALID_MODNAME_CS2103).build();
+        EditModuleCommand expectedCommand = new EditModuleCommand(targetIndex, descriptor);
+        assertParseSuccess(parser, userInput, expectedCommand);
+
+    }
+
+    @Test
+    public void parse_multipleRepeatedFields_acceptsLast() {
+        Index targetIndex = INDEX_FIRST;
+        String userInput = targetIndex.getOneBased() + MODNAME_DESC_CS2100 + MODNAME_DESC_CS2103
+                + LINK_DESC_ZOOM + LINK_DESC_GOOGLE;
+
+        EditModuleCommand.EditModuleDescriptor descriptor = new EditModuleDescriptorBuilder()
+                .withName(VALID_MODNAME_CS2103).withLink(VALID_LINK_GOOGLE).build();
         EditModuleCommand expectedCommand = new EditModuleCommand(targetIndex, descriptor);
 
         assertParseSuccess(parser, userInput, expectedCommand);
@@ -86,15 +116,16 @@ public class EditModuleCommandParserTest {
     public void parse_invalidValueFollowedByValidValue_success() {
         // no other valid values specified
         Index targetIndex = INDEX_FIRST;
-        String userInput = targetIndex.getOneBased() + INVALID_NAME_DESC + MODNAME_DESC_A;
+        String userInput = targetIndex.getOneBased() + INVALID_NAME_DESC + MODNAME_DESC_CS2100;
         EditModuleCommand.EditModuleDescriptor descriptor =
-                new EditModuleDescriptorBuilder().withName(VALID_MODNAME_A).build();
+                new EditModuleDescriptorBuilder().withName(VALID_MODNAME_CS2100).build();
         EditModuleCommand expectedCommand = new EditModuleCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
 
         // other valid values specified
-        userInput = targetIndex.getOneBased() + INVALID_NAME_DESC + MODNAME_DESC_A + MODNAME_DESC_B;
-        descriptor = new EditModuleDescriptorBuilder().withName(VALID_MODNAME_B).build();
+        userInput = targetIndex.getOneBased() + INVALID_NAME_DESC + MODNAME_DESC_CS2100 + LINK_DESC_ZOOM;
+        descriptor = new EditModuleDescriptorBuilder().withName(VALID_MODNAME_CS2100)
+                .withLink(VALID_LINK_ZOOM).build();
         expectedCommand = new EditModuleCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
     }

@@ -2,7 +2,6 @@ package manageme.testutil;
 
 import manageme.model.task.Task;
 import manageme.model.task.TaskDescription;
-import manageme.model.task.TaskIsDone;
 import manageme.model.task.TaskModule;
 import manageme.model.task.TaskName;
 import manageme.model.task.TaskTime;
@@ -14,14 +13,12 @@ public class TaskBuilder {
     public static final String DEFAULT_NAME = "Finish CS2103T TP";
     public static final String DEFAULT_DESCRIPTION = "This is a default template text to test "
             + "TaskDescription";
-    public static final boolean DEFAULT_ISDONE = false;
     public static final String DEFAULT_MODULE = "CS2103T";
     public static final String DEFAULT_STARTDATETIME = "2021-10-05T11:00";
     public static final String DEFAULT_ENDDATETIME = "2021-10-12T23:59";
 
     private TaskName name;
     private TaskDescription description;
-    private TaskIsDone isDone;
     private TaskModule module;
     private TaskTime start;
     private TaskTime end;
@@ -32,7 +29,6 @@ public class TaskBuilder {
     public TaskBuilder() {
         name = new TaskName(DEFAULT_NAME);
         description = new TaskDescription(DEFAULT_DESCRIPTION);
-        isDone = new TaskIsDone(DEFAULT_ISDONE);
         module = new TaskModule();
         start = new TaskTime(DEFAULT_STARTDATETIME);
         end = new TaskTime(DEFAULT_ENDDATETIME);
@@ -44,7 +40,6 @@ public class TaskBuilder {
     public TaskBuilder(Task taskToCopy) {
         name = taskToCopy.getName();
         description = taskToCopy.getDescription();
-        isDone = taskToCopy.isDone();
         module = taskToCopy.getTaskModule();
         start = taskToCopy.getStart();
         end = taskToCopy.getEnd();
@@ -74,14 +69,6 @@ public class TaskBuilder {
         return this;
     }
     /**
-     * Sets the {@code isDone} of the {@code Task} that we are building.
-     */
-    public TaskBuilder withIsDone(boolean isDone) {
-        this.isDone = new TaskIsDone(isDone);
-        return this;
-    }
-
-    /**
      * Sets the {@code start} of the {@code Task} that we are building.
      */
     public TaskBuilder withStartDateTime(String start) {
@@ -98,7 +85,7 @@ public class TaskBuilder {
     }
 
     public Task build() {
-        return new Task(name, description, isDone, module, start, end);
+        return new Task(name, description, module, start, end);
     }
 
 }

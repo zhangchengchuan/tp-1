@@ -1,11 +1,5 @@
 package manageme.model;
 
-import static manageme.logic.commands.link.LinkCommandTestUtil.VALID_LINKADDRESS_A;
-import static manageme.logic.commands.link.LinkCommandTestUtil.VALID_LINKMODULE_B;
-import static manageme.testutil.TypicalLinks.LINK_A;
-import static manageme.testutil.TypicalLinks.LINK_B;
-import static manageme.testutil.TypicalModules.MODULE_A;
-import static manageme.testutil.TypicalTasks.TASK_A;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -20,18 +14,20 @@ import org.junit.jupiter.api.Test;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import manageme.logic.commands.CommandTestUtil;
 import manageme.logic.commands.task.TaskCommandTestUtil;
-import manageme.model.link.Link;
-import manageme.model.link.exceptions.DuplicateLinkException;
 import manageme.model.module.Module;
 import manageme.model.module.exceptions.DuplicateModuleException;
+import manageme.model.person.Person;
+import manageme.model.person.exceptions.DuplicatePersonException;
 import manageme.model.task.Task;
 import manageme.model.task.exceptions.DuplicateTaskException;
 import manageme.testutil.Assert;
-import manageme.testutil.LinkBuilder;
 import manageme.testutil.ModuleBuilder;
 import manageme.testutil.TaskBuilder;
 import manageme.testutil.TypicalManageMe;
+import manageme.testutil.TypicalModules;
+import manageme.testutil.TypicalTasks;
 
 public class ManageMeTest {
 
@@ -39,9 +35,7 @@ public class ManageMeTest {
 
     @Test
     public void constructor() {
-        assertEquals(Collections.emptyList(), manageMe.getLinkList());
-        assertEquals(Collections.emptyList(), manageMe.getTaskList());
-        assertEquals(Collections.emptyList(), manageMe.getModuleList());
+        assertEquals(Collections.emptyList(), manageMe.getPersonList());
     }
 
     @Test
@@ -57,20 +51,22 @@ public class ManageMeTest {
     }
 
     @Test
-    public void resetData_withDuplicateLinks_throwsDuplicateLinkException() {
-        // Two links with the same identity fields
-        Link editedAlice = new LinkBuilder(LINK_A).build();
-        List<Link> newLinks = Arrays.asList(LINK_A, editedAlice);
-        ManageMeLinkStub newData = new ManageMeLinkStub(newLinks);
+    public void resetData_withDuplicatePersons_throwsDuplicatePersonException() {
+        // Two persons with the same identity fields
+        Person editedAlice = new PersonBuilder(TypicalPersons.ALICE).withAddress(CommandTestUtil.VALID_ADDRESS_BOB)
+                .withTags(CommandTestUtil.VALID_TAG_HUSBAND).build();
+        List<Person> newPersons = Arrays.asList(TypicalPersons.ALICE, editedAlice);
+        ManageMePersonStub newData = new ManageMePersonStub(newPersons);
 
-        Assert.assertThrows(DuplicateLinkException.class, () -> manageMe.resetData(newData));
+        Assert.assertThrows(DuplicatePersonException.class, () -> manageMe.resetData(newData));
     }
 
     @Test
     public void resetData_withDuplicateModules_throwsDuplicateModuleException() {
         // Two modules with the same identity fields
-        Module editedModuleA = new ModuleBuilder(MODULE_A).build();
-        List<Module> newModules = Arrays.asList(MODULE_A, editedModuleA);
+        Module editedModuleA = new ModuleBuilder(TypicalModules.MODULE_A).withLink(CommandTestUtil.VALID_LINK_ZOOM)
+                .build();
+        List<Module> newModules = Arrays.asList(TypicalModules.MODULE_A, editedModuleA);
         ManageMeModuleStub newData = new ManageMeModuleStub(newModules);
 
         Assert.assertThrows(DuplicateModuleException.class, () -> manageMe.resetData(newData));
@@ -79,41 +75,41 @@ public class ManageMeTest {
     @Test
     public void resetData_withDuplicateTasks_throwsDuplicateTaskException() {
         // Two tasks with the same identity fields
-        Task editedTaskA = new TaskBuilder(TASK_A).withDescription(TaskCommandTestUtil.VALID_DESCRIPTION_A)
+        Task editedTaskA = new TaskBuilder(TypicalTasks.TASK_A).withDescription(TaskCommandTestUtil.VALID_DESCRIPTION_A)
                 .build();
-        List<Task> newTasks = Arrays.asList(TASK_A, editedTaskA);
+        List<Task> newTasks = Arrays.asList(TypicalTasks.TASK_A, editedTaskA);
         ManageMeTaskStub newData = new ManageMeTaskStub(newTasks);
 
         Assert.assertThrows(DuplicateTaskException.class, () -> manageMe.resetData(newData));
     }
 
     @Test
-    public void hasLink_nullLink_throwsNullPointerException() {
-        Assert.assertThrows(NullPointerException.class, () -> manageMe.hasLink(null));
+    public void hasPerson_nullPerson_throwsNullPointerException() {
+        Assert.assertThrows(NullPointerException.class, () -> manageMe.hasPerson(null));
     }
 
     @Test
-    public void hasLink_linkNotInAddressBook_returnsFalse() {
-        assertFalse(manageMe.hasLink(LINK_A));
+    public void hasPerson_personNotInAddressBook_returnsFalse() {
+        assertFalse(manageMe.hasPerson(TypicalPersons.ALICE));
     }
 
     @Test
-    public void hasLink_linkInAddressBook_returnsTrue() {
-        manageMe.addLink(LINK_A);
-        assertTrue(manageMe.hasLink(LINK_A));
+    public void hasPerson_personInAddressBook_returnsTrue() {
+        manageMe.addPerson(TypicalPersons.ALICE);
+        assertTrue(manageMe.hasPerson(TypicalPersons.ALICE));
     }
 
     @Test
-    public void hasLink_linkWithSameIdentityFieldsInAddressBook_returnsTrue() {
-        manageMe.addLink(LINK_A);
-        Link editedAlice = new LinkBuilder(LINK_B).withAddress(VALID_LINKADDRESS_A).withModule(VALID_LINKMODULE_B)
-                .build();
-        assertTrue(manageMe.hasLink(editedAlice));
+    public void hasPerson_personWithSameIdentityFieldsInAddressBook_returnsTrue() {
+        manageMe.addPerson(TypicalPersons.ALICE);
+        Person editedAlice = new PersonBuilder(TypicalPersons.ALICE).withAddress(CommandTestUtil.VALID_ADDRESS_BOB)
+                .withTags(CommandTestUtil.VALID_TAG_HUSBAND).build();
+        assertTrue(manageMe.hasPerson(editedAlice));
     }
 
     @Test
-    public void getLinkList_modifyList_throwsUnsupportedOperationException() {
-        Assert.assertThrows(UnsupportedOperationException.class, () -> manageMe.getLinkList().remove(0));
+    public void getPersonList_modifyList_throwsUnsupportedOperationException() {
+        Assert.assertThrows(UnsupportedOperationException.class, () -> manageMe.getPersonList().remove(0));
     }
 
     @Test
@@ -123,19 +119,20 @@ public class ManageMeTest {
 
     @Test
     public void hasModule_moduleNotInAddressBook_returnsFalse() {
-        assertFalse(manageMe.hasModule(MODULE_A));
+        assertFalse(manageMe.hasModule(TypicalModules.MODULE_A));
     }
 
     @Test
     public void hasModule_moduleInAddressBook_returnsTrue() {
-        manageMe.addModule(MODULE_A);
-        assertTrue(manageMe.hasModule(MODULE_A));
+        manageMe.addModule(TypicalModules.MODULE_A);
+        assertTrue(manageMe.hasModule(TypicalModules.MODULE_A));
     }
 
     @Test
     public void hasModule_moduleWithSameIdentityFieldsInAddressBook_returnsTrue() {
-        manageMe.addModule(MODULE_A);
-        Module editedModule = new ModuleBuilder(MODULE_A).build();
+        manageMe.addModule(TypicalModules.MODULE_A);
+        Module editedModule = new ModuleBuilder(TypicalModules.MODULE_A).withLink(CommandTestUtil.VALID_LINK_ZOOM)
+                .build();
         assertTrue(manageMe.hasModule(editedModule));
     }
 
@@ -151,19 +148,19 @@ public class ManageMeTest {
 
     @Test
     public void hasTask_taskNotInAddressBook_returnsFalse() {
-        assertFalse(manageMe.hasTask(TASK_A));
+        assertFalse(manageMe.hasTask(TypicalTasks.TASK_A));
     }
 
     @Test
     public void hasTask_taskInAddressBook_returnsTrue() {
-        manageMe.addTask(TASK_A);
-        assertTrue(manageMe.hasTask(TASK_A));
+        manageMe.addTask(TypicalTasks.TASK_A);
+        assertTrue(manageMe.hasTask(TypicalTasks.TASK_A));
     }
 
     @Test
     public void hasTask_taskWithSameIdentityFieldsInAddressBook_returnsTrue() {
-        manageMe.addTask(TASK_A);
-        Task editedTask = new TaskBuilder(TASK_A).withDescription(TaskCommandTestUtil.VALID_DESCRIPTION_A)
+        manageMe.addTask(TypicalTasks.TASK_A);
+        Task editedTask = new TaskBuilder(TypicalTasks.TASK_A).withDescription(TaskCommandTestUtil.VALID_DESCRIPTION_A)
                 .withModule(TaskCommandTestUtil.VALID_MODULE_A).build();
         assertTrue(manageMe.hasTask(editedTask));
     }
@@ -174,10 +171,10 @@ public class ManageMeTest {
     }
 
     /**
-     * A stub ReadOnlyAddressBook whose links list can violate interface constraints.
+     * A stub ReadOnlyAddressBook whose persons list can violate interface constraints.
      */
-    private static class ManageMeLinkStub implements ReadOnlyManageMe {
-        private final ObservableList<Link> links = FXCollections.observableArrayList();
+    private static class ManageMePersonStub implements ReadOnlyManageMe {
+        private final ObservableList<Person> persons = FXCollections.observableArrayList();
 
         private final ObservableList<Module> modules = FXCollections.observableArrayList();
 
@@ -185,13 +182,13 @@ public class ManageMeTest {
 
         private final ArrayList<Task> modifiableTasks = new ArrayList<>();
 
-        ManageMeLinkStub(Collection<Link> links) {
-            this.links.setAll(links);
+        ManageMePersonStub(Collection<Person> persons) {
+            this.persons.setAll(persons);
         }
 
         @Override
-        public ObservableList<Link> getLinkList() {
-            return links;
+        public ObservableList<Person> getPersonList() {
+            return persons;
         }
 
         @Override
@@ -214,7 +211,7 @@ public class ManageMeTest {
      * A stub ReadOnlyAddressBook whose Modules list can violate interface constraints.
      */
     private static class ManageMeModuleStub implements ReadOnlyManageMe {
-        private final ObservableList<Link> links = FXCollections.observableArrayList();
+        private final ObservableList<Person> persons = FXCollections.observableArrayList();
 
         private final ObservableList<Module> modules = FXCollections.observableArrayList();
 
@@ -227,8 +224,8 @@ public class ManageMeTest {
         }
 
         @Override
-        public ObservableList<Link> getLinkList() {
-            return links;
+        public ObservableList<Person> getPersonList() {
+            return persons;
         }
 
         @Override
@@ -251,7 +248,7 @@ public class ManageMeTest {
      * A stub ReadOnlyAddressBook whose Tasks list can violate interface constraints.
      */
     private static class ManageMeTaskStub implements ReadOnlyManageMe {
-        private final ObservableList<Link> links = FXCollections.observableArrayList();
+        private final ObservableList<Person> persons = FXCollections.observableArrayList();
 
         private final ObservableList<Module> modules = FXCollections.observableArrayList();
 
@@ -264,8 +261,8 @@ public class ManageMeTest {
         }
 
         @Override
-        public ObservableList<Link> getLinkList() {
-            return links;
+        public ObservableList<Person> getPersonList() {
+            return persons;
         }
 
         @Override

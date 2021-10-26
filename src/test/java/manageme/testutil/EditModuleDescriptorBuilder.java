@@ -21,7 +21,7 @@ public class EditModuleDescriptorBuilder {
      */
     public EditModuleDescriptorBuilder(Module module) {
         descriptor = new EditModuleCommand.EditModuleDescriptor();
-        descriptor.setModuleName(module.getModuleName());;
+        descriptor.setModuleName(module.getModuleName());
     }
 
     /**

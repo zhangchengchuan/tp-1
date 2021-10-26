@@ -1,8 +1,6 @@
 package manageme.logic.commands.module;
 
 import static java.util.Objects.requireNonNull;
-import static manageme.logic.commands.module.ModuleCommandTestUtil.VALID_MODNAME_A;
-import static manageme.logic.commands.module.ModuleCommandTestUtil.VALID_MODNAME_B;
 import static manageme.testutil.Assert.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -26,7 +24,6 @@ import manageme.model.ReadOnlyManageMe;
 import manageme.model.ReadOnlyUserPrefs;
 import manageme.model.link.Link;
 import manageme.model.module.Module;
-import manageme.model.module.ModuleName;
 import manageme.model.task.Task;
 import manageme.testutil.ModuleBuilder;
 
@@ -38,11 +35,11 @@ public class AddModuleCommandTest {
 
     @Test
     public void execute_moduleAcceptedByModel_addSuccessful() throws Exception {
-        ModelStubAcceptingModuleAdded modelStub = new ModelStubAcceptingModuleAdded();
-        ModuleName validModuleName = new ModuleName(VALID_MODNAME_A);
-        Module validModule = new ModuleBuilder().withName(VALID_MODNAME_A).build();
+        AddModuleCommandTest.ModelStubAcceptingModuleAdded modelStub = new AddModuleCommandTest
+                .ModelStubAcceptingModuleAdded();
+        Module validModule = new ModuleBuilder().build();
 
-        CommandResult commandResult = new AddModuleCommand(validModuleName).execute(modelStub);
+        CommandResult commandResult = new AddModuleCommand(validModule.getModuleName()).execute(modelStub);
 
         assertEquals(String.format(AddModuleCommand.MESSAGE_SUCCESS, validModule), commandResult.getFeedbackToUser());
         assertEquals(Arrays.asList(validModule), modelStub.modulesAdded);
@@ -50,10 +47,9 @@ public class AddModuleCommandTest {
 
     @Test
     public void execute_duplicateModule_throwsCommandException() {
-        ModuleName validModuleName = new ModuleName(VALID_MODNAME_A);
-        Module validModule = new ModuleBuilder().withName(VALID_MODNAME_A).build();
-        AddModuleCommand addCommand = new AddModuleCommand(validModuleName);
-        ModelStub modelStub = new AddModuleCommandTest.ModelStubWithModule(validModule);
+        Module validModule = new ModuleBuilder().build();
+        AddModuleCommand addCommand = new AddModuleCommand(validModule.getModuleName());
+        AddModuleCommandTest.ModelStub modelStub = new AddModuleCommandTest.ModelStubWithModule(validModule);
 
         assertThrows(CommandException.class, AddModuleCommand.MESSAGE_DUPLICATE_MODULE, () ->
                 addCommand.execute(modelStub));
@@ -61,26 +57,26 @@ public class AddModuleCommandTest {
 
     @Test
     public void equals() {
-        ModuleName cs2100 = new ModuleName(VALID_MODNAME_A);
-        ModuleName cs2103 = new ModuleName(VALID_MODNAME_B);
-        AddModuleCommand addCs2100Command = new AddModuleCommand(cs2100);
-        AddModuleCommand addCs2103Command = new AddModuleCommand(cs2103);
+        Module cs110 = new ModuleBuilder().withName("CS110").build();
+        Module cs220 = new ModuleBuilder().withName("CS220").build();
+        AddModuleCommand addCs110Command = new AddModuleCommand(cs110.getModuleName());
+        AddModuleCommand addCs220Command = new AddModuleCommand(cs220.getModuleName());
 
         // same object -> returns true
-        assertTrue(addCs2100Command.equals(addCs2100Command));
+        assertTrue(addCs110Command.equals(addCs110Command));
 
         // same values -> returns true
-        AddModuleCommand addCs2100CommandCopy = new AddModuleCommand(cs2100);
-        assertTrue(addCs2100Command.equals(addCs2100CommandCopy));
+        AddModuleCommand addCs110CommandCopy = new AddModuleCommand(cs110.getModuleName());
+        assertTrue(addCs110Command.equals(addCs110CommandCopy));
 
         // different types -> returns false
-        assertFalse(addCs2100Command.equals(1));
+        assertFalse(addCs110Command.equals(1));
 
         // null -> returns false
-        assertFalse(addCs2100Command.equals(null));
+        assertFalse(addCs110Command.equals(null));
 
         // different module -> returns false
-        assertFalse(addCs2100Command.equals(addCs2103Command));
+        assertFalse(addCs110Command.equals(addCs220Command));
     }
 
     /**
@@ -118,42 +114,12 @@ public class AddModuleCommandTest {
         }
 
         @Override
-        public void addLink(Link link) {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
         public void setManageMe(ReadOnlyManageMe newData) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
         public ReadOnlyManageMe getManageMe() {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public boolean hasLink(Link link) {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public void deleteLink(Link target) {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public void setLink(Link target, Link editedLink) {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public ObservableList<Link> getFilteredLinkList() {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public void updateFilteredLinkList(Predicate<Link> predicate) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -178,6 +144,16 @@ public class AddModuleCommandTest {
         }
 
         @Override
+        public Optional<Module> getReadModule() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void setReadModule(Module module) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public ObservableList<Module> getFilteredModuleList() {
             throw new AssertionError("This method should not be called.");
         }
@@ -188,12 +164,27 @@ public class AddModuleCommandTest {
         }
 
         @Override
-        public Optional<Module> getReadModule() {
+        public boolean hasLink(Link link) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void setReadModule(Module module) {
+        public void addLink(Link link) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void deleteLink(Link link) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void setLink(Link target, Link editedLink) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void openLink(Link link) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -218,17 +209,22 @@ public class AddModuleCommandTest {
         }
 
         @Override
+        public ObservableList<Link> getFilteredLinkList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void updateFilteredLinkList(Predicate<Link> predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public ObservableList<Task> getFilteredTaskList() {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
         public ObservableList<Task> getUnfilteredTaskList() {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public ObservableList<Link> getUnfilteredLinkList() {
             throw new AssertionError("This method should not be called.");
         }
 

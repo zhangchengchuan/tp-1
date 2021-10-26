@@ -1,21 +1,16 @@
 package manageme.logic.commands.module;
 
+import static manageme.logic.parser.CliSyntax.PREFIX_LINK;
 import static manageme.logic.parser.CliSyntax.PREFIX_NAME;
 
-import manageme.testutil.EditModuleDescriptorBuilder;
-
 public class ModuleCommandTestUtil {
-    public static final String VALID_MODNAME_A = "CS2100";
-    public static final String VALID_MODNAME_B = "CS2103";
+    public static final String VALID_NAME_MODULE_A = "CS111";
+    public static final String VALID_NAME_MODULE_B = "CS222";
+    public static final String VALID_LINK_MODULE_A = "https://www.google.com";
+    public static final String VALID_LINK_MODULE_B = "https://www.github.com";
 
-    public static final String MODNAME_DESC_A = " " + PREFIX_NAME + VALID_MODNAME_A;
-    public static final String MODNAME_DESC_B = " " + PREFIX_NAME + VALID_MODNAME_B;
-
-    public static final EditModuleCommand.EditModuleDescriptor DESC_MODULE_A;
-    public static final EditModuleCommand.EditModuleDescriptor DESC_MODULE_B;
-
-    static {
-        DESC_MODULE_A = new EditModuleDescriptorBuilder().withName(VALID_MODNAME_A).build();
-        DESC_MODULE_B = new EditModuleDescriptorBuilder().withName(VALID_MODNAME_B).build();
-    }
+    public static final String NAME_DESC_MODULE_A = " " + PREFIX_NAME + VALID_NAME_MODULE_A;
+    public static final String NAME_DESC_MODULE_B = " " + PREFIX_NAME + VALID_NAME_MODULE_B;
+    public static final String LINK_DESC_MODULE_A = " " + PREFIX_LINK + VALID_LINK_MODULE_A;
+    public static final String LINK_DESC_MODULE_B = " " + PREFIX_LINK + VALID_LINK_MODULE_B;
 }

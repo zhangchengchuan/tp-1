@@ -66,7 +66,7 @@ public class FindModuleCommandTest {
     @Test
     public void execute_multipleKeywords_multipleModulesFound() {
         String expectedMessage = String.format(MESSAGE_MODULES_LISTED_OVERVIEW, 2);
-        ModNameContainsKeywordsPredicate predicate = preparePredicate("CS2100 CS2103");
+        ModNameContainsKeywordsPredicate predicate = preparePredicate("CS111 CS222");
         FindModuleCommand command = new FindModuleCommand(predicate);
         expectedModel.updateFilteredModuleList(predicate);
         assertCommandSuccess(command, model, expectedMessage, expectedModel);
