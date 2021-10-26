@@ -101,7 +101,7 @@ public class ParserUtil {
         }
         return new LinkModule(trimmedM);
     }
-    
+
     /**
      * Parses a {@code String tag} into a {@code Tag}.
      * Leading and trailing whitespaces will be trimmed.

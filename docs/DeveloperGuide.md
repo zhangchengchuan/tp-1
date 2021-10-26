@@ -243,11 +243,11 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* `     | User                                       | Search for a link using keywords                                      | I do not have to waste time opening module or task tab to find a link.                                    |
 | `*`      | User                                       | Search everywhere in the app                                          | I can search anything I want with minimum commands.                                                       |
 | `* *`    | New User                                   | Open the command summary to help me navigate the application          | I know how to use the application to perform the functions that I want.                                   |
-| `* *`    | Experienced User                           | Close the command summary                                             | It does not take up unnecessary screen space after I am familiar with the commands.                        |
+| `* *`    | Experienced User                           | Close the command summary                                             | It does not take up unnecessary screen space after I am familiar with the commands.                       |
 | `*`      | User who likes to customize                | Personalise the appearance of the application                         | I can change the appearance of the application to my liking.                                              |
 | `* *`    | Long-term user                             | Clear all tasks and modules                                           | I can easily reset the app when a new semester starts.                                                    |
 | `*`      | Long-term user                             | Archive all the data                                                  | I can find my old tasks and module when I need to.                                                        |
-| `*`      | Long-term user                             | Load previous data                                                    | I can read my old tasks and module when I need to.                                                        |  
+| `*`      | Long-term user                             | Load previous data                                                    | I can read my old tasks and module when I need to.                                                        |
 
 
 ### Use cases
@@ -435,7 +435,7 @@ testers are expected to do more *exploratory* testing.
 
     1. If there is a `data/manageme.json` file in the same directory with the jar, open the file and remove a random bracket. Launch the program.<br>
        Expected: Warning of invalid json file will be shown in terminal. An empty manageme is launched.
-    
+
     2. If there isn't a `data/manageme.json` file in the same directory with the jar. Launch the program and add a random task. Close the program. Remove a random bracket from the data file. Relaunch the program.<br>
        Expected: Warning of invalid json file will be shown in terminal. An empty manageme is launched.
 
