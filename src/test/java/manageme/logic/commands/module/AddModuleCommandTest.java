@@ -16,9 +16,7 @@ import java.util.function.Predicate;
 
 import org.junit.jupiter.api.Test;
 
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.collections.transformation.FilteredList;
 import manageme.commons.core.GuiSettings;
 import manageme.logic.commands.CommandResult;
 import manageme.logic.commands.exceptions.CommandException;
@@ -246,22 +244,9 @@ public class AddModuleCommandTest {
     private class ModelStubWithModule extends AddModuleCommandTest.ModelStub {
         private final Module module;
 
-        private ObservableList<Task> emptyTaskList = FXCollections.emptyObservableList();
-        private ObservableList<Link> emptyLinkList = FXCollections.emptyObservableList();
-
         ModelStubWithModule(Module module) {
             requireNonNull(module);
             this.module = module;
-        }
-
-        @Override
-        public ObservableList<Task> getUnfilteredTaskList() {
-            return new FilteredList<Task>(emptyTaskList);
-        }
-
-        @Override
-        public ObservableList<Link> getUnfilteredLinkList() {
-            return new FilteredList<>(emptyLinkList);
         }
 
         @Override
@@ -276,19 +261,6 @@ public class AddModuleCommandTest {
      */
     private class ModelStubAcceptingModuleAdded extends AddModuleCommandTest.ModelStub {
         final ArrayList<Module> modulesAdded = new ArrayList<>();
-
-        private ObservableList<Task> emptyTaskList = FXCollections.emptyObservableList();
-        private ObservableList<Link> emptyLinkList = FXCollections.emptyObservableList();
-
-        @Override
-        public ObservableList<Task> getUnfilteredTaskList() {
-            return new FilteredList<Task>(emptyTaskList);
-        }
-
-        @Override
-        public ObservableList<Link> getUnfilteredLinkList() {
-            return new FilteredList<>(emptyLinkList);
-        }
 
         @Override
         public boolean hasModule(Module module) {

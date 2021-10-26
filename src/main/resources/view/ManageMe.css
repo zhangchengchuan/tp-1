@@ -1,7 +1,7 @@
 * {
     -menuBar-color: salmon;
     -bg-color: lightpink;
-    -panel-color:mistyrose;
+    -panel-color: mistyrose;
     -calendar-color: floralwhite;
     -cardPane-color: navajowhite;
     -hasTask-color: mediumspringgreen;
@@ -20,6 +20,10 @@
     -fx-font-size: 15px;
 }
 
+.scroll-bar,
+#readLinkList,
+#readTaskList,
+#reminderTaskList,
 #moduleListPanelPlaceholder,
 #linkListPanelPlaceholder,
 #taskListPanelPlaceholder,
@@ -28,6 +32,10 @@
     -fx-background-color: -panel-color;
 }
 
+.scroll-bar .thumb,
+#reminderWindow,
+#helpWindow,
+#readModulePane,
 #resultDisplayPlaceholder,
 #commandBoxPlaceholder,
 #calendar,
@@ -39,6 +47,7 @@
 
 #commandTextField {
     -fx-background-color: -panel-color;
+    -fx-font-family: "Fligen";
     -fx-font-size: 15px;
     -fx-prompt-text-fill: #000000;
 }
@@ -47,15 +56,10 @@
     -fx-font-size: 20px;
 }
 
-#module,
-#link,
-#task {
-    -fx-background-color: -panel-color;
-    -fx-font-weight: bold;
-}
-
 #moduleListView,
-#cardPane,
+#linkCardPane,
+#moduleCardPane,
+#taskCardPane,
 #taskListView,
 #linkListView,
 #linkListView .list-cell:empty,
@@ -70,24 +74,30 @@
     -fx-background-color: -calendar-color;
 }
 
-#date {
-    -fx-background-color: transparent;
-    -fx-font-weight: bold;
-}
-
 #readDayPanelPlaceholder,
 #readDayTitlePlaceholder {
     -fx-background-color: -readDay-color;
 }
 
+#taskCardPane:inReminder,
 .list-view .list-cell {
     -fx-background-color: -cardPane-color;
     -fx-background-insets: 5px;
 }
 
+.button,
 .label {
-    -fx-font-size: 15px;
+    -fx-font-family: "Fligen";
+    -fx-font-size: 12px;
     -fx-text-fill: #000000;
+}
+
+#taskCardPane:isDone {
+    -fx-background-color: mediumaquamarine;
+}
+
+#taskCardPane:overdue {
+    -fx-background-color: orangered;
 }
 
 #hasTask {
@@ -102,6 +112,7 @@
 }
 
 #dayCardPane:selected {
+    -fx-background-radius: 10px;
     -fx-background-color: tomato;
     -fx-text-fill: #ffffff;
 }
@@ -116,15 +127,41 @@
     -fx-stroke: -hasTask-color;
 }
 
-.scroll-bar .increment-arrow,
-.scroll-bar .decrement-arrow,
-.scroll-bar .increment-button,
-.scroll-bar .decrement-button {
-    -fx-padding: 0;
+.scroll-bar .thumb {
+    -fx-background-insets: 3;
 }
 
+.scroll-bar .increment-button,
+.scroll-bar .decrement-button {
+    -fx-background-color: transparent;
+    -fx-padding: 0 0 0 0;
+}
+
+.scroll-bar .increment-arrow,
+.scroll-bar .decrement-arrow {
+    -background-color: transparent;
+    -fx-shape: "";
+}
+
+.scroll-bar:vertical .increment-arrow,
+.scroll-bar:vertical .decrement-arrow {
+    -fx-background-color: transparent;
+    -fx-padding: 1 5 1 5;
+}
+
+.scroll-bar:horizontal .increment-arrow,
+.scroll-bar:horizontal .decrement-arrow {
+    -fx-background-color: transparent;
+    -fx-padding: 5 1 5 1;
+}
+
+#moduleId,
+#moduleName,
+#linkId,
+#linkName,
 #taskId,
-#taskName {
+#taskName,
+#readDayTitle {
     -fx-font-size: 15px;
 }
 
@@ -132,4 +169,31 @@
 #startTime,
 #endTime {
     -fx-font-size: 10px;
+}
+
+.button {
+    -fx-padding: 2 2 2 2;
+    -fx-border-color: red;
+    -fx-border-width: 2;
+    -fx-border-radius: 20;
+    -fx-background-radius: 20;
+    -fx-background-color: orange;
+    -fx-text-fill: yellow;
+    -fx-background-insets: 0 0 0 0, 0, 1, 2;
+}
+
+.button:hover {
+    -fx-border-color: red;
+    -fx-background-color: blue;
+    -fx-text-fill: yellow;
+}
+
+.header {
+    -fx-font-size: 20px;
+    -fx-background-color: -panel-color;
+}
+
+#resultDisplay {
+    -fx-font-family: "Fligen";
+    -fx-font-size: 18px;
 }

@@ -7,8 +7,7 @@ import java.util.Optional;
 
 
 public class TaskModule {
-    public static final String MESSAGE_CONSTRAINTS =
-            "Modules should only contain alphanumeric characters " + "and spaces";
+    public static final String MESSAGE_CONSTRAINTS = "Modules should only contain alphanumeric characters and spaces";
     /*
      * The first character of the address must not be a whitespace,
      * otherwise " " (a blank string) becomes a valid input.

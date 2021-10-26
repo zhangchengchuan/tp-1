@@ -65,18 +65,18 @@ public class EditModuleCommandTest {
         assertCommandSuccess(editModuleCommand, model, expectedMessage, expectedModel);
     }
 
-    //    @Test
-    //    public void execute_noFieldSpecifiedUnfilteredList_success() {
-    //        EditModuleCommand editModuleCommand = new EditModuleCommand(
-    //                INDEX_FIRST, new EditModuleCommand.EditModuleDescriptor());
-    //        Module editedModule = model.getFilteredModuleList().get(INDEX_FIRST.getZeroBased());
-    //
-    //        String expectedMessage = String.format(editModuleCommand.MESSAGE_EDIT_MODULE_SUCCESS, editedModule);
-    //
-    //        Model expectedModel = new ModelManager(new ManageMe(model.getManageMe()), new UserPrefs());
-    //
-    //        assertCommandSuccess(editModuleCommand, model, expectedMessage, expectedModel);
-    //    }
+    @Test
+    public void execute_noFieldSpecifiedUnfilteredList_success() {
+        EditModuleCommand editModuleCommand = new EditModuleCommand(
+                INDEX_FIRST, new EditModuleCommand.EditModuleDescriptor());
+        Module editedModule = model.getFilteredModuleList().get(INDEX_FIRST.getZeroBased());
+
+        String expectedMessage = String.format(editModuleCommand.MESSAGE_EDIT_MODULE_SUCCESS, editedModule);
+
+        Model expectedModel = new ModelManager(new ManageMe(model.getManageMe()), new UserPrefs());
+
+        assertCommandSuccess(editModuleCommand, model, expectedMessage, expectedModel);
+    }
 
     @Test
     public void execute_filteredList_success() {
