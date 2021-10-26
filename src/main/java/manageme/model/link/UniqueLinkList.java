@@ -80,6 +80,11 @@ public class UniqueLinkList implements Iterable<Link> {
         }
     }
 
+    /**
+     * Removes all links related to a module when a module is removed.
+     *
+     * @param module module to remove
+     */
     public void removeMod(Module module) {
         requireNonNull(module);
         int i = 0;
