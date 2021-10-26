@@ -73,7 +73,7 @@ public class LinkAddress {
             Desktop desktop = Desktop.getDesktop();
             try {
                 desktop.open(toOpen);
-            } catch (IOException e){
+            } catch (IOException e) {
                 throw new FileNotOpenException();
             }
         }
