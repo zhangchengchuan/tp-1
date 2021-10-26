@@ -1,4 +1,4 @@
-package manageme.logic.commands.task;
+package manageme.logic.commands.link;
 
 import static java.util.Objects.requireNonNull;
 import static manageme.testutil.Assert.assertThrows;
@@ -25,60 +25,60 @@ import manageme.model.ReadOnlyUserPrefs;
 import manageme.model.link.Link;
 import manageme.model.module.Module;
 import manageme.model.task.Task;
-import manageme.testutil.TaskBuilder;
+import manageme.testutil.LinkBuilder;
 
-public class AddTaskCommandTest {
+public class AddLinkCommandTest {
+
     @Test
-    public void constructor_nullTask_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> new AddTaskCommand(null));
+    public void constructor_nullLink_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> new AddLinkCommand(null));
     }
 
     @Test
-    public void execute_taskAcceptedByModel_addSuccessful() throws Exception {
-        AddTaskCommandTest.ModelStubAcceptingTaskAdded modelStub =
-                new AddTaskCommandTest.ModelStubAcceptingTaskAdded();
-        Task validTask = new TaskBuilder().build();
+    public void execute_linkAcceptedByModel_addSuccessful() throws Exception {
+        ModelStubAcceptingLinkAdded modelStub = new ModelStubAcceptingLinkAdded();
+        Link validLink = new LinkBuilder().build();
 
-        CommandResult commandResult = new AddTaskCommand(validTask).execute(modelStub);
+        CommandResult commandResult = new AddLinkCommand(validLink).execute(modelStub);
 
-        assertEquals(String.format(AddTaskCommand.MESSAGE_SUCCESS, validTask),
-                commandResult.getFeedbackToUser());
-        assertEquals(Arrays.asList(validTask), modelStub.tasksAdded);
+        assertEquals(String.format(AddLinkCommand.MESSAGE_SUCCESS, validLink), commandResult.getFeedbackToUser());
+        assertEquals(Arrays.asList(validLink), modelStub.linksAdded);
     }
 
     @Test
-    public void execute_duplicateTask_throwsCommandException() {
-        Task validTask = new TaskBuilder().build();
-        AddTaskCommand addTaskCommand = new AddTaskCommand(validTask);
-        AddTaskCommandTest.ModelStub modelStub = new AddTaskCommandTest.ModelStubWithTask(validTask);
+    public void execute_duplicateLink_throwsCommandException() {
+        Link validLink = new LinkBuilder().build();
+        AddLinkCommand addCommand = new AddLinkCommand(validLink);
+        ModelStub modelStub = new ModelStubWithLink(validLink);
 
-        assertThrows(CommandException.class, AddTaskCommand.MESSAGE_DUPLICATE_TASK, ()
-            -> addTaskCommand.execute(modelStub));
+        assertThrows(CommandException.class,
+                AddLinkCommand.MESSAGE_DUPLICATE_LINK, () -> addCommand.execute(modelStub));
     }
 
     @Test
     public void equals() {
-        Task taskA = new TaskBuilder().withName("TaskA").build();
-        Task taskB = new TaskBuilder().withName("TaskB").build();
-        AddTaskCommand addACommand = new AddTaskCommand(taskA);
-        AddTaskCommand addBCommand = new AddTaskCommand(taskB);
+        Link cs2100 = new LinkBuilder().withName("CS2100").build();
+        Link cs2103 = new LinkBuilder().withName("CS2103").build();
+        AddLinkCommand addCs2100Command = new AddLinkCommand(cs2100);
+        AddLinkCommand addCs2103Command = new AddLinkCommand(cs2103);
 
         // same object -> returns true
-        assertTrue(addACommand.equals(addACommand));
+        assertTrue(addCs2100Command.equals(addCs2100Command));
 
         // same values -> returns true
-        AddTaskCommand addACommandCopy = new AddTaskCommand(taskA);
-        assertTrue(addACommand.equals(addACommandCopy));
+        AddLinkCommand addCs2100CommandCopy = new AddLinkCommand(cs2100);
+        assertTrue(addCs2100Command.equals(addCs2100CommandCopy));
 
         // different types -> returns false
-        assertFalse(addACommand.equals(1));
+        assertFalse(addCs2100Command.equals(1));
 
         // null -> returns false
-        assertFalse(addACommand.equals(null));
+        assertFalse(addCs2100Command.equals(null));
 
         // different link -> returns false
-        assertFalse(addACommand.equals(addBCommand));
+        assertFalse(addCs2100Command.equals(addCs2103Command));
     }
+
     /**
      * A default model stub that have all of the methods failing.
      */
@@ -228,6 +228,7 @@ public class AddTaskCommandTest {
             throw new AssertionError("This method should not be called.");
         }
 
+
         @Override
         public void updateFilteredTaskList(Predicate<Task> predicate) {
             throw new AssertionError("This method should not be called.");
@@ -237,37 +238,37 @@ public class AddTaskCommandTest {
     /**
      * A Model stub that contains a single link.
      */
-    private class ModelStubWithTask extends AddTaskCommandTest.ModelStub {
-        private final Task task;
+    private class ModelStubWithLink extends ModelStub {
+        private final Link link;
 
-        ModelStubWithTask(Task task) {
-            requireNonNull(task);
-            this.task = task;
+        ModelStubWithLink(Link link) {
+            requireNonNull(link);
+            this.link = link;
         }
 
         @Override
-        public boolean hasTask(Task task) {
-            requireNonNull(task);
-            return this.task.isSameTask(task);
+        public boolean hasLink(Link link) {
+            requireNonNull(link);
+            return this.link.isSameLink(link);
         }
     }
 
     /**
-     * A Model stub that always accept the task being added.
+     * A Model stub that always accept the link being added.
      */
-    private class ModelStubAcceptingTaskAdded extends AddTaskCommandTest.ModelStub {
-        final ArrayList<Task> tasksAdded = new ArrayList<>();
+    private class ModelStubAcceptingLinkAdded extends ModelStub {
+        final ArrayList<Link> linksAdded = new ArrayList<>();
 
         @Override
-        public boolean hasTask(Task task) {
-            requireNonNull(task);
-            return tasksAdded.stream().anyMatch(task::isSameTask);
+        public boolean hasLink(Link link) {
+            requireNonNull(link);
+            return linksAdded.stream().anyMatch(link::isSameLink);
         }
 
         @Override
-        public void addTask(Task task) {
-            requireNonNull(task);
-            tasksAdded.add(task);
+        public void addLink(Link link) {
+            requireNonNull(link);
+            linksAdded.add(link);
         }
 
         @Override
@@ -275,4 +276,5 @@ public class AddTaskCommandTest {
             return new ManageMe();
         }
     }
+
 }

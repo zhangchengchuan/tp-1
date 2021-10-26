@@ -1,11 +1,10 @@
 package manageme.testutil;
 
-import manageme.model.link.Link;
 import manageme.model.module.Module;
 import manageme.model.module.ModuleName;
 
 public class ModuleBuilder {
-    public static final String DEFAULT_NAME = "CS2103T";;
+    public static final String DEFAULT_NAME = "CS2100";
 
     private ModuleName name;
 

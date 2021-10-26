@@ -1,11 +1,9 @@
 {
-  "persons" : [ ],
+  "links" : [ ],
   "modules": [ {
-    "modName" : "CS111",
-    "link" : "https://www.google.com"
+    "modName" : "CS111"
   } , {
-    "modName" : "CS111",
-    "link" : "https://www.google.com"
+    "modName" : "CS111"
   } ],
   "tasks": [ ]
 }
