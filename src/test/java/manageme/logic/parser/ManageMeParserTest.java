@@ -2,6 +2,7 @@ package manageme.logic.parser;
 
 import static manageme.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static manageme.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
+import static manageme.logic.commands.module.ModuleCommandTestUtil.VALID_MODNAME_A;
 import static manageme.testutil.Assert.assertThrows;
 import static manageme.testutil.TypicalIndexes.INDEX_FIRST;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -14,18 +15,16 @@ import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.Test;
 
-import manageme.logic.commands.AddCommand;
 import manageme.logic.commands.ClearCommand;
-import manageme.logic.commands.DeleteCommand;
-import manageme.logic.commands.EditCommand;
-import manageme.logic.commands.EditCommand.EditPersonDescriptor;
 import manageme.logic.commands.ExitCommand;
-import manageme.logic.commands.FindCommand;
 import manageme.logic.commands.HelpCommand;
-import manageme.logic.commands.ListCommand;
 import manageme.logic.commands.calendar.NextMonthCommand;
 import manageme.logic.commands.calendar.PreviousMonthCommand;
 import manageme.logic.commands.calendar.ReadDayCommand;
+import manageme.logic.commands.link.AddLinkCommand;
+import manageme.logic.commands.link.DeleteLinkCommand;
+import manageme.logic.commands.link.EditLinkCommand;
+import manageme.logic.commands.link.EditLinkCommand.EditLinkDescriptor;
 import manageme.logic.commands.module.AddModuleCommand;
 import manageme.logic.commands.module.DeleteModuleCommand;
 import manageme.logic.commands.module.EditModuleCommand;
@@ -33,82 +32,103 @@ import manageme.logic.commands.module.EditModuleCommand.EditModuleDescriptor;
 import manageme.logic.commands.module.FindModuleCommand;
 import manageme.logic.commands.module.ListModuleCommand;
 import manageme.logic.parser.exceptions.ParseException;
+import manageme.model.link.Link;
 import manageme.model.module.ModNameContainsKeywordsPredicate;
 import manageme.model.module.Module;
-import manageme.model.person.NameContainsKeywordsPredicate;
-import manageme.model.person.Person;
+<<<<<<< HEAD
 import manageme.testutil.EditModuleDescriptorBuilder;
-import manageme.testutil.EditPersonDescriptorBuilder;
+=======
+import manageme.model.module.ModuleName;
+import manageme.testutil.EditLinkDescriptorBuilder;
+import manageme.testutil.EditModuleDescriptorBuilder;
+import manageme.testutil.LinkBuilder;
+import manageme.testutil.LinkUtil;
+>>>>>>> 785e076494ea707cccfc66ae26761543be13828f
 import manageme.testutil.ModuleBuilder;
 import manageme.testutil.ModuleUtil;
-import manageme.testutil.PersonBuilder;
-import manageme.testutil.PersonUtil;
 
 public class ManageMeParserTest {
 
     private final ManageMeParser parser = new ManageMeParser();
 
     @Test
-    public void parseCommand_add() throws Exception {
-        Person person = new PersonBuilder().build();
-        AddCommand command = (AddCommand) parser.parseCommand(PersonUtil.getAddCommand(person));
-        assertEquals(new AddCommand(person), command);
+<<<<<<< HEAD
+=======
+    public void parseCommand_addLink() throws Exception {
+        Link link = new LinkBuilder().build();
+        AddLinkCommand command = (AddLinkCommand) parser.parseCommand(LinkUtil.getAddLinkCommand(link));
+        assertEquals(new AddLinkCommand(link), command);
     }
 
     @Test
+>>>>>>> 785e076494ea707cccfc66ae26761543be13828f
     public void parseCommand_clear() throws Exception {
         assertTrue(parser.parseCommand(ClearCommand.COMMAND_WORD) instanceof ClearCommand);
         assertTrue(parser.parseCommand(ClearCommand.COMMAND_WORD + " 3") instanceof ClearCommand);
     }
 
     @Test
-    public void parseCommand_delete() throws Exception {
-        DeleteCommand command = (DeleteCommand) parser.parseCommand(
-                DeleteCommand.COMMAND_WORD + " " + INDEX_FIRST.getOneBased());
-        assertEquals(new DeleteCommand(INDEX_FIRST), command);
+<<<<<<< HEAD
+=======
+    public void parseCommand_deleteLink() throws Exception {
+        DeleteLinkCommand command = (DeleteLinkCommand) parser.parseCommand(
+                DeleteLinkCommand.COMMAND_WORD + " " + INDEX_FIRST.getOneBased());
+        assertEquals(new DeleteLinkCommand(INDEX_FIRST), command);
     }
 
     @Test
-    public void parseCommand_edit() throws Exception {
-        Person person = new PersonBuilder().build();
-        EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder(person).build();
-        EditCommand command = (EditCommand) parser.parseCommand(EditCommand.COMMAND_WORD + " "
-                + INDEX_FIRST.getOneBased() + " " + PersonUtil.getEditPersonDescriptorDetails(descriptor));
-        assertEquals(new EditCommand(INDEX_FIRST, descriptor), command);
+    public void parseCommand_editLink() throws Exception {
+        Link link = new LinkBuilder().build();
+        EditLinkDescriptor descriptor = new EditLinkDescriptorBuilder(link).build();
+        EditLinkCommand command = (EditLinkCommand) parser.parseCommand(EditLinkCommand.COMMAND_WORD + " "
+                + INDEX_FIRST.getOneBased() + " " + LinkUtil.getEditLinkDescriptorDetails(descriptor));
+        assertEquals(new EditLinkCommand(INDEX_FIRST, descriptor), command);
     }
 
     @Test
+>>>>>>> 785e076494ea707cccfc66ae26761543be13828f
     public void parseCommand_exit() throws Exception {
         assertTrue(parser.parseCommand(ExitCommand.COMMAND_WORD) instanceof ExitCommand);
         assertTrue(parser.parseCommand(ExitCommand.COMMAND_WORD + " 3") instanceof ExitCommand);
     }
 
-    @Test
-    public void parseCommand_find() throws Exception {
-        List<String> keywords = Arrays.asList("foo", "bar", "baz");
-        FindCommand command = (FindCommand) parser.parseCommand(
-                FindCommand.COMMAND_WORD + " " + keywords.stream().collect(Collectors.joining(" ")));
-        assertEquals(new FindCommand(new NameContainsKeywordsPredicate(keywords)), command);
-    }
+<<<<<<< HEAD
+=======
+    //@Test
+    //public void parseCommand_find() throws Exception {
+    //    List<String> keywords = Arrays.asList("foo", "bar", "baz");
+    //    FindCommand command = (FindCommand) parser.parseCommand(
+    //            FindCommand.COMMAND_WORD + " " + keywords.stream().collect(Collectors.joining(" ")));
+    //    assertEquals(new FindCommand(new NameContainsKeywordsPredicate(keywords)), command);
+    //}
 
+>>>>>>> 785e076494ea707cccfc66ae26761543be13828f
     @Test
     public void parseCommand_help() throws Exception {
         assertTrue(parser.parseCommand(HelpCommand.COMMAND_WORD) instanceof HelpCommand);
         assertTrue(parser.parseCommand(HelpCommand.COMMAND_WORD + " 3") instanceof HelpCommand);
     }
 
-    @Test
-    public void parseCommand_list() throws Exception {
-        assertTrue(parser.parseCommand(ListCommand.COMMAND_WORD) instanceof ListCommand);
-        assertTrue(parser.parseCommand(ListCommand.COMMAND_WORD + " 3") instanceof ListCommand);
-    }
+<<<<<<< HEAD
+=======
+    //@Test
+    //public void parseCommand_list() throws Exception {
+    //    assertTrue(parser.parseCommand(ListCommand.COMMAND_WORD) instanceof ListCommand);
+    //    assertTrue(parser.parseCommand(ListCommand.COMMAND_WORD + " 3") instanceof ListCommand);
+    //}
 
 
+>>>>>>> 785e076494ea707cccfc66ae26761543be13828f
     @Test
     public void parseCommand_addModule() throws Exception {
+        ModuleName moduleName = new ModuleName(VALID_MODNAME_A);
         Module module = new ModuleBuilder().build();
         AddModuleCommand command = (AddModuleCommand) parser.parseCommand(ModuleUtil.getAddModuleCommand(module));
-        assertEquals(new AddModuleCommand(module), command);
+<<<<<<< HEAD
+        assertEquals(new AddModuleCommand(module.getModuleName()), command);
+=======
+        assertEquals(new AddModuleCommand(moduleName), command);
+>>>>>>> 785e076494ea707cccfc66ae26761543be13828f
     }
 
     @Test

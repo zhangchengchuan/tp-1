@@ -2,12 +2,12 @@ package manageme.logic.commands.task;
 
 import static manageme.logic.commands.CommandTestUtil.assertCommandFailure;
 import static manageme.logic.commands.CommandTestUtil.assertCommandSuccess;
+import static manageme.logic.commands.CommandTestUtil.showTaskAtIndex;
 import static manageme.logic.commands.task.TaskCommandTestUtil.DESC_A;
 import static manageme.logic.commands.task.TaskCommandTestUtil.DESC_B;
 import static manageme.logic.commands.task.TaskCommandTestUtil.VALID_DESCRIPTION_B;
 import static manageme.logic.commands.task.TaskCommandTestUtil.VALID_MODULE_B;
 import static manageme.logic.commands.task.TaskCommandTestUtil.VALID_NAME_B;
-import static manageme.logic.commands.task.TaskCommandTestUtil.showTaskAtIndex;
 import static manageme.testutil.TypicalIndexes.INDEX_FIRST;
 import static manageme.testutil.TypicalIndexes.INDEX_SECOND;
 import static manageme.testutil.TypicalManageMe.getTypicalManageMe;

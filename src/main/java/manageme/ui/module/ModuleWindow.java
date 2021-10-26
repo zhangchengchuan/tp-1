@@ -1,7 +1,9 @@
 package manageme.ui.module;
 
-import java.util.List;
+import java.util.Optional;
 
+import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
@@ -10,6 +12,7 @@ import manageme.model.link.Link;
 import manageme.model.module.Module;
 import manageme.model.task.Task;
 import manageme.ui.UiPart;
+import manageme.ui.link.LinkCard;
 import manageme.ui.task.TaskCard;
 
 public class ModuleWindow extends UiPart<Stage> {
@@ -47,15 +50,16 @@ public class ModuleWindow extends UiPart<Stage> {
     /**
      * Displays module details to the user.
      *
-     * @param onlyModuleInList The filterModuleList that only contains the specific module that user requested to read.
+     * @param optionalModule the Optional that contains the specific module user requested to read.
      */
-    public void display(List<Module> onlyModuleInList) {
-        this.module = onlyModuleInList.get(0);
+    public void display(Optional<Module> optionalModule, ObservableList<Link> unfilteredLinkList,
+                        ObservableList<Task> unfilteredTaskList) {
+        this.module = optionalModule.get();
         resetWindow();
-        moduleWindow.setTitle(module.getModuleName().name);
-        name.setText(module.getModuleName().name);
-        fillLinkList(module.getLink());
-        //fillTaskList(module.getTask());
+        moduleWindow.setTitle(module.getModuleName().value);
+        name.setText(module.getModuleName().value);
+        fillLinkList(module, unfilteredLinkList);
+        fillTaskList(module, unfilteredTaskList);
         moduleWindow.showAndWait();
     }
 
@@ -69,23 +73,39 @@ public class ModuleWindow extends UiPart<Stage> {
 
     /**
      * Fills up the task list.
-     *
-     * @param tasks the Task objects.
      */
-    public void fillTaskList(List<Task> tasks) {
+    public void fillTaskList(Module module, ObservableList<Task> unfilteredTaskList) {
+        FilteredList<Task> tasks = unfilteredTaskList.filtered(task -> {
+            Optional<String> taskModule = task.getTaskModule().moduleName;
+
+            if (taskModule.isEmpty()) {
+                return false;
+            }
+
+            return module.getModuleName().value.equals(taskModule.get());
+        });
+
         for (int i = 0; i < tasks.size(); i++) {
-            taskList.getChildren().add(new TaskCard(tasks.get(i), i).getRoot());
+            taskList.getChildren().add(new TaskCard(tasks.get(i), i + 1).getRoot());
         }
     }
 
     /**
      * Fills up the link list.
-     *
-     * @param links the Link objects.
      */
-    public void fillLinkList(List<Link> links) {
+    public void fillLinkList(Module module, ObservableList<Link> unfilteredLinkList) {
+        FilteredList<Link> links = unfilteredLinkList.filtered(link -> {
+            Optional<String> linkModule = link.getLinkModule().moduleName;
+
+            if (linkModule.isEmpty()) {
+                return false;
+            }
+
+            return module.getModuleName().value.equals(linkModule.get());
+        });
+
         for (int i = 0; i < links.size(); i++) {
-            linkList.getChildren().add(new LinkCard(links.get(i), i).getRoot());
+            linkList.getChildren().add(new LinkCard(links.get(i), i + 1).getRoot());
         }
     }
 

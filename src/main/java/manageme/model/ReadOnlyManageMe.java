@@ -3,8 +3,8 @@ package manageme.model;
 import java.util.ArrayList;
 
 import javafx.collections.ObservableList;
+import manageme.model.link.Link;
 import manageme.model.module.Module;
-import manageme.model.person.Person;
 import manageme.model.task.Task;
 
 
@@ -14,10 +14,10 @@ import manageme.model.task.Task;
 public interface ReadOnlyManageMe {
 
     /**
-     * Returns an unmodifiable view of the persons list.
-     * This list will not contain any duplicate persons.
+     * Returns an unmodifiable view of the links list.
+     * This list will not contain any duplicate links.
      */
-    ObservableList<Person> getPersonList();
+    ObservableList<Link> getLinkList();
 
     /**
      * Returns an unmodifiable view of the modules list.

@@ -1,7 +1,7 @@
 package manageme.logic.commands.task;
 
 import static manageme.logic.commands.CommandTestUtil.assertCommandSuccess;
-import static manageme.logic.commands.task.TaskCommandTestUtil.showTaskAtIndex;
+import static manageme.logic.commands.CommandTestUtil.showTaskAtIndex;
 import static manageme.testutil.TypicalIndexes.INDEX_FIRST;
 import static manageme.testutil.TypicalManageMe.getTypicalManageMe;
 

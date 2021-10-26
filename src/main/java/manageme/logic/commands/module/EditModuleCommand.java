@@ -1,7 +1,6 @@
 package manageme.logic.commands.module;
 
 import static java.util.Objects.requireNonNull;
-import static manageme.logic.parser.CliSyntax.PREFIX_LINK;
 import static manageme.logic.parser.CliSyntax.PREFIX_NAME;
 import static manageme.model.Model.PREDICATE_SHOW_ALL_MODULES;
 
@@ -15,7 +14,6 @@ import manageme.logic.commands.Command;
 import manageme.logic.commands.CommandResult;
 import manageme.logic.commands.exceptions.CommandException;
 import manageme.model.Model;
-import manageme.model.link.Link;
 import manageme.model.module.Module;
 import manageme.model.module.ModuleName;
 
@@ -29,26 +27,25 @@ public class EditModuleCommand extends Command {
             + "by the index number used in the displayed module list. "
             + "Existing values will be overwritten by the input values.\n"
             + "Parameters: INDEX (must be a positive integer) "
-            + "[" + PREFIX_NAME + "NAME] "
-            + "[" + PREFIX_LINK + "LINK] ";
+            + "[" + PREFIX_NAME + "NAME] ";
 
     public static final String MESSAGE_EDIT_MODULE_SUCCESS = "Edited module: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
     public static final String MESSAGE_DUPLICATE_MODULE = "This module already exists in the app.";
 
     private final Index index;
-    private final EditModuleCommand.EditModuleDescriptor editModuleDescriptor;
+    private final EditModuleDescriptor editModuleDescriptor;
 
     /**
      * @param index of the module in the filtered module list to edit
      * @param editModuleDescriptor details to edit the module with
      */
-    public EditModuleCommand(Index index, EditModuleCommand.EditModuleDescriptor editModuleDescriptor) {
+    public EditModuleCommand(Index index, EditModuleDescriptor editModuleDescriptor) {
         requireNonNull(index);
         requireNonNull(editModuleDescriptor);
 
         this.index = index;
-        this.editModuleDescriptor = new EditModuleCommand.EditModuleDescriptor(editModuleDescriptor);
+        this.editModuleDescriptor = new EditModuleDescriptor(editModuleDescriptor);
     }
 
     @Override
@@ -76,14 +73,11 @@ public class EditModuleCommand extends Command {
      * Creates and returns a {@code Module} with the details of {@code ModuleToEdit}
      * edited with {@code editModuleDescriptor}.
      */
-    private static Module createEditedModule(Module moduleToEdit,
-                                             EditModuleCommand.EditModuleDescriptor editModuleDescriptor) {
-        assert moduleToEdit != null;
+    private static Module createEditedModule(Module moduleToEdit, EditModuleDescriptor editModuleDescriptor) {
 
         ModuleName updatedName = editModuleDescriptor.getModuleName().orElse(moduleToEdit.getModuleName());
-        Link updatedlink = editModuleDescriptor.getLink().orElse(moduleToEdit.getLink());
 
-        return new Module(updatedName, updatedlink);
+        return new Module(updatedName);
     }
 
     @Override
@@ -110,7 +104,6 @@ public class EditModuleCommand extends Command {
      */
     public static class EditModuleDescriptor {
         private ModuleName moduleName;
-        private Link link;
 
         public EditModuleDescriptor() {}
 
@@ -118,16 +111,15 @@ public class EditModuleCommand extends Command {
          * Copy constructor.
          * A defensive copy of {@code tags} is used internally.
          */
-        public EditModuleDescriptor(EditModuleCommand.EditModuleDescriptor toCopy) {
+        public EditModuleDescriptor(EditModuleDescriptor toCopy) {
             setModuleName(toCopy.moduleName);
-            setLink(toCopy.link);
         }
 
         /**
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(moduleName, link);
+            return CollectionUtil.isAnyNonNull(moduleName);
         }
 
         public void setModuleName(ModuleName moduleName) {
@@ -138,14 +130,6 @@ public class EditModuleCommand extends Command {
             return Optional.ofNullable(moduleName);
         }
 
-        public void setLink(Link link) {
-            this.link = link;
-        }
-
-        public Optional<Link> getLink() {
-            return Optional.ofNullable(link);
-        }
-
         @Override
         public boolean equals(Object other) {
             // short circuit if same object
@@ -154,15 +138,14 @@ public class EditModuleCommand extends Command {
             }
 
             // instanceof handles nulls
-            if (!(other instanceof EditModuleCommand.EditModuleDescriptor)) {
+            if (!(other instanceof EditModuleDescriptor)) {
                 return false;
             }
 
             // state check
-            EditModuleCommand.EditModuleDescriptor e = (EditModuleCommand.EditModuleDescriptor) other;
+            EditModuleDescriptor e = (EditModuleDescriptor) other;
 
-            return getModuleName().equals(e.getModuleName())
-                    && getLink().equals(e.getLink());
+            return getModuleName().equals(e.getModuleName());
         }
     }
 }

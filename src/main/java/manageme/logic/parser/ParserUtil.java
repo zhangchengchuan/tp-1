@@ -11,12 +11,11 @@ import java.util.Set;
 import manageme.commons.core.index.Index;
 import manageme.commons.util.StringUtil;
 import manageme.logic.parser.exceptions.ParseException;
-import manageme.model.link.Link;
+import manageme.model.link.LinkAddress;
+import manageme.model.link.LinkModule;
+import manageme.model.link.LinkName;
 import manageme.model.module.ModuleName;
-import manageme.model.person.Address;
-import manageme.model.person.Email;
-import manageme.model.person.Name;
-import manageme.model.person.Phone;
+
 import manageme.model.tag.Tag;
 import manageme.model.task.TaskDescription;
 import manageme.model.task.TaskModule;
@@ -44,18 +43,18 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String name} into a {@code Name}.
+     * Parses a {@code String name} into a {@code LinkName}.
      * Leading and trailing whitespaces will be trimmed.
      *
      * @throws ParseException if the given {@code name} is invalid.
      */
-    public static Name parseName(String name) throws ParseException {
+    public static LinkName parseLinkName(String name) throws ParseException {
         requireNonNull(name);
         String trimmedName = name.trim();
-        if (!Name.isValidName(trimmedName)) {
-            throw new ParseException(Name.MESSAGE_CONSTRAINTS);
+        if (!LinkName.isValidLinkName(trimmedName)) {
+            throw new ParseException(LinkName.MESSAGE_CONSTRAINTS);
         }
-        return new Name(trimmedName);
+        return new LinkName(trimmedName);
     }
 
     /**
@@ -74,65 +73,35 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String name} into a {@code Link}.
+     * Parses a {@code String name} into a {@code LinkAddress}.
      * Leading and trailing whitespaces will be trimmed.
      *
      * @throws ParseException if the given {@code Link} is invalid.
      */
-    public static Link parseLink(String link) throws ParseException {
-        requireNonNull(link);
-        String trimmedLink = link.trim();
-        if (!Link.isValidLink(trimmedLink)) {
-            throw new ParseException(Link.MESSAGE_CONSTRAINTS);
-        }
-        return new Link(trimmedLink);
-    }
-
-    /**
-     * Parses a {@code String phone} into a {@code Phone}.
-     * Leading and trailing whitespaces will be trimmed.
-     *
-     * @throws ParseException if the given {@code phone} is invalid.
-     */
-    public static Phone parsePhone(String phone) throws ParseException {
-        requireNonNull(phone);
-        String trimmedPhone = phone.trim();
-        if (!Phone.isValidPhone(trimmedPhone)) {
-            throw new ParseException(Phone.MESSAGE_CONSTRAINTS);
-        }
-        return new Phone(trimmedPhone);
-    }
-
-    /**
-     * Parses a {@code String address} into an {@code Address}.
-     * Leading and trailing whitespaces will be trimmed.
-     *
-     * @throws ParseException if the given {@code address} is invalid.
-     */
-    public static Address parseAddress(String address) throws ParseException {
+    public static LinkAddress parseLinkAddress(String address) throws ParseException {
         requireNonNull(address);
         String trimmedAddress = address.trim();
-        if (!Address.isValidAddress(trimmedAddress)) {
-            throw new ParseException(Address.MESSAGE_CONSTRAINTS);
+        if (!LinkAddress.isValidLinkAddress(trimmedAddress)) {
+            throw new ParseException(LinkAddress.MESSAGE_CONSTRAINTS);
         }
-        return new Address(trimmedAddress);
+        return new LinkAddress(trimmedAddress);
     }
 
     /**
-     * Parses a {@code String email} into an {@code Email}.
+     * Parses a {@code String link module} into a {@code LinkModule}.
      * Leading and trailing whitespaces will be trimmed.
      *
-     * @throws ParseException if the given {@code email} is invalid.
+     * @throws ParseException if the given {@code LinkModule} is invalid.
      */
-    public static Email parseEmail(String email) throws ParseException {
-        requireNonNull(email);
-        String trimmedEmail = email.trim();
-        if (!Email.isValidEmail(trimmedEmail)) {
-            throw new ParseException(Email.MESSAGE_CONSTRAINTS);
+    public static LinkModule parseLinkModule(String linkModule) throws ParseException {
+        requireNonNull(linkModule);
+        String trimmedM = linkModule.trim();
+        if (!LinkModule.isValidModule(trimmedM)) {
+            throw new ParseException(LinkModule.MESSAGE_CONSTRAINTS);
         }
-        return new Email(trimmedEmail);
+        return new LinkModule(trimmedM);
     }
-
+    
     /**
      * Parses a {@code String tag} into a {@code Tag}.
      * Leading and trailing whitespaces will be trimmed.
