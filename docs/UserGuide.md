@@ -3,8 +3,6 @@ layout: page
 title: User Guide
 ---
 
-ManageMe is a **desktop app for time management and resource organisation, optimized for use via a Command Line Interface (CLI)** while still having the benefits of a Graphical User Interface (GUI). If you can type fast, ManageMe can get your tasks done faster than traditional GUI apps.
-
 # Table of Contents
 1. Introduction
 2. Setup
@@ -42,12 +40,16 @@ ManageMe is a **desktop app for time management and resource organisation, optim
         2. Archive current data: `archive`
         3. Exit program: `exit`
 5. Command Summary
-
 --------------------------------------------------------------------------------------------------------------------
+##Introduction:
+ManageMe is a **desktop app for time management and resource organisation, optimized for use via a Command Line 
+Interface (CLI)** while still having the benefits of a Graphical User Interface (GUI). If you can type fast, ManageMe 
+can get your tasks done faster than traditional GUI apps.
+--------------------------------------------------------------------------------------------------------------------
+
 ## Setup:
 Getting ManageMe up and running is a quick and simple process. 
 It requires only a single jar file and runs on Windows, Mac and Linux.
-
 Steps for installation:
 1. [Download](https://github.com/AY2122S1-CS2103T-W11-3/tp/releases) the latest jar release of ManageMe.
 2. Open your browser's download folder and locate the downloaded jar file.
@@ -56,6 +58,8 @@ Steps for installation:
 5. Enjoy using the application!
 
 If you are new to the application, Refer to the quick start guide for an introduction to using ManageMe.
+
+--------------------------------------------------------------------------------------------------------------------
 
 ## Quick Start:
 This section aims to provide a quick and comprehensive introduction to using the application.
@@ -84,7 +88,6 @@ examples of using it.
 
 </div>
 
---------------------------------------------------------------------------------------------------------------------
 ### Tasks:
 
 #### Adding a task: `addTask`
