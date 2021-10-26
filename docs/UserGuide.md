@@ -154,6 +154,7 @@ Format: `markTask INDEX`
 Example: `markTask 2`
 
 Feature in UI:
+
 ![Ui](images/UiOngoingTask.png)
 *An ongoing task not yet done will be in the default colour*
 
