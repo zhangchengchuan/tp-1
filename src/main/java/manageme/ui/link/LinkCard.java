@@ -28,7 +28,7 @@ public class LinkCard extends UiPart<Region> {
     public final Link link;
 
     @FXML
-    private VBox cardPane;
+    private VBox linkCardPane;
     @FXML
     private Label linkName;
     @FXML

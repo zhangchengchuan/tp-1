@@ -122,8 +122,11 @@ How the parsing works:
 The `Model` component,
 
 * store the object data of ManageMe i.e., all `Module` and `Task` objects (which are contained in a
-  `UniqueModuleList` object and a `UniqueTaskList` respectively).
-* stores the currently 'selected' `Task` objects (e.g., results of a search query) as a separate _filtered_ list which
+  `UniqueModuleList`
+  object
+  and a `UniqueTaskList` respectively).
+* stores the currently 'selected' `Task` objects (e.g., results of a search query) as a separate _filtered_ list
+  which
   is exposed to outsiders as an unmodifiable `ObservableList<Task>` that can be 'observed' e.g. the UI can be bound to
   this list so that the UI automatically updates when the data in the list change.
 * stores a `UserPref` object that represents the user’s preferences. This is exposed to the outside as a `ReadOnlyUserPref` objects.
