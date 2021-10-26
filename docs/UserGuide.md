@@ -27,7 +27,7 @@ title: User Guide
        1. Add a Link: `addLink`
        2. Edit a Link's Details: `editLink`
        3. Delete a Link: `deleteLink`
-       4. Delete a link in the module panel: `deleteModLink`
+       4. Delete a link from module panel: `deleteModLink`
        5. Open the link address/url: `openLink`
        6. Find a Link by keyword: `findLink`
        7. List all Links: `listLink`
@@ -224,7 +224,7 @@ of modules after searching for specific modules.
 Format: `listMod`
 
 ### Links:
-#### Adding a link: `addLink`
+#### Add a link: `addLink`
 Adds a link into the link list. A link contains its name and a website link for online learning.
 
 Format: `addLink n/NAME a/LINK_ADDRESS [mod/MODULE_NAME]` <br/>
@@ -255,7 +255,7 @@ Format: `deleteLink INDEX`
 
 Example: `deleteLink 2` deletes link No.2 from the list.
 
-#### Delete a link in module panel
+#### Delete a link in module panel:
 Format: `deleteModLink mod/MODULE_NAME i/INDEX`
 * Deletes the mod by the specified `INDEX` at the link list in the readMod panel for the particular module.
 * The index refers to the index number shown in the displayed link list in the readMod panel of the module.
@@ -263,7 +263,7 @@ Format: `deleteModLink mod/MODULE_NAME i/INDEX`
 
 Example: `deleteModLink mod/CS1101S i/1` deletes link No.1 from the link list of CS1101S.
 
-### Open a link
+#### Open a link:
 Format: `openLink INDEX`
 * Opens the link identifies by the index in the link list. If it is a link for a webpage, it will open the link in a
   browser. It it is a path for a file, it will open the file using the default app.
@@ -272,7 +272,7 @@ Format: `openLink INDEX`
 
 Example: `openLink 1` open link No. 1 from the list of links.
 
-### Find a link by keyword
+#### Find a link by keyword:
 Format: `findLink KEYWORD [MORE_KEYWORDS]`
 
 * The search is case-insensitive. e.g hans will match Hans.
