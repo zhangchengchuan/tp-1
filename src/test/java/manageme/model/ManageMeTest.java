@@ -32,6 +32,11 @@ import manageme.testutil.LinkBuilder;
 import manageme.testutil.ModuleBuilder;
 import manageme.testutil.TaskBuilder;
 import manageme.testutil.TypicalManageMe;
+<<<<<<< HEAD
+import manageme.testutil.TypicalModules;
+import manageme.testutil.TypicalTasks;
+=======
+>>>>>>> 785e076494ea707cccfc66ae26761543be13828f
 
 public class ManageMeTest {
 

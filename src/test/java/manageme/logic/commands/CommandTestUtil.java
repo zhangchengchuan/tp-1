@@ -22,6 +22,10 @@ import manageme.model.module.ModNameContainsKeywordsPredicate;
 import manageme.model.module.Module;
 import manageme.model.task.Task;
 import manageme.model.task.TaskNameContainsKeywordsPredicate;
+<<<<<<< HEAD
+import manageme.testutil.EditModuleDescriptorBuilder;
+=======
+>>>>>>> 785e076494ea707cccfc66ae26761543be13828f
 
 /**
  * Contains helper methods for testing commands.

@@ -10,6 +10,7 @@ import javafx.collections.ObservableList;
 import manageme.commons.util.CollectionUtil;
 import manageme.model.link.exceptions.DuplicateLinkException;
 import manageme.model.link.exceptions.LinkNotFoundException;
+import manageme.model.module.Module;
 
 /**
  * A list of links that enforces uniqueness between its elements and does not allow nulls.
@@ -77,6 +78,27 @@ public class UniqueLinkList implements Iterable<Link> {
         if (!internalList.remove(toRemove)) {
             throw new LinkNotFoundException();
         }
+    }
+
+    public void removeMod(Module module) {
+        requireNonNull(module);
+        int i = 0;
+        while (i < internalList.size()) {
+            if (internalList.get(i).getLinkModule().equals(module)) {
+                remove(internalList.get(i));
+            } else {
+                i++;
+            }
+        }
+    }
+
+    /**
+     * Removes the equivalent link from the list.
+     * The link must exist in the list.
+     */
+    public void open(Link toOpen) {
+        requireNonNull(toOpen);
+        toOpen.open();
     }
 
     public void setLinks(UniqueLinkList replacement) {

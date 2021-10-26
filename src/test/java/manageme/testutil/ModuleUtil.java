@@ -21,6 +21,10 @@ public class ModuleUtil {
     public static String getModuleDetails(Module module) {
         StringBuilder sb = new StringBuilder();
         sb.append(PREFIX_NAME + module.getModuleName().value + " ");
+<<<<<<< HEAD
+        //sb.append(PREFIX_LINK + module.getLink().link + " ");
+=======
+>>>>>>> 785e076494ea707cccfc66ae26761543be13828f
         return sb.toString();
     }
 
@@ -30,6 +34,10 @@ public class ModuleUtil {
     public static String getEditModuleDescriptorDetails(EditModuleCommand.EditModuleDescriptor descriptor) {
         StringBuilder sb = new StringBuilder();
         descriptor.getModuleName().ifPresent(name -> sb.append(PREFIX_NAME).append(name.value).append(" "));
+<<<<<<< HEAD
+        //descriptor.getLink().ifPresent(link -> sb.append(PREFIX_LINK).append(link.link).append(" "));
+=======
+>>>>>>> 785e076494ea707cccfc66ae26761543be13828f
         return sb.toString();
     }
 }

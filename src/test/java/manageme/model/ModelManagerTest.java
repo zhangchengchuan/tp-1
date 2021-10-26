@@ -19,6 +19,11 @@ import org.junit.jupiter.api.Test;
 import manageme.commons.core.GuiSettings;
 import manageme.testutil.Assert;
 import manageme.testutil.ManageMeBuilder;
+<<<<<<< HEAD
+import manageme.testutil.TypicalModules;
+import manageme.testutil.TypicalTasks;
+=======
+>>>>>>> 785e076494ea707cccfc66ae26761543be13828f
 
 public class ModelManagerTest {
 

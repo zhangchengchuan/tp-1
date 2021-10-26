@@ -35,11 +35,15 @@ import manageme.logic.parser.exceptions.ParseException;
 import manageme.model.link.Link;
 import manageme.model.module.ModNameContainsKeywordsPredicate;
 import manageme.model.module.Module;
+<<<<<<< HEAD
+import manageme.testutil.EditModuleDescriptorBuilder;
+=======
 import manageme.model.module.ModuleName;
 import manageme.testutil.EditLinkDescriptorBuilder;
 import manageme.testutil.EditModuleDescriptorBuilder;
 import manageme.testutil.LinkBuilder;
 import manageme.testutil.LinkUtil;
+>>>>>>> 785e076494ea707cccfc66ae26761543be13828f
 import manageme.testutil.ModuleBuilder;
 import manageme.testutil.ModuleUtil;
 
@@ -48,6 +52,8 @@ public class ManageMeParserTest {
     private final ManageMeParser parser = new ManageMeParser();
 
     @Test
+<<<<<<< HEAD
+=======
     public void parseCommand_addLink() throws Exception {
         Link link = new LinkBuilder().build();
         AddLinkCommand command = (AddLinkCommand) parser.parseCommand(LinkUtil.getAddLinkCommand(link));
@@ -55,12 +61,15 @@ public class ManageMeParserTest {
     }
 
     @Test
+>>>>>>> 785e076494ea707cccfc66ae26761543be13828f
     public void parseCommand_clear() throws Exception {
         assertTrue(parser.parseCommand(ClearCommand.COMMAND_WORD) instanceof ClearCommand);
         assertTrue(parser.parseCommand(ClearCommand.COMMAND_WORD + " 3") instanceof ClearCommand);
     }
 
     @Test
+<<<<<<< HEAD
+=======
     public void parseCommand_deleteLink() throws Exception {
         DeleteLinkCommand command = (DeleteLinkCommand) parser.parseCommand(
                 DeleteLinkCommand.COMMAND_WORD + " " + INDEX_FIRST.getOneBased());
@@ -77,11 +86,14 @@ public class ManageMeParserTest {
     }
 
     @Test
+>>>>>>> 785e076494ea707cccfc66ae26761543be13828f
     public void parseCommand_exit() throws Exception {
         assertTrue(parser.parseCommand(ExitCommand.COMMAND_WORD) instanceof ExitCommand);
         assertTrue(parser.parseCommand(ExitCommand.COMMAND_WORD + " 3") instanceof ExitCommand);
     }
 
+<<<<<<< HEAD
+=======
     //@Test
     //public void parseCommand_find() throws Exception {
     //    List<String> keywords = Arrays.asList("foo", "bar", "baz");
@@ -90,12 +102,15 @@ public class ManageMeParserTest {
     //    assertEquals(new FindCommand(new NameContainsKeywordsPredicate(keywords)), command);
     //}
 
+>>>>>>> 785e076494ea707cccfc66ae26761543be13828f
     @Test
     public void parseCommand_help() throws Exception {
         assertTrue(parser.parseCommand(HelpCommand.COMMAND_WORD) instanceof HelpCommand);
         assertTrue(parser.parseCommand(HelpCommand.COMMAND_WORD + " 3") instanceof HelpCommand);
     }
 
+<<<<<<< HEAD
+=======
     //@Test
     //public void parseCommand_list() throws Exception {
     //    assertTrue(parser.parseCommand(ListCommand.COMMAND_WORD) instanceof ListCommand);
@@ -103,12 +118,17 @@ public class ManageMeParserTest {
     //}
 
 
+>>>>>>> 785e076494ea707cccfc66ae26761543be13828f
     @Test
     public void parseCommand_addModule() throws Exception {
         ModuleName moduleName = new ModuleName(VALID_MODNAME_A);
         Module module = new ModuleBuilder().build();
         AddModuleCommand command = (AddModuleCommand) parser.parseCommand(ModuleUtil.getAddModuleCommand(module));
+<<<<<<< HEAD
+        assertEquals(new AddModuleCommand(module.getModuleName()), command);
+=======
         assertEquals(new AddModuleCommand(moduleName), command);
+>>>>>>> 785e076494ea707cccfc66ae26761543be13828f
     }
 
     @Test
