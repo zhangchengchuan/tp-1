@@ -29,67 +29,6 @@ public class LinkAddress {
     public final URI linkAddress;
     public final String value;
 
-    public static void openUrl(URL url) throws LinkNotOpenException {
-
-        String os = System.getProperty("os.name").toLowerCase();
-        Runtime rt = Runtime.getRuntime();
-
-        try{
-
-            if (os.contains("win")) {
-
-                // this doesn't support showing urls in the form of "page.html"
-                rt.exec( "rundll32 url.dll,FileProtocolHandler " + url);
-
-            } else if (os.contains( "mac" )) {
-
-                rt.exec( "open " + url);
-
-            } else if (os.contains( "nix") || os.contains( "nux")) {
-
-                // Do a best guess on unix until we get a platform independent way
-                // Build a list of browsers to try, in this order.
-                String[] browsers = {"epiphany", "firefox", "mozilla", "konqueror",
-                        "netscape","opera","links","lynx"};
-
-                // Build a command string which looks like "browser1 "url" || browser2 "url" ||..."
-                StringBuffer cmd = new StringBuffer();
-                for (int i=0; i < browsers.length; i++)
-                    cmd.append( ( i==0  ? "" : " || " ) + browsers[i] +" \"" + url + "\" ");
-
-                rt.exec(new String[] { "sh", "-c", cmd.toString() });
-
-            }
-
-        } catch (Exception e) {
-            throw new LinkNotOpenException();
-        }
-
-    }
-
-    public static void openFile(URI uri) throws DesktopNotSupportException, FileNotOpenException {
-        File toOpen = new File(uri.toString().substring(6));
-        String os = System.getProperty("os.name").toLowerCase();
-        if (os.contains( "nix") || os.contains( "nux")) {
-            Runtime runtime = Runtime.getRuntime();
-            try {
-                runtime.exec("xdg-open " + toOpen);
-            } catch (IOException e) {
-                throw new FileNotOpenException();
-            }
-        } else if(! Desktop.isDesktopSupported()) {
-            System.out.println("java desktop not supported");
-            throw new DesktopNotSupportException();
-        } else {
-            Desktop desktop = Desktop.getDesktop();
-            try {
-                desktop.open(toOpen);
-            } catch (IOException e){
-                throw new FileNotOpenException();
-            }
-        }
-    }
-
     /**
      * Constructs a {@code LinkAddress}.
      *
@@ -106,7 +45,77 @@ public class LinkAddress {
         }
     }
 
-    public void open() throws RuntimeException{
+    /**
+     * Opens url in available web broswer.
+     *
+     * @param url url to open
+     * @throws LinkNotOpenException exception thrown when failing to open the url
+     */
+    public static void openUrl(URL url) throws LinkNotOpenException {
+
+        String os = System.getProperty("os.name").toLowerCase();
+        Runtime rt = Runtime.getRuntime();
+
+        try {
+            if (os.contains("win")) {
+                // this doesn't support showing urls in the form of "page.html"
+                rt.exec("rundll32 url.dll,FileProtocolHandler " + url);
+            } else if (os.contains("mac")) {
+                rt.exec("open " + url);
+            } else if (os.contains("nix") || os.contains("nux")) {
+                // Do a best guess on unix until we get a platform independent way
+                // Build a list of browsers to try, in this order.
+                String[] browsers = {"epiphany", "firefox", "mozilla", "konqueror", "netscape", "opera",
+                    "links", "lynx", "google-chrome", "chromium-browser"};
+                // Build a command string which looks like "browser1 "url" || browser2 "url" ||..."
+                StringBuffer cmd = new StringBuffer();
+                for (int i = 0; i < browsers.length; i++) {
+                    cmd.append((i == 0 ? "" : " || ") + browsers[i] + " \"" + url + "\" ");
+                }
+                rt.exec(new String[] {"sh", "-c", cmd.toString()});
+            }
+        } catch (Exception e) {
+            throw new LinkNotOpenException();
+        }
+    }
+
+    /**
+     * Opens file path uri with system default application.
+     *
+     * @param uri the filepath in uri format
+     * @throws DesktopNotSupportException exception to throw when Java Desktop is not supported on the device
+     * @throws FileNotOpenException exception to throw when the file doesn't exist or cannot be opened
+     */
+    public static void openFile(URI uri) throws DesktopNotSupportException, FileNotOpenException {
+        File toOpen = new File(uri.toString().substring(6));
+        String os = System.getProperty("os.name").toLowerCase();
+        if (os.contains("nix") || os.contains("nux")) {
+            Runtime runtime = Runtime.getRuntime();
+            try {
+                runtime.exec("xdg-open " + toOpen);
+            } catch (IOException e) {
+                throw new FileNotOpenException();
+            }
+        } else if (!Desktop.isDesktopSupported()) {
+            System.out.println("java desktop not supported");
+            throw new DesktopNotSupportException();
+        } else {
+            Desktop desktop = Desktop.getDesktop();
+            try {
+                desktop.open(toOpen);
+            } catch (IOException e) {
+                throw new FileNotOpenException();
+            }
+        }
+    }
+
+    /**
+     * Opens this address. Pop out browser if it is a web link and pop out the dafault application for the file to open
+     * if it is a file path.
+     *
+     * @throws RuntimeException
+     */
+    public void open() throws RuntimeException {
         if (linkAddress.getScheme().equals("file")) {
             try {
                 openFile(linkAddress);

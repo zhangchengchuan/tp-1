@@ -31,6 +31,12 @@ public class DeleteModLinkCommand extends Command {
     private final LinkModule module;
     private final Index targetIndex;
 
+    /**
+     * Creates a command to deleteLink using index in the link list inside module.
+     *
+     * @param module the module to delete link from
+     * @param targetIndex the index of link to delete in the module link list
+     */
     public DeleteModLinkCommand(LinkModule module, Index targetIndex) {
         this.targetIndex = targetIndex;
         this.module = module;

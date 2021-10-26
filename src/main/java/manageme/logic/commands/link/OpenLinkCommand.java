@@ -44,7 +44,7 @@ public class OpenLinkCommand extends Command {
             String failureResult = MESSAGE_OPEN_LINK_FAILURE + e.getMessage();
             return new CommandResult(failureResult);
         }
-       return new CommandResult(String.format(MESSAGE_OPEN_LINK_SUCCESS, linkToOpen));
+        return new CommandResult(String.format(MESSAGE_OPEN_LINK_SUCCESS, linkToOpen));
     }
 
     @Override

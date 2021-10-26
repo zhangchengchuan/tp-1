@@ -15,13 +15,7 @@ import java.util.Set;
 import org.junit.jupiter.api.Test;
 
 import manageme.logic.parser.exceptions.ParseException;
-<<<<<<< HEAD
-=======
 import manageme.model.link.LinkName;
-import manageme.model.person.Address;
-import manageme.model.person.Email;
-import manageme.model.person.Phone;
->>>>>>> 785e076494ea707cccfc66ae26761543be13828f
 import manageme.model.tag.Tag;
 import manageme.model.task.TaskDescription;
 import manageme.model.task.TaskModule;
@@ -72,8 +66,6 @@ public class ParserUtilTest {
     }
 
     @Test
-<<<<<<< HEAD
-=======
     public void parseName_null_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> ParserUtil.parseLinkName((String) null));
     }
@@ -94,37 +86,6 @@ public class ParserUtilTest {
         String nameWithWhitespace = WHITESPACE + VALID_LINKNAME_A + WHITESPACE;
         LinkName expectedName = new LinkName(VALID_LINKNAME_A);
         assertEquals(expectedName, ParserUtil.parseLinkName(nameWithWhitespace));
-    }
-
-    @Test
->>>>>>> 785e076494ea707cccfc66ae26761543be13828f
-    public void parsePhone_null_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> ParserUtil.parsePhone((String) null));
-    }
-
-    @Test
-    public void parsePhone_invalidValue_throwsParseException() {
-        assertThrows(ParseException.class, () -> ParserUtil.parsePhone(INVALID_PHONE));
-    }
-
-    @Test
-    public void parseAddress_null_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> ParserUtil.parseAddress((String) null));
-    }
-
-    @Test
-    public void parseAddress_invalidValue_throwsParseException() {
-        assertThrows(ParseException.class, () -> ParserUtil.parseAddress(INVALID_ADDRESS));
-    }
-
-    @Test
-    public void parseEmail_null_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> ParserUtil.parseEmail((String) null));
-    }
-
-    @Test
-    public void parseEmail_invalidValue_throwsParseException() {
-        assertThrows(ParseException.class, () -> ParserUtil.parseEmail(INVALID_EMAIL));
     }
 
     @Test

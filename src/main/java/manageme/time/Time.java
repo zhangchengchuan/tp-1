@@ -11,4 +11,6 @@ public interface Time {
     void startTime();
 
     void updateTasks(ReadOnlyManageMe manageMe);
+
+    void stopTime();
 }
