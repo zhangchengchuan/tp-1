@@ -1,6 +1,6 @@
 [![CI Status](https://github.com/AY2122S1-CS2103T-W11-3/tp/workflows/Java%20CI/badge.svg)](https://github.com/AY2122S1-CS2103T-W11-3/tp/actions)
 
-![Ui](docs/images/Ui1.png)
+![Ui](docs/images/UiMockup1.png)
 
 Hello World!!
 * ManageMe is **a desktop app for time management and resource organisation, targeted at students**.<br>
