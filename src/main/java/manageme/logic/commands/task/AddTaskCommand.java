@@ -20,18 +20,20 @@ public class AddTaskCommand extends Command {
             + "Parameters: "
             + PREFIX_NAME + "TASK_NAME "
             + PREFIX_DESCRIPTION + "TASK_DESCRIPTION "
-            + PREFIX_MODULE + "ASSOCIATED_MODULE_NAME"
+            + PREFIX_MODULE + "ASSOCIATED_MODULE_NAME "
             + PREFIX_START + "TASK_START_DATETIME "
             + PREFIX_END + "TASK_END_DATETIME \n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_NAME + "Do homework "
             + PREFIX_DESCRIPTION + "Complete CS2103T quiz on testing. "
-            + PREFIX_MODULE + "CS2103T"
+            + PREFIX_MODULE + "CS2103T "
             + PREFIX_START + "2021-10-05T11:50:55 "
             + PREFIX_END + "2021-10-07T11:50:55";
 
     public static final String MESSAGE_SUCCESS = "New task added: %1$s";
     public static final String MESSAGE_DUPLICATE_TASK = "This task already exists in the task list";
+    public static final String MESSAGE_START_LATER_THAN_END = "The task cannot have start date later than the end date";
+    public static final String MESSAGE_START_WITHOUT_END = "The task cannot have a start without an end date";
     private final Task toAdd;
     /**
      * Creates an AddTaskCommand to add the specified {@code Task}

@@ -9,20 +9,23 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Optional;
 import java.util.function.Predicate;
 
 import org.junit.jupiter.api.Test;
 
 import javafx.collections.ObservableList;
 import manageme.commons.core.GuiSettings;
+import manageme.commons.core.index.Index;
 import manageme.logic.commands.CommandResult;
 import manageme.logic.commands.exceptions.CommandException;
 import manageme.model.ManageMe;
 import manageme.model.Model;
 import manageme.model.ReadOnlyManageMe;
 import manageme.model.ReadOnlyUserPrefs;
+import manageme.model.link.Link;
+import manageme.model.link.LinkModule;
 import manageme.model.module.Module;
-import manageme.model.person.Person;
 import manageme.model.task.Task;
 import manageme.testutil.TaskBuilder;
 
@@ -75,7 +78,7 @@ public class AddTaskCommandTest {
         // null -> returns false
         assertFalse(addACommand.equals(null));
 
-        // different person -> returns false
+        // different link -> returns false
         assertFalse(addACommand.equals(addBCommand));
     }
     /**
@@ -113,7 +116,7 @@ public class AddTaskCommandTest {
         }
 
         @Override
-        public void addPerson(Person person) {
+        public void addLink(Link link) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -128,27 +131,37 @@ public class AddTaskCommandTest {
         }
 
         @Override
-        public boolean hasPerson(Person person) {
+        public boolean hasLink(Link link) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void deletePerson(Person target) {
+        public void deleteLink(Link target) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void setPerson(Person target, Person editedPerson) {
+        public void setLink(Link target, Link editedLink) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public ObservableList<Person> getFilteredPersonList() {
+        public void openLink(Link target) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void updateFilteredPersonList(Predicate<Person> predicate) {
+        public Link deleteModLink(LinkModule linkModule, Index index) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ObservableList<Link> getFilteredLinkList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void updateFilteredLinkList(Predicate<Link> predicate) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -183,12 +196,12 @@ public class AddTaskCommandTest {
         }
 
         @Override
-        public ObservableList<Module> getReadModuleList() {
+        public Optional<Module> getReadModule() {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void updateReadModuleList(Predicate<Module> predicate) {
+        public void setReadModule(Module module) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -223,13 +236,18 @@ public class AddTaskCommandTest {
         }
 
         @Override
+        public ObservableList<Link> getUnfilteredLinkList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public void updateFilteredTaskList(Predicate<Task> predicate) {
             throw new AssertionError("This method should not be called.");
         }
     }
 
     /**
-     * A Model stub that contains a single person.
+     * A Model stub that contains a single link.
      */
     private class ModelStubWithTask extends AddTaskCommandTest.ModelStub {
         private final Task task;

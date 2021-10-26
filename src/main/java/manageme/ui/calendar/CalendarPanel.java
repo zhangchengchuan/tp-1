@@ -55,7 +55,7 @@ public class CalendarPanel extends UiPart<Region> {
         fillCalendarPanel(currentDate);
 
         taskList.addListener((ListChangeListener<? super Task>) change -> {
-            fillCalendar();
+            fillCalendarPanel(referenceDate);
         });
     }
 
