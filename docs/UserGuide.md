@@ -26,7 +26,15 @@ ManageMe is a **desktop app for time management and resource organisation, optim
         1. View next month: `nextMonth`
         2. View previous month: `prevMonth`
         3. Read a day in calendar: `readDay`
-    4. Others
+    4. Links
+        1. Add a link: `addLink`
+        2. Edit a link: `editLink`
+        3. Delete a link: `deleteLink`
+        4. Delete a link from module panel: `deleteModLink`
+        5. Open a link: `openLink`
+        6. Find a link by keyword: `findLink`
+        7. List all links: `listLink`
+    5. Others
         1. Get help: `help`
         2. Archive current data: `archive`
         3. Exit program: `exit`
@@ -226,7 +234,7 @@ Format: `readDay DATE`
 Example: `readDay 2021-10-19`
 
 ### Links:
-#### Adding a link: `addLink`
+#### Add a link: `addLink`
 Adds a link into the link list. A link contains its name and a website link for online learning.
 
 Format: `addLink n/NAME a/LINK_ADDRESS [mod/MODULE_NAME]` <br/>
@@ -257,7 +265,7 @@ Format: `deleteLink INDEX`
 
 Example: `deleteLink 2` deletes link No.2 from the list.
 
-#### Delete a link in module panel
+#### Delete a link in module panel:
 Format: `deleteModLink mod/MODULE_NAME i/INDEX`
 * Deletes the mod by the specified `INDEX` at the link list in the readMod panel for the particular module.
 * The index refers to the index number shown in the displayed link list in the readMod panel of the module.
@@ -265,7 +273,7 @@ Format: `deleteModLink mod/MODULE_NAME i/INDEX`
 
 Example: `deleteModLink mod/CS1101S i/1` deletes link No.1 from the link list of CS1101S.
 
-### Open a link
+#### Open a link:
 Format: `openLink INDEX`
 * Opens the link identifies by the index in the link list. If it is a link for a webpage, it will open the link in a
 browser. It it is a path for a file, it will open the file using the default app.
@@ -274,7 +282,7 @@ browser. It it is a path for a file, it will open the file using the default app
 
 Example: `openLink 1` open link No. 1 from the list of links.
 
-### Find a link by keyword
+#### Find a link by keyword:
 Format: `findLink KEYWORD [MORE_KEYWORDS]`
 
 * The search is case-insensitive. e.g hans will match Hans.
