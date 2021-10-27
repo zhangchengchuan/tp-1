@@ -20,7 +20,7 @@ import manageme.model.module.exceptions.ModuleNotFoundException;
  *
  * Supports a minimal set of list operations.
  *
- * @see Module#isSameModule(module)
+ * @see Module#isSameModule(Module)
  */
 public class UniqueModuleList implements Iterable<Module> {
 

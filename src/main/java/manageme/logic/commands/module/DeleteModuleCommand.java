@@ -16,7 +16,6 @@ import manageme.model.module.Module;
  * Deletes a module identified using it's displayed index from the task manager.
  */
 public class DeleteModuleCommand extends Command {
-
     public static final String COMMAND_WORD = "deleteMod";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD

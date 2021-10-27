@@ -1,30 +1,15 @@
 package manageme.model.module;
 
-import java.util.Objects;
-
 import manageme.commons.util.CollectionUtil;
-import manageme.model.link.Link;
 
 /**
  * Represents a Module in the app.
- * Guarantees: details are present and not null, field values are validated, immutable.
+ * Guarantees: details are present and not null, field values are validated.
  */
 public class Module {
 
     // Identity fields
     private final ModuleName moduleName;
-
-    // Data fields
-    private Link link;
-
-    /**
-     * Every field must be present and not null.
-     */
-    public Module(ModuleName moduleName, Link link) {
-        CollectionUtil.requireAllNonNull(moduleName, link);
-        this.moduleName = moduleName;
-        this.link = link;
-    }
 
     /**
      * Link optional
@@ -38,14 +23,8 @@ public class Module {
         return moduleName;
     }
 
-    public Link getLink() {
-        return link;
-    }
-
     /**
      * Returns true if both mods have the same name.
-     * This defines a weaker notion of equality between two mods.
-     * @param otherMod
      */
     public boolean isSameModule(Module otherMod) {
         if (otherMod == this) {
@@ -57,8 +36,9 @@ public class Module {
     }
 
     /**
-     * Returns true if both mods have the same identity and data fields.
-     * This defines a stronger notion of equality between two mods.
+     * Returns true if both mods have the same identity.
+     * This is the same as #isSameModule because of how Module is implemented,
+     * two Modules will be equals as long as they have the same ModuleName.
      */
     @Override
     public boolean equals(Object other) {
@@ -71,22 +51,20 @@ public class Module {
         }
 
         Module otherMod = (Module) other;
-        return otherMod.getModuleName().equals(getModuleName())
-                && otherMod.getLink().equals(getLink());
+        return otherMod.getModuleName().equals(getModuleName());
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(moduleName, link);
+
+        return moduleName.hashCode();
     }
 
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
-        builder.append(getModuleName())
-                .append("; Link: ")
-                .append(getLink());
+        builder.append(getModuleName());
 
         return builder.toString();
     }

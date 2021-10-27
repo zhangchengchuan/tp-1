@@ -31,15 +31,18 @@ public class AddTaskCommandParser implements Parser<AddTaskCommand> {
     public AddTaskCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_DESCRIPTION, PREFIX_MODULE,
-                        PREFIX_START,
-                        PREFIX_END);
+                        PREFIX_START, PREFIX_END);
+
         if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_DESCRIPTION)
-                || (arePrefixesPresent(argMultimap, PREFIX_START)
-                    && !arePrefixesPresent(argMultimap, PREFIX_END))
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                     AddTaskCommand.MESSAGE_USAGE));
         }
+        if (arePrefixesPresent(argMultimap, PREFIX_START) && !arePrefixesPresent(argMultimap, PREFIX_END)) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                    AddTaskCommand.MESSAGE_START_WITHOUT_END));
+        }
+
         TaskName name = ParserUtil.parseTaskName(argMultimap.getValue(PREFIX_NAME).get());
         TaskDescription description =
                 ParserUtil.parseTaskDescription(argMultimap.getValue(PREFIX_DESCRIPTION).get());
@@ -52,6 +55,10 @@ public class AddTaskCommandParser implements Parser<AddTaskCommand> {
         TaskTime end = argMultimap.getValue(PREFIX_END).isPresent()
                 ? ParserUtil.parseDateTime(argMultimap.getValue(PREFIX_END).get())
                 : TaskTime.empty();
+
+        if (!start.isEmpty() && !end.isEmpty() && start.getTime().isAfter(end.getTime())) {
+            throw new ParseException(AddTaskCommand.MESSAGE_START_LATER_THAN_END);
+        }
         Task task = new Task(name, description, module, start, end);
         return new AddTaskCommand(task);
     }

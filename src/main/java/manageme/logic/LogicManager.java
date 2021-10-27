@@ -2,11 +2,13 @@ package manageme.logic;
 
 import java.io.IOException;
 import java.nio.file.Path;
+import java.util.Optional;
 import java.util.logging.Logger;
 
 import javafx.collections.ObservableList;
 import manageme.commons.core.GuiSettings;
 import manageme.commons.core.LogsCenter;
+import manageme.logic.commands.ArchiveCommand;
 import manageme.logic.commands.Command;
 import manageme.logic.commands.CommandResult;
 import manageme.logic.commands.exceptions.CommandException;
@@ -14,8 +16,8 @@ import manageme.logic.parser.ManageMeParser;
 import manageme.logic.parser.exceptions.ParseException;
 import manageme.model.Model;
 import manageme.model.ReadOnlyManageMe;
+import manageme.model.link.Link;
 import manageme.model.module.Module;
-import manageme.model.person.Person;
 import manageme.model.task.Task;
 import manageme.storage.Storage;
 import manageme.time.Time;
@@ -48,6 +50,10 @@ public class LogicManager implements Logic {
 
         CommandResult commandResult;
         Command command = manageMeParser.parseCommand(commandText);
+        if (command instanceof ArchiveCommand) {
+            ArchiveCommand archiveCommand = (ArchiveCommand) command;
+            archiveCommand.setStorage(storage);
+        }
         commandResult = command.execute(model);
 
         try {
@@ -66,8 +72,8 @@ public class LogicManager implements Logic {
     }
 
     @Override
-    public ObservableList<Person> getFilteredPersonList() {
-        return model.getFilteredPersonList();
+    public ObservableList<Link> getFilteredLinkList() {
+        return model.getFilteredLinkList();
     }
 
     @Override
@@ -76,8 +82,8 @@ public class LogicManager implements Logic {
     }
 
     @Override
-    public ObservableList<Module> getReadModuleList() {
-        return model.getReadModuleList();
+    public Optional<Module> getReadModule() {
+        return model.getReadModule();
     }
 
     @Override
@@ -88,6 +94,11 @@ public class LogicManager implements Logic {
     @Override
     public ObservableList<Task> getUnfilteredTaskList() {
         return model.getUnfilteredTaskList();
+    }
+
+    @Override
+    public ObservableList<Link> getUnfilteredLinkList() {
+        return model.getUnfilteredLinkList();
     }
 
     @Override

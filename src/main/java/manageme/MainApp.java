@@ -182,7 +182,7 @@ public class MainApp extends Application {
     public void stop() {
         logger.info("============================ [ Stopping Address Book ] =============================");
         try {
-            time = null; // Remove references to time to allow it to go to garbage collector
+            time.stopTime(); // Remove references to time to allow it to go to garbage collector
             storage.saveUserPrefs(model.getUserPrefs());
         } catch (IOException e) {
             logger.severe("Failed to save preferences " + StringUtil.getDetails(e));
