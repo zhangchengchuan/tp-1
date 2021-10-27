@@ -235,7 +235,7 @@ public class CalendarPanel extends UiPart<Region> {
      */
     private void showNextMonth() {
         referenceDate = referenceDate.plusMonths(1);
-        fillCalendar();
+        fillCalendarPanel(referenceDate);
     }
 
     /**
@@ -243,6 +243,6 @@ public class CalendarPanel extends UiPart<Region> {
      */
     private void showPreviousMonth() {
         referenceDate = referenceDate.minusMonths(1);
-        fillCalendar();
+        fillCalendarPanel(referenceDate);
     }
 }
