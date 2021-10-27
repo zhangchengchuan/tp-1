@@ -9,6 +9,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+
 <VBox xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1">
    <Label fx:id="date" maxWidth="1.7976931348623157E308" styleClass="header" text="\$date">
       <font>
@@ -40,6 +41,9 @@
       <VBox.margin>
          <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
       </VBox.margin>
+      <padding>
+         <Insets left="2.0" right="2.0" />
+      </padding>
    </GridPane>
    <HBox fx:id="readDayTitlePlaceholder" alignment="CENTER">
       <children>

@@ -74,9 +74,14 @@
     -fx-background-color: -calendar-color;
 }
 
+#readDayPanelPlaceholder .scroll-bar,
 #readDayPanelPlaceholder,
 #readDayTitlePlaceholder {
     -fx-background-color: -readDay-color;
+}
+
+#readDayPanelPlaceholder .scroll-bar .thumb {
+    -fx-background-color: palegoldenrod;
 }
 
 #taskCardPane:inReminder,
@@ -97,7 +102,7 @@
 }
 
 #taskCardPane:overdue {
-    -fx-background-color: orangered;
+    -fx-background-color: lightsalmon;
 }
 
 #hasTask {
