@@ -3,10 +3,11 @@ layout: page
 title: User Guide
 ---
 
-ManageMe is a **desktop app for time management and resource organisation, optimized for use via a Command Line Interface (CLI)** while still having the benefits of a Graphical User Interface (GUI). If you can type fast, ManageMe can get your tasks done faster than traditional GUI apps.
-
 # Table of Contents
-1. Features
+1. Introduction
+2. Setup
+3. Quick Start
+4. Features
     1. Tasks
         1. Add a Task: `addTask`
         2. Edit a Task's Details: `editTask`
@@ -18,32 +19,67 @@ ManageMe is a **desktop app for time management and resource organisation, optim
     2. Modules
         1. Add a Module: `addMod`
         2. Read a Module: `readMod`
-        3. Update a Module's Details: `editMod`
+        3. Edit a Module's Details: `editMod`
         4. Delete a Module: `deleteMod`
         5. Find a Module by keyword: `findMod`
         6. List all Modules: `listMod`
-    3. Calendar
+    3. Links
+       1. Add a Link: `addLink`
+       2. Edit a Link's Details: `editLink`
+       3. Delete a Link: `deleteLink`
+       4. Delete a link from module panel: `deleteModLink`
+       5. Open the link address/url: `openLink`
+       6. Find a Link by keyword: `findLink`
+       7. List all Links: `listLink`
+    4. Calendar
         1. View next month: `nextMonth`
         2. View previous month: `prevMonth`
         3. Read a day in calendar: `readDay`
-    4. Others
+    5. Others
         1. Get help: `help`
         2. Archive current data: `archive`
         3. Exit program: `exit`
-2. Command Summary
+5. Command Summary
 
 --------------------------------------------------------------------------------------------------------------------
 
-## UI Mockup:
+## Introduction:
+ManageMe is a **desktop app for time management and resource organisation, optimized for use via a Command Line 
+Interface (CLI)** while still having the benefits of a Graphical User Interface (GUI). If you can type fast, ManageMe 
+can get your tasks done faster than traditional GUI apps.
 
-![Ui](images/Ui1.png)
+--------------------------------------------------------------------------------------------------------------------
+
+## Setup:
+Getting ManageMe up and running is a quick and simple process. 
+It requires only a single jar file and runs on Windows, Mac and Linux.
+Steps for installation:
+1. [Download](https://github.com/AY2122S1-CS2103T-W11-3/tp/releases) the latest jar release of ManageMe.
+2. Open your browser's download folder and locate the downloaded jar file.
+3. Move the jar file into your desired folder. ManageMe will use this folder to store its data by default.
+4. Start the application by double-clicking on the jar file.
+5. Enjoy using the application!
+
+If you are new to the application, Refer to the quick start guide for an introduction to using ManageMe.
+
+--------------------------------------------------------------------------------------------------------------------
+
+## Quick Start:
+This section aims to provide a quick and comprehensive introduction to using the application.
+It should take less than 5 minutes to read and will provide new users with the necessary knowledge to make full use 
+of the application.
+
+### UI:
+Introduction to the basic layout of the application.
+
+![Ui](images/UiHomepage.png)
 <br>*Homepage of Application*
 
-![Ui](images/Ui2.png)
-<br>*Pop-up showing module information when user enters `readMod`*
 --------------------------------------------------------------------------------------------------------------------
 
 ## Features
+This section gives a full list of all the application's features with details such as the format, some tips and 
+examples of using it.
 
 <div markdown="block" class="alert alert-info">
 
@@ -56,7 +92,6 @@ ManageMe is a **desktop app for time management and resource organisation, optim
 
 </div>
 
---------------------------------------------------------------------------------------------------------------------
 ### Tasks:
 
 #### Adding a task: `addTask`
@@ -71,28 +106,6 @@ Format: `addTask n/NAME d/DESCRIPTION [mod/MODULE_NAME] [s/START_DATETIME] [e/EN
 
 Example: `addTask n/Do CS2103T Assignment d/Refer to lecture 10 for examples mod/CS2103T s/2021-10-05T11:00
 e/2021-10-07T23:59`
-
-[comment]: <> (#### Read details of a task: `readTask`)
-
-[comment]: <> (View a task in detail.)
-
-[comment]: <> (Format: `readTask INDEX`)
-
-[comment]: <> (- Read task details at the specified `INDEX`. The index refers to the index number shown in the displayed task list. )
-
-[comment]: <> (- The index **must be a positive integer** 1, 2, 3, ...)
-
-[comment]: <> (- Tasks will be displayed in this format: [Status] description &#40;Module&#41;&#40;Date Time&#41;)
-
-[comment]: <> (    - Status: X for done, blank for not done)
-
-[comment]: <> (    - Module is the name of the associated module)
-
-[comment]: <> (    - Date is in the format: Month Day Year)
-
-[comment]: <> (    - Time is in 24-hour format)
-
-[comment]: <> (Example: `readTask 3`)
 
 #### Edit a task: `editTask`
 Edit an existing task in the task list.
@@ -143,6 +156,14 @@ Format: `markTask INDEX`
 - The index **must be a positive integer** 1, 2, 3, ...
 
 Example: `markTask 2`
+
+Feature in UI:
+
+![Ui](images/UiOngoingTask.png)
+*An ongoing task not yet done will be in the default colour*
+
+![Ui](images/UiDoneTask.png)
+A task marked as done will be coloured green.
 
 #### Delete all done tasks : `deleteDoneTask`
 Deletes all tasks that have been marked as done from the task list.
@@ -206,27 +227,8 @@ of modules after searching for specific modules.
 
 Format: `listMod`
 
-### Calendar:
-#### Change calendar to next month: `nextMonth`
-Display the calendar for the next month. This command will update the entire calendar panel to display the calendar and the related task information for the following month.
-
-Format: `nextMonth`
-
-#### Change calendar to previous month: `prevMonth`
-Similar to `nextMonth`. However, this command display the calendar for the previous month instead.
-
-Format: `prevMonth`
-
-#### Read details happening on a day: `readDay`
-View a day in detail. Tasks happening on the specified day will be displayed.
-
-Format: `readDay DATE`
-* `DATE` given must be a valid date.
-
-Example: `readDay 2021-10-19`
-
 ### Links:
-#### Adding a link: `addLink`
+#### Add a link: `addLink`
 Adds a link into the link list. A link contains its name and a website link for online learning.
 
 Format: `addLink n/NAME a/LINK_ADDRESS [mod/MODULE_NAME]` <br/>
@@ -257,7 +259,7 @@ Format: `deleteLink INDEX`
 
 Example: `deleteLink 2` deletes link No.2 from the list.
 
-#### Delete a link in module panel
+#### Delete a link in module panel:
 Format: `deleteModLink mod/MODULE_NAME i/INDEX`
 * Deletes the mod by the specified `INDEX` at the link list in the readMod panel for the particular module.
 * The index refers to the index number shown in the displayed link list in the readMod panel of the module.
@@ -265,16 +267,16 @@ Format: `deleteModLink mod/MODULE_NAME i/INDEX`
 
 Example: `deleteModLink mod/CS1101S i/1` deletes link No.1 from the link list of CS1101S.
 
-### Open a link
+#### Open a link:
 Format: `openLink INDEX`
 * Opens the link identifies by the index in the link list. If it is a link for a webpage, it will open the link in a
-browser. It it is a path for a file, it will open the file using the default app.
+  browser. It it is a path for a file, it will open the file using the default app.
 * The index refers to the index number shown in the displayed link list
 * The index **must be a positive integer** 1, 2, 3, ...
 
 Example: `openLink 1` open link No. 1 from the list of links.
 
-### Find a link by keyword
+#### Find a link by keyword:
 Format: `findLink KEYWORD [MORE_KEYWORDS]`
 
 * The search is case-insensitive. e.g hans will match Hans.
@@ -290,6 +292,26 @@ Display the full list of links. This command is used to return to the full list 
 
 Format: `listLink`
 
+### Calendar:
+#### Change calendar to next month: `nextMonth`
+Display the calendar for the next month. This command will update the entire calendar panel to display the calendar and the related task information for the following month.
+
+Format: `nextMonth`
+
+#### Change calendar to previous month: `prevMonth`
+Similar to `nextMonth`. However, this command display the calendar for the previous month instead.
+
+Format: `prevMonth`
+
+#### Read details happening on a day: `readDay`
+View a day in detail. Tasks happening on the specified day will be displayed.
+
+Format: `readDay DATE`
+* `DATE` given must be a valid date.
+
+Example: `readDay 2021-10-19`
+
+
 ### OTHERS:
 
 #### Viewing help: `help`
@@ -304,6 +326,10 @@ Format: `help`
 
 Resets the application data and saves the deleted application data into a timestamped file located in the data folder.
 
+#### Reminder for overdue tasks:
+
+Resets the application data and saves the deleted application data into a timestamped file located in the data folder.
+
 #### Exiting the program : `exit`
 
 Exits the program.
@@ -314,7 +340,19 @@ Format: `exit`
 
 Data is saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
 
+#### Reminder for overdue tasks:
+
+Tasks that are overdue(past the end time) will automatically be coloured red for users to clearly see which tasks are 
+overdue.
+
+Feature in UI:
+![Ui](images/UiOverDueTask.png)
+*A Task coloured red since it is overdue*
+
+--------------------------------------------------------------------------------------------------------------------
+
 ## Command summary
+This section serves as quick reference for all the available commands that can be used in the application.
 
 Action | Format, Examples
 --------|------------------
