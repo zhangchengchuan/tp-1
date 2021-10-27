@@ -68,8 +68,8 @@ public class TaskCard extends UiPart<Region> {
         taskName.setText(task.getName().value);
         taskDescription.setText(task.getDescription().value);
         taskModule.setText(task.getTaskModule().value);
-        startTime.setText(task.getStart().isEmpty() ? "" : "Start Time: " + task.getStart().value);
-        endTime.setText(task.getEnd().isEmpty() ? "" : "End Time: " + task.getEnd().value);
+        startTime.setText(task.getStart().isEmpty() ? "" : "Start: " + task.getStart().toDisplayString());
+        endTime.setText(task.getEnd().isEmpty() ? "" : "End: " + task.getEnd().toDisplayString());
 
         if (task.isDone().value) {
             taskCardPane.pseudoClassStateChanged(IS_DONE, true);
