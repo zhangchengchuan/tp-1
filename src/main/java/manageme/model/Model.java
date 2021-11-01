@@ -6,9 +6,7 @@ import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import manageme.commons.core.GuiSettings;
-import manageme.commons.core.index.Index;
 import manageme.model.link.Link;
-import manageme.model.link.LinkModule;
 import manageme.model.module.Module;
 import manageme.model.task.Task;
 
@@ -183,6 +181,4 @@ public interface Model {
 
     /** Returns an unmodifiable view of the unfiltered link list */
     ObservableList<Link> getUnfilteredLinkList();
-
-    Link deleteModLink(LinkModule module, Index targetIndex);
 }
