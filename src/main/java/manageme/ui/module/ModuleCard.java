@@ -25,11 +25,11 @@ public class ModuleCard extends UiPart<Region> {
     public final Module module;
 
     @FXML
-    private HBox cardPane;
+    private HBox moduleCardPane;
     @FXML
-    private Label name;
+    private Label moduleName;
     @FXML
-    private Label id;
+    private Label moduleId;
 
     /**
      * Creates a {@code moduleCode} with the given {@code module} and index to display.
@@ -37,8 +37,8 @@ public class ModuleCard extends UiPart<Region> {
     public ModuleCard(Module module, int displayedIndex) {
         super(FXML);
         this.module = module;
-        id.setText(displayedIndex + ". ");
-        name.setText(module.getModuleName().name);
+        moduleId.setText(displayedIndex + ". ");
+        moduleName.setText(module.getModuleName().value);
     }
 
     @Override
@@ -55,7 +55,7 @@ public class ModuleCard extends UiPart<Region> {
 
         // state check
         ModuleCard card = (ModuleCard) other;
-        return id.getText().equals(card.id.getText())
+        return moduleId.getText().equals(card.moduleId.getText())
                 && module.equals(card.module);
     }
 }

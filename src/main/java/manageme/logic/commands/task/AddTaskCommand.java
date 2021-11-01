@@ -20,13 +20,13 @@ public class AddTaskCommand extends Command {
             + "Parameters: "
             + PREFIX_NAME + "TASK_NAME "
             + PREFIX_DESCRIPTION + "TASK_DESCRIPTION "
-            + PREFIX_MODULE + "ASSOCIATED_MODULE_NAME"
+            + PREFIX_MODULE + "ASSOCIATED_MODULE_NAME "
             + PREFIX_START + "TASK_START_DATETIME "
             + PREFIX_END + "TASK_END_DATETIME \n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_NAME + "Do homework "
             + PREFIX_DESCRIPTION + "Complete CS2103T quiz on testing. "
-            + PREFIX_MODULE + "CS2103T"
+            + PREFIX_MODULE + "CS2103T "
             + PREFIX_START + "2021-10-05T11:50:55 "
             + PREFIX_END + "2021-10-07T11:50:55";
 

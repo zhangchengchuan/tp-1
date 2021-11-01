@@ -102,7 +102,8 @@ public class EditTaskCommand extends Command {
                 .orElse(taskToEdit.getStart());
         TaskTime updatedEndTime = editTaskDescriptor.getEnd()
                 .orElse(taskToEdit.getEnd());
-        return new Task(updatedName, updatedDescription, updatedModule, updatedStartTime, updatedEndTime);
+        return new Task(updatedName, updatedDescription, taskToEdit.isDone(), updatedModule, updatedStartTime,
+                updatedEndTime);
     }
 
     @Override

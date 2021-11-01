@@ -18,7 +18,7 @@ public class ModNameContainsKeywordsPredicate implements Predicate<Module> {
     @Override
     public boolean test(Module module) {
         return keywords.stream()
-                .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(module.getModuleName().name, keyword));
+                .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(module.getModuleName().value, keyword));
     }
 
     @Override

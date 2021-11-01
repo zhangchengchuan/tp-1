@@ -1,129 +1,105 @@
 package manageme.model.link;
 
-import static java.util.Objects.requireNonNull;
+import java.util.Objects;
 
-import manageme.commons.util.AppUtil;
+import manageme.commons.util.CollectionUtil;
 
 /**
  * Represents a link in the app.
- * Guarantees: immutable; is valid as declared in {@link #isValidLink(String)}
+ * Guarantees: field values are validated, immutable
  */
 public class Link {
-
-    public static final String MESSAGE_CONSTRAINTS =
-            "Link must be a valid website address";
-
-    /*
-     * The first character of the link must not be a whitespace,
-     * otherwise " " (a blank string) becomes a valid input.
-     */
-    // TODO: Link content input validation
-    public static final String VALIDATION_REGEX = "[^\\s].*";
-
-    // TODO: Implement name and link as two separate classes
-    public final String link;
-    private String name;
+    private final LinkName name;
+    private final LinkAddress address;
+    private final LinkModule module;
 
     /**
-     * Constructs a {@code Link}.
-     *
-     * @param link A valid link.
+     * Basic Link with only name and address.
      */
-    public Link(String name, String link) {
-        requireNonNull(name, link);
-        AppUtil.checkArgument(isValidLink(link), MESSAGE_CONSTRAINTS);
-        // TODO: Link name input validation when name is a separate class.
-        this.link = link;
+    public Link(LinkName name, LinkAddress address) {
+        CollectionUtil.requireAllNonNull(name, address);
         this.name = name;
-    }
-
-
-    // TODO: Remove this constructor for v1.3 since name will be compulsory
-    /**
-     * Constructs a {@code Link}.
-     *
-     * @param link A valid link.
-     */
-    public Link(String link) {
-        requireNonNull(link);
-        AppUtil.checkArgument(isValidLink(link), MESSAGE_CONSTRAINTS);
-        this.link = link;
+        this.address = address;
+        this.module = LinkModule.empty();
     }
 
     /**
-     * Add a name to link
-     *
-     * @param name name of the link
+     * Basic Link associated with a module.
      */
-    public void addName(String name) {
-        requireNonNull(name);
+    public Link(LinkName name, LinkAddress address, LinkModule module) {
+        CollectionUtil.requireAllNonNull(name, address);
         this.name = name;
+        this.address = address;
+        this.module = module;
     }
 
-    /**
-     * Change the name of link to the new name
-     *
-     * @param name the new name
-     */
-    public void updateName(String name) {
-        requireNonNull(name);
-        this.name = name;
-    }
-
-    public String getName() {
+    public LinkName getName() {
         return name;
     }
 
-    public String getLink() {
-        return link;
+    public LinkAddress getAddress() {
+        return address;
+    }
+
+    public LinkModule getLinkModule() {
+        return module;
     }
 
     /**
-     * Returns true if a given string is a valid link.
+     * Returns true if both links have the same link address.
+     * This defines a weaker notion of equality between two links.
+     * @param otherLink
      */
-    public static boolean isValidLink(String test) {
-        return test.matches(VALIDATION_REGEX);
-    }
-
-
-    @Override
-    public String toString() {
-        if (name != null) {
-            return name + ": " + link;
-        } else {
-            return link;
-        }
-    }
-
-    /**
-     * Returns true if both links have the same link content.
-     * This defines a weaker notion of equality between two mods.
-     * @param otherlink
-     */
-    public boolean isSameLink(Link otherlink) {
-        if (otherlink == this) {
+    public boolean isSameLink(Link otherLink) {
+        if (otherLink == this) {
             return true;
         }
 
-        return otherlink != null
-                && otherlink.getLink().equals(getLink());
+        return otherLink != null
+                && otherLink.getAddress().equals(getAddress());
     }
 
     /**
-     * Returns true if both mods have the same name and link content.
+     * Oen link in web browser.
+     */
+    public void open() {
+        address.open();
+    }
+
+    /**
+     * Returns true if both mods have the same identity and data fields.
      * This defines a stronger notion of equality between two mods.
      * @param other
      */
     @Override
     public boolean equals(Object other) {
-        return other == this // short circuit if same object
-                || (other instanceof Link // instanceof handles nulls
-                && link.equals(((Link) other).link)); // state check
-                // TODO: Compare link names in equal when proper link class is done
+        if (other == this) {
+            return true;
+        }
+
+        if (!(other instanceof Link)) {
+            return false;
+        }
+
+        Link otherLink = (Link) other;
+        return otherLink.getName().equals(getName())
+                && otherLink.getAddress().equals(getAddress())
+                && otherLink.getLinkModule().equals(getLinkModule());
     }
 
     @Override
     public int hashCode() {
-        return link.hashCode();
+        return Objects.hash(name, address, module);
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder builder = new StringBuilder();
+        builder.append(getName())
+                .append("; Address: ")
+                .append(getAddress())
+                .append("; LinkModule: ")
+                .append(getLinkModule());
+        return builder.toString();
     }
 }

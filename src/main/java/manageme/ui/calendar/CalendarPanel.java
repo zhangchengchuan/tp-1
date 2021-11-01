@@ -25,7 +25,7 @@ import manageme.ui.task.TaskListPanel;
  */
 public class CalendarPanel extends UiPart<Region> {
     private static final String FXML = "CalendarPanel.fxml";
-    private static final String TITLE_TEMPLATE = "There %s %d %s today!";
+    private static final String TITLE_TEMPLATE = "There %s %d %s today !";
 
     private final Logger logger = LogsCenter.getLogger(CalendarPanel.class);
 
@@ -55,7 +55,7 @@ public class CalendarPanel extends UiPart<Region> {
         fillCalendarPanel(currentDate);
 
         taskList.addListener((ListChangeListener<? super Task>) change -> {
-            fillCalendar();
+            fillCalendarPanel(referenceDate);
         });
     }
 
@@ -85,9 +85,11 @@ public class CalendarPanel extends UiPart<Region> {
      */
     private void fillReadDayPanel() {
         int numOfTask = getTaskInCurrentDay(taskList, referenceDate).size();
-        readDayTitle.setText(numOfTask > 1
-                ? String.format(TITLE_TEMPLATE, "are", numOfTask, "tasks")
-                : String.format(TITLE_TEMPLATE, "is", numOfTask, "task"));
+        readDayTitle.setText(numOfTask == 0
+                ? "There are no tasks today !"
+                : numOfTask > 1
+                    ? String.format(TITLE_TEMPLATE, "are", numOfTask, "tasks")
+                    : String.format(TITLE_TEMPLATE, "is", numOfTask, "task"));
 
         TaskListPanel taskListPanel = new TaskListPanel(getTaskInCurrentDay(taskList, referenceDate));
         readDayPanelPlaceholder.getChildren().clear();
@@ -235,7 +237,7 @@ public class CalendarPanel extends UiPart<Region> {
      */
     private void showNextMonth() {
         referenceDate = referenceDate.plusMonths(1);
-        fillCalendar();
+        fillCalendarPanel(referenceDate);
     }
 
     /**
@@ -243,6 +245,6 @@ public class CalendarPanel extends UiPart<Region> {
      */
     private void showPreviousMonth() {
         referenceDate = referenceDate.minusMonths(1);
-        fillCalendar();
+        fillCalendarPanel(referenceDate);
     }
 }
