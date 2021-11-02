@@ -22,18 +22,18 @@ public class LinkNameTest {
     @Test
     public void isValidName() {
         // null name
-        assertThrows(NullPointerException.class, () -> LinkName.isValidName(null));
+        assertThrows(NullPointerException.class, () -> LinkName.isValidLinkName(null));
 
         // invalid name
-        assertFalse(LinkName.isValidName("")); // empty string
-        assertFalse(LinkName.isValidName(" ")); // spaces only
+        assertFalse(LinkName.isValidLinkName("")); // empty string
+        assertFalse(LinkName.isValidLinkName(" ")); // spaces only
 
         // valid name
-        assertTrue(LinkName.isValidName("google")); // alphabets only
-        assertTrue(LinkName.isValidName("12345")); // numbers only
-        assertTrue(LinkName.isValidName("notes for cs1101")); // alphanumeric characters
-        assertTrue(LinkName.isValidName("assignments for CS1101")); // with capital letters
-        assertTrue(LinkName.isValidName("Plan out next week timetable by this Friday")); // long names
+        assertTrue(LinkName.isValidLinkName("google")); // alphabets only
+        assertTrue(LinkName.isValidLinkName("12345")); // numbers only
+        assertTrue(LinkName.isValidLinkName("notes for cs1101")); // alphanumeric characters
+        assertTrue(LinkName.isValidLinkName("assignments for CS1101")); // with capital letters
+        assertTrue(LinkName.isValidLinkName("Plan out next week timetable by this Friday")); // long names
     }
 
     @Test

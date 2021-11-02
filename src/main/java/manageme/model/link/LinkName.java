@@ -24,14 +24,14 @@ public class LinkName {
      */
     public LinkName(String linkName) {
         requireNonNull(linkName);
-        AppUtil.checkArgument(isValidName(linkName), MESSAGE_CONSTRAINTS);
+        AppUtil.checkArgument(isValidLinkName(linkName), MESSAGE_CONSTRAINTS);
         this.value = linkName;
     }
 
     /**
      * Returns true if a given string is a valid module name.
      */
-    public static boolean isValidName(String test) {
+    public static boolean isValidLinkName(String test) {
         return test.matches(VALIDATION_REGEX);
     }
 
