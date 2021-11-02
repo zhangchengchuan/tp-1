@@ -20,18 +20,18 @@ public class LinkName {
     /**
      * Constructs a {@code LinkName}.
      *
-     * @param moduleName A valid mod name.
+     * @param linkName A valid mod name.
      */
-    public LinkName(String moduleName) {
-        requireNonNull(moduleName);
-        AppUtil.checkArgument(isValidLinkName(moduleName), MESSAGE_CONSTRAINTS);
-        this.value = moduleName;
+    public LinkName(String linkName) {
+        requireNonNull(linkName);
+        AppUtil.checkArgument(isValidName(linkName), MESSAGE_CONSTRAINTS);
+        this.value = linkName;
     }
 
     /**
      * Returns true if a given string is a valid module name.
      */
-    public static boolean isValidLinkName(String test) {
+    public static boolean isValidName(String test) {
         return test.matches(VALIDATION_REGEX);
     }
 
