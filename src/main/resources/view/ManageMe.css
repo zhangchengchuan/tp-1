@@ -17,7 +17,7 @@
 }
 
 #menuBar .label{
-    -fx-font-size: 15px;
+    -fx-font-size: 16px;
 }
 
 .scroll-bar,
@@ -47,8 +47,8 @@
 
 #commandTextField {
     -fx-background-color: -panel-color;
-    -fx-font-family: "Fligen";
-    -fx-font-size: 15px;
+    -fx-font-family: "Giliams";
+    -fx-font-size: 16px;
     -fx-prompt-text-fill: #000000;
 }
 
@@ -92,8 +92,8 @@
 
 .button,
 .label {
-    -fx-font-family: "Fligen";
-    -fx-font-size: 12px;
+    -fx-font-family: "Giliams";
+    -fx-font-size: 14px;
     -fx-text-fill: #000000;
 }
 
@@ -167,38 +167,37 @@
 #taskId,
 #taskName,
 #readDayTitle {
-    -fx-font-size: 15px;
+    -fx-font-size: 18px;
 }
 
 #taskModule,
 #startTime,
 #endTime {
-    -fx-font-size: 10px;
+    -fx-font-size: 13px;
 }
 
 .button {
     -fx-padding: 2 2 2 2;
-    -fx-border-color: red;
+    -fx-border-color: crimson;
     -fx-border-width: 2;
     -fx-border-radius: 20;
     -fx-background-radius: 20;
-    -fx-background-color: orange;
-    -fx-text-fill: yellow;
+    -fx-background-color: coral;
+    -fx-text-fill: #000000;
     -fx-background-insets: 0 0 0 0, 0, 1, 2;
 }
 
 .button:hover {
-    -fx-border-color: red;
-    -fx-background-color: blue;
-    -fx-text-fill: yellow;
+    -fx-border-color: darkviolet;
+    -fx-background-color: dodgerblue;
 }
 
 .header {
-    -fx-font-size: 20px;
+    -fx-font-size: 24px;
     -fx-background-color: -panel-color;
 }
 
 #resultDisplay {
-    -fx-font-family: "Fligen";
-    -fx-font-size: 18px;
+    -fx-font-family: "Giliams";
+    -fx-font-size: 20px;
 }
