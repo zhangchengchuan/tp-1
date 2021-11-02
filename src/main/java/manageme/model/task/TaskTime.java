@@ -13,7 +13,7 @@ import java.util.Optional;
 public class TaskTime {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "TaskTime can take any value, and it should not be blank";
+            "Invalid Task Time value.";
 
     public static final String VALIDATION_REGEX = "[^\\s].*";
 

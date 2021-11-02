@@ -34,6 +34,8 @@ public class AddTaskCommand extends Command {
     public static final String MESSAGE_DUPLICATE_TASK = "This task already exists in the task list";
     public static final String MESSAGE_START_LATER_THAN_END = "The task cannot have start date later than the end date";
     public static final String MESSAGE_START_WITHOUT_END = "The task cannot have a start without an end date";
+    public static final String MESSAGE_TASK_NAME_TOO_LONG = "Maximum Length of Task Name is 50 Characters";
+    public static final String MESSAGE_TASK_DESCRIPTION_TOO_LONG = "Maximum Length of Task Description is 100 Characters";
     private final Task toAdd;
     /**
      * Creates an AddTaskCommand to add the specified {@code Task}
