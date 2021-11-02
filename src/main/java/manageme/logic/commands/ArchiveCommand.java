@@ -22,7 +22,7 @@ public class ArchiveCommand extends Command {
 
     public static final String MESSAGE_ARCHIVE_SUCCESS = "Data Archived into: %s";
 
-    private static final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss ");
+    private static final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyyMMdd'T'HHmmss ");
 
     private static Storage storage;
 
