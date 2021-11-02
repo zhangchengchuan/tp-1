@@ -52,7 +52,7 @@ public class TimeManager implements Time {
     }
 
     /**
-     * Updates the current list of tasks based on the newest model. This is called whenver changes to model is made.
+     * Updates the current list of tasks based on the newest model. This is called whenever changes to model is made.
      * @param manageMe is the latest version of manageMe with the update tasks.
      */
     @Override
@@ -61,7 +61,7 @@ public class TimeManager implements Time {
     }
 
     /**
-     * Starts a asynchronous thread that checks the task list every X seconds.
+     * Starts an asynchronous thread that checks the task list every X seconds.
      * Whenever a task is due, a pop-up is launched.
      */
     @Override
