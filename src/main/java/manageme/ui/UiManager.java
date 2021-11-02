@@ -24,6 +24,22 @@ public class UiManager implements Ui {
 
     private Logic logic;
     private MmMainWindow mainWindow;
+    private boolean isRunning = true;
+
+    /**
+     * Refreshes the UI every second.
+     */
+    private Thread runUi = new Thread(() -> {
+        while (isRunning) {
+            try {
+                Platform.runLater(() -> refresh());
+                Thread.sleep(1000);
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+                System.out.println("Error with UI.");
+            }
+        }
+    });
 
     /**
      * Creates a {@code UiManager} with the given {@code Logic}.
@@ -49,6 +65,17 @@ public class UiManager implements Ui {
             logger.severe(StringUtil.getDetails(e));
             showFatalErrorDialogAndShutdown("Fatal error during initializing", e);
         }
+
+        runUi.start();
+    }
+
+    @Override
+    public void stop() {
+        isRunning = false;
+    }
+
+    public void refresh() {
+        mainWindow.refresh();
     }
 
     private Image getImage(String imagePath) {
