@@ -33,11 +33,14 @@ public class EditTaskCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the task identified "
             + "by the index number used in the displayed task list. "
             + "Existing values will be overwritten by the input values.\n"
-            + "Parameters: INDEX (must be a positive integer) ";
+            + "Parameters: INDEX (must be a positive integer between 1 and 2147483647) ";
 
     public static final String MESSAGE_EDIT_TASK_SUCCESS = "Edited Task: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
     public static final String MESSAGE_DUPLICATE_TASK = "This task already exists in the address book.";
+    public static final String MESSAGE_TASK_NAME_TOO_LONG = "Maximum Length of Edited Task Name is 50 Characters";
+    public static final String MESSAGE_TASK_DESCRIPTION_TOO_LONG =
+            "Maximum Length of Edited Task Description is 100 Characters";
 
     private final Index index;
     private final EditTaskDescriptor editTaskDescriptor;
@@ -78,6 +81,14 @@ public class EditTaskCommand extends Command {
         if (!editedTask.getStart().isEmpty() && !editedTask.getEnd().isEmpty()
                 && editedTask.getStart().getTime().isAfter(editedTask.getEnd().getTime())) {
             throw new CommandException(MESSAGE_START_LATER_THAN_END);
+        }
+
+        if (editedTask.getName().value.length() > 50) {
+            throw new CommandException(MESSAGE_TASK_NAME_TOO_LONG);
+        }
+
+        if (editedTask.getDescription().value.length() > 100) {
+            throw new CommandException(MESSAGE_TASK_DESCRIPTION_TOO_LONG);
         }
 
         model.setTask(taskToEdit, editedTask);
