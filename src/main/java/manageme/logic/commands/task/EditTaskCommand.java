@@ -14,7 +14,6 @@ import manageme.commons.util.CollectionUtil;
 import manageme.logic.commands.Command;
 import manageme.logic.commands.CommandResult;
 import manageme.logic.commands.exceptions.CommandException;
-import manageme.logic.parser.exceptions.ParseException;
 import manageme.model.Model;
 import manageme.model.task.Task;
 import manageme.model.task.TaskDescription;
@@ -40,7 +39,8 @@ public class EditTaskCommand extends Command {
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
     public static final String MESSAGE_DUPLICATE_TASK = "This task already exists in the address book.";
     public static final String MESSAGE_TASK_NAME_TOO_LONG = "Maximum Length of Edited Task Name is 50 Characters";
-    public static final String MESSAGE_TASK_DESCRIPTION_TOO_LONG = "Maximum Length of Edited Task Description is 100 Characters";
+    public static final String MESSAGE_TASK_DESCRIPTION_TOO_LONG =
+            "Maximum Length of Edited Task Description is 100 Characters";
 
     private final Index index;
     private final EditTaskDescriptor editTaskDescriptor;
