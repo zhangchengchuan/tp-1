@@ -33,6 +33,13 @@ public class TaskCommandTestUtil {
     public static final String END_DESC_A = " " + PREFIX_END + VALID_END_A;
     public static final String END_DESC_B = " " + PREFIX_END + VALID_END_B;
 
+    public static final String INVALID_LONG_NAME = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+    public static final String INVALID_LONG_DESCRIPTION =
+            "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            + "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            + "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+    public static final String INVALID_START_A = "2021-10-07T23:59";
+    public static final String INVALID_END_A = "2021-10-06T23:59";
 
     public static final String INVALID_NAME_DESC = " " + PREFIX_NAME + " "; // whitespace not allowed in names
     public static final String INVALID_DESCRIPTION_DESC = " " + PREFIX_DESCRIPTION; //empty string not

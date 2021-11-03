@@ -5,6 +5,10 @@ import static manageme.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static manageme.logic.commands.CommandTestUtil.showTaskAtIndex;
 import static manageme.logic.commands.task.TaskCommandTestUtil.DESC_A;
 import static manageme.logic.commands.task.TaskCommandTestUtil.DESC_B;
+import static manageme.logic.commands.task.TaskCommandTestUtil.INVALID_END_A;
+import static manageme.logic.commands.task.TaskCommandTestUtil.INVALID_LONG_DESCRIPTION;
+import static manageme.logic.commands.task.TaskCommandTestUtil.INVALID_LONG_NAME;
+import static manageme.logic.commands.task.TaskCommandTestUtil.INVALID_START_A;
 import static manageme.logic.commands.task.TaskCommandTestUtil.VALID_DESCRIPTION_B;
 import static manageme.logic.commands.task.TaskCommandTestUtil.VALID_MODULE_B;
 import static manageme.logic.commands.task.TaskCommandTestUtil.VALID_NAME_B;
@@ -143,6 +147,50 @@ public class EditTaskCommandTest {
                 new EditTaskDescriptorBuilder().withName(VALID_NAME_B).build());
 
         assertCommandFailure(editTaskCommand, model, Messages.MESSAGE_INVALID_TASK_DISPLAYED_INDEX);
+    }
+
+    @Test
+    public void execute_invalidNameLength_failure() {
+        showTaskAtIndex(model, INDEX_FIRST);
+        EditTaskCommand editTaskCommand = null;
+        editTaskCommand = new EditTaskCommand(INDEX_FIRST,
+                new EditTaskDescriptorBuilder().withName(INVALID_LONG_NAME).build());
+
+        assertCommandFailure(editTaskCommand, model, EditTaskCommand.MESSAGE_TASK_NAME_TOO_LONG);
+    }
+
+    @Test
+    public void execute_invalidDescriptionLength_failure() {
+        showTaskAtIndex(model, INDEX_FIRST);
+        EditTaskCommand editTaskCommand = null;
+        editTaskCommand = new EditTaskCommand(INDEX_FIRST,
+                new EditTaskDescriptorBuilder().withDescription(INVALID_LONG_DESCRIPTION).build());
+
+        assertCommandFailure(editTaskCommand, model, EditTaskCommand.MESSAGE_TASK_DESCRIPTION_TOO_LONG);
+    }
+
+    @Test
+    public void execute_invalidStartAndEndDate_failure() {
+        showTaskAtIndex(model, INDEX_FIRST);
+        EditTaskCommand editTaskCommand = null;
+        editTaskCommand = new EditTaskCommand(INDEX_FIRST,
+                new EditTaskDescriptorBuilder()
+                        .withEndDateTime(INVALID_END_A)
+                        .withStartDateTime(INVALID_START_A).build());
+
+        assertCommandFailure(editTaskCommand, model, EditTaskCommand.MESSAGE_START_LATER_THAN_END);
+    }
+
+    @Test
+    public void execute_invalidStartWithoutEndDate_failure() {
+        showTaskAtIndex(model, INDEX_FIRST);
+        EditTaskCommand editTaskCommand = null;
+        editTaskCommand = new EditTaskCommand(INDEX_FIRST,
+                new EditTaskDescriptorBuilder()
+                        .withEndDateTime("")
+                        .withStartDateTime(INVALID_START_A).build());
+
+        assertCommandFailure(editTaskCommand, model, EditTaskCommand.MESSAGE_START_WITHOUT_END);
     }
 
     @Test
