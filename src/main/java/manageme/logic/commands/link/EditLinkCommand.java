@@ -78,7 +78,7 @@ public class EditLinkCommand extends Command {
         }
 
         //if there is a module being associated, check it exists
-        if (!editedLink.getLinkModule().moduleName.isEmpty()) {
+        if (!editedLink.getLinkModule().value.isEmpty()) {
             if (!model.hasModule(new Module(new ModuleName(editedLink.getLinkModule().value)))) {
                 throw new CommandException(MESSAGE_NONEXISTENT_MODULE);
             }

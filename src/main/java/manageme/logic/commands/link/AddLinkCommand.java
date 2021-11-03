@@ -53,7 +53,7 @@ public class AddLinkCommand extends Command {
         }
 
         //if there is a module being associated, check it exists
-        if (!toAdd.getLinkModule().moduleName.isEmpty()) {
+        if (!toAdd.getLinkModule().value.isEmpty()) {
             if (!model.hasModule(new Module(new ModuleName(toAdd.getLinkModule().value)))) {
                 throw new CommandException(MESSAGE_NONEXISTENT_MODULE);
             }

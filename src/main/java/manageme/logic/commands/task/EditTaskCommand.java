@@ -95,7 +95,7 @@ public class EditTaskCommand extends Command {
         }
 
         //if there is a module being associated, check it exists
-        if (!editedTask.getTaskModule().moduleName.isEmpty()) {
+        if (!editedTask.getTaskModule().value.isEmpty()) {
             if (!model.hasModule(new Module(new ModuleName(editedTask.getTaskModule().value)))) {
                 throw new CommandException(MESSAGE_NONEXISTENT_MODULE);
             }

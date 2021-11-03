@@ -58,7 +58,7 @@ public class AddTaskCommand extends Command {
         }
 
         //if there is a module being associated, check it exists
-        if (!toAdd.getTaskModule().moduleName.isEmpty()) {
+        if (!toAdd.getTaskModule().value.isEmpty()) {
             if (!model.hasModule(new Module(new ModuleName(toAdd.getTaskModule().value)))) {
                 throw new CommandException(MESSAGE_NONEXISTENT_MODULE);
             }
