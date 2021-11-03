@@ -18,7 +18,9 @@ import manageme.model.link.exceptions.LinkNotOpenException;
 public class LinkAddress {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "The link should be a valid url, beginning with https://, ftp:// or file:/";
+            "The link should be a valid uri, beginning with https://, ftp:// or file:/. "
+                    + "It doesn't support any space in the link. File name should start from the root directory"
+                    + "for it to be able to be properly opened.";
 
     /*
      * The address should be in a valid url format.
