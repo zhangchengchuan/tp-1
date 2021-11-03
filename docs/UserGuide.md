@@ -74,9 +74,10 @@ Adds a task to the task list.
 
 Format: `addTask n/NAME d/DESCRIPTION [mod/MODULE_NAME] [s/START_DATETIME] [e/END_DATETIME]`
 
-- A name and description for the task is compulsory.
-- It is optional to include an associated Module name, a start datetime and an end datetime.
-- A task created with a start datetime MUST also have an end datetime.
+* A name and description for the task is compulsory.
+* It is optional to include an associated Module name, a start datetime and an end datetime.
+* A task created with a start datetime MUST also have an end datetime.
+* Format for a `DATETIME` is as follows: `year-month-dayThr:min` e.g. `2021-10-29T23:59`
 
 Example: `addTask n/Do CS2103T Assignment d/Refer to lecture 10 for examples mod/CS2103T s/2021-10-05T11:00
 e/2021-10-07T23:59`
@@ -89,6 +90,8 @@ Format: `editTask INDEX [n/NAME] [d/DESCRIPTION] [mod/MODULE_NAME] [s/START_DATE
 * The index **must be a positive integer** 1, 2, 3, ...
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
+* Format for a `DATETIME` is as follows: `year-month-dayThr:min` e.g. `2021-10-29T23:59`
+
 
 Example: `editTask 3 d/buy milk`
 
@@ -96,9 +99,9 @@ Example: `editTask 3 d/buy milk`
 Deletes the specified task from the task list.
 
 Format: `deleteTask INDEX`
-- Deletes the task at the specified `INDEX`
-- The index refers to the index number shown in the displayed task list.
-- The index **must be a positive integer** 1, 2, 3, ...
+* Deletes the task at the specified `INDEX`
+* The index refers to the index number shown in the displayed task list.
+* The index **must be a positive integer** 1, 2, 3, ...
 
 Example: `deleteTask 2`
 
@@ -282,6 +285,8 @@ View a day in detail. Tasks happening on the specified day will be displayed.
 
 Format: `readDay DATE`
 * `DATE` given must be a valid date.
+* Format for a `DATE` is as follows: `year-month-day` e.g. `2021-10-19`
+
 
 Example: `readDay 2021-10-19`
 
