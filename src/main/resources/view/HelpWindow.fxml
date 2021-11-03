@@ -22,7 +22,7 @@
         <URL value="@ManageMe.css" />
       </stylesheets>
       <VBox fx:id="helpWindow" alignment="CENTER">
-        <ImageView fitHeight="600" fitWidth="500">
+        <ImageView fitHeight="1000" fitWidth="500">
           <Image url="@/images/Command Summary.png" />
                <VBox.margin>
                   <Insets bottom="5.0" left="10.0" right="10.0" top="10.0" />
