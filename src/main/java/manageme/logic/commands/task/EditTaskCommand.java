@@ -1,8 +1,6 @@
 package manageme.logic.commands.task;
 
 import static java.util.Objects.requireNonNull;
-import static manageme.logic.commands.task.AddTaskCommand.MESSAGE_START_LATER_THAN_END;
-import static manageme.logic.commands.task.AddTaskCommand.MESSAGE_START_WITHOUT_END;
 import static manageme.model.Model.PREDICATE_SHOW_ALL_TASKS;
 
 import java.util.List;
@@ -40,6 +38,8 @@ public class EditTaskCommand extends Command {
     public static final String MESSAGE_EDIT_TASK_SUCCESS = "Edited Task: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
     public static final String MESSAGE_DUPLICATE_TASK = "This task already exists in the address book.";
+    public static final String MESSAGE_START_LATER_THAN_END = "The task cannot have start date later than the end date";
+    public static final String MESSAGE_START_WITHOUT_END = "The task cannot have a start without an end date";
     public static final String MESSAGE_TASK_NAME_TOO_LONG = "Maximum Length of Edited Task Name is 50 Characters";
     public static final String MESSAGE_TASK_DESCRIPTION_TOO_LONG =
             "Maximum Length of Edited Task Description is 100 Characters";
