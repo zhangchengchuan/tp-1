@@ -44,7 +44,7 @@ public class TaskTimeTest {
         // empty TaskTime, returns ""
         assertTrue(TaskTime.empty().toDisplayString().equals(""));
         // valid TaskTime, returns a string in display format
-        assertTrue(TASK_A.getEnd().toDisplayString().equals("05/10/2021 02:00pm"));
+        assertTrue(TASK_A.getEnd().toDisplayString().equals("05/10/2021" + " " + "02:00pm"));
     }
 
     @Test
