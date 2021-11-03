@@ -13,6 +13,8 @@ import manageme.logic.commands.Command;
 import manageme.logic.commands.CommandResult;
 import manageme.logic.commands.exceptions.CommandException;
 import manageme.model.Model;
+import manageme.model.module.Module;
+import manageme.model.module.ModuleName;
 import manageme.model.task.Task;
 import manageme.model.task.TaskDescription;
 import manageme.model.task.TaskModule;
@@ -41,6 +43,7 @@ public class EditTaskCommand extends Command {
     public static final String MESSAGE_TASK_NAME_TOO_LONG = "Maximum Length of Edited Task Name is 50 Characters";
     public static final String MESSAGE_TASK_DESCRIPTION_TOO_LONG =
             "Maximum Length of Edited Task Description is 100 Characters";
+    public static final String MESSAGE_NONEXISTENT_MODULE = "The module you have associated does not exist";
 
     private final Index index;
     private final EditTaskDescriptor editTaskDescriptor;
@@ -89,6 +92,13 @@ public class EditTaskCommand extends Command {
 
         if (editedTask.getDescription().value.length() > 100) {
             throw new CommandException(MESSAGE_TASK_DESCRIPTION_TOO_LONG);
+        }
+
+        //if there is a module being associated, check it exists
+        if (!editedTask.getTaskModule().value.isEmpty()) {
+            if (!model.hasModule(new Module(new ModuleName(editedTask.getTaskModule().value)))) {
+                throw new CommandException(MESSAGE_NONEXISTENT_MODULE);
+            }
         }
 
         model.setTask(taskToEdit, editedTask);
