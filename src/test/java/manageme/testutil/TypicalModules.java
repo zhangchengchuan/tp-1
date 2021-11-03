@@ -10,6 +10,7 @@ import manageme.model.module.Module;
 public class TypicalModules {
     public static final Module MODULE_A = new ModuleBuilder().withName("CS2100").build();
     public static final Module MODULE_B = new ModuleBuilder().withName("CS2103").build();
+    public static final Module MODULE_C = new ModuleBuilder().withName("CS1231").build();
 
     private TypicalModules() {} // prevents instantiation
 
@@ -25,6 +26,6 @@ public class TypicalModules {
     }
 
     public static List<Module> getTypicalModules() {
-        return new ArrayList<>(Arrays.asList(MODULE_A, MODULE_B));
+        return new ArrayList<>(Arrays.asList(MODULE_A, MODULE_B, MODULE_C));
     }
 }
