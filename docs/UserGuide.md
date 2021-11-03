@@ -347,9 +347,9 @@ Action | Format, Examples
 **DeleteLink** | `deleteLink INDEX`<br>e.g., `deleteLink 2`
 **DeleteModLink** | `deleteModLink mod/MODULE_NAME i/INDEX`<br>e.g., `deleteModLink mod/CS1101S i/1`
 **EditLink** | `editLink INDEX [n/NAME] [a/LINK_ADDRESS] [mod/MODULE_NAME]`<br>e.g.,`editLink 2 n/amazon`
-**OpenLink** | `OpenLink INDEX` <br>e.g.,`openLink 1`
+**OpenLink** | `openLink INDEX` <br>e.g.,`openLink 1`
 **FindLink** | `findLink KEYWORD`<br>e.g.,`findLink google`
-**ListLink** | `ListLink`
+**ListLink** | `listLink`
 **NextMonth** | `nextMonth`
 **PreviousMonth** | `prevMonth`
 **ReadDay** | `readDay DATE`<br>e.g., `readDay 2021-10-19`
