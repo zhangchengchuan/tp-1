@@ -2,6 +2,8 @@ package manageme.ui.calendar;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.logging.Logger;
 
 import javafx.collections.ListChangeListener;
@@ -26,12 +28,13 @@ import manageme.ui.task.TaskListPanel;
 public class CalendarPanel extends UiPart<Region> {
     private static final String FXML = "CalendarPanel.fxml";
     private static final String TITLE_TEMPLATE = "There %s %d %s today !";
+    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("hh:mm a, MMM dd, yyyy");
 
     private final Logger logger = LogsCenter.getLogger(CalendarPanel.class);
 
-    private LocalDate currentDate;
     private LocalDate referenceDate;
     private ObservableList<Task> taskList;
+    private TaskListPanel taskListPanel;
 
     @FXML
     private Label date;
@@ -51,8 +54,7 @@ public class CalendarPanel extends UiPart<Region> {
     public CalendarPanel(ObservableList<Task> taskList) {
         super(FXML);
         this.taskList = taskList;
-        currentDate = LocalDate.now();
-        fillCalendarPanel(currentDate);
+        fillCalendarPanel(LocalDate.now());
 
         taskList.addListener((ListChangeListener<? super Task>) change -> {
             fillCalendarPanel(referenceDate);
@@ -74,7 +76,7 @@ public class CalendarPanel extends UiPart<Region> {
      * Fills up the calendar based on reference date.
      */
     private void fillCalendar() {
-        date.setText(currentDate.toString());
+        date.setText(LocalDateTime.now().format(FORMATTER));
         clearCalendar();
         fillLayout();
         fillDay();
@@ -91,7 +93,7 @@ public class CalendarPanel extends UiPart<Region> {
                     ? String.format(TITLE_TEMPLATE, "are", numOfTask, "tasks")
                     : String.format(TITLE_TEMPLATE, "is", numOfTask, "task"));
 
-        TaskListPanel taskListPanel = new TaskListPanel(getTaskInCurrentDay(taskList, referenceDate));
+        taskListPanel = new TaskListPanel(getTaskInCurrentDay(taskList, referenceDate));
         readDayPanelPlaceholder.getChildren().clear();
         readDayPanelPlaceholder.getChildren().add(taskListPanel.getRoot());
     }
@@ -101,6 +103,14 @@ public class CalendarPanel extends UiPart<Region> {
      */
     private void clearCalendar() {
         calendarPlaceholder.getChildren().clear();
+    }
+
+    /**
+     * Refreshes the calendar.
+     */
+    public void refresh() {
+        taskListPanel.refresh();
+        date.setText(LocalDateTime.now().format(FORMATTER));
     }
 
     /**
