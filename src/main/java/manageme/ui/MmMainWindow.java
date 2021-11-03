@@ -157,6 +157,14 @@ public class MmMainWindow extends UiPart<Stage> {
     }
 
     /**
+     * Refresh the content of time-sensitive UI.
+     */
+    public void refresh() {
+        taskListPanel.refresh();
+        calendarPanel.refresh();
+    }
+
+    /**
      * Sets the default size based on {@code guiSettings}.
      */
     private void setWindowDefaultSize(GuiSettings guiSettings) {
@@ -199,7 +207,6 @@ public class MmMainWindow extends UiPart<Stage> {
     /**
      * Opens the module window.
      */
-    @FXML
     private void handleModule() {
         moduleWindow.display(logic.getReadModule(), logic.getUnfilteredLinkList(), logic.getUnfilteredTaskList());
     }

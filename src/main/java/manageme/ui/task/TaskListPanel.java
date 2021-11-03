@@ -31,6 +31,13 @@ public class TaskListPanel extends UiPart<Region> {
     }
 
     /**
+     * Refreshes the task list.
+     */
+    public void refresh() {
+        taskListView.refresh();
+    }
+
+    /**
      * Custom {@code ListCell} that displays the graphics of a {@code Task} using a {@code TaskCard}.
      */
     class TaskListViewCell extends ListCell<Task> {
