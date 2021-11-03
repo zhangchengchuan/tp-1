@@ -20,6 +20,9 @@ import manageme.model.link.Link;
 import manageme.model.link.LinkAddress;
 import manageme.model.link.LinkModule;
 import manageme.model.link.LinkName;
+import manageme.model.module.Module;
+import manageme.model.module.ModuleName;
+
 /**
  * Edits the details of an existing link in the address book.
  */
@@ -41,6 +44,7 @@ public class EditLinkCommand extends Command {
     public static final String MESSAGE_EDIT_LINK_SUCCESS = "Edited Link: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
     public static final String MESSAGE_DUPLICATE_LINK = "This link already exists in the address book.";
+    public static final String MESSAGE_NONEXISTENT_MODULE = "The module you have associated does not exist";
 
     private final Index index;
     private final EditLinkDescriptor editLinkDescriptor;
@@ -71,6 +75,13 @@ public class EditLinkCommand extends Command {
 
         if (!linkToEdit.isSameLink(editedLink) && model.hasLink(editedLink)) {
             throw new CommandException(MESSAGE_DUPLICATE_LINK);
+        }
+
+        //if there is a module being associated, check it exists
+        if (!editedLink.getLinkModule().moduleName.isEmpty()) {
+            if (!model.hasModule(new Module(new ModuleName(editedLink.getLinkModule().value)))) {
+                throw new CommandException(MESSAGE_NONEXISTENT_MODULE);
+            }
         }
 
         model.setLink(linkToEdit, editedLink);

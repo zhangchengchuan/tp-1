@@ -93,7 +93,9 @@ public class EditTaskCommand extends Command {
         if (editedTask.getDescription().value.length() > 100) {
             throw new CommandException(MESSAGE_TASK_DESCRIPTION_TOO_LONG);
         }
-        if (!editedTask.getTaskModule().value.isEmpty()) {
+
+        //if there is a module being associated, check it exists
+        if (!editedTask.getTaskModule().moduleName.isEmpty()) {
             if (!model.hasModule(new Module(new ModuleName(editedTask.getTaskModule().value)))) {
                 throw new CommandException(MESSAGE_NONEXISTENT_MODULE);
             }

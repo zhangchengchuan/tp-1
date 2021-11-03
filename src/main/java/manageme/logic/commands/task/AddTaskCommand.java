@@ -57,7 +57,8 @@ public class AddTaskCommand extends Command {
             throw new CommandException(MESSAGE_DUPLICATE_TASK);
         }
 
-        if (!toAdd.getTaskModule().value.isEmpty()) {
+        //if there is a module being associated, check it exists
+        if (!toAdd.getTaskModule().moduleName.isEmpty()) {
             if (!model.hasModule(new Module(new ModuleName(toAdd.getTaskModule().value)))) {
                 throw new CommandException(MESSAGE_NONEXISTENT_MODULE);
             }
