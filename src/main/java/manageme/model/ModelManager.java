@@ -14,6 +14,7 @@ import manageme.commons.core.GuiSettings;
 import manageme.commons.core.LogsCenter;
 import manageme.commons.util.CollectionUtil;
 import manageme.model.link.Link;
+import manageme.model.link.LinkModule;
 import manageme.model.module.Module;
 import manageme.model.task.Task;
 import manageme.model.task.TaskModule;

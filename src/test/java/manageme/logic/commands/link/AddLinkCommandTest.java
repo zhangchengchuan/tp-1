@@ -23,6 +23,7 @@ import manageme.model.Model;
 import manageme.model.ReadOnlyManageMe;
 import manageme.model.ReadOnlyUserPrefs;
 import manageme.model.link.Link;
+import manageme.model.link.LinkModule;
 import manageme.model.module.Module;
 import manageme.model.task.Task;
 import manageme.model.task.TaskModule;
@@ -110,7 +111,7 @@ public class AddLinkCommandTest {
         }
 
         @Override
-        public void setManageMeFilePath(Path ManageMeFilePath) {
+        public void setManageMeFilePath(Path manageMeFilePath) {
             throw new AssertionError("This method should not be called.");
         }
 
