@@ -1,9 +1,12 @@
 package manageme.model.task;
 
+import static manageme.testutil.Assert.assertThrows;
 import static manageme.testutil.TypicalTasks.TASK_A;
 import static manageme.testutil.TypicalTasks.TASK_B;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.time.LocalDateTime;
 
 import org.junit.jupiter.api.Test;
 
@@ -11,6 +14,35 @@ import manageme.logic.commands.task.TaskCommandTestUtil;
 import manageme.testutil.TaskBuilder;
 
 public class TaskTest {
+    @Test
+    public void constructor_null_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> new Task(TASK_A.getName(), TASK_A.getDescription(),
+                null, null, null));
+    }
+
+    @Test
+    public void constructor_withoutTaskIsDone_returnsTaskNotDone() {
+        assertFalse(new Task(TASK_A.getName(), TASK_A.getDescription(), TASK_A.getTaskModule(),
+                TASK_A.getStart(), TASK_A.getEnd()).isDone().value);
+    }
+
+    @Test
+    public void getSpan() {
+        //no start/end datetime, returns empty stream
+        Task noDateTask = new TaskBuilder().withStartDateTime("").withEndDateTime("").build();
+        assertFalse(noDateTask.getSpan().findAny().isPresent());
+    }
+
+    @Test
+    public void getFirstOccurence() {
+        //Task with only end TaskTime, returns end datetime
+        Task onlyEndTask = new TaskBuilder(TASK_A).withStartDateTime("").build();
+        assertTrue(onlyEndTask.getFirstOccurrence().equals(LocalDateTime.parse("2021-10-05T14:00")));
+
+        //Task with both start and end TaskTime, returns start datetime
+        assertTrue(TASK_A.getFirstOccurrence().equals(LocalDateTime.parse("2021-10-05T11:50")));
+    }
+
     @Test
     public void isSameTask() {
         // same object -> returns true
