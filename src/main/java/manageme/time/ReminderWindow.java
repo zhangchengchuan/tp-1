@@ -55,6 +55,10 @@ public class ReminderWindow extends UiPart<Stage> {
         if (!displayedList.isEmpty()) {
             resetWindow();
             reminderWindow.show();
+
+            reminderWindow.setMinHeight(reminderWindow.getHeight());
+            reminderWindow.setMinWidth(reminderWindow.getWidth());
+            reminderWindow.setResizable(false);
         }
     }
 
