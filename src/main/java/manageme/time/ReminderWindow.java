@@ -27,9 +27,9 @@ public class ReminderWindow extends UiPart<Stage> {
     private Button ackButton;
 
     /**
-     * Creates a new HelpWindow.
+     * Creates a new ReminderWindow.
      *
-     * @param root Stage to use as the root of the HelpWindow.
+     * @param root Stage to use as the root of the ReminderWindow.
      */
     public ReminderWindow(Stage root) {
         super(FXML, root);
