@@ -13,6 +13,8 @@
     "modName" : "CS2100"
   } , {
     "modName" : "CS2103"
+  } , {
+    "modName" : "CS1231"
   } ],
   "tasks": [ {
     "isDone": "no",

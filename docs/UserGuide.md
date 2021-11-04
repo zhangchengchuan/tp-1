@@ -2,78 +2,52 @@
 layout: page
 title: User Guide
 ---
-
-# Table of Contents
-1. Introduction
-2. Setup
-3. Quick Start
-4. Features
-    1. Tasks
-        1. Add a Task: `addTask`
-        2. Edit a Task's Details: `editTask`
-        3. Delete a Task: `deleteTask`
-        4. Find a Task by keyword: `findTask`
-        5. List all Tasks: `listTask`
-        6. Mark/Un-mark a Task as done/undone: `markTask`
-        7. Delete all done Tasks: `deleteDoneTask`
-    2. Modules
-        1. Add a Module: `addMod`
-        2. Read a Module: `readMod`
-        3. Edit a Module's Details: `editMod`
-        4. Delete a Module: `deleteMod`
-        5. Find a Module by keyword: `findMod`
-        6. List all Modules: `listMod`
-    3. Links
-       1. Add a Link: `addLink`
-       2. Edit a Link's Details: `editLink`
-       3. Delete a Link: `deleteLink`
-       4. Delete a link from module panel: `deleteModLink`
-       5. Open the link address/url: `openLink`
-       6. Find a Link by keyword: `findLink`
-       7. List all Links: `listLink`
-    4. Calendar
-        1. View next month: `nextMonth`
-        2. View previous month: `prevMonth`
-        3. Read a day in calendar: `readDay`
-    5. Others
-        1. Get help: `help`
-        2. Archive current data: `archive`
-        3. Exit program: `exit`
-5. Command Summary
+* Table of Contents 
+{:toc}
 
 --------------------------------------------------------------------------------------------------------------------
 
 ## Introduction:
-ManageMe is a **desktop app for time management and resource organisation, optimized for use via a Command Line
-Interface (CLI)** while still having the benefits of a Graphical User Interface (GUI). If you can type fast, ManageMe
-can get your tasks done faster than traditional GUI apps.
+Hello! This is ManageMe, a **desktop app for time management and resource organisation**. It is optimized for use 
+via a **Command Line Interface (CLI)** while still displaying a convenient Graphical User Interface (GUI). 
 
---------------------------------------------------------------------------------------------------------------------
-
-## Setup:
-Getting ManageMe up and running is a quick and simple process.
-It requires only a single jar file and runs on Windows, Mac and Linux.
-Steps for installation:
-1. [Download](https://github.com/AY2122S1-CS2103T-W11-3/tp/releases) the latest jar release of ManageMe.
-2. Open your browser's download folder and locate the downloaded jar file.
-3. Move the jar file into your desired folder. ManageMe will use this folder to store its data by default.
-4. Start the application by double-clicking on the jar file.
-5. Enjoy using the application!
-
-If you are new to the application, Refer to the quick start guide for an introduction to using ManageMe.
+ManageMe is intended to be used by university students to manage your modules, tasks, schedules, and online learning
+resources by typing simple commands. This user guide will give you a comprehensive view of our features, 
+and teach you how to use the app proficiently.
 
 --------------------------------------------------------------------------------------------------------------------
 
 ## Quick Start:
-This section aims to provide a quick and comprehensive introduction to using the application.
-It should take less than 5 minutes to read and will provide new users with the necessary knowledge to make full use
-of the application.
+This section aims to provide a quick introduction to using the application.
+It should take less than 5 minutes to read and will provide new users with the necessary knowledge to install 
+and start using the application.
 
-### UI:
-Introduction to the basic layout of the application.
+### Steps for installation:
+1. Ensure you have Java 11 or above installed in your Computer.
+2. [Download](https://github.com/AY2122S1-CS2103T-W11-3/tp/releases) the latest jar release of ManageMe.
+3. Open your browser's download folder and locate the downloaded jar file. ManageMe can run on multiple platforms, 
+including Windows, Mac and Linux.
+4. Move the jar file into your desired folder. ManageMe will use this folder to store its data by default.
+5. Start the app by double-clicking on the jar file, or if you are using command line, type `java -jar manageme.jar`.
+6. Enjoy using the application!
+
+### User Interface
+Below is a screenshot of our User Interface (UI). As you can see, there are management panels for Modules, Tasks, 
+Calendar, and Links which can contain both website links and local file paths on your computer. You can type command
+lines in the lowest box, and the app's response will be shown in second-lowest box.
 
 ![Ui](images/UiHomepage.png)
 <br>*Homepage of Application*
+
+### Quick Tutorial
+Type a command in the command box and press Enter to execute it.
+Some example commands you can try:
+* `addMod n/CS2103T`: Add a module named "CS2103T"
+* `deleteMod 1`: Delete a module with index 1, or you can type whatever index you see.
+* `addTask n/Do homework d/10 questions e/2021-11-10T23:59`: Add a task named "do homework"
+with description "10 questions", and whose deadline is on 2021 Nov 10th 23:59.
+
+Refer to the Features below for details of each command.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -86,7 +60,7 @@ examples of using it.
 **:information_source: Notes about the command format:**<br>
 
 * Words in `UPPER_CASE` are the parameters to be supplied by the user. E.g. `addTask n/TASK_NAME`
-  , here `DESCRIPTION` is the parameter.<br>
+  , here `TASK_NAME` is the parameter.<br>
 
 * Items in square brackets are optional. E.g. `addTask n/TASK_NAME [mod/CS2103]`<br>
 
@@ -100,9 +74,10 @@ Adds a task to the task list.
 
 Format: `addTask n/NAME d/DESCRIPTION [mod/MODULE_NAME] [s/START_DATETIME] [e/END_DATETIME]`
 
-- A name and description for the task is compulsory.
-- It is optional to include an associated Module name, a start datetime and an end datetime.
-- A task created with a start datetime MUST also have an end datetime.
+* A name and description for the task is compulsory.
+* It is optional to include an associated Module name, a start datetime and an end datetime.
+* A task created with a start datetime MUST also have an end datetime.
+* Format for a `DATETIME` is as follows: `year-month-dayThr:min` e.g. `2021-10-29T23:59`
 
 Example: `addTask n/Do CS2103T Assignment d/Refer to lecture 10 for examples mod/CS2103T s/2021-10-05T11:00
 e/2021-10-07T23:59`
@@ -115,6 +90,8 @@ Format: `editTask INDEX [n/NAME] [d/DESCRIPTION] [mod/MODULE_NAME] [s/START_DATE
 * The index **must be a positive integer** 1, 2, 3, ...
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
+* Format for a `DATETIME` is as follows: `year-month-dayThr:min` e.g. `2021-10-29T23:59`
+
 
 Example: `editTask 3 d/buy milk`
 
@@ -122,9 +99,9 @@ Example: `editTask 3 d/buy milk`
 Deletes the specified task from the task list.
 
 Format: `deleteTask INDEX`
-- Deletes the task at the specified `INDEX`
-- The index refers to the index number shown in the displayed task list.
-- The index **must be a positive integer** 1, 2, 3, ...
+* Deletes the task at the specified `INDEX`
+* The index refers to the index number shown in the displayed task list.
+* The index **must be a positive integer** 1, 2, 3, ...
 
 Example: `deleteTask 2`
 
@@ -172,10 +149,10 @@ Format: `deleteDoneTask`
 
 ### Modules:
 #### Adding a module: `addMod`
-Adds a module into the module list. A module contains its name and a website link for online learning.
+Adds a module with its name into the module list.
 
-Format: `addMod n/NAME l/LINK` <br/>
-Examples: `addMod n/CS2103 l/https://...`
+Format: `addMod n/NAME` <br/>
+Examples: `addMod n/CS2103`
 
 #### Read details of a module: `readMod`
 View module in detail. Creates a pop-up window to show the course name, link, and all tasks associated with the course.
@@ -235,7 +212,7 @@ Format: `addLink n/NAME a/LINK_ADDRESS [mod/MODULE_NAME]` <br/>
 * A link should be in a valid uri format, beginning with https://, ftp:// of file:/
 * Aftering tagging the module, the link will appear at in the readMod panel of the particular module
 
-Examples: `addlink n/google a/https://www.google.com mod/CS1101S`
+Examples: `addLink n/google a/https://www.google.com mod/CS1101S`
 
 #### Edit a link: `editLink`
 Edits an existing link in the link list.
@@ -308,6 +285,8 @@ View a day in detail. Tasks happening on the specified day will be displayed.
 
 Format: `readDay DATE`
 * `DATE` given must be a valid date.
+* Format for a `DATE` is as follows: `year-month-day` e.g. `2021-10-19`
+
 
 Example: `readDay 2021-10-19`
 

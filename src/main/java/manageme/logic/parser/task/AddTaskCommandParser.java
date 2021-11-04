@@ -59,6 +59,15 @@ public class AddTaskCommandParser implements Parser<AddTaskCommand> {
         if (!start.isEmpty() && !end.isEmpty() && start.getTime().isAfter(end.getTime())) {
             throw new ParseException(AddTaskCommand.MESSAGE_START_LATER_THAN_END);
         }
+
+        if (name.value.length() > 50) {
+            throw new ParseException(AddTaskCommand.MESSAGE_TASK_NAME_TOO_LONG);
+        }
+
+        if (description.value.length() > 100) {
+            throw new ParseException(AddTaskCommand.MESSAGE_TASK_DESCRIPTION_TOO_LONG);
+        }
+
         Task task = new Task(name, description, module, start, end);
         return new AddTaskCommand(task);
     }
