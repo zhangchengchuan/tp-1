@@ -10,7 +10,11 @@ import manageme.logic.commands.Command;
 import manageme.logic.commands.CommandResult;
 import manageme.logic.commands.exceptions.CommandException;
 import manageme.model.Model;
+import manageme.model.link.Link;
+import manageme.model.link.LinkModule;
 import manageme.model.module.Module;
+import manageme.model.task.Task;
+import manageme.model.task.TaskModule;
 
 /**
  * Deletes a module identified using it's displayed index from the task manager.
@@ -41,7 +45,11 @@ public class DeleteModuleCommand extends Command {
         }
 
         Module moduleToDelete = lastShownList.get(targetIndex.getZeroBased());
+
+        model.editModuleInTasksWithModule(moduleToDelete, TaskModule.empty());
+        model.editModuleInLinksWithModule(moduleToDelete, LinkModule.empty());
         model.deleteModule(moduleToDelete);
+
         return new CommandResult(String.format(MESSAGE_DELETE_MODULE_SUCCESS, moduleToDelete));
     }
 

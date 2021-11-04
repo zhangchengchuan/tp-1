@@ -14,8 +14,12 @@ import manageme.logic.commands.Command;
 import manageme.logic.commands.CommandResult;
 import manageme.logic.commands.exceptions.CommandException;
 import manageme.model.Model;
+import manageme.model.link.Link;
+import manageme.model.link.LinkModule;
 import manageme.model.module.Module;
 import manageme.model.module.ModuleName;
+import manageme.model.task.Task;
+import manageme.model.task.TaskModule;
 
 /**
  * Edits the details of an existing module in the app.
@@ -64,6 +68,8 @@ public class EditModuleCommand extends Command {
             throw new CommandException(MESSAGE_DUPLICATE_MODULE);
         }
 
+        model.editModuleInTasksWithModule(moduleToEdit, new TaskModule(editedModule.getModuleName().value));
+        model.editModuleInLinksWithModule(moduleToEdit, new LinkModule(editedModule.getModuleName().value));
         model.setModule(moduleToEdit, editedModule);
         model.updateFilteredModuleList(PREDICATE_SHOW_ALL_MODULES);
         return new CommandResult(String.format(MESSAGE_EDIT_MODULE_SUCCESS, editedModule));
