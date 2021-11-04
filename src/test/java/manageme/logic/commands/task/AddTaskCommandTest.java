@@ -111,7 +111,7 @@ public class AddTaskCommandTest {
         }
 
         @Override
-        public void setManageMeFilePath(Path ManageMeFilePath) {
+        public void setManageMeFilePath(Path manageMeFilePath) {
             throw new AssertionError("This method should not be called.");
         }
 

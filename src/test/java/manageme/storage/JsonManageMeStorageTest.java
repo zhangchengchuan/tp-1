@@ -103,10 +103,10 @@ public class JsonManageMeStorageTest {
     /**
      * Saves {@code ManageMe} at the specified {@code filePath}.
      */
-    private void saveManageMe(ReadOnlyManageMe ManageMe, String filePath) {
+    private void saveManageMe(ReadOnlyManageMe manageMe, String filePath) {
         try {
             new JsonManageMeStorage(Paths.get(filePath))
-                    .saveManageMe(ManageMe, addToTestDataPathIfNotNull(filePath));
+                    .saveManageMe(manageMe, addToTestDataPathIfNotNull(filePath));
         } catch (IOException ioe) {
             throw new AssertionError("There should not be an error writing to the file.", ioe);
         }
