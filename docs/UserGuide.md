@@ -2,20 +2,21 @@
 layout: page
 title: User Guide
 ---
-## Table of Contents
+## <font color="orange">Table of Contents</font>
+
 * Table of Contents
-  {:toc}
+{:toc}
 
 --------------------------------------------------------------------------------------------------------------------
 
 ## <font color="orange">Introduction:</font>
 ManageMe is a **lightweight but powerful desktop application built to help university students manage their school life, available on Windows, Linux and Mac**. You can add your modules, tasks, schedules and online learning resources easily into ManageMe and access them with simple commands. Whether you are a fast typer or a more visual user, ManageMe has you covered. The application is optimized for use via a **Command Line Interface (CLI)** but also provides a convenient Graphical User Interface (GUI) for interaction.
 
-This user guide will give you a comprehensive understanding in using ManageMe to its full potential. Begin your journey with the [Quick Start](#Quick Start:) section. For a full overview of the user guide, check out the [Table of Contents](#Table of Contents).
-<br><br>
+This user guide will give you a comprehensive understanding in using ManageMe to its full potential. Begin your journey with the [Quick Start](#quick-start) section. For a full overview of the user guide, check out the [Table of Contents](#table-of-contents).
+
 --------------------------------------------------------------------------------------------------------------------
 
-## <font color="orange">Quick Start:</font>
+## <font color="orange">Quick Start</font>
 This section aims to provide a quick introduction to using the application.
 It should take less than 5 minutes to read and will provide new users with the necessary knowledge to install and start using the application.
 
@@ -43,10 +44,11 @@ Some example commands you can try:
 * `clear`: Deletes all modules, tasks and links in ManageMe. Use this command to reset ManageMe.
 * `exit`: Exits the application.
 
-Refer to [Features](#Features) below for details of each command.
+Refer to [Features](features) below for details of each command.
 <br><br>
 
-Return to [Table of Contents](#Table of Contents).
+Return to [Table of Contents](#table-of-contents)
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## <font color="orange">Features</font>
@@ -180,7 +182,7 @@ Format: `deleteDoneTask`
 </div>
 <br>
 
-Return to [Table of Contents](#Table of Contents).
+Return to [Table of Contents](#table-of-contents).
 
 ### <font color="blue">Modules:</font>
 #### <font color="blue">Adding a module: `addMod`</font>
@@ -259,12 +261,12 @@ of modules after searching for specific modules.
 Format: `listMod`
 <br><br>
 
-Return to [Table of Contents](#Table of Contents).
+Return to [Table of Contents](#table-of-contents).
 
 
 
-### <font color="yellow">Links:</font>
-#### <font color="yellow">Add a link: `addLink`</font>
+### <font color="gold">Links:</font>
+#### <font color="gold">Add a link: `addLink`</font>
 Adds a link into the link list. A link contains its name and a website link for online learning.
 
 Format: `addLink n/NAME a/LINK_ADDRESS [mod/ASSOCIATED_MODULE_NAME]` <br/>
@@ -274,7 +276,7 @@ Format: `addLink n/NAME a/LINK_ADDRESS [mod/ASSOCIATED_MODULE_NAME]` <br/>
 Examples: `addLink n/google a/https://www.google.com mod/CS1101S`
 <br><br>
 
-#### <font color="yellow">Edit a link: `editLink`</font>
+#### <font color="gold">Edit a link: `editLink`</font>
 Edits an existing link in the link list.
 
 Format: `editLink INDEX [n/NAME] [a/LINK_ADDRESS] [mod/ASSOCIATED_MODULE_NAME]`
@@ -287,7 +289,7 @@ Format: `editLink INDEX [n/NAME] [a/LINK_ADDRESS] [mod/ASSOCIATED_MODULE_NAME]`
 Example: `editLink 2 n/amazon`
 <br><br>
 
-#### <font color="yellow">Delete a link: `deleteLink`</font>
+#### <font color="gold">Delete a link: `deleteLink`</font>
 Deletes the specified mod from the mod list.
 
 Format: `deleteLink INDEX`
@@ -306,7 +308,7 @@ Example: `deleteLink 2` deletes link No.2 from the list.
 
 </div>
 
-#### <font color="yellow">Open a link:</font>
+#### <font color="gold">Open a link:</font>
 Format: `openLink INDEX`
 * Opens the link identifies by the index in the link list. If it is a link for a webpage, it will open the link in a browser. If it is a file path on your computer, it will open the file using the default app.
 * The index refers to the index number shown in the displayed link list
@@ -315,7 +317,7 @@ Format: `openLink INDEX`
 Example: `openLink 1` open link No. 1 from the list of links.
 <br><br>
 
-#### <font color="yellow">Find a link by keyword:</font>
+#### <font color="gold">Find a link by keyword:</font>
 Find a link whose name contains the keyword given.
 
 Format: `findLink KEYWORD [MORE_KEYWORDS]`
@@ -329,13 +331,13 @@ Format: `findLink KEYWORD [MORE_KEYWORDS]`
 Example: `findLink computer` returns `Computer Organization https://....` and `Computer Architecture https://....`.
 <br><br>
 
-#### <font color="yellow">List all links: `listLink`</font>
+#### <font color="gold">List all links: `listLink`</font>
 Display the full list of links. This command is used to return to the full list after findLink.
 
 Format: `listLink`
 <br><br>
 
-Return to [Table of Contents](#Table of Contents).
+Return to [Table of Contents](#table-of-contents).
 
 
 ### <font color="red">Calendar:</font>
@@ -362,7 +364,7 @@ Format: `readDay DATE`
 Example: `readDay 2021-10-19`
 <br><br>
 
-Return to [Table of Contents](#Table of Contents).
+Return to [Table of Contents](#table-of-contents).
 
 
 
@@ -402,7 +404,7 @@ Feature in UI:<br>
 ![Ui](images/UiOverDueTask.png)<br>
 *A Task coloured red since it is overdue*
 
-Return to [Table of Contents](#Table of Contents).
+Return to [Table of Contents](#table-of-contents).
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -437,4 +439,4 @@ Action | Format, Examples
 **Archive** | `archive`
 **Exit** | `exit`
 
-Return to [Table of Contents](#Table of Contents).
+Return to [Table of Contents](#table-of-contents).
