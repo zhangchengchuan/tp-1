@@ -1,11 +1,14 @@
 package manageme.time;
 
+import static java.util.Objects.requireNonNull;
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import javafx.application.Platform;
 import manageme.model.ReadOnlyManageMe;
 import manageme.model.task.Task;
+
 
 
 public class TimeManager implements Time {
@@ -57,6 +60,7 @@ public class TimeManager implements Time {
      */
     @Override
     public void updateTasks(ReadOnlyManageMe manageMe) {
+        requireNonNull(manageMe);
         this.allTasks = manageMe.getModifiableTaskList();
     }
 

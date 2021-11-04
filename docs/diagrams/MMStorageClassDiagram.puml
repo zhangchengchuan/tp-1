@@ -20,7 +20,6 @@ Class JsonManageMeStorage
 Class JsonSerializableManageMe
 Class JsonAdaptedTask
 Class JsonAdaptedModule
-Class JsonAdaptedTag
 }
 
 }
@@ -38,9 +37,7 @@ Storage -right-|> ManageMeStorage
 JsonUserPrefsStorage .up.|> UserPrefsStorage
 JsonManageMeStorage .up.|> ManageMeStorage
 JsonManageMeStorage ..> JsonSerializableManageMe
-JsonSerializableManageMe --> "*" JsonAdaptedTask
+JsonSerializableManageMe ---> "*" JsonAdaptedTask
 JsonSerializableManageMe --> "*" JsonAdaptedModule
-JsonAdaptedTask --> "*" JsonAdaptedTag
-JsonAdaptedModule --> "*" JsonAdaptedTag
 
 @enduml
