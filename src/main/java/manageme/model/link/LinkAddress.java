@@ -26,8 +26,8 @@ public class LinkAddress {
     /*
      * The address should be in a valid url format.
      */
-    public static final String VALIDATION_REGEX = "^(https://|http://|ftp://|file:/)"
-            + "[-a-zA-Z0-9+&@#/%?=~_|!:,.;()]*[-a-zA-Z0-9+&@#/%=~_|]";
+    public static final String VALIDATION_REGEX = "((^(https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;()]*"
+            + "[-a-zA-Z0-9+&@#/%=~_|]))";
 
     public static final String test = "^/|(/[a-zA-Z0-9_-]+)+$";
 
