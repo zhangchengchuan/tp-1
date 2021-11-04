@@ -83,17 +83,6 @@ public class Task {
     }
 
     /**
-     * Checks that if a start TaskTime is present, then an end TaskTime is also present.
-     * @param start TaskTime
-     * @param end TaskTime
-     * @return true if start/end is fine, false otherwise
-     */
-    public boolean checkStartHasEnd(TaskTime start, TaskTime end) {
-        return !(!start.isEmpty() && end.isEmpty());
-
-    }
-
-    /**
      * Returns the dates that this {@code Task} object spans over.
      *
      * @return The sequential ordered stream of dates.
@@ -108,6 +97,10 @@ public class Task {
         }
     }
 
+    /**
+     * Returns the start or end datetime of the Task, depending on which is earlier.
+     * @return The earliest datetime in the Task
+     */
     public LocalDateTime getFirstOccurrence() {
         if (start.isEmpty() && end.isEmpty()) {
             // Should not happen
