@@ -13,7 +13,7 @@ import manageme.model.task.Task;
 import manageme.ui.UiPart;
 
 /**
- * An UI component that displays information of a {@code Person}.
+ * An UI component that displays information of a day.
  */
 public class DayCard extends UiPart<Region> {
 
@@ -42,7 +42,7 @@ public class DayCard extends UiPart<Region> {
     private Rectangle hasTask;
 
     /**
-     * Creates a {@code PersonCode} with the given {@code Person} and index to display.
+     * Creates a day card with the given date and index to display.
      */
     public DayCard(ObservableList<Task> taskList, LocalDate date, boolean isSelected) {
         super(FXML);
