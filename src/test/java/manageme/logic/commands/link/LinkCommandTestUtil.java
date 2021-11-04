@@ -7,8 +7,8 @@ import static manageme.logic.parser.CliSyntax.PREFIX_NAME;
 import manageme.testutil.EditLinkDescriptorBuilder;
 
 public class LinkCommandTestUtil {
-    public static final String VALID_LINKNAME_A = "CS Tutorial";
-    public static final String VALID_LINKNAME_B = "CS Lecture";
+    public static final String VALID_LINKNAME_A = "Tutorial CS";
+    public static final String VALID_LINKNAME_B = "Lecture CS";
     public static final String VALID_LINKADDRESS_A = "https://www.luminus.com";
     public static final String VALID_LINKADDRESS_B = "https://www.zoom.com";
     public static final String VALID_LINKMODULE_A = "CS2100";

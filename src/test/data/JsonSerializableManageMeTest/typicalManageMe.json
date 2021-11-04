@@ -1,11 +1,11 @@
 {
   "_comment": "ManageMe save file which contains the same values as in TypicalManageMe#getTypicalManageMe()",
   "links" : [ {
-    "name": "CS Tutorial",
+    "name": "Tutorial CS",
     "address": "https://www.luminus.com",
     "module": "CS2100"
   }, {
-    "name": "CS Lecture",
+    "name": "Lecture CS",
     "address": "https://www.youtube.com",
     "module": "CS2103"
   } ],

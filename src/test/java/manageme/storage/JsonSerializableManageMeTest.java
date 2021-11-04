@@ -25,7 +25,6 @@ public class JsonSerializableManageMeTest {
     private static final Path INVALID_LINK_FILE = TEST_DATA_FOLDER.resolve("invalidLinkManageMe.json");
     private static final Path DUPLICATE_LINK_FILE = TEST_DATA_FOLDER.resolve("duplicateLinkManageMe.json");
     private static final Path DUPLICATE_MODULE_FILE = TEST_DATA_FOLDER.resolve("duplicateModuleManageMe.json");
-    //private static final Path DUPLICATE_TASK_FILE = TEST_DATA_FOLDER.resolve("duplicateTaskManageMe.json");
 
     @Test
     public void toModelType_typicalTasksFile_success() throws Exception {
