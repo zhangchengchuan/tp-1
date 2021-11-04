@@ -11,6 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.stage.Stage?>
 
+<?import javafx.scene.control.ScrollPane?>
 <fx:root resizable="false" title="Help" type="javafx.stage.Stage" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1">
   <icons>
     <Image url="@/images/help_icon.png" />
@@ -21,8 +22,9 @@
         <URL value="@Fonts.css" />
         <URL value="@ManageMe.css" />
       </stylesheets>
+      <ScrollPane prefHeight="600" hbarPolicy="NEVER">
       <VBox fx:id="helpWindow" alignment="CENTER">
-        <ImageView fitHeight="600" fitWidth="500">
+        <ImageView fitHeight="1100" fitWidth="500">
           <Image url="@/images/Command Summary.png" />
                <VBox.margin>
                   <Insets bottom="5.0" left="10.0" right="10.0" top="10.0" />
@@ -49,6 +51,7 @@
                </VBox.margin>
       </HBox>
       </VBox>
+      </ScrollPane>
     </Scene>
   </scene>
 </fx:root>

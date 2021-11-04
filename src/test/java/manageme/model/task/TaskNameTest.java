@@ -2,6 +2,7 @@ package manageme.model.task;
 
 import static manageme.testutil.Assert.assertThrows;
 import static manageme.testutil.TypicalTasks.TASK_A;
+import static manageme.testutil.TypicalTasks.TASK_B;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -42,5 +43,7 @@ public class TaskNameTest {
         // same name, returns true
         assertTrue(TASK_A.getName().equals(TASK_A.getName()));
 
+        // different name, returns false
+        assertFalse(TASK_A.getName().equals(TASK_B.getName()));
     }
 }
