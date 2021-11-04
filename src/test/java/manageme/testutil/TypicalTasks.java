@@ -36,9 +36,9 @@ public class TypicalTasks {
     private TypicalTasks() {} // prevents instantiation
 
     /**
-     * Returns an {@code AddressBook} with all the typical tasks.
+     * Returns an {@code ManageMe} with all the typical tasks.
      */
-    public static ManageMe getTypicalAddressBook() {
+    public static ManageMe getTypicalManageMe() {
         ManageMe ab = new ManageMe();
         for (Task task : getTypicalTasks()) {
             ab.addTask(task);

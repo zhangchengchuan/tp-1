@@ -59,10 +59,10 @@ examples of using it.
 
 **:information_source: Notes about the command format:**<br>
 
-* Words in `UPPER_CASE` are the parameters to be supplied by the user. E.g. `addTask n/TASK_NAME`
+* Words in `UPPER_CASE` are the parameters to be supplied by the user. E.g. `addTask n_NAME`
   , here `TASK_NAME` is the parameter.<br>
 
-* Items in square brackets are optional. E.g. `addTask n/TASK_NAME [mod/CS2103]`<br>
+* Items in square brackets are optional. E.g. `addTask n_NAME [mod/CS2103]`<br>
 
 </div>
 <br>
@@ -379,9 +379,9 @@ Action | Format, Examples
 **DeleteLink** | `deleteLink INDEX`<br>e.g., `deleteLink 2`
 **DeleteModLink** | `deleteModLink mod/MODULE_NAME i/INDEX`<br>e.g., `deleteModLink mod/CS1101S i/1`
 **EditLink** | `editLink INDEX [n/NAME] [a/LINK_ADDRESS] [mod/MODULE_NAME]`<br>e.g.,`editLink 2 n/amazon`
-**OpenLink** | `OpenLink INDEX` <br>e.g.,`openLink 1`
+**OpenLink** | `openLink INDEX` <br>e.g.,`openLink 1`
 **FindLink** | `findLink KEYWORD`<br>e.g.,`findLink google`
-**ListLink** | `ListLink`
+**ListLink** | `listLink`
 **NextMonth** | `nextMonth`
 **PreviousMonth** | `prevMonth`
 **ReadDay** | `readDay DATE`<br>e.g., `readDay 2021-10-19`
