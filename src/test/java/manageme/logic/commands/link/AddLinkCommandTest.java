@@ -25,6 +25,7 @@ import manageme.model.ReadOnlyUserPrefs;
 import manageme.model.link.Link;
 import manageme.model.module.Module;
 import manageme.model.task.Task;
+import manageme.model.task.TaskModule;
 import manageme.testutil.LinkBuilder;
 
 public class AddLinkCommandTest {
@@ -144,6 +145,11 @@ public class AddLinkCommandTest {
         }
 
         @Override
+        public void editModuleInLinksWithModule(Module target, LinkModule newLinkModule) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public void openLink(Link target) {
             throw new AssertionError("This method should not be called.");
         }
@@ -215,6 +221,11 @@ public class AddLinkCommandTest {
 
         @Override
         public void setTask(Task target, Task editedTask) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void editModuleInTasksWithModule(Module target, TaskModule newTaskModule) {
             throw new AssertionError("This method should not be called.");
         }
 
