@@ -2,79 +2,53 @@
 layout: page
 title: User Guide
 ---
-
-# Table of Contents
-1. Introduction
-2. Setup
-3. Quick Start
-4. Features
-    1. Tasks
-        1. Add a Task: `addTask`
-        2. Edit a Task's Details: `editTask`
-        3. Delete a Task: `deleteTask`
-        4. Find a Task by keyword: `findTask`
-        5. List all Tasks: `listTask`
-        6. Mark/Un-mark a Task as done/undone: `markTask`
-        7. Delete all done Tasks: `deleteDoneTask`
-    2. Modules
-        1. Add a Module: `addMod`
-        2. Read a Module: `readMod`
-        3. Edit a Module's Details: `editMod`
-        4. Delete a Module: `deleteMod`
-        5. Find a Module by keyword: `findMod`
-        6. List all Modules: `listMod`
-    3. Links
-       1. Add a Link: `addLink`
-       2. Edit a Link's Details: `editLink`
-       3. Delete a Link: `deleteLink`
-       4. Delete a link from module panel: `deleteModLink`
-       5. Open the link address/url: `openLink`
-       6. Find a Link by keyword: `findLink`
-       7. List all Links: `listLink`
-    4. Calendar
-        1. View next month: `nextMonth`
-        2. View previous month: `prevMonth`
-        3. Read a day in calendar: `readDay`
-    5. Others
-        1. Get help: `help`
-        2. Archive current data: `archive`
-        3. Exit program: `exit`
-5. Command Summary
+* Table of Contents 
+{:toc}
 
 --------------------------------------------------------------------------------------------------------------------
 
 ## Introduction:
-ManageMe is a **desktop app for time management and resource organisation, optimized for use via a Command Line
-Interface (CLI)** while still having the benefits of a Graphical User Interface (GUI). If you can type fast, ManageMe
-can get your tasks done faster than traditional GUI apps.
+Hello! This is ManageMe, a **desktop app for time management and resource organisation**. It is optimized for use 
+via a **Command Line Interface (CLI)** while still displaying a convenient Graphical User Interface (GUI). 
 
---------------------------------------------------------------------------------------------------------------------
-
-## Setup:
-Getting ManageMe up and running is a quick and simple process.
-It requires only a single jar file and runs on Windows, Mac and Linux.
-Steps for installation:
-1. [Download](https://github.com/AY2122S1-CS2103T-W11-3/tp/releases) the latest jar release of ManageMe.
-2. Open your browser's download folder and locate the downloaded jar file.
-3. Move the jar file into your desired folder. ManageMe will use this folder to store its data by default.
-4. Start the application by double-clicking on the jar file.
-5. Enjoy using the application!
-
-If you are new to the application, Refer to the quick start guide for an introduction to using ManageMe.
-
+ManageMe is intended to be used by university students to manage your modules, tasks, schedules, and online learning
+resources by typing simple commands. This user guide will give you a comprehensive view of our features, 
+and teach you how to use the app proficiently.
+<br><br>
 --------------------------------------------------------------------------------------------------------------------
 
 ## Quick Start:
-This section aims to provide a quick and comprehensive introduction to using the application.
-It should take less than 5 minutes to read and will provide new users with the necessary knowledge to make full use
-of the application.
+This section aims to provide a quick introduction to using the application.
+It should take less than 5 minutes to read and will provide new users with the necessary knowledge to install 
+and start using the application.
 
-### UI:
-Introduction to the basic layout of the application.
+### Steps for installation:
+1. Ensure you have Java 11 or above installed in your Computer.
+2. [Download](https://github.com/AY2122S1-CS2103T-W11-3/tp/releases) the latest jar release of ManageMe.
+3. Open your browser's download folder and locate the downloaded jar file. ManageMe can run on multiple platforms, 
+including Windows, Mac and Linux.
+4. Move the jar file into your desired folder. ManageMe will use this folder to store its data by default.
+5. Start the app by double-clicking on the jar file, or if you are using command line, type `java -jar manageme.jar`.
+6. Enjoy using the application!
+
+### User Interface
+Below is a screenshot of our User Interface (UI). As you can see, there are management panels for Modules, Tasks, 
+Calendar, and Links which can contain both website links and local file paths on your computer. You can type command
+lines in the lowest box, and the app's response will be shown in second-lowest box.
 
 ![Ui](images/UiHomepage.png)
 <br>*Homepage of Application*
 
+### Quick Tutorial
+Type a command in the command box and press Enter to execute it.
+Some example commands you can try:
+* `addMod n/CS2103T`: Add a module named "CS2103T"
+* `deleteMod 1`: Delete a module with index 1, or you can type whatever index you see.
+* `addTask n/Do homework d/10 questions e/2021-11-10T23:59`: Add a task named "do homework"
+with description "10 questions", and whose deadline is on 2021 Nov 10th 23:59.
+
+Refer to the Features below for details of each command.
+<br><br>
 --------------------------------------------------------------------------------------------------------------------
 
 ## Features
@@ -86,11 +60,13 @@ examples of using it.
 **:information_source: Notes about the command format:**<br>
 
 * Words in `UPPER_CASE` are the parameters to be supplied by the user. E.g. `addTask n/TASK_NAME`
-  , here `DESCRIPTION` is the parameter.<br>
+  , here `TASK_NAME` is the parameter.<br>
 
 * Items in square brackets are optional. E.g. `addTask n/TASK_NAME [mod/CS2103]`<br>
 
 </div>
+<br>
+
 
 ### Tasks:
 
@@ -98,14 +74,16 @@ examples of using it.
 
 Adds a task to the task list.
 
-Format: `addTask n/NAME d/DESCRIPTION [mod/MODULE_NAME] [s/START_DATETIME] [e/END_DATETIME]`
+Format: `addTask n/NAME d/DESCRIPTION [mod/ASSOCIATED_MODULE_NAME] [s/START_DATETIME] [e/END_DATETIME]`
 
-- A name and description for the task is compulsory.
-- It is optional to include an associated Module name, a start datetime and an end datetime.
-- A task created with a start datetime MUST also have an end datetime.
+* A name and description for the task is compulsory.
+* It is optional to include an associated Module name, a start datetime and an end datetime.
+* A task created with a start datetime MUST also have an end datetime.
+* Format for a `DATETIME` is as follows: `year-month-dayThr:min` e.g. `2021-10-29T23:59`
 
 Example: `addTask n/Do CS2103T Assignment d/Refer to lecture 10 for examples mod/CS2103T s/2021-10-05T11:00
 e/2021-10-07T23:59`
+<br><br>
 
 #### Edit a task: `editTask`
 Edit an existing task in the task list.
@@ -115,18 +93,21 @@ Format: `editTask INDEX [n/NAME] [d/DESCRIPTION] [mod/MODULE_NAME] [s/START_DATE
 * The index **must be a positive integer** 1, 2, 3, ...
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
+* Format for a `DATETIME` is as follows: `year-month-dayThr:min` e.g. `2021-10-29T23:59`
 
 Example: `editTask 3 d/buy milk`
+<br><br>
 
 #### Deleting a task: `deleteTask`
 Deletes the specified task from the task list.
 
 Format: `deleteTask INDEX`
-- Deletes the task at the specified `INDEX`
-- The index refers to the index number shown in the displayed task list.
-- The index **must be a positive integer** 1, 2, 3, ...
+* Deletes the task at the specified `INDEX`
+* The index refers to the index number shown in the displayed task list.
+* The index **must be a positive integer** 1, 2, 3, ...
 
 Example: `deleteTask 2`
+<br><br>
 
 #### Find a task by keyword: `findTask`
 Finds all tasks whose names contain any of the specified keywords.
@@ -140,12 +121,14 @@ Format: `findTask KEYWORD [MORE_KEYWORDS]`
 * Tasks matching at least one keyword will be returned (i.e. OR search).
 
 Example: `findTask work` returns `Do CS2100 work` and `Work out next week's plan`.
+<br><br>
 
 #### List all tasks : `listTask`
 Display the full list of tasks. This command is used to return to the full list
 of tasks after searching for specific tasks.
 
 Format: `listTask`
+<br><br>
 
 #### Mark/Un-mark a task as done/undone: `markTask`
 Marks/Un-marks the specified task from the task list as done/undone.
@@ -157,25 +140,31 @@ Format: `markTask INDEX`
 
 Example: `markTask 2`
 
-Feature in UI:
+Feature in UI:<br>
 
-![Ui](images/UiOngoingTask.png)
+![Ui](images/UiOngoingTask.png)<br>
 *An ongoing task not yet done will be in the default colour*
+<br><br>
 
-![Ui](images/UiDoneTask.png)
+![Ui](images/UiDoneTask.png)<br>
 A task marked as done will be coloured green.
+<br><br>
 
 #### Delete all done tasks : `deleteDoneTask`
 Deletes all tasks that have been marked as done from the task list.
 
 Format: `deleteDoneTask`
+<br><br><br>
+
+
 
 ### Modules:
 #### Adding a module: `addMod`
-Adds a module into the module list. A module contains its name and a website link for online learning.
+Adds a module with its name into the module list.
 
-Format: `addMod n/NAME l/LINK` <br/>
-Examples: `addMod n/CS2103 l/https://...`
+Format: `addMod n/NAME` <br/>
+Examples: `addMod n/CS2103`
+<br><br>
 
 #### Read details of a module: `readMod`
 View module in detail. Creates a pop-up window to show the course name, link, and all tasks associated with the course.
@@ -185,6 +174,7 @@ Format: `readMod INDEX`<br/>
 * The index **must be a positive integer** 1, 2, 3, ...
 
 Examples: `readMod 2`
+<br><br>
 
 #### Edit a module: `editMod`
 Edits an existing module in the mod list.
@@ -197,6 +187,7 @@ Format: `editMod INDEX [n/NAME]`
 * Existing values will be updated to the input values.
 
 Example: `editMod 2 n/CS2103T`
+<br><br>
 
 #### Delete a module: `deleteMod`
 Deletes the specified mod from the mod list.
@@ -207,6 +198,7 @@ Format: `deleteMod INDEX`
 * The index **must be a positive integer** 1, 2, 3, ...
 
 Example: `deleteMod 2` deletes module No.2 from the list.
+<br><br>
 
 #### Find a module by keyword: `findMod`
 Finds modules whose names contain any of the given keywords.
@@ -220,12 +212,16 @@ Format: `findMod KEYWORD [MORE_KEYWORDS]`
 * Modules matching at least one keyword will be returned (i.e. OR search).
 
 Example: `findMod computer` returns `Computer Organization` and `Computer Architecture`.
+<br><br>
 
 #### List all modules : `listMod`
 Display the full list of modules. This command is used to return to the full list
 of modules after searching for specific modules.
 
 Format: `listMod`
+<br><br><br>
+
+
 
 ### Links:
 #### Add a link: `addLink`
@@ -235,7 +231,8 @@ Format: `addLink n/NAME a/LINK_ADDRESS [mod/MODULE_NAME]` <br/>
 * A link should be in a valid uri format, beginning with https://, ftp:// of file:/
 * Aftering tagging the module, the link will appear at in the readMod panel of the particular module
 
-Examples: `addlink n/google a/https://www.google.com mod/CS1101S`
+Examples: `addLink n/google a/https://www.google.com mod/CS1101S`
+<br><br>
 
 #### Edit a link: `editLink`
 Edits an existing link in the link list.
@@ -248,6 +245,7 @@ Format: `editLink INDEX [n/NAME] [a/LINK_ADDRESS] [mod/MODULE_NAME]`
 * Existing values will be updated to the input values.
 
 Example: `editLink 2 n/amazon`
+<br><br>
 
 #### Delete a link: `deleteLink`
 Deletes the specified mod from the mod list.
@@ -258,14 +256,7 @@ Format: `deleteLink INDEX`
 * The index **must be a positive integer** 1, 2, 3, ...
 
 Example: `deleteLink 2` deletes link No.2 from the list.
-
-#### Delete a link in module panel:
-Format: `deleteModLink mod/MODULE_NAME i/INDEX`
-* Deletes the mod by the specified `INDEX` at the link list in the readMod panel for the particular module.
-* The index refers to the index number shown in the displayed link list in the readMod panel of the module.
-* The index **must be a positive integer** 1, 2, 3, ...
-
-Example: `deleteModLink mod/CS1101S i/1` deletes link No.1 from the link list of CS1101S.
+<br><br>
 
 #### Open a link:
 Format: `openLink INDEX`
@@ -275,8 +266,11 @@ Format: `openLink INDEX`
 * The index **must be a positive integer** 1, 2, 3, ...
 
 Example: `openLink 1` open link No. 1 from the list of links.
+<br><br>
 
 #### Find a link by keyword:
+Find a link whose name contains the keyword given.
+
 Format: `findLink KEYWORD [MORE_KEYWORDS]`
 
 * The search is case-insensitive. e.g hans will match Hans.
@@ -286,30 +280,39 @@ Format: `findLink KEYWORD [MORE_KEYWORDS]`
 * Links with a name matching at least one keyword will be returned (i.e. OR search).
 
 Example: `findLink computer` returns `Computer Organization https://....` and `Computer Architecture https://....`.
+<br><br>
 
 #### List all links : `listLink`
 Display the full list of links. This command is used to return to the full list after findLink.
 
 Format: `listLink`
+<br><br><br>
+
 
 ### Calendar:
 #### Change calendar to next month: `nextMonth`
-Display the calendar for the next month. This command will update the entire calendar panel to display the calendar and the related task information for the following month.
+Display the calendar for the next month. This command will 
+update the entire calendar panel to display the calendar and the related task information for the following month.
 
 Format: `nextMonth`
+<br><br>
 
 #### Change calendar to previous month: `prevMonth`
 Similar to `nextMonth`. However, this command display the calendar for the previous month instead.
 
 Format: `prevMonth`
+<br><br>
 
 #### Read details happening on a day: `readDay`
 View a day in detail. Tasks happening on the specified day will be displayed.
 
 Format: `readDay DATE`
 * `DATE` given must be a valid date.
+* Format for a `DATE` is as follows: `year-month-day` e.g. `2021-10-19`
 
 Example: `readDay 2021-10-19`
+<br><br><br>
+
 
 
 ### OTHERS:
@@ -318,35 +321,38 @@ Example: `readDay 2021-10-19`
 
 Shows the command summary and the url to the full User Guide.
 
-![help message](images/helpMessage.png)
+![help message](images/helpMessage.png)<br>
 
 Format: `help`
+<br><br>
 
 #### Archive current data: `archive`
 
 Resets the application data and saves the deleted application data into a timestamped file located in the data folder.
+<br><br>
 
 #### Reminder for overdue tasks:
 
 Resets the application data and saves the deleted application data into a timestamped file located in the data folder.
+<br><br>
 
 #### Exiting the program : `exit`
 
 Exits the program.
 
-Format: `exit`
 
 #### Saving the data
 
 Data is saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
+<br><br>
 
 #### Reminder for overdue tasks:
 
 Tasks that are overdue(past the end time) will automatically be coloured red for users to clearly see which tasks are
 overdue.
 
-Feature in UI:
-![Ui](images/UiOverDueTask.png)
+Feature in UI:<br>
+![Ui](images/UiOverDueTask.png)<br>
 *A Task coloured red since it is overdue*
 
 --------------------------------------------------------------------------------------------------------------------

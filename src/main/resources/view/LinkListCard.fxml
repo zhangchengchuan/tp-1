@@ -10,12 +10,12 @@
    <children>
       <HBox>
          <children>
-            <Label fx:id="linkId" text="\$id">
+            <Label fx:id="linkId" text="\$id" HBox.hgrow="ALWAYS">
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
             </Label>
-            <Label fx:id="linkName">
+            <Label fx:id="linkName" HBox.hgrow="ALWAYS">
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
@@ -29,12 +29,12 @@
       </Label>
       <HBox VBox.vgrow="ALWAYS">
          <children>
-            <Label fx:id="linkAddress" maxWidth="1.7976931348623157E308" text="\$url" HBox.hgrow="ALWAYS">
+            <Label fx:id="linkAddress" maxWidth="1.7976931348623157E308" text="\$url" wrapText="true" HBox.hgrow="ALWAYS">
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
             </Label>
-            <Button fx:id="copyButton" alignment="BASELINE_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#copyUrl" text="Copy URL">
+            <Button fx:id="copyButton" alignment="BASELINE_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#copyUrl" text="Copy">
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>

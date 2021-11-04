@@ -11,6 +11,8 @@ import manageme.logic.commands.Command;
 import manageme.logic.commands.CommandResult;
 import manageme.logic.commands.exceptions.CommandException;
 import manageme.model.Model;
+import manageme.model.module.Module;
+import manageme.model.module.ModuleName;
 import manageme.model.task.Task;
 
 public class AddTaskCommand extends Command {
@@ -34,6 +36,11 @@ public class AddTaskCommand extends Command {
     public static final String MESSAGE_DUPLICATE_TASK = "This task already exists in the task list";
     public static final String MESSAGE_START_LATER_THAN_END = "The task cannot have start date later than the end date";
     public static final String MESSAGE_START_WITHOUT_END = "The task cannot have a start without an end date";
+    public static final String MESSAGE_TASK_NAME_TOO_LONG = "Maximum Length of Task Name is 50 Characters";
+    public static final String MESSAGE_TASK_DESCRIPTION_TOO_LONG =
+            "Maximum Length of Task Description is 100 Characters";
+    public static final String MESSAGE_NONEXISTENT_MODULE = "The module you have associated does not exist";
+
     private final Task toAdd;
     /**
      * Creates an AddTaskCommand to add the specified {@code Task}
@@ -49,6 +56,14 @@ public class AddTaskCommand extends Command {
         if (model.hasTask(toAdd)) {
             throw new CommandException(MESSAGE_DUPLICATE_TASK);
         }
+
+        //if there is a module being associated, check it exists
+        if (!toAdd.getTaskModule().value.isEmpty()) {
+            if (!model.hasModule(new Module(new ModuleName(toAdd.getTaskModule().value)))) {
+                throw new CommandException(MESSAGE_NONEXISTENT_MODULE);
+            }
+        }
+
 
         model.addTask(toAdd);
         return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));

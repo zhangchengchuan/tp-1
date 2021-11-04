@@ -284,6 +284,12 @@ public class AddLinkCommandTest {
         }
 
         @Override
+        public boolean hasModule(Module module) {
+            requireNonNull(module);
+            return true;
+        }
+
+        @Override
         public ReadOnlyManageMe getManageMe() {
             return new ManageMe();
         }

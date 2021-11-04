@@ -1,11 +1,14 @@
 package manageme.time;
 
+import static java.util.Objects.requireNonNull;
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import javafx.application.Platform;
 import manageme.model.ReadOnlyManageMe;
 import manageme.model.task.Task;
+
 
 
 public class TimeManager implements Time {
@@ -52,16 +55,17 @@ public class TimeManager implements Time {
     }
 
     /**
-     * Updates the current list of tasks based on the newest model. This is called whenver changes to model is made.
+     * Updates the current list of tasks based on the newest model. This is called whenever changes to model is made.
      * @param manageMe is the latest version of manageMe with the update tasks.
      */
     @Override
     public void updateTasks(ReadOnlyManageMe manageMe) {
+        requireNonNull(manageMe);
         this.allTasks = manageMe.getModifiableTaskList();
     }
 
     /**
-     * Starts a asynchronous thread that checks the task list every X seconds.
+     * Starts an asynchronous thread that checks the task list every X seconds.
      * Whenever a task is due, a pop-up is launched.
      */
     @Override

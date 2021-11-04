@@ -1,5 +1,6 @@
 package manageme.ui;
 
+import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
@@ -30,6 +31,9 @@ public class CommandBox extends UiPart<Region> {
         this.commandExecutor = commandExecutor;
         // calls #setStyleToDefault() whenever there is a change to the text of the command box.
         commandTextField.textProperty().addListener((unused1, unused2, unused3) -> setStyleToDefault());
+
+        // sets focus on CommandBox the moment program is run.
+        Platform.runLater(() -> commandTextField.requestFocus());
     }
 
     /**
