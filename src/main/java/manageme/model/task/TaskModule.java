@@ -7,12 +7,13 @@ import java.util.Optional;
 
 
 public class TaskModule {
-    public static final String MESSAGE_CONSTRAINTS = "Modules should only contain alphanumeric characters";
+    public static final String MESSAGE_CONSTRAINTS = "Modules should only contain alphanumeric characters "
+            + "and whitespaces";
 
     //This does not allow any whitespace in between characters
-    public static final String VALIDATION_REGEX = "\\p{Alnum}+";
+    //public static final String VALIDATION_REGEX = "\\p{Alnum}+";
     //This allows whitespace in between characters
-    //public static final String VALIDATION_REGEX = "[\\p{Alnum}][\\p{Alnum} ]*";
+    public static final String VALIDATION_REGEX = "[\\p{Alnum}][\\p{Alnum} ]*";
 
     public final String value;
     public final Optional<String> moduleName;

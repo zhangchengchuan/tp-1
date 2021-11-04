@@ -18,6 +18,7 @@ import manageme.model.link.Link;
 import manageme.model.link.LinkModule;
 import manageme.model.module.Module;
 import manageme.model.task.Task;
+import manageme.model.task.TaskModule;
 
 /**
  * Represents the in-memory model of the ManageMe data.
@@ -139,6 +140,18 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public void editModuleInLinksWithModule(Module target, LinkModule newLinkModule) {
+        LinkModule targetLinkModule = new LinkModule(target.getModuleName().value);
+        for (Link link: filteredLinks) {
+            if (link.getLinkModule().equals(targetLinkModule)) {
+                Link sameLinkEditedModule = new Link(link.getName(), link.getAddress(),
+                        newLinkModule);
+                setLink(link, sameLinkEditedModule);
+            }
+        }
+    }
+
+    @Override
     public boolean hasModule(Module module) {
         requireNonNull(module);
         return manageMe.hasModule(module);
@@ -158,7 +171,6 @@ public class ModelManager implements Model {
     @Override
     public void setModule(Module target, Module editedModule) {
         CollectionUtil.requireAllNonNull(target, editedModule);
-
         manageMe.setModule(target, editedModule);
     }
 
@@ -184,6 +196,18 @@ public class ModelManager implements Model {
         CollectionUtil.requireAllNonNull(target, editedTask);
 
         manageMe.setTask(target, editedTask);
+    }
+
+    @Override
+    public void editModuleInTasksWithModule(Module target, TaskModule newTaskModule) {
+        TaskModule targetTaskModule = new TaskModule(target.getModuleName().value);
+        for (Task task: filteredTasks) {
+            if (task.getTaskModule().equals(targetTaskModule)) {
+                Task sameTaskEditedModule = new Task(task.getName(), task.getDescription(), task.isDone(),
+                        newTaskModule, task.getStart(), task.getEnd());
+                setTask(task, sameTaskEditedModule);
+            }
+        }
     }
 
     /**
