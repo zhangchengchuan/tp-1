@@ -109,7 +109,7 @@ public class AddLinkCommandTest {
         }
 
         @Override
-        public void setManageMeFilePath(Path addressBookFilePath) {
+        public void setManageMeFilePath(Path ManageMeFilePath) {
             throw new AssertionError("This method should not be called.");
         }
 

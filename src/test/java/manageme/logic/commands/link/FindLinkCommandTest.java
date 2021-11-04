@@ -63,7 +63,7 @@ public class FindLinkCommandTest {
     @Test
     public void execute_multipleKeywords_multipleLinksFound() {
         String expectedMessage = String.format(MESSAGE_LINKS_LISTED_OVERVIEW, 2);
-        LinkNameContainsKeywordsPredicate predicate = preparePredicate("Eat Work");
+        LinkNameContainsKeywordsPredicate predicate = preparePredicate("CS");
         FindLinkCommand command = new FindLinkCommand(predicate);
         expectedModel.updateFilteredLinkList(predicate);
         assertCommandSuccess(command, model, expectedMessage, expectedModel);

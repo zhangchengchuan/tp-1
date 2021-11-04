@@ -43,7 +43,6 @@ public class LinkAddress {
         requireNonNull(linkAddress);
         AppUtil.checkArgument(isValidLinkAddress(linkAddress), MESSAGE_CONSTRAINTS);
         try {
-            System.out.println("\\");
             this.value = linkAddress;
             this.linkAddress = new URI(linkAddress);
         } catch (URISyntaxException e) {

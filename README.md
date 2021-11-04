@@ -12,4 +12,4 @@ Hello World!!
   * It is **written in OOP fashion** and provides a **reasonably well-written** code base with around **6k LoC**.
   * It comes with a **reasonable level of user and developer documentation**.
 * For the detailed documentation of this project, see the **[ManageMe Website](https://ay2122s1-cs2103t-w11-3.github.io/tp/)**.
-* This project is **based on the AddressBook-Level3 project** created by the [SE-EDU initiative](https://se-education.org).
+* This project is **based on the ManageMe-Level3 project** created by the [SE-EDU initiative](https://se-education.org).

@@ -59,10 +59,10 @@ examples of using it.
 
 **:information_source: Notes about the command format:**<br>
 
-* Words in `UPPER_CASE` are the parameters to be supplied by the user. E.g. `addTask n/TASK_NAME`
+* Words in `UPPER_CASE` are the parameters to be supplied by the user. E.g. `addTask n_NAME`
   , here `TASK_NAME` is the parameter.<br>
 
-* Items in square brackets are optional. E.g. `addTask n/TASK_NAME [mod/CS2103]`<br>
+* Items in square brackets are optional. E.g. `addTask n_NAME [mod/CS2103]`<br>
 
 </div>
 

@@ -116,7 +116,7 @@ public class CommandTestUtil {
         Link link = model.getFilteredLinkList().get(targetIndex.getZeroBased());
 
         final String[] splitName = link.getName().value.split("\\s+");
-        model.updateFilteredLinkList(new LinkNameContainsKeywordsPredicate(Arrays.asList(splitName[0])));
+        model.updateFilteredLinkList(new LinkNameContainsKeywordsPredicate(Arrays.asList(splitName)));
 
         assertEquals(1, model.getFilteredLinkList().size());
     }
