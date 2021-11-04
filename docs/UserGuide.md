@@ -14,7 +14,7 @@ via a **Command Line Interface (CLI)** while still displaying a convenient Graph
 ManageMe is intended to be used by university students to manage your modules, tasks, schedules, and online learning
 resources by typing simple commands. This user guide will give you a comprehensive view of our features, 
 and teach you how to use the app proficiently.
-
+<br><br>
 --------------------------------------------------------------------------------------------------------------------
 
 ## Quick Start:
@@ -48,7 +48,7 @@ Some example commands you can try:
 with description "10 questions", and whose deadline is on 2021 Nov 10th 23:59.
 
 Refer to the Features below for details of each command.
-
+<br><br>
 --------------------------------------------------------------------------------------------------------------------
 
 ## Features
@@ -65,6 +65,8 @@ examples of using it.
 * Items in square brackets are optional. E.g. `addTask n/TASK_NAME [mod/CS2103]`<br>
 
 </div>
+<br>
+
 
 ### Tasks:
 
@@ -72,7 +74,7 @@ examples of using it.
 
 Adds a task to the task list.
 
-Format: `addTask n/NAME d/DESCRIPTION [mod/MODULE_NAME] [s/START_DATETIME] [e/END_DATETIME]`
+Format: `addTask n/NAME d/DESCRIPTION [mod/ASSOCIATED_MODULE_NAME] [s/START_DATETIME] [e/END_DATETIME]`
 
 * A name and description for the task is compulsory.
 * It is optional to include an associated Module name, a start datetime and an end datetime.
@@ -81,6 +83,7 @@ Format: `addTask n/NAME d/DESCRIPTION [mod/MODULE_NAME] [s/START_DATETIME] [e/EN
 
 Example: `addTask n/Do CS2103T Assignment d/Refer to lecture 10 for examples mod/CS2103T s/2021-10-05T11:00
 e/2021-10-07T23:59`
+<br><br>
 
 #### Edit a task: `editTask`
 Edit an existing task in the task list.
@@ -92,8 +95,8 @@ Format: `editTask INDEX [n/NAME] [d/DESCRIPTION] [mod/MODULE_NAME] [s/START_DATE
 * Existing values will be updated to the input values.
 * Format for a `DATETIME` is as follows: `year-month-dayThr:min` e.g. `2021-10-29T23:59`
 
-
 Example: `editTask 3 d/buy milk`
+<br><br>
 
 #### Deleting a task: `deleteTask`
 Deletes the specified task from the task list.
@@ -104,6 +107,7 @@ Format: `deleteTask INDEX`
 * The index **must be a positive integer** 1, 2, 3, ...
 
 Example: `deleteTask 2`
+<br><br>
 
 #### Find a task by keyword: `findTask`
 Finds all tasks whose names contain any of the specified keywords.
@@ -117,12 +121,14 @@ Format: `findTask KEYWORD [MORE_KEYWORDS]`
 * Tasks matching at least one keyword will be returned (i.e. OR search).
 
 Example: `findTask work` returns `Do CS2100 work` and `Work out next week's plan`.
+<br><br>
 
 #### List all tasks : `listTask`
 Display the full list of tasks. This command is used to return to the full list
 of tasks after searching for specific tasks.
 
 Format: `listTask`
+<br><br>
 
 #### Mark/Un-mark a task as done/undone: `markTask`
 Marks/Un-marks the specified task from the task list as done/undone.
@@ -134,18 +140,23 @@ Format: `markTask INDEX`
 
 Example: `markTask 2`
 
-Feature in UI:
+Feature in UI:<br>
 
-![Ui](images/UiOngoingTask.png)
+![Ui](images/UiOngoingTask.png)<br>
 *An ongoing task not yet done will be in the default colour*
+<br><br>
 
-![Ui](images/UiDoneTask.png)
+![Ui](images/UiDoneTask.png)<br>
 A task marked as done will be coloured green.
+<br><br>
 
 #### Delete all done tasks : `deleteDoneTask`
 Deletes all tasks that have been marked as done from the task list.
 
 Format: `deleteDoneTask`
+<br><br><br>
+
+
 
 ### Modules:
 #### Adding a module: `addMod`
@@ -153,6 +164,7 @@ Adds a module with its name into the module list.
 
 Format: `addMod n/NAME` <br/>
 Examples: `addMod n/CS2103`
+<br><br>
 
 #### Read details of a module: `readMod`
 View module in detail. Creates a pop-up window to show the course name, link, and all tasks associated with the course.
@@ -162,6 +174,7 @@ Format: `readMod INDEX`<br/>
 * The index **must be a positive integer** 1, 2, 3, ...
 
 Examples: `readMod 2`
+<br><br>
 
 #### Edit a module: `editMod`
 Edits an existing module in the mod list.
@@ -174,6 +187,7 @@ Format: `editMod INDEX [n/NAME]`
 * Existing values will be updated to the input values.
 
 Example: `editMod 2 n/CS2103T`
+<br><br>
 
 #### Delete a module: `deleteMod`
 Deletes the specified mod from the mod list.
@@ -184,6 +198,7 @@ Format: `deleteMod INDEX`
 * The index **must be a positive integer** 1, 2, 3, ...
 
 Example: `deleteMod 2` deletes module No.2 from the list.
+<br><br>
 
 #### Find a module by keyword: `findMod`
 Finds modules whose names contain any of the given keywords.
@@ -197,12 +212,16 @@ Format: `findMod KEYWORD [MORE_KEYWORDS]`
 * Modules matching at least one keyword will be returned (i.e. OR search).
 
 Example: `findMod computer` returns `Computer Organization` and `Computer Architecture`.
+<br><br>
 
 #### List all modules : `listMod`
 Display the full list of modules. This command is used to return to the full list
 of modules after searching for specific modules.
 
 Format: `listMod`
+<br><br><br>
+
+
 
 ### Links:
 #### Add a link: `addLink`
@@ -213,6 +232,7 @@ Format: `addLink n/NAME a/LINK_ADDRESS [mod/MODULE_NAME]` <br/>
 * Aftering tagging the module, the link will appear at in the readMod panel of the particular module
 
 Examples: `addLink n/google a/https://www.google.com mod/CS1101S`
+<br><br>
 
 #### Edit a link: `editLink`
 Edits an existing link in the link list.
@@ -225,6 +245,7 @@ Format: `editLink INDEX [n/NAME] [a/LINK_ADDRESS] [mod/MODULE_NAME]`
 * Existing values will be updated to the input values.
 
 Example: `editLink 2 n/amazon`
+<br><br>
 
 #### Delete a link: `deleteLink`
 Deletes the specified mod from the mod list.
@@ -235,14 +256,7 @@ Format: `deleteLink INDEX`
 * The index **must be a positive integer** 1, 2, 3, ...
 
 Example: `deleteLink 2` deletes link No.2 from the list.
-
-#### Delete a link in module panel:
-Format: `deleteModLink mod/MODULE_NAME i/INDEX`
-* Deletes the mod by the specified `INDEX` at the link list in the readMod panel for the particular module.
-* The index refers to the index number shown in the displayed link list in the readMod panel of the module.
-* The index **must be a positive integer** 1, 2, 3, ...
-
-Example: `deleteModLink mod/CS1101S i/1` deletes link No.1 from the link list of CS1101S.
+<br><br>
 
 #### Open a link:
 Format: `openLink INDEX`
@@ -252,8 +266,11 @@ Format: `openLink INDEX`
 * The index **must be a positive integer** 1, 2, 3, ...
 
 Example: `openLink 1` open link No. 1 from the list of links.
+<br><br>
 
 #### Find a link by keyword:
+Find a link whose name contains the keyword given.
+
 Format: `findLink KEYWORD [MORE_KEYWORDS]`
 
 * The search is case-insensitive. e.g hans will match Hans.
@@ -263,22 +280,28 @@ Format: `findLink KEYWORD [MORE_KEYWORDS]`
 * Links with a name matching at least one keyword will be returned (i.e. OR search).
 
 Example: `findLink computer` returns `Computer Organization https://....` and `Computer Architecture https://....`.
+<br><br>
 
 #### List all links : `listLink`
 Display the full list of links. This command is used to return to the full list after findLink.
 
 Format: `listLink`
+<br><br><br>
+
 
 ### Calendar:
 #### Change calendar to next month: `nextMonth`
-Display the calendar for the next month. This command will update the entire calendar panel to display the calendar and the related task information for the following month.
+Display the calendar for the next month. This command will 
+update the entire calendar panel to display the calendar and the related task information for the following month.
 
 Format: `nextMonth`
+<br><br>
 
 #### Change calendar to previous month: `prevMonth`
 Similar to `nextMonth`. However, this command display the calendar for the previous month instead.
 
 Format: `prevMonth`
+<br><br>
 
 #### Read details happening on a day: `readDay`
 View a day in detail. Tasks happening on the specified day will be displayed.
@@ -287,8 +310,9 @@ Format: `readDay DATE`
 * `DATE` given must be a valid date.
 * Format for a `DATE` is as follows: `year-month-day` e.g. `2021-10-19`
 
-
 Example: `readDay 2021-10-19`
+<br><br><br>
+
 
 
 ### OTHERS:
@@ -297,35 +321,38 @@ Example: `readDay 2021-10-19`
 
 Shows the command summary and the url to the full User Guide.
 
-![help message](images/helpMessage.png)
+![help message](images/helpMessage.png)<br>
 
 Format: `help`
+<br><br>
 
 #### Archive current data: `archive`
 
 Resets the application data and saves the deleted application data into a timestamped file located in the data folder.
+<br><br>
 
 #### Reminder for overdue tasks:
 
 Resets the application data and saves the deleted application data into a timestamped file located in the data folder.
+<br><br>
 
 #### Exiting the program : `exit`
 
 Exits the program.
 
-Format: `exit`
 
 #### Saving the data
 
 Data is saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
+<br><br>
 
 #### Reminder for overdue tasks:
 
 Tasks that are overdue(past the end time) will automatically be coloured red for users to clearly see which tasks are
 overdue.
 
-Feature in UI:
-![Ui](images/UiOverDueTask.png)
+Feature in UI:<br>
+![Ui](images/UiOverDueTask.png)<br>
 *A Task coloured red since it is overdue*
 
 --------------------------------------------------------------------------------------------------------------------
