@@ -10,7 +10,6 @@ import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import manageme.commons.util.CollectionUtil;
-import manageme.model.module.Module;
 import manageme.model.task.exceptions.DuplicateTaskException;
 import manageme.model.task.exceptions.TaskNotFoundException;
 

@@ -14,11 +14,9 @@ import manageme.logic.commands.Command;
 import manageme.logic.commands.CommandResult;
 import manageme.logic.commands.exceptions.CommandException;
 import manageme.model.Model;
-import manageme.model.link.Link;
 import manageme.model.link.LinkModule;
 import manageme.model.module.Module;
 import manageme.model.module.ModuleName;
-import manageme.model.task.Task;
 import manageme.model.task.TaskModule;
 
 /**
