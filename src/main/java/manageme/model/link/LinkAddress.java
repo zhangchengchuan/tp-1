@@ -29,7 +29,7 @@ public class LinkAddress {
     public static final String VALIDATION_REGEX = "((^(https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;()]*"
             + "[-a-zA-Z0-9+&@#/%=~_|]))";
 
-    public static final String test = "^/|(/[a-zA-Z0-9_-]+)+$";
+    public static final String TEST = "^/|(/[a-zA-Z0-9_-]+)+$";
 
     public final URI linkAddress;
     public final String value;

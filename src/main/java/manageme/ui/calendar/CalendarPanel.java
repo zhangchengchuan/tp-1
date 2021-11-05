@@ -31,9 +31,9 @@ public class CalendarPanel extends UiPart<Region> {
     private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("hh:mm a, MMM dd, yyyy");
 
     private final Logger logger = LogsCenter.getLogger(CalendarPanel.class);
+    private final ObservableList<Task> taskList;
 
     private LocalDate referenceDate;
-    private ObservableList<Task> taskList;
     private TaskListPanel taskListPanel;
 
     @FXML
@@ -56,9 +56,7 @@ public class CalendarPanel extends UiPart<Region> {
         this.taskList = taskList;
         fillCalendarPanel(LocalDate.now());
 
-        taskList.addListener((ListChangeListener<? super Task>) change -> {
-            fillCalendarPanel(referenceDate);
-        });
+        taskList.addListener((ListChangeListener<? super Task>) change -> fillCalendarPanel(referenceDate));
     }
 
     /**
