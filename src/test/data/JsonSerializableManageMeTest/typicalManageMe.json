@@ -1,11 +1,11 @@
 {
-  "_comment": "AddressBook save file which contains the same values as in TypicalAddressBook#getTypicalAddressBook()",
+  "_comment": "ManageMe save file which contains the same values as in TypicalManageMe#getTypicalManageMe()",
   "links" : [ {
-    "name": "Tutorial",
+    "name": "Tutorial CS",
     "address": "https://www.luminus.com",
     "module": "CS2100"
   }, {
-    "name": "Lecture",
+    "name": "Lecture CS",
     "address": "https://www.youtube.com",
     "module": "CS2103"
   } ],

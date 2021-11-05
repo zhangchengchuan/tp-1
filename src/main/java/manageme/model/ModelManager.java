@@ -12,7 +12,6 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import manageme.commons.core.GuiSettings;
 import manageme.commons.core.LogsCenter;
-import manageme.commons.core.index.Index;
 import manageme.commons.util.CollectionUtil;
 import manageme.model.link.Link;
 import manageme.model.link.LinkModule;
@@ -289,20 +288,5 @@ public class ModelManager implements Model {
                 && readModule.equals(other.readModule)
                 && filteredTasks.equals(other.filteredTasks)
                 && unfilteredTasks.equals(other.unfilteredTasks);
-    }
-
-    @Override
-    public Link deleteModLink(LinkModule mod, Index i) {
-        System.out.println(unfilteredLinks.size());
-        FilteredList<Link> modLinks = unfilteredLinks.filtered(link -> {
-            Optional<String> linkModule = link.getLinkModule().moduleName;
-            if (linkModule.isEmpty()) {
-                return false;
-            }
-            return mod.value.equals(linkModule.get());
-        });
-        Link toRemove = modLinks.get(i.getZeroBased());
-        manageMe.removeLink(toRemove);
-        return toRemove;
     }
 }
