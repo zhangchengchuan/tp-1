@@ -63,12 +63,12 @@ public class ModelManagerTest {
     }
 
     @Test
-    public void setAddressBookFilePath_nullPath_throwsNullPointerException() {
+    public void setManageMeFilePath_nullPath_throwsNullPointerException() {
         Assert.assertThrows(NullPointerException.class, () -> modelManager.setManageMeFilePath(null));
     }
 
     @Test
-    public void setAddressBookFilePath_validPath_setsAddressBookFilePath() {
+    public void setManageMeFilePath_validPath_setsManageMeFilePath() {
         Path path = Paths.get("address/book/file/path");
         modelManager.setManageMeFilePath(path);
         assertEquals(path, modelManager.getManageMeFilePath());
@@ -80,12 +80,12 @@ public class ModelManagerTest {
     }
 
     @Test
-    public void hasLink_linkNotInAddressBook_returnsFalse() {
+    public void hasLink_linkNotInManageMe_returnsFalse() {
         assertFalse(modelManager.hasLink(LINK_A));
     }
 
     @Test
-    public void hasLink_linkInAddressBook_returnsTrue() {
+    public void hasLink_linkInManageMe_returnsTrue() {
         modelManager.addLink(LINK_A);
         assertTrue(modelManager.hasLink(LINK_A));
     }
@@ -101,12 +101,12 @@ public class ModelManagerTest {
     }
 
     @Test
-    public void hasModule_moduleNotInAddressBook_returnsFalse() {
+    public void hasModule_moduleNotInManageMe_returnsFalse() {
         assertFalse(modelManager.hasModule(MODULE_A));
     }
 
     @Test
-    public void hasModule_moduleInAddressBook_returnsTrue() {
+    public void hasModule_moduleInManageMe_returnsTrue() {
         modelManager.addModule(MODULE_A);
         assertTrue(modelManager.hasModule(MODULE_A));
     }
@@ -122,12 +122,12 @@ public class ModelManagerTest {
     }
 
     @Test
-    public void hasTask_taskNotInAddressBook_returnsFalse() {
+    public void hasTask_taskNotInManageMe_returnsFalse() {
         assertFalse(modelManager.hasTask(TASK_A));
     }
 
     @Test
-    public void hasTask_taskInAddressBook_returnsTrue() {
+    public void hasTask_taskInManageMe_returnsTrue() {
         modelManager.addTask(TASK_A);
         assertTrue(modelManager.hasTask(TASK_A));
     }
@@ -160,7 +160,7 @@ public class ModelManagerTest {
         // different types -> returns false
         assertFalse(modelManager.equals(5));
 
-        // different addressBook -> returns false
+        // different ManageMe -> returns false
         assertFalse(modelManager.equals(new ModelManager(differentManageMe, userPrefs)));
 
         // different filteredList -> returns false

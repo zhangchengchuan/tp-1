@@ -6,11 +6,11 @@ import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import manageme.commons.core.GuiSettings;
-import manageme.commons.core.index.Index;
 import manageme.model.link.Link;
 import manageme.model.link.LinkModule;
 import manageme.model.module.Module;
 import manageme.model.task.Task;
+import manageme.model.task.TaskModule;
 
 /**
  * The API of the Model component.
@@ -93,6 +93,12 @@ public interface Model {
      */
     void setLink(Link target, Link editedLink);
 
+    /**
+     * Replaces the module in tasks with modules matching the {@code target} with {@code newTaskModule}.
+     * {@code target} must exist in the ManageMe.
+     */
+    void editModuleInLinksWithModule(Module target, LinkModule newLinkModule);
+
     /** Returns an unmodifiable view of the filtered link list */
     ObservableList<Link> getFilteredLinkList();
 
@@ -169,6 +175,12 @@ public interface Model {
      */
     void setTask(Task target, Task editedTask);
 
+    /**
+     * Replaces the module in tasks with modules matching the {@code target} with {@code newTaskModule}.
+     * {@code target} must exist in the ManageMe.
+     */
+    void editModuleInTasksWithModule(Module target, TaskModule newTaskModule);
+
     /** Returns an unmodifiable view of the filtered task list */
     ObservableList<Task> getFilteredTaskList();
 
@@ -183,6 +195,4 @@ public interface Model {
 
     /** Returns an unmodifiable view of the unfiltered link list */
     ObservableList<Link> getUnfilteredLinkList();
-
-    Link deleteModLink(LinkModule module, Index targetIndex);
 }

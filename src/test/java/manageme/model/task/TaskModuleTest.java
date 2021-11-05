@@ -2,6 +2,7 @@ package manageme.model.task;
 
 import static manageme.testutil.Assert.assertThrows;
 import static manageme.testutil.TypicalTasks.TASK_A;
+import static manageme.testutil.TypicalTasks.TASK_B;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -36,7 +37,11 @@ public class TaskModuleTest {
     public void equals() {
         // same module, returns true
         assertTrue(TASK_A.getTaskModule().equals(TASK_A.getTaskModule()));
+
+        // different module, returns false
+        assertFalse(TASK_A.getTaskModule().equals(TASK_B.getTaskModule()));
     }
+
     @Test
     public void empty() {
         // Empty TaskModule with value set as ""

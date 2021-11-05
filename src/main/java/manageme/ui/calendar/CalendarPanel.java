@@ -23,7 +23,7 @@ import manageme.ui.UiPart;
 import manageme.ui.task.TaskListPanel;
 
 /**
- * Panel containing the list of persons.
+ * Panel to display the calendar.
  */
 public class CalendarPanel extends UiPart<Region> {
     private static final String FXML = "CalendarPanel.fxml";

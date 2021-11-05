@@ -14,6 +14,7 @@ import manageme.logic.commands.exceptions.CommandException;
 import manageme.model.ManageMe;
 import manageme.model.Model;
 import manageme.model.link.Link;
+import manageme.model.link.LinkNameContainsKeywordsPredicate;
 import manageme.model.module.ModNameContainsKeywordsPredicate;
 import manageme.model.module.Module;
 import manageme.model.task.Task;
@@ -103,5 +104,20 @@ public class CommandTestUtil {
         model.updateFilteredModuleList(new ModNameContainsKeywordsPredicate(Arrays.asList(splitName[0])));
 
         assertEquals(1, model.getFilteredModuleList().size());
+    }
+
+    /**
+     * Updates {@code model}'s filtered list to show only the task at the given {@code targetIndex} in the
+     * {@code model}'s address book.
+     */
+    public static void showLinkAtIndex(Model model, Index targetIndex) {
+        assertTrue(targetIndex.getZeroBased() < model.getFilteredLinkList().size());
+
+        Link link = model.getFilteredLinkList().get(targetIndex.getZeroBased());
+
+        final String[] splitName = link.getName().value.split("\\s+");
+        model.updateFilteredLinkList(new LinkNameContainsKeywordsPredicate(Arrays.asList(splitName[0])));
+
+        assertEquals(1, model.getFilteredLinkList().size());
     }
 }
