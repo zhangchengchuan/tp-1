@@ -8,7 +8,11 @@ import manageme.model.link.LinkModule;
 import manageme.model.link.LinkName;
 import manageme.model.module.Module;
 import manageme.model.module.ModuleName;
-import manageme.model.task.*;
+import manageme.model.task.Task;
+import manageme.model.task.TaskDescription;
+import manageme.model.task.TaskModule;
+import manageme.model.task.TaskName;
+import manageme.model.task.TaskTime;
 
 /**
  * Contains utility methods for populating {@code ManageMe} with sample data.
