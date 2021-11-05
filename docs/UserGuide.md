@@ -2,103 +2,106 @@
 layout: page
 title: User Guide
 ---
-* Table of Contents 
-{:toc}
+## <font color="#f0932b">Table of Contents</font>
+
+* Table of Contents
+  {:toc}
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Introduction:
-Hello! This is ManageMe, a **desktop app for time management and resource organisation**. It is optimized for use 
-via a **Command Line Interface (CLI)** while still displaying a convenient Graphical User Interface (GUI). 
+## <font color="#f0932b">Introduction:</font>
+ManageMe is a **lightweight but powerful desktop application built to help university students manage their school life, available on Windows, Linux and Mac**. You can add your modules, tasks, schedules and online learning resources easily into ManageMe and access them with simple commands. Whether you are a fast typer or a more visual user, ManageMe has you covered. The application is optimized for use via a **Command Line Interface (CLI)** but also provides a convenient Graphical User Interface (GUI) for interaction.
 
-ManageMe is intended to be used by university students to manage your modules, tasks, schedules, and online learning
-resources by typing simple commands. This user guide will give you a comprehensive view of our features, 
-and teach you how to use the app proficiently.
-<br><br>
+This user guide will give you a comprehensive understanding in using ManageMe to its full potential. Begin your journey with the [Quick Start](#quick-start) section. For a full overview of the user guide, check out the [Table of Contents](#table-of-contents).
+
 --------------------------------------------------------------------------------------------------------------------
 
-## Quick Start:
+## <font color="#f0932b">Quick Start</font>
 This section aims to provide a quick introduction to using the application.
-It should take less than 5 minutes to read and will provide new users with the necessary knowledge to install 
-and start using the application.
+It should take less than 5 minutes to read and will provide new users with the necessary knowledge to install and start using the application.
 
-### Steps for installation:
+### <font color="#f0932b">Steps for installation:</font>
 1. Ensure you have Java 11 or above installed in your Computer.
 2. [Download](https://github.com/AY2122S1-CS2103T-W11-3/tp/releases) the latest jar release of ManageMe.
-3. Open your browser's download folder and locate the downloaded jar file. ManageMe can run on multiple platforms, 
-including Windows, Mac and Linux.
+3. Open your browser's download folder and locate the downloaded jar file. ManageMe can run on multiple platforms, including Windows, Mac and Linux.
 4. Move the jar file into your desired folder. ManageMe will use this folder to store its data by default.
-5. Start the app by double-clicking on the jar file, or if you are using command line, type `java -jar manageme.jar`.
+5. Start the app by double-clicking on the jar file, or if you are using the command line, type `java -jar manageme.jar`.
 6. Enjoy using the application!
 
-### User Interface
-Below is a screenshot of our User Interface (UI). As you can see, there are management panels for Modules, Tasks, 
-Calendar, and Links which can contain both website links and local file paths on your computer. You can type command
-lines in the lowest box, and the app's response will be shown in second-lowest box.
+### <font color="#f0932b">User Interface</font>
+Below is a screenshot of our User Interface (UI). As you can see, there are management panels for Modules, Tasks,
+Calendar, and Links which can contain both website links and file paths stored on your computer. You can type command lines in the command input box, and the ManageMe's response will be shown in the app response box.
 
 ![Ui](images/UiHomepage.png)
 <br>*Homepage of Application*
 
-### Quick Tutorial
+### <font color="#f0932b">Basics</font>
 Type a command in the command box and press Enter to execute it.
 Some example commands you can try:
-* `addMod n/CS2103T`: Add a module named "CS2103T"
-* `deleteMod 1`: Delete a module with index 1, or you can type whatever index you see.
-* `addTask n/Do homework d/10 questions e/2021-11-10T23:59`: Add a task named "do homework"
-with description "10 questions", and whose deadline is on 2021 Nov 10th 23:59.
+* `addMod n/CS2103T`: Adds a module named "CS2103T".
+* `deleteTask 1`: Deletes the 1st task shown in the current list.
+* `editLink 3 n/CS2100 Exam Link`: Edits the name of the 3rd link shown in the current list to “CS2100 Exam Link”.
+* `clear`: Deletes all modules, tasks and links in ManageMe. Use this command to reset ManageMe.
+* `exit`: Exits the application.
 
-Refer to the Features below for details of each command.
+Refer to [Features](features) below for details of each command.
 <br><br>
+
+Return to [Table of Contents](#table-of-contents)
+
 --------------------------------------------------------------------------------------------------------------------
 
-## Features
-This section gives a full list of all the application's features with details such as the format, some tips and
-examples of using it.
+## <font color="#f0932b">Features</font>
+This section gives a full list of all the application's features with details such as the format, some tips and examples of using it.
 
 <div markdown="block" class="alert alert-info">
 
 **:information_source: Notes about the command format:**<br>
 
-* Words in `UPPER_CASE` are the parameters to be supplied by the user. E.g. `addTask n_NAME`
+* Words in `UPPER_CASE` are the parameters to be supplied by the user. E.g. `addTask n/TASK_NAME`
   , here `TASK_NAME` is the parameter.<br>
 
-* Items in square brackets are optional. E.g. `addTask n_NAME [mod/CS2103]`<br>
+* Items in square brackets are optional. E.g. `addTask n/TASK_NAME [mod/CS2103]`<br>
 
 </div>
-<br>
 
+### <font color="#6ab04c">Tasks:</font>
 
-### Tasks:
-
-#### Adding a task: `addTask`
+#### <font color="#6ab04c">Adding a task: `addTask`</font>
 
 Adds a task to the task list.
 
 Format: `addTask n/NAME d/DESCRIPTION [mod/ASSOCIATED_MODULE_NAME] [s/START_DATETIME] [e/END_DATETIME]`
 
-* A name and description for the task is compulsory.
+* A **name** and **description** for the task is **compulsory**.
 * It is optional to include an associated Module name, a start datetime and an end datetime.
 * A task created with a start datetime MUST also have an end datetime.
 * Format for a `DATETIME` is as follows: `year-month-dayThr:min` e.g. `2021-10-29T23:59`
 
 Example: `addTask n/Do CS2103T Assignment d/Refer to lecture 10 for examples mod/CS2103T s/2021-10-05T11:00
 e/2021-10-07T23:59`
+
+A reminder will pop-up when a task is happening:<br>
+To close the reminder, press Enter or click on the Acknowledge button. Simply closing the window will not work and will cause the reminder to pop-up again!
+![Reminder](images/reminder.png)<br>
+
+*Pop-up reminder for tasks*
 <br><br>
 
-#### Edit a task: `editTask`
+#### <font color="#6ab04c">Edit a task: `editTask`</font>
 Edit an existing task in the task list.
 
-Format: `editTask INDEX [n/NAME] [d/DESCRIPTION] [mod/MODULE_NAME] [s/START_DATETIME] [e/END_DATETIME]`
+Format: `editTask INDEX [n/NAME] [d/DESCRIPTION] [mod/ASSOCIATED_MODULE_NAME] [s/START_DATETIME] [e/END_DATETIME]`
 * The index refers to the index number shown in the displayed module list
 * The index **must be a positive integer** 1, 2, 3, ...
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
 * Format for a `DATETIME` is as follows: `year-month-dayThr:min` e.g. `2021-10-29T23:59`
 
-Example: `editTask 3 d/buy milk`
+Example: `editTask 3 d/Complete assignments e/2021-10-25T16:00`
 <br><br>
 
-#### Deleting a task: `deleteTask`
+#### <font color="#6ab04c">Deleting a task: `deleteTask`</font>
 Deletes the specified task from the task list.
 
 Format: `deleteTask INDEX`
@@ -109,29 +112,44 @@ Format: `deleteTask INDEX`
 Example: `deleteTask 2`
 <br><br>
 
-#### Find a task by keyword: `findTask`
+<div markdown="block" class="alert alert-info">
+
+**:warning: Caution**<br>
+
+* Deleting a task is irreversible.<br>
+
+</div>
+
+#### <font color="#6ab04c">Find a task by keyword: `findTask`</font>
 Finds all tasks whose names contain any of the specified keywords.
 
 Format: `findTask KEYWORD [MORE_KEYWORDS]`
 
-* The search is case-insensitive. e.g hans will match Hans.
-* The order of the keywords does not matter. e.g. Hans Bo will match Bo Hans.
-* Only the name is searched.
-* Only full words will be matched e.g. Han will not match Hans.
+* The search is case-insensitive. e.g lecture will match Lecture.
+* The order of the keywords does not matter. e.g. Lecture Slide will match Slide Lecture.
+* Only the name field is searched.
+* Only full words will be matched e.g. Assignment will not match Assignments.
 * Tasks matching at least one keyword will be returned (i.e. OR search).
 
-Example: `findTask work` returns `Do CS2100 work` and `Work out next week's plan`.
+Example: `findTask assignment` <br>
+Before findTask:<br>
+![findTask](images/findTask_before.png)<br>
+
+
+After findTask:<br>
+![findTask](images/findTask_after.png)
+
 <br><br>
 
-#### List all tasks : `listTask`
+#### <font color="#6ab04c">List all tasks : `listTask`</font>
 Display the full list of tasks. This command is used to return to the full list
 of tasks after searching for specific tasks.
 
 Format: `listTask`
 <br><br>
 
-#### Mark/Un-mark a task as done/undone: `markTask`
-Marks/Un-marks the specified task from the task list as done/undone.
+#### <font color="#6ab04c">Mark a task as done/undone: `markTask`</font>
+Marks the specified task from the task list as done/undone. Marking a task that is done will change it to undone while marking a task that is not done will change it to done.
 
 Format: `markTask INDEX`
 - Marks the task at the specified `INDEX`
@@ -150,23 +168,31 @@ Feature in UI:<br>
 A task marked as done will be coloured green.
 <br><br>
 
-#### Delete all done tasks : `deleteDoneTask`
+#### <font color="#6ab04c">Delete all done tasks : `deleteDoneTask`</font>
 Deletes all tasks that have been marked as done from the task list.
 
 Format: `deleteDoneTask`
-<br><br><br>
 
+<div markdown="block" class="alert alert-info">
 
+**:warning: Caution**<br>
 
-### Modules:
-#### Adding a module: `addMod`
+* Deleting a task that is marked as done is irreversible.<br>
+
+</div>
+<br>
+
+Return to [Table of Contents](#table-of-contents).
+
+### <font color="#7ed6df">Modules:</font>
+#### <font color="#7ed6df">Adding a module: `addMod`</font>
 Adds a module with its name into the module list.
 
 Format: `addMod n/NAME` <br/>
 Examples: `addMod n/CS2103`
 <br><br>
 
-#### Read details of a module: `readMod`
+#### <font color="#7ed6df">Read details of a module: `readMod`</font>
 View module in detail. Creates a pop-up window to show the course name, link, and all tasks associated with the course.
 
 Format: `readMod INDEX`<br/>
@@ -174,9 +200,14 @@ Format: `readMod INDEX`<br/>
 * The index **must be a positive integer** 1, 2, 3, ...
 
 Examples: `readMod 2`
+
+Screenshot:<br>
+![readMod](images/readMod.png)<br>
+
+*Pop-up window for readMod*
 <br><br>
 
-#### Edit a module: `editMod`
+#### <font color="#7ed6df">Edit a module: `editMod`</font>
 Edits an existing module in the mod list.
 
 Format: `editMod INDEX [n/NAME]`
@@ -189,7 +220,7 @@ Format: `editMod INDEX [n/NAME]`
 Example: `editMod 2 n/CS2103T`
 <br><br>
 
-#### Delete a module: `deleteMod`
+#### <font color="#7ed6df">Delete a module: `deleteMod`</font>
 Deletes the specified mod from the mod list.
 
 Format: `deleteMod INDEX`
@@ -200,7 +231,16 @@ Format: `deleteMod INDEX`
 Example: `deleteMod 2` deletes module No.2 from the list.
 <br><br>
 
-#### Find a module by keyword: `findMod`
+<div markdown="block" class="alert alert-info">
+
+**:warning: Caution**<br>
+
+* Deleting a module is irreversible.<br>
+
+</div>
+
+
+#### <font color="#7ed6df">Find a module by keyword: `findMod`</font>
 Finds modules whose names contain any of the given keywords.
 
 Format: `findMod KEYWORD [MORE_KEYWORDS]`
@@ -214,30 +254,32 @@ Format: `findMod KEYWORD [MORE_KEYWORDS]`
 Example: `findMod computer` returns `Computer Organization` and `Computer Architecture`.
 <br><br>
 
-#### List all modules : `listMod`
+#### <font color="#7ed6df">List all modules : `listMod`</font>
 Display the full list of modules. This command is used to return to the full list
 of modules after searching for specific modules.
 
 Format: `listMod`
-<br><br><br>
+<br><br>
+
+Return to [Table of Contents](#table-of-contents).
 
 
 
-### Links:
-#### Add a link: `addLink`
+### <font color="#f9ca24">Links:</font>
+#### <font color="#f9ca24">Add a link: `addLink`</font>
 Adds a link into the link list. A link contains its name and a website link for online learning.
 
-Format: `addLink n/NAME a/LINK_ADDRESS [mod/MODULE_NAME]` <br/>
+Format: `addLink n/NAME a/LINK_ADDRESS [mod/ASSOCIATED_MODULE_NAME]` <br/>
 * A link should be in a valid uri format, beginning with https://, ftp:// of file:/
 * Aftering tagging the module, the link will appear at in the readMod panel of the particular module
 
 Examples: `addLink n/google a/https://www.google.com mod/CS1101S`
 <br><br>
 
-#### Edit a link: `editLink`
+#### <font color="#f9ca24">Edit a link: `editLink`</font>
 Edits an existing link in the link list.
 
-Format: `editLink INDEX [n/NAME] [a/LINK_ADDRESS] [mod/MODULE_NAME]`
+Format: `editLink INDEX [n/NAME] [a/LINK_ADDRESS] [mod/ASSOCIATED_MODULE_NAME]`
 * Edits the link by the specified `INDEX`.<br/>
 * The index refers to the index number shown in the displayed link list
 * The index **must be a positive integer** 1, 2, 3, ...
@@ -247,7 +289,7 @@ Format: `editLink INDEX [n/NAME] [a/LINK_ADDRESS] [mod/MODULE_NAME]`
 Example: `editLink 2 n/amazon`
 <br><br>
 
-#### Delete a link: `deleteLink`
+#### <font color="#f9ca24">Delete a link: `deleteLink`</font>
 Deletes the specified mod from the mod list.
 
 Format: `deleteLink INDEX`
@@ -258,17 +300,24 @@ Format: `deleteLink INDEX`
 Example: `deleteLink 2` deletes link No.2 from the list.
 <br><br>
 
-#### Open a link:
+<div markdown="block" class="alert alert-info">
+
+**:warning: Caution**<br>
+
+* Deleting a link is irreversible.<br>
+
+</div>
+
+#### <font color="#f9ca24">Open a link:</font>
 Format: `openLink INDEX`
-* Opens the link identifies by the index in the link list. If it is a link for a webpage, it will open the link in a
-  browser. It it is a path for a file, it will open the file using the default app.
+* Opens the link identifies by the index in the link list. If it is a link for a webpage, it will open the link in a browser. If it is a file path on your computer, it will open the file using the default app.
 * The index refers to the index number shown in the displayed link list
 * The index **must be a positive integer** 1, 2, 3, ...
 
 Example: `openLink 1` open link No. 1 from the list of links.
 <br><br>
 
-#### Find a link by keyword:
+#### <font color="#f9ca24">Find a link by keyword:</font>
 Find a link whose name contains the keyword given.
 
 Format: `findLink KEYWORD [MORE_KEYWORDS]`
@@ -282,28 +331,30 @@ Format: `findLink KEYWORD [MORE_KEYWORDS]`
 Example: `findLink computer` returns `Computer Organization https://....` and `Computer Architecture https://....`.
 <br><br>
 
-#### List all links : `listLink`
+#### <font color="#f9ca24">List all links: `listLink`</font>
 Display the full list of links. This command is used to return to the full list after findLink.
 
 Format: `listLink`
-<br><br><br>
+<br><br>
+
+Return to [Table of Contents](#table-of-contents).
 
 
-### Calendar:
-#### Change calendar to next month: `nextMonth`
-Display the calendar for the next month. This command will 
+### <font color="#eb4d4b">Calendar:</font>
+#### <font color="#eb4d4b">Change calendar to next month: `nextMonth`</font>
+Display the calendar for the next month. This command will
 update the entire calendar panel to display the calendar and the related task information for the following month.
 
 Format: `nextMonth`
 <br><br>
 
-#### Change calendar to previous month: `prevMonth`
+#### <font color="#eb4d4b">Change calendar to previous month: `prevMonth`</font>
 Similar to `nextMonth`. However, this command display the calendar for the previous month instead.
 
 Format: `prevMonth`
 <br><br>
 
-#### Read details happening on a day: `readDay`
+#### <font color="#eb4d4b">Read details happening on a day: `readDay`</font>
 View a day in detail. Tasks happening on the specified day will be displayed.
 
 Format: `readDay DATE`
@@ -311,13 +362,15 @@ Format: `readDay DATE`
 * Format for a `DATE` is as follows: `year-month-day` e.g. `2021-10-19`
 
 Example: `readDay 2021-10-19`
-<br><br><br>
+<br><br>
+
+Return to [Table of Contents](#table-of-contents).
 
 
 
-### OTHERS:
+### <font color="#4834d4">Others:</font>
 
-#### Viewing help: `help`
+#### <font color="#4834d4">Viewing help: `help`</font>
 
 Shows the command summary and the url to the full User Guide.
 
@@ -326,27 +379,23 @@ Shows the command summary and the url to the full User Guide.
 Format: `help`
 <br><br>
 
-#### Archive current data: `archive`
+#### <font color="#4834d4">Archive current data: `archive`</font>
 
 Resets the application data and saves the deleted application data into a timestamped file located in the data folder.
 <br><br>
 
-#### Reminder for overdue tasks:
 
-Resets the application data and saves the deleted application data into a timestamped file located in the data folder.
-<br><br>
-
-#### Exiting the program : `exit`
+#### <font color="#4834d4">Exiting the program : `exit`</font>
 
 Exits the program.
 
 
-#### Saving the data
+#### <font color="#4834d4">Saving the data</font>
 
 Data is saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
 <br><br>
 
-#### Reminder for overdue tasks:
+#### <font color="#4834d4">Reminder for overdue tasks:</font>
 
 Tasks that are overdue(past the end time) will automatically be coloured red for users to clearly see which tasks are
 overdue.
@@ -355,15 +404,17 @@ Feature in UI:<br>
 ![Ui](images/UiOverDueTask.png)<br>
 *A Task coloured red since it is overdue*
 
+Return to [Table of Contents](#table-of-contents).
+
 --------------------------------------------------------------------------------------------------------------------
 
-## Command summary
-This section serves as quick reference for all the available commands that can be used in the application.
+## <font color="#f0932b">Command summary</font>
+This section serves as a quick reference for all the available commands that can be used in the application.
 
 Action | Format, Examples
 --------|------------------
-**AddTask** | `addTask n/NAME d/DESCRIPTION [mod/MODULE_NAME] [s/START_DATETIME] [e/END_DATETIME]`<br>e.g., `addTask n/Do Assignment d/Read Lecture 7 mod/CS2100 s/2021-10-05T12:00 e/2021-10-07T23:59`
-**EditTask** | `editTask INDEX [n/NAME] [d/DESCRIPTION] [mod/MODULE_NAME] [s/START_DATETIME] [e/END_DATETIME]`<br>e.g., `editTask 3 d/buy milk`
+**AddTask** | `addTask n/NAME d/DESCRIPTION [mod/ASSOCIATED_MODULE_NAME] [s/START_DATETIME] [e/END_DATETIME]`<br>e.g., `addTask n/Do Assignment d/Read Lecture 7 mod/CS2100 s/2021-10-05T12:00 e/2021-10-07T23:59`
+**EditTask** | `editTask INDEX [n/NAME] [d/DESCRIPTION] [mod/ASSOCIATED_MODULE_NAME] [s/START_DATETIME] [e/END_DATETIME]`<br>e.g., `editTask 3 d/buy milk`
 **DeleteTask** | `deleteTask INDEX`<br>e.g., `deleteTask 3`
 **findTask** | `findTask KEYWORD [MORE_KEYWORDS]`<br>e.g., `findTask work`
 **ListTask** | `listTask`
@@ -375,10 +426,9 @@ Action | Format, Examples
 **DeleteModule** | `deleteMod INDEX`<br>e.g., `deleteMod 2`
 **FindModule** | `findMod KEYWORD [MORE_KEYWORDS]`<br>e.g., `findMod computer`
 **ListModule** | `listMod`
-**AddLink** | `addLink n/NAME l/LINK_ADDRESS [mod/MODULE_NAME]`<br>e.g., `addLink n/google a/https://www.google.com`
+**AddLink** | `addLink n/NAME l/LINK_ADDRESS [mod/ASSOCIATED_MODULE_NAME]`<br>e.g., `addLink n/google a/https://www.google.com`
 **DeleteLink** | `deleteLink INDEX`<br>e.g., `deleteLink 2`
-**DeleteModLink** | `deleteModLink mod/MODULE_NAME i/INDEX`<br>e.g., `deleteModLink mod/CS1101S i/1`
-**EditLink** | `editLink INDEX [n/NAME] [a/LINK_ADDRESS] [mod/MODULE_NAME]`<br>e.g.,`editLink 2 n/amazon`
+**EditLink** | `editLink INDEX [n/NAME] [a/LINK_ADDRESS] [mod/ASSOCIATED_MODULE_NAME]`<br>e.g.,`editLink 2 n/amazon`
 **OpenLink** | `openLink INDEX` <br>e.g.,`openLink 1`
 **FindLink** | `findLink KEYWORD`<br>e.g.,`findLink google`
 **ListLink** | `listLink`
@@ -388,3 +438,5 @@ Action | Format, Examples
 **Help** | `help`
 **Archive** | `archive`
 **Exit** | `exit`
+
+Return to [Table of Contents](#table-of-contents).
