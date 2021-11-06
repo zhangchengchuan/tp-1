@@ -18,13 +18,18 @@ import manageme.model.link.exceptions.LinkNotOpenException;
 public class LinkAddress {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "The link should be a valid url, beginning with https://, ftp:// or file:/";
+            "The link should be a valid uri, beginning with https://, ftp:// or file:/ with at least one more "
+                    + "character."
+                    + "It doesn't support any space in the link. File name should start from the root directory "
+                    + "for it to be able to be properly opened.";
 
     /*
      * The address should be in a valid url format.
      */
-    public static final String VALIDATION_REGEX = "^(https://|http://|ftp://|file:/)"
-            + "[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]";
+    public static final String VALIDATION_REGEX = "((^(https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;()]*"
+            + "[-a-zA-Z0-9+&@#/%=~_|]))";
+
+    public static final String TEST = "^/|(/[a-zA-Z0-9_-]+)+$";
 
     public final URI linkAddress;
     public final String value;

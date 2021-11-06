@@ -16,7 +16,6 @@ import org.junit.jupiter.api.Test;
 
 import javafx.collections.ObservableList;
 import manageme.commons.core.GuiSettings;
-import manageme.commons.core.index.Index;
 import manageme.logic.commands.CommandResult;
 import manageme.logic.commands.exceptions.CommandException;
 import manageme.model.ManageMe;
@@ -27,6 +26,7 @@ import manageme.model.link.Link;
 import manageme.model.link.LinkModule;
 import manageme.model.module.Module;
 import manageme.model.task.Task;
+import manageme.model.task.TaskModule;
 import manageme.testutil.TaskBuilder;
 
 public class AddTaskCommandTest {
@@ -111,7 +111,7 @@ public class AddTaskCommandTest {
         }
 
         @Override
-        public void setManageMeFilePath(Path addressBookFilePath) {
+        public void setManageMeFilePath(Path manageMeFilePath) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -146,12 +146,12 @@ public class AddTaskCommandTest {
         }
 
         @Override
-        public void openLink(Link target) {
+        public void editModuleInLinksWithModule(Module target, LinkModule newLinkModule) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public Link deleteModLink(LinkModule linkModule, Index index) {
+        public void openLink(Link target) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -182,6 +182,11 @@ public class AddTaskCommandTest {
 
         @Override
         public void setModule(Module target, Module editedModule) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void editModuleInTasksWithModule(Module target, TaskModule newTaskModule) {
             throw new AssertionError("This method should not be called.");
         }
 
