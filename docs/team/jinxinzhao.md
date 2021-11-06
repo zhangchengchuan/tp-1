@@ -5,20 +5,20 @@ title: Zhao Jinxin's Project Portfolio Page
 
 ### Project: ManageMe Level 3
 
-ManageMe is a **lightweight but powerful desktop application built to help university students manage their school life, 
-available on Windows, Linux and Mac**. You can add your modules, tasks, schedules and online learning resources easily 
+ManageMe is a **lightweight but powerful desktop application built to help university students manage their school life,
+available on Windows, Linux and Mac**. You can add your modules, tasks, schedules and online learning resources easily
 into ManageMe and access them with simple commands.
 
 Given below are my contributions to the project.
 
 * **New Feature**: Added editMod command
   * What it does: Allows users to edit an existing module.
-  * Justification: This allows users to update the information of the modules they take. For example, 
+  * Justification: This allows users to update the information of the modules they take. For example,
     when a user take new modules in a new school term, or found a typo in a previously entered module,
     the user can change the module information accordingly.
   * Difficulty: This function was not difficult to implement, however it was modified in different stages of the project
-    due to changing needs. Initially in v1.2, a module contains both a name and a Link, thus editMod must be able to edit both. 
-    However, later in v1.3, Link was extracted out to become a standalone class with its own commands, 
+    due to changing needs. Initially in v1.2, a module contains both a name and a Link, thus editMod must be able to edit both.
+    However, later in v1.3, Link was extracted out to become a standalone class with its own commands,
     thus all dependencies with Link was removed from editMod.
 
 * **New Feature**: Added findMod command.

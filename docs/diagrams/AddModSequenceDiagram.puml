@@ -66,4 +66,5 @@ deactivate AddModuleCommand
 
 [<--LogicManager
 deactivate LogicManager
+
 @enduml
