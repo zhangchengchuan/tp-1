@@ -203,29 +203,11 @@ Return to [Table of Contents](#table-of-contents).
 ### Calendar feature
 ManageMe has a calendar feature for users to view all of their upcoming tasks for the month.
 
-#### Implementation
 The `CalendarPanel` consists of two main components, calendar and a task-list panel. A note-worthy field of the `CalendarPanel` is `referenceDate` whereby the task list panel will display the tasks happening on `referenceDate` in greater details. The month that is displayed is also based on the `referenceDate`. The default `referenceDate` is the current date when the application is first opened. <br><br>
 Calendar provides a visual representation of the user's schedule for the month. Days with upcoming tasks are denoted by a green dot. The `calendarPlaceholder`, which is the frame for the calendar, is a `GridPane`. The first row of the `GridPane` is a `Label` which represents a specific month and year. The second row has seven column where each cell is `Label` which represents the day-of-week. From the third row onwards, each cell is made up of a `DayCard`, which extends `UiPart<Region>` and represents a day in the calendar. The `DayCard` is made up of a `Label` and `Rectangle` with two `PseudoClass` to differentiate days with tasks and the reference date. <br><br>
 Task-list panel displays the tasks happening on `referenceDate` in greater details. It is made up of a `VBox` which contains a `Label`, which is the title, and a `StackPane`, which contains a `ListView<Task>`. <br><br>
 The following sequence diagram demonstrates how the Calendar is created.
-### **5.1 Reminders** 
-In this section, the functionality of the reminder function and its activity diagram will be discussed.
 
-### **5.1.1 What are Reminders**
-Reminders are implemented under the **TimeManager** Class which is located under the `time` package.
-
-The main thread, which handles the user inputs and command
-execution, will operate as per normal, except that an additional thread runs with it. 
-
-This additional **Time** Thread will constantly check all the current tasks to make sure 
-that the user is notified of any tasks that requires attention.
-This notification appears in the form of a pop-out with implementation located under the `time` package as well
-
-### **5.1.2 Execution path of Reminders**
-
-<img src="images/RemindersActivityDiagram.png" width="550" /> <br>
-
-*Figure 10: Reminders Activity Diagram*
 
 ![CalendarConstructorSequenceDiagram](images/CalendarConstructorSequenceDiagram.png) <br>
 *Figure. Sequence diagram of creation of Calendar*
@@ -237,9 +219,28 @@ Calendar has three functionality, `prevMonth`, `nextMonth` and `readDay`, all of
 The main consideration for the design of calendar is how many days should be displayed. The initial implementation was a "Week Calendar" which uses the current version of [NUSMODS](https://nusmods.com/timetable/sem-1) as reference. However, this design implies that there cannot be an overlap in the timing of different tasks. It would work for NUSMODS since it is a timetable and classes are not supposed to clash. However, it will not be as suitable for a calendar since multiple tasks can be happening or due at the same time. We decided to use the current implementation which is a "Month Calendar" with markings to represent the existence of tasks in the respective day-of-month and a task-list panel to display the tasks in greater details.
 ![Calendar](images/Calendar.png) <br>
 *Figure. Screenshot of GUI of calendar in ManageMe.*
+<br><br>
 
+#### **Reminder Feature**
+In this section, the functionality of the reminder function and its activity diagram will be discussed.
 
-The above figure illustrates the execution path of Reminders when the user starts ManageMe.
+#### **Implementation of Reminders**
+Reminders are implemented under the `TimeManager` Class which is located under the `time` package.
+
+The main thread, which handles the user inputs and command
+execution, will operate as per normal, except that an additional thread runs with it.
+
+This additional **Time** Thread will constantly check all the current tasks to make sure
+that the user is notified of any tasks that requires attention.
+This notification appears in the form of a pop-out with implementation located under the `time` package as well
+
+#### **Execution path of Reminders**
+
+![Reminder](images/ReminderActivityDiagram.png) <br>
+
+*Figure 10: Reminders Activity Diagram*
+
+The above activity diagram illustrates the execution path of Reminders when the user starts ManageMe.
 
 When the user starts the application, 2 threads are immediately created. The **Main Thread** and the **Time** Thread.
 
@@ -247,12 +248,12 @@ For this activity diagram, the entire **Main Thread** will be represented by one
 main focus. 
 
 The following actions occur when the **Time Thread** is created:
-1. TimeManager is initialized and starts to run.
+1. `TimeManager` is initialized and starts to run.
 2. ManageMe is now in an **Alert State**. This means that this thread is constantly checking if ManageMe is still
 running. 
    1. If it is, check if there are any tasks that the user needs to be notified of. Once done, 
    return to **Alert State**.
-   2. If it is not, all threads including **Main Thread** will be ended and the programme ends.
+   2. If it is not, all threads including **Main Thread** will be ended and the application ends.
 
 
 <div markdown="span" class="alert alert-info">:information_source: ** Note:** As long as ManageMe is still running, it
