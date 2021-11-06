@@ -160,8 +160,6 @@ The `Model` component,
 * stores a `UserPref` object that represents the user’s preferences. This is exposed to the outside as a `ReadOnlyUserPref` object.
 * does not depend on any of the other three components (as the `Model` represents data entities of the domain, they should make sense on their own without depending on other components)
 
-[comment]: <> (<div markdown="span" class="alert alert-info">:information_source: **Note:** An alternative &#40;arguably, a more OOP&#41; model is given below. It has a `Tag` list in the `AddressBook`, which `Person` references. This allows `AddressBook` to only require one `Tag` object per unique tag, instead of each `Person` needing their own `Tag` objects.<br>)
-
 Return to [Table of Contents](#table-of-contents).
 
 ### Storage component
@@ -200,12 +198,44 @@ Return to [Table of Contents](#table-of-contents).
 
 ## **Implementation**
 
-### [Proposed] Set reminder to pop a specified amount of time before task starts
-Currently the task reminder pops up at the moment when the task starts, or when the task is ongoing. However, this feature will be more useful if the user can set the reminder to pop a certain time before the task starts.
+### **5.1 Reminders** 
+In this section, the functionality of the reminder function and its activity diagram will be discussed.
 
-### [Proposed] Add recurring tasks
-Currently
+### **5.1.1 What are Reminders**
+Reminders are implemented under the **TimeManager** Class which is located under the `time` package.
 
+The main thread, which handles the user inputs and command
+execution, will operate as per normal, except that an additional thread runs with it. 
+
+This additional **Time** Thread will constantly check all the current tasks to make sure 
+that the user is notified of any tasks that requires attention.
+This notification appears in the form of a pop-out with implementation located under the `time` package as well
+
+### **5.1.2 Execution path of Reminders**
+
+<img src="images/RemindersActivityDiagram.png" width="550" /> <br>
+
+*Figure 10: Reminders Activity Diagram*
+
+The above figure illustrates the execution path of Reminders when the user starts ManageMe.
+
+When the user starts the application, 2 threads are immediately created. The **Main Thread** and the **Time** Thread.
+
+For this activity diagram, the entire **Main Thread** will be represented by one action block only as this is not the 
+main focus. 
+
+The following actions occur when the **Time Thread** is created:
+1. TimeManager is initialized and starts to run.
+2. ManageMe is now in an **Alert State**. This means that this thread is constantly checking if ManageMe is still
+running. 
+   1. If it is, check if there are any tasks that the user needs to be notified of. Once done, 
+   return to **Alert State**.
+   2. If it is not, all threads including **Main Thread** will be ended and the programme ends.
+
+
+<div markdown="span" class="alert alert-info">:information_source: ** Note:** As long as ManageMe is still running, it
+will continue to scan for tasks that need the user's attention.
+</div>
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Documentation, logging, testing, configuration, dev-ops**
