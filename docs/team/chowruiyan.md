@@ -30,4 +30,4 @@ Given below are my contributions to the project.
     * Added documentation for the features `nextMonth`, `prevMonth` and `readDay`.
     * Did minor adaptation changes to `Quick Start` section.
   * Developer Guide:
-    * Added implementation details of the `Calendar` and `readMod` feature.
+    * Added implementation details of the `Calendar` feature.

@@ -12,8 +12,8 @@ import manageme.model.link.Link;
 import manageme.model.module.Module;
 import manageme.model.task.Task;
 import manageme.ui.UiPart;
-import manageme.ui.link.LinkCard;
-import manageme.ui.task.TaskCard;
+import manageme.ui.link.LinkListPanel;
+import manageme.ui.task.TaskListPanel;
 
 public class ModuleWindow extends UiPart<Stage> {
     private static final String FXML = "ModuleWindow.fxml";
@@ -87,9 +87,7 @@ public class ModuleWindow extends UiPart<Stage> {
             return module.getModuleName().value.equals(taskModule.get());
         });
 
-        for (int i = 0; i < tasks.size(); i++) {
-            readTaskList.getChildren().add(new TaskCard(tasks.get(i), i + 1).getRoot());
-        }
+        readTaskList.getChildren().add(new TaskListPanel(tasks).getRoot());
     }
 
     /**
@@ -106,8 +104,6 @@ public class ModuleWindow extends UiPart<Stage> {
             return module.getModuleName().value.equals(linkModule.get());
         });
 
-        for (int i = 0; i < links.size(); i++) {
-            readLinkList.getChildren().add(new LinkCard(links.get(i), i + 1).getRoot());
-        }
+        readLinkList.getChildren().add(new LinkListPanel(links).getRoot());
     }
 }
