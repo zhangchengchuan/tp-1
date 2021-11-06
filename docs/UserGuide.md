@@ -32,7 +32,7 @@ It should take less than 5 minutes to read and will provide new users with the n
 ### <font color="#f0932b">User Interface</font>
 
 Below is a screenshot of our User Interface (UI). As you can see, there are management panels for Modules, Tasks,
-Calendar, and Links which can contain both website links and file paths stored on your computer. 
+Calendar, and Links which can contain both website links and file paths stored on your computer.
 You can type command lines in the command input box, and the ManageMe's response will be shown in the app response box.
 
 ![Ui](images/UiHomepage.png)
