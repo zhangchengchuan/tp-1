@@ -15,22 +15,22 @@ Given below are my contributions to the project.
     * Description: An additional component (on top of Logic, Model, Storage, UI and Commons) 
     * Reason: To facilitate the implementation of the Reminder function and other time related components.
     * Difficulty: This was rather difficult to implement despite the few lines of code it is represented by. When I was
-    tasked with implementing the reminder function, I had to find a way to constantly run a separate thread in the 
+    tasked with implementing the reminder function, I had to find a way to constantly run a separate thread in the
     background. Considerable amount of time was spent not just testing different kinds of code but also in
     brain-storming for potential ways to implement it. Ultimately, I settled with the Threads class to constantly keep
     track of the current time, which allowed for subsequent implementation of time related components.
     <br><br>
   * Added Reminder Function (PR #112)
     * Description: The reminder function is a key part of ManageMe in that it reminds the user in the form of a pop up
-    when the start time is reached or when the task is already in progress. 
+    when the start time is reached or when the task is already in progress.
     * Reason: As a time-and-task management application, it is of utmost importance for there to be a feature to remind
     users when an upcoming important task is happening. For our target users, which are students, it can serve as a way
-    to keep track of time and prevent unproductivity.
+    to keep track of time and maximise productivity.
     * Difficulty: Most of the difficulty came from the implementation of the time component as written above. There are
     two parts to this Reminder Function - UI and Logic. The UI's popup box was done by Rui Yan. The logic behind it was
     implemented by me. The main problem that took me quite some time was getting a list of modifiable task from the
-    model, due to the limitations in architecture and types of list stored. After implementing the idea of threads, 
-    I had to create several related functions to compare the different times of a task as well as whether the tasks 
+    model, due to the limitations in architecture and types of list stored. After implementing the idea of threads,
+    I had to create several related functions to compare the different times of a task as well as whether the tasks
     were already marked as done or not.
     <br><br>
   * Added Edit Task Command (PR #59)
@@ -43,7 +43,7 @@ Given below are my contributions to the project.
   * Added Delete Task Command (PR #59)
     * Description: The Delete Task Command allows the user to delete a specified task.
     * Reason: Deleting tasks are a core feature of ManageMe. Tasks that are no longer relevant can be cleared from the
-    database with this function. With this feature, the GUI will remain clean and simple, ensuring that the user 
+    database with this function. With this feature, the GUI will remain clean and simple, ensuring that the user
     experience is smooth and hassle free.
     * Difficulty: This was not too difficult because most of the work was transferring the previous Delete command to
     this.
@@ -67,7 +67,7 @@ Given below are my contributions to the project.
       <br><br>
   * Added List Task Command (PR #123)
     * Description: The List Task Command lists all tasks that are currently in the user's list of tasks.
-    * Reason: After different commands, the user might only see some of the tasks, modules and links that might be 
+    * Reason: After different commands, the user might only see some of the tasks, modules and links that might be
     important. As such, the List Task function effectively "resets" the current view to back to the original view, with
     all the tasks.
     * Difficulty: This was not too difficult as I could just fetch the original list from the model again and show it.
