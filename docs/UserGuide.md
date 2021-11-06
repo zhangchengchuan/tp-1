@@ -373,10 +373,6 @@ Return to [Table of Contents](#table-of-contents).
 #### <font color="#4834d4">Viewing help: `help`</font>
 
 Shows the command summary and the url to the full User Guide.
-
-![help message](images/helpMessage.png)<br>
-
-Format: `help`
 <br><br>
 
 #### <font color="#4834d4">Archive current data: `archive`</font>
