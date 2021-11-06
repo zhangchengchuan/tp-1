@@ -60,11 +60,9 @@ public class ModuleWindow extends UiPart<Stage> {
         name.setText(module.getModuleName().value);
         fillLinkList(module, unfilteredLinkList);
         fillTaskList(module, unfilteredTaskList);
-        moduleWindow.showAndWait();
-
-        moduleWindow.setMinHeight(moduleWindow.getHeight());
-        moduleWindow.setMinWidth(moduleWindow.getWidth());
         moduleWindow.setResizable(false);
+
+        moduleWindow.showAndWait();
     }
 
     /**
