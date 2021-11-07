@@ -22,21 +22,6 @@ In the event that you are lost on the page, scroll down to the end of each secti
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Introduction**
-
-Welcome to ManageMe’s Developer Guide (DG).
-
-ManageMe is a **lightweight but powerful desktop application built to help university students manage their school life, available on Windows, Linux and Mac**. Students can add modules, tasks, schedules and online learning resources easily into ManageMe and access them with simple commands. The application is optimized for use via a **Command Line Interface (CLI)** but also provides a simple and convenient Graphical User Interface (GUI) for interaction.
-
-The detailed guide below will provide to developers like yourself, information such as how exactly ManageMe is built, the architectural diagrams, user stories, product scope, common use cases and non-functional requirements. At the end of this guide, we hope that you gained a much greater understanding of how ManageMe works and hopefully, you are able to contribute to this project as well.
-
-The DG is formatted in a way that every single section is preceded by a header. In those sections, there will be some screenshots and brief explanations to better your understanding. Terms that are in `this format` signifies that it is a part of the codebase, such as a class or a directory. E.g `Logic`, `Storage`
-
-
-In the event that you are lost on the page, scroll down to the end of each section and click on the return to [Table of Contents](#table-of-contents).
-
---------------------------------------------------------------------------------------------------------------------
-
 ## **Acknowledgements**
 
 * This project is based on the educational project [AddressBook Level3](https://github.com/se-edu/addressbook-level3)
@@ -53,7 +38,7 @@ Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
 <div markdown="span" class="alert alert-primary">
 
-:bulb: **Tip:** The `.puml` files used to create diagrams in this document can be found in the [diagrams](https://github.com/se-edu/addressbook-level3/tree/master/docs/diagrams/) folder. Refer to the [_PlantUML Tutorial_ at se-edu/guides](https://se-education.org/guides/tutorials/plantUml.html) to learn how to create and edit diagrams.
+:bulb: **Tip:** The `.puml` files used to create diagrams in this document can be found in the [diagrams](https://github.com/AY2122S1-CS2103T-W11-3/tp/tree/master/docs/diagrams) folder. Refer to the [_PlantUML Tutorial_ at se-edu/guides](https://se-education.org/guides/tutorials/plantUml.html) to learn how to create and edit diagrams.
 </div>
 
 Return to [Table of Contents](#table-of-contents).
@@ -68,7 +53,7 @@ Given below is a quick overview of main components and how they interact with ea
 
 **Main components of the architecture**
 
-**`Main`** has two classes called [`Main`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/Main.java) and [`MainApp`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/MainApp.java). It is responsible for,
+**`Main`** has two classes called [`Main`](https://github.com/AY2122S1-CS2103T-W11-3/tp/blob/master/src/main/java/manageme/Main.java) and [`MainApp`](https://github.com/AY2122S1-CS2103T-W11-3/tp/blob/master/src/main/java/manageme/MainApp.java). It is responsible for,
 * At app launch: Initializes the components in the correct sequence, and connects them up with each other.
 * At shut down: Shuts down the components and invokes cleanup methods where necessary.
 
@@ -126,7 +111,7 @@ Return to [Table of Contents](#table-of-contents).
 
 ### Logic component
 
-**API** : [`Logic.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/logic/Logic.java)
+**API** : [`Logic.java`](https://github.com/AY2122S1-CS2103T-W11-3/tp/blob/master/src/main/java/manageme/logic/Logic.java)
 
 Here's a (partial) class diagram of the `Logic` component:
 
@@ -156,23 +141,20 @@ How the parsing works:
 Return to [Table of Contents](#table-of-contents).
 
 ### Model component
-Here's a (partial) class diagram of the `Model` component:
+Here's a class diagram of the `Model` component:
 
 **API** : [`Model.java`](https://github.com/AY2122S1-CS2103T-W11-3/tp/blob/master/src/main/java/manageme/model/Model.java)
 
-<img src="images/MMModelClassDiagram.png" width="450" />
+<img src="images/MMModelClassDiagram.png" width="550" />
 
 
 The `Model` component,
 
-* store the object data of ManageMe i.e., all `Module` and `Task` objects (which are contained in a
-  `UniqueModuleList`
-  object
-  and a `UniqueTaskList` respectively).
+* store the object data of ManageMe i.e., all `Module`, `Task` and `Link` objects (which are contained in a`UniqueModuleList` object, a `UniqueTaskList` and a `UniqueLinkList` respectively).
 * stores the currently 'selected' `Task` objects (e.g., results of a search query) as a separate _filtered_ list
-  which
-  is exposed to outsiders as an unmodifiable `ObservableList<Task>` that can be 'observed' e.g. the UI can be bound to
-  this list so that the UI automatically updates when the data in the list change.
+  which is exposed to outsiders as an unmodifiable `ObservableList<Task>` that can be 'observed' e.g. the UI can be
+  bound to this list so that the UI automatically updates when the data in the list change. The `Module` and `Link`
+  objects similarly follow this implementation.
 * stores a `UserPref` object that represents the user’s preferences. This is exposed to the outside as a `ReadOnlyUserPref` object.
 * does not depend on any of the other three components (as the `Model` represents data entities of the domain, they should make sense on their own without depending on other components)
 
@@ -182,7 +164,7 @@ Return to [Table of Contents](#table-of-contents).
 
 ### Storage component
 
-**API** : [`Storage.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/storage/Storage.java)
+**API** : [`Storage.java`](https://github.com/AY2122S1-CS2103T-W11-3/tp/blob/master/src/main/java/manageme/storage/Storage.java)
 
 <img src="images/MMStorageClassDiagram.png" width="550" />
 
@@ -215,6 +197,7 @@ Return to [Table of Contents](#table-of-contents).
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Implementation**
+In this section, we share more about the implementation process of the main features in our application along with some design considerations made.
 
 ### Read Module feature
 ManageMe allows you to type in readMod for a particular module, and see all Tasks and Links related to it in a pop-up window.
@@ -237,6 +220,11 @@ is generated with `isReadModule` boolean value being true and sent back to `MmMa
 #### Sequence Diagram of readMod command <br>
 <img src=”images/ReadModSequenceDiagram.png” width=”800” /> <br>
 <img src=”images/ReadModRef.png” width=”250” /> <br>
+
+
+### **Task Feature**
+In this section, the functionality of the Task feature and its activity diagram will be discussed.
+
 
 ### Calendar feature
 ManageMe has a calendar feature for users to view all of their upcoming tasks for the month.
