@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import manageme.model.TagModule;
 import manageme.model.link.Link;
 import manageme.model.module.Module;
 import manageme.model.task.Task;
@@ -78,13 +79,13 @@ public class ModuleWindow extends UiPart<Stage> {
      */
     public void fillTaskList(Module module, ObservableList<Task> unfilteredTaskList) {
         FilteredList<Task> tasks = unfilteredTaskList.filtered(task -> {
-            Optional<String> TagModule = task.getTagModule().name;
+            Optional<String> tagModule = task.getTagModule().name;
 
-            if (TagModule.isEmpty()) {
+            if (tagModule.isEmpty()) {
                 return false;
             }
 
-            return module.getName().value.equals(TagModule.get());
+            return module.getName().value.equals(tagModule.get());
         });
 
         readTaskList.getChildren().add(new TaskListPanel(tasks).getRoot());

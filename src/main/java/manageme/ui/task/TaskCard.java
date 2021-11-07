@@ -7,7 +7,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
-import manageme.model.TagModule;
 import manageme.model.task.Task;
 import manageme.ui.UiPart;
 
