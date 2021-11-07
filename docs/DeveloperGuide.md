@@ -3,7 +3,7 @@ layout: page
 title: Developer Guide
 ---
 * Table of Contents
-  {:toc}
+{:toc}
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -16,7 +16,6 @@ ManageMe is a **lightweight but powerful desktop application built to help unive
 The detailed guide below will provide to developers like yourself, information such as how exactly ManageMe is built, the architectural diagrams, user stories, product scope, common use cases and non-functional requirements. At the end of this guide, we hope that you gained a much greater understanding of how ManageMe works and hopefully, you are able to contribute to this project as well.
 
 The DG is formatted in a way that every single section is preceded by a header. In those sections, there will be some screenshots and brief explanations to better your understanding. Terms that are in `this format` signifies that it is a part of the codebase, such as a class or a directory. E.g `Logic`, `Storage`
-
 
 In the event that you are lost on the page, scroll down to the end of each section and click on the return to [Table of Contents](#table-of-contents).
 
@@ -38,7 +37,7 @@ Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
 <div markdown="span" class="alert alert-primary">
 
-:bulb: **Tip:** The `.puml` files used to create diagrams in this document can be found in the [diagrams](https://github.com/se-edu/addressbook-level3/tree/master/docs/diagrams/) folder. Refer to the [_PlantUML Tutorial_ at se-edu/guides](https://se-education.org/guides/tutorials/plantUml.html) to learn how to create and edit diagrams.
+:bulb: **Tip:** The `.puml` files used to create diagrams in this document can be found in the [diagrams](https://github.com/AY2122S1-CS2103T-W11-3/tp/tree/master/docs/diagrams) folder. Refer to the [_PlantUML Tutorial_ at se-edu/guides](https://se-education.org/guides/tutorials/plantUml.html) to learn how to create and edit diagrams.
 </div>
 
 Return to [Table of Contents](#table-of-contents).
@@ -53,7 +52,7 @@ Given below is a quick overview of main components and how they interact with ea
 
 **Main components of the architecture**
 
-**`Main`** has two classes called [`Main`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/Main.java) and [`MainApp`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/MainApp.java). It is responsible for,
+**`Main`** has two classes called [`Main`](https://github.com/AY2122S1-CS2103T-W11-3/tp/blob/master/src/main/java/manageme/Main.java) and [`MainApp`](https://github.com/AY2122S1-CS2103T-W11-3/tp/blob/master/src/main/java/manageme/MainApp.java). It is responsible for,
 * At app launch: Initializes the components in the correct sequence, and connects them up with each other.
 * At shut down: Shuts down the components and invokes cleanup methods where necessary.
 
@@ -96,8 +95,9 @@ The **API** of this component is specified in [`Ui.java`](https://github.com/AY2
 
 The UI consists of a `MmMainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `ModuleListPanel`, `TaskListPanel` etc. All these, including the `MmMainWindow`, inherit from the abstract `UiPart` class which captures the commonalities between classes that represent parts of the visible GUI.
 
-The `UI` component uses the JavaFx UI framework. The layout of these UI parts is defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MmMainWindow`](https://github.com/AY2122S1-CS2103T-W11-3/tp/blob/master/src/main/java/manageme/ui/MmMainWindow.java) is specified in [`MmMainWindow.fxml`](https://github.com/AY2122S1-CS2103T-W11-3/tp/blob/master/src/main/resources/view/MmMainWindow.fxml)
-
+The `UI` component uses the JavaFx UI framework. The layout of these UI parts is defined in matching `.fxml` files that are in the `src/main/resources/view` folder.
+For example, the layout of the [`MmMainWindow`](https://github.com/AY2122S1-CS2103T-W11-3/tp/blob/master/src/main/java/manageme/ui/MmMainWindow.java)
+is specified in [`MmMainWindow.fxml`](https://github.com/AY2122S1-CS2103T-W11-3/tp/blob/master/src/main/resources/view/MmMainWindow.fxml)
 
 The `UI` component,
 
@@ -110,7 +110,7 @@ Return to [Table of Contents](#table-of-contents).
 
 ### Logic component
 
-**API** : [`Logic.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/logic/Logic.java)
+**API** : [`Logic.java`](https://github.com/AY2122S1-CS2103T-W11-3/tp/blob/master/src/main/java/manageme/logic/Logic.java)
 
 Here's a (partial) class diagram of the `Logic` component:
 
@@ -140,23 +140,20 @@ How the parsing works:
 Return to [Table of Contents](#table-of-contents).
 
 ### Model component
-Here's a (partial) class diagram of the `Model` component:
+Here's a class diagram of the `Model` component:
 
 **API** : [`Model.java`](https://github.com/AY2122S1-CS2103T-W11-3/tp/blob/master/src/main/java/manageme/model/Model.java)
 
-<img src="images/MMModelClassDiagram.png" width="450" />
+<img src="images/MMModelClassDiagram.png" width="550" />
 
 
 The `Model` component,
 
-* store the object data of ManageMe i.e., all `Module` and `Task` objects (which are contained in a
-  `UniqueModuleList`
-  object
-  and a `UniqueTaskList` respectively).
+* store the object data of ManageMe i.e., all `Module`, `Task` and `Link` objects (which are contained in a`UniqueModuleList` object, a `UniqueTaskList` and a `UniqueLinkList` respectively).
 * stores the currently 'selected' `Task` objects (e.g., results of a search query) as a separate _filtered_ list
-  which
-  is exposed to outsiders as an unmodifiable `ObservableList<Task>` that can be 'observed' e.g. the UI can be bound to
-  this list so that the UI automatically updates when the data in the list change.
+  which is exposed to outsiders as an unmodifiable `ObservableList<Task>` that can be 'observed' e.g. the UI can be
+  bound to this list so that the UI automatically updates when the data in the list change. The `Module` and `Link`
+  objects similarly follow this implementation.
 * stores a `UserPref` object that represents the user’s preferences. This is exposed to the outside as a `ReadOnlyUserPref` object.
 * does not depend on any of the other three components (as the `Model` represents data entities of the domain, they should make sense on their own without depending on other components)
 
@@ -166,7 +163,7 @@ Return to [Table of Contents](#table-of-contents).
 
 ### Storage component
 
-**API** : [`Storage.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/storage/Storage.java)
+**API** : [`Storage.java`](https://github.com/AY2122S1-CS2103T-W11-3/tp/blob/master/src/main/java/manageme/storage/Storage.java)
 
 <img src="images/MMStorageClassDiagram.png" width="550" />
 
@@ -199,11 +196,41 @@ Return to [Table of Contents](#table-of-contents).
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Implementation**
+In this section, we share more about the implementation process of the main features in our application along with some design considerations made.
+
+### Read Module feature
+ManageMe allows you to type in readMod for a particular module, and see all Tasks and Links related to it in a pop-up window.
+
+#### Implementation
+Read module makes use of both the UI component, which creates a pop-up window for display, and the Logic component,
+which parses user commands and decide which module to read.
+
+In the UI component, The `MmMainWindow` class, which controls the display of the UI homepage, 
+calls the `executeCommand` function of the Logic component and gets back a `CommandResult`, which contains 
+information about the results of the execution. A boolean value in `CommandResult`, `isReadModule`, indicates whether a 
+Read Module window should be popped up. Once `isReadModule` is true, `MmMainWindow` will call the `ModuleWindow` 
+class and generate a pop-up window.
+
+In the Logic component, once `executeCommand` is called in `LogicManager`, `ManageMeParser` and `ReadModuleCommandParser`
+parses the module index the user inputted, and generates a `ReadModuleCommand` object. `LogicManager` then executes the
+`ReadModuleCommand` object, which sets what module is to be read in the `Model` component. A `CommandResult` 
+is generated with `isReadModule` boolean value being true and sent back to `MmMainWindow`.
+
+#### Sequence Diagram
+
+![ReadModSequenceDiagram](images/ReadModSequenceDiagram.png) <br>
+*Sequence diagram for readMod command* <br>
+
+![ReadModSequenceDiagram](images/ReadModRef.png) <br>
+*Referenced Sequence diagram* <br>
+
+### **Task Feature**
+In this section, the functionality of the Task feature and its activity diagram will be discussed.
 
 ### Calendar feature
 ManageMe has a calendar feature for users to view all of their upcoming tasks for the month.
 
-#### Implementation
+##### Implementation
 The `CalendarPanel` consists of two main components, calendar and a task-list panel. A note-worthy field of the `CalendarPanel` is `referenceDate` whereby the task list panel will display the tasks happening on `referenceDate` in greater details. The month that is displayed is also based on the `referenceDate`. The default `referenceDate` is the current date when the application is first opened. <br><br>
 Calendar provides a visual representation of the user's schedule for the month. Days with upcoming tasks are denoted by a green dot. The `calendarPlaceholder`, which is the frame for the calendar, is a `GridPane`. The first row of the `GridPane` is a `Label` which represents a specific month and year. The second row has seven column where each cell is `Label` which represents the day-of-week. From the third row onwards, each cell is made up of a `DayCard`, which extends `UiPart<Region>` and represents a day in the calendar. The `DayCard` is made up of a `Label` and `Rectangle` with two `PseudoClass` to differentiate days with tasks and the reference date. <br><br>
 Task-list panel displays the tasks happening on `referenceDate` in greater details. It is made up of a `VBox` which contains a `Label`, which is the title, and a `StackPane`, which contains a `ListView<Task>`. <br><br>
@@ -215,18 +242,16 @@ The following sequence diagram demonstrates how the Calendar is created.
 Since the `CalendarPanel` is constructed with an `ObservableList<Task>`, changes to `UniqueTaskList` made by user using `addTask`, `deleteTask` and `editTask` will be reflected in the calendar automatically. <br><br>
 Calendar has three functionality, `prevMonth`, `nextMonth` and `readDay`, all of which manipulate `referenceDate`, which is the key component for generating the whole calendar GUI. Both `prevMonth` and `nextMonth` subtracts or adds the current `referenceDate` by a month respectively. While `readDay` takes in a `LocalDate` as argument and replace the `referenceDate` with it.
 
-#### Design Consideration
+##### Design Consideration
 The main consideration for the design of calendar is how many days should be displayed. The initial implementation was a "Week Calendar" which uses the current version of [NUSMODS](https://nusmods.com/timetable/sem-1) as reference. However, this design implies that there cannot be an overlap in the timing of different tasks. It would work for NUSMODS since it is a timetable and classes are not supposed to clash. However, it will not be as suitable for a calendar since multiple tasks can be happening or due at the same time. We decided to use the current implementation which is a "Month Calendar" with markings to represent the existence of tasks in the respective day-of-month and a task-list panel to display the tasks in greater details.
 ![Calendar](images/Calendar.png) <br>
 *Figure. Screenshot of GUI of calendar in ManageMe.*
 
 
-
-
-### **Reminder Feature**
+### Reminder Feature
 In this section, the functionality of the reminder feature and its activity diagram will be discussed.
 
-### **Implementation of Reminders**
+#### Implementation
 Reminders are implemented under the `TimeManager` Class which is located under the `time` package.
 
 The main thread, which handles the user inputs and command
@@ -236,11 +261,11 @@ This additional **Time** Thread will constantly check all the current tasks to m
 that the user is notified of any tasks that requires attention.
 This notification appears in the form of a pop-out with implementation located under the `time` package.
 
-### **Activity Diagram of Reminders**
+#### Activity Diagram of Reminders
 
-![Reminder](images/ReminderActivityDiagram.png) <br>
+![ReminderActivityDiagram](images/ReminderActivityDiagram.png) <br>
 
-*Figure 10: Reminders Activity Diagram*
+*Figure: Reminders Activity Diagram*
 
 The above figure illustrates the execution path of Reminders when the user starts ManageMe, which has been shortened
 to **MM** in the activity diagram.
@@ -278,9 +303,7 @@ Return to [Table of Contents](#table-of-contents).
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Appendix: Requirements**
-
-### Product scope
+## **Appendix A: Product scope**
 
 **Target user profile**:
 
@@ -301,8 +324,9 @@ A Digital-Age student who...
 
 Return to [Table of Contents](#table-of-contents).
 
+-----------------------------------------------------------------------------------------------
 
-### User stories
+## **Appendix B: User stories**
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
@@ -334,8 +358,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 Return to [Table of Contents](#table-of-contents).
 
+----------------------------------------------------------------------------------------------------------------
 
-### Common Use cases
+## **Appendix C: Common Use cases**
 
 (For all use cases below, the **System** is `ManageMe` unless specified otherwise)
 
@@ -347,7 +372,7 @@ Return to [Table of Contents](#table-of-contents).
 
 </div>
 
-**Use case: Generic Add**
+### Use case 01: Generic Add
 
 **MSS:**
 1. User requests to add a task/module/link with its details.
@@ -363,7 +388,7 @@ Use case resumes from step 1.
   Use case resumes from step 1.
 
 
-**Use case: Generic Edit**
+### Use case 02: Generic Edit
 
 **MSS:**
 1. User requests to edit a specified task/module/link and enters the new details.
@@ -378,8 +403,7 @@ Use case resumes from step 1.
     * 1a1. System shows error in parsing data.
       Use case resumes from step 1. <br><br>
 
-
-**Use case: Generic Delete**
+### Use case 03: Generic Delete
 
 **MSS:**
 
@@ -393,9 +417,8 @@ Use case resumes from step 1.
 * 1a. User enters an invalid task index
     * 1a1. System shows error in reading index.
       Use case resumes from step 1.
-
-
-**Use case: Generic Find**
+    
+### Use case 04: Generic Find
 
 **MSS:**
 
@@ -410,7 +433,7 @@ Use case resumes from step 1.
       Use case resumes from step 1.
 
 
-**Use case: Generic List**
+### Use case 05: Generic List
 
 **MSS:**
 
@@ -418,10 +441,11 @@ Use case resumes from step 1.
 3. System updates the GUI to show the full list of keywords. <br>
    Use case ends.
 
-
 Return to [Table of Contents](#table-of-contents).
 
-### Non-Functional Requirements
+-------------------------------------------------------------------------------------------------------------------------
+
+## **Appendix D: Non-Functional Requirements**
 
 1. Should work on any _mainstream OS_ as long as it has Java `11` or above installed.
 2. Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
@@ -431,7 +455,9 @@ Return to [Table of Contents](#table-of-contents).
 
 Return to [Table of Contents](#table-of-contents).
 
-### Glossary
+----------------------------------------------------------------------------------------------------------------------
+
+## **Appendix E: Glossary**
 
 * **Mainstream OS**: Windows, Linux, Unix, OS-X
 * **Digital-age:** A post-pandemic world where many schools have switched to online teaching and learning.
@@ -439,13 +465,11 @@ Return to [Table of Contents](#table-of-contents).
 * **Online resources:** Websites used by many schools in the post-pandemic world for teaching, file submission, and assessment. For example, Zoom, Luminus, Exemplify etc.
 * **Command Line Interface (CLI):** An interface where the user primarily gives command to the computer by typing text lines, instead of clicking and dragging graphic components.
 
+Return to [Table of Contents](#table-of-contents).
 
 --------------------------------------------------------------------------------------------------------------------
 
-Return to [Table of Contents](#table-of-contents).
-
-
-## **Appendix: Instructions for manual testing**
+## **Appendix F: Instructions for manual testing**
 
 Given below are instructions to test the app manually.
 
@@ -469,8 +493,7 @@ testers are expected to do more *exploratory* testing.
     1. Re-launch the app by double-clicking the jar file.<br>
        Expected: The most recent window size and location is retained.
 
-
-
+       
 ### Deleting a task
 
 1. Deleting a task while all tasks are being shown
@@ -496,7 +519,6 @@ Expected: A reminder will appear in a pop-up window for this ongoing task 1 min 
 
 Type readMod for an existing module (if no module exists, add one with a simple name)
 Expected: A window appears that show all tasks and links associated with a module
-
 
 
 ### Saving data
