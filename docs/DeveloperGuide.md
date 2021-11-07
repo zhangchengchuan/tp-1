@@ -62,7 +62,7 @@ Given below is a quick overview of main components and how they interact with ea
 
 [**`Commons`**](#common-classes) represents a collection of classes used by multiple other components.
 
-The rest of the App consists of four components.
+The rest of the App consists of five components.
 
 * [**`UI`**](#ui-component): The UI of the App.
 * [**`Logic`**](#logic-component): The command executor.
@@ -75,7 +75,7 @@ The rest of the App consists of four components.
 
 The *Sequence Diagram* below shows how the components interact with each other for the scenario where the user issues the command `deleteTask 1`.
 
-The `Time` component is not shown as it runs on a separate thread concurrently than the main thread which executes commands.
+The `Time` component is not shown as it runs on a separate thread concurrently from the main thread, which executes commands.
 
 [comment]: <> (<img src="images/ArchitectureSequenceDiagram.png" width="574" />)
 ![ArchitectureSequenceDiagram](images/ArchitectureSequenceDiagram.png) <br>
@@ -268,7 +268,7 @@ is generated with `isReadModule` boolean value being true and sent back to `MmMa
 ManageMe has a calendar feature for users to view all of their upcoming tasks for the month.
 
 ##### Implementation
-The `CalendarPanel` consists of two main components, calendar and a task-list panel. A note-worthy field of the `CalendarPanel` is `referenceDate` whereby the task list panel will display the tasks happening on `referenceDate` in greater details. The month that is displayed is also based on the `referenceDate`. The default `referenceDate` is the current date when the application is first opened. <br><br>
+The `CalendarPanel` consists of two main components, calendar and a task-list panel. A note-worthy field of the `CalendarPanel` is `referenceDate` whereby the task list panel displays the tasks happening on `referenceDate` in greater details. The month that is displayed is also based on the `referenceDate`. The default `referenceDate` is the current date when the application is first opened. <br><br>
 Calendar provides a visual representation of the user's schedule for the month. Days with upcoming tasks are denoted by a green dot. The `calendarPlaceholder`, which is the frame for the calendar, is a `GridPane`. The first row of the `GridPane` is a `Label` which represents a specific month and year. The second row has seven column where each cell is `Label` which represents the day-of-week. From the third row onwards, each cell is made up of a `DayCard`, which extends `UiPart<Region>` and represents a day in the calendar. The `DayCard` is made up of a `Label` and `Rectangle` with two `PseudoClass` to differentiate days with tasks and the reference date. <br><br>
 Task-list panel displays the tasks happening on `referenceDate` in greater details. It is made up of a `VBox` which contains a `Label`, which is the title, and a `StackPane`, which contains a `ListView<Task>`. <br><br>
 The following sequence diagram demonstrates how the Calendar is created.
@@ -281,7 +281,7 @@ Calendar has three functionality, `prevMonth`, `nextMonth` and `readDay`, all of
 
 ##### Design Consideration
 The main consideration for the design of calendar is how many days should be displayed. The initial implementation was a "Week Calendar" which uses the current version of [NUSMODS](https://nusmods.com/timetable/sem-1) as reference. However, this design implies that there cannot be an overlap in the timing of different tasks. It would work for NUSMODS since it is a timetable and classes are not supposed to clash. However, it will not be as suitable for a calendar since multiple tasks can be happening or due at the same time. We decided to use the current implementation which is a "Month Calendar" with markings to represent the existence of tasks in the respective day-of-month and a task-list panel to display the tasks in greater details.<br><br>
-<br><br>
+<br>
 ![Calendar](images/Calendar.png) <br>
 *Screenshot of GUI of calendar in ManageMe.*
 
@@ -297,7 +297,7 @@ execution, will operate as per normal, except that an additional thread runs alo
 
 This additional **Time** Thread will constantly check all the current tasks to make sure
 that the user is notified of any tasks that requires attention.
-This notification appears in the form of a pop-out with implementation located under the `time` package.
+This notification appears in the form of a pop-out window with implementation located under the `time` package.
 
 ![ReminderActivityDiagram](images/ReminderActivityDiagram.png) <br>
 
@@ -355,10 +355,10 @@ Return to [Table of Contents](#table-of-contents).
 
 **Target user profile**:
 
-A Digital-Age student who...
+A Digital-Age, university student who...
 * Needs to organize multiple tasks (events, tasks, and deadlines), some of which involve computer files stored locally.
 * Needs to organize multiple modules with many links to relevant online resources.
-* Prefers visualizing all tasks and modules on a calendar for a clear and quick presentation.
+* Prefers visualizing all tasks on a calendar for a clear and quick presentation.
 * Prefers desktop application over the mobile application.
 * Prefers typing over the use of the mouse.
 * Comfortable with the use of Command Line Interface (CLI).
@@ -378,36 +378,34 @@ Return to [Table of Contents](#table-of-contents).
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​                                 | I want to …​                                                       | So that I can…​                                                        |
-| -------- | ------------------------------------------ | --------------------------------------------------------------------- | --------------------------------------------------------------------------|
-| `* * *`  | Forgetful User                             | Add tasks                                                             | Keep track of what tasks I need to do                                     |
-| `* * *`  | Forgetful User                             | Add optional start and end times to tasks                             | Know when a task starts and ends                                          |
-| `* * *`  | Forgetful User                             | Mark a task as done                                                   | Keep track of tasks I have done                                           |
-| `* * *`  | Forgetful User                             | View all my tasks                                                     |                                                                           |
-| `* * *`  | Forgetful User                             | Associate a task with a module                                        | Know which module each task belongs to                                    |
-| `* * *`  | Forgetful User                             | Edit my tasks                                                         | Change information related to a task                                      |
-| `* * *`  | Forgetful User                             | Delete my tasks                                                       | Remove done or unwanted tasks                                             |
-| `* * *`  | Forgetful User                             | Search for a task using keywords                                      | Find a task quickly by its name                                           |
-| `* * *`  | Forgetful User                             | Have an alarm  for each task                                          | be reminded of an upcoming task in time.                                          |
-| `* * *`  | Student                                    | Add modules                                                           | Keep track of what modules I take                                         |
-| `* * *`  | Student                                    | View all my modules                                                   |                                                                           |
-| `* * *`  | Student                                    | View all tasks and links associated with a module                     | View all module-related tasks and links in one place                      |
-| `* * *`  | Student                                    | Edit my modules                                                       | Change information related to a module.                                   |
-| `* * *`  | Student                                    | Delete my modules                                                     | Remove modules that I am no longer taking                                 |
-| `* * *`  | Student                                    | Search for a module using keywords                                    | Find a module quickly by its name                                         |
-| `* * *`  | Digital-age student                        | Add a link                                                            | Keep track of website links and computer files I use in my study          |
-| `* * *`  | Digital-age student                        | Delete a link                                                         | Remove links I no longer use                                              |
-| `* * *`  | Digital-age student                        | Edit a link                                                           | Change information related to a link                                      |
-| `* * *`  | Digital-age student                        | Search for a link using keywords                                      | Find a link quickly by its name                                           |
-| `* * *`  | Digital-age student                        | View all my links                                                     |                                                                           |
-| `* * *`  | Busy user                                  | View calendar                                                         | Check the dates easily                                                    |
-| `* * *`  | Busy Student                               | View all tasks in a single day in the calendar according to its date  | Know what happens on any particular date                                  |
-| `* * *`  | Busy Student                               | See which days have ongoing tasks in a calendar                       | See which days I am available                                                  |
-| `* *`    | Digital-Age Student                        | Open links                                                            | Access module-related web links and files directly from the application   |
-| `* *`    | New User                                   | Open the command summary                                              | Know what commands are available and how to use them                      |
-| `* *`    | Experienced User                           | Close the command summary                                             | Save screen space after I am familiar with the commands.                  |
-| `*`      | Long-term user                             | Archive all the data                                                  | Store away old data to make space for new data.                           |
-
+| Priority | As a …​                                 | I can …​                                                           | So that …​                                                                  |
+| -------- | ------------------------------------------ | --------------------------------------------------------------------- | --------------------------------------------------------------------------     |
+| `* * *`  | Forgetful User                             | Add tasks                                                             | I can keep track of the tasks that I need to do                                |
+| `* * *`  | Forgetful User                             | Add start and end times to tasks                                      | I know when a task starts and ends                                             |
+| `* * *`  | Forgetful User                             | Mark a task as done                                                   | I can keep track of the tasks that I have done                                 |
+| `* * *`  | Forgetful User                             | View all my tasks                                                     | I can refer to it when needed                                                  |
+| `* * *`  | Forgetful User                             | Associate a task with a module                                        | I know which module each task belongs to                                       |
+| `* * *`  | Forgetful User                             | Edit my tasks                                                         | I can change information related to a task                                     |
+| `* * *`  | Forgetful User                             | Delete my tasks                                                       | I can remove done or unwanted tasks                                            |
+| `* * *`  | Forgetful User                             | Search for a task using keywords                                      | I can find a task quickly by its name                                          |
+| `* * *`  | Student                                    | Add modules                                                           | I can keep track of the modules that I am taking                               |
+| `* * *`  | Student                                    | View all my modules                                                   | I can refer to it when needed                                                  |
+| `* * *`  | Student                                    | View all tasks and links associated with a module                     | I can view all module-related tasks and links in one place                     |
+| `* * *`  | Student                                    | Edit my modules                                                       | I can change information related to a module.                                  |
+| `* * *`  | Student                                    | Delete my modules                                                     | I can remove modules that I am no longer taking                                |
+| `* * *`  | Student                                    | Search for a module using keywords                                    | I can find a module quickly by its name                                        |
+| `* * *`  | Digital-age student                        | Add a link                                                            | I can keep track of that website links and computer files that I use           |
+| `* * *`  | Digital-age student                        | Delete a link                                                         | I can remove links that I no longer use                                        |
+| `* * *`  | Digital-age student                        | Edit a link                                                           | I can change information related to a link                                     |
+| `* * *`  | Digital-age student                        | Search for a link using keywords                                      | I can find a link quickly by its name                                          |
+| `* * *`  | Digital-age student                        | View all my links                                                     | I can refer to it when needed                                                  |
+| `* * *`  | Busy user                                  | View calendar                                                         | I can check the dates easily                                                   |
+| `* * *`  | Busy Student                               | View all tasks in a single day in the calendar according to its date  | I know what are the tasks that I have on a particular date                     |
+| `* * *`  | Busy Student                               | See which days have ongoing tasks in a calendar                       | I know which days I am free                                                    |
+| `* *`    | Digital-Age Student                        | Open links                                                            | I can access module-related web links and files directly from the application  |
+| `* *`    | New User                                   | Open the command summary                                              | I know what commands are available and how to use them                         |
+| `* *`    | Experienced User                           | Close the command summary                                             | I can save screen space after I am familiar with the commands.                 |
+| `*`      | Long-term user                             | Archive all the data                                                  | I can store old data to make space for new data.
 
 Return to [Table of Contents](#table-of-contents).
 
@@ -445,11 +443,11 @@ Return to [Table of Contents](#table-of-contents).
 
 **MSS:**
 1. User requests to edit a specified task/module/link and enters the new details.
-2. System updates the details and displays the edited task. <br>
+2. System updates the details and displays the edited task/module/link. <br>
    Use case ends.
 
 **Extensions:**
-* 1a. User enters an invalid task index<br>
+* 1a. User enters an invalid index. <br>
     * 1a1. System shows error in reading index. 
     * Use case resumes from step 1.
 * 1b. Parameters entered are of invalid format, including invalid characters in names, invalid date-time for tasks, and invalid address for links.
@@ -461,12 +459,12 @@ Return to [Table of Contents](#table-of-contents).
 **MSS:**
 
 1. User requests to delete a specified task/module/link.
-2. System removes the specified task/module/link from the task list and shows the new task list. <br>
+2. System removes the specified task/module/link from the list and shows the new updated list. <br>
    Use case ends.
 
 **Extension:**
 
-* 1a. User enters an invalid task index
+* 1a. User enters an invalid index
     * 1a1. System shows error in reading index. 
     * Use case resumes from step 1.
     
@@ -475,7 +473,7 @@ Return to [Table of Contents](#table-of-contents).
 **MSS:**
 
 1. User requests to search for specific tasks/modules/links by keyword.
-3. System updates the GUI to show a list of all modules whose name contains the keyword. <br>
+3. System updates the GUI to show a list of all task/modules/links whose name contains the keyword. <br>
    Use case ends.
 
 **Extension:**
@@ -490,7 +488,7 @@ Return to [Table of Contents](#table-of-contents).
 **MSS:**
 
 1. User requests to list all tasks/modules/links.
-3. System updates the GUI to show the full list of keywords. <br>
+3. System updates the GUI to show the full list. <br>
    Use case ends.
 
 Return to [Table of Contents](#table-of-contents).
@@ -513,7 +511,7 @@ Return to [Table of Contents](#table-of-contents).
 * **Mainstream OS**: Windows, Linux, Unix, OS-X
 * **Digital-age:** A post-pandemic world where many schools have switched to online teaching and learning.
 * **Module:** A course taken by a student, typically in a university.
-* **Online resources:** Websites used by many schools in the post-pandemic world for teaching, file submission, and assessment. For example, Zoom, Luminus, Exemplify etc.
+* **Online resources:** Websites used by many schools in the post-pandemic world for teaching, file submission, and assessment. For example, Zoom, Luminus, Examplify etc.
 * **Command Line Interface (CLI):** An interface where the user primarily gives command to the computer by typing text lines, instead of clicking and dragging graphic components.
 
 Return to [Table of Contents](#table-of-contents).
@@ -553,10 +551,10 @@ testers are expected to do more *exploratory* testing.
     1. Prerequisites: List all tasks using the `list` command. Multiple tasks in the list.
 
     1. Test case: `deleteTask 1`<br>
-       Expected: First contact is deleted from the list. Details of the deleted contact are shown in the status message. The timestamp in the status bar is updated.
+       Expected: First task is deleted from the list. Details of the deleted task are shown in the status message.
 
     1. Test case: `deleteTask 0`<br>
-       Expected: No task is deleted. Error details are shown in the status message. The status bar remains the same.
+       Expected: No task is deleted. Error details are shown in the status message.
 
     1. Other incorrect delete commands to try: `deleteTask`, `deleteTask x`, `...` (where x is larger than the list size)<br>
        Expected: Similar to previous.
@@ -565,8 +563,10 @@ testers are expected to do more *exploratory* testing.
 ### Pop-up window
 
 1. Test whether the pop-up window works in the app 
+
    1. Add a task with a starting time just 1 minute away from your current time .<br>
    Expected: A reminder will appear in a pop-up window for this ongoing task 1 min later.
+   
    2. Type readMod for an existing module (if no module exists, add one with a simple name)
    Expected: A window appears that show all tasks and links associated with a module
 
@@ -576,9 +576,9 @@ testers are expected to do more *exploratory* testing.
 1. Dealing with missing/corrupted data files
 
     1. If there is a `data/manageme.json` file in the same directory with the jar, open the file and remove a random bracket. Launch the program.<br>
-       Expected: Warning of invalid JSON file will be shown in the terminal. An empty ManageMe is launched.
+       Expected: Warning of invalid JSON file will be shown in the terminal. A ManageMe with sample data will be launched.
 
     2. If there isn't a `data/manageme.json` file in the same directory with the jar. Launch the program and add a random task. Close the program. Remove a random bracket from the data file. Relaunch the program.<br>
-       Expected: Warning of invalid json file will be shown in the terminal. An empty ManageMe is launched.
+       Expected: Warning of invalid json file will be shown in the terminal. A ManageMe with sample data will be launched.
 
 Return to [Table of Contents](#table-of-contents).
