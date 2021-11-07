@@ -11,7 +11,7 @@ into ManageMe and access them with simple commands.
 
 Given below are my contributions to the project.
 
-* **New Feature**: Added `editMod` command
+* **New Feature**: Added `editMod` command (PR #58)
   * What it does: Allows users to edit an existing module.
   * Justification: This allows users to update the information of the modules they take. For example,
     when a user take new modules in a new school term, or found a typo in a previously entered module,
@@ -22,7 +22,7 @@ Given below are my contributions to the project.
     thus all dependencies with Link was removed from editMod.
   
 
-* **New Feature**: Added `findMod` command.
+* **New Feature**: Added `findMod` command (PR #106)
   * What it does: Find modules whose names contain given keywords.
   * Justification: This allows users to quickly find a module by keywords instead of browsing through the whole module list.
   * Difficulty: This function was not difficult to implement, however again it was modified in different stages of the project
@@ -31,8 +31,14 @@ Given below are my contributions to the project.
     searching for words that partially match the characters given in the keyword. The search by character functionality was
     added by Tianqi.
 
+* **New Feature** Added `listMod` command (PR #106)
+  * What it does: Return to displaying all modules after a `findMod` search.
+  * Justification: After a `findMod` command, the module list is filtered and only modules containing 
+    the keyword will be shown. The `listMod` command is required to return to the full list of modules.
+  * Difficulty: This feature was easy to implement as I only needed to bring out the full list.
 
-* **Skeleton Code**: Added skeleton code for all `Module` features.
+
+* **Skeleton Code**: Added skeleton code for all `Module` features (PR #49)
   * What it does: Lay out the basics for implementing `Module` features. This includes creating the `Module` class with its
     attributes and its corresponding `Parser` and `Command` classes. `Storage` files are also modified to accommodate Module
     objects.
@@ -41,21 +47,21 @@ Given below are my contributions to the project.
   
 
 * **Testing**:
-  * Wrote test utilities for Module features.
-  * Wrote test cases for editMod and findMod features.
+  * Wrote test utilities for Module features. (PR #84)
+  * Wrote test cases for editMod and findMod features. (PR #84, #106)
 
 
 * **Code contributed**: [RepoSense link](https://nus-cs2103-ay2122s1.github.io/tp-dashboard/?search=&sort=groupTitle&sortWithin=title&since=2021-09-17&timeframe=commit&mergegroup=&groupSelect=groupByRepos&breakdown=false&tabOpen=true&tabType=authorship&tabAuthor=JinxinZhao315&tabRepo=AY2122S1-CS2103T-W11-3%2Ftp%5Bmaster%5D&authorshipIsMergeGroup=false&authorshipFileTypes=docs~functional-code~test-code~other&authorshipIsBinaryFileTypeChecked=false)
 
 
 * **Documentation**:
-  * User Guide:
+  * User Guide: (vaiours PRs)
     * Wrote documentation for features `editMod` and `findMod`.
     * Added most of the feature screenshots.
     * Updated `Introduction` and `Quick Start` sections.
     * Enhanced readability through color coding titles and formatting.
     * Added content table and "back to content table" navigation.
-  * Developer Guide:
+  * Developer Guide: (various PRs)
     * Wrote architecture descriptions for the `Logic` component.
     * Wrote implementation details of the `Read Module` feature.
     * Updated `User stories` as the project progressed.
