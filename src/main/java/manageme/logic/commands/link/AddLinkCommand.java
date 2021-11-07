@@ -9,9 +9,9 @@ import manageme.logic.commands.Command;
 import manageme.logic.commands.CommandResult;
 import manageme.logic.commands.exceptions.CommandException;
 import manageme.model.Model;
+import manageme.model.Name;
 import manageme.model.link.Link;
 import manageme.model.module.Module;
-import manageme.model.module.ModuleName;
 
 /**
  * Adds a link to the address book.
@@ -50,18 +50,18 @@ public class AddLinkCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
 
-        if (model.hasLink(toAdd)) {
+        if (model.has(toAdd)) {
             throw new CommandException(MESSAGE_DUPLICATE_LINK);
         }
 
         //if there is a module being associated, check it exists
         if (!toAdd.getLinkModule().value.isEmpty()) {
-            if (!model.hasModule(new Module(new ModuleName(toAdd.getLinkModule().value)))) {
+            if (!model.has(new Module(new Name(toAdd.getLinkModule().value)))) {
                 throw new CommandException(MESSAGE_NONEXISTENT_MODULE);
             }
         }
 
-        model.addLink(toAdd);
+        model.add(toAdd);
         return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
     }
 

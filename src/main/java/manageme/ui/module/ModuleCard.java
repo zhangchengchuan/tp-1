@@ -27,7 +27,7 @@ public class ModuleCard extends UiPart<Region> {
     @FXML
     private HBox moduleCardPane;
     @FXML
-    private Label moduleName;
+    private Label name;
     @FXML
     private Label moduleId;
 
@@ -38,7 +38,7 @@ public class ModuleCard extends UiPart<Region> {
         super(FXML);
         this.module = module;
         moduleId.setText(displayedIndex + ". ");
-        moduleName.setText(module.getModuleName().value);
+        name.setText(module.getName().value);
     }
 
     @Override

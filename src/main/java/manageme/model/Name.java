@@ -1,15 +1,10 @@
-package manageme.model.module;
+package manageme.model;
 
 import static java.util.Objects.requireNonNull;
 
 import manageme.commons.util.AppUtil;
 
-/**
- * Represents a module's link in the app.
- * Guarantees: immutable; is valid as declared in {@link #isValidModuleName(String)}
- */
-public class ModuleName {
-
+public class Name {
     public static final String MESSAGE_CONSTRAINTS =
             "Names should only contain alphanumeric characters and spaces, and it should not be blank";
 
@@ -22,20 +17,20 @@ public class ModuleName {
     public final String value;
 
     /**
-     * Constructs a {@code ModuleName}.
+     * Constructs a {@code Name}.
      *
-     * @param moduleName A valid mod name.
+     * @param name A valid mod name.
      */
-    public ModuleName(String moduleName) {
-        requireNonNull(moduleName);
-        AppUtil.checkArgument(isValidModuleName(moduleName), MESSAGE_CONSTRAINTS);
-        this.value = moduleName;
+    public Name(String name) {
+        requireNonNull(name);
+        AppUtil.checkArgument(isValidName(name), MESSAGE_CONSTRAINTS);
+        this.value = name;
     }
 
     /**
      * Returns true if a given string is a valid module name.
      */
-    public static boolean isValidModuleName(String test) {
+    public static boolean isValidName(String test) {
         return test.matches(VALIDATION_REGEX);
     }
 
@@ -48,8 +43,8 @@ public class ModuleName {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof ModuleName // instanceof handles nulls
-                && value.equals(((ModuleName) other).value)); // state check
+                || (other instanceof Name // instanceof handles nulls
+                && value.equals(((Name) other).value)); // state check
     }
 
     @Override

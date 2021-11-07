@@ -17,7 +17,7 @@ import manageme.ui.UiPart;
  */
 public class DayCard extends UiPart<Region> {
 
-    private static final PseudoClass HAS_TASK = PseudoClass.getPseudoClass("hasTask");
+    private static final PseudoClass HAS_TASK = PseudoClass.getPseudoClass("has");
     private static final PseudoClass IS_SELECTED = PseudoClass.getPseudoClass("selected");
 
     private static final String FXML = "DayCard.fxml";
@@ -39,7 +39,7 @@ public class DayCard extends UiPart<Region> {
     @FXML
     private Label day;
     @FXML
-    private Rectangle hasTask;
+    private Rectangle has;
 
     /**
      * Creates a day card with the given date and index to display.
@@ -58,7 +58,7 @@ public class DayCard extends UiPart<Region> {
     private void fillDay() {
         day.setText(String.format("%d", date.getDayOfMonth()));
         if (!taskList.isEmpty()) {
-            hasTask.pseudoClassStateChanged(HAS_TASK, true);
+            has.pseudoClassStateChanged(HAS_TASK, true);
         }
 
         if (isSelected) {
