@@ -85,6 +85,7 @@ Adds a task to the task list.
 
 Format: `addTask n/NAME d/DESCRIPTION [mod/ASSOCIATED_MODULE_NAME] [s/START_DATETIME] [e/END_DATETIME]`
 * A **name** and **description** for the task is **compulsory**.
+* No duplicate tasks can be added. A task is considered a duplicate if it has the same `NAME` with any existing tasks, even if other attributes are different.
 * It is optional to include an associated module name, a start datetime and an end datetime.
 * A task created with a start datetime **must** also have an end datetime.
 * Format for `START_DATETIME`/`END_DATETIME` is as follows: `yyyy-MM-ddThh:mm` e.g. `2021-10-29T23:59`.
@@ -192,6 +193,8 @@ Return to [Table of Contents](#table-of-contents).
 Adds a module into the module list.
 
 Format: `addMod n/NAME` <br/>
+* No duplicate modules can be added. A module is considered a duplicate if it has the same `NAME` with any existing modules.
+
 Examples: `addMod n/CS2103`
 <br><br>
 
@@ -269,6 +272,8 @@ Adds a link into the link list. A link contains its name and a website link for 
 
 Format: `addLink n/NAME a/LINK_ADDRESS [mod/ASSOCIATED_MODULE_NAME]` <br/>
 * A link can be a url to a webpage or a file path.
+* No duplicate links can be added. A link is considered a duplicate if it has the same `NAME` **and** `ADDRESS` with any existing links. 
+  In this way, you can name multiple links the same as e.g. "Lecture", "Tutorial" etc, but associate them with different mods.
 * A link should be in a valid uri format, beginning with https://, ftp:// of file:/ .
 * After tagging the module, the link will appear in the readMod panel of the particular module.
 * No space is allowed in the webpage address or file path.
