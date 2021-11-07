@@ -3,7 +3,7 @@ layout: page
 title: Developer Guide
 ---
 * Table of Contents
-  {:toc}
+{:toc}
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -38,7 +38,7 @@ Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
 <div markdown="span" class="alert alert-primary">
 
-:bulb: **Tip:** The `.puml` files used to create diagrams in this document can be found in the [diagrams](https://github.com/se-edu/addressbook-level3/tree/master/docs/diagrams/) folder. Refer to the [_PlantUML Tutorial_ at se-edu/guides](https://se-education.org/guides/tutorials/plantUml.html) to learn how to create and edit diagrams.
+:bulb: **Tip:** The `.puml` files used to create diagrams in this document can be found in the [diagrams](https://github.com/AY2122S1-CS2103T-W11-3/tp/tree/master/docs/diagrams) folder. Refer to the [_PlantUML Tutorial_ at se-edu/guides](https://se-education.org/guides/tutorials/plantUml.html) to learn how to create and edit diagrams.
 </div>
 
 Return to [Table of Contents](#table-of-contents).
@@ -53,7 +53,7 @@ Given below is a quick overview of main components and how they interact with ea
 
 **Main components of the architecture**
 
-**`Main`** has two classes called [`Main`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/Main.java) and [`MainApp`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/MainApp.java). It is responsible for,
+**`Main`** has two classes called [`Main`](https://github.com/AY2122S1-CS2103T-W11-3/tp/blob/master/src/main/java/manageme/Main.java) and [`MainApp`](https://github.com/AY2122S1-CS2103T-W11-3/tp/blob/master/src/main/java/manageme/MainApp.java). It is responsible for,
 * At app launch: Initializes the components in the correct sequence, and connects them up with each other.
 * At shut down: Shuts down the components and invokes cleanup methods where necessary.
 
@@ -96,8 +96,9 @@ The **API** of this component is specified in [`Ui.java`](https://github.com/AY2
 
 The UI consists of a `MmMainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `ModuleListPanel`, `TaskListPanel` etc. All these, including the `MmMainWindow`, inherit from the abstract `UiPart` class which captures the commonalities between classes that represent parts of the visible GUI.
 
-The `UI` component uses the JavaFx UI framework. The layout of these UI parts is defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MmMainWindow`](https://github.com/AY2122S1-CS2103T-W11-3/tp/blob/master/src/main/java/manageme/ui/MmMainWindow.java) is specified in [`MmMainWindow.fxml`](https://github.com/AY2122S1-CS2103T-W11-3/tp/blob/master/src/main/resources/view/MmMainWindow.fxml)
-
+The `UI` component uses the JavaFx UI framework. The layout of these UI parts is defined in matching `.fxml` files that are in the `src/main/resources/view` folder.
+For example, the layout of the [`MmMainWindow`](https://github.com/AY2122S1-CS2103T-W11-3/tp/blob/master/src/main/java/manageme/ui/MmMainWindow.java)
+is specified in [`MmMainWindow.fxml`](https://github.com/AY2122S1-CS2103T-W11-3/tp/blob/master/src/main/resources/view/MmMainWindow.fxml)
 
 The `UI` component,
 
@@ -110,7 +111,7 @@ Return to [Table of Contents](#table-of-contents).
 
 ### Logic component
 
-**API** : [`Logic.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/logic/Logic.java)
+**API** : [`Logic.java`](https://github.com/AY2122S1-CS2103T-W11-3/tp/blob/master/src/main/java/manageme/logic/Logic.java)
 
 Here's a (partial) class diagram of the `Logic` component:
 
@@ -140,23 +141,20 @@ How the parsing works:
 Return to [Table of Contents](#table-of-contents).
 
 ### Model component
-Here's a (partial) class diagram of the `Model` component:
+Here's a class diagram of the `Model` component:
 
 **API** : [`Model.java`](https://github.com/AY2122S1-CS2103T-W11-3/tp/blob/master/src/main/java/manageme/model/Model.java)
 
-<img src="images/MMModelClassDiagram.png" width="450" />
+<img src="images/MMModelClassDiagram.png" width="550" />
 
 
 The `Model` component,
 
-* store the object data of ManageMe i.e., all `Module` and `Task` objects (which are contained in a
-  `UniqueModuleList`
-  object
-  and a `UniqueTaskList` respectively).
+* store the object data of ManageMe i.e., all `Module`, `Task` and `Link` objects (which are contained in a`UniqueModuleList` object, a `UniqueTaskList` and a `UniqueLinkList` respectively).
 * stores the currently 'selected' `Task` objects (e.g., results of a search query) as a separate _filtered_ list
-  which
-  is exposed to outsiders as an unmodifiable `ObservableList<Task>` that can be 'observed' e.g. the UI can be bound to
-  this list so that the UI automatically updates when the data in the list change.
+  which is exposed to outsiders as an unmodifiable `ObservableList<Task>` that can be 'observed' e.g. the UI can be
+  bound to this list so that the UI automatically updates when the data in the list change. The `Module` and `Link`
+  objects similarly follow this implementation.
 * stores a `UserPref` object that represents the user’s preferences. This is exposed to the outside as a `ReadOnlyUserPref` object.
 * does not depend on any of the other three components (as the `Model` represents data entities of the domain, they should make sense on their own without depending on other components)
 
@@ -166,7 +164,7 @@ Return to [Table of Contents](#table-of-contents).
 
 ### Storage component
 
-**API** : [`Storage.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/storage/Storage.java)
+**API** : [`Storage.java`](https://github.com/AY2122S1-CS2103T-W11-3/tp/blob/master/src/main/java/manageme/storage/Storage.java)
 
 <img src="images/MMStorageClassDiagram.png" width="550" />
 
@@ -199,6 +197,10 @@ Return to [Table of Contents](#table-of-contents).
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Implementation**
+In this section, we share more about the implementation process of the main features in our application along with some design considerations made.
+
+### **Task Feature**
+In this section, the functionality of the Task feature and its activity diagram will be discussed.
 
 ### Calendar feature
 ManageMe has a calendar feature for users to view all of their upcoming tasks for the month.
@@ -219,8 +221,6 @@ Calendar has three functionality, `prevMonth`, `nextMonth` and `readDay`, all of
 The main consideration for the design of calendar is how many days should be displayed. The initial implementation was a "Week Calendar" which uses the current version of [NUSMODS](https://nusmods.com/timetable/sem-1) as reference. However, this design implies that there cannot be an overlap in the timing of different tasks. It would work for NUSMODS since it is a timetable and classes are not supposed to clash. However, it will not be as suitable for a calendar since multiple tasks can be happening or due at the same time. We decided to use the current implementation which is a "Month Calendar" with markings to represent the existence of tasks in the respective day-of-month and a task-list panel to display the tasks in greater details.
 <img src="images/Calendar.png" width="700" /> <br>
 *Figure. Screenshot of GUI of calendar in ManageMe.*
-
-
 
 
 ### **Reminder Feature**
