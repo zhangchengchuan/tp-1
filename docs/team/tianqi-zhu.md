@@ -9,41 +9,43 @@ ManageMe is a **lightweight but powerful desktop application built to help unive
 
 Given below are my contributions to the project.
 
-* **New Feature**: Added addMod command
+* **New Feature**: Added `addMod` command
   * What it does: Allows users to add a Module to ManageMe.
   * Justification: This allows users
-  * Difficulty:  This function was not difficult to implement, however it was modified in different stages of the project
+  * Difficulty: This function was not difficult to implement, however it was modified in different stages of the project
     due to changing needs. Initially in v1.2, a module contains both a name and a Link, thus addMod must be able to add both.
     However, later in v1.3, Link was extracted out to become a standalone class with its own commands,
     thus all dependencies with Link was removed from addMod.
 
-* **New Feature**: Added deleteMod command.
+* **New Feature**: Added `deleteMod` command.
   * What it does: Allows users to delete a Module to ManageMe.
-  * Justification: This is not
+  * Justification: This is not difficult to implement.
 
-* **New Feature**: Introducing link functionality with both local filepath and website url
+* **New Feature**: Introducing link functionality with both local filepath and website url.
+  * What it does: Allows users to store, and open links in the app conveinently.
+  * Justification: This allows users to quickly find a module by keywords instead of browsing through the whole module list.
+  * Difficulty: DEPENDS ON WHETHER search by character is used.
+
+* **New Feature**: Added `findLink` command.
   * What it does: Allows users to search for links to ManageMe.
   * Justification: This allows users to quickly find a module by keywords instead of browsing through the whole module list.
   * Difficulty: DEPENDS ON WHETHER search by character is used.
 
-* **New Feature**: Added findLink command.
-  * What it does: Allows users to search for links to ManageMe.
-  * Justification: This allows users to quickly find a module by keywords instead of browsing through the whole module list.
-  * Difficulty: DEPENDS ON WHETHER search by character is used.
-
-* **New Feature**: Added listLink command.
+* **New Feature**: Added `listLink` command.
   * What it does: Allows users to delete a Module to ManageMe.
   * Justification: This allows users to quickly find a module by keywords instead of browsing through the whole module list.
   * Difficulty: DEPENDS ON WHETHER search by character is used.
 
-* **New Feature**: Added openLink command.
+* **New Feature**: Added `openLink` command.
 * What it does: Allows users to open a file or a folder using the system default application from ManageMe, or open a
 url using a local web browser.
 * Justification: This allows users to open the folders and websites that they frequently access with only one command,
 which is very convenient to use and saves users from the trouble of digging through their inbox with thousands of
 * Difficulty: This is challenging. Java desktop doesn't perform well on Linux.
 
-* **Code contributed**: [RepoSense link]()
+* **Code contributed**: [RepoSense link](https://nus-cs2103-ay2122s1.github.io/tp-dashboard/?search=&sort=groupTitle&sortWithin=title&since=2021-09-17&timeframe=commit&mergegroup=&groupSelect=groupByRepos&breakdown=false&tabOpen=true&tabType=authorship&tabAuthor=Tianqi-Zhu&tabRepo=AY2122S1-CS2103T-W11-3%2Ftp%5Bmaster%5D&authorshipIsMergeGroup=false&authorshipFileTypes=docs~functional-code~test-code~other&authorshipIsBinaryFileTypeChecked=false)
+
+* **Integration** 
 
 * **Project management**:
     * Managed most of the issue trackers on GitHub
