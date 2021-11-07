@@ -217,15 +217,18 @@ parses the module index the user inputted, and generates a `ReadModuleCommand` o
 `ReadModuleCommand` object, which sets what module is to be read in the `Model` component. A `CommandResult` 
 is generated with `isReadModule` boolean value being true and sent back to `MmMainWindow`.
 
-#### Sequence Diagram of readMod command <br>
+#### Sequence Diagram
+
 <img src=”images/ReadModSequenceDiagram.png” width=”800” />
-<br>
+
+Sequence diagram for readMod command <br>
+
 <img src=”images/ReadModRef.png” width=”250” />
 
+Referenced Sequence diagram<br>
 
 ### **Task Feature**
 In this section, the functionality of the Task feature and its activity diagram will be discussed.
-
 
 ### Calendar feature
 ManageMe has a calendar feature for users to view all of their upcoming tasks for the month.
@@ -248,10 +251,10 @@ The main consideration for the design of calendar is how many days should be dis
 *Figure. Screenshot of GUI of calendar in ManageMe.*
 
 
-### **Reminder Feature**
+### Reminder Feature
 In this section, the functionality of the reminder feature and its activity diagram will be discussed.
 
-#### **Implementation**
+#### Implementation
 Reminders are implemented under the `TimeManager` Class which is located under the `time` package.
 
 The main thread, which handles the user inputs and command
@@ -261,7 +264,7 @@ This additional **Time** Thread will constantly check all the current tasks to m
 that the user is notified of any tasks that requires attention.
 This notification appears in the form of a pop-out with implementation located under the `time` package as well
 
-#### **Activity Diagram of Reminders**
+#### Activity Diagram of Reminders
 
 <img src="images/RemindersActivityDiagram.png" width="550" />
 
