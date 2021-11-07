@@ -95,8 +95,7 @@ Example: `addTask n/Do CS2103T Assignment d/Refer to lecture 10 for examples mod
 
 A reminder will pop up when a task is happening:<br>
 To close the reminder, press Enter or click on the Acknowledge button. Simply closing the window will not work and will cause the reminder to pop up again!
-![Reminder](images/reminder.png)<br>
-
+![Reminder](images/reminder.png)
 *Pop-up reminder for tasks*
 <br><br>
 
@@ -122,7 +121,7 @@ Format: `deleteTask INDEX`
 * The index **must be a positive integer** 1, 2, 3, ...
 
 Example: `deleteTask 2`
-<br><br>
+<br>
 
 <div markdown="block" class="alert alert-info">
 
@@ -131,7 +130,7 @@ Example: `deleteTask 2`
 * Deleting a task is irreversible.<br>
 
 </div>
-<br>
+<br><br>
 
 #### <font color="#6ab04c">Find a task by keyword: `findTask`</font>
 Finds all tasks whose names contain any of the specified keywords.
@@ -143,14 +142,13 @@ Format: `findTask KEYWORD [MORE_KEYWORDS]`
 * Partial words will be matched e.g. Assign will match Assignments.
 * Tasks matching at least one keyword will be returned (i.e. OR search).
 
-Example: `findTask assignment` <br>
+Example: `findTask assignment` <br><br>
 Before findTask:<br>
 ![findTask](images/findTask_before.png)<br>
 
 
 After findTask:<br>
 ![findTask](images/findTask_after.png)
-
 <br><br>
 
 #### <font color="#6ab04c">List all tasks : `listTask`</font>
@@ -169,11 +167,9 @@ Format: `markTask INDEX`
 
 Example: `markTask 2`
 
-Feature in UI:<br>
-
 ![Ui](images/UiOngoingTask.png)<br>
 *An ongoing task not yet done will be in the default colour*
-<br><br>
+<br>
 
 ![Ui](images/UiDoneTask.png)<br>
 A task marked as done will be coloured green.
@@ -212,9 +208,7 @@ Format: `readMod INDEX`<br/>
 
 Examples: `readMod 2`
 
-Screenshot:<br>
-![readMod](images/readMod.png)<br>
-
+![readMod](images/readMod.png)
 *Pop-up window for readMod*
 <br><br>
 
@@ -280,32 +274,36 @@ Return to [Table of Contents](#table-of-contents).
 Adds a link into the link list. A link contains its name and a website link for online learning.
 
 Format: `addLink n/NAME a/LINK_ADDRESS [mod/ASSOCIATED_MODULE_NAME]` <br/>
-*  A link can be a url to a webpage or a file path.
+* A link can be a url to a webpage or a file path.
 * A link should be in a valid uri format, beginning with https://, ftp:// of file:/ .
 * Aftering tagging the module, the link will appear in the readMod panel of the particular module.
 * No space is allowed in the webpage address or file path.
 * A file path should be an absolute directory with file:// at the front, and `/` to separate subdirectories. For example, if you are using windows, and a document is at `Documents/doc.docx`, you may need to type `file://C:/users/YOUR_USERNAME/Documents/doc.docs` for our app to recognize your file directory properly.
+
+Examples: `addLink n/google a/https://www.google.com mod/CS1101S`
 <div markdown="span" class="alert alert-primary">
 
-:bulb: **Tip: How to find the absolute directory of my file?”
-For windows, right-click on the file, select `properties`, and you will see a window like this. ![win_property](images/file_properties_win_1.png)
-Under the `general` panel, there will be the `name` of the file and its `Location`. The absolute directory is the combination of the two. Our app take the format with slash instead of backslash like the location in the picture, so you may also need to change all the backslashes into slasheas. For this example, the absolute directory with slashes is `C:/Users/tianqi/Desktop/test.pptx`. You may type `addLink n/test a/C:/Users/tianqi/Desktop/test.pptx` into our app to add the link.
-For Mac:
-Right click on the file, select “Get Info”:<br>
+:bulb: **Tip: How to find the absolute directory of my file?”** <br><br>
+* For windows, right-click on the file, select `properties`, and you will see a window like this.
+  ![win_property](images/file_properties_win_1.png)
+
+  Under the `general` panel, there will be the `name` of the file and its `Location`. The absolute directory is the combination of the two.
+Our app take the format with slash instead of backslash like the location in the picture, so you may also need to change all the backslashes into slasheas. <br><br>
+For this example, the absolute directory with slashes is `C:/Users/tianqi/Desktop/test.pptx`. You may type `addLink n/test a/C:/Users/tianqi/Desktop/test.pptx` into our app to add the link. <br><br>
+
+
+* For Mac:
+Right click on the file, select “Get Info”:
 ![Filepath](images/mac_getinfo.png)<br>
 
-Then you will see this window. Copy and paste the “path” section:<br>
+  Then you will see this window. Copy and paste the “path” section:<br>
 ![Filepath](images/mac_filepath.png)<br>
 
 
-For Linux, take ubuntu as an example. Like windows, you may right-click on the file and see the path of the parent folder and the file name.
-![Linux_file](images/linux_file_property.png)
+* For Linux, take ubuntu as an example. Like windows, you may right-click on the file and see the path of the parent folder and the file name. <br>
+![Linux_file](images/linux_file_property.png)<br>
 
-</div>
-
-
-Examples: `addLink n/google a/https://www.google.com mod/CS1101S`
-<br><br>
+<br>
 
 #### <font color="#f9ca24">Edit a link: `editLink`</font>
 Edits an existing link in the link list.
