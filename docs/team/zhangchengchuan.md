@@ -5,8 +5,7 @@ title: Cheng Chuan's Project Portfolio Page
 
 ### Project: ManageMe
 
-ManageMe is a desktop app for time management and resource organisation, optimized for use via a Command Line Interface (CLI) while still having the benefits of a Graphical User Interface (GUI).
-If you can type fast, ManageMe can get your tasks done faster than traditional GUI apps.
+ManageMe is a **lightweight but powerful desktop application built to help university students manage their school life, available on Windows, Linux and Mac**. You can add your modules, tasks, schedules and online learning resources easily into ManageMe and access them with simple commands.
 
 Given below are my contributions to the project.
 
@@ -102,7 +101,7 @@ Given below are my contributions to the project.
 
   * **Contributions to Developer Guide**
     * Responsible for the writing and editing of the storage component. (PR#112)
-    * Wrote the implementation of the time component as well as the reminder functions. (Do now and PR)
+    * Wrote the implementation of the time component as well as the reminder functions. (PR #242)
     * Helped to type out all the user stories as well as use cases. (PR#46)
     * Contributed to the brainstorming of Glossary terms and Non-Functioning Requirements. (PR#46)
       <br><br>
