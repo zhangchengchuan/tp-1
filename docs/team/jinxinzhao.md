@@ -3,7 +3,7 @@ layout: page
 title: Zhao Jinxin's Project Portfolio Page
 ---
 
-### Project: ManageMe Level 3
+### Project: ManageMe
 
 ManageMe is a **lightweight but powerful desktop application built to help university students manage their school life,
 available on Windows, Linux and Mac**. You can add your modules, tasks, schedules and online learning resources easily
@@ -20,29 +20,44 @@ Given below are my contributions to the project.
     due to changing needs. Initially in v1.2, a module contains both a name and a Link, thus editMod must be able to edit both.
     However, later in v1.3, Link was extracted out to become a standalone class with its own commands,
     thus all dependencies with Link was removed from editMod.
+  
 
 * **New Feature**: Added findMod command.
   * What it does: Find modules whose names contain given keywords.
   * Justification: This allows users to quickly find a module by keywords instead of browsing through the whole module list.
-  * Difficulty: DEPENDS ON WHETHER search by character is used.
+  * Difficulty: This function was not difficult to implement, however again it was modified in different stages of the project
+    for improvement. Initially, findMod can only search for whole words that match the keyword entirely. However,
+    we later realised that since the module code is a single word containing different characters (like CS2100), we should enable
+    searching for words that partially match the characters given in the keyword. The search by character functionality was
+    added by Tianqi.
 
+
+* **Skeleton Code**: Added skeleton code for all Module features.
+  * What it does: Lay out the basics to implement Module features. This includes creating the Module class with its
+    attributes and its corresponding Parser and Command classes. Storage files are also modified to accommodate Module
+    objects.
+  * Difficulty: This task was not difficult, but time-consuming since I needed to go through the entire code base
+    and edit its Logic, Model and Storage components.
+  
 
 * **Testing**:
   * Wrote test utilities for Module features.
-  * Wrote test cases for editMod and findMod Parsers and Commands.
+  * Wrote test cases for editMod and findMod features.
+
 
 * **Code contributed**: [RepoSense link](https://nus-cs2103-ay2122s1.github.io/tp-dashboard/?search=&sort=groupTitle&sortWithin=title&since=2021-09-17&timeframe=commit&mergegroup=&groupSelect=groupByRepos&breakdown=false&tabOpen=true&tabType=authorship&tabAuthor=JinxinZhao315&tabRepo=AY2122S1-CS2103T-W11-3%2Ftp%5Bmaster%5D&authorshipIsMergeGroup=false&authorshipFileTypes=docs~functional-code~test-code~other&authorshipIsBinaryFileTypeChecked=false)
 
+
 * **Documentation**:
   * User Guide:
-    * Added documentation for features `editMod` and `findMod`.
+    * Wrote documentation for features `editMod` and `findMod`.
     * Added most of the feature screenshots.
-    * Edited `Introduction` and `Quick Start` sections to tailor to our project.
-    * Enhanced readability through color coding and formatting.
+    * Updated `Introduction` and `Quick Start` sections.
+    * Enhanced readability through color coding titles and formatting.
     * Added content table and "back to content table" navigation.
   * Developer Guide:
-    * Wrote architecture descriptions of the Logic component.
-    * Added implementation details of the Module features.
-    * Wrote use cases for Generic Add, Delete, Edit, Find and List commands.
-    * Edited User stories to tailor to our project.
+    * Wrote architecture descriptions for the Logic component.
+    * Wrote implementation details of the Read Module feature.
+    * Updated User stories as the project progressed.
+    * Updated Use cases as the project progressed.
 
