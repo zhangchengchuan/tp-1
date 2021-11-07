@@ -144,7 +144,7 @@ Here's a class diagram of the `Model` component:
 
 **API** : [`Model.java`](https://github.com/AY2122S1-CS2103T-W11-3/tp/blob/master/src/main/java/manageme/model/Model.java)
 
-<img src="images/MMModelClassDiagram.png" width="550" />
+<img src="images/MMModelClassDiagram" width="550" />
 
 
 The `Model` component,
