@@ -13,7 +13,7 @@ ManageMe is a **lightweight but powerful** desktop application built to **help u
 
 You can add your modules, tasks, schedules, and online learning resources easily into ManageMe and access them with simple commands. The application is optimized for interaction through typing with a text input and response box similar to a **Command Line Interface (CLI)** but also provides a convenient Graphical User Interface (GUI) for more visual users.
 
-This user guide will give you a comprehensive understanding of using ManageMe to its full potential. Begin your journey with the [Quick Start](#quick-start:) section. For a full overview of the user guide, check out the [Table of Contents](#table-of-contents).
+This user guide will give you a comprehensive understanding of using ManageMe to its full potential. Begin your journey with the [Quick Start](#quick-start) section. For a full overview of the user guide, check out the [Table of Contents](#table-of-contents).
 <br><br>
 
 --------------------------------------------------------------------------------------------------------------------
