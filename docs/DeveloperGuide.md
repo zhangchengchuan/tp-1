@@ -200,6 +200,31 @@ Return to [Table of Contents](#table-of-contents).
 ## **Implementation**
 This section describes some noteworthy details on how certain features are implemented.
 
+### **Task Feature**
+In this section, the functionality of the Task feature and the sequence diagram for its related commands will be
+discussed.
+
+#### **Implementation of commands**
+Similar to the commands available in AB3, a user is able to add, edit, delete, find and list tasks and is
+implemented as the `AddTaskCommand`,`EditTaskCommand`, `DeleteTaskCommand`, `FindTaskCommand` and `ListTaskCommand`
+respectively.
+
+To give an example, the activity diagram when the addTask Command is executed is shown below:
+![AddTaskActivityDiagram](images/AddTaskActivityDiagram.png) <br>
+*Figure. Activity diagram of creation of Task*
+
+Additionally, a user is also able to mark/unmark tasks as done and delete tasks that are already done. This is
+implemented as the `MarkTaskCommand` and `DeleteDoneTaskCommand` respectively.
+
+Shown below is the sequence diagrams for when  `MarkTaskCommand` and `DeleteDoneTaskCommand` are executed.
+<br>
+![MarkTaskSequenceDiagram](images/MarkTaskSequenceDiagram.png) <br>
+*Figure. Sequence diagram of marking task 2 in the task list as done/undone*
+<br>
+<br>
+![DeleteDoneTaskSequenceDiagram](images/DeleteDoneTaskSequenceDiagram.png) <br>
+*Figure. Sequence diagram of deleting all done tasks*
+
 ### Read Module feature
 ManageMe allows you to type in readMod for a particular module, and see all Tasks and Links related to it in a pop-up window.
 
@@ -225,39 +250,6 @@ is generated with `isReadModule` boolean value being true and sent back to `MmMa
 
 ![ReadModSequenceDiagram](images/ReadModRef.png) <br>
 *Referenced Sequence diagram* <br>
-
-### **Task Feature**
-In this section, the functionality of the Task feature and its activity diagram will be discussed.
-
-#### **Implementation of model**
-A `Task` contains the following data fields represented by the corresponding models:
-* Name of task: `TaskName`
-* Description of task: `TaskDescription`
-* Module associated with task: `TaskModule`
-* Start time of task: `TaskTime`
-* End time of task: `TaskTime`
-* Done status of task: `TaskIsDone`
-
-#### **Implementation of commands**
-Similar to the commands available in AB3, a user is able to add, edit, delete, find and list tasks and is 
-implemented as the `AddTaskCommand`,`EditTaskCommand`, `DeleteTaskCommand`, `FindTaskCommand` and `ListTaskCommand` 
-respectively.
-
-To give an example, the activity diagram when the addTask Command is executed is shown below:
-![AddTaskActivityDiagram](images/AddTaskActivityDiagram.png) <br>
-*Figure. Activity diagram of creation of Task*
-
-Additionally, a user is also able to mark/unmark tasks as done and delete tasks that are already done. This is 
-implemented as the `MarkTaskCommand` and `DeleteDoneTaskCommand` respectively.
-
-Shown below is the sequence diagrams for when  `MarkTaskCommand` and `DeleteDoneTaskCommand` are executed.
-<br>
-![MarkTaskSequenceDiagram](images/MarkTaskSequenceDiagram.png) <br>
-*Figure. Sequence diagram of marking task 2 in the task list as done/undone*
-<br>
-<br>
-![DeleteDoneTaskSequenceDiagram](images/DeleteDoneTaskSequenceDiagram.png) <br>
-*Figure. Sequence diagram of deleting all done tasks*
 
 ### Calendar feature
 ManageMe has a calendar feature for users to view all of their upcoming tasks for the month.
