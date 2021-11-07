@@ -25,9 +25,9 @@ public class JsonAdaptedLink {
      * Constructs a {@code JsonAdaptedLink} with the given person details.
      */
     @JsonCreator
-    public JsonAdaptedLink(@JsonProperty("name") String Name, @JsonProperty("address") String address,
+    public JsonAdaptedLink(@JsonProperty("name") String name, @JsonProperty("address") String address,
                            @JsonProperty("module") String module) {
-        this.name = Name;
+        this.name = name;
         this.address = address;
         this.module = module;
     }

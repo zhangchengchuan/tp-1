@@ -78,7 +78,7 @@ public class ModuleWindow extends UiPart<Stage> {
      */
     public void fillTaskList(Module module, ObservableList<Task> unfilteredTaskList) {
         FilteredList<Task> tasks = unfilteredTaskList.filtered(task -> {
-            Optional<String> TagModule = task.getTagModule().Name;
+            Optional<String> TagModule = task.getTagModule().name;
 
             if (TagModule.isEmpty()) {
                 return false;
@@ -95,7 +95,7 @@ public class ModuleWindow extends UiPart<Stage> {
      */
     public void fillLinkList(Module module, ObservableList<Link> unfilteredLinkList) {
         FilteredList<Link> links = unfilteredLinkList.filtered(link -> {
-            Optional<String> linkModule = link.getLinkModule().Name;
+            Optional<String> linkModule = link.getLinkModule().name;
 
             if (linkModule.isEmpty()) {
                 return false;
