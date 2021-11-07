@@ -9,7 +9,7 @@ ManageMe is a **lightweight but powerful desktop application built to help unive
 
 Given below are my contributions to the project.
 
-* **Major Enhancements**: Added the ability to undo/redo previous commands.
+* **Major Enhancements**:
   * Added addTask command
     * Description:The addTask command allows the user to add a specific task based on what the user has used in the parameters.
     * Reason: addTask is the main method for which users can add a task of their own into ManageMe.
