@@ -2,7 +2,7 @@
 layout: page
 title: User Guide
 ---
-## Table of Contents
+## <font color="#f0932b">Table of Contents</font>
 * table-of-contents
 {:toc}
 
@@ -23,11 +23,11 @@ Better add this in. Include things like the information icon, or perhaps shift t
 
 --------------------------------------------------------------------------------------------------------------------
 
-## <font color="#f0932b">Quick Start:</font>
+## <font color="#f0932b">Quick Start</font>
 This section aims to provide a quick introduction to using ManageMe.
 It should take **less than 5 minutes to read** and will provide new users with the necessary knowledge to install and start using the application.
 
-### <font color="#f0932b">Steps for installation:</font>
+### <font color="#f0932b">Steps for installation</font>
 1. Ensure you have Java 11 or above installed on your computer.
 2. [Download](https://github.com/AY2122S1-CS2103T-W11-3/tp/releases) the latest jar release of ManageMe.
 3. Open your browser's download folder and locate the downloaded jar file. ManageMe can run on multiple platforms, including Windows, Mac, and Linux.
@@ -332,7 +332,7 @@ Example: `deleteLink 2`.
 
 </div>
 
-#### <font color="#7d3415">Open a link:</font>
+#### <font color="#7d3415">Open a link:</font> `openLink`
 Opens the link identified by the index in the link list.
 
 Format: `openLink INDEX`
@@ -343,7 +343,7 @@ Format: `openLink INDEX`
 Example: `openLink 1`.
 <br><br>
 
-#### <font color="#7d3415">Find a link by keyword:</font>
+#### <font color="#7d3415">Find a link by keyword:</font> `findLink`
 Finds all links whose name contain the specified keyword.
 
 Format: `findLink KEYWORD [MORE_KEYWORDS]`
@@ -395,19 +395,20 @@ Return to [Table of Contents](#table-of-contents).
 
 ### <font color="#4834d4">Others:</font>
 
-#### <font color="#4834d4">Reminders:</font>
+#### <font color="#4834d4">Reminders</font>
 
 A reminder will pop up when a task is happening:<br>
-To close the reminder, press Enter or click on the Acknowledge button. Simply closing the window will not work and will cause the reminder to pop up again!
+To close the reminder, press Enter or click on the Acknowledge button. Simply closing the window will not work and will cause the reminder to pop up again!<br>
+
 ![Reminder](images/reminder.png)
 *Pop-up reminder for tasks*
 
-#### <font color="#4834d4">Overdue tasks:</font>
+#### <font color="#4834d4">Overdue tasks</font>
 
 Tasks that are overdue(past the end time) will automatically be colored red for users to clearly see which tasks are
 overdue.
 
-![Ui](images/UiOverDueTask.png)<br>
+![Ui](images/UiOverdueTask.png)<br>
 *A Task is coloured red since it is overdue*
 <br>
 
@@ -415,7 +416,6 @@ overdue.
 
 Resets the application data. After you are familiar with the various commands, this command can be used to clear the sample data and you can start filling in your own data.
 
-Format: `clear`
 <br><br>
 
 #### <font color="#4834d4">Viewing help:</font> `help`
@@ -432,6 +432,7 @@ Resets the application data and saves the deleted application data into a timest
 #### <font color="#4834d4">Exiting the program :</font> `exit`
 
 Terminates the application.
+<br><br>
 
 
 #### <font color="#4834d4">Saving the data</font>
@@ -449,7 +450,7 @@ This section serves as a quick reference for all the available commands that can
 Action | Format, Examples
 --------|------------------
 **AddTask** | `addTask n/NAME d/DESCRIPTION [mod/ASSOCIATED_MODULE_NAME] [s/START_DATETIME] [e/END_DATETIME]`<br>e.g., `addTask n/Do Assignment d/Read Lecture 7 mod/CS2100 s/2021-10-05T12:00 e/2021-10-07T23:59`
-**EditTask** | `editTask INDEX [n/NAME] [d/DESCRIPTION] [mod/ASSOCIATED_MODULE_NAME] [s/START_DATETIME] [e/END_DATETIME]`<br>e.g., `editTask 3 d/buy milk`
+**EditTask** | `editTask INDEX [n/NAME] [d/DESCRIPTION] [mod/ASSOCIATED_MODULE_NAME] [s/START_DATETIME] [e/END_DATETIME]`<br>e.g., `editTask 3 d/start tutorial 3`
 **DeleteTask** | `deleteTask INDEX`<br>e.g., `deleteTask 3`
 **findTask** | `findTask KEYWORD [MORE_KEYWORDS]`<br>e.g., `findTask work`
 **ListTask** | `listTask`
