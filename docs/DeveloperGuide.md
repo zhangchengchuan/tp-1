@@ -264,7 +264,7 @@ This notification appears in the form of a pop-out with implementation located u
 
 #### Activity Diagram of Reminders
 
-![ReminderActivityDiagram](images/RemindersActivityDiagram.png) <br>
+![ReminderActivityDiagram](images/ReminderActivityDiagram.png) <br>
 
 *Figure: Reminders Activity Diagram*
 
