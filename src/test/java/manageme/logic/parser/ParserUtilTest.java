@@ -1,6 +1,6 @@
 package manageme.logic.parser;
 
-import static manageme.logic.commands.link.LinkCommandTestUtil.VALID_Name_A;
+import static manageme.logic.commands.link.LinkCommandTestUtil.VALID_NAME_A;
 import static manageme.logic.parser.ParserUtil.MESSAGE_INVALID_INDEX;
 import static manageme.testutil.Assert.assertThrows;
 import static manageme.testutil.TypicalIndexes.INDEX_FIRST;
@@ -76,14 +76,14 @@ public class ParserUtilTest {
 
     @Test
     public void parseName_validValueWithoutWhitespace_returnsName() throws Exception {
-        Name expectedName = new Name(VALID_Name_A);
-        assertEquals(expectedName, ParserUtil.parseName(VALID_Name_A));
+        Name expectedName = new Name(VALID_NAME_A);
+        assertEquals(expectedName, ParserUtil.parseName(VALID_NAME_A));
     }
 
     @Test
     public void parseName_validValueWithWhitespace_returnsTrimmedName() throws Exception {
-        String nameWithWhitespace = WHITESPACE + VALID_Name_A + WHITESPACE;
-        Name expectedName = new Name(VALID_Name_A);
+        String nameWithWhitespace = WHITESPACE + VALID_NAME_A + WHITESPACE;
+        Name expectedName = new Name(VALID_NAME_A);
         assertEquals(expectedName, ParserUtil.parseName(nameWithWhitespace));
     }
 
