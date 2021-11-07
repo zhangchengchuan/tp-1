@@ -43,6 +43,6 @@ public class TagModuleTest {
         assertTrue(TagModule.empty().value.equals(""));
 
         // Empty TagModule with Name set as an empty Optional<String>
-        assertTrue(manageme.model.TagModule.empty().Name.isEmpty());
+        assertTrue(manageme.model.TagModule.empty().name.isEmpty());
     }
 }
