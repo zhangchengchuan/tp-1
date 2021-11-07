@@ -230,32 +230,33 @@ In this section, the functionality of the reminder feature and its activity diag
 Reminders are implemented under the `TimeManager` Class which is located under the `time` package.
 
 The main thread, which handles the user inputs and command
-execution, will operate as per normal, except that an additional thread runs with it.
+execution, will operate as per normal, except that an additional thread runs alongside it.
 
 This additional **Time** Thread will constantly check all the current tasks to make sure
 that the user is notified of any tasks that requires attention.
-This notification appears in the form of a pop-out with implementation located under the `time` package as well
+This notification appears in the form of a pop-out with implementation located under the `time` package.
 
 ### **Activity Diagram of Reminders**
 
-<img src="images/RemindersActivityDiagram.png" width="550" /> <br>
+![Reminder](images/ReminderActivityDiagram.png) <br>
 
 *Figure 10: Reminders Activity Diagram*
 
-The above figure illustrates the execution path of Reminders when the user starts ManageMe.
+The above figure illustrates the execution path of Reminders when the user starts ManageMe, which has been shortened
+to **MM** in the activity diagram.
 
-When the user starts the application, 2 threads are immediately created. The **Main Thread** and the **Time** Thread.
+When the user starts the application, 2 threads are immediately started. The **Main Thread** and the **Time** Thread.
 
 For this activity diagram, the entire **Main Thread** will be represented by one action block only as this is not the
 main focus.
 
-The following actions occur when the **Time Thread** is created:
+The following actions occur when the **Time Thread** is started:
 1. `TimeManager` is initialized and starts to run.
 2. ManageMe is now in an **Alert State**. This means that this thread is constantly checking if ManageMe is still
 running.
    1. If it is, check if there are any tasks that the user needs to be notified of. Once done,
    return to **Alert State**.
-   2. If it is not, all threads including **Main Thread** will be ended and the application226G ends.
+   2. If it is not, all threads including **Main Thread** will be ended and the application ends.
 
 
 <div markdown="span" class="alert alert-info">:information_source: ** Note:** As long as ManageMe is still running, it
