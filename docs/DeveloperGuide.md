@@ -197,10 +197,37 @@ Return to [Table of Contents](#table-of-contents).
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Implementation**
-In this section, we share more about the implementation process of the main features in our application along with some design considerations made.
+This section describes some noteworthy details on how certain features are implemented.
 
 ### **Task Feature**
 In this section, the functionality of the Task feature and its activity diagram will be discussed.
+
+#### **Implementation of model**
+A `Task` contains the following data fields represented by the corresponding models:
+* Name of task: `TaskName`
+* Description of task: `TaskDescription`
+* Module associated with task: `TaskModule`
+* Start time of task: `TaskTime`
+* End time of task: `TaskTime`
+* Done status of task: `TaskIsDone`
+
+As `TaskModule` and `TaskTime` are optional fields, their values are internally stored within a Java `Optional` 
+object.
+
+All tasks are stored in a `UniqueTaskList`, of which contains an `ObservableList<Task>` which is displayed on the UI 
+as the `TaskListPanel`.
+
+#### **Implementation of commands**
+Similar to AB3, a user is able to add, edit and delete task and is implemented as the `AddTaskCommand`, 
+`EditTaskCommand` and `DeleteTaskCommand` respectively.
+
+To give an example, the activity diagram when the addTask Command is executed is shown below:
+![AddTaskActivityDiagram](images/AddTaskActivityDiagram.png) <br>
+*Figure. Activity diagram of creation of Task*
+
+Notably, the additional commands 
+
+
 
 ### Calendar feature
 ManageMe has a calendar feature for users to view all of their upcoming tasks for the month.
@@ -261,6 +288,17 @@ running.
 <div markdown="span" class="alert alert-info">:information_source: ** Note:** As long as ManageMe is still running, it
 will continue to scan for tasks that need the user's attention.
 </div>
+
+### **Archive Feature**
+In this section, the archive feature and its activity diagram will be discussed.
+
+#### Implementation
+The archive feature is implemented as the `ArchiveCommand` and allows the user to archive the current data into a timestamped file in the data folder and resets the application with a new data file.
+
+The following Activity diagram demonstrates the execution path of the archive command:</br>
+<img src="images/ArchiveActivityDiagram.png" width="500" /> <br>
+*Figure. Activity diagram of execution of archive command*
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Documentation, logging, testing, configuration, dev-ops**
