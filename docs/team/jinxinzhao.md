@@ -11,33 +11,33 @@ into ManageMe and access them with simple commands.
 
 Given below are my contributions to the project.
 
-* **New Feature**: Added editMod command
+* **New Feature**: Added `editMod` command
   * What it does: Allows users to edit an existing module.
   * Justification: This allows users to update the information of the modules they take. For example,
     when a user take new modules in a new school term, or found a typo in a previously entered module,
     the user can change the module information accordingly.
   * Difficulty: This function was not difficult to implement, however it was modified in different stages of the project
-    due to changing needs. Initially in v1.2, a module contains both a name and a Link, thus editMod must be able to edit both.
-    However, later in v1.3, Link was extracted out to become a standalone class with its own commands,
+    due to changing needs. Initially in `v1.2`, a module contains both a `name` and a `Link`, thus editMod must be able to edit both.
+    However, later in `v1.3`, `Link` was extracted out to become a standalone class with its own commands,
     thus all dependencies with Link was removed from editMod.
   
 
-* **New Feature**: Added findMod command.
+* **New Feature**: Added `findMod` command.
   * What it does: Find modules whose names contain given keywords.
   * Justification: This allows users to quickly find a module by keywords instead of browsing through the whole module list.
   * Difficulty: This function was not difficult to implement, however again it was modified in different stages of the project
-    for improvement. Initially, findMod can only search for whole words that match the keyword entirely. However,
+    for improvement. Initially, `findMod` can only search for whole words that match the keyword entirely. However,
     we later realised that since the module code is a single word containing different characters (like CS2100), we should enable
     searching for words that partially match the characters given in the keyword. The search by character functionality was
     added by Tianqi.
 
 
-* **Skeleton Code**: Added skeleton code for all Module features.
-  * What it does: Lay out the basics to implement Module features. This includes creating the Module class with its
-    attributes and its corresponding Parser and Command classes. Storage files are also modified to accommodate Module
+* **Skeleton Code**: Added skeleton code for all `Module` features.
+  * What it does: Lay out the basics for implementing `Module` features. This includes creating the `Module` class with its
+    attributes and its corresponding `Parser` and `Command` classes. `Storage` files are also modified to accommodate Module
     objects.
   * Difficulty: This task was not difficult, but time-consuming since I needed to go through the entire code base
-    and edit its Logic, Model and Storage components.
+    and edit its `Logic`, `Model` and `Storage` components.
   
 
 * **Testing**:
@@ -56,8 +56,8 @@ Given below are my contributions to the project.
     * Enhanced readability through color coding titles and formatting.
     * Added content table and "back to content table" navigation.
   * Developer Guide:
-    * Wrote architecture descriptions for the Logic component.
-    * Wrote implementation details of the Read Module feature.
-    * Updated User stories as the project progressed.
-    * Updated Use cases as the project progressed.
+    * Wrote architecture descriptions for the `Logic` component.
+    * Wrote implementation details of the `Read Module` feature.
+    * Updated `User stories` as the project progressed.
+    * Updated `Use cases` as the project progressed.
 
