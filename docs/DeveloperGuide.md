@@ -284,7 +284,7 @@ The following actions occur when the **Time Thread** is started:
     2. If it is not, all threads including **Main Thread** will be ended and the application ends.
 
 
-<div markdown="span" class="alert alert-info">:information_source: ** Note:** As long as ManageMe is still running, it
+<div markdown="span" class="alert alert-info">:information_source: **Note:** As long as ManageMe is still running, it
 will continue to scan for tasks that need the user's attention.
 </div>
 
