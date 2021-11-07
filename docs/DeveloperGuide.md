@@ -17,7 +17,6 @@ The detailed guide below will provide to developers like yourself, information s
 
 The DG is formatted in a way that every single section is preceded by a header. In those sections, there will be some screenshots and brief explanations to better your understanding. Terms that are in `this format` signifies that it is a part of the codebase, such as a class or a directory. E.g `Logic`, `Storage`
 
-
 In the event that you are lost on the page, scroll down to the end of each section and click on the return to [Table of Contents](#table-of-contents).
 
 --------------------------------------------------------------------------------------------------------------------
@@ -145,7 +144,7 @@ Here's a class diagram of the `Model` component:
 
 **API** : [`Model.java`](https://github.com/AY2122S1-CS2103T-W11-3/tp/blob/master/src/main/java/manageme/model/Model.java)
 
-<img src="images/MMModelClassDiagram.png" width="550" />
+<img src="images/MMModelClassDiagram.png" width="700" />
 
 
 The `Model` component,
@@ -155,6 +154,8 @@ The `Model` component,
   which is exposed to outsiders as an unmodifiable `ObservableList<Task>` that can be 'observed' e.g. the UI can be
   bound to this list so that the UI automatically updates when the data in the list change. The `Module` and `Link`
   objects similarly follow this implementation.
+* As `TaskModule` and `TaskTime` are optional fields, their values are internally stored within a Java `Optional`
+  object.
 * stores a `UserPref` object that represents the user’s preferences. This is exposed to the outside as a `ReadOnlyUserPref` object.
 * does not depend on any of the other three components (as the `Model` represents data entities of the domain, they should make sense on their own without depending on other components)
 
@@ -197,15 +198,63 @@ Return to [Table of Contents](#table-of-contents).
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Implementation**
-In this section, we share more about the implementation process of the main features in our application along with some design considerations made.
+This section describes some noteworthy details on how certain features are implemented.
 
-### **Task Feature**
-In this section, the functionality of the Task feature and its activity diagram will be discussed.
+### Task Feature
+In this section, the functionality of the Task feature and the sequence diagram for its related commands will be
+discussed.
+
+#### Implementation
+Similar to the commands available in AB3, a user is able to add, edit, delete, find and list tasks and is
+implemented as the `AddTaskCommand`,`EditTaskCommand`, `DeleteTaskCommand`, `FindTaskCommand` and `ListTaskCommand`
+respectively.
+
+To give an example, the activity diagram when the addTask Command is executed is shown below:
+![AddTaskActivityDiagram](images/AddTaskActivityDiagram.png) <br>
+*Figure. Activity diagram of creation of Task*
+
+Additionally, a user is also able to mark/unmark tasks as done and delete tasks that are already done. This is
+implemented as the `MarkTaskCommand` and `DeleteDoneTaskCommand` respectively.
+
+Shown below is the sequence diagrams for when  `MarkTaskCommand` and `DeleteDoneTaskCommand` are executed.
+<br>
+![MarkTaskSequenceDiagram](images/MarkTaskSequenceDiagram.png) <br>
+*Figure. Sequence diagram of marking task 2 in the task list as done/undone*
+<br>
+<br>
+![DeleteDoneTaskSequenceDiagram](images/DeleteDoneTaskSequenceDiagram.png) <br>
+*Figure. Sequence diagram of deleting all done tasks*
+
+### Read Module feature
+ManageMe allows you to type in readMod for a particular module, and see all Tasks and Links related to it in a pop-up window.
+
+#### Implementation
+Read module makes use of both the UI component, which creates a pop-up window for display, and the Logic component,
+which parses user commands and decide which module to read.
+
+In the UI component, The `MmMainWindow` class, which controls the display of the UI homepage, 
+calls the `executeCommand` function of the Logic component and gets back a `CommandResult`, which contains 
+information about the results of the execution. A boolean value in `CommandResult`, `isReadModule`, indicates whether a 
+Read Module window should be popped up. Once `isReadModule` is true, `MmMainWindow` will call the `ModuleWindow` 
+class and generate a pop-up window.
+
+In the Logic component, once `executeCommand` is called in `LogicManager`, `ManageMeParser` and `ReadModuleCommandParser`
+parses the module index the user inputted, and generates a `ReadModuleCommand` object. `LogicManager` then executes the
+`ReadModuleCommand` object, which sets what module is to be read in the `Model` component. A `CommandResult` 
+is generated with `isReadModule` boolean value being true and sent back to `MmMainWindow`.
+
+#### Sequence Diagram
+
+![ReadModSequenceDiagram](images/ReadModSequenceDiagram.png) <br>
+*Sequence diagram for readMod command* <br>
+
+![ReadModSequenceDiagram](images/ReadModRef.png) <br>
+*Referenced Sequence diagram* <br>
 
 ### Calendar feature
 ManageMe has a calendar feature for users to view all of their upcoming tasks for the month.
 
-#### Implementation
+##### Implementation
 The `CalendarPanel` consists of two main components, calendar and a task-list panel. A note-worthy field of the `CalendarPanel` is `referenceDate` whereby the task list panel will display the tasks happening on `referenceDate` in greater details. The month that is displayed is also based on the `referenceDate`. The default `referenceDate` is the current date when the application is first opened. <br><br>
 Calendar provides a visual representation of the user's schedule for the month. Days with upcoming tasks are denoted by a green dot. The `calendarPlaceholder`, which is the frame for the calendar, is a `GridPane`. The first row of the `GridPane` is a `Label` which represents a specific month and year. The second row has seven column where each cell is `Label` which represents the day-of-week. From the third row onwards, each cell is made up of a `DayCard`, which extends `UiPart<Region>` and represents a day in the calendar. The `DayCard` is made up of a `Label` and `Rectangle` with two `PseudoClass` to differentiate days with tasks and the reference date. <br><br>
 Task-list panel displays the tasks happening on `referenceDate` in greater details. It is made up of a `VBox` which contains a `Label`, which is the title, and a `StackPane`, which contains a `ListView<Task>`. <br><br>
@@ -217,53 +266,65 @@ The following sequence diagram demonstrates how the Calendar is created.
 Since the `CalendarPanel` is constructed with an `ObservableList<Task>`, changes to `UniqueTaskList` made by user using `addTask`, `deleteTask` and `editTask` will be reflected in the calendar automatically. <br><br>
 Calendar has three functionality, `prevMonth`, `nextMonth` and `readDay`, all of which manipulate `referenceDate`, which is the key component for generating the whole calendar GUI. Both `prevMonth` and `nextMonth` subtracts or adds the current `referenceDate` by a month respectively. While `readDay` takes in a `LocalDate` as argument and replace the `referenceDate` with it.
 
-#### Design Consideration
+##### Design Consideration
 The main consideration for the design of calendar is how many days should be displayed. The initial implementation was a "Week Calendar" which uses the current version of [NUSMODS](https://nusmods.com/timetable/sem-1) as reference. However, this design implies that there cannot be an overlap in the timing of different tasks. It would work for NUSMODS since it is a timetable and classes are not supposed to clash. However, it will not be as suitable for a calendar since multiple tasks can be happening or due at the same time. We decided to use the current implementation which is a "Month Calendar" with markings to represent the existence of tasks in the respective day-of-month and a task-list panel to display the tasks in greater details.
 <img src="images/Calendar.png" width="700" /> <br>
 *Figure. Screenshot of GUI of calendar in ManageMe.*
 
 
-### **Reminder Feature**
+### Reminder Feature
 In this section, the functionality of the reminder feature and its activity diagram will be discussed.
 
-### **Implementation of Reminders**
+#### Implementation
 Reminders are implemented under the `TimeManager` Class which is located under the `time` package.
 
 The main thread, which handles the user inputs and command
-execution, will operate as per normal, except that an additional thread runs with it.
+execution, will operate as per normal, except that an additional thread runs alongside it.
 
 This additional **Time** Thread will constantly check all the current tasks to make sure
 that the user is notified of any tasks that requires attention.
-This notification appears in the form of a pop-out with implementation located under the `time` package as well
+This notification appears in the form of a pop-out with implementation located under the `time` package.
 
-### **Activity Diagram of Reminders**
+#### Activity Diagram of Reminders
 
-<img src="images/RemindersActivityDiagram.png" width="550" /> <br>
+![ReminderActivityDiagram](images/ReminderActivityDiagram.png) <br>
 
-*Figure 10: Reminders Activity Diagram*
+*Figure: Reminders Activity Diagram*
 
-The above figure illustrates the execution path of Reminders when the user starts ManageMe.
+The above figure illustrates the execution path of Reminders when the user starts ManageMe, which has been shortened
+to **MM** in the activity diagram.
 
-When the user starts the application, 2 threads are immediately created. The **Main Thread** and the **Time** Thread.
+When the user starts the application, 2 threads are immediately started. The **Main Thread** and the **Time** Thread.
 
 For this activity diagram, the entire **Main Thread** will be represented by one action block only as this is not the
 main focus.
 
-The following actions occur when the **Time Thread** is created:
+The following actions occur when the **Time Thread** is started:
 1. `TimeManager` is initialized and starts to run.
 2. ManageMe is now in an **Alert State**. This means that this thread is constantly checking if ManageMe is still
-running.
-   1. If it is, check if there are any tasks that the user needs to be notified of. Once done,
-   return to **Alert State**.
-   2. If it is not, all threads including **Main Thread** will be ended and the application226G ends.
+   running.
+    1. If it is, check if there are any tasks that the user needs to be notified of. Once done,
+       return to **Alert State**.
+    2. If it is not, all threads including **Main Thread** will be ended and the application ends.
 
 
-<div markdown="span" class="alert alert-info">:information_source: ** Note:** As long as ManageMe is still running, it
+<div markdown="span" class="alert alert-info">:information_source: **Note:** As long as ManageMe is still running, it
 will continue to scan for tasks that need the user's attention.
 </div>
+
+### Archive Feature
+In this section, the archive feature and its activity diagram will be discussed.
+
+#### Implementation
+The archive feature is implemented as the `ArchiveCommand` and allows the user to archive the current data into a timestamped file in the data folder and resets the application with a new data file.
+
+The following Activity diagram demonstrates the execution path of the archive command:</br>
+<img src="images/ArchiveActivityDiagram.png" width="500" /> <br>
+*Figure. Activity diagram of execution of archive command*
+
 --------------------------------------------------------------------------------------------------------------------
 
-## **Documentation, logging, testing, configuration, dev-ops**
+## Documentation, logging, testing, configuration, dev-ops
 
 * [Documentation guide](Documentation.md)
 * [Testing guide](Testing.md)
@@ -275,9 +336,7 @@ Return to [Table of Contents](#table-of-contents).
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Appendix: Requirements**
-
-### Product scope
+## **Appendix A: Product scope**
 
 **Target user profile**:
 
@@ -298,41 +357,47 @@ A Digital-Age student who...
 
 Return to [Table of Contents](#table-of-contents).
 
+-----------------------------------------------------------------------------------------------
 
-### User stories
+## **Appendix B: User stories**
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​                                 | I want to …​                                                       | So that I can…​                                                                                        |
-| -------- | ------------------------------------------ | --------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
-| `* * *`  | Forgetful User                             | Add tasks                                                             | I can keep track of what I have done, and need to do.                                                     |
-| `* * *`  | Forgetful User                             | Add optional begin and end times to tasks                             |                                                                                                           |
-| `* * *`  | Forgetful User                             | Mark a task as done                                                   |                                                                                                           |
-| `* * *`  | Forgetful User                             | View all my tasks                                                     |                                                                                                           |
-| `* * *`  | Forgetful User                             | Associate a task with a module                                        | I know which module each task belongs to               |
-| `* * *`  | Forgetful User                             | Edit my tasks                                                         | I I can change information related to a task                          |
-| `* * *`  | Forgetful User                             | Delete my tasks                                                       | I can get rid of unwanted tasks.                                                                     |
-| `* * *`  | User                                       | Search for a task using keywords                                      | I do not have to waste time browsing through my entire task list to find a task.                    |
-| `* * *`  | Student                                    | Add modules                                                           | I can store all relevant information and links related to a module together.                              |
-| `* * *`  | Student                                    | View all my modules                                                   | I can keep track of the different modules that I am taking this semester.                              |
-| `* * *`  | Student                                    | View all tasks and links associated with a module                     | I can view all module-related tasks and links in one place                             |
-| `* * *`  | Student                                    | Edit my modules                                                       | I can make changes to information related to a module.                                                    |
-| `* * *`  | Student                                    | Delete my modules                                                     | I can get rid of modules that I am no longer taking.                                                      |
-| `* * *`  | Busy user                                  | View calendar                                                         | I can check the dates easily.                                                                             |
-| `* * *`  | Busy Student                               | View all tasks in a single day in the calendar according to its date  | I can know what happens on any particular date.                                 |
-| `* * *`  | Busy Student                               | See which days have ongoing tasks in a calendar                       | I can see which days I am free                                                                            |
-| `* *`    | Digital-Age Student                        | Add file paths in my local computer to modules                        | I can access module-related files directly from the application.                                          |
-| `* *`    | Digital Age Student                        | Add web links to modules                                              | I can access module-related links conveniently.                                                           |
-| `* `     | User                                       | Search for a link using keywords                                      | I do not have to waste time opening module or task tab to find a link.                                    |
-| `* *`    | New User                                   | Open the command summary to help me navigate the application          | I know how to use the application to perform the functions that I want.                                   |
-| `* *`    | Experienced User                           | Close the command summary                                             | It does not take up unnecessary screen space after I am familiar with the commands.                       |
-| `*`      | Long-term user                             | Archive all the data                                                  | I store away old data to make space for new data.                                                         |
+| Priority | As a …​                                 | I want to …​                                                       | So that I can…​                                                        |
+| -------- | ------------------------------------------ | --------------------------------------------------------------------- | --------------------------------------------------------------------------|
+| `* * *`  | Forgetful User                             | Add tasks                                                             | Keep track of what tasks I need to do                                     |
+| `* * *`  | Forgetful User                             | Add optional begin and end times to tasks                             | Know when a task beings and ends                                          |
+| `* * *`  | Forgetful User                             | Mark a task as done                                                   | Keep track of tasks I have done                                           |
+| `* * *`  | Forgetful User                             | View all my tasks                                                     |                                                                           |
+| `* * *`  | Forgetful User                             | Associate a task with a module                                        | Know which module each task belongs to                                    |
+| `* * *`  | Forgetful User                             | Edit my tasks                                                         | Change information related to a task                                      |
+| `* * *`  | Forgetful User                             | Delete my tasks                                                       | Remove done or unwanted tasks                                             |
+| `* * *`  | Forgetful User                             | Search for a task using keywords                                      | Find a task quickly by its name                                           |
+| `* * *`  | Student                                    | Add modules                                                           | Keep track of what modules I take                                         |
+| `* * *`  | Student                                    | View all my modules                                                   |                                                                           |
+| `* * *`  | Student                                    | View all tasks and links associated with a module                     | View all module-related tasks and links in one place                      |
+| `* * *`  | Student                                    | Edit my modules                                                       | Change information related to a module.                                   |
+| `* * *`  | Student                                    | Delete my modules                                                     | Remove modules that I am no longer taking                                 |
+| `* * *`  | Student                                    | Search for a module using keywords                                    | Find a module quickly by its name                                         |
+| `* * *`  | Digital-age student                        | Add a link                                                            | Keep track of website links and computer files I use in my study          |
+| `* * *`  | Digital-age student                        | Delete a link                                                         | Remove links I no longer use                                              |
+| `* * *`  | Digital-age student                        | Edit a link                                                           | Change information related to a link                                      |
+| `* * *`  | Digital-age student                        | Search for a link using keywords                                      | Find a link quickly by its name                                           |
+| `* * *`  | Digital-age student                        | View all my links                                                     |                                                                           |
+| `* *`    | Digital-Age Student                        | Open links                                                            | Access module-related web links and files directly from the application   |
+| `* * *`  | Busy user                                  | View calendar                                                         | Check the dates easily                                                    |
+| `* * *`  | Busy Student                               | View all tasks in a single day in the calendar according to its date  | Know what happens on any particular date                                  |
+| `* * *`  | Busy Student                               | See which days have ongoing tasks in a calendar                       | See which days I am free                                                  |
+| `* *`    | New User                                   | Open the command summary                                              | Know what commands are available and how to use them                      |
+| `* *`    | Experienced User                           | Close the command summary                                             | Save screen space after I am familiar with the commands.                  |
+| `*`      | Long-term user                             | Archive all the data                                                  | Store away old data to make space for new data.                           |
 
 
 Return to [Table of Contents](#table-of-contents).
 
+----------------------------------------------------------------------------------------------------------------
 
-### Common Use cases
+## **Appendix C: Common Use cases**
 
 (For all use cases below, the **System** is `ManageMe` unless specified otherwise)
 
@@ -344,7 +409,7 @@ Return to [Table of Contents](#table-of-contents).
 
 </div>
 
-**Use case: Generic Add**
+### Use case 01: Generic Add
 
 **MSS:**
 1. User requests to add a task/module/link with its details.
@@ -352,15 +417,15 @@ Return to [Table of Contents](#table-of-contents).
    Use case ends.
 
 **Extensions:**
-*1a. Compulsory parameters are missing, including names, description for tasks, and address for links
-*1b1. The system shows the missing parameter error message and shows the correct format
-Use case resumes from step 1.
-*1b. Parameters entered are invalid, including invalid characters in the name, invalid date-time in the task, and invalid addresses in links.
-* 1b1. System shows error in format.
-  Use case resumes from step 1.
+* 1a. Compulsory parameters are missing, including names, description for tasks, and address for links.
+  * 1a1. The system shows the missing parameter error message and shows the correct format. 
+  * Use case resumes from step 1.
+* 1b. Parameters entered are invalid, including invalid characters in the name, invalid date-time in the task, and invalid addresses in links.
+  * 1b1. System shows error in format. 
+  * Use case resumes from step 1.
 
 
-**Use case: Generic Edit**
+### Use case 02: Generic Edit
 
 **MSS:**
 1. User requests to edit a specified task/module/link and enters the new details.
@@ -369,14 +434,13 @@ Use case resumes from step 1.
 
 **Extensions:**
 * 1a. User enters an invalid task index<br>
-    * 1a1. System shows error in reading index.
-      Use case resumes from step 1.
+    * 1a1. System shows error in reading index. 
+    * Use case resumes from step 1.
 * 1b.Parameters entered are of invalid format, including invalid characters in names, invalid date-time for tasks, and invalid address for links.
-    * 1a1. System shows error in parsing data.
-      Use case resumes from step 1. <br><br>
+    * 1a1. System shows error in parsing data. 
+    * Use case resumes from step 1. <br><br>
 
-
-**Use case: Generic Delete**
+### Use case 03: Generic Delete
 
 **MSS:**
 
@@ -388,11 +452,10 @@ Use case resumes from step 1.
 **Extension:**
 
 * 1a. User enters an invalid task index
-    * 1a1. System shows error in reading index.
-      Use case resumes from step 1.
-
-
-**Use case: Generic Find**
+    * 1a1. System shows error in reading index. 
+    * Use case resumes from step 1.
+    
+### Use case 04: Generic Find
 
 **MSS:**
 
@@ -403,11 +466,11 @@ Use case resumes from step 1.
 **Extension:**
 
 * 1a. User does not enter a keyword. <br>
-    * 1a1. System shows invalid format error.
-      Use case resumes from step 1.
+    * 1a1. System shows invalid format error. 
+    * Use case resumes from step 1.
 
 
-**Use case: Generic List**
+### Use case 05: Generic List
 
 **MSS:**
 
@@ -415,20 +478,22 @@ Use case resumes from step 1.
 3. System updates the GUI to show the full list of keywords. <br>
    Use case ends.
 
-
 Return to [Table of Contents](#table-of-contents).
 
-### Non-Functional Requirements
+-------------------------------------------------------------------------------------------------------------------------
+
+## **Appendix D: Non-Functional Requirements**
 
 1. Should work on any _mainstream OS_ as long as it has Java `11` or above installed.
 2. Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
 3. A user with above-average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
 4. The system will not be responsible for checking the validity of external links entered into the system, such as Zoom links or Luminus links. They must be checked beforehand by the user.
 
-
 Return to [Table of Contents](#table-of-contents).
 
-### Glossary
+----------------------------------------------------------------------------------------------------------------------
+
+## **Appendix E: Glossary**
 
 * **Mainstream OS**: Windows, Linux, Unix, OS-X
 * **Digital-age:** A post-pandemic world where many schools have switched to online teaching and learning.
@@ -436,13 +501,11 @@ Return to [Table of Contents](#table-of-contents).
 * **Online resources:** Websites used by many schools in the post-pandemic world for teaching, file submission, and assessment. For example, Zoom, Luminus, Exemplify etc.
 * **Command Line Interface (CLI):** An interface where the user primarily gives command to the computer by typing text lines, instead of clicking and dragging graphic components.
 
+Return to [Table of Contents](#table-of-contents).
 
 --------------------------------------------------------------------------------------------------------------------
 
-Return to [Table of Contents](#table-of-contents).
-
-
-## **Appendix: Instructions for manual testing**
+## **Appendix F: Instructions for manual testing**
 
 Given below are instructions to test the app manually.
 
@@ -466,8 +529,7 @@ testers are expected to do more *exploratory* testing.
     1. Re-launch the app by double-clicking the jar file.<br>
        Expected: The most recent window size and location is retained.
 
-
-
+       
 ### Deleting a task
 
 1. Deleting a task while all tasks are being shown
@@ -486,14 +548,11 @@ testers are expected to do more *exploratory* testing.
 
 ### Pop-up window
 
-1. Test whether the pop-up window works in the app
-
-Add a task with a starting time just 1 minute away from your current time .<br>
-Expected: A reminder will appear in a pop-up window for this ongoing task 1 min later.
-
-Type readMod for an existing module (if no module exists, add one with a simple name)
-Expected: A window appears that show all tasks and links associated with a module
-
+1. Test whether the pop-up window works in the app 
+   1. Add a task with a starting time just 1 minute away from your current time .<br>
+   Expected: A reminder will appear in a pop-up window for this ongoing task 1 min later.
+   2. Type readMod for an existing module (if no module exists, add one with a simple name)
+   Expected: A window appears that show all tasks and links associated with a module
 
 
 ### Saving data
