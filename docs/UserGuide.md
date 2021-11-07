@@ -8,7 +8,7 @@ title: User Guide
 
 --------------------------------------------------------------------------------------------------------------------
 
-## <font color="#f0932b">Introduction:</font>
+## <font color="#f0932b">Introduction</font>
 ManageMe is a **lightweight but powerful** desktop application built to **help university students manage their school life**, available on Windows, Linux, and Mac. If you are a University student struggling to cope with your ever-increasing workload, then ManageMe is for you!
 
 You can add your modules, tasks, schedules, and online learning resources easily into ManageMe and access them with simple commands. The application is optimized for interaction through typing with a text input and response box similar to a **Command Line Interface (CLI)** but also provides a convenient Graphical User Interface (GUI) for more visual users.

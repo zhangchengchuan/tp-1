@@ -2,7 +2,7 @@
 layout: page
 title: Developer Guide
 ---
-## Table of Contents
+## **Table of Contents**
 * Table of Contents
 {:toc}
 
@@ -77,7 +77,8 @@ The *Sequence Diagram* below shows how the components interact with each other f
 
 The `Time` component is not shown as it runs on a separate thread concurrently than the main thread which executes commands.
 
-<img src="images/ArchitectureSequenceDiagram.png" width="574" />
+[comment]: <> (<img src="images/ArchitectureSequenceDiagram.png" width="574" />)
+![ArchitectureSequenceDiagram](images/ArchitectureSequenceDiagram.png) <br>
 
 Each of the five main components (also shown in the diagram above, except `Time`),
 
@@ -499,7 +500,7 @@ Return to [Table of Contents](#table-of-contents).
 ## **Appendix D: Non-Functional Requirements**
 
 1. Should work on any _mainstream OS_ as long as it has Java `11` or above installed.
-2. Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
+2. Should be able to hold up to 1000 tasks, modules and links without a noticeable sluggishness in performance for typical usage.
 3. A user with above-average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
 4. The system will not be responsible for checking the validity of external links entered into the system, such as Zoom links or Luminus links. They must be checked beforehand by the user.
 
