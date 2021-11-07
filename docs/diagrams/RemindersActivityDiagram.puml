@@ -1,20 +1,21 @@
 @startuml
-start
-:User starts MM;
-fork
-    :Start Main Thread;
-fork again
-    :Start Time Thread;
-    :Start TimeManager;
-    :Enter Alert State;
-    while () is (MM running)
-    :Check tasks for reminders;
-    if() then(Tasks Due)
-    :Show Pop-out Reminder;
-    else(No Tasks Due)
+(*) -> User starts ManageMe
+--> ===B1===
+-left> "Main Thread"
+--> ===B2===
+
+===B1=== -right-> "Time Thread"
+--> "TimeManager \n started"
+--> "ManageMe in \n Alert State"
+--> "State of ManageMe"
+--> if "[Still Running?]"
+---up> [Yes] "Show \n Notification,\n if any"
+
+--> "ManageMe in \n Alert State"
+
+    else
+    --> [No] ==B2==
     endif
-    endwhile (MM not running)
-end fork
-:End all threads;
-stop
+--> End all threads
+--> (*)
 @enduml
