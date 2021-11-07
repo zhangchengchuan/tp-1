@@ -47,7 +47,8 @@ Return to [Table of Contents](#table-of-contents).
 
 ### Architecture
 
-<img src="images/ArchitectureDiagram.png" width="280" />
+[comment]: <> (<img src="images/ArchitectureDiagram.png" width="280" />)
+![ArchitectureDiagram](images/ArchitectureDiagram.png) <br>
 
 The ***Architecture Diagram*** given above explains the high-level design of the App.
 
@@ -194,7 +195,7 @@ Return to [Table of Contents](#table-of-contents).
 
 ### Time component
 
-**API** : [`Time.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/storage/Time.java)
+**API** : [`Time.java`](https://github.com/AY2122S1-CS2103T-W11-3/tp/blob/master/src/main/java/manageme/time/Time.java)
 
 <img src="images/MMTimeClassDiagram.png" width="550" />
 
