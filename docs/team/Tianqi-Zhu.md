@@ -16,7 +16,7 @@ Given below are my contributions to the project.
     * findLink command
     * openLink command which supports both web url and local file path
 
-* **Code contributed**: [RepoSense link]()
+* **Code contributed**: [RepoSense link](https://app.codecov.io/gh/AY2122S1-CS2103T-W11-3/tp/)
 
 * **Project management**:
     * Managed releases `v1.3` - `v1.5rc` (3 releases) on GitHub
