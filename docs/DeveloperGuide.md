@@ -370,7 +370,7 @@ Return to [Table of Contents](#table-of-contents).
 
 </div>
 
-**Use case: Generic Add**
+#### Use case 01: Generic Add
 
 **MSS:**
 1. User requests to add a task/module/link with its details.
@@ -386,7 +386,7 @@ Use case resumes from step 1.
   Use case resumes from step 1.
 
 
-**Use case: Generic Edit**
+#### Use case 02: Generic Edit
 
 **MSS:**
 1. User requests to edit a specified task/module/link and enters the new details.
@@ -402,7 +402,7 @@ Use case resumes from step 1.
       Use case resumes from step 1. <br><br>
 
 
-**Use case: Generic Delete**
+#### Use case 03: Generic Delete
 
 **MSS:**
 
@@ -418,7 +418,7 @@ Use case resumes from step 1.
       Use case resumes from step 1.
 
 
-**Use case: Generic Find**
+#### Use case 04: Generic Find
 
 **MSS:**
 
@@ -433,7 +433,7 @@ Use case resumes from step 1.
       Use case resumes from step 1.
 
 
-**Use case: Generic List**
+#### Use case 05: Generic List
 
 **MSS:**
 
