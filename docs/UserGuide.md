@@ -284,7 +284,7 @@ Examples: `addLink n/google a/https://www.google.com mod/CS1101S`
 
 :bulb: **Tip: How to find the absolute directory of my file?** <br><br>
 
-For windows, right-click on the file, select `properties`, and you will see a window like this.<br><br>
+**For windows:** right-click on the file, select `properties`, and you will see a window like this.<br><br>
 ![win_property](images/file_properties_win_1.png) <br><br>
 
 Under the `general` panel, there will be the `name` of the file and its `Location`. The absolute directory is the combination of the two.
@@ -292,15 +292,14 @@ Our app take the format with slash instead of backslash like the location in the
 For this example, the absolute directory with slashes is `C:/Users/tianqi/Desktop/test.pptx`. You may type `addLink n/test a/C:/Users/tianqi/Desktop/test.pptx` into our app to add the link. <br><br>
 
 
-For Mac:
-Right click on the file, select “Get Info”:<br><br>
+**For Mac:** Right click on the file, select “Get Info”:<br><br>
 ![Filepath](images/mac_getinfo.png)<br><br>
 
 Then you will see this window. Copy and paste the “path” section:<br><br>
 ![Filepath](images/mac_filepath.png)<br><br>
 
 
-For Linux, take ubuntu as an example. Like windows, you may right-click on the file and see the path of the parent folder and the file name. <br><br>
+**For Linux**, take ubuntu as an example. Like windows, you may right-click on the file and see the path of the parent folder and the file name. <br><br>
 ![Linux_file](images/linux_file_property.png)<br><br>
 
 </div>
