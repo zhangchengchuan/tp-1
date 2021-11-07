@@ -235,8 +235,9 @@ parses the module index the user inputted, and generates a `ReadModuleCommand` o
 is generated with `isReadModule` boolean value being true and sent back to `MmMainWindow`.
 
 #### Sequence Diagram of readMod command <br>
-<img src=”images/ReadModSequenceDiagram.png” width=”800” /> <br>
-<img src=”images/ReadModRef.png” width=”250” /> <br>
+<img src=”images/ReadModSequenceDiagram.png” width=”800” />
+<br>
+<img src=”images/ReadModRef.png” width=”250” />
 
 ### Calendar feature
 ManageMe has a calendar feature for users to view all of their upcoming tasks for the month.
@@ -274,7 +275,7 @@ This notification appears in the form of a pop-out with implementation located u
 
 #### **Activity Diagram of Reminders**
 
-<img src="images/RemindersActivityDiagram.png" width="550" /> <br>
+<img src="images/RemindersActivityDiagram.png" width="550" />
 
 *Figure 10: Reminders Activity Diagram*
 
