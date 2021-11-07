@@ -219,13 +219,11 @@ is generated with `isReadModule` boolean value being true and sent back to `MmMa
 
 #### Sequence Diagram
 
-<img src=”images/ReadModSequenceDiagram.png” width=”800” />
+![ReadModSequenceDiagram](images/ReadModSequenceDiagram.png) <br>
+*Sequence diagram for readMod command* <br>
 
-Sequence diagram for readMod command <br>
-
-<img src=”images/ReadModRef.png” width=”250” />
-
-Referenced Sequence diagram<br>
+![ReadModSequenceDiagram](images/ReadModRef.png) <br>
+*Referenced Sequence diagram* <br>
 
 ### **Task Feature**
 In this section, the functionality of the Task feature and its activity diagram will be discussed.
@@ -266,9 +264,9 @@ This notification appears in the form of a pop-out with implementation located u
 
 #### Activity Diagram of Reminders
 
-<img src="images/RemindersActivityDiagram.png" width="550" />
+![ReminderActivityDiagram](images/RemindersActivityDiagram.png) <br>
 
-*Figure 10: Reminders Activity Diagram*
+*Figure: Reminders Activity Diagram*
 
 The above figure illustrates the execution path of Reminders when the user starts ManageMe.
 
