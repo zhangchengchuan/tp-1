@@ -33,9 +33,9 @@ import manageme.logic.commands.module.FindModuleCommand;
 import manageme.logic.commands.module.ListModuleCommand;
 import manageme.logic.parser.exceptions.ParseException;
 import manageme.model.link.Link;
-import manageme.model.module.ModNameContainsKeywordsPredicate;
+import manageme.model.module.NameContainsKeywordsPredicate;
 import manageme.model.module.Module;
-import manageme.model.module.ModuleName;
+import manageme.model.Name;
 import manageme.testutil.EditLinkDescriptorBuilder;
 import manageme.testutil.EditModuleDescriptorBuilder;
 import manageme.testutil.LinkBuilder;
@@ -105,10 +105,10 @@ public class ManageMeParserTest {
 
     @Test
     public void parseCommand_addModule() throws Exception {
-        ModuleName moduleName = new ModuleName(VALID_MODNAME_A);
+        Name Name = new Name(VALID_MODNAME_A);
         Module module = new ModuleBuilder().build();
         AddModuleCommand command = (AddModuleCommand) parser.parseCommand(ModuleUtil.getAddModuleCommand(module));
-        assertEquals(new AddModuleCommand(moduleName), command);
+        assertEquals(new AddModuleCommand(Name), command);
     }
 
     @Test
@@ -133,7 +133,7 @@ public class ManageMeParserTest {
         List<String> keywords = Arrays.asList("foo", "bar", "baz");
         FindModuleCommand command = (FindModuleCommand) parser.parseCommand(
                 FindModuleCommand.COMMAND_WORD + " " + keywords.stream().collect(Collectors.joining(" ")));
-        assertEquals(new FindModuleCommand(new ModNameContainsKeywordsPredicate(keywords)), command);
+        assertEquals(new FindModuleCommand(new NameContainsKeywordsPredicate(keywords)), command);
     }
 
 

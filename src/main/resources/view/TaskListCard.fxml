@@ -11,18 +11,22 @@
       <Insets bottom="5" left="15" right="5" top="5" />
    </padding>
    <children>
-      <HBox alignment="CENTER_LEFT" spacing="5" VBox.vgrow="NEVER">
+      <HBox alignment="CENTER_LEFT" minWidth="-Infinity" spacing="5" VBox.vgrow="NEVER">
          <children>
             <Label fx:id="taskId" text="\$id">
                <minWidth>
                   <Region fx:constant="USE_PREF_SIZE" />
                </minWidth>
             </Label>
-            <Label fx:id="taskName" text="\$first" />
+            <Label fx:id="Name" text="\$first" wrapText="true" />
          </children>
       </HBox>
-      <Label fx:id="taskDescription" text="\$description" VBox.vgrow="NEVER" />
-      <Label fx:id="taskModule" VBox.vgrow="NEVER" />
+      <HBox minWidth="-Infinity">
+         <children>
+            <Label fx:id="taskDescription" maxWidth="1.7976931348623157E308" text="\$description" wrapText="true" HBox.hgrow="ALWAYS" />
+         </children>
+      </HBox>
+      <Label fx:id="TagModule" VBox.vgrow="NEVER" />
       <Label fx:id="startTime" VBox.vgrow="NEVER" />
       <Label fx:id="endTime" layoutX="25.0" layoutY="80.0" VBox.vgrow="NEVER" />
    </children>

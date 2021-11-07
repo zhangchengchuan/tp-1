@@ -8,47 +8,47 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
-public class TaskModuleTest {
+public class TagModuleTest {
     @Test
     public void constructor_null_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> new TaskModule(null));
+        assertThrows(NullPointerException.class, () -> new TagModule(null));
     }
     @Test
-    public void constructor_invalidTaskModule_throwsIllegalArgumentException() {
+    public void constructor_invalidTagModule_throwsIllegalArgumentException() {
         String invalidModule = "**";
-        assertThrows(IllegalArgumentException.class, () -> new TaskModule(invalidModule));
+        assertThrows(IllegalArgumentException.class, () -> new TagModule(invalidModule));
     }
     @Test
     public void isValidModule() {
         // null module
-        assertThrows(NullPointerException.class, () -> TaskModule.isValidModule(null));
+        assertThrows(NullPointerException.class, () -> manageme.model.TagModule.isValidModule(null));
 
         // invalid module
-        assertFalse(TaskModule.isValidModule("^")); // only non-alphanumeric characters
-        assertFalse(TaskModule.isValidModule("hello*")); // contains non-alphanumeric characters
+        assertFalse(manageme.model.TagModule.isValidModule("^")); // only non-alphanumeric characters
+        assertFalse(manageme.model.TagModule.isValidModule("hello*")); // contains non-alphanumeric characters
 
         // valid module
-        assertTrue(TaskModule.isValidModule("CSABCD")); // alphabets only
-        assertTrue(TaskModule.isValidModule("12345")); // numbers only
-        assertTrue(TaskModule.isValidModule("cs2100")); // alphanumeric characters
-        assertTrue(TaskModule.isValidModule("CS2103T")); // with capital letters
+        assertTrue(manageme.model.TagModule.isValidModule("CSABCD")); // alphabets only
+        assertTrue(manageme.model.TagModule.isValidModule("12345")); // numbers only
+        assertTrue(manageme.model.TagModule.isValidModule("cs2100")); // alphanumeric characters
+        assertTrue(manageme.model.TagModule.isValidModule("CS2103T")); // with capital letters
     }
     @Test
     public void equals() {
         // same module, returns true
-        assertTrue(TASK_A.getTaskModule().equals(TASK_A.getTaskModule()));
+        assertTrue(TASK_A.getTagModule().equals(TASK_A.getTagModule()));
 
         // different module, returns false
-        assertFalse(TASK_A.getTaskModule().equals(TASK_B.getTaskModule()));
+        assertFalse(TASK_A.getTagModule().equals(TASK_B.getTagModule()));
     }
 
     @Test
     public void empty() {
-        // Empty TaskModule with value set as ""
-        assertTrue(TaskModule.empty().value.equals(""));
+        // Empty TagModule with value set as ""
+        assertTrue(manageme.model.TagModule.empty().value.equals(""));
 
-        // Empty TaskModule with moduleName set as an empty Optional<String>
-        assertTrue(TaskModule.empty().moduleName.isEmpty());
+        // Empty TagModule with Name set as an empty Optional<String>
+        assertTrue(manageme.model.TagModule.empty().Name.isEmpty());
     }
 
 }

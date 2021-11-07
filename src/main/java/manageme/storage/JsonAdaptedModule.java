@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import manageme.commons.exceptions.IllegalValueException;
 import manageme.model.module.Module;
-import manageme.model.module.ModuleName;
+import manageme.model.Name;
 
 /**
  * Jackson-friendly version of {@link Module}.
@@ -28,7 +28,7 @@ public class JsonAdaptedModule {
      * Converts a given {@code Module} into this class for Jackson use.
      */
     public JsonAdaptedModule(Module source) {
-        modName = source.getModuleName().value;
+        modName = source.getName().value;
     }
 
     /**
@@ -41,10 +41,10 @@ public class JsonAdaptedModule {
         if (modName == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, "modName"));
         }
-        if (!ModuleName.isValidModuleName(modName)) {
-            throw new IllegalValueException(ModuleName.MESSAGE_CONSTRAINTS);
+        if (!Name.isValidName(modName)) {
+            throw new IllegalValueException(Name.MESSAGE_CONSTRAINTS);
         }
-        final ModuleName modelName = new ModuleName(modName);
+        final Name modelName = new Name(modName);
 
         return new Module(modelName);
     }

@@ -70,7 +70,7 @@ public class UniqueModuleListTest {
     }
 
     @Test
-    public void setModule_editedModuleIsSameModule_success() {
+    public void setModule_editedModuleisSame_success() {
         uniqueModuleList.add(MODULE_A);
         uniqueModuleList.setModule(MODULE_A, MODULE_A);
         UniqueModuleList expectedUniqueModuleList = new UniqueModuleList();

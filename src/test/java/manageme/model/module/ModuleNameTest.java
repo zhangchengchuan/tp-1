@@ -6,35 +6,35 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
-public class ModuleNameTest {
+public class NameTest {
 
     @Test
     public void constructor_null_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> new ModuleName(null));
+        assertThrows(NullPointerException.class, () -> new Name(null));
     }
 
     @Test
-    public void constructor_invalidModuleName_throwsIllegalArgumentException() {
-        String invalidModuleName = "";
-        assertThrows(IllegalArgumentException.class, () -> new ModuleName(invalidModuleName));
+    public void constructor_invalidName_throwsIllegalArgumentException() {
+        String invalidName = "";
+        assertThrows(IllegalArgumentException.class, () -> new Name(invalidName));
     }
 
     @Test
-    public void isValidModuleName() {
-        // null ModuleName
-        assertThrows(NullPointerException.class, () -> ModuleName.isValidModuleName(null));
+    public void isValidName() {
+        // null Name
+        assertThrows(NullPointerException.class, () -> Name.isValidName(null));
 
-        // invalid ModuleName
-        assertFalse(ModuleName.isValidModuleName("")); // empty string
-        assertFalse(ModuleName.isValidModuleName(" ")); // spaces only
-        assertFalse(ModuleName.isValidModuleName("^")); // only non-alphanumeric characters
-        assertFalse(ModuleName.isValidModuleName("CS2100*")); // contains non-alphanumeric characters
+        // invalid Name
+        assertFalse(Name.isValidName("")); // empty string
+        assertFalse(Name.isValidName(" ")); // spaces only
+        assertFalse(Name.isValidName("^")); // only non-alphanumeric characters
+        assertFalse(Name.isValidName("CS2100*")); // contains non-alphanumeric characters
 
-        // valid ModuleName
-        assertTrue(ModuleName.isValidModuleName("CSCS")); // alphabets only
-        assertTrue(ModuleName.isValidModuleName("12345")); // numbers only
-        assertTrue(ModuleName.isValidModuleName("cs2100")); // alphanumeric characters
-        assertTrue(ModuleName.isValidModuleName("CS2100")); // with capital letters
-        assertTrue(ModuleName.isValidModuleName("CS2100 Computer Organization")); // long ModuleNames
+        // valid Name
+        assertTrue(Name.isValidName("CSCS")); // alphabets only
+        assertTrue(Name.isValidName("12345")); // numbers only
+        assertTrue(Name.isValidName("cs2100")); // alphanumeric characters
+        assertTrue(Name.isValidName("CS2100")); // with capital letters
+        assertTrue(Name.isValidName("CS2100 Computer Organization")); // long Names
     }
 }

@@ -1,6 +1,6 @@
 package manageme.logic.parser;
 
-import static manageme.logic.commands.link.LinkCommandTestUtil.VALID_LINKNAME_A;
+import static manageme.logic.commands.link.LinkCommandTestUtil.VALID_Name_A;
 import static manageme.logic.parser.ParserUtil.MESSAGE_INVALID_INDEX;
 import static manageme.testutil.Assert.assertThrows;
 import static manageme.testutil.TypicalIndexes.INDEX_FIRST;
@@ -15,11 +15,11 @@ import java.util.Set;
 import org.junit.jupiter.api.Test;
 
 import manageme.logic.parser.exceptions.ParseException;
-import manageme.model.link.LinkName;
+import manageme.model.Name;
 import manageme.model.tag.Tag;
 import manageme.model.task.TaskDescription;
-import manageme.model.task.TaskModule;
-import manageme.model.task.TaskName;
+import manageme.model.TagModule;
+import manageme.model.Name;
 import manageme.model.task.TaskTime;
 
 public class ParserUtilTest {
@@ -38,11 +38,11 @@ public class ParserUtilTest {
 
     private static final String WHITESPACE = " \t\r\n";
 
-    private static final String INVALID_TASKNAME = "";
+    private static final String INVALID_Name = "";
 
-    private static final String VALID_TASKNAME = "Do work";
+    private static final String VALID_Name = "Do work";
     private static final String VALID_TASKDESCRIPTION = "immediately";
-    private static final String VALID_TASKMODULE = "CS2103T";
+    private static final String VALID_TagModule = "CS2103T";
     private static final String VALID_TASKTIME = "2021-10-05T11:40";
 
     @Test
@@ -67,25 +67,25 @@ public class ParserUtilTest {
 
     @Test
     public void parseName_null_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> ParserUtil.parseLinkName((String) null));
+        assertThrows(NullPointerException.class, () -> ParserUtil.parseName((String) null));
     }
 
     @Test
     public void parseName_invalidValue_throwsParseException() {
-        assertThrows(ParseException.class, () -> ParserUtil.parseLinkName(INVALID_NAME));
+        assertThrows(ParseException.class, () -> ParserUtil.parseName(INVALID_NAME));
     }
 
     @Test
     public void parseName_validValueWithoutWhitespace_returnsName() throws Exception {
-        LinkName expectedName = new LinkName(VALID_LINKNAME_A);
-        assertEquals(expectedName, ParserUtil.parseLinkName(VALID_LINKNAME_A));
+        Name expectedName = new Name(VALID_Name_A);
+        assertEquals(expectedName, ParserUtil.parseName(VALID_Name_A));
     }
 
     @Test
     public void parseName_validValueWithWhitespace_returnsTrimmedName() throws Exception {
-        String nameWithWhitespace = WHITESPACE + VALID_LINKNAME_A + WHITESPACE;
-        LinkName expectedName = new LinkName(VALID_LINKNAME_A);
-        assertEquals(expectedName, ParserUtil.parseLinkName(nameWithWhitespace));
+        String nameWithWhitespace = WHITESPACE + VALID_Name_A + WHITESPACE;
+        Name expectedName = new Name(VALID_Name_A);
+        assertEquals(expectedName, ParserUtil.parseName(nameWithWhitespace));
     }
 
     @Test
@@ -135,26 +135,26 @@ public class ParserUtilTest {
     }
 
     @Test
-    public void parseTaskName_null_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> ParserUtil.parseTaskName((String) null));
+    public void parseName_null_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> ParserUtil.parseName((String) null));
     }
 
     @Test
-    public void parseTaskName_invalidValue_throwsParseException() {
-        assertThrows(ParseException.class, () -> ParserUtil.parseTaskName(INVALID_TASKNAME));
+    public void parseName_invalidValue_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parseName(INVALID_Name));
     }
 
     @Test
-    public void parseTaskName_validValueWithoutWhitespace_returnsTaskName() throws Exception {
-        TaskName expectedTaskName = new TaskName(VALID_TASKNAME);
-        assertEquals(expectedTaskName, ParserUtil.parseTaskName(VALID_TASKNAME));
+    public void parseName_validValueWithoutWhitespace_returnsName() throws Exception {
+        Name expectedName = new Name(VALID_Name);
+        assertEquals(expectedName, ParserUtil.parseName(VALID_Name));
     }
 
     @Test
-    public void parseTaskName_validValueWithWhitespace_returnsTrimmedTaskName() throws Exception {
-        String taskNameWithWhitespace = WHITESPACE + VALID_TASKNAME + WHITESPACE;
-        TaskName expectedTaskName = new TaskName(VALID_TASKNAME);
-        assertEquals(expectedTaskName, ParserUtil.parseTaskName(taskNameWithWhitespace));
+    public void parseName_validValueWithWhitespace_returnsTrimmedName() throws Exception {
+        String NameWithWhitespace = WHITESPACE + VALID_Name + WHITESPACE;
+        Name expectedName = new Name(VALID_Name);
+        assertEquals(expectedName, ParserUtil.parseName(NameWithWhitespace));
     }
 
     @Test
@@ -175,20 +175,20 @@ public class ParserUtilTest {
     }
 
     @Test
-    public void parseTaskModule_null_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> ParserUtil.parseTaskModule((String) null));
+    public void parseTagModule_null_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> ParserUtil.parseTagModule((String) null));
     }
     @Test
-    public void parseTaskModule_validValueWithoutWhitespace_returnsTaskModule() throws Exception {
-        TaskModule expectedTaskModule = new TaskModule(VALID_TASKMODULE);
-        assertEquals(expectedTaskModule, ParserUtil.parseTaskModule(VALID_TASKMODULE));
+    public void parseTagModule_validValueWithoutWhitespace_returnsTagModule() throws Exception {
+        TagModule expectedTagModule = new TagModule(VALID_TagModule);
+        assertEquals(expectedTagModule, ParserUtil.parseTagModule(VALID_TagModule));
     }
 
     @Test
-    public void parseTaskModule_validValueWithWhitespace_returnsTrimmedTaskModule() throws Exception {
-        String taskModuleWithWhitespace = WHITESPACE + VALID_TASKMODULE + WHITESPACE;
-        TaskModule expectedTaskModule = new TaskModule(VALID_TASKMODULE);
-        assertEquals(expectedTaskModule, ParserUtil.parseTaskModule(taskModuleWithWhitespace));
+    public void parseTagModule_validValueWithWhitespace_returnsTrimmedTagModule() throws Exception {
+        String TagModuleWithWhitespace = WHITESPACE + VALID_TagModule + WHITESPACE;
+        TagModule expectedTagModule = new TagModule(VALID_TagModule);
+        assertEquals(expectedTagModule, ParserUtil.parseTagModule(TagModuleWithWhitespace));
     }
 
     @Test
