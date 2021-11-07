@@ -188,8 +188,8 @@
 }
 
 .button:hover {
-    -fx-border-color: darkviolet;
-    -fx-background-color: dodgerblue;
+    -fx-border-color: gray;
+    -fx-background-color: khaki;
 }
 
 .header {
