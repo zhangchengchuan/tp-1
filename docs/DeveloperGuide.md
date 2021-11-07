@@ -1,7 +1,8 @@
 ---
 layout: page
 title: Developer Guide
----
+--
+## Table of Contents
 * Table of Contents
 {:toc}
 
@@ -91,8 +92,7 @@ Return to [Table of Contents](#table-of-contents).
 
 The **API** of this component is specified in [`Ui.java`](https://github.com/AY2122S1-CS2103T-W11-3/tp/blob/master/src/main/java/manageme/ui/Ui.java)
 
-
-<img src="images/UiClassDiagram.png" width="800"/>
+![class](images/UiClassDiagram.png)
 
 The UI consists of a `MmMainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `ModuleListPanel`, `TaskListPanel` etc. All these, including the `MmMainWindow`, inherit from the abstract `UiPart` class which captures the commonalities between classes that represent parts of the visible GUI.
 
@@ -269,7 +269,7 @@ Calendar has three functionality, `prevMonth`, `nextMonth` and `readDay`, all of
 
 ##### Design Consideration
 The main consideration for the design of calendar is how many days should be displayed. The initial implementation was a "Week Calendar" which uses the current version of [NUSMODS](https://nusmods.com/timetable/sem-1) as reference. However, this design implies that there cannot be an overlap in the timing of different tasks. It would work for NUSMODS since it is a timetable and classes are not supposed to clash. However, it will not be as suitable for a calendar since multiple tasks can be happening or due at the same time. We decided to use the current implementation which is a "Month Calendar" with markings to represent the existence of tasks in the respective day-of-month and a task-list panel to display the tasks in greater details.
-![Calendar](images/Calendar.png) <br>
+<img src="images/Calendar.png" width="700" /> <br>
 *Figure. Screenshot of GUI of calendar in ManageMe.*
 
 
