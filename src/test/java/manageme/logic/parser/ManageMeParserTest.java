@@ -90,10 +90,10 @@ public class ManageMeParserTest {
 
     @Test
     public void parseCommand_addModule() throws Exception {
-        Name Name = new Name(VALID_MODNAME_A);
+        Name name = new Name(VALID_MODNAME_A);
         Module module = new ModuleBuilder().build();
         AddModuleCommand command = (AddModuleCommand) parser.parseCommand(ModuleUtil.getAddModuleCommand(module));
-        assertEquals(new AddModuleCommand(Name), command);
+        assertEquals(new AddModuleCommand(name), command);
     }
 
     @Test

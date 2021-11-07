@@ -185,10 +185,6 @@ public class AddTaskCommandTest {
             throw new AssertionError("This method should not be called.");
         }
 
-        public void set(Task target, Task editedTask) {
-            throw new AssertionError("This method should not be called.");
-        }
-
         @Override
         public void editModuleInTasksWithModule(Module target, manageme.model.TagModule newTagModule) {
             throw new AssertionError("This method should not be called.");
