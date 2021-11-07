@@ -144,7 +144,7 @@ Here's a class diagram of the `Model` component:
 
 **API** : [`Model.java`](https://github.com/AY2122S1-CS2103T-W11-3/tp/blob/master/src/main/java/manageme/model/Model.java)
 
-<img src="images/MMModelClassDiagram.png" width="550" />
+<img src="images/MMModelClassDiagram" width="550" />
 
 
 The `Model` component,
@@ -200,11 +200,11 @@ Return to [Table of Contents](#table-of-contents).
 ## **Implementation**
 This section describes some noteworthy details on how certain features are implemented.
 
-### **Task Feature**
+### Task Feature
 In this section, the functionality of the Task feature and the sequence diagram for its related commands will be
 discussed.
 
-#### **Implementation of commands**
+#### Implementation
 Similar to the commands available in AB3, a user is able to add, edit, delete, find and list tasks and is
 implemented as the `AddTaskCommand`,`EditTaskCommand`, `DeleteTaskCommand`, `FindTaskCommand` and `ListTaskCommand`
 respectively.
@@ -312,7 +312,7 @@ The following actions occur when the **Time Thread** is started:
 will continue to scan for tasks that need the user's attention.
 </div>
 
-### **Archive Feature**
+### Archive Feature
 In this section, the archive feature and its activity diagram will be discussed.
 
 #### Implementation
@@ -324,7 +324,7 @@ The following Activity diagram demonstrates the execution path of the archive co
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Documentation, logging, testing, configuration, dev-ops**
+## Documentation, logging, testing, configuration, dev-ops
 
 * [Documentation guide](Documentation.md)
 * [Testing guide](Testing.md)
