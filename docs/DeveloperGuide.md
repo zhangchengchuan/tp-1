@@ -154,6 +154,8 @@ The `Model` component,
   which is exposed to outsiders as an unmodifiable `ObservableList<Task>` that can be 'observed' e.g. the UI can be
   bound to this list so that the UI automatically updates when the data in the list change. The `Module` and `Link`
   objects similarly follow this implementation.
+* As `TaskModule` and `TaskTime` are optional fields, their values are internally stored within a Java `Optional`
+  object.
 * stores a `UserPref` object that represents the user’s preferences. This is exposed to the outside as a `ReadOnlyUserPref` object.
 * does not depend on any of the other three components (as the `Model` represents data entities of the domain, they should make sense on their own without depending on other components)
 
@@ -196,7 +198,32 @@ Return to [Table of Contents](#table-of-contents).
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Implementation**
-In this section, we share more about the implementation process of the main features in our application along with some design considerations made.
+This section describes some noteworthy details on how certain features are implemented.
+
+### **Task Feature**
+In this section, the functionality of the Task feature and the sequence diagram for its related commands will be
+discussed.
+
+#### **Implementation of commands**
+Similar to the commands available in AB3, a user is able to add, edit, delete, find and list tasks and is
+implemented as the `AddTaskCommand`,`EditTaskCommand`, `DeleteTaskCommand`, `FindTaskCommand` and `ListTaskCommand`
+respectively.
+
+To give an example, the activity diagram when the addTask Command is executed is shown below:
+![AddTaskActivityDiagram](images/AddTaskActivityDiagram.png) <br>
+*Figure. Activity diagram of creation of Task*
+
+Additionally, a user is also able to mark/unmark tasks as done and delete tasks that are already done. This is
+implemented as the `MarkTaskCommand` and `DeleteDoneTaskCommand` respectively.
+
+Shown below is the sequence diagrams for when  `MarkTaskCommand` and `DeleteDoneTaskCommand` are executed.
+<br>
+![MarkTaskSequenceDiagram](images/MarkTaskSequenceDiagram.png) <br>
+*Figure. Sequence diagram of marking task 2 in the task list as done/undone*
+<br>
+<br>
+![DeleteDoneTaskSequenceDiagram](images/DeleteDoneTaskSequenceDiagram.png) <br>
+*Figure. Sequence diagram of deleting all done tasks*
 
 ### Read Module feature
 ManageMe allows you to type in readMod for a particular module, and see all Tasks and Links related to it in a pop-up window.
@@ -223,9 +250,6 @@ is generated with `isReadModule` boolean value being true and sent back to `MmMa
 
 ![ReadModSequenceDiagram](images/ReadModRef.png) <br>
 *Referenced Sequence diagram* <br>
-
-### **Task Feature**
-In this section, the functionality of the Task feature and its activity diagram will be discussed.
 
 ### Calendar feature
 ManageMe has a calendar feature for users to view all of their upcoming tasks for the month.
@@ -288,6 +312,15 @@ The following actions occur when the **Time Thread** is started:
 will continue to scan for tasks that need the user's attention.
 </div>
 
+### **Archive Feature**
+In this section, the archive feature and its activity diagram will be discussed.
+
+#### Implementation
+The archive feature is implemented as the `ArchiveCommand` and allows the user to archive the current data into a timestamped file in the data folder and resets the application with a new data file.
+
+The following Activity diagram demonstrates the execution path of the archive command:</br>
+<img src="images/ArchiveActivityDiagram.png" width="500" /> <br>
+*Figure. Activity diagram of execution of archive command*
 
 --------------------------------------------------------------------------------------------------------------------
 
