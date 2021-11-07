@@ -41,10 +41,10 @@ public class LogicManagerTest {
 
     @BeforeEach
     public void setUp() {
-        JsonManageMeStorage ManageMeStorage =
+        JsonManageMeStorage manageMeStorage =
                 new JsonManageMeStorage(temporaryFolder.resolve("ManageMe.json"));
         JsonUserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(temporaryFolder.resolve("userPrefs.json"));
-        StorageManager storage = new StorageManager(ManageMeStorage, userPrefsStorage);
+        StorageManager storage = new StorageManager(manageMeStorage, userPrefsStorage);
         TimeManager time = new TimeManager(model.getManageMe());
         logic = new LogicManager(model, storage, time);
     }
@@ -169,7 +169,7 @@ public class LogicManagerTest {
         }
 
         @Override
-        public void saveManageMe(ReadOnlyManageMe ManageMe, Path filePath) throws IOException {
+        public void saveManageMe(ReadOnlyManageMe manageMe, Path filePath) throws IOException {
             throw DUMMY_IO_EXCEPTION;
         }
     }
