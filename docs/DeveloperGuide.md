@@ -377,12 +377,12 @@ Return to [Table of Contents](#table-of-contents).
    Use case ends.
 
 **Extensions:**
-*1a. Compulsory parameters are missing, including names, description for tasks, and address for links
-*1b1. The system shows the missing parameter error message and shows the correct format
-Use case resumes from step 1.
-*1b. Parameters entered are invalid, including invalid characters in the name, invalid date-time in the task, and invalid addresses in links.
-* 1b1. System shows error in format.
-  Use case resumes from step 1.
+* 1a. Compulsory parameters are missing, including names, description for tasks, and address for links.
+  * 1a1. The system shows the missing parameter error message and shows the correct format. 
+  * Use case resumes from step 1.
+* 1b. Parameters entered are invalid, including invalid characters in the name, invalid date-time in the task, and invalid addresses in links.
+  * 1b1. System shows error in format. 
+  * Use case resumes from step 1.
 
 
 ### Use case 02: Generic Edit
@@ -394,11 +394,11 @@ Use case resumes from step 1.
 
 **Extensions:**
 * 1a. User enters an invalid task index<br>
-    * 1a1. System shows error in reading index.
-      Use case resumes from step 1.
+    * 1a1. System shows error in reading index. 
+    * Use case resumes from step 1.
 * 1b.Parameters entered are of invalid format, including invalid characters in names, invalid date-time for tasks, and invalid address for links.
-    * 1a1. System shows error in parsing data.
-      Use case resumes from step 1. <br><br>
+    * 1a1. System shows error in parsing data. 
+    * Use case resumes from step 1. <br><br>
 
 ### Use case 03: Generic Delete
 
@@ -412,8 +412,8 @@ Use case resumes from step 1.
 **Extension:**
 
 * 1a. User enters an invalid task index
-    * 1a1. System shows error in reading index.
-      Use case resumes from step 1.
+    * 1a1. System shows error in reading index. 
+    * Use case resumes from step 1.
     
 ### Use case 04: Generic Find
 
@@ -426,8 +426,8 @@ Use case resumes from step 1.
 **Extension:**
 
 * 1a. User does not enter a keyword. <br>
-    * 1a1. System shows invalid format error.
-      Use case resumes from step 1.
+    * 1a1. System shows invalid format error. 
+    * Use case resumes from step 1.
 
 
 ### Use case 05: Generic List
@@ -448,7 +448,6 @@ Return to [Table of Contents](#table-of-contents).
 2. Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
 3. A user with above-average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
 4. The system will not be responsible for checking the validity of external links entered into the system, such as Zoom links or Luminus links. They must be checked beforehand by the user.
-
 
 Return to [Table of Contents](#table-of-contents).
 
@@ -509,13 +508,11 @@ testers are expected to do more *exploratory* testing.
 
 ### Pop-up window
 
-1. Test whether the pop-up window works in the app
-
-Add a task with a starting time just 1 minute away from your current time .<br>
-Expected: A reminder will appear in a pop-up window for this ongoing task 1 min later.
-
-Type readMod for an existing module (if no module exists, add one with a simple name)
-Expected: A window appears that show all tasks and links associated with a module
+1. Test whether the pop-up window works in the app 
+   1. Add a task with a starting time just 1 minute away from your current time .<br>
+   Expected: A reminder will appear in a pop-up window for this ongoing task 1 min later.
+   2. Type readMod for an existing module (if no module exists, add one with a simple name)
+   Expected: A window appears that show all tasks and links associated with a module
 
 
 ### Saving data
