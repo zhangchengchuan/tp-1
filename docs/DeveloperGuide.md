@@ -2,7 +2,7 @@
 layout: page
 title: Developer Guide
 ---
-## **Table of Contents**
+## Table of Contents
 * Table of Contents
 {:toc}
 
@@ -42,6 +42,8 @@ Return to [Table of Contents](#table-of-contents).
 
 :bulb: **Tip:** The `.puml` files used to create diagrams in this document can be found in the [diagrams](https://github.com/AY2122S1-CS2103T-W11-3/tp/tree/master/docs/diagrams) folder. Refer to the [_PlantUML Tutorial_ at se-edu/guides](https://se-education.org/guides/tutorials/plantUml.html) to learn how to create and edit diagrams.
 </div>
+
+Return to [Table of Contents](#table-of-contents).
 
 ### Architecture
 
@@ -87,6 +89,8 @@ For example, the `Logic` component defines its API in the `Logic.java` interface
 
 <br><br>
 
+The sections below give more details of each component.
+
 Return to [Table of Contents](#table-of-contents).
 
 The sections below give more details of each component.
@@ -110,6 +114,8 @@ The `UI` component,
 * listens for changes to `Model` data so that the UI can be updated with the modified data.
 * keeps a reference to the `Logic` component, because the `UI` relies on the `Logic` to execute commands.
 * depends on some classes in the `Model` component, as it displays `Module` and `Task` objects residing in the `Model`.
+
+Return to [Table of Contents](#table-of-contents).
 
 ### Logic component
 
