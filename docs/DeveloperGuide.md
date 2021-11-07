@@ -226,7 +226,7 @@ respectively.
 
 To give an example, the activity diagram when the addTask Command is executed is shown below:
 ![AddTaskActivityDiagram](images/AddTaskActivityDiagram.png) <br>
-*Figure. Activity diagram of creation of Task*
+*Activity diagram of creation of Task*
 
 Additionally, a user is also able to mark/unmark tasks as done and delete tasks that are already done. This is
 implemented as the `MarkTaskCommand` and `DeleteDoneTaskCommand` respectively.
@@ -234,11 +234,11 @@ implemented as the `MarkTaskCommand` and `DeleteDoneTaskCommand` respectively.
 Shown below is the sequence diagrams for when  `MarkTaskCommand` and `DeleteDoneTaskCommand` are executed.
 <br><br>
 ![MarkTaskSequenceDiagram](images/MarkTaskSequenceDiagram.png) <br>
-*Figure. Sequence diagram of marking task 2 in the task list as done/undone*
+*Sequence diagram of marking task 2 in the task list as done/undone*
 <br>
 <br>
 ![DeleteDoneTaskSequenceDiagram](images/DeleteDoneTaskSequenceDiagram.png) <br>
-*Figure. Sequence diagram of deleting all done tasks*
+*Sequence diagram of deleting all done tasks*
 
 ### Read Module Feature
 ManageMe allows you to type in `readMod` for a particular module, and see all `Task` and `Link` related to it in a pop-up window.
@@ -274,7 +274,7 @@ Task-list panel displays the tasks happening on `referenceDate` in greater detai
 The following sequence diagram demonstrates how the Calendar is created.
 
 ![CalendarConstructorSequenceDiagram](images/CalendarConstructorSequenceDiagram.png) <br>
-*Figure. Sequence diagram of creation of Calendar*
+*Sequence diagram of creation of Calendar*
 
 Since the `CalendarPanel` is constructed with an `ObservableList<Task>`, changes to `UniqueTaskList` made by user using `addTask`, `deleteTask` and `editTask` will be reflected in the calendar automatically. <br><br>
 Calendar has three functionality, `prevMonth`, `nextMonth` and `readDay`, all of which manipulate `referenceDate`, which is the key component for generating the whole calendar GUI. Both `prevMonth` and `nextMonth` subtracts or adds the current `referenceDate` by a month respectively. While `readDay` takes in a `LocalDate` as argument and replace the `referenceDate` with it.
@@ -283,7 +283,7 @@ Calendar has three functionality, `prevMonth`, `nextMonth` and `readDay`, all of
 The main consideration for the design of calendar is how many days should be displayed. The initial implementation was a "Week Calendar" which uses the current version of [NUSMODS](https://nusmods.com/timetable/sem-1) as reference. However, this design implies that there cannot be an overlap in the timing of different tasks. It would work for NUSMODS since it is a timetable and classes are not supposed to clash. However, it will not be as suitable for a calendar since multiple tasks can be happening or due at the same time. We decided to use the current implementation which is a "Month Calendar" with markings to represent the existence of tasks in the respective day-of-month and a task-list panel to display the tasks in greater details.<br><br>
 <br><br>
 ![Calendar](images/Calendar.png) <br>
-*Figure. Screenshot of GUI of calendar in ManageMe.*
+*Screenshot of GUI of calendar in ManageMe.*
 
 
 ### Reminder Feature
@@ -301,7 +301,7 @@ This notification appears in the form of a pop-out with implementation located u
 
 ![ReminderActivityDiagram](images/ReminderActivityDiagram.png) <br>
 
-*Figure: Reminders Activity Diagram*
+*Reminders Activity Diagram*
 
 The above figure illustrates the execution path of Reminders when the user starts ManageMe, which has been shortened
 to **MM** in the activity diagram.
@@ -332,7 +332,7 @@ The archive feature is implemented as the `ArchiveCommand` and allows the user t
 
 The following Activity diagram demonstrates the execution path of the archive command: <br><br>
 <img src="images/ArchiveActivityDiagram.png" width="500" /> <br>
-*Figure. Activity diagram of execution of archive command*
+*Activity diagram of execution of archive command*
 <br>
 
 Return to [Table of Contents](#table-of-contents).
