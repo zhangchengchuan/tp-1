@@ -46,12 +46,7 @@ public class ManageMe implements ReadOnlyManageMe {
         this();
         resetData(toBeCopied);
     }
-
-    //// list overwrite operations
-//    public <T extends ManageMeObject> void setTs(List<T> lists) {
-//        UniqueObjectList<T> toSet = getList(lists.get(0));
-//        toSet.setTs(lists);
-//    }
+    
 
     /**
      * Replaces the contents of the link list with {@code links}.
@@ -77,15 +72,19 @@ public class ManageMe implements ReadOnlyManageMe {
         this.tasks.setTs(tasks);
     }
 
+    /**
+     * @param target the target object to be modified
+     * @param editedT the desired edited object
+     * @param <T> a generic variable that can be a Task, Module or Link.
+     */
     public <T extends ManageMeObject> void setT(T target, T editedT) {
         UniqueObjectList<T> toSet = getList(target);
         toSet.setT(target, editedT);
     }
 
     /**
-     *
-     * @param toAdd
-     * @param <T>
+     * @param toAdd an object to be added to the UniqueObjectList.
+     * @param <T> a generic variable that can be a Task, Module or Link.
      */
     public <T extends ManageMeObject> void add(T toAdd) {
         UniqueObjectList<T> toSet = getList(toAdd);
@@ -94,9 +93,9 @@ public class ManageMe implements ReadOnlyManageMe {
 
     /**
      *
-     * @param target
-     * @param <T>
-     * @return
+     * @param target an object to be checked about whether it is contained in the UniqueObjectList.
+     * @param <T> a generic variable that can be a Task, Module or Link.
+     * @return true if the object is contained.
      */
     public <T extends ManageMeObject> boolean has(T target) {
         UniqueObjectList<T> toSet = getList(target);
@@ -105,8 +104,8 @@ public class ManageMe implements ReadOnlyManageMe {
 
     /**
      *
-     * @param target
-     * @param <T>
+     * @param target an object to be removed from the UniqueObjectList
+     * @param <T> a generic variable that can be a Task, Module or Link
      */
     public <T extends ManageMeObject> void remove(T target) {
         UniqueObjectList<T> toSet = getList(target);
@@ -119,9 +118,9 @@ public class ManageMe implements ReadOnlyManageMe {
 
     /**
      *
-     * @param object
-     * @param <T>
-     * @return
+     * @param object an object whose corresponding type of list is to be returned
+     * @param <T> a generic variable that can be a Task, Module or Link
+     * @return the object's corresponding type of list
      */
     public <T extends ManageMeObject> UniqueObjectList<T> getList(T object) {
         if (object instanceof Task) {
