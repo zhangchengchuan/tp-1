@@ -8,7 +8,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import manageme.model.TagModule;
 import manageme.model.link.Link;
 import manageme.model.module.Module;
 import manageme.model.task.Task;
