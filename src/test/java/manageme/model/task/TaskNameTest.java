@@ -8,34 +8,34 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
-public class TaskNameTest {
+public class NameTest {
 
     @Test
     public void constructor_null_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> new TaskName(null));
+        assertThrows(NullPointerException.class, () -> new Name(null));
     }
 
     @Test
-    public void constructor_invalidTaskName_throwsIllegalArgumentException() {
+    public void constructor_invalidName_throwsIllegalArgumentException() {
         String invalidName = "";
-        assertThrows(IllegalArgumentException.class, () -> new TaskName(invalidName));
+        assertThrows(IllegalArgumentException.class, () -> new Name(invalidName));
     }
 
     @Test
     public void isValidName() {
         // null name
-        assertThrows(NullPointerException.class, () -> TaskName.isValidName(null));
+        assertThrows(NullPointerException.class, () -> Name.isValidName(null));
 
         // invalid name
-        assertFalse(TaskName.isValidName("")); // empty string
-        assertFalse(TaskName.isValidName(" ")); // spaces only
+        assertFalse(Name.isValidName("")); // empty string
+        assertFalse(Name.isValidName(" ")); // spaces only
 
         // valid name
-        assertTrue(TaskName.isValidName("do work")); // alphabets only
-        assertTrue(TaskName.isValidName("12345")); // numbers only
-        assertTrue(TaskName.isValidName("sleep by 12pm")); // alphanumeric characters
-        assertTrue(TaskName.isValidName("Work on CS2103T")); // with capital letters
-        assertTrue(TaskName.isValidName("Plan out next week timetable by this Friday")); // long names
+        assertTrue(Name.isValidName("do work")); // alphabets only
+        assertTrue(Name.isValidName("12345")); // numbers only
+        assertTrue(Name.isValidName("sleep by 12pm")); // alphanumeric characters
+        assertTrue(Name.isValidName("Work on CS2103T")); // with capital letters
+        assertTrue(Name.isValidName("Plan out next week timetable by this Friday")); // long names
     }
 
     @Test

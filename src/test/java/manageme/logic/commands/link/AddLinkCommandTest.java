@@ -22,11 +22,10 @@ import manageme.model.ManageMe;
 import manageme.model.Model;
 import manageme.model.ReadOnlyManageMe;
 import manageme.model.ReadOnlyUserPrefs;
+import manageme.model.TagModule;
 import manageme.model.link.Link;
-import manageme.model.link.LinkModule;
 import manageme.model.module.Module;
 import manageme.model.task.Task;
-import manageme.model.task.TaskModule;
 import manageme.testutil.LinkBuilder;
 
 public class AddLinkCommandTest {
@@ -131,7 +130,7 @@ public class AddLinkCommandTest {
         }
 
         @Override
-        public boolean hasLink(Link link) {
+        public boolean has(Link link) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -141,12 +140,12 @@ public class AddLinkCommandTest {
         }
 
         @Override
-        public void setLink(Link target, Link editedLink) {
+        public void set(Link target, Link editedLink) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void editModuleInLinksWithModule(Module target, LinkModule newLinkModule) {
+        public void editModuleInLinksWithModule(Module target, TagModule newTagModule) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -166,7 +165,7 @@ public class AddLinkCommandTest {
         }
 
         @Override
-        public boolean hasModule(Module module) {
+        public boolean has(Module module) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -206,7 +205,7 @@ public class AddLinkCommandTest {
         }
 
         @Override
-        public boolean hasTask(Task task) {
+        public boolean has(Task task) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -221,12 +220,12 @@ public class AddLinkCommandTest {
         }
 
         @Override
-        public void setTask(Task target, Task editedTask) {
+        public void set(Task target, Task editedTask) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void editModuleInTasksWithModule(Module target, TaskModule newTaskModule) {
+        public void editModuleInTasksWithModule(Module target, manageme.model.TagModule newTagModule) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -264,9 +263,9 @@ public class AddLinkCommandTest {
         }
 
         @Override
-        public boolean hasLink(Link link) {
+        public boolean has(Link link) {
             requireNonNull(link);
-            return this.link.isSameLink(link);
+            return this.link.isSame(link);
         }
     }
 
@@ -277,9 +276,9 @@ public class AddLinkCommandTest {
         final ArrayList<Link> linksAdded = new ArrayList<>();
 
         @Override
-        public boolean hasLink(Link link) {
+        public boolean has(Link link) {
             requireNonNull(link);
-            return linksAdded.stream().anyMatch(link::isSameLink);
+            return linksAdded.stream().anyMatch(link::isSame);
         }
 
         @Override
@@ -289,7 +288,7 @@ public class AddLinkCommandTest {
         }
 
         @Override
-        public boolean hasModule(Module module) {
+        public boolean has(Module module) {
             requireNonNull(module);
             return true;
         }

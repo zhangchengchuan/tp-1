@@ -17,7 +17,7 @@ import org.junit.jupiter.api.Test;
 import manageme.model.Model;
 import manageme.model.ModelManager;
 import manageme.model.UserPrefs;
-import manageme.model.link.LinkNameContainsKeywordsPredicate;
+import manageme.model.NameContainsKeywordsPredicate;
 
 public class FindLinkCommandTest {
     private Model model = new ModelManager(getTypicalManageMe(), new UserPrefs());
@@ -25,10 +25,10 @@ public class FindLinkCommandTest {
 
     @Test
     public void equals() {
-        LinkNameContainsKeywordsPredicate firstPredicate =
-                new LinkNameContainsKeywordsPredicate(Collections.singletonList("first"));
-        LinkNameContainsKeywordsPredicate secondPredicate =
-                new LinkNameContainsKeywordsPredicate(Collections.singletonList("second"));
+        NameContainsKeywordsPredicate firstPredicate =
+                new NameContainsKeywordsPredicate(Collections.singletonList("first"));
+        NameContainsKeywordsPredicate secondPredicate =
+                new NameContainsKeywordsPredicate(Collections.singletonList("second"));
 
         FindLinkCommand findFirstCommand = new FindLinkCommand(firstPredicate);
         FindLinkCommand findSecondCommand = new FindLinkCommand(secondPredicate);
@@ -53,7 +53,7 @@ public class FindLinkCommandTest {
     @Test
     public void execute_zeroKeywords_noLinkFound() {
         String expectedMessage = String.format(MESSAGE_LINKS_LISTED_OVERVIEW, 0);
-        LinkNameContainsKeywordsPredicate predicate = preparePredicate(" ");
+        NameContainsKeywordsPredicate predicate = preparePredicate(" ");
         FindLinkCommand command = new FindLinkCommand(predicate);
         expectedModel.updateFilteredLinkList(predicate);
         assertCommandSuccess(command, model, expectedMessage, expectedModel);
@@ -63,7 +63,7 @@ public class FindLinkCommandTest {
     @Test
     public void execute_multipleKeywords_multipleLinksFound() {
         String expectedMessage = String.format(MESSAGE_LINKS_LISTED_OVERVIEW, 2);
-        LinkNameContainsKeywordsPredicate predicate = preparePredicate("CS");
+        NameContainsKeywordsPredicate predicate = preparePredicate("CS");
         FindLinkCommand command = new FindLinkCommand(predicate);
         expectedModel.updateFilteredLinkList(predicate);
         assertCommandSuccess(command, model, expectedMessage, expectedModel);
@@ -71,9 +71,9 @@ public class FindLinkCommandTest {
     }
 
     /**
-     * Parses {@code userInput} into a {@code LinkNameContainsKeywordsPredicate}.
+     * Parses {@code userInput} into a {@code NameContainsKeywordsPredicate}.
      */
-    private LinkNameContainsKeywordsPredicate preparePredicate(String userInput) {
-        return new LinkNameContainsKeywordsPredicate(Arrays.asList(userInput.split("\\s+")));
+    private NameContainsKeywordsPredicate preparePredicate(String userInput) {
+        return new NameContainsKeywordsPredicate(Arrays.asList(userInput.split("\\s+")));
     }
 }

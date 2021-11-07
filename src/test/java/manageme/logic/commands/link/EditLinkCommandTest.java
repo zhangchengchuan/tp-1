@@ -5,7 +5,7 @@ import static manageme.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static manageme.logic.commands.CommandTestUtil.showLinkAtIndex;
 import static manageme.logic.commands.link.LinkCommandTestUtil.DESC_LINK_A;
 import static manageme.logic.commands.link.LinkCommandTestUtil.DESC_LINK_B;
-import static manageme.logic.commands.link.LinkCommandTestUtil.VALID_LINKNAME_A;
+import static manageme.logic.commands.link.LinkCommandTestUtil.VALID_Name_A;
 import static manageme.testutil.TypicalIndexes.INDEX_FIRST;
 import static manageme.testutil.TypicalIndexes.INDEX_SECOND;
 import static manageme.testutil.TypicalManageMe.getTypicalManageMe;
@@ -42,7 +42,7 @@ public class EditLinkCommandTest {
         String expectedMessage = String.format(EditLinkCommand.MESSAGE_EDIT_LINK_SUCCESS, editedLink);
 
         Model expectedModel = new ModelManager(new ManageMe(model.getManageMe()), new UserPrefs());
-        expectedModel.setLink(model.getFilteredLinkList().get(0), editedLink);
+        expectedModel.set(model.getFilteredLinkList().get(0), editedLink);
 
         assertCommandSuccess(editLinkCommand, model, expectedMessage, expectedModel);
     }
@@ -53,15 +53,15 @@ public class EditLinkCommandTest {
         Link lastLink = model.getFilteredLinkList().get(indexLastLink.getZeroBased());
 
         LinkBuilder linkInList = new LinkBuilder(lastLink);
-        Link editedLink = linkInList.withName(VALID_LINKNAME_A).build();
+        Link editedLink = linkInList.withName(VALID_Name_A).build();
 
-        EditLinkDescriptor descriptor = new EditLinkDescriptorBuilder().withName(VALID_LINKNAME_A).build();
+        EditLinkDescriptor descriptor = new EditLinkDescriptorBuilder().withName(VALID_Name_A).build();
         EditLinkCommand editLinkCommand = new EditLinkCommand(indexLastLink, descriptor);
 
         String expectedMessage = String.format(EditLinkCommand.MESSAGE_EDIT_LINK_SUCCESS, editedLink);
 
         Model expectedModel = new ModelManager(new ManageMe(model.getManageMe()), new UserPrefs());
-        expectedModel.setLink(lastLink, editedLink);
+        expectedModel.set(lastLink, editedLink);
 
         assertCommandSuccess(editLinkCommand, model, expectedMessage, expectedModel);
     }
@@ -83,14 +83,14 @@ public class EditLinkCommandTest {
         showLinkAtIndex(model, INDEX_FIRST);
 
         Link linkInFilteredList = model.getFilteredLinkList().get(INDEX_FIRST.getZeroBased());
-        Link editedLink = new LinkBuilder(linkInFilteredList).withName(VALID_LINKNAME_A).build();
+        Link editedLink = new LinkBuilder(linkInFilteredList).withName(VALID_Name_A).build();
         EditLinkCommand editLinkCommand = new EditLinkCommand(INDEX_FIRST,
-                new EditLinkDescriptorBuilder().withName(VALID_LINKNAME_A).build());
+                new EditLinkDescriptorBuilder().withName(VALID_Name_A).build());
 
         String expectedMessage = String.format(EditLinkCommand.MESSAGE_EDIT_LINK_SUCCESS, editedLink);
 
         Model expectedModel = new ModelManager(new ManageMe(model.getManageMe()), new UserPrefs());
-        expectedModel.setLink(model.getFilteredLinkList().get(0), editedLink);
+        expectedModel.set(model.getFilteredLinkList().get(0), editedLink);
 
         assertCommandSuccess(editLinkCommand, model, expectedMessage, expectedModel);
     }
@@ -119,7 +119,7 @@ public class EditLinkCommandTest {
     @Test
     public void execute_invalidLinkIndexUnfilteredList_failure() {
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredLinkList().size() + 1);
-        EditLinkDescriptor descriptor = new EditLinkDescriptorBuilder().withName(VALID_LINKNAME_A).build();
+        EditLinkDescriptor descriptor = new EditLinkDescriptorBuilder().withName(VALID_Name_A).build();
         EditLinkCommand editLinkCommand = new EditLinkCommand(outOfBoundIndex, descriptor);
 
         assertCommandFailure(editLinkCommand, model, Messages.MESSAGE_INVALID_LINK_DISPLAYED_INDEX);
@@ -137,7 +137,7 @@ public class EditLinkCommandTest {
         assertTrue(outOfBoundIndex.getZeroBased() < model.getManageMe().getLinkList().size());
 
         EditLinkCommand editLinkCommand = new EditLinkCommand(outOfBoundIndex,
-                new EditLinkDescriptorBuilder().withName(VALID_LINKNAME_A).build());
+                new EditLinkDescriptorBuilder().withName(VALID_Name_A).build());
 
         assertCommandFailure(editLinkCommand, model, Messages.MESSAGE_INVALID_LINK_DISPLAYED_INDEX);
     }

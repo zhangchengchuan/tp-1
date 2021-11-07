@@ -1,4 +1,4 @@
-package manageme.model.task;
+package manageme.model;
 
 import static java.util.Objects.requireNonNull;
 import static manageme.commons.util.AppUtil.checkArgument;
@@ -6,36 +6,38 @@ import static manageme.commons.util.AppUtil.checkArgument;
 import java.util.Optional;
 
 
-public class TaskModule {
+public class TagModule {
     public static final String MESSAGE_CONSTRAINTS = "Modules should only contain alphanumeric characters "
             + "and whitespaces";
+    /*
+     * The first character of the address must not be a whitespace,
+     * otherwise " " (a blank string) becomes a valid input.
+     */
 
-    //This does not allow any whitespace in between characters
-    //public static final String VALIDATION_REGEX = "\\p{Alnum}+";
     //This allows whitespace in between characters
     public static final String VALIDATION_REGEX = "[\\p{Alnum}][\\p{Alnum} ]*";
 
     public final String value;
-    public final Optional<String> moduleName;
+    public final Optional<String> Name;
 
     /**
-     * Constructs a {@code TaskModule}.
+     * Constructs a {@code TagModule}.
      *
-     * @param taskModule A Task Module.
+     * @param linkModule A Link Module.
      */
-    public TaskModule(String taskModule) {
-        requireNonNull(taskModule);
-        checkArgument(isValidModule(taskModule), MESSAGE_CONSTRAINTS);
-        this.value = taskModule;
-        this.moduleName = Optional.of(taskModule);
+    public TagModule(String linkModule) {
+        requireNonNull(linkModule);
+        checkArgument(isValidModule(linkModule), MESSAGE_CONSTRAINTS);
+        this.value = linkModule;
+        this.Name = Optional.of(linkModule);
     }
 
     /**
-     * Constructs an empty {@code TaskModule}.
+     * Constructs an empty {@code TagModule}.
      */
-    public TaskModule() {
+    public TagModule() {
         this.value = "";
-        this.moduleName = Optional.empty();
+        this.Name = Optional.empty();
     }
 
     /**
@@ -47,18 +49,22 @@ public class TaskModule {
 
     @Override
     public String toString() {
-        return value;
+        if (value == "") {
+            return "Not tagged";
+        } else {
+            return value;
+        }
     }
 
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof TaskModule // instanceof handles nulls
-                && value.equals(((TaskModule) other).value)); // state check
+                || (other instanceof TagModule // instanceof handles nulls
+                && value.equals(((TagModule) other).value)); // state check
     }
 
-    public static TaskModule empty() {
-        return new TaskModule();
+    public static TagModule empty() {
+        return new TagModule();
     }
 
     @Override

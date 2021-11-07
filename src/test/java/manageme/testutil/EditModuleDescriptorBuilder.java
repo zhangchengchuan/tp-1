@@ -2,7 +2,7 @@ package manageme.testutil;
 
 import manageme.logic.commands.module.EditModuleCommand;
 import manageme.model.module.Module;
-import manageme.model.module.ModuleName;
+import manageme.model.Name;
 
 
 public class EditModuleDescriptorBuilder {
@@ -21,14 +21,14 @@ public class EditModuleDescriptorBuilder {
      */
     public EditModuleDescriptorBuilder(Module module) {
         descriptor = new EditModuleCommand.EditModuleDescriptor();
-        descriptor.setModuleName(module.getModuleName());;
+        descriptor.setName(module.getName());;
     }
 
     /**
-     * Sets the {@code ModuleName} of the {@code EditModuleDescriptor} that we are building.
+     * Sets the {@code Name} of the {@code EditModuleDescriptor} that we are building.
      */
     public EditModuleDescriptorBuilder withName(String name) {
-        descriptor.setModuleName(new ModuleName(name));
+        descriptor.setName(new Name(name));
         return this;
     }
 

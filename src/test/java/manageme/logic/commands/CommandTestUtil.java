@@ -14,11 +14,11 @@ import manageme.logic.commands.exceptions.CommandException;
 import manageme.model.ManageMe;
 import manageme.model.Model;
 import manageme.model.link.Link;
-import manageme.model.link.LinkNameContainsKeywordsPredicate;
-import manageme.model.module.ModNameContainsKeywordsPredicate;
+import manageme.model.NameContainsKeywordsPredicate;
+import manageme.model.module.NameContainsKeywordsPredicate;
 import manageme.model.module.Module;
 import manageme.model.task.Task;
-import manageme.model.task.TaskNameContainsKeywordsPredicate;
+import manageme.model.NameContainsKeywordsPredicate;
 
 /**
  * Contains helper methods for testing commands.
@@ -87,7 +87,7 @@ public class CommandTestUtil {
         Task task = model.getFilteredTaskList().get(targetIndex.getZeroBased());
 
         final String[] splitName = task.getName().value.split("\\s+");
-        model.updateFilteredTaskList(new TaskNameContainsKeywordsPredicate(Arrays.asList(splitName[0])));
+        model.updateFilteredTaskList(new NameContainsKeywordsPredicate(Arrays.asList(splitName[0])));
 
         assertEquals(1, model.getFilteredTaskList().size());
     }
@@ -100,8 +100,8 @@ public class CommandTestUtil {
         assertTrue(targetIndex.getZeroBased() < model.getFilteredModuleList().size());
 
         Module module = model.getFilteredModuleList().get(targetIndex.getZeroBased());
-        final String[] splitName = module.getModuleName().value.split("\\s+");
-        model.updateFilteredModuleList(new ModNameContainsKeywordsPredicate(Arrays.asList(splitName[0])));
+        final String[] splitName = module.getName().value.split("\\s+");
+        model.updateFilteredModuleList(new NameContainsKeywordsPredicate(Arrays.asList(splitName[0])));
 
         assertEquals(1, model.getFilteredModuleList().size());
     }
@@ -116,7 +116,7 @@ public class CommandTestUtil {
         Link link = model.getFilteredLinkList().get(targetIndex.getZeroBased());
 
         final String[] splitName = link.getName().value.split("\\s+");
-        model.updateFilteredLinkList(new LinkNameContainsKeywordsPredicate(Arrays.asList(splitName[0])));
+        model.updateFilteredLinkList(new NameContainsKeywordsPredicate(Arrays.asList(splitName[0])));
 
         assertEquals(1, model.getFilteredLinkList().size());
     }

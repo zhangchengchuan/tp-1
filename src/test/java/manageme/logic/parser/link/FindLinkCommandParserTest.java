@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import manageme.logic.commands.link.FindLinkCommand;
 import manageme.logic.parser.CommandParserTestUtil;
-import manageme.model.link.LinkNameContainsKeywordsPredicate;
+import manageme.model.NameContainsKeywordsPredicate;
 
 public class FindLinkCommandParserTest {
     private final FindLinkCommandParser parser = new FindLinkCommandParser();
@@ -23,7 +23,7 @@ public class FindLinkCommandParserTest {
     public void parse_validArgs_returnsFindCommand() {
         // no leading and trailing whitespaces
         FindLinkCommand expectedFindLinkCommand =
-                new FindLinkCommand(new LinkNameContainsKeywordsPredicate(Arrays.asList("Eat", "Sleep")));
+                new FindLinkCommand(new NameContainsKeywordsPredicate(Arrays.asList("Eat", "Sleep")));
         CommandParserTestUtil.assertParseSuccess(parser, "Eat Sleep", expectedFindLinkCommand);
 
         // multiple whitespaces between keywords

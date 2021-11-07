@@ -22,11 +22,10 @@ import manageme.model.ManageMe;
 import manageme.model.Model;
 import manageme.model.ReadOnlyManageMe;
 import manageme.model.ReadOnlyUserPrefs;
+import manageme.model.TagModule;
 import manageme.model.link.Link;
-import manageme.model.link.LinkModule;
 import manageme.model.module.Module;
 import manageme.model.task.Task;
-import manageme.model.task.TaskModule;
 import manageme.testutil.TaskBuilder;
 
 public class AddTaskCommandTest {
@@ -131,7 +130,7 @@ public class AddTaskCommandTest {
         }
 
         @Override
-        public boolean hasLink(Link link) {
+        public boolean has(Link link) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -141,12 +140,12 @@ public class AddTaskCommandTest {
         }
 
         @Override
-        public void setLink(Link target, Link editedLink) {
+        public void set(Link target, Link editedLink) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void editModuleInLinksWithModule(Module target, LinkModule newLinkModule) {
+        public void editModuleInLinksWithModule(Module target, manageme.model.TagModule newTagModule) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -166,7 +165,7 @@ public class AddTaskCommandTest {
         }
 
         @Override
-        public boolean hasModule(Module module) {
+        public boolean has(Module module) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -186,7 +185,7 @@ public class AddTaskCommandTest {
         }
 
         @Override
-        public void editModuleInTasksWithModule(Module target, TaskModule newTaskModule) {
+        public void editModuleInTasksWithModule(Module target, TagModule newTagModule) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -211,7 +210,7 @@ public class AddTaskCommandTest {
         }
 
         @Override
-        public boolean hasTask(Task task) {
+        public boolean has(Task task) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -226,7 +225,7 @@ public class AddTaskCommandTest {
         }
 
         @Override
-        public void setTask(Task target, Task editedTask) {
+        public void set(Task target, Task editedTask) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -263,9 +262,9 @@ public class AddTaskCommandTest {
         }
 
         @Override
-        public boolean hasTask(Task task) {
+        public boolean has(Task task) {
             requireNonNull(task);
-            return this.task.isSameTask(task);
+            return this.task.isSame(task);
         }
     }
 
@@ -276,9 +275,9 @@ public class AddTaskCommandTest {
         final ArrayList<Task> tasksAdded = new ArrayList<>();
 
         @Override
-        public boolean hasTask(Task task) {
+        public boolean has(Task task) {
             requireNonNull(task);
-            return tasksAdded.stream().anyMatch(task::isSameTask);
+            return tasksAdded.stream().anyMatch(task::isSame);
         }
 
         @Override

@@ -7,33 +7,33 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
-public class LinkNameTest {
+public class NameTest {
     @Test
     public void constructor_null_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> new LinkName(null));
+        assertThrows(NullPointerException.class, () -> new Name(null));
     }
 
     @Test
-    public void constructor_invalidLinkName_throwsIllegalArgumentException() {
+    public void constructor_invalidName_throwsIllegalArgumentException() {
         String invalidName = "";
-        assertThrows(IllegalArgumentException.class, () -> new LinkName(invalidName));
+        assertThrows(IllegalArgumentException.class, () -> new Name(invalidName));
     }
 
     @Test
     public void isValidName() {
         // null name
-        assertThrows(NullPointerException.class, () -> LinkName.isValidLinkName(null));
+        assertThrows(NullPointerException.class, () -> Name.isValidName(null));
 
         // invalid name
-        assertFalse(LinkName.isValidLinkName("")); // empty string
-        assertFalse(LinkName.isValidLinkName(" ")); // spaces only
+        assertFalse(Name.isValidName("")); // empty string
+        assertFalse(Name.isValidName(" ")); // spaces only
 
         // valid name
-        assertTrue(LinkName.isValidLinkName("google")); // alphabets only
-        assertTrue(LinkName.isValidLinkName("12345")); // numbers only
-        assertTrue(LinkName.isValidLinkName("notes for cs1101")); // alphanumeric characters
-        assertTrue(LinkName.isValidLinkName("assignments for CS1101")); // with capital letters
-        assertTrue(LinkName.isValidLinkName("Plan out next week timetable by this Friday")); // long names
+        assertTrue(Name.isValidName("google")); // alphabets only
+        assertTrue(Name.isValidName("12345")); // numbers only
+        assertTrue(Name.isValidName("notes for cs1101")); // alphanumeric characters
+        assertTrue(Name.isValidName("assignments for CS1101")); // with capital letters
+        assertTrue(Name.isValidName("Plan out next week timetable by this Friday")); // long names
     }
 
     @Test
