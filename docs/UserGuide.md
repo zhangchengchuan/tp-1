@@ -38,6 +38,7 @@ It should take **less than 5 minutes to read** and will provide new users with t
 ### <font color="#f0932b">User Interface</font>
 Below is a screenshot of our User Interface (UI). As you can see, there are management panels for Modules, Tasks, Calendar, and Links.
 You can type command lines in the command input box, and the ManageMe's response will be shown in the app response box.
+<br>
 
 
 ![Ui](images/UiHomepage.png)
@@ -207,7 +208,7 @@ Examples: `readMod 2`
 *Pop-up window for readMod*
 <br><br>
 
-#### <font color="#22a6b3">Edit a module:</font `editMod`
+#### <font color="#22a6b3">Edit a module:</font> `editMod`
 Edits an existing module in the module list.
 
 Format: `editMod INDEX n/NAME`
@@ -240,7 +241,7 @@ Example: `deleteMod 2`
 
 
 #### <font color="#22a6b3">Find a module by keyword:</font> `findMod`
-Finds all modules whose names contain any of the given keywords.
+Finds all modules whose names contain any of the specified keywords.
 
 Format: `findMod KEYWORD [MORE_KEYWORDS]`
 
@@ -262,44 +263,44 @@ Format: `listMod`
 
 Return to [Table of Contents](#table-of-contents).
 
-### <font color="#f9ca24">Links:</font>
-#### <font color="#f9ca24">Add a link:</font> `addLink`
+### <font color="#7d3415">Links:</font>
+#### <font color="#7d3415">Add a link:</font> `addLink`
 Adds a link into the link list. A link contains its name and a website link for online learning.
 
 Format: `addLink n/NAME a/LINK_ADDRESS [mod/ASSOCIATED_MODULE_NAME]` <br/>
 * A link can be a url to a webpage or a file path.
 * A link should be in a valid uri format, beginning with https://, ftp:// of file:/ .
-* Aftering tagging the module, the link will appear in the readMod panel of the particular module.
+* After tagging the module, the link will appear in the readMod panel of the particular module.
 * No space is allowed in the webpage address or file path.
-* A file path should be an absolute directory with file:// at the front, and `/` to separate subdirectories. For example, if you are using windows, and a document is at `Documents/doc.docx`, you may need to type `file://C:/users/YOUR_USERNAME/Documents/doc.docs` for our app to recognize your file directory properly.
+* A file path should be an **absolute directory** with file:// at the front, and `/` to separate subdirectories. For example, if you are using windows, and a document is at `Documents/doc.docx`, you may need to type `file://C:/users/YOUR_USERNAME/Documents/doc.docs` for our app to recognize your file directory properly.
 
 Examples: `addLink n/google a/https://www.google.com mod/CS1101S`
 <div markdown="span" class="alert alert-primary">
 
-:bulb: **Tip: How to find the absolute directory of my file?”** <br><br>
+:bulb: **Tip: How to find the absolute directory of my file?** <br><br>
 
-* For windows, right-click on the file, select `properties`, and you will see a window like this.<br>
-  ![win_property](images/file_properties_win_1.png) <br><br>
+For windows, right-click on the file, select `properties`, and you will see a window like this.<br><br>
+![win_property](images/file_properties_win_1.png) <br><br>
 
-  Under the `general` panel, there will be the `name` of the file and its `Location`. The absolute directory is the combination of the two.
-  Our app take the format with slash instead of backslash like the location in the picture, so you may also need to change all the backslashes into slasheas. <br><br>
-  For this example, the absolute directory with slashes is `C:/Users/tianqi/Desktop/test.pptx`. You may type `addLink n/test a/C:/Users/tianqi/Desktop/test.pptx` into our app to add the link. <br><br>
-
-
-* For Mac:
-  Right click on the file, select “Get Info”:<br><br>
-  ![Filepath](images/mac_getinfo.png)<br><br>
-
-  Then you will see this window. Copy and paste the “path” section:<br><br>
-  ![Filepath](images/mac_filepath.png)<br><br>
+Under the `general` panel, there will be the `name` of the file and its `Location`. The absolute directory is the combination of the two.
+Our app take the format with slash instead of backslash like the location in the picture, so you may also need to change all the backslashes into slasheas. <br><br>
+For this example, the absolute directory with slashes is `C:/Users/tianqi/Desktop/test.pptx`. You may type `addLink n/test a/C:/Users/tianqi/Desktop/test.pptx` into our app to add the link. <br><br>
 
 
-* For Linux, take ubuntu as an example. Like windows, you may right-click on the file and see the path of the parent folder and the file name. <br><br>
-  ![Linux_file](images/linux_file_property.png)<br><br>
+For Mac:
+Right click on the file, select “Get Info”:<br><br>
+![Filepath](images/mac_getinfo.png)<br><br>
+
+Then you will see this window. Copy and paste the “path” section:<br><br>
+![Filepath](images/mac_filepath.png)<br><br>
+
+
+For Linux, take ubuntu as an example. Like windows, you may right-click on the file and see the path of the parent folder and the file name. <br><br>
+![Linux_file](images/linux_file_property.png)<br><br>
 
 </div>
 
-#### <font color="#f9ca24">Edit a link: `editLink`</font>
+#### <font color="#7d3415">Edit a link:</font> `editLink`
 Edits an existing link in the link list.
 
 Format: `editLink INDEX [n/NAME] [a/LINK_ADDRESS] [mod/ASSOCIATED_MODULE_NAME]`
@@ -312,7 +313,7 @@ Format: `editLink INDEX [n/NAME] [a/LINK_ADDRESS] [mod/ASSOCIATED_MODULE_NAME]`
 Example: `editLink 2 n/amazon`
 <br><br>
 
-#### <font color="#f9ca24">Delete a link: `deleteLink`</font>
+#### <font color="#7d3415">Delete a link:</font> `deleteLink`
 Deletes the specified link from the link list.
 
 Format: `deleteLink INDEX`
@@ -320,7 +321,7 @@ Format: `deleteLink INDEX`
 * The index refers to the index number shown in the displayed link list.
 * The index **must be a positive integer** 1, 2, 3, ...
 
-Example: `deleteLink 2` deletes link No.2 from the list.
+Example: `deleteLink 2`.
 <br><br>
 
 <div markdown="block" class="alert alert-info">
@@ -331,30 +332,32 @@ Example: `deleteLink 2` deletes link No.2 from the list.
 
 </div>
 
-#### <font color="#f9ca24">Open a link:</font>
+#### <font color="#7d3415">Open a link:</font>
+Opens the link identified by the index in the link list.
+
 Format: `openLink INDEX`
-* Opens the link identified by the index in the link list. If it is a link for a webpage, it will open the link in a browser. If it is a file path on your computer, it will open the file using the default app.
+* If it is a link for a webpage, it will open the link in a browser. If it is a file path on your computer, it will open the file using the default application.
 * The index refers to the index number shown in the displayed link list.
 * The index **must be a positive integer** 1, 2, 3, ...
 
 Example: `openLink 1`.
 <br><br>
 
-#### <font color="#f9ca24">Find a link by keyword:</font>
-Find a link whose name contains the keyword given.
+#### <font color="#7d3415">Find a link by keyword:</font>
+Finds all links whose name contain the specified keyword.
 
 Format: `findLink KEYWORD [MORE_KEYWORDS]`
 
-* The search is case-insensitive. e.g zoom will match Zoom.
-* The order of the keywords does not matter. e.g. Link Exam will match Exam Link.
+* The search is **case-insensitive**. e.g "zoom" will match "Zoom".
+* The order of the keywords does not matter. e.g. "Link Exam" will match "Exam Link".
 * Only the name is searched.
-* Partial words will be matched e.g. You will match Youtube.
+* Partial words will be matched e.g. "You" will match "Youtube".
 * Links with a name matching at least one keyword will be returned (i.e. OR search).
 
 Example: `findLink zoom` returns `CS2100 Tutorial Zoom` and `CS2105 Lecture Zoom`.
 <br><br>
 
-#### <font color="#f9ca24">List all links: `listLink`</font>
+#### <font color="#7d3415">List all links:</font> `listLink`
 Display the full list of links. This command is used to return to the full list after searching for specific links.
 
 Format: `listLink`
@@ -364,20 +367,20 @@ Return to [Table of Contents](#table-of-contents).
 
 
 ### <font color="#eb4d4b">Calendar:</font>
-#### <font color="#eb4d4b">Change calendar to next month: `nextMonth`</font>
+#### <font color="#eb4d4b">Change calendar to next month:</font> `nextMonth`
 Display the calendar for the next month. This command will
 update the entire calendar panel to display the calendar and the related task information for the following month.
 
 Format: `nextMonth`
 <br><br>
 
-#### <font color="#eb4d4b">Change calendar to previous month: `prevMonth`</font>
+#### <font color="#eb4d4b">Change calendar to previous month:</font> `prevMonth`
 Similar to `nextMonth`. However, this command displays the calendar for the previous month instead.
 
 Format: `prevMonth`
 <br><br>
 
-#### <font color="#eb4d4b">Read details happening on a day: `readDay`</font>
+#### <font color="#eb4d4b">Read details happening on a day:</font> `readDay`
 View a day in detail. Tasks happening on the specified date will be displayed.
 
 Format: `readDay DATE`
@@ -390,7 +393,6 @@ Example: `readDay 2021-10-19`
 Return to [Table of Contents](#table-of-contents).
 
 
-
 ### <font color="#4834d4">Others:</font>
 
 #### <font color="#4834d4">Reminders:</font>
@@ -400,42 +402,42 @@ To close the reminder, press Enter or click on the Acknowledge button. Simply cl
 ![Reminder](images/reminder.png)
 *Pop-up reminder for tasks*
 
-#### <font color="#4834d4">Reset ManageMe: `clear`</font>
+#### <font color="#4834d4">Overdue tasks:</font>
+
+Tasks that are overdue(past the end time) will automatically be colored red for users to clearly see which tasks are
+overdue.
+
+![Ui](images/UiOverDueTask.png)<br>
+*A Task is coloured red since it is overdue*
+<br>
+
+#### <font color="#4834d4">Reset ManageMe:</font> `clear`
 
 Resets the application data. After you are familiar with the various commands, this command can be used to clear the sample data and you can start filling in your own data.
 
 Format: `clear`
 <br><br>
 
-#### <font color="#4834d4">Viewing help: `help`</font>
+#### <font color="#4834d4">Viewing help:</font> `help`
 
 Shows the command summary and the URL to the full User Guide.
 <br><br>
 
-#### <font color="#4834d4">Archive current data: `archive`</font>
+#### <font color="#4834d4">Archive current data:</font> `archive`
 
 Resets the application data and saves the deleted application data into a timestamped file located in the data folder.
 <br><br>
 
 
-#### <font color="#4834d4">Exiting the program : `exit`</font>
+#### <font color="#4834d4">Exiting the program :</font> `exit`
 
-Exits the program.
+Terminates the application.
 
 
 #### <font color="#4834d4">Saving the data</font>
 
 Data is saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
 <br><br>
-
-#### <font color="#4834d4">Reminder for overdue tasks:</font>
-
-Tasks that are overdue(past the end time) will automatically be colored red for users to clearly see which tasks are
-overdue.
-
-Feature in UI:<br>
-![Ui](images/UiOverDueTask.png)<br>
-*A Task coloured red since it is overdue*
 
 Return to [Table of Contents](#table-of-contents).
 
