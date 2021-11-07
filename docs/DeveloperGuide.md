@@ -363,34 +363,34 @@ Return to [Table of Contents](#table-of-contents).
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​                                 | I want to …​                                                       | So that I can…​                                                        |
-| -------- | ------------------------------------------ | --------------------------------------------------------------------- | --------------------------------------------------------------------------|
-| `* * *`  | Forgetful User                             | Add tasks                                                             | Keep track of what tasks I need to do                                     |
-| `* * *`  | Forgetful User                             | Add optional begin and end times to tasks                             | Know when a task beings and ends                                          |
-| `* * *`  | Forgetful User                             | Mark a task as done                                                   | Keep track of tasks I have done                                           |
-| `* * *`  | Forgetful User                             | View all my tasks                                                     |                                                                           |
-| `* * *`  | Forgetful User                             | Associate a task with a module                                        | Know which module each task belongs to                                    |
-| `* * *`  | Forgetful User                             | Edit my tasks                                                         | Change information related to a task                                      |
-| `* * *`  | Forgetful User                             | Delete my tasks                                                       | Remove done or unwanted tasks                                             |
-| `* * *`  | Forgetful User                             | Search for a task using keywords                                      | Find a task quickly by its name                                           |
-| `* * *`  | Student                                    | Add modules                                                           | Keep track of what modules I take                                         |
-| `* * *`  | Student                                    | View all my modules                                                   |                                                                           |
-| `* * *`  | Student                                    | View all tasks and links associated with a module                     | View all module-related tasks and links in one place                      |
-| `* * *`  | Student                                    | Edit my modules                                                       | Change information related to a module.                                   |
-| `* * *`  | Student                                    | Delete my modules                                                     | Remove modules that I am no longer taking                                 |
-| `* * *`  | Student                                    | Search for a module using keywords                                    | Find a module quickly by its name                                         |
-| `* * *`  | Digital-age student                        | Add a link                                                            | Keep track of website links and computer files I use in my study          |
-| `* * *`  | Digital-age student                        | Delete a link                                                         | Remove links I no longer use                                              |
-| `* * *`  | Digital-age student                        | Edit a link                                                           | Change information related to a link                                      |
-| `* * *`  | Digital-age student                        | Search for a link using keywords                                      | Find a link quickly by its name                                           |
-| `* * *`  | Digital-age student                        | View all my links                                                     |                                                                           |
-| `* *`    | Digital-Age Student                        | Open links                                                            | Access module-related web links and files directly from the application   |
-| `* * *`  | Busy user                                  | View calendar                                                         | Check the dates easily                                                    |
-| `* * *`  | Busy Student                               | View all tasks in a single day in the calendar according to its date  | Know what happens on any particular date                                  |
-| `* * *`  | Busy Student                               | See which days have ongoing tasks in a calendar                       | See which days I am free                                                  |
-| `* *`    | New User                                   | Open the command summary                                              | Know what commands are available and how to use them                      |
-| `* *`    | Experienced User                           | Close the command summary                                             | Save screen space after I am familiar with the commands.                  |
-| `*`      | Long-term user                             | Archive all the data                                                  | Store away old data to make space for new data.                           |
+| Priority | As a …​                                 | I can …​                                                           | So that …​                                                                  |
+| -------- | ------------------------------------------ | --------------------------------------------------------------------- | --------------------------------------------------------------------------     |
+| `* * *`  | Forgetful User                             | Add tasks                                                             | I can keep track of the tasks that I need to do                                |
+| `* * *`  | Forgetful User                             | Add start and end times to tasks                                      | I know when a task starts and ends                                             |
+| `* * *`  | Forgetful User                             | Mark a task as done                                                   | I can keep track of the tasks that I have done                                 |
+| `* * *`  | Forgetful User                             | View all my tasks                                                     | I can refer to it when needed                                                  |
+| `* * *`  | Forgetful User                             | Associate a task with a module                                        | I know which module each task belongs to                                       |
+| `* * *`  | Forgetful User                             | Edit my tasks                                                         | I can change information related to a task                                     |
+| `* * *`  | Forgetful User                             | Delete my tasks                                                       | I can remove done or unwanted tasks                                            |
+| `* * *`  | Forgetful User                             | Search for a task using keywords                                      | I can find a task quickly by its name                                          |
+| `* * *`  | Student                                    | Add modules                                                           | I can keep track of the modules that I am taking                               |
+| `* * *`  | Student                                    | View all my modules                                                   | I can refer to it when needed                                                  |
+| `* * *`  | Student                                    | View all tasks and links associated with a module                     | I can view all module-related tasks and links in one place                     |
+| `* * *`  | Student                                    | Edit my modules                                                       | I can change information related to a module.                                  |
+| `* * *`  | Student                                    | Delete my modules                                                     | I can remove modules that I am no longer taking                                |
+| `* * *`  | Student                                    | Search for a module using keywords                                    | I can find a module quickly by its name                                        |
+| `* * *`  | Digital-age student                        | Add a link                                                            | I can keep track of that website links and computer files that I use           |
+| `* * *`  | Digital-age student                        | Delete a link                                                         | I can remove links that I no longer use                                        |
+| `* * *`  | Digital-age student                        | Edit a link                                                           | I can change information related to a link                                     |
+| `* * *`  | Digital-age student                        | Search for a link using keywords                                      | I can find a link quickly by its name                                          |
+| `* * *`  | Digital-age student                        | View all my links                                                     | I can refer to it when needed                                                  |
+| `* * *`  | Busy user                                  | View calendar                                                         | I can check the dates easily                                                   |
+| `* * *`  | Busy Student                               | View all tasks in a single day in the calendar according to its date  | I know what are the tasks that I have on a particular date                     |
+| `* * *`  | Busy Student                               | See which days have ongoing tasks in a calendar                       | I know which days I am free                                                    |
+| `* *`    | Digital-Age Student                        | Open links                                                            | I can access module-related web links and files directly from the application  |
+| `* *`    | New User                                   | Open the command summary                                              | I know what commands are available and how to use them                         |
+| `* *`    | Experienced User                           | Close the command summary                                             | I can save screen space after I am familiar with the commands.                 |
+| `*`      | Long-term user                             | Archive all the data                                                  | I can store old data to make space for new data.                               |
 
 
 Return to [Table of Contents](#table-of-contents).
