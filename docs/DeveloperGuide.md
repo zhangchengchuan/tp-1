@@ -300,7 +300,7 @@ Return to [Table of Contents](#table-of-contents).
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Appendix A: Product scope
+## **Appendix A: Product scope**
 
 **Target user profile**:
 
@@ -323,7 +323,7 @@ Return to [Table of Contents](#table-of-contents).
 
 -----------------------------------------------------------------------------------------------
 
-## Appendix B: User stories
+## **Appendix B: User stories**
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
@@ -357,7 +357,7 @@ Return to [Table of Contents](#table-of-contents).
 
 ----------------------------------------------------------------------------------------------------------------
 
-## Appendix C: Common Use cases
+## **Appendix C: Common Use cases**
 
 (For all use cases below, the **System** is `ManageMe` unless specified otherwise)
 
@@ -442,7 +442,7 @@ Return to [Table of Contents](#table-of-contents).
 
 -------------------------------------------------------------------------------------------------------------------------
 
-## Appendix D: Non-Functional Requirements
+## **Appendix D: Non-Functional Requirements**
 
 1. Should work on any _mainstream OS_ as long as it has Java `11` or above installed.
 2. Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
@@ -454,7 +454,7 @@ Return to [Table of Contents](#table-of-contents).
 
 ----------------------------------------------------------------------------------------------------------------------
 
-## Appendix E: Glossary
+## **Appendix E: Glossary**
 
 * **Mainstream OS**: Windows, Linux, Unix, OS-X
 * **Digital-age:** A post-pandemic world where many schools have switched to online teaching and learning.
@@ -466,7 +466,7 @@ Return to [Table of Contents](#table-of-contents).
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Appendix F: Instructions for manual testing
+## **Appendix F: Instructions for manual testing**
 
 Given below are instructions to test the app manually.
 
@@ -490,8 +490,7 @@ testers are expected to do more *exploratory* testing.
     1. Re-launch the app by double-clicking the jar file.<br>
        Expected: The most recent window size and location is retained.
 
-
-
+       
 ### Deleting a task
 
 1. Deleting a task while all tasks are being shown
@@ -517,7 +516,6 @@ Expected: A reminder will appear in a pop-up window for this ongoing task 1 min 
 
 Type readMod for an existing module (if no module exists, add one with a simple name)
 Expected: A window appears that show all tasks and links associated with a module
-
 
 
 ### Saving data
