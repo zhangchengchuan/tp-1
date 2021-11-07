@@ -102,7 +102,7 @@ Given below are my contributions to the project.
 
   * **Contributions to Developer Guide**
     * Responsible for the writing and editing of the storage component. (PR#112)
-    * Wrote the implementation of the time component as well as the reminder functions. (Do now and PR)
+    * Wrote the implementation of the time component as well as the reminder functions. (PR #242)
     * Helped to type out all the user stories as well as use cases. (PR#46)
     * Contributed to the brainstorming of Glossary terms and Non-Functioning Requirements. (PR#46)
       <br><br>
