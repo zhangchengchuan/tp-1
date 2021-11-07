@@ -199,13 +199,37 @@ Return to [Table of Contents](#table-of-contents).
 ## **Implementation**
 In this section, we share more about the implementation process of the main features in our application along with some design considerations made.
 
+### Read Module feature
+ManageMe allows you to type in readMod for a particular module, and see all Tasks and Links related to it in a pop-up window.
+
+#### Implementation
+Read module makes use of both the UI component, which creates a pop-up window for display, and the Logic component,
+which parses user commands and decide which module to read.
+
+In the UI component, The `MmMainWindow` class, which controls the display of the UI homepage, 
+calls the `executeCommand` function of the Logic component and gets back a `CommandResult`, which contains 
+information about the results of the execution. A boolean value in `CommandResult`, `isReadModule`, indicates whether a 
+Read Module window should be popped up. Once `isReadModule` is true, `MmMainWindow` will call the `ModuleWindow` 
+class and generate a pop-up window.
+
+In the Logic component, once `executeCommand` is called in `LogicManager`, `ManageMeParser` and `ReadModuleCommandParser`
+parses the module index the user inputted, and generates a `ReadModuleCommand` object. `LogicManager` then executes the
+`ReadModuleCommand` object, which sets what module is to be read in the `Model` component. A `CommandResult` 
+is generated with `isReadModule` boolean value being true and sent back to `MmMainWindow`.
+
+#### Sequence Diagram of readMod command <br>
+<img src=”images/ReadModSequenceDiagram.png” width=”800” /> <br>
+<img src=”images/ReadModRef.png” width=”250” /> <br>
+
+
 ### **Task Feature**
 In this section, the functionality of the Task feature and its activity diagram will be discussed.
+
 
 ### Calendar feature
 ManageMe has a calendar feature for users to view all of their upcoming tasks for the month.
 
-#### Implementation
+##### Implementation
 The `CalendarPanel` consists of two main components, calendar and a task-list panel. A note-worthy field of the `CalendarPanel` is `referenceDate` whereby the task list panel will display the tasks happening on `referenceDate` in greater details. The month that is displayed is also based on the `referenceDate`. The default `referenceDate` is the current date when the application is first opened. <br><br>
 Calendar provides a visual representation of the user's schedule for the month. Days with upcoming tasks are denoted by a green dot. The `calendarPlaceholder`, which is the frame for the calendar, is a `GridPane`. The first row of the `GridPane` is a `Label` which represents a specific month and year. The second row has seven column where each cell is `Label` which represents the day-of-week. From the third row onwards, each cell is made up of a `DayCard`, which extends `UiPart<Region>` and represents a day in the calendar. The `DayCard` is made up of a `Label` and `Rectangle` with two `PseudoClass` to differentiate days with tasks and the reference date. <br><br>
 Task-list panel displays the tasks happening on `referenceDate` in greater details. It is made up of a `VBox` which contains a `Label`, which is the title, and a `StackPane`, which contains a `ListView<Task>`. <br><br>
@@ -217,7 +241,7 @@ The following sequence diagram demonstrates how the Calendar is created.
 Since the `CalendarPanel` is constructed with an `ObservableList<Task>`, changes to `UniqueTaskList` made by user using `addTask`, `deleteTask` and `editTask` will be reflected in the calendar automatically. <br><br>
 Calendar has three functionality, `prevMonth`, `nextMonth` and `readDay`, all of which manipulate `referenceDate`, which is the key component for generating the whole calendar GUI. Both `prevMonth` and `nextMonth` subtracts or adds the current `referenceDate` by a month respectively. While `readDay` takes in a `LocalDate` as argument and replace the `referenceDate` with it.
 
-#### Design Consideration
+##### Design Consideration
 The main consideration for the design of calendar is how many days should be displayed. The initial implementation was a "Week Calendar" which uses the current version of [NUSMODS](https://nusmods.com/timetable/sem-1) as reference. However, this design implies that there cannot be an overlap in the timing of different tasks. It would work for NUSMODS since it is a timetable and classes are not supposed to clash. However, it will not be as suitable for a calendar since multiple tasks can be happening or due at the same time. We decided to use the current implementation which is a "Month Calendar" with markings to represent the existence of tasks in the respective day-of-month and a task-list panel to display the tasks in greater details.
 ![Calendar](images/Calendar.png) <br>
 *Figure. Screenshot of GUI of calendar in ManageMe.*
@@ -226,7 +250,7 @@ The main consideration for the design of calendar is how many days should be dis
 ### **Reminder Feature**
 In this section, the functionality of the reminder feature and its activity diagram will be discussed.
 
-### **Implementation of Reminders**
+#### **Implementation**
 Reminders are implemented under the `TimeManager` Class which is located under the `time` package.
 
 The main thread, which handles the user inputs and command
@@ -236,7 +260,7 @@ This additional **Time** Thread will constantly check all the current tasks to m
 that the user is notified of any tasks that requires attention.
 This notification appears in the form of a pop-out with implementation located under the `time` package as well
 
-### **Activity Diagram of Reminders**
+#### **Activity Diagram of Reminders**
 
 <img src="images/RemindersActivityDiagram.png" width="550" /> <br>
 
