@@ -91,7 +91,8 @@ Return to [Table of Contents](#table-of-contents).
 
 The **API** of this component is specified in [`Ui.java`](https://github.com/AY2122S1-CS2103T-W11-3/tp/blob/master/src/main/java/manageme/ui/Ui.java)
 
-<img src=”images/UiClassDiagram.png” width=”800” />
+
+<img src="images/UiClassDiagram.png" width="800"/>
 
 The UI consists of a `MmMainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `ModuleListPanel`, `TaskListPanel` etc. All these, including the `MmMainWindow`, inherit from the abstract `UiPart` class which captures the commonalities between classes that represent parts of the visible GUI.
 
@@ -144,7 +145,7 @@ Here's a class diagram of the `Model` component:
 
 **API** : [`Model.java`](https://github.com/AY2122S1-CS2103T-W11-3/tp/blob/master/src/main/java/manageme/model/Model.java)
 
-<img src="images/MMModelClassDiagram.png" width="550" />
+<img src="images/MMModelClassDiagram.png" width="700" />
 
 
 The `Model` component,
