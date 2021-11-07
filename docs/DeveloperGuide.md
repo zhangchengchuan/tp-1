@@ -154,6 +154,8 @@ The `Model` component,
   which is exposed to outsiders as an unmodifiable `ObservableList<Task>` that can be 'observed' e.g. the UI can be
   bound to this list so that the UI automatically updates when the data in the list change. The `Module` and `Link`
   objects similarly follow this implementation.
+* As `TaskModule` and `TaskTime` are optional fields, their values are internally stored within a Java `Optional`
+  object.
 * stores a `UserPref` object that represents the user’s preferences. This is exposed to the outside as a `ReadOnlyUserPref` object.
 * does not depend on any of the other three components (as the `Model` represents data entities of the domain, they should make sense on their own without depending on other components)
 
@@ -236,23 +238,26 @@ A `Task` contains the following data fields represented by the corresponding mod
 * End time of task: `TaskTime`
 * Done status of task: `TaskIsDone`
 
-As `TaskModule` and `TaskTime` are optional fields, their values are internally stored within a Java `Optional` 
-object.
-
-All tasks are stored in a `UniqueTaskList`, of which contains an `ObservableList<Task>` which is displayed on the UI 
-as the `TaskListPanel`.
-
 #### **Implementation of commands**
-Similar to AB3, a user is able to add, edit and delete task and is implemented as the `AddTaskCommand`, 
-`EditTaskCommand` and `DeleteTaskCommand` respectively.
+Similar to the commands available in AB3, a user is able to add, edit, delete, find and list tasks and is 
+implemented as the `AddTaskCommand`,`EditTaskCommand`, `DeleteTaskCommand`, `FindTaskCommand` and `ListTaskCommand` 
+respectively.
 
 To give an example, the activity diagram when the addTask Command is executed is shown below:
 ![AddTaskActivityDiagram](images/AddTaskActivityDiagram.png) <br>
 *Figure. Activity diagram of creation of Task*
 
-Notably, the additional commands 
+Additionally, a user is also able to mark/unmark tasks as done and delete tasks that are already done. This is 
+implemented as the `MarkTaskCommand` and `DeleteDoneTaskCommand` respectively.
 
-
+Shown below is the sequence diagrams for when  `MarkTaskCommand` and `DeleteDoneTaskCommand` are executed.
+<br>
+![MarkTaskSequenceDiagram](images/MarkTaskSequenceDiagram.png) <br>
+*Figure. Sequence diagram of marking task 2 in the task list as done/undone*
+<br>
+<br>
+![DeleteDoneTaskSequenceDiagram](images/DeleteDoneTaskSequenceDiagram.png) <br>
+*Figure. Sequence diagram of deleting all done tasks*
 
 ### Calendar feature
 ManageMe has a calendar feature for users to view all of their upcoming tasks for the month.
