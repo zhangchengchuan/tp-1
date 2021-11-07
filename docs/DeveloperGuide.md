@@ -150,11 +150,10 @@ Here's a class diagram of the `Model` component:
 
 The `Model` component,
 
-* store the object data of ManageMe i.e., all `Module`, `Task` and `Link` objects (which are contained in a 
-  `UniqueModuleList` object, a `UniqueTaskList` and a `UniqueLinkList` respectively).
+* store the object data of ManageMe i.e., all `Module`, `Task` and `Link` objects (which are contained in a`UniqueModuleList` object, a `UniqueTaskList` and a `UniqueLinkList` respectively).
 * stores the currently 'selected' `Task` objects (e.g., results of a search query) as a separate _filtered_ list
-  which is exposed to outsiders as an unmodifiable `ObservableList<Task>` that can be 'observed' e.g. the UI can be 
-  bound to this list so that the UI automatically updates when the data in the list change. The `Module` and `Link` 
+  which is exposed to outsiders as an unmodifiable `ObservableList<Task>` that can be 'observed' e.g. the UI can be
+  bound to this list so that the UI automatically updates when the data in the list change. The `Module` and `Link`
   objects similarly follow this implementation.
 * stores a `UserPref` object that represents the user’s preferences. This is exposed to the outside as a `ReadOnlyUserPref` object.
 * does not depend on any of the other three components (as the `Model` represents data entities of the domain, they should make sense on their own without depending on other components)
@@ -198,8 +197,7 @@ Return to [Table of Contents](#table-of-contents).
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Implementation**
-In this section, we share more about the implementation process of the main features in our application along with 
-some design considerations made.
+In this section, we share more about the implementation process of the main features in our application along with some design considerations made.
 
 ### **Task Feature**
 In this section, the functionality of the Task feature and its activity diagram will be discussed.
