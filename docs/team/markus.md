@@ -5,7 +5,7 @@ title: Markus's Project Portfolio Page
 
 ### Project: ManageMe
 
-ManageMe is a desktop app for time management and resource organisation, optimized for use via a Command Line Interface (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, ManageMe can get your tasks done faster than traditional GUI apps.
+ManageMe is a **lightweight but powerful desktop application built to help university students manage their school life, available on Windows, Linux and Mac**. You can add your modules, tasks, schedules and online learning resources easily into ManageMe and access them with simple commands.
 
 Given below are my contributions to the project.
 

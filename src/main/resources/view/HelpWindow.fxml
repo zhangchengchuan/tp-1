@@ -24,7 +24,7 @@
       </stylesheets>
       <ScrollPane prefHeight="600" hbarPolicy="NEVER">
       <VBox fx:id="helpWindow" alignment="CENTER">
-        <ImageView fitHeight="1100" fitWidth="500">
+        <ImageView fitHeight="1200" fitWidth="500">
           <Image url="@/images/Command Summary.png" />
                <VBox.margin>
                   <Insets bottom="5.0" left="10.0" right="10.0" top="10.0" />
