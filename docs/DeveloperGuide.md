@@ -405,7 +405,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* *`    | Digital-Age Student                        | Open links                                                            | I can access module-related web links and files directly from the application  |
 | `* *`    | New User                                   | Open the command summary                                              | I know what commands are available and how to use them                         |
 | `* *`    | Experienced User                           | Close the command summary                                             | I can save screen space after I am familiar with the commands.                 |
-| `*`      | Long-term user                             | Archive all the data                                                  | I can store old data to make space for new data.
+| `*`      | Long-term user                             | Archive all the data                                                  | I can store old data to make space for new data.                               |
+
+>>>>>>> 54783f6e88eda4d7c37efc165252b34a2a3bb6f5
 
 Return to [Table of Contents](#table-of-contents).
 
