@@ -17,9 +17,9 @@ import manageme.model.ModelManager;
 import manageme.model.UserPrefs;
 
 public class OpenLinkCommandTest {
-    
+
     private Model model = new ModelManager(getTypicalManageMe(), new UserPrefs());
-    
+
     @Test
     public void execute_invalidIndexUnfilteredList_throwsCommandException() {
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredLinkList().size() + 1);
