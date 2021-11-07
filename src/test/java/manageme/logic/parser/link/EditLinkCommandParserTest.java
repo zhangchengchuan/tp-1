@@ -26,9 +26,9 @@ import org.junit.jupiter.api.Test;
 
 import manageme.commons.core.index.Index;
 import manageme.logic.commands.link.EditLinkCommand;
+import manageme.model.Name;
 import manageme.model.TagModule;
 import manageme.model.link.LinkAddress;
-import manageme.model.Name;
 import manageme.testutil.EditLinkDescriptorBuilder;
 
 public class EditLinkCommandParserTest {

@@ -16,10 +16,9 @@ import org.junit.jupiter.api.Test;
 
 import manageme.logic.parser.exceptions.ParseException;
 import manageme.model.Name;
+import manageme.model.TagModule;
 import manageme.model.tag.Tag;
 import manageme.model.task.TaskDescription;
-import manageme.model.TagModule;
-import manageme.model.Name;
 import manageme.model.task.TaskTime;
 
 public class ParserUtilTest {
@@ -132,29 +131,6 @@ public class ParserUtilTest {
         Set<Tag> expectedTagSet = new HashSet<Tag>(Arrays.asList(new Tag(VALID_TAG_1), new Tag(VALID_TAG_2)));
 
         assertEquals(expectedTagSet, actualTagSet);
-    }
-
-    @Test
-    public void parseName_null_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> ParserUtil.parseName((String) null));
-    }
-
-    @Test
-    public void parseName_invalidValue_throwsParseException() {
-        assertThrows(ParseException.class, () -> ParserUtil.parseName(INVALID_Name));
-    }
-
-    @Test
-    public void parseName_validValueWithoutWhitespace_returnsName() throws Exception {
-        Name expectedName = new Name(VALID_Name);
-        assertEquals(expectedName, ParserUtil.parseName(VALID_Name));
-    }
-
-    @Test
-    public void parseName_validValueWithWhitespace_returnsTrimmedName() throws Exception {
-        String NameWithWhitespace = WHITESPACE + VALID_Name + WHITESPACE;
-        Name expectedName = new Name(VALID_Name);
-        assertEquals(expectedName, ParserUtil.parseName(NameWithWhitespace));
     }
 
     @Test

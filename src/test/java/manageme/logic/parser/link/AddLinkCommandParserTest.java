@@ -21,10 +21,10 @@ import org.junit.jupiter.api.Test;
 
 import manageme.logic.commands.CommandTestUtil;
 import manageme.logic.commands.link.AddLinkCommand;
+import manageme.model.Name;
 import manageme.model.TagModule;
 import manageme.model.link.Link;
 import manageme.model.link.LinkAddress;
-import manageme.model.Name;
 import manageme.testutil.LinkBuilder;
 
 public class AddLinkCommandParserTest {

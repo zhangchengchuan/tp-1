@@ -14,9 +14,9 @@ import manageme.logic.commands.Command;
 import manageme.logic.commands.CommandResult;
 import manageme.logic.commands.exceptions.CommandException;
 import manageme.model.Model;
+import manageme.model.Name;
 import manageme.model.TagModule;
 import manageme.model.module.Module;
-import manageme.model.Name;
 
 /**
  * Edits the details of an existing module in the app.
