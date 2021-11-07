@@ -5,7 +5,7 @@ title: Zhu Tianqi's Project Portfolio Page
 
 ### Project: ManageMe
 
-ManageMe is a one-stop solution for zoom-age students facing problems like missing deadlines, forgetting homework, oversleeping and searching for zoom links. Through efficient resource management, accurate time tracking and frequent reminders, our simple time management app will allow every student to finally unlock their fullest potential.
+ManageMe is a **lightweight but powerful desktop application built to help university students manage their school life, available on Windows, Linux and Mac**. You can add your modules, tasks, schedules and online learning resources easily into ManageMe and access them with simple commands.
 
 Given below are my contributions to the project.
 
