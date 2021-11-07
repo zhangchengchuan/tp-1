@@ -48,11 +48,33 @@ public class ManageMe implements ReadOnlyManageMe {
     }
 
     //// list overwrite operations
+//    public <T extends ManageMeObject> void setTs(List<T> lists) {
+//        UniqueObjectList<T> toSet = getList(lists.get(0));
+//        toSet.setTs(lists);
+//    }
 
+    /**
+     * Replaces the contents of the link list with {@code links}.
+     * {@code links} must not contain duplicate links.
+     */
+    public void setLinks(List<Link> links) {
+        this.links.setTs(links);
+    }
 
-    public <T extends ManageMeObject> void setTs(List<T> lists) {
-        UniqueObjectList<T> toSet = getList(lists.get(0));
-        toSet.setTs(lists);
+    /**
+     * Replaces the contents of the module list with {@code modules}.
+     * {@code modules} must not contain duplicate modules.
+     */
+    public void setModules(List<Module> modules) {
+        this.modules.setTs(modules);
+    }
+
+    /**
+     * Replaces the contents of the task list with {@code tasks}.
+     * {@code tasks} must not contain duplicate tasks.
+     */
+    public void setTasks(List<Task> tasks) {
+        this.tasks.setTs(tasks);
     }
 
     public <T extends ManageMeObject> void setT(T target, T editedT) {
@@ -116,9 +138,9 @@ public class ManageMe implements ReadOnlyManageMe {
      */
     public void resetData(ReadOnlyManageMe newData) {
         requireNonNull(newData);
-        this.setTs(newData.getLinkList());
-        this.setTs(newData.getModuleList());
-        this.setTs(newData.getTaskList());
+        this.setLinks(newData.getLinkList());
+        this.setModules(newData.getModuleList());
+        this.setTasks(newData.getTaskList());
     }
 
     //// link-level operations
