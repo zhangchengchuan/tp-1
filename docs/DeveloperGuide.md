@@ -274,7 +274,7 @@ ManageMe has a link feature for users to store and open local filepath or websit
 #### Implementation
 Similar to the commands available in AB3, a user is able to add, edit, delete, find and list links and is
 implemented as the `AddLinkCommand`,`EditLinkCmmand`, `DeleteLinkCommand`, `FindLinkCommand` and `ListLinkCommand`
-respectively. We also implemented a `OpeLinkCommand` to open the filepath using system default app or the website URL in
+respectively. We also implemented a `OpenLinkCommand` to open the filepath using system default app or the website URL in
 a browser.
 
 ![AddTaskActivityDiagram](images/OpenLinkActivityDiagram.png) <br>
@@ -422,8 +422,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* *`    | New User                                   | Open the command summary                                              | I know what commands are available and how to use them                         |
 | `* *`    | Experienced User                           | Close the command summary                                             | I can save screen space after I am familiar with the commands.                 |
 | `*`      | Long-term user                             | Archive all the data                                                  | I can store old data to make space for new data.                               |
-
->>>>>>> 54783f6e88eda4d7c37efc165252b34a2a3bb6f5
 
 Return to [Table of Contents](#table-of-contents).
 
