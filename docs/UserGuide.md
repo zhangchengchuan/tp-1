@@ -105,7 +105,7 @@ Format: `editTask INDEX [n/NAME] [d/DESCRIPTION] [mod/ASSOCIATED_MODULE_NAME] [s
 * Existing values will be updated to the input values.
 * Format for a `DATETIME` is as follows: `yyyy-MM-ddThh:mm` e.g. `2021-10-29T23:59`.
 * Take note that the **T** must be in the date that you entered.
-  Example: `editTask 3 d/Complete assignments e/2021-10-25T16:00`
+  Example: `editTask 10 d/Complete assignments e/2021-10-25T16:00`
   <br><br>
 
 #### <font color="#6ab04c">Deleting a task:</font> `deleteTask`
@@ -220,7 +220,7 @@ Format: `editMod INDEX n/NAME`
 * The index **must be a positive integer** 1, 2, 3, ...
 * Existing values will be updated to the input values.
 
-Example: `editMod 2 n/CS2103T`
+Example: `editMod 2 n/CS3230`
 <br><br>
 
 #### <font color="#22a6b3">Delete a module:</font> `deleteMod`
@@ -254,7 +254,7 @@ Format: `findMod KEYWORD [MORE_KEYWORDS]`
 * Partial words will be matched e.g. "CS210" will match "CS2101".
 * Modules matching at least one keyword will be returned (i.e. OR search).
 
-Example: `findMod computer` returns `Computer Organization` and `Computer Architecture`.
+Example: `findMod cs2100` returns `CS2100`
 <br><br>
 
 #### <font color="#22a6b3">List all modules:</font> `listMod`
@@ -279,7 +279,7 @@ Format: `addLink n/NAME a/LINK_ADDRESS [mod/ASSOCIATED_MODULE_NAME]` <br/>
 * No space is allowed in the webpage address or file path.
 * A file path should be an **absolute directory** with file:// at the front, and `/` to separate subdirectories. For example, if you are using windows, and a document is at `Documents/doc.docx`, you may need to type `file://C:/users/YOUR_USERNAME/Documents/doc.docs` for our app to recognize your file directory properly.
 
-Examples: `addLink n/google a/https://www.google.com mod/CS1101S`
+Examples: `addLink n/Yahoo a/https://www.yahoo.com`
 <div markdown="span" class="alert alert-primary">
 
 :bulb: **Tip: How to find the absolute directory of my file?** <br><br>
@@ -314,7 +314,7 @@ Format: `editLink INDEX [n/NAME] [a/LINK_ADDRESS] [mod/ASSOCIATED_MODULE_NAME]`
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
 
-Example: `editLink 2 n/amazon`
+Example: `editLink 5 n/Amazon a/https://www.amazon.com`
 <br><br>
 
 #### <font color="#7d3415">Delete a link:</font> `deleteLink`
@@ -325,7 +325,7 @@ Format: `deleteLink INDEX`
 * The index refers to the index number shown in the displayed link list.
 * The index **must be a positive integer** 1, 2, 3, ...
 
-Example: `deleteLink 2`.
+Example: `deleteLink 2`
 <br><br>
 
 <div markdown="block" class="alert alert-info">
@@ -344,7 +344,7 @@ Format: `openLink INDEX`
 * The index refers to the index number shown in the displayed link list.
 * The index **must be a positive integer** 1, 2, 3, ...
 
-Example: `openLink 1`.
+Example: `openLink 1`
 <br><br>
 
 #### <font color="#7d3415">Find a link by keyword:</font> `findLink`
@@ -358,7 +358,7 @@ Format: `findLink KEYWORD [MORE_KEYWORDS]`
 * Partial words will be matched e.g. "You" will match "Youtube".
 * Links with a name matching at least one keyword will be returned (i.e. OR search).
 
-Example: `findLink zoom` returns `CS2100 Tutorial Zoom` and `CS2105 Lecture Zoom`.
+Example: `findLink cs2100` returns `CS2100 Lecture`
 <br><br>
 
 #### <font color="#7d3415">List all links:</font> `listLink`
@@ -418,9 +418,15 @@ overdue.
 
 #### <font color="#4834d4">Reset ManageMe:</font> `clear`
 
-Resets the application data. After you are familiar with the various commands, this command can be used to clear the sample data and you can start filling in your own data.
+Resets the application data. After you are familiar with the various commands, this command can be used to clear the sample data, and you can start filling in your own data. <br><br>
 
-<br><br>
+<div markdown="block" class="alert alert-info">
+
+**:warning: Caution**<br>
+
+* Clearing ManageMe's data is irreversible.<br>
+
+</div>
 
 #### <font color="#4834d4">Viewing help:</font> `help`
 
@@ -429,7 +435,8 @@ Shows the command summary and the URL to the full User Guide.
 
 #### <font color="#4834d4">Archive current data:</font> `archive`
 
-Copies the current application data into a new timestamped file created in the data folder.
+Saves a copy of the current application data into a timestamped file located in the data folder.
+
 <br><br>
 
 
@@ -456,19 +463,19 @@ Action | Format, Examples
 **AddTask** | `addTask n/NAME d/DESCRIPTION [mod/ASSOCIATED_MODULE_NAME] [s/START_DATETIME] [e/END_DATETIME]`<br>e.g., `addTask n/Do Assignment d/Read Lecture 7 mod/CS2100 s/2021-10-05T12:00 e/2021-10-07T23:59`
 **EditTask** | `editTask INDEX [n/NAME] [d/DESCRIPTION] [mod/ASSOCIATED_MODULE_NAME] [s/START_DATETIME] [e/END_DATETIME]`<br>e.g., `editTask 3 d/start tutorial 3`
 **DeleteTask** | `deleteTask INDEX`<br>e.g., `deleteTask 3`
-**findTask** | `findTask KEYWORD [MORE_KEYWORDS]`<br>e.g., `findTask work`
+**findTask** | `findTask KEYWORD [MORE_KEYWORDS]`<br>e.g., `findTask cut hair`
 **ListTask** | `listTask`
 **MarkTask** | `markTask INDEX`<br>e.g., `markTask 1`
 **DeleteDoneTask** | `deleteDoneTask`
-**AddModule** | `addMod n/NAME`<br>e.g.,`addMod n/CS2103`
+**AddModule** | `addMod n/NAME`<br>e.g.,`addMod n/MA1101R`
 **ReadModule** | `readMod INDEX`<br>e.g., `readMod 2`
-**EditModule** | `editMod INDEX [n/NAME] [l/LINK]`<br>e.g., `editMod 2 n/CS2103T l/https://...`
+**EditModule** | `editMod INDEX [n/NAME]`<br>e.g., `editMod 2 n/CS2103`
 **DeleteModule** | `deleteMod INDEX`<br>e.g., `deleteMod 2`
-**FindModule** | `findMod KEYWORD [MORE_KEYWORDS]`<br>e.g., `findMod computer`
+**FindModule** | `findMod KEYWORD [MORE_KEYWORDS]`<br>e.g., `findMod cs`
 **ListModule** | `listMod`
-**AddLink** | `addLink n/NAME l/LINK_ADDRESS [mod/ASSOCIATED_MODULE_NAME]`<br>e.g., `addLink n/google a/https://www.google.com`
+**AddLink** | `addLink n/NAME a/LINK_ADDRESS [mod/ASSOCIATED_MODULE_NAME]`<br>e.g., `addLink n/google a/https://www.google.com`
 **DeleteLink** | `deleteLink INDEX`<br>e.g., `deleteLink 2`
-**EditLink** | `editLink INDEX [n/NAME] [a/LINK_ADDRESS] [mod/ASSOCIATED_MODULE_NAME]`<br>e.g.,`editLink 2 n/amazon`
+**EditLink** | `editLink INDEX [n/NAME] [a/LINK_ADDRESS] [mod/ASSOCIATED_MODULE_NAME]`<br>e.g.,`editLink 5 n/Amazon a/https://www.amazon.com`
 **OpenLink** | `openLink INDEX` <br>e.g.,`openLink 1`
 **FindLink** | `findLink KEYWORD`<br>e.g.,`findLink google`
 **ListLink** | `listLink`
