@@ -19,7 +19,7 @@ public class ArchiveCommand extends Command {
     public static final String COMMAND_WORD = "archive";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Saves s copy of the current data into a new file in the same data folder";
+            + ": Saves a copy of the current data into a new file in the same data folder";
 
     public static final String FILE_OPS_ERROR_MESSAGE = "Could not save data to file: ";
 
