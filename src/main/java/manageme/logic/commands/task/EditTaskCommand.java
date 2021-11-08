@@ -236,7 +236,6 @@ public class EditTaskCommand extends Command {
                     && getModule().equals(e.getModule())
                     && getStart().equals(e.getStart())
                     && getEnd().equals(e.getEnd());
-            //        && getTags().equals(e.getTags());
         }
     }
 }
