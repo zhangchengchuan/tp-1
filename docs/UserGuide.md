@@ -436,6 +436,7 @@ Shows the command summary and the URL to the full User Guide.
 #### <font color="#4834d4">Archive current data:</font> `archive`
 
 Saves a copy of the current application data into a timestamped file located in the data folder.
+
 <br><br>
 
 
