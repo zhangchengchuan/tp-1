@@ -17,7 +17,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 [[portfolio](team/markuslim24.md)]
 
 * Role: Team Lead
-* Responsibilities: Host meeting
+* Responsibilities: Facilitate team meetings
 
 ### Zhu Tianqi
 
