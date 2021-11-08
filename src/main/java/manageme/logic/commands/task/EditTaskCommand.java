@@ -153,7 +153,6 @@ public class EditTaskCommand extends Command {
         private TagModule module;
         private TaskTime start;
         private TaskTime end;
-        // private Set<Tag> tags;
 
         public EditTaskDescriptor() {
         }
@@ -168,7 +167,6 @@ public class EditTaskCommand extends Command {
             setModule(toCopy.module);
             setStart(toCopy.start);
             setEnd(toCopy.end);
-            // setTags(toCopy.tags);
         }
 
         /**
@@ -217,23 +215,6 @@ public class EditTaskCommand extends Command {
         public Optional<TaskTime> getEnd() {
             return Optional.ofNullable(end);
         }
-
-        ///**
-        // * Sets {@code tags} to this object's {@code tags}.
-        // * A defensive copy of {@code tags} is used internally.
-        // */
-        //public void setTags(Set<Tag> tags) {
-        //    this.tags = (tags != null) ? new HashSet<>(tags) : null;
-        //}
-
-        ///**
-        // * Returns an unmodifiable tag set, which throws {@code UnsupportedOperationException}
-        // * if modification is attempted.
-        // * Returns {@code Optional#empty()} if {@code tags} is null.
-        // */
-        //public Optional<Set<Tag>> getTags() {
-        //    return (tags != null) ? Optional.of(Collections.unmodifiableSet(tags)) : Optional.empty();
-        //}
 
         @Override
         public boolean equals(Object other) {
