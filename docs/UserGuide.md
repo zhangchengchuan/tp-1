@@ -127,7 +127,7 @@ Example: `deleteTask 2`
 * Deleting a task is irreversible.<br>
 
 </div>
-<br>
+<br><br><br>
 
 #### <font color="#6ab04c">Find a task by keyword:</font> `findTask`
 Finds all tasks whose names contain any of the specified keywords.
@@ -140,9 +140,13 @@ Format: `findTask KEYWORD [MORE_KEYWORDS]`
 * Tasks matching at least one keyword will be returned (i.e. OR search).
 
 Example: `findTask assignment` <br><br>
+
+<div style="page-break-after: always;"></div>
+
 Before findTask:<br><br>
 ![findTask](images/findTask_before.png)<br><br>
 
+<div style="page-break-after: always;"></div>
 
 After findTask:<br><br>
 ![findTask](images/findTask_after.png)
