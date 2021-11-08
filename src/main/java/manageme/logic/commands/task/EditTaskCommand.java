@@ -31,11 +31,11 @@ public class EditTaskCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the task identified "
             + "by the index number used in the displayed task list. "
             + "Existing values will be overwritten by the input values.\n"
-            + "Parameters: INDEX (must be a positive integer between 1 and 2147483647) ";
+            + "Parameters: INDEX (must be a positive integer between 1 and 2147483647)";
 
     public static final String MESSAGE_EDIT_TASK_SUCCESS = "Edited Task: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
-    public static final String MESSAGE_DUPLICATE_TASK = "This task already exists in the address book.";
+    public static final String MESSAGE_DUPLICATE_TASK = "This task already exists in ManageMe.";
     public static final String MESSAGE_START_LATER_THAN_END = "The task cannot have start date later than the end date";
     public static final String MESSAGE_START_WITHOUT_END = "The task cannot have a start without an end date";
     public static final String MESSAGE_TASK_NAME_TOO_LONG = "Maximum Length of Edited Task Name is 50 Characters";
@@ -153,7 +153,6 @@ public class EditTaskCommand extends Command {
         private TagModule module;
         private TaskTime start;
         private TaskTime end;
-        // private Set<Tag> tags;
 
         public EditTaskDescriptor() {
         }
@@ -168,7 +167,6 @@ public class EditTaskCommand extends Command {
             setModule(toCopy.module);
             setStart(toCopy.start);
             setEnd(toCopy.end);
-            // setTags(toCopy.tags);
         }
 
         /**

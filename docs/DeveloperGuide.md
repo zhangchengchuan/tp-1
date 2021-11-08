@@ -159,11 +159,10 @@ Here's a class diagram of the `Model` component:
 
 The `Model` component,
 
-* store the object data of ManageMe i.e., all `Module`, `Task` and `Link` objects (which are contained in a`UniqueModuleList` object, a `UniqueTaskList` and a `UniqueLinkList` respectively).
-* stores the currently 'selected' `Task` objects (e.g., results of a search query) as a separate _filtered_ list
-  which is exposed to outsiders as an unmodifiable `ObservableList<Task>` that can be 'observed' e.g. the UI can be
-  bound to this list so that the UI automatically updates when the data in the list change. The `Module` and `Link`
-  objects similarly follow this implementation.
+* stores the object data of ManageMe i.e., all `Module`, `Task` and `Link` objects (which are contained in a`UniqueModuleList` object, a `UniqueTaskList` and a `UniqueLinkList` respectively).
+* All `Module`, `Task` and `Link` objects are a `ManageMeObject`.
+* stores the currently 'selected' `Task` objects (e.g., results of a search query) as a separate _filtered_ list 
+  which is exposed to outsiders as an unmodifiable `ObservableList<Task>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change. The `Module` and `Link` objects similarly follow this implementation.
 * As `TaskModule` and `TaskTime` are optional fields, their values are internally stored within a Java `Optional`
   object.
 * stores a `UserPref` object that represents the user’s preferences. This is exposed to the outside as a `ReadOnlyUserPref` object.
@@ -341,7 +340,8 @@ will continue to scan for tasks that need the user's attention.
 In this section, the archive feature and its activity diagram will be discussed.
 
 #### Implementation
-The archive feature is implemented as the `ArchiveCommand` and allows the user to archive the current data into a timestamped file in the data folder and resets the application with a new data file.
+The archive feature is implemented as the `ArchiveCommand` and allows the user to archive the current data 
+into a timestamped file in the data folder. 
 
 The following Activity diagram demonstrates the execution path of the archive command: <br><br>
 <img src="images/ArchiveActivityDiagram.png" width="500" /> <br>
