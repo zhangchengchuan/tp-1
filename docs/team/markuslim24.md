@@ -11,15 +11,16 @@ Given below are my contributions to the project.
 
 * **Major Enhancements**:
   * Added addTask command
-    * Description:The addTask command allows the user to add a specific task based on what the user has used in the parameters.
+    * Description:The addTask command allows users to add a specified task.
     * Reason: addTask is the main method for which users can add a task of their own into ManageMe.
     * Difficulty: Though not too difficult, implementing addTask was quite tedious since it was one of the first few features that we had to implement early on. Hence, this involved creating all the class models related to a task such as TaskName and TaskDescription. The Task related models also had to be modified quite a bit during the development stage before we settled on the final specifications.
   * Added markTask command
-    * Description: The markTask command allows the user to mark and unmark a specific task as done.
+    * Description: The markTask command allows users to mark and unmark a specific task as done.
     * Reason: Applications with a task functionality often allow users to mark tasks as done since it is natural for users to want to mark certain tasks as done to distinguish them from undone tasks.
     * Difficulty: The markTask command was quite straightforward for me as it involved creating a task field model and a task command which I was already familiar with when working on addTask.
   * Added archive command
-    * Description:The archive command allows the user to archive the current data into a timestamped file in the data folder and resets the application with a new data file.
+    * Description:The archive command allows users to archive the current data into a timestamped file in the data 
+      folder and resets the application with a new data file.
     * Reason: For long-term users who may have plenty of data stored in the application or for users who plan to migrate their data onto a new computer, the archive command provides a convenient way for them to store all their current data into an easy-to-find file for manipulation.
   * Added help command
     * Description: The help command shows a command summary of the application along with the link to the user guide.
@@ -33,7 +34,6 @@ Given below are my contributions to the project.
 * **Code contributed**: [RepoSense link](https://nus-cs2103-ay2122s1.github.io/tp-dashboard/?search=markuslim24&sort=groupTitle&sortWithin=title&since=2021-09-17&timeframe=commit&mergegroup=&groupSelect=groupByRepos&breakdown=false)
 
 * **Other Contributions**
-  <br><br>
   * **Documentation**:
     * User Guide:
       * Created the Introductions and Quick start section (Pull requests [\#145](https://github.com/AY2122S1-CS2103T-W11-3/tp/pull/145))
@@ -46,7 +46,7 @@ Given below are my contributions to the project.
       * Contributed to the user stories, use cases and non-functional requirements.(Pull request [\#46](https://github.com/AY2122S1-CS2103T-W11-3/tp/pull/46))
 
   * **Contributions to Team-based Tasks**
-    * Responsible for checking the user guide to ensure correctness before each milestone release.
+    * Responsible for checking user guide before each milestone release.
     * Responsible for leading team meetings. This involved setting agendas, facilitating discussions and overall,
       keeping the meeting focused.
 
