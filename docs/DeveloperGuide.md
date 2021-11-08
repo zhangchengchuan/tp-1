@@ -157,7 +157,6 @@ Here's a class diagram of the `Model` component:
 
 <img src="images/MMModelClassDiagram.png" width="700" />
 
-
 The `Model` component,
 
 * stores the object data of ManageMe i.e., all `Module`, `Task` and `Link` objects (which are contained in a`UniqueModuleList` object, a `UniqueTaskList` and a `UniqueLinkList` respectively).
@@ -211,7 +210,7 @@ Return to [Table of Contents](#table-of-contents).
 
 ## **Implementation**
 This section describes some noteworthy details on how certain features are implemented.
-
+ 
 ### Task Feature
 In this section, the functionality of the Task feature and the sequence diagram for its related commands will be
 discussed.
@@ -237,10 +236,18 @@ Shown below is the sequence diagrams for when  `MarkTaskCommand` and `DeleteDone
 ![DeleteDoneTaskSequenceDiagram](images/DeleteDoneTaskSequenceDiagram.png) <br>
 *Sequence diagram of deleting all done tasks*
 
-### Read Module Feature
-ManageMe allows you to type in `readMod` for a particular module, and see all `Task` and `Link` related to it in a pop-up window.
+### Module Feature
+Similar to the commands available in AB3, a user is able to add, edit, delete, find and list tasks and is
+implemented as the `AddModuleCommand`,`EditModuleCommand`, `DeleteModuleCommand`, `FindModuleCommand` and `ListModuleCommand`
+respectively. ManageMe also allows you to type in `readMod` for a particular module, and see all `Task` and `Link` related to it in a pop-up window.
 
-#### Implementation
+#### Implementation for Delete and Edit Module Feature
+When a module is deleted or edited, all `TagModule` references in all available `Task` and `Link` are updated accordingly.
+
+![EditModSequenceDiagram](images/EditModSequenceDiagram.png) <br>
+*Sequence diagram for editMod command* <br>
+
+#### Implementation for Read Module Feature
 Read module makes use of both the UI component which creates a pop-up window for display, and the Logic component
 which parses user commands and decide which module to read.
 
@@ -260,6 +267,18 @@ is generated with `isReadModule` boolean value being true and sent back to `MmMa
 
 ![ReadModSequenceDiagram](images/ReadModRef.png) <br>
 *Referenced Sequence diagram* <br>
+
+### Link Feature
+ManageMe has a link feature for users to store and open local filepath or website URL conveniently.
+
+#### Implementation
+Similar to the commands available in AB3, a user is able to add, edit, delete, find and list links and is
+implemented as the `AddLinkCommand`,`EditLinkCmmand`, `DeleteLinkCommand`, `FindLinkCommand` and `ListLinkCommand`
+respectively. We also implemented a `OpeLinkCommand` to open the filepath using system default app or the website URL in
+a browser.
+
+![AddTaskActivityDiagram](images/OpenLinkActivityDiagram.png) <br>
+*OpenLink activity diagram*
 
 ### Calendar Feature
 ManageMe has a calendar feature for users to view all of their upcoming tasks for the month.
@@ -281,7 +300,6 @@ The main consideration for the design of calendar is how many days should be dis
 <br>
 ![Calendar](images/Calendar.png) <br>
 *Screenshot of GUI of calendar in ManageMe.*
-
 
 ### Reminder Feature
 In this section, the functionality of the reminder feature and its activity diagram will be discussed.

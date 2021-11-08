@@ -67,7 +67,7 @@ public class EditModuleCommand extends Command {
             throw new CommandException(MESSAGE_DUPLICATE_MODULE);
         }
 
-        model.editModuleInTasksWithModule(moduleToEdit, new manageme.model.TagModule(editedModule.getName().value));
+        model.editModuleInTasksWithModule(moduleToEdit, new TagModule(editedModule.getName().value));
         model.editModuleInLinksWithModule(moduleToEdit, new TagModule(editedModule.getName().value));
         model.set(moduleToEdit, editedModule);
         model.updateFilteredModuleList(PREDICATE_SHOW_ALL_MODULES);
