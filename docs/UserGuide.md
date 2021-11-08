@@ -74,6 +74,8 @@ There will also be tips along the way to ensure a greater user experience for yo
 
 </div>
 
+<div style="page-break-after: always;"></div>
+
 ### <font color="#6ab04c">Tasks:</font>
 
 #### <font color="#6ab04c">Adding a task:</font> `addTask`
@@ -104,6 +106,8 @@ Format: `editTask INDEX [n/NAME] [d/DESCRIPTION] [mod/ASSOCIATED_MODULE_NAME] [s
 * Take note that the **T** must be in the date that you entered.
   Example: `editTask 10 d/Complete assignments e/2021-10-25T16:00`
   <br><br>
+
+<div style="page-break-after: always;"></div>
 
 #### <font color="#6ab04c">Deleting a task:</font> `deleteTask`
 Deletes the specified task from the task list.
