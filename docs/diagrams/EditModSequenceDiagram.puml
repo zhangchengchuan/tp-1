@@ -13,10 +13,10 @@ box Model MODEL_COLOR_T1
 participant ":Model" as Model MODEL_COLOR
 end box
 
-[-> LogicManager : execute("editMod 2")
+[-> LogicManager : execute("editMod 2 n/CS111")
 activate LogicManager
 
-LogicManager -> ManageMeParser : parseCommand("editMod 2")
+LogicManager -> ManageMeParser : parseCommand("editMod 2 n/CS111")
 activate ManageMeParser
 
 create EditModCommandParser
@@ -26,7 +26,7 @@ activate EditModCommandParser
 EditModCommandParser --> ManageMeParser
 deactivate EditModCommandParser
 
-ManageMeParser -> EditModCommandParser : parse("2")
+ManageMeParser -> EditModCommandParser : parse("2 n/CS111")
 activate EditModCommandParser
 
 create EditModCommand
@@ -48,7 +48,31 @@ deactivate ManageMeParser
 LogicManager -> EditModCommand : execute()
 activate EditModCommand
 
-EditModCommand -> Model : editMod(2)
+EditModCommand -> Model : getFilteredModuleList()
+activate Model
+
+Model --> EditModCommand : lastShownModuleList
+deactivate Model
+
+EditModCommand -> Model  : editModuleInTasksWithModule(moduleToEdit, TagModule(CS111))
+activate Model
+
+Model --> EditModCommand
+deactivate Model
+
+EditModCommand -> Model : editModuleInLinksWithModule(Module(CS111), TagModule(CS111))
+activate Model
+
+Model --> EditModCommand
+deactivate Model
+
+EditModCommand -> Model : <Module>set(ModuleToEdit, CS111)
+activate Model
+
+Model --> EditModCommand
+deactivate Model
+
+EditModCommand -> Model : updateFilteredModuleList(PREDICATE_SHOW_ALL_MODULES)
 activate Model
 
 Model --> EditModCommand

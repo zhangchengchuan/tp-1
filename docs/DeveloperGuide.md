@@ -248,6 +248,9 @@ When a module is deleted or edited, all `TagModule` references in all available 
 Read module makes use of both the UI component which creates a pop-up window for display, and the Logic component
 which parses user commands and decide which module to read.
 
+![EditModSequenceDiagram](images/EditModSequenceDiagram.png) <br>
+*Sequence diagram for editMod command* <br>
+
 In the UI component, the `MmMainWindow` class, which controls the display of the UI homepage,
 calls the `executeCommand` function of the Logic component and gets back a `CommandResult`, which contains
 information about the results of the execution. A boolean value in `CommandResult`, `isReadModule`, indicates whether a
