@@ -36,6 +36,8 @@ Return to [Table of Contents](#table-of-contents).
 
 --------------------------------------------------------------------------------------------------------------------
 
+<div style="page-break-after: always;"></div>
+
 ## **Design**
 
 <div markdown="span" class="alert alert-primary">
@@ -119,6 +121,8 @@ The `UI` component,
 
 Return to [Table of Contents](#table-of-contents).
 
+<div style="page-break-after: always;"></div>
+
 ### Logic component
 
 **API** : [`Logic.java`](https://github.com/AY2122S1-CS2103T-W11-3/tp/blob/master/src/main/java/manageme/logic/Logic.java)
@@ -149,6 +153,8 @@ How the parsing works:
 * All `XYZCommandParser` classes (e.g., `AddTaskCommandParser`, `DeleteTaskCommandParser`, ...) inherit from the `Parser` interface so that they can be treated similarly where possible e.g, during testing.
 
 Return to [Table of Contents](#table-of-contents).
+
+<div style="page-break-after: always;"></div>
 
 ### Model component
 Here's a class diagram of the `Model` component:
@@ -190,6 +196,8 @@ Classes used by multiple components are in the `manageme.commons` package.
 
 Return to [Table of Contents](#table-of-contents).
 
+<div style="page-break-after: always;"></div>
+
 ### Time component
 
 **API** : [`Time.java`](https://github.com/AY2122S1-CS2103T-W11-3/tp/blob/master/src/main/java/manageme/time/Time.java)
@@ -207,6 +215,8 @@ are kept up to date and that any changes are recorded and reflected.
 Return to [Table of Contents](#table-of-contents).
 
 --------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 ## **Implementation**
 This section describes some noteworthy details on how certain features are implemented.
@@ -235,6 +245,8 @@ Shown below is the sequence diagrams for when  `MarkTaskCommand` and `DeleteDone
 <br>
 ![DeleteDoneTaskSequenceDiagram](images/DeleteDoneTaskSequenceDiagram.png) <br>
 *Sequence diagram of deleting all done tasks*
+
+<div style="page-break-after: always;"></div>
 
 ### Module Feature
 Similar to the commands available in AB3, a user is able to add, edit, delete, find and list modules and is
@@ -268,6 +280,8 @@ is generated with `isReadModule` boolean value being true and sent back to `MmMa
 ![ReadModSequenceDiagram](images/ReadModRef.png) <br>
 *Referenced Sequence diagram* <br>
 
+<div style="page-break-after: always;"></div>
+
 ### Link Feature
 ManageMe has a link feature for users to store and open local filepath or website URL conveniently.
 
@@ -279,6 +293,8 @@ a browser.
 
 ![AddTaskActivityDiagram](images/OpenLinkActivityDiagram.png) <br>
 *OpenLink activity diagram*
+
+<div style="page-break-after: always;"></div>
 
 ### Calendar Feature
 ManageMe has a calendar feature for users to view all of their upcoming tasks for the month.
@@ -300,6 +316,8 @@ The main consideration for the design of calendar is how many days should be dis
 <br>
 ![Calendar](images/Calendar.png) <br>
 *Screenshot of GUI of calendar in ManageMe.*
+
+<div style="page-break-after: always;"></div>
 
 ### Reminder Feature
 In this section, the functionality of the reminder feature and its activity diagram will be discussed.
@@ -338,6 +356,8 @@ The following actions occur when the **Time Thread** is started:
 <div markdown="span" class="alert alert-info">:information_source: **Note:** As long as ManageMe is still running, it
 will continue to scan for tasks that need the user's attention.
 </div>
+
+<div style="page-break-after: always;"></div>
 
 ### Archive Feature
 In this section, the archive feature and its activity diagram will be discussed.
@@ -390,6 +410,8 @@ Return to [Table of Contents](#table-of-contents).
 
 -----------------------------------------------------------------------------------------------
 
+<div style="page-break-after: always;"></div>
+
 ## **Appendix B: User stories**
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
@@ -426,6 +448,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 Return to [Table of Contents](#table-of-contents).
 
 ----------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 ## **Appendix C: Common Use cases**
 
@@ -533,6 +557,8 @@ Return to [Table of Contents](#table-of-contents).
 Return to [Table of Contents](#table-of-contents).
 
 --------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 ## **Appendix F: Instructions for manual testing**
 
