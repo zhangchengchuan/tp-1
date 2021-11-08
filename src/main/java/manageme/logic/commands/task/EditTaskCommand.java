@@ -153,7 +153,6 @@ public class EditTaskCommand extends Command {
         private TagModule module;
         private TaskTime start;
         private TaskTime end;
-        // private Set<Tag> tags;
 
         public EditTaskDescriptor() {
         }
@@ -168,7 +167,6 @@ public class EditTaskCommand extends Command {
             setModule(toCopy.module);
             setStart(toCopy.start);
             setEnd(toCopy.end);
-            // setTags(toCopy.tags);
         }
 
         /**
