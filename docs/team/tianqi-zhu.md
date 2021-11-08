@@ -12,21 +12,23 @@ Given below are my contributions to the project.
 * **New Feature**: Added `addMod` and `deleteMod` command
   * What it does: Allows users to add a Module to ManageMe.
   * Justification: Essential functionality for Modules to appear in ManageMe.
-  * Difficulty: This function was not difficult to implement, however it was modified in different stages of the project
+  * Difficulty: This function was not difficult to implement, but was modified in different stages of the project
     due to changing needs. Initially in v1.2, a module contains both a name and a Link, thus addMod must be able to add both.
     However, later in v1.3, Link was extracted out to become a standalone class with its own commands,
     thus all dependencies with Link was removed from addMod.
 
-* **New Feature**: Introduced link functionality with both local filepath and website url.
-  * What it does: Define a link to be either a filepath or a web URL.
-  * Justification: This allows users to store, and open links in the app conveinently with the least amount of command to 
-  * Difficulty: Medium. The design of linkAddress class requires some thought.
+* **New Feature**: Introduced link functionality with both local filepath and website URL.
+  * What it does: Define a link to be either a local filepath or a web URL.
+  * Justification: This allows users to store, and open links in the app conveinently with the least amount of commands to remember.
+  * Difficulty: Medium. The design of linkAddress class requires some thought to incorporate both filepath and website URL. It was also
+    a difficult decision whether to use a global `UniqueLinkList` or use a `UniqueLinkList` for each `Module`.
 
 * **New Feature**: Added `findLink` and `listLink` command.
   * What it does: Allows users to search for links to ManageMe.
   * Justification: This allows users to quickly find a module by keywords instead of browsing through the whole module list and also enables
     them to go back to the full list.
-  * Difficulty: This is similar to the brown field project and not difficult to implement.
+  * Difficulty: This is similar to the brown field project and not difficult to implement. I changed the matching criteria from matching full words
+    to matching based on characters to better suit our functionality.
 
 * **New Feature**: Added `openLink` command.
   * What it does: Allows users to open a file or a folder using the system default application from ManageMe, or open a
@@ -39,9 +41,10 @@ Given below are my contributions to the project.
 * **Integration**: 
   * Refractored AddressBook to ManageMe and removed irrelevant code.
   * Extracted common classes and remove duplicate code.
-      * Extracted generic abstract class UniqueObjectsList out of UniqueModuleList, UniqueTaskList, and UniqueLinkList.
-      * Extracted LinkTag class out of LinkModule and TaskModule.
-      * Extracted Name class out of LinkName, TaskName and ModuleName.
+      * Extracted generic abstract class `UniqueObjectsList` out of `UniqueModuleList`, `UniqueTaskList`, and `UniqueLinkList`.
+      * Extracted `TagModule` class out of `LinkModule` and `TaskModule`.
+      * Extracted `Name` class out of `LinkName`, `TaskName` and `ModuleName`.
+      * Extracted object specific methods in `ModelManager` such as `addTask`, `removeModule` etc. to generic `add`, `remove`, `has` and `set` methods.
 
 * **Testing**:
     * Wrote test cases for Link related functionalities.
