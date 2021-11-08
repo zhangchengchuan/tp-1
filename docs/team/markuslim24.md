@@ -29,7 +29,7 @@ Given below are my contributions to the project.
 
 * **Minor Enhancements**:
   * Helped create the first UI mockup for ManageMe using Figma(Pull requests [\#106](https://github.com/AY2122S1-CS2103T-W11-3/tp/pull/106))
-  * Initialized the code skeleton for Task-related components(Pull requests [\#48](https://github.com/AY2122S1-CS2103T-W11-3/tp/pull/106))
+  * Initialized the code skeleton for Task-related components(Pull requests [\#48](https://github.com/AY2122S1-CS2103T-W11-3/tp/pull/48))
 
 * **Code contributed**: [RepoSense link](https://nus-cs2103-ay2122s1.github.io/tp-dashboard/?search=markuslim24&sort=groupTitle&sortWithin=title&since=2021-09-17&timeframe=commit&mergegroup=&groupSelect=groupByRepos&breakdown=false)
 
