@@ -176,6 +176,8 @@ The `Model` component,
 
 Return to [Table of Contents](#table-of-contents).
 
+<div style="page-break-after: always;"></div>
+
 ### Storage component
 
 **API** : [`Storage.java`](https://github.com/AY2122S1-CS2103T-W11-3/tp/blob/master/src/main/java/manageme/storage/Storage.java)
@@ -387,6 +389,8 @@ Return to [Table of Contents](#table-of-contents).
 
 --------------------------------------------------------------------------------------------------------------------
 
+<div style="page-break-after: always;"></div>
+
 ## **Appendix A: Product scope**
 
 **Target user profile**:
@@ -534,6 +538,8 @@ Return to [Table of Contents](#table-of-contents).
 Return to [Table of Contents](#table-of-contents).
 
 -------------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 ## **Appendix D: Non-Functional Requirements**
 
