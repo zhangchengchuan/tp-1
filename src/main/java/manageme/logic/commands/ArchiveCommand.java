@@ -11,6 +11,9 @@ import manageme.model.ManageMe;
 import manageme.model.Model;
 import manageme.storage.Storage;
 
+/**
+ * Clear all current data and saves it into a another file.
+ */
 public class ArchiveCommand extends Command {
 
     public static final String COMMAND_WORD = "archive";

@@ -15,6 +15,9 @@ import manageme.model.Name;
 import manageme.model.module.Module;
 import manageme.model.task.Task;
 
+/**
+ * Adds a task to ManageMe.
+ */
 public class AddTaskCommand extends Command {
     public static final String COMMAND_WORD = "addTask";
 

@@ -38,7 +38,7 @@ Given below are my contributions to the project.
   * Difficulty: This is challenging. Java desktop doesn't perform well on Linux and cross platform compatability is troublesome
   to ensure and inconvenient to test. OS specific command line implementation is time-consuming to google and check if they work well.
 
-* **Integration**: 
+* **Integration**:
   * Refractored AddressBook to ManageMe and removed irrelevant code.
   * Extracted common classes and remove duplicate code.
       * Extracted generic abstract class `UniqueObjectsList` out of `UniqueModuleList`, `UniqueTaskList`, and `UniqueLinkList`.

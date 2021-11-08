@@ -160,17 +160,14 @@ Here's a class diagram of the `Model` component:
 
 The `Model` component,
 
-* store the object data of ManageMe i.e., all `Module`, `Task` and `Link` objects (which are contained in a`UniqueModuleList` object, a `UniqueTaskList` and a `UniqueLinkList` respectively).
-* stores the currently 'selected' `Task` objects (e.g., results of a search query) as a separate _filtered_ list
-  which is exposed to outsiders as an unmodifiable `ObservableList<Task>` that can be 'observed' e.g. the UI can be
-  bound to this list so that the UI automatically updates when the data in the list change. The `Module` and `Link`
-  objects similarly follow this implementation.
+* stores the object data of ManageMe i.e., all `Module`, `Task` and `Link` objects (which are contained in a`UniqueModuleList` object, a `UniqueTaskList` and a `UniqueLinkList` respectively).
+* All `Module`, `Task` and `Link` objects are a `ManageMeObject`.
+* stores the currently 'selected' `Task` objects (e.g., results of a search query) as a separate _filtered_ list 
+  which is exposed to outsiders as an unmodifiable `ObservableList<Task>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change. The `Module` and `Link` objects similarly follow this implementation.
 * As `TaskModule` and `TaskTime` are optional fields, their values are internally stored within a Java `Optional`
   object.
 * stores a `UserPref` object that represents the user’s preferences. This is exposed to the outside as a `ReadOnlyUserPref` object.
 * does not depend on any of the other three components (as the `Model` represents data entities of the domain, they should make sense on their own without depending on other components)
-
-[comment]: <> (<div markdown="span" class="alert alert-info">:information_source: **Note:** An alternative &#40;arguably, a more OOP&#41; model is given below. It has a `Tag` list in the `AddressBook`, which `Person` references. This allows `AddressBook` to only require one `Tag` object per unique tag, instead of each `Person` needing their own `Tag` objects.<br>)
 
 Return to [Table of Contents](#table-of-contents).
 
@@ -247,15 +244,15 @@ ManageMe allows you to type in `readMod` for a particular module, and see all `T
 Read module makes use of both the UI component which creates a pop-up window for display, and the Logic component
 which parses user commands and decide which module to read.
 
-In the UI component, the `MmMainWindow` class, which controls the display of the UI homepage, 
-calls the `executeCommand` function of the Logic component and gets back a `CommandResult`, which contains 
-information about the results of the execution. A boolean value in `CommandResult`, `isReadModule`, indicates whether a 
-Read Module window should be popped up. Once `isReadModule` is true, `MmMainWindow` will call the `ModuleWindow` 
+In the UI component, the `MmMainWindow` class, which controls the display of the UI homepage,
+calls the `executeCommand` function of the Logic component and gets back a `CommandResult`, which contains
+information about the results of the execution. A boolean value in `CommandResult`, `isReadModule`, indicates whether a
+Read Module window should be popped up. Once `isReadModule` is true, `MmMainWindow` will call the `ModuleWindow`
 class and generate a pop-up window.
 
 In the Logic component, once `executeCommand` is called in `LogicManager`, `ManageMeParser` and `ReadModuleCommandParser`
 parses the module index the user inputted, and generates a `ReadModuleCommand` object. `LogicManager` then executes the
-`ReadModuleCommand` object, which sets what module is to be read in the `Model` component. A `CommandResult` 
+`ReadModuleCommand` object, which sets what module is to be read in the `Model` component. A `CommandResult`
 is generated with `isReadModule` boolean value being true and sent back to `MmMainWindow`.
 
 ![ReadModSequenceDiagram](images/ReadModSequenceDiagram.png) <br>
@@ -434,10 +431,10 @@ Return to [Table of Contents](#table-of-contents).
 
 **Extensions:**
 * 1a. Compulsory parameters are missing, including names, description for tasks, and address for links.
-  * 1a1. The system shows the missing parameter error message and shows the correct format. 
+  * 1a1. The system shows the missing parameter error message and shows the correct format.
   * Use case resumes from step 1.
 * 1b. Parameters entered are invalid, including invalid characters in the name, invalid date-time in the task, and invalid addresses in links.
-  * 1b1. System shows error in format. 
+  * 1b1. System shows error in format.
   * Use case resumes from step 1.
 
 
@@ -450,10 +447,10 @@ Return to [Table of Contents](#table-of-contents).
 
 **Extensions:**
 * 1a. User enters an invalid index. <br>
-    * 1a1. System shows error in reading index. 
+    * 1a1. System shows error in reading index.
     * Use case resumes from step 1.
 * 1b. Parameters entered are of invalid format, including invalid characters in names, invalid date-time for tasks, and invalid address for links.
-    * 1b1. System shows error in parsing data. 
+    * 1b1. System shows error in parsing data.
     * Use case resumes from step 1. <br><br>
 
 ### Use case 03: Generic Delete
@@ -467,9 +464,9 @@ Return to [Table of Contents](#table-of-contents).
 **Extension:**
 
 * 1a. User enters an invalid index
-    * 1a1. System shows error in reading index. 
+    * 1a1. System shows error in reading index.
     * Use case resumes from step 1.
-    
+
 ### Use case 04: Generic Find
 
 **MSS:**
@@ -481,7 +478,7 @@ Return to [Table of Contents](#table-of-contents).
 **Extension:**
 
 * 1a. User does not enter a keyword. <br>
-    * 1a1. System shows invalid format error. 
+    * 1a1. System shows invalid format error.
     * Use case resumes from step 1.
 
 
@@ -545,7 +542,7 @@ testers are expected to do more *exploratory* testing.
     1. Re-launch the app by double-clicking the jar file.<br>
        Expected: The most recent window size and location is retained.
 
-       
+
 ### Deleting a task
 
 1. Deleting a task while all tasks are being shown
@@ -564,11 +561,11 @@ testers are expected to do more *exploratory* testing.
 
 ### Pop-up window
 
-1. Test whether the pop-up window works in the app 
+1. Test whether the pop-up window works in the app
 
    1. Add a task with a starting time just 1 minute away from your current time .<br>
    Expected: A reminder will appear in a pop-up window for this ongoing task 1 min later.
-   
+
    2. Type readMod for an existing module (if no module exists, add one with a simple name)
    Expected: A window appears that show all tasks and links associated with a module
 

@@ -23,7 +23,11 @@ import manageme.model.link.LinkAddress;
 import manageme.model.module.Module;
 
 /**
+<<<<<<< HEAD
  * Edits the details of an existing link in the ManageMe.
+=======
+ * Edits the details of an existing link in ManageMe.
+>>>>>>> d224b579026e022ccfae4cee848f3b83e6aa5946
  */
 public class EditLinkCommand extends Command {
 
@@ -42,7 +46,7 @@ public class EditLinkCommand extends Command {
 
     public static final String MESSAGE_EDIT_LINK_SUCCESS = "Edited Link: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
-    public static final String MESSAGE_DUPLICATE_LINK = "This link already exists in the ManageMe.";
+    public static final String MESSAGE_DUPLICATE_LINK = "This link already exists in ManageMe.";
     public static final String MESSAGE_NONEXISTENT_MODULE = "The module you have associated does not exist";
 
     private final Index index;
