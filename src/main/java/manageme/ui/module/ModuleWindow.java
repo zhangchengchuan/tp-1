@@ -56,8 +56,8 @@ public class ModuleWindow extends UiPart<Stage> {
                         ObservableList<Task> unfilteredTaskList) {
         this.module = optionalModule.get();
         resetWindow();
-        moduleWindow.setTitle(module.getModuleName().value);
-        name.setText(module.getModuleName().value);
+        moduleWindow.setTitle(module.getName().value);
+        name.setText(module.getName().value);
         fillLinkList(module, unfilteredLinkList);
         fillTaskList(module, unfilteredTaskList);
         moduleWindow.setResizable(false);
@@ -78,13 +78,13 @@ public class ModuleWindow extends UiPart<Stage> {
      */
     public void fillTaskList(Module module, ObservableList<Task> unfilteredTaskList) {
         FilteredList<Task> tasks = unfilteredTaskList.filtered(task -> {
-            Optional<String> taskModule = task.getTaskModule().moduleName;
+            Optional<String> tagModule = task.getTagModule().name;
 
-            if (taskModule.isEmpty()) {
+            if (tagModule.isEmpty()) {
                 return false;
             }
 
-            return module.getModuleName().value.equals(taskModule.get());
+            return module.getName().value.equals(tagModule.get());
         });
 
         readTaskList.getChildren().add(new TaskListPanel(tasks).getRoot());
@@ -95,13 +95,13 @@ public class ModuleWindow extends UiPart<Stage> {
      */
     public void fillLinkList(Module module, ObservableList<Link> unfilteredLinkList) {
         FilteredList<Link> links = unfilteredLinkList.filtered(link -> {
-            Optional<String> linkModule = link.getLinkModule().moduleName;
+            Optional<String> linkModule = link.getLinkModule().name;
 
             if (linkModule.isEmpty()) {
                 return false;
             }
 
-            return module.getModuleName().value.equals(linkModule.get());
+            return module.getName().value.equals(linkModule.get());
         });
 
         readLinkList.getChildren().add(new LinkListPanel(links).getRoot());

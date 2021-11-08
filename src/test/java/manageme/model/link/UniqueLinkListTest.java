@@ -55,53 +55,53 @@ public class UniqueLinkListTest {
     }
 
     @Test
-    public void setLink_nullTargetLink_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> uniqueLinkList.setLink(null, LINK_A));
+    public void set_nullTargetLink_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> uniqueLinkList.setT(null, LINK_A));
     }
 
     @Test
-    public void setLink_nullEditedLink_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> uniqueLinkList.setLink(LINK_A, null));
+    public void set_nullEditedLink_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> uniqueLinkList.setT(LINK_A, null));
     }
 
     @Test
-    public void setLink_targetLinkNotInList_throwsLinkNotFoundException() {
-        assertThrows(LinkNotFoundException.class, () -> uniqueLinkList.setLink(LINK_A, LINK_A));
+    public void set_targetLinkNotInList_throwsLinkNotFoundException() {
+        assertThrows(LinkNotFoundException.class, () -> uniqueLinkList.setT(LINK_A, LINK_A));
     }
 
     @Test
-    public void setLink_editedLinkIsSameLink_success() {
+    public void set_editedLinkisSame_success() {
         uniqueLinkList.add(LINK_A);
-        uniqueLinkList.setLink(LINK_A, LINK_A);
+        uniqueLinkList.setT(LINK_A, LINK_A);
         UniqueLinkList expectedUniqueLinkList = new UniqueLinkList();
         expectedUniqueLinkList.add(LINK_A);
         assertEquals(expectedUniqueLinkList, uniqueLinkList);
     }
 
     @Test
-    public void setLink_editedLinkHasSameIdentity_success() {
+    public void set_editedLinkHasSameIdentity_success() {
         uniqueLinkList.add(LINK_A);
         Link editedLink = new LinkBuilder(LINK_A).withName("edited").build();
-        uniqueLinkList.setLink(LINK_A, editedLink);
+        uniqueLinkList.setT(LINK_A, editedLink);
         UniqueLinkList expectedUniqueLinkList = new UniqueLinkList();
         expectedUniqueLinkList.add(editedLink);
         assertEquals(expectedUniqueLinkList, uniqueLinkList);
     }
 
     @Test
-    public void setLink_editedLinkHasDifferentIdentity_success() {
+    public void set_editedLinkHasDifferentIdentity_success() {
         uniqueLinkList.add(LINK_A);
-        uniqueLinkList.setLink(LINK_A, LINK_B);
+        uniqueLinkList.setT(LINK_A, LINK_B);
         UniqueLinkList expectedUniqueLinkList = new UniqueLinkList();
         expectedUniqueLinkList.add(LINK_B);
         assertEquals(expectedUniqueLinkList, uniqueLinkList);
     }
 
     @Test
-    public void setLink_editedLinkHasNonUniqueIdentity_throwsDuplicateLinkException() {
+    public void set_editedLinkHasNonUniqueIdentity_throwsDuplicateLinkException() {
         uniqueLinkList.add(LINK_A);
         uniqueLinkList.add(LINK_B);
-        assertThrows(DuplicateLinkException.class, () -> uniqueLinkList.setLink(LINK_A, LINK_B));
+        assertThrows(DuplicateLinkException.class, () -> uniqueLinkList.setT(LINK_A, LINK_B));
     }
 
     @Test
@@ -123,38 +123,38 @@ public class UniqueLinkListTest {
     }
 
     @Test
-    public void setLinks_nullUniqueLinkList_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> uniqueLinkList.setLinks((UniqueLinkList) null));
+    public void sets_nullUniqueLinkList_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> uniqueLinkList.setTs((UniqueLinkList) null));
     }
 
     @Test
-    public void setLinks_uniqueLinkList_replacesOwnListWithProvidedUniqueLinkList() {
+    public void sets_uniqueLinkList_replacesOwnListWithProvidedUniqueLinkList() {
         uniqueLinkList.add(LINK_A);
         UniqueLinkList expectedUniqueLinkList = new UniqueLinkList();
         expectedUniqueLinkList.add(LINK_B);
-        uniqueLinkList.setLinks(expectedUniqueLinkList);
+        uniqueLinkList.setTs(expectedUniqueLinkList);
         assertEquals(expectedUniqueLinkList, uniqueLinkList);
     }
 
     @Test
-    public void setLinks_nullList_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> uniqueLinkList.setLinks((List<Link>) null));
+    public void sets_nullList_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> uniqueLinkList.setTs((List<Link>) null));
     }
 
     @Test
-    public void setLinks_list_replacesOwnListWithProvidedList() {
+    public void sets_list_replacesOwnListWithProvidedList() {
         uniqueLinkList.add(LINK_A);
         List<Link> linkList = Collections.singletonList(LINK_B);
-        uniqueLinkList.setLinks(linkList);
+        uniqueLinkList.setTs(linkList);
         UniqueLinkList expectedUniqueLinkList = new UniqueLinkList();
         expectedUniqueLinkList.add(LINK_B);
         assertEquals(expectedUniqueLinkList, uniqueLinkList);
     }
 
     @Test
-    public void setLinks_listWithDuplicateLinks_throwsDuplicateLinkException() {
+    public void sets_listWithDuplicateLinks_throwsDuplicateLinkException() {
         List<Link> listWithDuplicateLinks = Arrays.asList(LINK_A, LINK_A);
-        assertThrows(DuplicateLinkException.class, () -> uniqueLinkList.setLinks(listWithDuplicateLinks));
+        assertThrows(DuplicateLinkException.class, () -> uniqueLinkList.setTs(listWithDuplicateLinks));
     }
 
     @Test

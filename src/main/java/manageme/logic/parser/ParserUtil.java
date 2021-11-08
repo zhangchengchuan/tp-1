@@ -4,21 +4,14 @@ import static java.util.Objects.requireNonNull;
 
 import java.time.DateTimeException;
 import java.time.LocalDate;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
 
 import manageme.commons.core.index.Index;
 import manageme.commons.util.StringUtil;
 import manageme.logic.parser.exceptions.ParseException;
+import manageme.model.Name;
+import manageme.model.TagModule;
 import manageme.model.link.LinkAddress;
-import manageme.model.link.LinkModule;
-import manageme.model.link.LinkName;
-import manageme.model.module.ModuleName;
-import manageme.model.tag.Tag;
 import manageme.model.task.TaskDescription;
-import manageme.model.task.TaskModule;
-import manageme.model.task.TaskName;
 import manageme.model.task.TaskTime;
 
 /**
@@ -43,33 +36,18 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String name} into a {@code LinkName}.
+     * Parses a {@code String name} into a {@code Name}.
      * Leading and trailing whitespaces will be trimmed.
      *
      * @throws ParseException if the given {@code name} is invalid.
      */
-    public static LinkName parseLinkName(String name) throws ParseException {
+    public static Name parseName(String name) throws ParseException {
         requireNonNull(name);
         String trimmedName = name.trim();
-        if (!LinkName.isValidLinkName(trimmedName)) {
-            throw new ParseException(LinkName.MESSAGE_CONSTRAINTS);
+        if (!Name.isValidName(trimmedName)) {
+            throw new ParseException(Name.MESSAGE_CONSTRAINTS);
         }
-        return new LinkName(trimmedName);
-    }
-
-    /**
-     * Parses a {@code String name} into a {@code ModuleName}.
-     * Leading and trailing whitespaces will be trimmed.
-     *
-     * @throws ParseException if the given {@code ModuleName} is invalid.
-     */
-    public static ModuleName parseModuleName(String name) throws ParseException {
-        requireNonNull(name);
-        String trimmedName = name.trim();
-        if (!ModuleName.isValidModuleName(trimmedName)) {
-            throw new ParseException(ModuleName.MESSAGE_CONSTRAINTS);
-        }
-        return new ModuleName(trimmedName);
+        return new Name(trimmedName);
     }
 
     /**
@@ -88,60 +66,18 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String link module} into a {@code LinkModule}.
+     * Parses a {@code String link module} into a {@code TagModule}.
      * Leading and trailing whitespaces will be trimmed.
      *
-     * @throws ParseException if the given {@code LinkModule} is invalid.
+     * @throws ParseException if the given {@code TagModule} is invalid.
      */
-    public static LinkModule parseLinkModule(String linkModule) throws ParseException {
+    public static manageme.model.TagModule parseLinkModule(String linkModule) throws ParseException {
         requireNonNull(linkModule);
         String trimmedM = linkModule.trim();
-        if (!LinkModule.isValidModule(trimmedM)) {
-            throw new ParseException(LinkModule.MESSAGE_CONSTRAINTS);
+        if (!manageme.model.TagModule.isValidModule(trimmedM)) {
+            throw new ParseException(TagModule.MESSAGE_CONSTRAINTS);
         }
-        return new LinkModule(trimmedM);
-    }
-
-    /**
-     * Parses a {@code String tag} into a {@code Tag}.
-     * Leading and trailing whitespaces will be trimmed.
-     *
-     * @throws ParseException if the given {@code tag} is invalid.
-     */
-    public static Tag parseTag(String tag) throws ParseException {
-        requireNonNull(tag);
-        String trimmedTag = tag.trim();
-        if (!Tag.isValidTagName(trimmedTag)) {
-            throw new ParseException(Tag.MESSAGE_CONSTRAINTS);
-        }
-        return new Tag(trimmedTag);
-    }
-
-    /**
-     * Parses {@code Collection<String> tags} into a {@code Set<Tag>}.
-     */
-    public static Set<Tag> parseTags(Collection<String> tags) throws ParseException {
-        requireNonNull(tags);
-        final Set<Tag> tagSet = new HashSet<>();
-        for (String tagName : tags) {
-            tagSet.add(parseTag(tagName));
-        }
-        return tagSet;
-    }
-
-    /**
-     * Parses a {@code String task name} into a {@code TaskName}.
-     * Leading and trailing whitespaces will be trimmed.
-     *
-     * @throws ParseException if the given {@code TaskName} is invalid.
-     */
-    public static TaskName parseTaskName(String taskName) throws ParseException {
-        requireNonNull(taskName);
-        String trimmedName = taskName.trim();
-        if (!TaskName.isValidName(trimmedName)) {
-            throw new ParseException(TaskName.MESSAGE_CONSTRAINTS);
-        }
-        return new TaskName(trimmedName);
+        return new manageme.model.TagModule(trimmedM);
     }
 
     /**
@@ -160,18 +96,18 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String task module} into a {@code TaskModule}.
+     * Parses a {@code String task module} into a {@code TagModule}.
      * Leading and trailing whitespaces will be trimmed.
      *
-     * @throws ParseException if the given {@code TaskModule} is invalid.
+     * @throws ParseException if the given {@code TagModule} is invalid.
      */
-    public static TaskModule parseTaskModule(String taskModule) throws ParseException {
-        requireNonNull(taskModule);
-        String trimmedM = taskModule.trim();
-        if (!TaskModule.isValidModule(trimmedM)) {
-            throw new ParseException(TaskModule.MESSAGE_CONSTRAINTS);
+    public static TagModule parseTagModule(String tagModule) throws ParseException {
+        requireNonNull(tagModule);
+        String trimmedM = tagModule.trim();
+        if (!TagModule.isValidModule(trimmedM)) {
+            throw new ParseException(TagModule.MESSAGE_CONSTRAINTS);
         }
-        return new TaskModule(trimmedM);
+        return new TagModule(trimmedM);
     }
 
     /**

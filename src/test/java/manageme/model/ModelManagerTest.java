@@ -75,19 +75,19 @@ public class ModelManagerTest {
     }
 
     @Test
-    public void hasLink_nullLink_throwsNullPointerException() {
-        Assert.assertThrows(NullPointerException.class, () -> modelManager.hasLink(null));
+    public void has_nullLink_throwsNullPointerException() {
+        Assert.assertThrows(NullPointerException.class, () -> modelManager.has(null));
     }
 
     @Test
-    public void hasLink_linkNotInManageMe_returnsFalse() {
-        assertFalse(modelManager.hasLink(LINK_A));
+    public void has_linkNotInManageMe_returnsFalse() {
+        assertFalse(modelManager.has(LINK_A));
     }
 
     @Test
-    public void hasLink_linkInManageMe_returnsTrue() {
-        modelManager.addLink(LINK_A);
-        assertTrue(modelManager.hasLink(LINK_A));
+    public void has_linkInManageMe_returnsTrue() {
+        modelManager.add(LINK_A);
+        assertTrue(modelManager.has(LINK_A));
     }
 
     @Test
@@ -96,19 +96,19 @@ public class ModelManagerTest {
     }
 
     @Test
-    public void hasModule_nullModule_throwsNullPointerException() {
-        Assert.assertThrows(NullPointerException.class, () -> modelManager.hasModule(null));
+    public void has_nullModule_throwsNullPointerException() {
+        Assert.assertThrows(NullPointerException.class, () -> modelManager.has(null));
     }
 
     @Test
-    public void hasModule_moduleNotInManageMe_returnsFalse() {
-        assertFalse(modelManager.hasModule(MODULE_A));
+    public void has_moduleNotInManageMe_returnsFalse() {
+        assertFalse(modelManager.has(MODULE_A));
     }
 
     @Test
-    public void hasModule_moduleInManageMe_returnsTrue() {
-        modelManager.addModule(MODULE_A);
-        assertTrue(modelManager.hasModule(MODULE_A));
+    public void has_moduleInManageMe_returnsTrue() {
+        modelManager.add(MODULE_A);
+        assertTrue(modelManager.has(MODULE_A));
     }
 
     @Test
@@ -117,19 +117,19 @@ public class ModelManagerTest {
     }
 
     @Test
-    public void hasTask_nullTask_throwsNullPointerException() {
-        Assert.assertThrows(NullPointerException.class, () -> modelManager.hasTask(null));
+    public void has_nullTask_throwsNullPointerException() {
+        Assert.assertThrows(NullPointerException.class, () -> modelManager.has(null));
     }
 
     @Test
-    public void hasTask_taskNotInManageMe_returnsFalse() {
-        assertFalse(modelManager.hasTask(TASK_A));
+    public void has_taskNotInManageMe_returnsFalse() {
+        assertFalse(modelManager.has(TASK_A));
     }
 
     @Test
-    public void hasTask_taskInManageMe_returnsTrue() {
-        modelManager.addTask(TASK_A);
-        assertTrue(modelManager.hasTask(TASK_A));
+    public void has_taskInManageMe_returnsTrue() {
+        modelManager.add(TASK_A);
+        assertTrue(modelManager.has(TASK_A));
     }
 
     @Test

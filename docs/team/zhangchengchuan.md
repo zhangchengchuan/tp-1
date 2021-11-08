@@ -71,12 +71,12 @@ Given below are my contributions to the project.
       all the tasks.
     * Difficulty: This was not too difficult as I could just fetch the original list from the model again and show it.
       <br><br>
-  * Added Task attributes like TaskTime, TaskModule (PR #59)
+  * Added Task attributes like TaskTime, TagModule (PR #59)
     * Description: Some of the attributes that are core to the implementation of one complete task are
       implemented by me.
     * Reason: When we first started from the brownfield project, major changes had to be made to the Task class to
       suit our plans. The original attributes of phone, address etc were not relevant. As a result, I implemented a few of
-      attributes, particularly TaskTime, which stores the start and end date and time, and TaskModule, which is stores
+      attributes, particularly TaskTime, which stores the start and end date and time, and TagModule, which is stores
       the string value and Module Object of an object.
     * Difficulty: This was of moderate difficulty as a lot of time was spent brainstorming how a task would appear.
       <br><br>

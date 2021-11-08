@@ -9,37 +9,57 @@ ManageMe is a **lightweight but powerful desktop application built to help unive
 
 Given below are my contributions to the project.
 
-* **New Feature**: Added the ability to undo/redo previous commands.
-    * addMod command
-    * deleteMod command
-    * listLink command
-    * findLink command
-    * openLink command which supports both web url and local file path
+* **New Feature**: Added `addMod` and `deleteMod` command
+  * What it does: Allows users to add a Module to ManageMe.
+  * Justification: Essential functionality for Modules to appear in ManageMe.
+  * Difficulty: This function was not difficult to implement, but was modified in different stages of the project
+    due to changing needs. Initially in v1.2, a module contains both a name and a Link, thus addMod must be able to add both.
+    However, later in v1.3, Link was extracted out to become a standalone class with its own commands,
+    thus all dependencies with Link was removed from addMod.
 
-* **Code contributed**: [RepoSense link]()
+* **New Feature**: Introduced link functionality with both local filepath and website URL.
+  * What it does: Define a link to be either a local filepath or a web URL.
+  * Justification: This allows users to store, and open links in the app conveinently with the least amount of commands to remember.
+  * Difficulty: Medium. The design of linkAddress class requires some thought to incorporate both filepath and website URL. It was also
+    a difficult decision whether to use a global `UniqueLinkList` or use a `UniqueLinkList` for each `Module`.
+
+* **New Feature**: Added `findLink` and `listLink` command.
+  * What it does: Allows users to search for links to ManageMe.
+  * Justification: This allows users to quickly find a module by keywords instead of browsing through the whole module list and also enables
+    them to go back to the full list.
+  * Difficulty: This is similar to the brown field project and not difficult to implement. I changed the matching criteria from matching full words
+    to matching based on characters to better suit our functionality.
+
+* **New Feature**: Added `openLink` command.
+  * What it does: Allows users to open a file or a folder using the system default application from ManageMe, or open a
+  url using a local web browser.
+  * Justification: This allows users to open the folders and websites that they frequently access with only one command,
+  which is very convenient to use and saves users the time of clicking through the folders or copying and pasting the links.
+  * Difficulty: This is challenging. Java desktop doesn't perform well on Linux and cross platform compatability is troublesome
+  to ensure and inconvenient to test. OS specific command line implementation is time-consuming to google and check if they work well.
+
+* **Integration**: 
+  * Refractored AddressBook to ManageMe and removed irrelevant code.
+  * Extracted common classes and remove duplicate code.
+      * Extracted generic abstract class `UniqueObjectsList` out of `UniqueModuleList`, `UniqueTaskList`, and `UniqueLinkList`.
+      * Extracted `TagModule` class out of `LinkModule` and `TaskModule`.
+      * Extracted `Name` class out of `LinkName`, `TaskName` and `ModuleName`.
+      * Extracted object specific methods in `ModelManager` such as `addTask`, `removeModule` etc. to generic `add`, `remove`, `has` and `set` methods.
+
+* **Testing**:
+    * Wrote test cases for Link related functionalities.
+    * Wrote test cases for `AddMod` and `DeleteMod` commands.
+
+* **Code contributed**: [RepoSense link](https://nus-cs2103-ay2122s1.github.io/tp-dashboard/?search=&sort=groupTitle&sortWithin=title&since=2021-09-17&timeframe=commit&mergegroup=&groupSelect=groupByRepos&breakdown=false&tabOpen=true&tabType=authorship&tabAuthor=Tianqi-Zhu&tabRepo=AY2122S1-CS2103T-W11-3%2Ftp%5Bmaster%5D&authorshipIsMergeGroup=false&authorshipFileTypes=docs~functional-code~test-code~other&authorshipIsBinaryFileTypeChecked=false)
 
 * **Project management**:
-    * Managed releases `v1.3` - `v1.5rc` (3 releases) on GitHub
-
-* **Enhancements to existing features**:
-    * Updated the GUI color scheme (Pull requests [\#33](), [\#34]())
-    * Wrote additional tests for existing features to increase coverage from 88% to 92% (Pull requests [\#36](), [\#38]())
+    * Set up Github organization and project documentation folder.
+    * Managed the issue trackers on GitHub.
+    * Managed releases `v1.2.1` and `v1.3` (2 releases) on GitHub.
 
 * **Documentation**:
     * User Guide:
-        * Added documentation for the features `delete` and `find` [\#72]()
-        * Did cosmetic tweaks to existing documentation of features `clear`, `exit`: [\#74]()
+        * Added documentation for the commands `addMod`, `deleteMod`, and all link related commands.
     * Developer Guide:
-        * Added implementation details of the `delete` feature.
-
-* **Community**:
-    * PRs reviewed (with non-trivial review comments): [\#12](), [\#32](), [\#19](), [\#42]()
-    * Contributed to forum discussions (examples: [1](), [2](), [3](), [4]())
-    * Reported bugs and suggestions for other teams in the class (examples: [1](), [2](), [3]())
-    * Some parts of the history feature I added was adopted by several other class mates ([1](), [2]())
-
-* **Tools**:
-    * Integrated a third party library (Natty) to the project ([\#42]())
-    * Integrated a new Github plugin (CircleCI) to the team repo
-
-* _{you can add/remove categories in the list above}_
+        * Conversion of the Archituecture section of the developer guide from AB3.
+        * Optimized user stories at `v1.2`.
