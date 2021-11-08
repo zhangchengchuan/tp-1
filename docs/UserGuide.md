@@ -218,6 +218,8 @@ Examples: `readMod 2`
 *Pop-up window for readMod*
 <br><br>
 
+<div style="page-break-after: always;"></div>
+
 #### <font color="#22a6b3">Edit a module:</font> `editMod`
 Edits an existing module in the module list.
 
