@@ -12,6 +12,10 @@ import manageme.logic.commands.exceptions.CommandException;
 import manageme.model.Model;
 import manageme.model.link.Link;
 
+/**
+ * Open a link. If the link is a website address, it will be opened in the browser.
+ * If the link is a file path, the target file will be opened with its default app.
+ */
 public class OpenLinkCommand extends Command {
     public static final String COMMAND_WORD = "openLink";
     public static final String MESSAGE_USAGE = COMMAND_WORD

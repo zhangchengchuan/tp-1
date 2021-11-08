@@ -13,7 +13,7 @@ import manageme.model.Model;
 import manageme.model.link.Link;
 
 /**
- * Deletes a link identified using it's displayed index from the address book.
+ * Deletes a link identified using it's displayed index from ManageMe.
  */
 public class DeleteLinkCommand extends Command {
 

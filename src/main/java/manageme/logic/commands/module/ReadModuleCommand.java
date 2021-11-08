@@ -12,6 +12,9 @@ import manageme.logic.commands.exceptions.CommandException;
 import manageme.model.Model;
 import manageme.model.module.Module;
 
+/**
+ * Show all tasks and links associated with a module in a pop-up window.
+ */
 public class ReadModuleCommand extends Command {
     public static final String COMMAND_WORD = "readMod";
 
