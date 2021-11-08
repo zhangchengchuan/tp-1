@@ -237,7 +237,7 @@ Shown below is the sequence diagrams for when  `MarkTaskCommand` and `DeleteDone
 *Sequence diagram of deleting all done tasks*
 
 ### Module Feature
-Similar to the commands available in AB3, a user is able to add, edit, delete, find and list tasks and is
+Similar to the commands available in AB3, a user is able to add, edit, delete, find and list modules and is
 implemented as the `AddModuleCommand`,`EditModuleCommand`, `DeleteModuleCommand`, `FindModuleCommand` and `ListModuleCommand`
 respectively. ManageMe also allows you to type in `readMod` for a particular module, and see all `Task` and `Link` related to it in a pop-up window.
 
