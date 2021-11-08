@@ -46,7 +46,8 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 [[github](https://github.com/chowRuiYan)]
 [[portfolio](team/chowruiyan.md)]
 
-* Role: Testing
+* Role: Developer
+* Responsibilities: Testing
 
 ### Zhang Cheng Chuan
 
