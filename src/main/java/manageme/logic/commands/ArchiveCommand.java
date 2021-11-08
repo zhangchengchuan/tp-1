@@ -7,7 +7,6 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 import manageme.logic.commands.exceptions.CommandException;
-import manageme.model.ManageMe;
 import manageme.model.Model;
 import manageme.storage.Storage;
 
