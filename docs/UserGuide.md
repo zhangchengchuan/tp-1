@@ -313,6 +313,8 @@ Then you will see this window. Copy and paste the “path” section:<br><br>
 
 </div>
 
+<div style="page-break-after: always;"></div>
+
 #### <font color="#7d3415">Edit a link:</font> `editLink`
 Edits an existing link in the link list.
 
@@ -355,6 +357,8 @@ Format: `openLink INDEX`
 
 Example: `openLink 1`
 <br><br>
+
+<div style="page-break-after: always;"></div>
 
 #### <font color="#7d3415">Find a link by keyword:</font> `findLink`
 Finds all links whose name contain the specified keyword.
