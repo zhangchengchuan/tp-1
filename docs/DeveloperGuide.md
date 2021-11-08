@@ -244,12 +244,12 @@ respectively. ManageMe also allows you to type in `readMod` for a particular mod
 #### Implementation for Delete and Edit Module Feature
 When a module is deleted or edited, all `TagModule` references in all available `Task` and `Link` are updated accordingly.
 
+![EditModSequenceDiagram](images/EditModSequenceDiagram.png) <br>
+*Sequence diagram for editMod command* <br>
+
 #### Implementation for Read Module Feature
 Read module makes use of both the UI component which creates a pop-up window for display, and the Logic component
 which parses user commands and decide which module to read.
-
-![EditModSequenceDiagram](images/EditModSequenceDiagram.png) <br>
-*Sequence diagram for editMod command* <br>
 
 In the UI component, the `MmMainWindow` class, which controls the display of the UI homepage,
 calls the `executeCommand` function of the Logic component and gets back a `CommandResult`, which contains
