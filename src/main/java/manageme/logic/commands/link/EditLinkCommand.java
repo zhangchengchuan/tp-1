@@ -23,7 +23,11 @@ import manageme.model.link.LinkAddress;
 import manageme.model.module.Module;
 
 /**
+<<<<<<< HEAD
+ * Edits the details of an existing link in the ManageMe.
+=======
  * Edits the details of an existing link in ManageMe.
+>>>>>>> d224b579026e022ccfae4cee848f3b83e6aa5946
  */
 public class EditLinkCommand extends Command {
 
@@ -32,7 +36,7 @@ public class EditLinkCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the link identified "
             + "by the index number used in the displayed link list. "
             + "Existing values will be overwritten by the input values.\n"
-            + "Parameters: INDEX (must be a positive integer) "
+            + "Parameters: INDEX (must be a positive integer between 1 and 2147483647) "
             + "[" + PREFIX_NAME + "NAME] "
             + "[" + PREFIX_ADDRESS + "LINK ADDRESS] "
             + "[" + PREFIX_MODULE + "ASSOCIATED_MODULE]\n"
