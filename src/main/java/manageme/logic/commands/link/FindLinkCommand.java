@@ -8,6 +8,10 @@ import manageme.logic.commands.CommandResult;
 import manageme.model.Model;
 import manageme.model.NameContainsKeywordsPredicate;
 
+/**
+ * Finds and lists all links in ManageMe whose name contains any of the argument keywords.
+ * Keyword matching is case insensitive. Partial words will be matched.
+ */
 public class FindLinkCommand extends Command {
     public static final String COMMAND_WORD = "findLink";
 
