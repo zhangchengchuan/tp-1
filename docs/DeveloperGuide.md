@@ -160,11 +160,10 @@ Here's a class diagram of the `Model` component:
 
 The `Model` component,
 
-* store the object data of ManageMe i.e., all `Module`, `Task` and `Link` objects (which are contained in a`UniqueModuleList` object, a `UniqueTaskList` and a `UniqueLinkList` respectively).
-* stores the currently 'selected' `Task` objects (e.g., results of a search query) as a separate _filtered_ list
-  which is exposed to outsiders as an unmodifiable `ObservableList<Task>` that can be 'observed' e.g. the UI can be
-  bound to this list so that the UI automatically updates when the data in the list change. The `Module` and `Link`
-  objects similarly follow this implementation.
+* stores the object data of ManageMe i.e., all `Module`, `Task` and `Link` objects (which are contained in a`UniqueModuleList` object, a `UniqueTaskList` and a `UniqueLinkList` respectively).
+* All `Module`, `Task` and `Link` objects are a `ManageMeObject`.
+* stores the currently 'selected' `Task` objects (e.g., results of a search query) as a separate _filtered_ list 
+  which is exposed to outsiders as an unmodifiable `ObservableList<Task>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change. The `Module` and `Link` objects similarly follow this implementation.
 * As `TaskModule` and `TaskTime` are optional fields, their values are internally stored within a Java `Optional`
   object.
 * stores a `UserPref` object that represents the user’s preferences. This is exposed to the outside as a `ReadOnlyUserPref` object.
