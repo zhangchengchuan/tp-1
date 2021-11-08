@@ -12,4 +12,4 @@ repository: "https://github.com/AY2122S1-CS2103T-W11-3/tp"
 github_icon: "images/github-icon.png"
 
 plugins:
-  - jemoji  
+  - jemoji
