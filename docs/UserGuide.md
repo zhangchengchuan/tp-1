@@ -89,7 +89,7 @@ Format: `addTask n/NAME d/DESCRIPTION [mod/ASSOCIATED_MODULE_NAME] [s/START_DATE
 * It is optional to include an associated module name, a start datetime and an end datetime.
 * A task created with a start datetime **must** also have an end datetime.
 * Format for `START_DATETIME`/`END_DATETIME` is as follows: `yyyy-MM-ddThh:mm` e.g. `2021-10-29T23:59`.
-* Take note that the **T** must be in the date that you entered. 
+* Take note that the **T** must be in the date that you entered.
   Example: `e/2021-10-25T16:00`
 
 Example: `addTask n/Do CS2103T Assignment d/Refer to lecture 10 for examples mod/CS2103T s/2021-10-05T11:00 e/2021-10-07T23:59`
@@ -272,7 +272,7 @@ Adds a link into the link list. A link contains its name and a website link for 
 
 Format: `addLink n/NAME a/LINK_ADDRESS [mod/ASSOCIATED_MODULE_NAME]` <br/>
 * A link can be a url to a webpage or a file path.
-* No duplicate links can be added. A link is considered a duplicate if it has the same `NAME` **and** `ADDRESS` with any existing links. 
+* No duplicate links can be added. A link is considered a duplicate if it has the same `NAME` **and** `ADDRESS` with any existing links.
   In this way, you can name multiple links the same as e.g. "Lecture", "Tutorial" etc, but associate them with different mods.
 * A link should be in a valid uri format, beginning with https://, ftp:// of file:/ .
 * After tagging the module, the link will appear in the readMod panel of the particular module.

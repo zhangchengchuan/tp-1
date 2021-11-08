@@ -13,11 +13,11 @@ Given below are my contributions to the project.
   * Added addTask command
     * Description:The addTask command allows the user to add a specific task based on what the user has used in the parameters.
     * Reason: addTask is the main method for which users can add a task of their own into ManageMe.
-    * Difficulty: Though not too difficult, implementing addTask was quite tedious since it was one of the first few features that we had to implement early on. Hence, this involved creating all the class models related to a task such as TaskName and TaskDescription. The Task related models also had to be modified quite a bit during the development stage before we settled on the final specifications.  
+    * Difficulty: Though not too difficult, implementing addTask was quite tedious since it was one of the first few features that we had to implement early on. Hence, this involved creating all the class models related to a task such as TaskName and TaskDescription. The Task related models also had to be modified quite a bit during the development stage before we settled on the final specifications.
   * Added markTask command
     * Description: The markTask command allows the user to mark and unmark a specific task as done.
     * Reason: Applications with a task functionality often allow users to mark tasks as done since it is natural for users to want to mark certain tasks as done to distinguish them from undone tasks.
-    * Difficulty: The markTask command was quite straightforward for me as it involved creating a task field model and a task command which I was already familiar with when working on addTask. 
+    * Difficulty: The markTask command was quite straightforward for me as it involved creating a task field model and a task command which I was already familiar with when working on addTask.
   * Added archive command
     * Description:The archive command allows the user to archive the current data into a timestamped file in the data folder and resets the application with a new data file.
     * Reason: For long-term users who may have plenty of data stored in the application or for users who plan to migrate their data onto a new computer, the archive command provides a convenient way for them to store all their current data into an easy-to-find file for manipulation.
