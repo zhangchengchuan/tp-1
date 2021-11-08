@@ -254,7 +254,7 @@ Format: `findMod KEYWORD [MORE_KEYWORDS]`
 * Partial words will be matched e.g. "CS210" will match "CS2101".
 * Modules matching at least one keyword will be returned (i.e. OR search).
 
-Example: `findMod computer` returns `Computer Organization` and `Computer Architecture`
+Example: `findMod cs2100` returns `CS2100`
 <br><br>
 
 #### <font color="#22a6b3">List all modules:</font> `listMod`
