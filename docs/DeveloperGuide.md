@@ -325,7 +325,9 @@ will continue to scan for tasks that need the user's attention.
 In this section, the archive feature and its activity diagram will be discussed.
 
 #### Implementation
-The archive feature is implemented as the `ArchiveCommand` and allows the user to archive the current data into a timestamped file in the data folder and resets the application with a new data file.
+The archive feature is implemented as the `ArchiveCommand` and allows the user to archive the current data 
+into a timestamped file in the data folder. Subsequently, the user may use the `clear` command to reset the 
+application's data.
 
 The following Activity diagram demonstrates the execution path of the archive command: <br><br>
 <img src="images/ArchiveActivityDiagram.png" width="500" /> <br>

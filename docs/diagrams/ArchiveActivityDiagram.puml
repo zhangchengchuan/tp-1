@@ -1,9 +1,9 @@
 @startuml
 (*) -> User enters archive Command
 --> "Gets current DateTime"
---> "Renames current data file as a timestamped 'archive.json' file"
+--> "Copies current data file into a timestamped 'archive.json' file"
 if "" then
--right>[Save is successful] "Creates a new json data file for the application"
+-right>[Save is successful] "Prints Success message to user"
 -down-> (*)
 else
 -left> [Save failed] "Throws CommmandException"
