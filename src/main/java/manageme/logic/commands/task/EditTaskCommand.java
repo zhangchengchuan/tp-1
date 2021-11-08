@@ -13,14 +13,12 @@ import manageme.logic.commands.Command;
 import manageme.logic.commands.CommandResult;
 import manageme.logic.commands.exceptions.CommandException;
 import manageme.model.Model;
+import manageme.model.Name;
+import manageme.model.TagModule;
 import manageme.model.module.Module;
-import manageme.model.module.ModuleName;
 import manageme.model.task.Task;
 import manageme.model.task.TaskDescription;
-import manageme.model.task.TaskModule;
-import manageme.model.task.TaskName;
 import manageme.model.task.TaskTime;
-
 
 
 /**
@@ -73,7 +71,7 @@ public class EditTaskCommand extends Command {
         Task taskToEdit = lastShownList.get(index.getZeroBased());
         Task editedTask = createEditedTask(taskToEdit, editTaskDescriptor);
 
-        if (!taskToEdit.isSameTask(editedTask) && model.hasTask(editedTask)) {
+        if (!taskToEdit.isSame(editedTask) && model.has(editedTask)) {
             throw new CommandException(MESSAGE_DUPLICATE_TASK);
         }
 
@@ -95,13 +93,13 @@ public class EditTaskCommand extends Command {
         }
 
         //if there is a module being associated, check it exists
-        if (!editedTask.getTaskModule().value.isEmpty()) {
-            if (!model.hasModule(new Module(new ModuleName(editedTask.getTaskModule().value)))) {
+        if (!editedTask.getTagModule().value.isEmpty()) {
+            if (!model.has(new Module(new Name(editedTask.getTagModule().value)))) {
                 throw new CommandException(MESSAGE_NONEXISTENT_MODULE);
             }
         }
 
-        model.setTask(taskToEdit, editedTask);
+        model.set(taskToEdit, editedTask);
         model.updateFilteredTaskList(PREDICATE_SHOW_ALL_TASKS);
         return new CommandResult(String.format(MESSAGE_EDIT_TASK_SUCCESS, editedTask));
     }
@@ -113,12 +111,12 @@ public class EditTaskCommand extends Command {
     private static Task createEditedTask(Task taskToEdit, EditTaskDescriptor editTaskDescriptor) {
         assert taskToEdit != null;
 
-        TaskName updatedName = editTaskDescriptor.getTaskName().orElse(taskToEdit.getName());
+        Name updatedName = editTaskDescriptor.getName().orElse(taskToEdit.getName());
         TaskDescription updatedDescription = editTaskDescriptor.getTaskDescription()
                 .orElse(taskToEdit.getDescription());
         // Set<Tag> updatedTags = editTaskDescriptor.getTags().orElse(taskToEdit.getTags());
-        TaskModule updatedModule = editTaskDescriptor.getModule()
-                .orElse(taskToEdit.getTaskModule());
+        TagModule updatedModule = editTaskDescriptor.getModule()
+                .orElse(taskToEdit.getTagModule());
         TaskTime updatedStartTime = editTaskDescriptor.getStart()
                 .orElse(taskToEdit.getStart());
         TaskTime updatedEndTime = editTaskDescriptor.getEnd()
@@ -150,9 +148,9 @@ public class EditTaskCommand extends Command {
      * corresponding field value of the task.
      */
     public static class EditTaskDescriptor {
-        private TaskName name;
+        private Name name;
         private TaskDescription description;
-        private TaskModule module;
+        private TagModule module;
         private TaskTime start;
         private TaskTime end;
         // private Set<Tag> tags;
@@ -180,11 +178,11 @@ public class EditTaskCommand extends Command {
             return CollectionUtil.isAnyNonNull(name, description, module, start, end);
         }
 
-        public void setName(TaskName name) {
+        public void setName(Name name) {
             this.name = name;
         }
 
-        public Optional<TaskName> getTaskName() {
+        public Optional<Name> getName() {
             return Optional.ofNullable(name);
         }
 
@@ -196,11 +194,11 @@ public class EditTaskCommand extends Command {
             return Optional.ofNullable(description);
         }
 
-        public void setModule(TaskModule module) {
+        public void setModule(TagModule module) {
             this.module = module;
         }
 
-        public Optional<TaskModule> getModule() {
+        public Optional<TagModule> getModule() {
             return Optional.ofNullable(module);
         }
 
@@ -220,23 +218,6 @@ public class EditTaskCommand extends Command {
             return Optional.ofNullable(end);
         }
 
-        ///**
-        // * Sets {@code tags} to this object's {@code tags}.
-        // * A defensive copy of {@code tags} is used internally.
-        // */
-        //public void setTags(Set<Tag> tags) {
-        //    this.tags = (tags != null) ? new HashSet<>(tags) : null;
-        //}
-
-        ///**
-        // * Returns an unmodifiable tag set, which throws {@code UnsupportedOperationException}
-        // * if modification is attempted.
-        // * Returns {@code Optional#empty()} if {@code tags} is null.
-        // */
-        //public Optional<Set<Tag>> getTags() {
-        //    return (tags != null) ? Optional.of(Collections.unmodifiableSet(tags)) : Optional.empty();
-        //}
-
         @Override
         public boolean equals(Object other) {
             // short circuit if same object
@@ -252,12 +233,11 @@ public class EditTaskCommand extends Command {
             // state check
             EditTaskDescriptor e = (EditTaskDescriptor) other;
 
-            return getTaskName().equals(e.getTaskName())
+            return getName().equals(e.getName())
                     && getTaskDescription().equals(e.getTaskDescription())
                     && getModule().equals(e.getModule())
                     && getStart().equals(e.getStart())
                     && getEnd().equals(e.getEnd());
-            //        && getTags().equals(e.getTags());
         }
     }
 }

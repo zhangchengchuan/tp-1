@@ -41,10 +41,10 @@ public class LogicManagerTest {
 
     @BeforeEach
     public void setUp() {
-        JsonManageMeStorage ManageMeStorage =
+        JsonManageMeStorage manageMeStorage =
                 new JsonManageMeStorage(temporaryFolder.resolve("ManageMe.json"));
         JsonUserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(temporaryFolder.resolve("userPrefs.json"));
-        StorageManager storage = new StorageManager(ManageMeStorage, userPrefsStorage);
+        StorageManager storage = new StorageManager(manageMeStorage, userPrefsStorage);
         TimeManager time = new TimeManager(model.getManageMe());
         logic = new LogicManager(model, storage, time);
     }
@@ -82,7 +82,7 @@ public class LogicManagerTest {
         String addModuleCommand = AddModuleCommand.COMMAND_WORD + MODNAME_DESC_A;
         Module expectedModule = new ModuleBuilder(TypicalModules.MODULE_A).build();
         ModelManager expectedModel = new ModelManager();
-        expectedModel.addModule(expectedModule);
+        expectedModel.add(expectedModule);
         String expectedMessage = LogicManager.FILE_OPS_ERROR_MESSAGE + DUMMY_IO_EXCEPTION;
         assertCommandFailure(addModuleCommand, CommandException.class, expectedMessage, expectedModel);
     }
@@ -169,7 +169,7 @@ public class LogicManagerTest {
         }
 
         @Override
-        public void saveManageMe(ReadOnlyManageMe ManageMe, Path filePath) throws IOException {
+        public void saveManageMe(ReadOnlyManageMe manageMe, Path filePath) throws IOException {
             throw DUMMY_IO_EXCEPTION;
         }
     }

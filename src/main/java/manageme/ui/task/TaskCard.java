@@ -34,13 +34,13 @@ public class TaskCard extends UiPart<Region> {
     @FXML
     private VBox taskCardPane;
     @FXML
-    private Label taskName;
+    private Label name;
     @FXML
     private Label taskId;
     @FXML
     private Label taskDescription;
     @FXML
-    private Label taskModule;
+    private Label tagModule;
     @FXML
     private Label startTime;
     @FXML
@@ -65,9 +65,9 @@ public class TaskCard extends UiPart<Region> {
 
     private void init(int displayedIndex) {
         taskId.setText(displayedIndex + ". ");
-        taskName.setText(task.getName().value);
+        name.setText(task.getName().value);
         taskDescription.setText(task.getDescription().value);
-        taskModule.setText(task.getTaskModule().value);
+        tagModule.setText(task.getTagModule().value);
         startTime.setText(task.getStart().isEmpty() ? "" : "Start: " + task.getStart().toDisplayString());
         endTime.setText(task.getEnd().isEmpty() ? "" : "End: " + task.getEnd().toDisplayString());
 

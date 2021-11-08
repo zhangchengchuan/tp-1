@@ -8,11 +8,6 @@ import static manageme.logic.parser.CliSyntax.PREFIX_MODULE;
 import static manageme.logic.parser.CliSyntax.PREFIX_NAME;
 import static manageme.logic.parser.CliSyntax.PREFIX_START;
 
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Optional;
-import java.util.Set;
-
 import manageme.commons.core.index.Index;
 import manageme.logic.commands.task.EditTaskCommand;
 import manageme.logic.parser.ArgumentMultimap;
@@ -20,7 +15,6 @@ import manageme.logic.parser.ArgumentTokenizer;
 import manageme.logic.parser.Parser;
 import manageme.logic.parser.ParserUtil;
 import manageme.logic.parser.exceptions.ParseException;
-import manageme.model.tag.Tag;
 
 /**
  * Parses input arguments and creates a new EditTaskCommand object
@@ -49,14 +43,14 @@ public class EditTaskCommandParser implements Parser<EditTaskCommand> {
 
         EditTaskCommand.EditTaskDescriptor editTaskDescriptor = new EditTaskCommand.EditTaskDescriptor();
         if (argMultimap.getValue(PREFIX_NAME).isPresent()) {
-            editTaskDescriptor.setName(ParserUtil.parseTaskName(argMultimap.getValue(PREFIX_NAME).get()));
+            editTaskDescriptor.setName(ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get()));
         }
         if (argMultimap.getValue(PREFIX_DESCRIPTION).isPresent()) {
             editTaskDescriptor.setDescription(ParserUtil
                     .parseTaskDescription(argMultimap.getValue(PREFIX_DESCRIPTION).get()));
         }
         if (argMultimap.getValue(PREFIX_MODULE).isPresent()) {
-            editTaskDescriptor.setModule(ParserUtil.parseTaskModule(argMultimap.getValue(PREFIX_MODULE).get()));
+            editTaskDescriptor.setModule(ParserUtil.parseTagModule(argMultimap.getValue(PREFIX_MODULE).get()));
         }
         if (argMultimap.getValue(PREFIX_START).isPresent()) {
             editTaskDescriptor.setStart(ParserUtil.parseDateTime(argMultimap.getValue(PREFIX_START).get()));
@@ -71,20 +65,5 @@ public class EditTaskCommandParser implements Parser<EditTaskCommand> {
         }
 
         return new EditTaskCommand(index, editTaskDescriptor);
-    }
-
-    /**
-     * Parses {@code Collection<String> tags} into a {@code Set<Tag>} if {@code tags} is non-empty.
-     * If {@code tags} contain only one element which is an empty string, it will be parsed into a
-     * {@code Set<Tag>} containing zero tags.
-     */
-    private Optional<Set<Tag>> parseTagsForEdit(Collection<String> tags) throws ParseException {
-        assert tags != null;
-
-        if (tags.isEmpty()) {
-            return Optional.empty();
-        }
-        Collection<String> tagSet = tags.size() == 1 && tags.contains("") ? Collections.emptySet() : tags;
-        return Optional.of(ParserUtil.parseTags(tagSet));
     }
 }
