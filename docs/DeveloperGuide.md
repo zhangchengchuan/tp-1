@@ -157,7 +157,6 @@ Here's a class diagram of the `Model` component:
 
 <img src="images/MMModelClassDiagram.png" width="700" />
 
-
 The `Model` component,
 
 * store the object data of ManageMe i.e., all `Module`, `Task` and `Link` objects (which are contained in a`UniqueModuleList` object, a `UniqueTaskList` and a `UniqueLinkList` respectively).
@@ -239,8 +238,12 @@ Shown below is the sequence diagrams for when  `MarkTaskCommand` and `DeleteDone
 *Sequence diagram of deleting all done tasks*
 
 ### Module Feature
+Similar to the commands available in AB3, a user is able to add, edit, delete, find and list tasks and is
+implemented as the `AddModuleCommand`,`EditModuleCommand`, `DeleteModuleCommand`, `FindModuleCommand` and `ListModuleCommand`
+respectively. ManageMe also allows you to type in `readMod` for a particular module, and see all `Task` and `Link` related to it in a pop-up window.
 
-ManageMe also allows you to type in `readMod` for a particular module, and see all `Task` and `Link` related to it in a pop-up window.
+#### Implementation for Delete and Edit Module Feature
+When a module is deleted or edited, all `TagModule` references in all available `Task` and `Link` are updated accordingly.
 
 #### Implementation for Read Module Feature
 Read module makes use of both the UI component which creates a pop-up window for display, and the Logic component
