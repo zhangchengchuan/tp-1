@@ -22,7 +22,6 @@ This user guide will give you a comprehensive understanding of using ManageMe to
 This section aims to provide a quick introduction to using ManageMe.
 It should take **less than 5 minutes to read** and will provide new users with the necessary knowledge to install and start using the application.
 
-<div style="page-break-after: always;"></div>
 
 ### <font color="#f0932b">Steps for installation</font>
 1. Ensure you have Java 11 or above installed on your computer.
@@ -31,6 +30,8 @@ It should take **less than 5 minutes to read** and will provide new users with t
 4. Move the jar file into your desired folder. ManageMe will use this folder to store its data by default.
 5. Start the app by double-clicking on the jar file, or if you are using the command line, type `java -jar manageme.jar`.
 6. Enjoy using the application!
+
+<div style="page-break-after: always;"></div>
 
 ### <font color="#f0932b">User Interface</font>
 Below is a screenshot of our User Interface (UI). As you can see, there are management panels for Modules, Tasks, Calendar, and Links.
@@ -192,6 +193,7 @@ Format: `deleteDoneTask`
 
 Return to [Table of Contents](#table-of-contents).
 
+<div style="page-break-after: always;"></div>
 
 ### <font color="#22a6b3">Modules:</font>
 #### <font color="#22a6b3">Adding a module:</font> `addMod`
@@ -270,6 +272,8 @@ Format: `listMod`
 <br><br>
 
 Return to [Table of Contents](#table-of-contents).
+
+<div style="page-break-after: always;"></div>
 
 ### <font color="#7d3415">Links:</font>
 #### <font color="#7d3415">Add a link:</font> `addLink`
@@ -374,6 +378,7 @@ Format: `listLink`
 
 Return to [Table of Contents](#table-of-contents).
 
+<div style="page-break-after: always;"></div>
 
 ### <font color="#eb4d4b">Calendar:</font>
 #### <font color="#eb4d4b">Change calendar to next month:</font> `nextMonth`
@@ -401,6 +406,7 @@ Example: `readDay 2021-10-19`
 
 Return to [Table of Contents](#table-of-contents).
 
+<div style="page-break-after: always;"></div>
 
 ### <font color="#4834d4">Others:</font>
 
@@ -457,6 +463,8 @@ Data is saved in the hard disk automatically after any command that changes the 
 <br><br>
 
 Return to [Table of Contents](#table-of-contents).
+
+<div style="page-break-after: always;"></div>
 
 --------------------------------------------------------------------------------------------------------------------
 
