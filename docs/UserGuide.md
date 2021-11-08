@@ -22,6 +22,8 @@ This user guide will give you a comprehensive understanding of using ManageMe to
 This section aims to provide a quick introduction to using ManageMe.
 It should take **less than 5 minutes to read** and will provide new users with the necessary knowledge to install and start using the application.
 
+<div style="page-break-after: always;"></div>
+
 ### <font color="#f0932b">Steps for installation</font>
 1. Ensure you have Java 11 or above installed on your computer.
 2. [Download](https://github.com/AY2122S1-CS2103T-W11-3/tp/releases) the latest jar release of ManageMe.
