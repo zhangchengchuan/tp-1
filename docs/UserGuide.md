@@ -429,7 +429,7 @@ Shows the command summary and the URL to the full User Guide.
 
 #### <font color="#4834d4">Archive current data:</font> `archive`
 
-Resets the application data and saves the deleted application data into a timestamped file located in the data folder.
+Copies the current application data into a new timestamped file created in the data folder.
 <br><br>
 
 
