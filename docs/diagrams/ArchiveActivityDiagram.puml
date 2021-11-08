@@ -3,10 +3,10 @@
 --> "Gets current DateTime"
 --> "Copies current data file into a timestamped 'archive.json' file"
 if "" then
--right>[Save is successful] "Prints Success message to user"
+-right>[archive file creation succeeded] "Prints Success message to user"
 -down-> (*)
 else
--left> [Save failed] "Throws CommmandException"
+-left> [archive file creation failed] "Throws CommmandException"
 endif
 -down-> (*)
 @enduml
