@@ -27,7 +27,7 @@ Given below are my contributions to the project.
   * Added Edit Task Command (PR #59)
     * Description: The Edit Task Command allows the user to edit the specified task.
     * Reason: For ManageMe, adding tasks are a core feature we have but in the event that the user typed in something
-      wrong, they can use the edit task function to edit it.
+      wrong, they can use the edit task function to edit.
     * Difficulty: Moderate
       <br><br>
   * Added Delete Done Task Command (PR #125)

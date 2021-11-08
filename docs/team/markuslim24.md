@@ -55,8 +55,3 @@ Given below are my contributions to the project.
     * Helped test other team's software and provided feedback and bug reports([Link to feedback](https://github.com/markuslim24/ped/issues))
     * Responsible for writing testcases for all Task-related models (Pull requests [\#56](https://github.com/AY2122S1-CS2103T-W11-3/tp/pull/56), [\#60](https://github.com/AY2122S1-CS2103T-W11-3/tp/pull/60), [\#77](https://github.com/AY2122S1-CS2103T-W11-3/tp/pull/77))
     * Created Task-related testing utilities and wrote out testcases for the `addTask` command ([\#77](https://github.com/AY2122S1-CS2103T-W11-3/tp/pull/77))
-
-<div style="page-break-after: always;"></div>    
-
-Given below are my contributions to the project User Guide
-
