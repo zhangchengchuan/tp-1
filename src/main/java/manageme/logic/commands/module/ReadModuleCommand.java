@@ -17,7 +17,7 @@ public class ReadModuleCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Display the module identified by the index number used in the displayed module list.\n"
-            + "Parameters: INDEX (must be a positive integer)\n"
+            + "Parameters: INDEX (must be a positive integer between 1 and 2147483647)\n"
             + "Example: " + COMMAND_WORD + " 1";
 
     public static final String MESSAGE_SUCCESS = "Displayed module";
