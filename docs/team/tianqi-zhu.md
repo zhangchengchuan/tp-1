@@ -63,3 +63,4 @@ Given below are my contributions to the project.
     * Developer Guide:
         * Conversion of the Archituecture section of the developer guide from AB3.
         * Optimized user stories at `v1.2`.
+        * Modified final DG to suit integrated implementation.
