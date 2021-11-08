@@ -17,11 +17,6 @@ This user guide will give you a comprehensive understanding of using ManageMe to
 <br><br>
 
 --------------------------------------------------------------------------------------------------------------------
-## <font color="#f0932b">How to navigate this User Guide</font>
-
-Better add this in. Include things like the information icon, or perhaps shift the note in Features here.
-
---------------------------------------------------------------------------------------------------------------------
 
 ## <font color="#f0932b">Quick Start</font>
 This section aims to provide a quick introduction to using ManageMe.
